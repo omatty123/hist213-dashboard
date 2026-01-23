@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project Brainstorm | HIST 213</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1c1917;
+            --ink-light: #57534e;
+            --paper: #faf9f6;
+            --accent: #1e40af;
+            --border: #d6d3d1;
+            --input-bg: #fff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        header .course {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--ink-light);
+        }
+
+        .name-date {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .name-date label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ink-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .name-date input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            background: var(--input-bg);
+        }
+
+        .section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--ink);
+            color: #fff;
+            padding: 0.4rem 0.75rem;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .prompts {
+            background: #f5f5f4;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+
+        .prompts p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 0.35rem;
+        }
+
+        .prompts p:last-child {
+            margin-bottom: 0;
+        }
+
+        .topic-list {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            background: var(--input-bg);
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        textarea.short { min-height: 80px; }
+        textarea.medium { min-height: 120px; }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .idea-box label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ink-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .idea-box textarea {
+            min-height: 100px;
+        }
+
+        @media (max-width: 700px) {
+            .ideas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .format-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .format-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .format-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--ink);
+        }
+
+        .other-format {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .other-format input[type="text"] {
+            flex: 1;
+            padding: 0.4rem 0.6rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .format-options {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .tip-box {
+            background: #fef3c7;
+            border-left: 4px solid #d97706;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+        }
+
+        .tip-box strong {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #92400e;
+        }
+
+        .checklist {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+
+        .checklist h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #166534;
+            margin-bottom: 0.75rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .checklist-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: #166534;
+        }
+
+        /* Save indicator */
+        .save-notice {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: var(--ink);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .save-notice.visible {
+            opacity: 1;
+        }
+
+        /* Print styles */
+        @media print {
+            body { padding: 0; }
+            input, textarea {
+                border: 1px solid #ddd !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .save-notice { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Final Project Brainstorm</h1>
+        <span class="course">HIST/EAST 213 · Discussion Prep</span>
+    </header>
+
+    <div class="name-date">
+        <div>
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Your name">
+        </div>
+        <div>
+            <label>Date</label>
+            <input type="text" id="date" placeholder="Today's date">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">1. What grabbed you?</div>
+        <p class="topic-list">Topics to consider: Imjin War · Ming-Qing transition · Tokugawa order · Sankin-kotai · Sakoku · Joseon reform · Opium Wars · Meiji · Taiping · Tonghak · Nationalism · Pacific War · Comfort women · Mao · Korean division</p>
+        <textarea id="grabbed" class="medium" placeholder="From everything we've covered, what topics, moments, or questions stuck with you?"></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-header">2. Three possible topics</div>
+        <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">Brainstorm three directions. They don't have to be perfect — just possibilities.</p>
+        <div class="ideas-grid">
+            <div class="idea-box">
+                <label>Idea 1</label>
+                <textarea id="idea1" placeholder="Your first idea..."></textarea>
+            </div>
+            <div class="idea-box">
+                <label>Idea 2</label>
+                <textarea id="idea2" placeholder="Your second idea..."></textarea>
+            </div>
+            <div class="idea-box">
+                <label>Idea 3</label>
+                <textarea id="idea3" placeholder="Your third idea..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">3. Narrow it down</div>
+        <div class="prompts">
+            <p>Which idea excites you most?</p>
+            <p>Which has sources you can actually access?</p>
+            <p>Which lets you make an argument (not just describe)?</p>
+        </div>
+        <textarea id="narrowDown" class="short" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-header">4. Format</div>
+        <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">What format fits your topic best?</p>
+        <div class="format-options">
+            <label class="format-option">
+                <input type="checkbox" id="formatPaper"> Research paper
+            </label>
+            <label class="format-option">
+                <input type="checkbox" id="formatPodcast"> Podcast/audio
+            </label>
+            <label class="format-option">
+                <input type="checkbox" id="formatVideo"> Video essay
+            </label>
+            <label class="format-option">
+                <input type="checkbox" id="formatWebsite"> Website/digital
+            </label>
+            <label class="format-option">
+                <input type="checkbox" id="formatCreative"> Creative project
+            </label>
+        </div>
+        <div class="other-format">
+            <span style="font-size: 0.95rem;">Other:</span>
+            <input type="text" id="formatOther" placeholder="Describe your format...">
+        </div>
+        <div class="tip-box">
+            <strong>Note:</strong> Non-traditional formats still need research and argument. A podcast isn't easier — it's different.
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">5. The "So What?" Test</div>
+        <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">Why does your topic matter? Who cares? What's at stake?</p>
+        <textarea id="soWhat" class="medium" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-header">6. Sources — What do you have?</div>
+        <div class="prompts">
+            <p>Primary sources from class you could use?</p>
+            <p>Additional sources you'd need to find?</p>
+            <p>Any films, images, objects relevant?</p>
+        </div>
+        <textarea id="sources" class="medium" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-header">7. Questions for discussion</div>
+        <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">What do you want feedback on? What are you unsure about?</p>
+        <textarea id="questions" class="short" placeholder="Your questions..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="checklist">
+            <h3>Before you leave today</h3>
+            <label class="checklist-item">
+                <input type="checkbox" id="checkTopic"> I have a topic direction (even if rough)
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox" id="checkFormat"> I know what format I'm leaning toward
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox" id="checkSource"> I have at least one source in mind
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox" id="checkFeedback"> I got feedback from classmates or 마선생님
+            </label>
+        </div>
+    </div>
+
+    <div class="save-notice" id="saveNotice">Saved to browser</div>
+
+    <script>
+        // Auto-save to localStorage
+        const formId = 'finalProjectBrainstorm';
+        const textFields = ['name', 'date', 'grabbed', 'idea1', 'idea2', 'idea3', 'narrowDown', 'formatOther', 'soWhat', 'sources', 'questions'];
+        const checkboxFields = ['formatPaper', 'formatPodcast', 'formatVideo', 'formatWebsite', 'formatCreative', 'checkTopic', 'checkFormat', 'checkSource', 'checkFeedback'];
+
+        // Load saved data
+        textFields.forEach(field => {
+            const el = document.getElementById(field);
+            const saved = localStorage.getItem(`${formId}_${field}`);
+            if (saved) el.value = saved;
+        });
+
+        checkboxFields.forEach(field => {
+            const el = document.getElementById(field);
+            const saved = localStorage.getItem(`${formId}_${field}`);
+            if (saved === 'true') el.checked = true;
+        });
+
+        // Save on change
+        let saveTimeout;
+        const saveNotice = document.getElementById('saveNotice');
+
+        function showSaveNotice() {
+            saveNotice.classList.add('visible');
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                saveNotice.classList.remove('visible');
+            }, 1500);
+        }
+
+        textFields.forEach(field => {
+            const el = document.getElementById(field);
+            el.addEventListener('input', () => {
+                localStorage.setItem(`${formId}_${field}`, el.value);
+                showSaveNotice();
+            });
+        });
+
+        checkboxFields.forEach(field => {
+            const el = document.getElementById(field);
+            el.addEventListener('change', () => {
+                localStorage.setItem(`${formId}_${field}`, el.checked);
+                showSaveNotice();
+            });
+        });
+    </script>
+
+</body>
+</html>

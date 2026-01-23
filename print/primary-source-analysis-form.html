@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary Source Analysis | HIST 213</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1c1917;
+            --ink-light: #57534e;
+            --paper: #faf9f6;
+            --accent: #1e40af;
+            --border: #d6d3d1;
+            --input-bg: #fff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        header .course {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--ink-light);
+        }
+
+        .name-date {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .name-date label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ink-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .name-date input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            background: var(--input-bg);
+        }
+
+        .section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--ink);
+            color: #fff;
+            padding: 0.4rem 0.75rem;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem 1rem;
+        }
+
+        .field-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .field-row.full {
+            grid-column: span 2;
+        }
+
+        .field-row label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ink-light);
+        }
+
+        .field-row input {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            background: var(--input-bg);
+        }
+
+        .prompts {
+            background: #f5f5f4;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+
+        .prompts p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 0.35rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .prompts p::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #a1a1aa;
+        }
+
+        .prompts p:last-child {
+            margin-bottom: 0;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            background: var(--input-bg);
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        textarea.short { min-height: 80px; }
+        textarea.medium { min-height: 120px; }
+        textarea.tall { min-height: 160px; }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .two-col, .field-grid {
+                grid-template-columns: 1fr;
+            }
+            .field-row.full {
+                grid-column: span 1;
+            }
+        }
+
+        .tip-box {
+            background: #fef3c7;
+            border-left: 4px solid #d97706;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+        }
+
+        .tip-box strong {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #92400e;
+        }
+
+        .essay-structure {
+            background: #f5f5f4;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+
+        .essay-structure h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ink-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .essay-structure ul {
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .essay-structure li {
+            margin-bottom: 0.25rem;
+        }
+
+        .structure-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .structure-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Save indicator */
+        .save-notice {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: var(--ink);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .save-notice.visible {
+            opacity: 1;
+        }
+
+        /* Print styles */
+        @media print {
+            body { padding: 0; }
+            input, textarea {
+                border: 1px solid #ddd !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .save-notice { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Primary Source Analysis</h1>
+        <span class="course">HIST/EAST 213 · 3-Page Essay Prep</span>
+    </header>
+
+    <div class="name-date">
+        <div>
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Your name">
+        </div>
+        <div>
+            <label>Date</label>
+            <input type="text" id="date" placeholder="Today's date">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">1. Source Identification</div>
+        <div class="field-grid">
+            <div class="field-row">
+                <label>Title</label>
+                <input type="text" id="title" placeholder="Title of the source">
+            </div>
+            <div class="field-row">
+                <label>Author</label>
+                <input type="text" id="author" placeholder="Who wrote it?">
+            </div>
+            <div class="field-row">
+                <label>Date Written</label>
+                <input type="text" id="dateWritten" placeholder="When was it written?">
+            </div>
+            <div class="field-row">
+                <label>Type of Source</label>
+                <input type="text" id="sourceType" placeholder="Edict, letter, memoir, treaty, philosophy, testimony...">
+            </div>
+            <div class="field-row full">
+                <label>Found In</label>
+                <input type="text" id="foundIn" placeholder="Textbook, course reader, archive...">
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">2. Context — What world produced this source?</div>
+        <div class="prompts">
+            <p>What was happening politically, socially, or culturally when this was written?</p>
+            <p>Who was the intended audience? Why does that matter?</p>
+            <p>What genre is this? What conventions shape it?</p>
+        </div>
+        <textarea id="context" class="medium" placeholder="Your notes on context..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-header">3. Argument — What is the author trying to do?</div>
+        <div class="prompts">
+            <p>What is the author's main claim or purpose?</p>
+            <p>What assumptions does the author make? What goes unsaid?</p>
+            <p>Who or what is the author arguing against (even implicitly)?</p>
+        </div>
+        <textarea id="argument" class="medium" placeholder="Your notes on the author's argument..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-header">4. Evidence — Key quotes</div>
+        <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">Copy 2-3 key quotes you'll use in your essay. Include page numbers.</p>
+        <textarea id="evidence" class="tall" placeholder="Quote 1:
+
+(p. ___)
+
+Quote 2:
+
+(p. ___)
+
+Quote 3:
+
+(p. ___)"></textarea>
+    </div>
+
+    <div class="two-col">
+        <div class="section">
+            <div class="section-header">5. Significance — So what?</div>
+            <div class="prompts">
+                <p>What does this reveal about its time/place?</p>
+                <p>How does it connect to course themes?</p>
+                <p>What would we miss without this source?</p>
+            </div>
+            <textarea id="significance" class="short" placeholder="Your notes on significance..."></textarea>
+        </div>
+
+        <div class="section">
+            <div class="section-header">6. Your Thesis</div>
+            <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">Draft a one-sentence argument about what this source reveals:</p>
+            <textarea id="thesis" class="short" placeholder="This document reveals..."></textarea>
+            <div class="tip-box">
+                <strong>Tip:</strong> A thesis isn't a summary ("This document describes X"). It's a claim ("This document reveals Y about Z").
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">Essay Structure (3 Pages)</div>
+        <div class="essay-structure">
+            <div class="structure-grid">
+                <div>
+                    <h4>Page 1: Introduction + Context</h4>
+                    <ul>
+                        <li>Hook: A striking quote or detail</li>
+                        <li>Introduce the source (who, what, when)</li>
+                        <li>Historical context (brief)</li>
+                        <li><strong>Thesis statement</strong></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Page 2: Analysis</h4>
+                    <ul>
+                        <li>Close reading of key passages</li>
+                        <li>What the author argues + how</li>
+                        <li>What's revealed vs. what's hidden</li>
+                        <li>Use quotes as evidence</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h4>Page 3: Significance + Conclusion</h4>
+                <ul>
+                    <li>Connect to broader course themes (modernity, encounters, reform, nationalism...)</li>
+                    <li>What does this source help us understand that we couldn't see otherwise?</li>
+                    <li>Conclusion: Restate thesis with greater nuance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="save-notice" id="saveNotice">Saved to browser</div>
+
+    <script>
+        // Auto-save to localStorage
+        const formId = 'primarySourceAnalysis';
+        const fields = ['name', 'date', 'title', 'author', 'dateWritten', 'sourceType', 'foundIn', 'context', 'argument', 'evidence', 'significance', 'thesis'];
+
+        // Load saved data
+        fields.forEach(field => {
+            const el = document.getElementById(field);
+            const saved = localStorage.getItem(`${formId}_${field}`);
+            if (saved) el.value = saved;
+        });
+
+        // Save on change
+        let saveTimeout;
+        const saveNotice = document.getElementById('saveNotice');
+
+        function showSaveNotice() {
+            saveNotice.classList.add('visible');
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                saveNotice.classList.remove('visible');
+            }, 1500);
+        }
+
+        fields.forEach(field => {
+            const el = document.getElementById(field);
+            el.addEventListener('input', () => {
+                localStorage.setItem(`${formId}_${field}`, el.value);
+                showSaveNotice();
+            });
+        });
+    </script>
+
+</body>
+</html>

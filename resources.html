@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIST 213 - Resources</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #f5f5f7; --surface: #fff; --border: #e5e5e5; --text: #1d1d1f; --text-muted: #86868b; --accent: #0071e3; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 2rem; text-align: center; }
+    header h1 { color: #fff; font-size: 1.8rem; font-weight: 600; margin-bottom: 0.5rem; }
+    header p { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+    header a { color: rgba(255,255,255,0.8); text-decoration: underline; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+
+    .section { margin-bottom: 2.5rem; }
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s ease;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border-color: var(--accent);
+    }
+
+    .card .icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .card .title { font-size: 1rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .card .desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+    .card .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: var(--bg);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HIST 213 Resources</h1>
+    <p>Maps, Charts & Visualizations &middot; <a href="index.html">Back to Dashboard</a></p>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-title">Interactive Maps</div>
+      <div class="card-grid">
+        <a class="card" href="print/east-asia-population-1700.html">
+          <div class="icon">🗺️</div>
+          <div class="title">Urban Giants of East Asia</div>
+          <div class="desc">Population map with time slider (1600 → 1700 → 1800). Watch Edo explode from 150K to 1.2M.</div>
+          <span class="tag">Leaflet + Time Slider</span>
+        </a>
+        <a class="card" href="print/choson-trade-routes.html">
+          <div class="icon">⛵</div>
+          <div class="title">Chosŏn Maritime Trade Routes</div>
+          <div class="desc">Proposed 17th-19th century trade networks connecting Korean ports to Chinese hubs.</div>
+          <span class="tag">Leaflet</span>
+        </a>
+        <a class="card" href="print/plate-8-enrichment.html">
+          <div class="icon">🏯</div>
+          <div class="title">Tokugawa Japan: Four Gates & Gokaido</div>
+          <div class="desc">Trade ports (Nagasaki, Tsushima, Satsuma, Matsumae) and the Five Highways.</div>
+          <span class="tag">Plate 8 Enrichment</span>
+        </a>
+        <a class="card" href="print/joseon-maritime-trade.html">
+          <div class="icon">🚢</div>
+          <div class="title">Joseon Maritime Trade</div>
+          <div class="desc">Korean maritime trade networks and port connections.</div>
+          <span class="tag">Leaflet</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Comparison Charts</div>
+      <div class="card-grid">
+        <a class="card" href="print/east-asia-comparison-chart.html">
+          <div class="icon">📊</div>
+          <div class="title">East Asia Comparison Chart</div>
+          <div class="desc">Side-by-side comparison of Tokugawa, Joseon, and Qing across key dimensions.</div>
+          <span class="tag">Chart</span>
+        </a>
+        <a class="card" href="print/global-market-cap.html">
+          <div class="icon">💹</div>
+          <div class="title">Global Market Cap Comparison</div>
+          <div class="desc">East Asia vs Europe: top companies by market capitalization with GDP context.</div>
+          <span class="tag">Chart.js</span>
+        </a>
+        <a class="card" href="print/east-asia-longue-duree.html">
+          <div class="icon">📈</div>
+          <div class="title">East Asia Longue Durée</div>
+          <div class="desc">Long-term historical patterns and trajectories.</div>
+          <span class="tag">Chart</span>
+        </a>
+        <a class="card" href="print/joseon-population-chart.html">
+          <div class="icon">👥</div>
+          <div class="title">Joseon Population Chart</div>
+          <div class="desc">Population trends in Joseon Korea.</div>
+          <span class="tag">Chart</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Enrichment Pages</div>
+      <div class="card-grid">
+        <a class="card" href="print/plate-8-enrichment.html">
+          <div class="icon">🎌</div>
+          <div class="title">Plate 8: Rise of Tokugawa</div>
+          <div class="desc">Four Gates of trade, Gokaido highways, sankin-kōtai system visualized.</div>
+          <span class="tag">Day 8</span>
+        </a>
+      </div>
+    </section>
+
+    <a class="back-link" href="index.html">← Back to Dashboard</a>
+  </main>
+</body>
+</html>

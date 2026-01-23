@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plate 2: East Asian Language, Religion, Culture</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: letter; margin: 0.5in; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+      padding: 20px;
+      max-width: 8.5in;
+      margin: 0 auto;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+      background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .plate-num, .date {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 6px 14px;
+      font-weight: 600;
+    }
+    .topic {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 6px 20px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .section {
+      margin-bottom: 14px;
+    }
+    .section-label {
+      display: inline-block;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 3px 10px;
+      font-weight: 600;
+      font-size: 10px;
+      margin-bottom: 6px;
+    }
+    .ppt-headers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .col-header {
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 2px 10px;
+      font-weight: 600;
+      font-size: 8px;
+      width: fit-content;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .grid-3 .cell {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px 8px;
+      font-size: 9px;
+    }
+    .timeline-box {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px;
+      position: relative;
+    }
+    .timeline-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid #999;
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+    }
+    .timeline-point {
+      text-align: center;
+      font-size: 9px;
+    }
+    .timeline-point .year { font-weight: 600; }
+    .timeline-point .event { font-size: 8px; color: #666; }
+    .map-box {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px;
+      min-height: 160px;
+    }
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      font-size: 9px;
+    }
+    .map-loc { padding: 3px 0; }
+    .map-loc strong { color: #333; }
+    .questions-grid {
+      display: grid;
+      grid-template-columns: 30px 1fr 1fr;
+      gap: 8px;
+    }
+    .q-header {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: center;
+    }
+    .q-num {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .q-cell {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px;
+      font-size: 10px;
+    }
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .bottom-box {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 10px;
+    }
+    .bottom-box p { margin-bottom: 6px; }
+    .bottom-box strong { color: #555; }
+    @media print {
+      body { padding: 0; }
+      .section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="plate-num">Plate #2</span>
+    <span class="topic">East Asian Language, Religion, Culture</span>
+    <span class="date">Jan 8</span>
+  </div>
+
+  <div class="section">
+    <div class="ppt-headers">
+      <span class="col-header">Person</span>
+      <span class="col-header">Place</span>
+      <span class="col-header">Thing</span>
+    </div>
+    <div class="grid-3">
+      <div class="cell"><strong>Confucius (孔子)</strong> — founder of Confucianism</div>
+      <div class="cell"><strong>Chang'an (長安)</strong> — Tang capital, cultural model</div>
+      <div class="cell"><strong>Five Relationships (五倫)</strong> — Confucian social order</div>
+      <div class="cell"><strong>King Sejong (世宗)</strong> — created Korean Hangul</div>
+      <div class="cell"><strong>Nara / Kyoto</strong> — Japanese capitals modeled on Chang'an</div>
+      <div class="cell"><strong>Civil Service Exams</strong> — meritocratic bureaucracy</div>
+      <div class="cell"><strong>Prince Shōtoku</strong> — promoted Buddhism in Japan</div>
+      <div class="cell"><strong>Hanyang (Seoul)</strong> — Joseon capital</div>
+      <div class="cell"><strong>Buddhist Sutras</strong> — shared religious texts</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-label">Timeline</span>
+    <div class="timeline-box">
+      <div class="timeline-line">
+        <div class="timeline-point"><div class="year">551 BCE</div><div class="event">Confucius born</div></div>
+        <div class="timeline-point"><div class="year">1st c. CE</div><div class="event">Buddhism reaches China</div></div>
+        <div class="timeline-point"><div class="year">372</div><div class="event">Buddhism to Korea</div></div>
+        <div class="timeline-point"><div class="year">538</div><div class="event">Buddhism to Japan</div></div>
+        <div class="timeline-point"><div class="year">794</div><div class="event">Kyoto founded</div></div>
+        <div class="timeline-point"><div class="year">1443</div><div class="event">Hangul created</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-label">Map</span>
+    <div class="map-box">
+      <div style="font-weight:600; margin-bottom:8px; font-size:10px;">East Asian Cultural Sphere: Buddhism & Confucianism spread from China</div>
+      <div class="map-locations">
+        <div class="map-loc"><strong>Qufu</strong> — Birthplace of Confucius</div>
+        <div class="map-loc"><strong>Luoyang</strong> — White Horse Temple (1st Buddhist temple)</div>
+        <div class="map-loc"><strong>Chang'an → Nara → Kyoto</strong> — Capital model spreads</div>
+        <div class="map-loc"><strong>Gyeongju</strong> — Silla Buddhist center</div>
+        <div class="map-loc"><strong>Hanyang/Seoul</strong> — Joseon Confucian capital</div>
+        <div class="map-loc"><strong>Thăng Long/Hanoi</strong> — Vietnam adopts exam system</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="questions-grid">
+      <div></div>
+      <div class="q-header">Penetrating Questions</div>
+      <div class="q-header">Very Short Answers</div>
+
+      <div class="q-num">1</div>
+      <div class="q-cell">What makes "East Asia" a coherent region, not just geography?</div>
+      <div class="q-cell">Shared writing (漢字), Confucian values, Buddhist practice, governmental models — but each country adapted locally</div>
+
+      <div class="q-num">2</div>
+      <div class="q-cell">How did Chinese characters both unite AND divide East Asian societies?</div>
+      <div class="q-cell">United elites across borders; divided elite from commoners (years to learn) → eventually led to Hangul, kana</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="bottom-grid">
+      <div>
+        <span class="section-label">Causes / Effects / Connections</span>
+        <div class="bottom-box">
+          <p><strong>From Plate 1:</strong> Questioned what "East Asia" means; now we see the cultural glue that binds it</p>
+          <p><strong>To Plate 3:</strong> These traditional foundations will be challenged by concept of "modernity"</p>
+          <p><strong>Broader theme:</strong> Understanding shared roots explains both common responses to West AND different paths to modernity</p>
+        </div>
+      </div>
+      <div>
+        <span class="section-label">Notes</span>
+        <div class="bottom-box">
+          <p>• Show Chinese characters → Japanese kanji → Korean hanja variants</p>
+          <p>• Confucianism ≠ religion (social philosophy with religious dimensions)</p>
+          <p>• Discussion: How does American culture spread today? How do others adapt it?</p>
+          <p>• Don't essentialize — not all East Asians are "Confucian"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

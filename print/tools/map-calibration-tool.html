@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Map Calibration Tool</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 { font-size: 18px; margin-bottom: 16px; }
+    .controls {
+      background: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    label { font-size: 12px; font-weight: 600; }
+    input[type="range"] { width: 120px; }
+    input[type="number"] { width: 60px; padding: 4px; }
+    .coords {
+      background: #333;
+      color: #0f0;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    .map-container {
+      position: relative;
+      display: inline-block;
+      border: 2px solid #333;
+      background: #fff;
+    }
+    .reference-map {
+      display: block;
+      max-width: 800px;
+    }
+    .blank-map {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 800px;
+      pointer-events: none;
+    }
+    .crosshair {
+      position: absolute;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .crosshair-h {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 0, 0, 0.5);
+      position: absolute;
+      left: 0;
+    }
+    .crosshair-v {
+      height: 100%;
+      width: 1px;
+      background: rgba(255, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+    }
+    .measurements {
+      margin-top: 16px;
+      background: #fff;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .measurements h2 { font-size: 14px; margin-bottom: 8px; }
+    .measurement-list {
+      font-family: monospace;
+      font-size: 12px;
+      white-space: pre-wrap;
+    }
+    button {
+      padding: 6px 12px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    button:hover { background: #555; }
+    .marker {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: red;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 50;
+      cursor: pointer;
+      font-size: 8px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Map Calibration Tool</h1>
+
+  <div class="controls">
+    <div class="control-group">
+      <label>Reference Opacity:</label>
+      <input type="range" id="refOpacity" min="0" max="100" value="100">
+      <span id="refOpacityVal">100%</span>
+    </div>
+    <div class="control-group">
+      <label>Blank Opacity:</label>
+      <input type="range" id="blankOpacity" min="0" max="100" value="50">
+      <span id="blankOpacityVal">50%</span>
+    </div>
+    <div class="control-group">
+      <label>Blank Scale:</label>
+      <input type="number" id="blankScale" value="100" min="50" max="200">%
+    </div>
+    <div class="control-group">
+      <label>Blank X Offset:</label>
+      <input type="number" id="blankX" value="0">px
+    </div>
+    <div class="control-group">
+      <label>Blank Y Offset:</label>
+      <input type="number" id="blankY" value="0">px
+    </div>
+    <div class="coords" id="coords">X: 0% Y: 0%</div>
+    <button id="addMarker">Add Marker at Cursor</button>
+    <button id="clearMarkers">Clear Markers</button>
+  </div>
+
+  <div class="map-container" id="mapContainer">
+    <img src="korea-political.png" class="reference-map" id="refMap" alt="Reference">
+    <img src="korea-outline.gif" class="blank-map" id="blankMap" alt="Blank">
+    <div class="crosshair">
+      <div class="crosshair-h" id="crosshairH"></div>
+      <div class="crosshair-v" id="crosshairV"></div>
+    </div>
+  </div>
+
+  <div class="measurements">
+    <h2>Recorded Positions</h2>
+    <div class="measurement-list" id="measurementList">Click "Add Marker" to record positions...</div>
+  </div>
+
+  <script>
+    const refMap = document.getElementById('refMap');
+    const blankMap = document.getElementById('blankMap');
+    const container = document.getElementById('mapContainer');
+    const coords = document.getElementById('coords');
+    const crosshairH = document.getElementById('crosshairH');
+    const crosshairV = document.getElementById('crosshairV');
+    const measurementList = document.getElementById('measurementList');
+
+    let markers = [];
+    let currentX = 0, currentY = 0;
+
+    // Opacity controls
+    document.getElementById('refOpacity').addEventListener('input', (e) => {
+      refMap.style.opacity = e.target.value / 100;
+      document.getElementById('refOpacityVal').textContent = e.target.value + '%';
+    });
+
+    document.getElementById('blankOpacity').addEventListener('input', (e) => {
+      blankMap.style.opacity = e.target.value / 100;
+      document.getElementById('blankOpacityVal').textContent = e.target.value + '%';
+    });
+
+    // Position controls
+    document.getElementById('blankScale').addEventListener('input', (e) => {
+      blankMap.style.transform = `scale(${e.target.value / 100}) translate(${document.getElementById('blankX').value}px, ${document.getElementById('blankY').value}px)`;
+    });
+
+    document.getElementById('blankX').addEventListener('input', updateBlankPosition);
+    document.getElementById('blankY').addEventListener('input', updateBlankPosition);
+
+    function updateBlankPosition() {
+      const scale = document.getElementById('blankScale').value / 100;
+      const x = document.getElementById('blankX').value;
+      const y = document.getElementById('blankY').value;
+      blankMap.style.transformOrigin = 'top left';
+      blankMap.style.transform = `scale(${scale}) translate(${x}px, ${y}px)`;
+    }
+
+    // Mouse tracking
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const xPct = (x / rect.width * 100).toFixed(1);
+      const yPct = (y / rect.height * 100).toFixed(1);
+
+      currentX = xPct;
+      currentY = yPct;
+
+      coords.textContent = `X: ${xPct}% Y: ${yPct}%`;
+      crosshairH.style.top = y + 'px';
+      crosshairV.style.left = x + 'px';
+    });
+
+    // Add marker
+    document.getElementById('addMarker').addEventListener('click', () => {
+      const name = prompt('Label for this position:');
+      if (name) {
+        markers.push({ name, x: currentX, y: currentY });
+
+        // Visual marker
+        const marker = document.createElement('div');
+        marker.className = 'marker';
+        marker.style.left = currentX + '%';
+        marker.style.top = currentY + '%';
+        marker.textContent = markers.length;
+        marker.title = name;
+        container.appendChild(marker);
+
+        updateMeasurementList();
+      }
+    });
+
+    // Clear markers
+    document.getElementById('clearMarkers').addEventListener('click', () => {
+      markers = [];
+      container.querySelectorAll('.marker').forEach(m => m.remove());
+      updateMeasurementList();
+    });
+
+    function updateMeasurementList() {
+      if (markers.length === 0) {
+        measurementList.textContent = 'Click "Add Marker" to record positions...';
+        return;
+      }
+
+      let output = 'CSS Positions:\n\n';
+      markers.forEach((m, i) => {
+        output += `/* ${m.name} */\n`;
+        output += `<span class="marker" style="top: ${m.y}%; left: ${m.x}%;">${i + 1}</span>\n\n`;
+      });
+      measurementList.textContent = output;
+    }
+
+    // Initial setup
+    blankMap.style.opacity = 0.5;
+  </script>
+</body>
+</html>

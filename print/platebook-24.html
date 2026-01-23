@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Platebook - Plate 24: Liberation, Division, Rebuilding Korea</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* Header row */
+    .header {
+      display: flex;
+      margin-bottom: 5px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Section labels */
+    .label {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 3px;
+      background: #fff;
+    }
+
+    /* Person/Place/Thing table */
+    .ppt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+    .ppt-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+      width: 33.33%;
+    }
+    .ppt-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      height: 20px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin-bottom: 4px;
+    }
+    .timeline-box {
+      border: 1px solid #aaa;
+      padding: 6px 16px;
+      height: 78px;
+      position: relative;
+      background-color: #fefdfb;
+    }
+    .timeline-line {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: #333;
+    }
+    .timeline-ticks {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
+      width: 2px;
+      height: 12px;
+      background: #333;
+    }
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      text-align: center;
+    }
+    .timeline-labels span {
+      max-width: 90px;
+      line-height: 1.3;
+    }
+
+    /* Map */
+    .map-section {
+      margin-bottom: 4px;
+    }
+    .map-subtitle {
+      font-size: 9px;
+      font-style: italic;
+      color: #555;
+      margin-left: 8px;
+    }
+    .map-box {
+      border: 1px solid #aaa;
+      background: #f5f5f5;
+      margin-top: 3px;
+      padding: 10px;
+      min-height: 100px;
+    }
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 9px;
+    }
+    .map-loc strong { font-weight: 600; }
+    .map-quote {
+      font-style: italic;
+      font-size: 9px;
+      text-align: center;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Questions table */
+    .questions-section {
+      margin-bottom: 4px;
+    }
+    .questions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .questions-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+    }
+    .questions-table th:last-child {
+      width: 45%;
+    }
+    .questions-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+    .questions-table .q-num {
+      width: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: none;
+    }
+    .question-cell {
+      min-height: 32px;
+    }
+    .answer-cell {
+      min-height: 32px;
+    }
+
+    /* Bottom section */
+    .bottom-section {
+      display: flex;
+      gap: 6px;
+    }
+    .causes-box, .notes-box {
+      flex: 1;
+    }
+    .bottom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-weight: 600;
+      font-size: 9px;
+      text-align: left;
+      background: #fff;
+    }
+    .bottom-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 9px;
+      vertical-align: top;
+      height: 70px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Filled content styling */
+    .filled {
+      color: #000;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .filled strong {
+      font-weight: 600;
+    }
+
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="plate-num">Plate # 24</div>
+    <div class="topic">Liberation, Division, Rebuilding Korea</div>
+    <div class="date">Mar 4</div>
+  </div>
+
+  <!-- Person / Place / Thing -->
+  <table class="ppt-table">
+    <thead>
+      <tr>
+        <th><span class="label">Person</span></th>
+        <th><span class="label">Place</span></th>
+        <th><span class="label">Thing</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="filled"><strong>Kim Il</strong> — sung - North Korean founder</td>
+        <td class="filled"><strong>38th Parallel</strong> — dividing line</td>
+        <td class="filled"><strong>Division</strong> — ongoing national tragedy</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Syngman Rhee</strong> — South Korean first president</td>
+        <td class="filled"><strong>DMZ</strong> — demilitarized zone</td>
+        <td class="filled"><strong>Korean War</strong> — devastating conflict</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Park Chung</strong> — hee - authoritarian modernizer (S. Korea)</td>
+        <td class="filled"><strong>Seoul</strong> — South Korean capital</td>
+        <td class="filled"><strong>Economic miracle</strong> — South Korean development</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <span class="label">Timeline: Liberation, Division, Rebuilding Korea</span>
+    <div class="timeline-box">
+      <div class="timeline-labels">
+        <span>August 1945<br><em>Japan surrenders; Korea divided at 38th parallel</em></span>
+        <span>1948<br><em>Two separate states established</em></span>
+        <span>June 1950<br><em>Korean War begins (North invades)</em></span>
+        <span>July 1953<br><em>Armistice (no peace treaty)</em></span>
+        <span>1961-1979<br><em>Park Chung-hee era; economic takeoff</em></span>
+        <span>1987<br><em>South Korean democratization</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-section">
+    <span class="label">Map</span>
+    <div class="map-box">
+      <div class="map-locations">
+        <div class="map-loc"><strong>DMZ</strong> — Demilitarized Zone; world's most fortified border</div>
+        <div class="map-loc"><strong>Seoul</strong> (首爾) — South Korean capital; just 35 miles from DMZ</div>
+        <div class="map-loc"><strong>Pyongyang</strong> (平壤) — North Korean capital</div>
+        <div class="map-loc"><strong>Panmunjom</strong> (板門店) — Truce village; site of armistice signing</div>
+        <div class="map-loc"><strong>Busan</strong> (釜山) — UN forces' last stand during Korean War</div>
+        <div class="map-loc"><strong>Incheon</strong> (仁川) — MacArthur's amphibious landing (1950)</div>
+      </div>
+    </div>
+    <div class="map-quote">"They had been childhood friends, but now they stood on opposite sides of a war neither had chosen." — Cranes</div>
+  </div>
+
+  <!-- Penetrating Questions -->
+  <div class="questions-section">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th colspan="2"><span class="label">Penetrating Questions</span></th>
+          <th><span class="label">Very short answers</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="q-num">1</td>
+          <td class="question-cell filled">How does literature capture what historical analysis cannot?</td>
+          <td class="answer-cell filled">'Cranes' makes division personal—two friends, one childhood, opposite armies. Statistics tell us millions died; stories tell us what that meant. Literature as historical source.</td>
+        </tr>
+        <tr>
+          <td class="q-num">2</td>
+          <td class="question-cell filled">Why did Korea remain divided when Germany reunified?</td>
+          <td class="answer-cell filled">Korean War was hotter than Cold War; both regimes dug in. China's involvement. Lack of superpower agreement. Economic gap between North and South grew. Inertia of institutions.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom: Causes/Effects + Notes -->
+  <div class="bottom-section">
+    <div class="causes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              <strong>From Plate 23:</strong> Plates 22-23 showed Japan and China's postwar paths. Korea's path was shaped by their rivalry and Cold War division.<br>
+<strong>Context:</strong> Division creates parallel experiments: same people, opposite systems. Korea is the clearest case. Compare East/West Germany, China/Taiwan.<br>
+<strong>To Plate 25:</strong> Plate 25 examines Japan's postwar rise. Compare Korean and Japanese development models.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Notes</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              • The short stories are powerful—let them work emotionally before analyzing.<br>
+              • Show the linked video of Korean family reunions. Very moving.<br>
+              • 'Gangnam Style' link is a light way to end discussion—South Korea's soft power today.<br>
+              • Students often know little about Korea. Use this as opportunity to counter Japan/China centrism in East Asian studies.<br>
+              • The DMZ is one of the most fortified borders on Earth. Help students visualize it.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

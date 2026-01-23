@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Platebook - Plate 3: What is Modernity?</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* Header row */
+    .header {
+      display: flex;
+      margin-bottom: 5px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Section labels */
+    .label {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 3px;
+      background: #fff;
+    }
+
+    /* Person/Place/Thing table */
+    .ppt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+    .ppt-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+      width: 33.33%;
+    }
+    .ppt-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      height: 20px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin-bottom: 4px;
+    }
+    .timeline-box {
+      border: 1px solid #aaa;
+      padding: 6px 16px;
+      height: 78px;
+      position: relative;
+      background-color: #fefdfb;
+    }
+    .timeline-line {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: #333;
+    }
+    .timeline-ticks {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
+      width: 2px;
+      height: 12px;
+      background: #333;
+    }
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      text-align: center;
+    }
+    .timeline-labels span {
+      max-width: 90px;
+      line-height: 1.3;
+    }
+
+    /* Map */
+    .map-section {
+      margin-bottom: 4px;
+    }
+    .map-subtitle {
+      font-size: 9px;
+      font-style: italic;
+      color: #555;
+      margin-left: 8px;
+    }
+    .map-box {
+      border: 1px solid #aaa;
+      background: #f5f5f5;
+      margin-top: 3px;
+      padding: 10px;
+      min-height: 100px;
+    }
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 9px;
+    }
+    .map-loc strong { font-weight: 600; }
+    .map-quote {
+      font-style: italic;
+      font-size: 9px;
+      text-align: center;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Questions table */
+    .questions-section {
+      margin-bottom: 4px;
+    }
+    .questions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .questions-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+    }
+    .questions-table th:last-child {
+      width: 45%;
+    }
+    .questions-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+    .questions-table .q-num {
+      width: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: none;
+    }
+    .question-cell {
+      min-height: 32px;
+    }
+    .answer-cell {
+      min-height: 32px;
+    }
+
+    /* Bottom section */
+    .bottom-section {
+      display: flex;
+      gap: 6px;
+    }
+    .causes-box, .notes-box {
+      flex: 1;
+    }
+    .bottom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-weight: 600;
+      font-size: 9px;
+      text-align: left;
+      background: #fff;
+    }
+    .bottom-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 9px;
+      vertical-align: top;
+      height: 70px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Filled content styling */
+    .filled {
+      color: #000;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .filled strong {
+      font-weight: 600;
+    }
+
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="plate-num">Plate # 3</div>
+    <div class="topic">What is Modernity?</div>
+    <div class="date">Jan 9</div>
+  </div>
+
+  <!-- Person / Place / Thing -->
+  <table class="ppt-table">
+    <thead>
+      <tr>
+        <th><span class="label">Person</span></th>
+        <th><span class="label">Place</span></th>
+        <th><span class="label">Thing</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="filled"><strong>Andre Gunder Frank</strong> — author, challenges Eurocentrism</td>
+        <td class="filled"><strong>Europe</strong> — Frank argues it was peripheral until 1800</td>
+        <td class="filled"><strong>Eurocentrism</strong> — viewing history through European lens</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Karl Marx</strong> — criticized for 'Asiatic Mode of Production'</td>
+        <td class="filled"><strong>China</strong> — center of world economy for centuries</td>
+        <td class="filled"><strong>Asiatic Mode of Production</strong> — Marx's flawed concept</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Max Weber</strong> — criticized for 'Protestant Ethic' thesis</td>
+        <td class="filled"><strong>The Americas</strong> — source of silver that funded European trade</td>
+        <td class="filled"><strong>Protestant Ethic</strong> — Weber's explanation for capitalism</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <span class="label">Timeline: What is Modernity?</span>
+    <div class="timeline-box">
+      <div class="timeline-labels">
+        <span>1492-1500s<br><em>European 'discovery' of Americas; beginning of silver extraction</em></span>
+        <span>1600s-1700s<br><em>Height of Asian-centered world economy; Europe as peripheral buyer</em></span>
+        <span>1776<br><em>Adam Smith notes China is 'much richer' than Europe</em></span>
+        <span>c. 1800<br><em>Frank's turning point: Europe begins to overtake Asia</em></span>
+        <span>19th century<br><em>Industrial Revolution and colonialism cement European dominance</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-section">
+    <span class="label">Map</span>
+    <div class="map-box">
+      <div class="map-locations">
+        <div class="map-loc"><strong>Beijing</strong> (北京) — Center of the world economy until c. 1800 (per Frank)</div>
+        <div class="map-loc"><strong>London</strong> — Peripheral to world economy until Industrial Revolution</div>
+        <div class="map-loc"><strong>Amsterdam</strong> — Dutch trading hub; intermediary in Asia trade</div>
+        <div class="map-loc"><strong>Potosí</strong> — Bolivian silver mines; source of European purchasing power</div>
+        <div class="map-loc"><strong>Guangzhou</strong> (廣州) — Canton; major port for European trade with China</div>
+        <div class="map-loc"><strong>Calicut</strong> — Indian Ocean trade hub; destination of Vasco da Gama</div>
+        <div class="map-loc"><strong>Malacca</strong> — Strategic strait controlling East-West maritime trade</div>
+      </div>
+    </div>
+    <div class="map-quote">"Europe invented historians and then made good use of them to promote their own interests at home and elsewhere in the world." — Frank, quoting Fernand Braudel</div>
+  </div>
+
+  <!-- Penetrating Questions -->
+  <div class="questions-section">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th colspan="2"><span class="label">Penetrating Questions</span></th>
+          <th><span class="label">Very short answers</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="q-num">1</td>
+          <td class="question-cell filled">If China was wealthier than Europe until 1800, why do we think of 'modernity' as a European invention?</td>
+          <td class="answer-cell filled">Power shapes historical narratives. European colonialism coincided with the writing of 'universal' history. Consider: Who wrote the textbooks? Whose archives survived? Who controlled universities?</td>
+        </tr>
+        <tr>
+          <td class="q-num">2</td>
+          <td class="question-cell filled">Is 'modernization' the same as 'Westernization'?</td>
+          <td class="answer-cell filled">This question will recur throughout the course. Japan's Meiji era, China's self-strengthening movement, Korea's reforms—were these adoptions of Western modernity or something else? Can you be 'modern' without being 'Western'?</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom: Causes/Effects + Notes -->
+  <div class="bottom-section">
+    <div class="causes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              <strong>From Plate 2:</strong> Plates 1-2 established East Asia's geographic and cultural foundations. Now we question the framework through which we interpret its history.<br>
+<strong>Context:</strong> This framework informs the entire course. When we discuss 'unequal treaties,' 'opening' of Japan, 'modernization' efforts—who defines these terms and from whose perspective?<br>
+<strong>To Plate 4:</strong> Plate 4 on the Imjin War begins our chronological journey, and we should keep asking: How do our assumptions about 'modernity' shape how we interpret these events?
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Notes</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              • Start with Asia for Educators videos—they're accessible and set up Frank's denser argument well.<br>
+              • Frank is a SKIM reading. Students should find: (1) thesis, (2) main evidence. Don't expect them to read all 51 pages closely.<br>
+              • Some students will resist Frank's argument as 'politically correct revisionism.' Welcome the debate—that's the point!<br>
+              • Connect to current events: articles about 'China's rise' often frame it as unprecedented. Is it?<br>
+              • Clarify: Frank isn't saying Europe accomplished nothing, but that its 'rise' was contingent on global conditions, not internal 'genius.'
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

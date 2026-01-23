@@ -1,0 +1,255 @@
+{
+  "plate": 8,
+  "topic": "Rise of Tokugawa",
+  "date": "2026-01-24",
+  "generatedAt": "2026-01-22T14:30:00.000Z",
+  "readings": [
+    "Rise of Tokugawa (Tokugawa Ieyasu, Laws of Military Households, Way of the Samurai)",
+    "Ebrey Ch. 17: Tokugawa Japan"
+  ],
+  "readingAnalyses": [
+    {
+      "title": "Tokugawa Ieyasu on Military Government and the Social Order",
+      "author": "Tokugawa Ieyasu (recorded by retainer)",
+      "source": "Sources of Japanese Tradition, pp. 329-330",
+      "pages": "1-2",
+      "type": "primary",
+      "summary": "A conversation between Ieyasu and his advisor Honda about the social hierarchy. Ieyasu articulates the shinōkōshō (samurai-farmer-artisan-merchant) system, explaining each class's role and justifying why farmers rank above artisans and merchants despite their poverty.",
+      "keyQuotes": [
+        {"quote": "One who cultivates the way of the warrior only in times of crisis is like a rat who bites his captor in the throes of being captured.", "page": "2"},
+        {"quote": "The true master of the way of the warrior is one who maintains his martial discipline even in time of peace.", "page": "2"},
+        {"quote": "The hundred acts of toil from last fall to this fall are like so many tears of blood.", "page": "2"},
+        {"quote": "It is a wise man who, while partaking of his meal, appreciates the hundred acts of toil of the people.", "page": "2"}
+      ],
+      "thematicExamples": [
+        "The 'rat biting its captor' metaphor vividly illustrates the samurai ideal: courage must be cultivated constantly, not improvised in emergencies",
+        "Ieyasu ranks farmers above merchants despite economic reality - ideology vs. practice tension",
+        "The 'tears of blood' description of farming shows rhetorical appreciation but doesn't translate to lighter tax burdens"
+      ],
+      "realLifeConnections": [
+        "Modern debates about 'essential workers' echo Tokugawa logic: who contributes most to society?",
+        "The ideal of constant discipline (not just crisis response) appears in military training, corporate culture, athletic preparation"
+      ]
+    },
+    {
+      "title": "Laws of Military Households (Buke Shohatto), 1615",
+      "author": "Tokugawa Shogunate",
+      "source": "Japan: A Documentary History, pp. 206-208",
+      "pages": "3-4",
+      "type": "primary",
+      "summary": "The foundational legal code for controlling daimyo and samurai. Issued in 1615, one year before Ieyasu's death, these laws regulated castle construction, marriage, dress, frugality, and administrative appointments - creating the framework for 250 years of Tokugawa rule.",
+      "keyQuotes": [
+        {"quote": "On the left hand literature, on the right hand use of arms.", "page": "3"},
+        {"quote": "In time of peace, do not forget the possibility of disturbances. Train yourself and be prepared.", "page": "3"},
+        {"quote": "To form a factional alliance through marriage is the root of treason.", "page": "4"},
+        {"quote": "When the rich proudly display their wealth, the poor are ashamed of not being on par with them. There is nothing which will corrupt public morality more than this.", "page": "4"},
+        {"quote": "The way of governing a country is to get the right men.", "page": "4"}
+      ],
+      "thematicExamples": [
+        "Marriage restrictions: shogunal approval required to prevent political alliances that could threaten central power",
+        "Castle regulations: repairs must be reported, new construction forbidden - limiting military capacity of potential rivals",
+        "Dress codes: proper clothing reinforces hierarchy, makes status immediately visible",
+        "Frugality edicts: samurai wealth displays seen as socially corrosive, not admirable"
+      ],
+      "realLifeConnections": [
+        "Modern corporate dress codes and 'appropriate attire' policies echo status-conscious regulations",
+        "The 'marriage as political alliance' concern still exists in some contexts (royal families, political dynasties)",
+        "Debates about wealth inequality and conspicuous consumption - is flaunting wealth harmful to social cohesion?"
+      ]
+    },
+    {
+      "title": "The Way of the Samurai (Shidō) by Yamaga Sokō",
+      "author": "Yamaga Sokō (1622-1685)",
+      "source": "Sources of Japanese Tradition, pp. 192-194",
+      "pages": "5-6",
+      "type": "primary",
+      "summary": "A Confucian philosopher confronts the existential crisis of samurai in peacetime: if they don't fight, farm, make things, or trade, what justifies their existence? Sokō's solution: samurai become moral exemplars and enforcers, teaching the Way to commoners who lack leisure for ethical cultivation.",
+      "keyQuotes": [
+        {"quote": "The samurai eats food without growing it, uses utensils without manufacturing them, and profits without buying or selling. What is the justification for this?", "page": "5"},
+        {"quote": "He who satisfies his needs without performing any function at all would more properly be called an idler.", "page": "5"},
+        {"quote": "Within his heart he keeps to the ways of peace, but without, he keeps his weapons ready for use.", "page": "6"},
+        {"quote": "The three classes of the common people make him their teacher and respect him.", "page": "6"}
+      ],
+      "thematicExamples": [
+        "The 'idler' anxiety: warriors without war need new justification - parallels to modern debates about obsolete professions",
+        "Moral authority claim: samurai have 'leisure' for ethical cultivation that busy farmers lack",
+        "Dual readiness: 'peace in heart, weapons ready' - the tension of maintaining military identity without fighting"
+      ],
+      "realLifeConnections": [
+        "Professional identity crises when technology or circumstances make skills obsolete (typesetters, coal miners, etc.)",
+        "Debates about whether any class has special moral authority or whether ethics are universal",
+        "Military personnel in peacetime: how do standing armies justify themselves between wars?"
+      ]
+    },
+    {
+      "title": "Ebrey Chapter 17: Tokugawa Japan",
+      "author": "Ebrey & Walthall",
+      "source": "Modern East Asia from 1600, Ch. 17",
+      "pages": "Textbook",
+      "type": "secondary",
+      "summary": "Comprehensive overview of Tokugawa political structure, social organization, economic development, and cultural flourishing. Covers the sankin-kōtai system, sakoku policies, urban growth (Edo becoming world's largest city), merchant culture, and the foundations that would later enable rapid Meiji modernization.",
+      "keyQuotes": [
+        {"quote": "Textbook chapter - provides broader context for primary sources", "page": "Ch. 17"}
+      ],
+      "thematicExamples": [
+        "Sankin-kōtai: alternate attendance drained daimyo finances while creating massive road infrastructure",
+        "Sakoku: 'closed country' was really controlled engagement - Dutch and Chinese trade continued at Nagasaki",
+        "Urban explosion: Edo reached 1 million people by 1700, rivaling or exceeding any European city"
+      ],
+      "realLifeConnections": [
+        "Tokyo's continued dominance in Japanese life traces to Tokugawa-era centralization",
+        "Questions about globalization vs. national control echo sakoku debates"
+      ]
+    }
+  ],
+  "overallSynthesis": "These three primary sources reveal the intellectual architecture of Tokugawa order. Ieyasu's social hierarchy document establishes the ideological framework: society has four complementary classes, each with distinct functions. The Buke Shohatto translates this ideology into enforceable law: samurai must study both 'arts of peace and war,' marriages require approval, castle-building is forbidden, and conspicuous wealth is condemned. Yamaga Sokō then confronts the contradiction at the heart of the system: if samurai don't fight, what justifies their privileges?\n\nThe readings work together to show how the Tokugawa created stability through comprehensive social engineering. Every aspect of life was regulated - from dress codes to marriage partners to military preparedness. The system's genius was making rebellion both practically difficult (no castles, no alliances) and ideologically illegitimate (loyalty as supreme virtue).\n\n**THE SHIMABARA REBELLION (1637-38)** — The last test of Tokugawa military power, and the event that sealed Japan's isolation. On the Shimabara Peninsula and Amakusa Islands (Kyushu), crushing taxation by local daimyo Matsukura Shigemasa combined with famine and persecution of Christians sparked a massive uprising. Some 37,000 rebels — peasants, ronin, and hidden Christians — rallied behind Amakusa Shirō (天草四郎), a charismatic teenage leader believed by followers to have miraculous powers. They seized the abandoned Hara Castle and held out for months against 125,000 shogunate troops. The siege ended in massacre: nearly all rebels killed, Amakusa Shirō beheaded, his head displayed in Nagasaki. Consequences were sweeping: the Portuguese were expelled (blamed for spreading Christianity), the Dutch were confined to Dejima island, Christianity was driven completely underground (kakure kirishitan — 'hidden Christians'), and sakoku policies hardened into their final form. Shimabara proved the shogunate could mobilize overwhelming force — but also that it would tolerate no challenge, religious or political. The 230 years of peace that followed were peace enforced.\n\nYet contradictions pervade the texts. Farmers are praised in theory but exploited in practice. Samurai are told to stay ready for war while living in peace. Merchants are officially despised but increasingly necessary. Sokō's anxiety about samurai as potential 'idlers' reveals the system's dependence on ideology - without constant reinforcement, the hierarchy could seem arbitrary. This tension between rigid structure and underlying instability would define Tokugawa Japan until external pressure finally broke the system open.",
+  "keywords": [
+    {"term": "Shinōkōshō (士農工商)", "definition": "Four-class hierarchy: samurai, farmers, artisans, merchants", "relevance": "Official social structure defining Tokugawa Japan; ideology vs. reality tension"},
+    {"term": "Buke Shohatto (武家諸法度)", "definition": "Laws for Military Households - regulations controlling daimyo behavior", "relevance": "Legal foundation of Tokugawa control; issued 1615, revised periodically"},
+    {"term": "Sankin-kōtai (参勤交代)", "definition": "Alternate attendance: daimyo spend every other year in Edo, families remain as hostages", "relevance": "Key control mechanism; also stimulated commerce and infrastructure"},
+    {"term": "Sakoku (鎖国)", "definition": "'Closed country' - policies restricting foreign trade to Nagasaki (Dutch, Chinese only)", "relevance": "Not total isolation but controlled engagement; ended by Perry 1853"},
+    {"term": "Shidō (士道)", "definition": "'Way of the Samurai' - ethical code justifying warrior class in peacetime", "relevance": "Yamaga Sokō's solution to the 'idle samurai' problem"},
+    {"term": "Shimabara Rebellion (島原の乱)", "definition": "1637-38 uprising of Christians and peasants on Kyushu; crushed with ~37,000 killed", "relevance": "Last major armed conflict; triggered final sakoku measures and Portuguese expulsion"}
+  ],
+  "keyPassages": [
+    {"quote": "One who cultivates the way of the warrior only in times of crisis is like a rat who bites his captor in the throes of being captured.", "source": "Tokugawa Ieyasu", "page": "p. 2"},
+    {"quote": "The samurai eats food without growing it, uses utensils without manufacturing them, and profits without buying or selling. What is the justification for this?", "source": "Yamaga Sokō, The Way of the Samurai", "page": "p. 5"},
+    {"quote": "To form a factional alliance through marriage is the root of treason.", "source": "Buke Shohatto (1615)", "page": "p. 4"},
+    {"quote": "In time of peace, do not forget the possibility of disturbances. Train yourself and be prepared.", "source": "Buke Shohatto (1615)", "page": "p. 3"}
+  ],
+  "peopleplacesthings": {
+    "people": [
+      "Tokugawa Ieyasu (1543-1616) - founder of Tokugawa shogunate",
+      "Yamaga Sokō (1622-1685) - Confucian philosopher, theorist of bushidō",
+      "Toyotomi Hideyoshi (1536-1598) - predecessor, unified Japan but dynasty failed",
+      "Amakusa Shirō (1621-1638) - teenage Christian leader of Shimabara Rebellion; beheaded"
+    ],
+    "places": [
+      "Edo (Tokyo) - shogunal capital, world's largest city by 1700",
+      "Kyoto - imperial capital, cultural center, emperor remained here",
+      "Nagasaki - sole port for Dutch/Chinese trade under sakoku"
+    ],
+    "things": [
+      "Buke Shohatto - Laws for Military Households (1615)",
+      "Sankin-kōtai - alternate attendance system",
+      "Shinōkōshō - four-class status hierarchy"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "Ieyasu's 'rat biting its captor' metaphor: What does it reveal about samurai values, and how does it differ from Western ideas of heroism?",
+      "talkingPoints": "Western narratives often valorize improvised courage (underdogs, last stands). Ieyasu dismisses this as desperation. True mastery requires constant preparation. Connect to Japanese concepts of kata (forms), practice, discipline."
+    },
+    {
+      "question": "Yamaga Sokō asks: 'What is the justification for this?' - How do societies justify the privileges of non-productive elites?",
+      "talkingPoints": "Sokō's answer: moral authority and enforcement. Compare to medieval European clergy, modern academia, military in peacetime. Who gets to 'not work' and why? Is the justification convincing?"
+    },
+    {
+      "question": "The Buke Shohatto says marriage alliances are 'the root of treason.' Why was the shogunate so concerned about who married whom?",
+      "talkingPoints": "Marriage = political alliance. European parallel: Habsburgs. The shogunate feared coalitions that could challenge Tokugawa power. Control reproduction = control succession = control the future."
+    }
+  ],
+  "timeline": [
+    {"date": "1467-1615", "event": "Sengoku ('Warring States') period of civil war"},
+    {"date": "1600", "event": "Battle of Sekigahara - Ieyasu's decisive victory"},
+    {"date": "1603", "event": "Ieyasu becomes shogun; establishes bakufu in Edo"},
+    {"date": "1615", "event": "Buke Shohatto issued; Osaka Castle falls"},
+    {"date": "1635", "event": "Sakoku edicts formalized; sankin-kōtai systematized"},
+    {"date": "1637-38", "event": "Shimabara Rebellion - last major armed conflict until 1868"}
+  ],
+  "connections": {
+    "fromPrevious": "Plate 7 showed Joseon Korea debating reform but unable to implement it. Tokugawa Japan took a different approach: rather than reform, freeze society to prevent instability.",
+    "toNext": "Plate 9 is a brainstorm/current events day. Plates 10-11 will examine how both Qing China and Tokugawa Japan responded to Western pressure.",
+    "broaderThemes": "The Tokugawa settlement raises fundamental questions: Is stability worth rigidity? Can 'peace' become stagnation? When Perry arrives (1853), critics will argue the Tokugawa system left Japan vulnerable."
+  },
+  "nextPreview": {
+    "plate": 9,
+    "topic": "Final presentation brainstorm / Current events",
+    "preview": "Discussion day connecting historical patterns to contemporary East Asia. No assigned readings.",
+    "readings": []
+  },
+  "teachingNotes": [
+    "The 'rat' quote is gold - vivid, memorable, counterintuitive. Use it to challenge Western heroism narratives.",
+    "Sokō's 'idler' anxiety is relatable - students facing job markets understand obsolete skills. What's YOUR justification?",
+    "The frugality edicts surprise students - samurai supposed to be austere, not flashy. Compare to modern 'old money' vs. 'new money' distinctions.",
+    "Ebrey Ch. 17 provides context students need. Ensure they've read it before diving into primary sources.",
+    "Connect to Plate 7: Korea debated reform but couldn't implement. Japan didn't debate - it imposed order. Which approach was 'better'?"
+  ],
+  "map": {
+    "center": [36, 138],
+    "zoom": 6,
+    "locations": [
+      {
+        "name": "Edo (Tokyo)",
+        "nameChinese": "江戶",
+        "lat": 35.6762,
+        "lng": 139.6503,
+        "type": "capital",
+        "description": "Shogunal capital; became world's largest city"
+      },
+      {
+        "name": "Kyoto",
+        "nameChinese": "京都",
+        "lat": 35.0116,
+        "lng": 135.7681,
+        "type": "capital",
+        "description": "Imperial capital; emperor remained here symbolically"
+      },
+      {
+        "name": "Osaka",
+        "nameChinese": "大阪",
+        "lat": 34.6937,
+        "lng": 135.5023,
+        "type": "city",
+        "description": "Commercial center; 'kitchen of Japan'"
+      },
+      {
+        "name": "Nagasaki",
+        "nameChinese": "長崎",
+        "lat": 32.7503,
+        "lng": 129.8777,
+        "type": "city",
+        "description": "Sole port for Dutch and Chinese trade"
+      },
+      {
+        "name": "Dejima",
+        "lat": 32.7440,
+        "lng": 129.8728,
+        "type": "other",
+        "description": "Artificial island where Dutch traders were confined"
+      },
+      {
+        "name": "Sekigahara",
+        "nameChinese": "関ヶ原",
+        "lat": 35.3658,
+        "lng": 136.4592,
+        "type": "battle",
+        "description": "Site of Ieyasu's decisive 1600 victory"
+      },
+      {
+        "name": "Satsuma",
+        "nameChinese": "薩摩",
+        "lat": 31.5966,
+        "lng": 130.5571,
+        "type": "region",
+        "description": "Powerful outer domain; would later lead Meiji overthrow"
+      },
+      {
+        "name": "Shimabara",
+        "nameChinese": "島原",
+        "lat": 32.7897,
+        "lng": 130.3700,
+        "type": "battle",
+        "description": "Site of 1637-38 Christian rebellion; last major war until 1868"
+      },
+      {
+        "name": "Hara Castle",
+        "nameChinese": "原城",
+        "lat": 32.6283,
+        "lng": 130.2186,
+        "type": "battle",
+        "description": "Ruined castle where 37,000 rebels were besieged and massacred"
+      }
+    ]
+  }
+}

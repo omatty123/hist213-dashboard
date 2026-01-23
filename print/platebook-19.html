@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Platebook - Plate 19: Chinese Nationalism</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* Header row */
+    .header {
+      display: flex;
+      margin-bottom: 5px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Section labels */
+    .label {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 3px;
+      background: #fff;
+    }
+
+    /* Person/Place/Thing table */
+    .ppt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+    .ppt-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+      width: 33.33%;
+    }
+    .ppt-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      height: 20px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin-bottom: 4px;
+    }
+    .timeline-box {
+      border: 1px solid #aaa;
+      padding: 6px 16px;
+      height: 78px;
+      position: relative;
+      background-color: #fefdfb;
+    }
+    .timeline-line {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: #333;
+    }
+    .timeline-ticks {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
+      width: 2px;
+      height: 12px;
+      background: #333;
+    }
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      text-align: center;
+    }
+    .timeline-labels span {
+      max-width: 90px;
+      line-height: 1.3;
+    }
+
+    /* Map */
+    .map-section {
+      margin-bottom: 4px;
+    }
+    .map-subtitle {
+      font-size: 9px;
+      font-style: italic;
+      color: #555;
+      margin-left: 8px;
+    }
+    .map-box {
+      border: 1px solid #aaa;
+      background: #f5f5f5;
+      margin-top: 3px;
+      padding: 10px;
+      min-height: 100px;
+    }
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 9px;
+    }
+    .map-loc strong { font-weight: 600; }
+    .map-quote {
+      font-style: italic;
+      font-size: 9px;
+      text-align: center;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Questions table */
+    .questions-section {
+      margin-bottom: 4px;
+    }
+    .questions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .questions-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+    }
+    .questions-table th:last-child {
+      width: 45%;
+    }
+    .questions-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+    .questions-table .q-num {
+      width: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: none;
+    }
+    .question-cell {
+      min-height: 32px;
+    }
+    .answer-cell {
+      min-height: 32px;
+    }
+
+    /* Bottom section */
+    .bottom-section {
+      display: flex;
+      gap: 6px;
+    }
+    .causes-box, .notes-box {
+      flex: 1;
+    }
+    .bottom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-weight: 600;
+      font-size: 9px;
+      text-align: left;
+      background: #fff;
+    }
+    .bottom-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 9px;
+      vertical-align: top;
+      height: 70px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Filled content styling */
+    .filled {
+      color: #000;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .filled strong {
+      font-weight: 600;
+    }
+
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="plate-num">Plate # 19</div>
+    <div class="topic">Chinese Nationalism</div>
+    <div class="date">Feb 20</div>
+  </div>
+
+  <!-- Person / Place / Thing -->
+  <table class="ppt-table">
+    <thead>
+      <tr>
+        <th><span class="label">Person</span></th>
+        <th><span class="label">Place</span></th>
+        <th><span class="label">Thing</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="filled"><strong>Lu Xun</strong> — author, cultural critic</td>
+        <td class="filled"><strong>Wei Village</strong> — Ah Q's fictional village</td>
+        <td class="filled"><strong>Spiritual Victory</strong> — self-deception mechanism</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Ah Q</strong> — fictional everyman character</td>
+        <td class="filled"><strong>Beijing</strong> — center of May Fourth Movement</td>
+        <td class="filled"><strong>New Culture Movement</strong> — iconoclastic cultural reform</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Chen Duxiu</strong> — New Culture Movement leader</td>
+        <td class="filled"><strong>Shanghai</strong> — Lu Xun's base in later years</td>
+        <td class="filled"><strong>May Fourth Movement</strong> — 1919 protests</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <span class="label">Timeline: Chinese Nationalism</span>
+    <div class="timeline-box">
+      <div class="timeline-labels">
+        <span>1881<br><em>Lu Xun born in Shaoxing</em></span>
+        <span>1911<br><em>Xinhai Revolution overthrows Qing Dynasty</em></span>
+        <span>1915<br><em>New Culture Movement begins</em></span>
+        <span>1919<br><em>May Fourth Movement</em></span>
+        <span>1921<br><em>'The True Story of Ah Q' published</em></span>
+        <span>1936<br><em>Lu Xun dies; becomes icon for both Nationalists and Communists</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-section">
+    <span class="label">Map</span>
+    <div class="map-box">
+      <div class="map-locations">
+        <div class="map-loc"><strong>Shaoxing</strong> (紹興) — Lu Xun's birthplace; Wei Village is modeled on this region</div>
+        <div class="map-loc"><strong>Beijing</strong> (北京) — Center of May Fourth Movement (1919)</div>
+        <div class="map-loc"><strong>Shanghai</strong> (上海) — Where Lu Xun spent his later years</div>
+        <div class="map-loc"><strong>Shandong</strong> (山東) — Province given to Japan at Versailles, sparking May Fourth</div>
+      </div>
+    </div>
+    <div class="map-quote">"Ah Q had been victorious in every battle, but this was not because he was strong; it was because he had discovered a method: the spiritual victory." — Lu Xun, The True Story of Ah Q</div>
+  </div>
+
+  <!-- Penetrating Questions -->
+  <div class="questions-section">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th colspan="2"><span class="label">Penetrating Questions</span></th>
+          <th><span class="label">Very short answers</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="q-num">1</td>
+          <td class="question-cell filled">Is Lu Xun's critique of 'Chinese national character' valid or essentialist?</td>
+          <td class="answer-cell filled">Lu Xun was attacking specific behaviors he saw as products of Confucian culture. But 'national character' arguments can be dangerous—used to stereotype entire peoples. How do we read Lu Xun critically while taking his critique seriously?</td>
+        </tr>
+        <tr>
+          <td class="q-num">2</td>
+          <td class="question-cell filled">How does Chinese nationalism differ from Korean nationalism?</td>
+          <td class="answer-cell filled">Korean nationalism emphasized victimhood and moral righteousness. Chinese nationalism (at least Lu Xun's version) emphasized self-criticism. Koreans blamed Japan; Lu Xun blamed China. Why the difference?</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom: Causes/Effects + Notes -->
+  <div class="bottom-section">
+    <div class="causes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              <strong>From Plate 18:</strong> Plates 17-18 examined Japanese and Korean nationalism. Chinese nationalism has different character: more self-critical, more focused on internal transformation.<br>
+<strong>Context:</strong> Nationalism can be externally-focused (blame foreigners) or internally-focused (blame ourselves). Chinese nationalism had both strands. Lu Xun represents the self-critical strand.<br>
+<strong>To Plate 20:</strong> Plate 20 on Civil War and Revolution shows how this critical nationalism fed into revolutionary movements—Communist and Nationalist.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Notes</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              • Ah Q is darkly funny—let students laugh, then discuss why it's disturbing.<br>
+              • Lu Xun's critique can feel harsh. Discuss whether self-criticism is necessary for reform or whether it becomes self-hatred.<br>
+              • The 'spiritual victory' concept is useful for analyzing how societies deal with defeat. Can be applied broadly.<br>
+              • May Fourth Movement is crucial context—iconoclastic questioning of everything traditional.<br>
+              • Contemporary connection: Lu Xun is taught in Chinese schools but his critique can cut against official nationalism.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

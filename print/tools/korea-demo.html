@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>South Korea - Labeled Demo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 20px;
+      background-color: #fefdfb;
+    }
+    .map-container {
+      position: relative;
+      display: inline-block;
+    }
+    .map-img {
+      max-width: 600px;
+    }
+    .city-marker {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: #fff;
+      border: 2px solid #c00;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+      color: #c00;
+    }
+    .key {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .key-item {
+      margin: 4px 0;
+    }
+    .key-num {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 2px solid #c00;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 16px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #c00;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="margin-bottom: 16px;">South Korea - Major Cities</h2>
+
+  <div class="map-container">
+    <img src="korea-outline.gif" class="map-img" alt="South Korea outline">
+    <!-- Seoul: northwest, in green Gyeonggi-do, east of Incheon -->
+    <span class="city-marker" style="top: 8%; left: 35%;">1</span>
+    <!-- Incheon: at the big coastal indent, on the bay -->
+    <span class="city-marker" style="top: 10%; left: 25%;">2</span>
+    <!-- Daejeon: center of country -->
+    <span class="city-marker" style="top: 34%; left: 38%;">3</span>
+    <!-- Daegu: southeast interior, in big yellow Gyeongsangbuk-do -->
+    <span class="city-marker" style="top: 50%; left: 55%;">4</span>
+    <!-- Gwangju: southwest interior, in green Jeollanam-do, above the islands -->
+    <span class="city-marker" style="top: 56%; left: 28%;">5</span>
+    <!-- Busan: southeast coast, pink Gyeongsangnam-do -->
+    <span class="city-marker" style="top: 60%; left: 62%;">6</span>
+    <!-- Jeju: island at bottom LEFT -->
+    <span class="city-marker" style="top: 90%; left: 27%;">7</span>
+  </div>
+
+  <div class="key">
+    <div class="key-item"><span class="key-num">1</span> Seoul (서울) — Capital, 9.7M</div>
+    <div class="key-item"><span class="key-num">2</span> Incheon (인천) — Major port, 3M</div>
+    <div class="key-item"><span class="key-num">3</span> Daejeon (대전) — Central hub, 1.5M</div>
+    <div class="key-item"><span class="key-num">4</span> Daegu (대구) — Southeast, 2.4M</div>
+    <div class="key-item"><span class="key-num">5</span> Gwangju (광주) — Southwest, 1.5M</div>
+    <div class="key-item"><span class="key-num">6</span> Busan (부산) — Port city, 3.4M</div>
+    <div class="key-item"><span class="key-num">7</span> Jeju (제주) — Island, 700K</div>
+  </div>
+
+</body>
+</html>

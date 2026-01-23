@@ -1,0 +1,219 @@
+{
+  "plate": 22,
+  "topic": "Rebuilding Japan",
+  "date": "2026-02-27",
+  "generatedAt": "2026-01-04T18:00:00.000Z",
+  "readings": [
+    "Constitution of Japan (1947)",
+    "The American School (short story)"
+  ],
+  "readingAnalyses": [
+    {
+      "title": "Constitution of Japan (1947)",
+      "author": "Government Section, SCAP (Supreme Commander for Allied Powers)",
+      "source": "Primary Source Reader Part 5",
+      "pages": "1947 document",
+      "type": "primary",
+      "summary": "The 1947 Constitution of Japan stands as one of the most remarkable documents in modern political history—a revolutionary charter drafted in one week by American occupation officials and imposed on a defeated nation, yet one that has endured for over 75 years and genuinely transformed Japanese society. The constitution transferred sovereignty from the emperor to the people, established an extensive bill of rights, and most controversially, renounced war and the maintenance of military forces in Article 9.\n\nThe document's origins are extraordinary. After Japanese officials submitted a conservative draft that merely tweaked the Meiji Constitution, MacArthur's Government Section produced an entirely new document in six days (February 4-10, 1946). Beate Sirota Gordon, a 22-year-old American woman, drafted the articles on women's rights. The constitution was then presented to Japanese officials as a fait accompli, negotiated in marathon sessions, and ultimately ratified by the elected Diet.\n\nArticle 9's war renunciation clause is unlike anything in any other national constitution. The Japanese people 'forever renounce war as a sovereign right' and pledge that 'land, sea, and air forces, as well as other war potential, will never be maintained.' This clause has been reinterpreted to allow Self-Defense Forces, but its presence continues to shape Japanese foreign policy and national identity.",
+      "keyQuotes": [
+        {"quote": "We, the Japanese people... resolved that never again shall we be visited with the horrors of war through the action of government, do proclaim that sovereign power resides with the people.", "page": "Preamble"},
+        {"quote": "The Emperor shall be the symbol of the State and of the unity of the people, deriving his position from the will of the people with whom resides sovereign power.", "page": "Article 1"},
+        {"quote": "Aspiring sincerely to an international peace based on justice and order, the Japanese people forever renounce war as a sovereign right of the nation.", "page": "Article 9, Para 1"},
+        {"quote": "Land, sea, and air forces, as well as other war potential, will never be maintained. The right of belligerency of the state will not be recognized.", "page": "Article 9, Para 2"}
+      ],
+      "thematicExamples": [
+        "Article 14 (equality under law) explicitly prohibits discrimination based on race, creed, sex, social status, or family origin - a direct challenge to the hierarchical social order",
+        "Article 24 establishes marriage equality, requiring mutual consent and equal rights for both spouses - revolutionary for patriarchal Japan",
+        "Article 25 establishes a right to a minimum standard of 'wholesome and cultured living' - welfare state provision unusual in constitutions"
+      ],
+      "realLifeConnections": [
+        "Abe Shinzo's long campaign for constitutional revision, particularly Article 9, represents conservative challenge to occupation legacy",
+        "US demands for Japanese military burden-sharing clash with Article 9's constraints - tension in the alliance",
+        "Japan as model for 'nation-building' debates - can democracy be imposed from outside? Iraq, Afghanistan comparison"
+      ]
+    },
+    {
+      "title": "The American School",
+      "author": "Kojima Nobuo",
+      "source": "Short story, 1954",
+      "pages": "Primary Source Reader Part 5",
+      "type": "primary",
+      "summary": "Kojima Nobuo's 'The American School' (1954) is a masterpiece of postwar Japanese literature that captures the psychological complexity of the occupation through a seemingly simple story: a group of Japanese English teachers visit an American dependents' school. The protagonist, Isa, is a teacher who refuses to speak English out of some combination of pride, shame, and resistance, while his colleague Yamada performs an obsequious, exaggerated deference toward the Americans.\n\nThe story operates on multiple levels: as social satire of postwar Japanese behavior, as psychological study of defeat's aftermath, and as meditation on language, power, and identity. The American school itself becomes a symbol of everything postwar Japan both admires and resents - its abundance, confidence, modernity, and implicit superiority. When Isa finally sees the school's affluence (white bread, apple butter, the children's robust health), his complex reaction embodies Japan's national psychology: attraction and repulsion, aspiration and resentment.",
+      "keyQuotes": [
+        {"quote": "Isa had a firm policy of never speaking English. It was not that he could not speak it. Rather, he refused to.", "page": "Opening"},
+        {"quote": "He felt both drawn to and repelled by the Americans - their confidence, their easy manner, their assumption that their way was the right way.", "page": "Mid-story"},
+        {"quote": "Yamada's English was fluent but somehow grotesque, as if he were wearing a borrowed suit several sizes too large.", "page": "Character description"},
+        {"quote": "The children looked well-fed, healthy, confident. They moved through the world as if they owned it.", "page": "School visit"}
+      ],
+      "thematicExamples": [
+        "Isa's refusal to speak English despite his ability - representing a form of silent resistance to occupation",
+        "Yamada's excessive friendliness toward Americans contrasted with his private cynicism - embodying tatemae vs. honne",
+        "Detailed descriptions of American abundance contrasted with Japanese teachers' humble bento boxes - material disparity as metaphor"
+      ],
+      "realLifeConnections": [
+        "Japan-US relations today still carry echoes of this psychology: gratitude for security alliance mixed with resentment of US military presence",
+        "Isa and Yamada represent two enduring strategies for dealing with dominant powers: dignified resistance vs. strategic accommodation",
+        "English language anxiety in Japan reflects deeper questions about national identity and relationship to the West"
+      ]
+    }
+  ],
+  "overallSynthesis": "These two readings together illuminate both the institutional architecture and the psychological reality of occupied Japan. The Constitution of Japan (1947) shows the formal, legal transformation: sovereignty transferred to the people, war renounced, human rights guaranteed, the emperor reduced to a symbol. Read in isolation, the constitution appears as a triumph of democratic idealism. But 'The American School' reveals the human texture beneath these institutional changes - the complex emotions of a people who had been told they were divine but now found themselves visited by foreign children who 'moved through the world as if they owned it.'\n\nThe pairing is pedagogically powerful because each reading interrogates the other. The constitution's idealistic language about 'sovereign power residing with the people' takes on different meaning when we consider that these words were drafted by Americans in a week and presented to the Japanese as a fait accompli. Was this democracy imposed at gunpoint, or liberation from a system that had led Japan to catastrophe? Kojima's story suggests the answer is both - and that postwar Japanese had to live with this impossible contradiction.\n\nTogether, the readings illustrate a central paradox of the occupation: it was simultaneously democratizing and colonizing, liberating and humiliating. The constitution gave Japanese women legal equality; the American School made Japanese men feel small. Article 9 freed Japan from militarism; the presence of US bases reminded everyone who had won. Students should understand that 'Rebuilding Japan' was never simply a matter of new institutions, but involved the reconstruction of Japanese identity itself.",
+  "executiveSummary": "American occupation (1945-1952) transformed Japan more thoroughly than Meiji transformation had. The new constitution—drafted largely by Americans—established popular sovereignty, renounced war (Article 9), guaranteed human rights, and stripped the emperor of political power. Land reform broke up large estates. Zaibatsu (industrial conglomerates) were (partially) dissolved. Education was reformed.\n\nThe readings pair the constitution with a short story capturing the psychological complexity of occupation. 'The American School' depicts Japanese teachers' humiliating visit to an American school—their mixture of admiration, resentment, shame, and aspiration. This psychological ambivalence toward America would characterize postwar Japan for decades. The occupation was both democratizing and humiliating, liberating and colonizing.",
+  "keywords": [
+    {
+      "term": "Article 9",
+      "definition": "Constitutional clause renouncing war and prohibiting military forces",
+      "relevance": "Unique feature of Japanese constitution; still debated today"
+    },
+    {
+      "term": "SCAP",
+      "definition": "Supreme Commander for Allied Powers—MacArthur's occupation authority",
+      "relevance": "Governed Japan 1945-1952; implemented radical reforms"
+    },
+    {
+      "term": "Peace Constitution",
+      "definition": "Popular name for 1947 constitution emphasizing pacifism",
+      "relevance": "Symbol of postwar Japan's transformation"
+    },
+    {
+      "term": "Reverse Course",
+      "definition": "Shift in occupation policy toward anti-communism, allowing Japan to rearm partially",
+      "relevance": "Cold War changed American priorities; democratization limited"
+    },
+    {
+      "term": "War Responsibility",
+      "definition": "Question of how Japan should account for wartime actions",
+      "relevance": "Occupation avoided prosecuting emperor; limited reckoning with past"
+    }
+  ],
+  "keyPassages": [
+    {
+      "quote": "Aspiring sincerely to an international peace based on justice and order, the Japanese people forever renounce war as a sovereign right of the nation.",
+      "source": "Constitution of Japan, Article 9",
+      "page": "1947"
+    },
+    {
+      "quote": "The Emperor shall be the symbol of the State and of the unity of the people, deriving his position from the will of the people with whom resides sovereign power.",
+      "source": "Constitution of Japan, Article 1",
+      "page": "1947"
+    },
+    {
+      "quote": "He felt both drawn to and repelled by the Americans—their confidence, their easy manner, their assumption that their way was the right way.",
+      "source": "The American School",
+      "page": "Story"
+    }
+  ],
+  "peopleplacesthings": {
+    "people": [
+      "Douglas MacArthur - Supreme Commander",
+      "Emperor Hirohito - retained as symbol",
+      "Yoshida Shigeru - postwar prime minister"
+    ],
+    "places": [
+      "Tokyo - occupied capital",
+      "GHQ (General Headquarters) - MacArthur's base",
+      "Okinawa - remained under US control until 1972"
+    ],
+    "things": [
+      "1947 Constitution - new democratic framework",
+      "Article 9 - war renunciation clause",
+      "Land reform - broke up large estates"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "Was the occupation democratization or colonization?",
+      "talkingPoints": "Americans imposed reforms, but those reforms were genuinely democratic. Japanese had no choice—but many welcomed changes. The constitution was American-drafted but Japanese-ratified. Both/and rather than either/or."
+    },
+    {
+      "question": "Why was Article 9 included, and what does it mean today?",
+      "talkingPoints": "Americans wanted to prevent Japanese rearmament. Many Japanese embraced pacifism after war's horrors. But Cold War led to Self-Defense Forces. Debates continue: revise Article 9? How interpret it?"
+    },
+    {
+      "question": "How does 'The American School' capture postwar Japanese psychology?",
+      "talkingPoints": "Admiration mixed with humiliation. Desire to learn from America while resenting American superiority. Shame about defeat, hope for future. This ambivalence shapes Japan-US relations to this day."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "August 15, 1945",
+      "event": "Japan surrenders"
+    },
+    {
+      "date": "1945-1947",
+      "event": "Radical reforms: constitution, land reform, zaibatsu dissolution"
+    },
+    {
+      "date": "1947",
+      "event": "New constitution takes effect"
+    },
+    {
+      "date": "1950",
+      "event": "Korean War begins; 'Reverse Course' accelerates"
+    },
+    {
+      "date": "1952",
+      "event": "Occupation ends; Japan regains sovereignty"
+    },
+    {
+      "date": "1964",
+      "event": "Tokyo Olympics—Japan's return to world stage"
+    }
+  ],
+  "connections": {
+    "fromPrevious": "Plate 21 examined wartime devastation. How does a nation rebuild after such catastrophe—materially and psychologically?",
+    "toNext": "Plate 23 examines China under Mao—a very different path from occupied Japan. Two responses to mid-century crisis.",
+    "broaderThemes": "Defeated nations face choices about how to reckon with the past. Japan's approach (limited reckoning, focus on economic development) contrasts with Germany's. Consequences persist."
+  },
+  "nextPreview": {
+    "plate": 23,
+    "topic": "Mao and Beyond Mao",
+    "preview": "While Japan rebuilt under American occupation, China underwent Maoist revolution: land reform, Great Leap Forward, Cultural Revolution. How did China's path diverge from Japan's?",
+    "readings": ["Let Flowers Bloom / 100 Flowers"]
+  },
+  "teachingNotes": [
+    "The constitution is short and readable—have students identify key provisions.",
+    "'The American School' is a gem—captures complex emotions better than analytical texts.",
+    "Article 9 debates continue today. Consider having students discuss whether Japan should revise it.",
+    "MacArthur is a fascinating figure—savior complex, theatrical, genuinely effective at democratization.",
+    "Tokyo Olympiad clip (linked) shows Japan's 1964 self-presentation to the world."
+  ],
+  "map": {
+    "center": [36, 138],
+    "zoom": 5,
+    "locations": [
+      {
+        "name": "Tokyo",
+        "nameChinese": "東京",
+        "lat": 35.6762,
+        "lng": 139.6503,
+        "type": "capital",
+        "description": "Occupied capital; GHQ headquarters"
+      },
+      {
+        "name": "Hiroshima",
+        "nameChinese": "廣島",
+        "lat": 34.3853,
+        "lng": 132.4553,
+        "type": "city",
+        "description": "Symbol of atomic devastation and peace"
+      },
+      {
+        "name": "Okinawa",
+        "nameChinese": "沖縄",
+        "lat": 26.2124,
+        "lng": 127.6809,
+        "type": "region",
+        "description": "Remained under US control until 1972; major US bases still"
+      },
+      {
+        "name": "Osaka",
+        "nameChinese": "大阪",
+        "lat": 34.6937,
+        "lng": 135.5023,
+        "type": "city",
+        "description": "Industrial center of postwar recovery"
+      }
+    ]
+  }
+}

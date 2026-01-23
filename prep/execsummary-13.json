@@ -1,0 +1,233 @@
+{
+  "plate": 13,
+  "topic": "Taiping and other rebellions",
+  "date": "2026-02-04",
+  "generatedAt": "2026-01-04T17:00:00.000Z",
+  "readings": [
+    "The Crisis Within (Spence, Search for Modern China)",
+    "Heavenly Kingdom of Taipings (Sources of Chinese Tradition)"
+  ],
+  "readingAnalyses": [
+    {
+      "title": "The Crisis Within",
+      "author": "Jonathan Spence",
+      "source": "The Search for Modern China",
+      "pages": "chapter",
+      "type": "secondary",
+      "summary": "Spence contextualizes the Taiping Rebellion within Qing China's compound crisis: the aftermath of Opium War defeat, population pressure, administrative decay, and ethnic tension between Manchu rulers and Han majority. The rebellion wasn't an isolated event but the largest of numerous uprisings that shook China from the 1850s through the 1870s—Nian in the north, Muslim rebellions in Yunnan and the northwest.\n\nCrucially, Spence shows that the Qing survived not through imperial military strength but through provincial initiative. Zeng Guofan's Hunan Army and Li Hongzhang's Anhui Army—raised, funded, and commanded by Chinese (Han) officials—defeated the Taiping. This decentralization saved the dynasty short-term but created long-term problems: regional armies, provincial power, and ultimately the warlordism that would plague China into the 20th century.\n\nThe comparison with Meiji Japan is implicit but devastating: while Japan was unifying under central reform leadership, China was fragmenting under provincial strongmen. Same decade, opposite trajectories.",
+      "keyQuotes": [
+        {"quote": "For a generation the bones of the innocent have lain unburied on the plains.", "page": "Spence"},
+        {"quote": "The Qing dynasty survived, but the world that emerged from the rebellions was fundamentally different.", "page": "Spence"},
+        {"quote": "Regional armies, initially raised to suppress rebellion, became permanent features of Chinese politics.", "page": "Spence"}
+      ],
+      "thematicExamples": [
+        "Zeng Guofan as Confucian hero/regional warlord - his army saved the dynasty but also weakened central authority",
+        "Multiple simultaneous rebellions (Taiping, Nian, Muslim) revealing systemic rather than isolated crisis",
+        "Self-Strengthening Movement as inadequate response - reforms too limited to address underlying problems"
+      ],
+      "realLifeConnections": [
+        "Contemporary concerns about central vs. regional authority in China echo 19th-century patterns",
+        "The 'century of humiliation' narrative often emphasizes foreign aggression while downplaying internal rebellion",
+        "State capacity questions - can a government reform itself while fighting civil war?"
+      ]
+    },
+    {
+      "title": "Heavenly Kingdom of Taipings",
+      "author": "Hong Xiuquan, Yang Xiuqing, et al.",
+      "source": "Sources of Chinese Tradition, Vol. 2",
+      "pages": "SCT",
+      "type": "primary",
+      "summary": "The Taiping primary sources reveal a movement far more radical than the Qing it challenged. Hong Xiuquan's religious visions—he believed himself the younger brother of Jesus Christ, sent to establish God's kingdom on earth—combined heterodox Christianity with Chinese apocalyptic traditions. The Taiping land system promised equal distribution of all property: 'There shall be no inequality, and no person shall be without food or clothing.'\n\nThe movement's radical gender policies—women could serve in the army, foot-binding was banned, separate quarters for men and women enforced—challenged Confucian patriarchy more fundamentally than anything until the 20th century. Yet these ideals were often contradicted by practice: Hong maintained a harem; discipline collapsed; the 'Heavenly Kingdom' became as brutal as the empire it opposed.\n\nThe Taiping challenge frightens precisely because it shows that alternatives to the existing order could be imagined—and nearly succeeded. Twenty to thirty million dead testify to how seriously the Qing took this threat.",
+      "keyQuotes": [
+        {"quote": "The Heavenly Father, the Supreme Lord and Great God, is the true god, the one God.", "page": "SCT"},
+        {"quote": "All the land in the empire shall be farmed jointly by the people of the empire... There shall be no inequality.", "page": "SCT"},
+        {"quote": "The customs of the demons (Manchus) must be completely eliminated.", "page": "SCT"}
+      ],
+      "thematicExamples": [
+        "Hong Xiuquan's visions - failed examination candidate becomes messianic leader, showing how blocked mobility could radicalize",
+        "Land system documents - most radical redistribution proposal until Communist land reform",
+        "Anti-Manchu nationalism - Taiping explicitly framed Qing as foreign 'demon' occupation"
+      ],
+      "realLifeConnections": [
+        "Later Chinese revolutionaries (Sun Yat-sen, Mao) would claim Taiping as precursor - debates continue about this lineage",
+        "Religious movements with radical social programs continue globally - utopian promise and violent reality",
+        "The question of whether Christianity is 'foreign' to China remains contested today"
+      ]
+    }
+  ],
+  "overallSynthesis": "The Taiping Rebellion and its suppression reveal China's compound crisis at mid-century. The movement itself combined heterodox Christianity, radical egalitarianism, anti-Manchu nationalism, and millenarian fervor—a volatile mixture that appealed to millions of desperate Chinese. The Taiping land system promised what no dynasty had delivered: genuine economic equality.\n\nYet the rebellion's failure is equally instructive. The Taiping couldn't govern effectively; their 'Heavenly Kingdom' descended into factionalism, indiscipline, and atrocity. The Qing survived not through strength but through the initiative of provincial officials like Zeng Guofan, who built new armies, adopted some Western weapons, and defended Confucian civilization against Christian heterodoxy.\n\nThe contrast with Japan is stark. While Japan was centralizing power under Meiji reformers, China was decentralizing—regional armies, provincial strongmen, weakened central authority. Both countries faced existential crises in the 1850s-60s; their different responses shaped the next century. Japan would revise its unequal treaties, defeat China in war (1895), and become an imperial power. China would stagger from crisis to crisis until the 1911 revolution finally ended the dynasty.\n\nThe Taiping also raises uncomfortable questions about Christianity, imperialism, and 'modernity.' Western missionaries preached a gospel that Hong Xiuquan transformed into revolutionary ideology. Was Christianity a liberating force or another form of cultural imperialism? The Taiping's radical gender policies and land reform anticipated later revolutionary programs—but so did their violence and authoritarianism.",
+  "executiveSummary": "The Taiping Rebellion (1850-1864) was the deadliest civil war in human history, with estimates of 20-30 million deaths. Hong Xiuquan, a failed examination candidate who believed himself Jesus Christ's younger brother, led a massive uprising that nearly toppled the Qing Dynasty. The Taiping movement combined heterodox Christianity, radical social reform (land redistribution, gender equality, end of foot-binding), and millenarian fervor.\n\nThe Qing ultimately suppressed the rebellion not through imperial armies but through provincial forces led by Chinese (Han) officials like Zeng Guofan. This had lasting consequences: provincial power increased, Manchu control weakened, and regional armies became the real military force. The same period saw numerous other uprisings—the Nian, Muslim rebellions in the northwest and southwest—revealing deep systemic crisis. While Japan was transforming under Meiji, China was hemorrhaging.",
+  "keywords": [
+    {
+      "term": "Taiping Tianguo (太平天國)",
+      "definition": "'Heavenly Kingdom of Great Peace'—Hong Xiuquan's rebel state",
+      "relevance": "Controlled much of central China for over a decade"
+    },
+    {
+      "term": "Hong Xiuquan (洪秀全)",
+      "definition": "Taiping leader who believed himself Jesus's younger brother",
+      "relevance": "His visions launched the rebellion; shows Christianity's complex role in China"
+    },
+    {
+      "term": "Zeng Guofan (曾國藩)",
+      "definition": "Confucian scholar-official who organized the Hunan Army to suppress Taiping",
+      "relevance": "Model of 'self-strengthening'; regional armies he built weakened central authority"
+    },
+    {
+      "term": "Nian Rebellion",
+      "definition": "Northern uprising (1851-1868) concurrent with Taiping",
+      "relevance": "Shows Taiping wasn't isolated; multiple crises overwhelmed Qing"
+    },
+    {
+      "term": "Self-Strengthening Movement",
+      "definition": "Post-Taiping effort to modernize military and industry while preserving Confucian essence",
+      "relevance": "China's response to crisis; 'Chinese learning for essence, Western learning for use'"
+    }
+  ],
+  "keyPassages": [
+    {
+      "quote": "The Heavenly Father, the Supreme Lord and Great God, is the true god, the one God. There is no other beside him.",
+      "source": "Taiping religious text",
+      "page": "SCT"
+    },
+    {
+      "quote": "All the land in the empire shall be farmed jointly by the people of the empire... There shall be no inequality.",
+      "source": "Taiping Land System",
+      "page": "SCT"
+    },
+    {
+      "quote": "For a generation the bones of the innocent have lain unburied on the plains.",
+      "source": "Zeng Guofan, describing the devastation",
+      "page": "Spence"
+    }
+  ],
+  "peopleplacesthings": {
+    "people": [
+      "Hong Xiuquan - Taiping leader",
+      "Zeng Guofan - Confucian general who suppressed rebellion",
+      "Li Hongzhang - Zeng's protégé, led Self-Strengthening"
+    ],
+    "places": [
+      "Nanjing - Taiping capital (Tianjing)",
+      "Jintian - where the uprising began",
+      "Hunan - base of Zeng Guofan's army"
+    ],
+    "things": [
+      "Taiping Christianity - heterodox mix with Chinese elements",
+      "Hunan Army - regional force that defeated Taiping",
+      "Self-Strengthening - modernization effort after rebellion"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "Was the Taiping Rebellion a 'proto-revolutionary' movement or a religious cult?",
+      "talkingPoints": "Taiping proposed radical reforms: land redistribution, gender equality, end of opium. Chinese Communists later claimed them as precursors. But the movement was also deeply religious and violent. How do we evaluate such complex movements?"
+    },
+    {
+      "question": "Why did internal rebellion do more damage to China than foreign aggression?",
+      "talkingPoints": "The Opium War killed perhaps 20,000; Taiping killed 20-30 million. Internal crisis was more devastating than imperialism. But they were connected: Opium War had weakened Qing legitimacy."
+    },
+    {
+      "question": "How did the Taiping suppression change China's political structure?",
+      "talkingPoints": "Provincial armies (Hunan, Anhui) replaced imperial forces. Han officials gained power at Manchu expense. Regional strongmen would dominate late Qing and Republican eras. Centralized empire began to fragment."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "1843",
+      "event": "Hong Xiuquan has visions after reading Christian pamphlet"
+    },
+    {
+      "date": "1851",
+      "event": "Taiping uprising begins in Guangxi"
+    },
+    {
+      "date": "1853",
+      "event": "Taiping capture Nanjing, make it capital (Tianjing)"
+    },
+    {
+      "date": "1856",
+      "event": "Internal purges weaken Taiping leadership"
+    },
+    {
+      "date": "1860",
+      "event": "Zeng Guofan's Hunan Army surrounds Nanjing"
+    },
+    {
+      "date": "1864",
+      "event": "Nanjing falls; Hong Xiuquan dies; rebellion ends"
+    }
+  ],
+  "connections": {
+    "fromPrevious": "Plate 12 showed Japan's successful transformation under Meiji. China during the same period faced devastating internal rebellion.",
+    "toNext": "Plate 14 examines the Tonghak Rebellion in Korea—another millenarian uprising against a weakening dynasty.",
+    "broaderThemes": "Taiping shows how 'Western' ideas (Christianity) could be transformed in Chinese contexts. Also shows how internal crisis can be more destructive than imperialism."
+  },
+  "nextPreview": {
+    "plate": 14,
+    "topic": "Tonghak Rebellion",
+    "preview": "Korea's Tonghak ('Eastern Learning') movement paralleled Taiping: millenarian religion, social reform demands, violent suppression. But Tonghak would trigger Japanese intervention.",
+    "readings": ["Tonghak Uprisings (SKT)", "Revolutionary Uprising of Tonghak Peasant Army"]
+  },
+  "teachingNotes": [
+    "The death toll is almost incomprehensible—more than WWI. Spend time making this real.",
+    "Hong Xiuquan's Christianity is strange but important: shows how Western ideas were transformed in Chinese contexts.",
+    "Taiping gender reforms (end of foot-binding, women soldiers) were radical—discuss why Confucian elites found this threatening.",
+    "Connect to Chinese Communist narratives: Mao praised Taiping as proto-revolutionary. Why?",
+    "Map the rebellion's geographic spread—helps visualize the scale of destruction."
+  ],
+  "map": {
+    "center": [28, 115],
+    "zoom": 5,
+    "locations": [
+      {
+        "name": "Jintian",
+        "nameChinese": "金田",
+        "lat": 23.1214,
+        "lng": 109.7733,
+        "type": "battle",
+        "description": "Where Taiping uprising began, January 1851"
+      },
+      {
+        "name": "Nanjing (Tianjing)",
+        "nameChinese": "南京/天京",
+        "lat": 32.0603,
+        "lng": 118.7969,
+        "type": "capital",
+        "description": "Taiping capital 1853-1864; 'Heavenly Capital'"
+      },
+      {
+        "name": "Shanghai",
+        "nameChinese": "上海",
+        "lat": 31.2304,
+        "lng": 121.4737,
+        "type": "city",
+        "description": "Treaty port defended by foreign forces and Qing"
+      },
+      {
+        "name": "Changsha",
+        "nameChinese": "長沙",
+        "lat": 28.2282,
+        "lng": 112.9388,
+        "type": "city",
+        "description": "Hunan capital; base of Zeng Guofan's army"
+      },
+      {
+        "name": "Wuhan",
+        "nameChinese": "武漢",
+        "lat": 30.5928,
+        "lng": 114.3055,
+        "type": "city",
+        "description": "Major city fought over multiple times"
+      },
+      {
+        "name": "Beijing",
+        "nameChinese": "北京",
+        "lat": 39.9042,
+        "lng": 116.4074,
+        "type": "capital",
+        "description": "Qing capital; never directly threatened but terrified"
+      }
+    ]
+  }
+}

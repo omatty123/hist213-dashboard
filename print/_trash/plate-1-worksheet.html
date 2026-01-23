@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plate 1: Introduction — Geography & Writing Systems</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Sans+KR&family=Noto+Sans+JP&display=swap">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: letter; margin: 0.4in; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+      padding: 16px;
+      max-width: 8.5in;
+      margin: 0 auto;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+      background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .plate-num, .date {
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 3px 12px;
+      font-weight: 600;
+      font-size: 9px;
+    }
+    .topic {
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 3px 14px;
+      font-weight: 600;
+      font-size: 11px;
+    }
+    .name-line {
+      margin-bottom: 14px;
+      font-size: 10px;
+    }
+    .name-line span {
+      border-bottom: 1px solid #999;
+      display: inline-block;
+      width: 200px;
+      margin-left: 8px;
+    }
+    .two-column {
+      display: block;
+      max-width: 100%;
+    }
+    .three-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .section {
+      margin-bottom: 12px;
+    }
+    .section-label {
+      display: inline-block;
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 3px 12px;
+      font-weight: 600;
+      font-size: 10px;
+      margin-bottom: 6px;
+    }
+    .map-box {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      height: 320px;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .map-outline {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.3;
+      transform: scale(1.2);
+    }
+    .map-instructions {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      font-size: 8px;
+      color: #888;
+      font-style: italic;
+    }
+    .map-labels {
+      margin-top: 8px;
+      font-size: 9px;
+    }
+    .map-labels-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .map-label-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .map-label-item .box {
+      width: 12px;
+      height: 12px;
+      border: 1px solid #999;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.7);
+    }
+    .writing-section {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      margin-bottom: 8px;
+    }
+    .writing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    .writing-title {
+      font-weight: 600;
+      font-size: 10px;
+    }
+    .writing-native {
+      font-size: 14px;
+      color: #555;
+    }
+    .practice-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+      gap: 6px;
+    }
+    .practice-char-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50px;
+    }
+    .practice-char {
+      font-size: 36px;
+      text-align: center;
+      color: #333;
+      line-height: 1;
+      font-family: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
+    }
+    .practice-meaning {
+      font-size: 9px;
+      color: #666;
+      text-align: center;
+    }
+    .practice-boxes {
+      display: flex;
+      gap: 3px;
+    }
+    .practice-box {
+      width: 52px;
+      height: 52px;
+      border: 1px solid #bbb;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.8);
+      position: relative;
+    }
+    .practice-box::before,
+    .practice-box::after {
+      content: '';
+      position: absolute;
+      background: #ccc;
+    }
+    .practice-box::before {
+      top: 50%;
+      left: 3px;
+      right: 3px;
+      height: 1px;
+    }
+    .practice-box::after {
+      left: 50%;
+      top: 3px;
+      bottom: 3px;
+      width: 1px;
+    }
+    .notes-box {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      min-height: 60px;
+      font-size: 9px;
+    }
+    .notes-box .prompt {
+      color: #888;
+      font-style: italic;
+      font-size: 8px;
+    }
+    .comparison-section {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+    }
+    .comparison-table {
+      border-collapse: collapse;
+      font-size: 12px;
+      background: rgba(255,255,255,0.6);
+    }
+    .comparison-table th, .comparison-table td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    .comparison-table th {
+      background: #e8e8e8;
+      font-weight: 600;
+      font-size: 11px;
+    }
+    .comparison-table td:first-child {
+      text-align: left;
+      font-size: 11px;
+      color: #666;
+    }
+    .comparison-table .char-cell {
+      font-family: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
+      font-size: 22px;
+    }
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic">Introduction to East Asia</span>
+  </div>
+
+  <div class="two-column">
+    <!-- TOP: Map -->
+    <div class="section">
+      <div class="map-box">
+        <img src="East_Asia_map_blank.png" class="map-outline" alt="Blank map of East Asia">
+      </div>
+    </div>
+
+    <!-- BOTTOM: Writing Systems in 3 columns -->
+    <div class="three-column">
+      <div class="section">
+        <span class="section-label">Chinese</span>
+        <div class="writing-section">
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">日</div><div class="practice-meaning">sun / day</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">月</div><div class="practice-meaning">moon / month</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">人</div><div class="practice-meaning">person</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">大</div><div class="practice-meaning">big</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-label">Korean</span>
+        <div class="writing-section">
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">가</div><div class="practice-meaning">ga</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">나</div><div class="practice-meaning">na</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">다</div><div class="practice-meaning">da</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">한</div><div class="practice-meaning">han</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-label">Japanese</span>
+        <div class="writing-section">
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">あ</div><div class="practice-meaning">a</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">い</div><div class="practice-meaning">i</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">う</div><div class="practice-meaning">u</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-char-group"><div class="practice-char">に</div><div class="practice-meaning">ni</div></div>
+            <div class="practice-boxes">
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+              <div class="practice-box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM: Comparison Table -->
+    <div class="comparison-section">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Character</th>
+            <th>C</th>
+            <th>K</th>
+            <th>J</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>sun/day</td>
+            <td class="char-cell">日</td>
+            <td>rì</td>
+            <td>일 (il)</td>
+            <td>にち (nichi)</td>
+          </tr>
+          <tr>
+            <td>big</td>
+            <td class="char-cell">大</td>
+            <td>dà</td>
+            <td>대 (dae)</td>
+            <td>だい (dai)</td>
+          </tr>
+          <tr>
+            <td>above</td>
+            <td class="char-cell">上</td>
+            <td>shàng</td>
+            <td>상 (sang)</td>
+            <td>じょう (jō)</td>
+          </tr>
+          <tr>
+            <td>below</td>
+            <td class="char-cell">下</td>
+            <td>xià</td>
+            <td>하 (ha)</td>
+            <td>か (ka)</td>
+          </tr>
+          <tr>
+            <td>mind</td>
+            <td class="char-cell">心</td>
+            <td>xīn</td>
+            <td>심 (sim)</td>
+            <td>しん (shin)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

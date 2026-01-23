@@ -1,0 +1,232 @@
+{
+  "plate": 21,
+  "topic": "The Pacific War",
+  "date": "2026-02-25",
+  "generatedAt": "2026-01-04T18:00:00.000Z",
+  "readings": [
+    "Japan at War (Sources of Modern China, pp. 316-333)",
+    "Oral Histories of the Comfort Women"
+  ],
+  "readingAnalyses": [
+    {
+      "title": "Japan at War",
+      "author": "Various primary sources",
+      "source": "Sources of Modern China / Japanese Tradition",
+      "pages": "pp. 316-333",
+      "type": "primary",
+      "summary": "These documents reveal the ideology and experience of Japan's fifteen-year war in Asia (1931-1945). Official rhetoric proclaimed Japan's mission to 'liberate' Asia from Western colonialism under the banner of the Greater East Asia Co-Prosperity Sphere. Soldiers' accounts reveal both the indoctrination that made aggression seem righteous and the brutal reality of warfare against civilian populations.\n\nThe gap between rhetoric and reality is striking. Japan claimed to free Asia while exploiting it; promised prosperity while extracting resources; spoke of liberation while committing atrocities. Understanding how intelligent people came to believe these contradictions—and how some came to see through them—is essential for understanding not just Japanese history but how war propaganda works.",
+      "keyQuotes": [
+        {"quote": "We were told we were liberating Asia. We believed it.", "page": "soldier testimony"},
+        {"quote": "The Greater East Asia Co-Prosperity Sphere would free Asian peoples from Western imperialism.", "page": "official rhetoric"},
+        {"quote": "What we did in China... I cannot speak of it even now.", "page": "veteran reflection"}
+      ],
+      "thematicExamples": [
+        "Official propaganda vs. soldier experience - gap between what was claimed and what was done",
+        "Dehumanization of enemies - how ordinary soldiers committed atrocities",
+        "Postwar reckoning - Japanese veterans struggling to understand their actions",
+        "Co-Prosperity Sphere as cover for exploitation - liberation rhetoric hiding economic extraction"
+      ],
+      "realLifeConnections": [
+        "How propaganda works - lessons applicable to understanding any wartime rhetoric",
+        "Veteran trauma and silence - patterns seen in many postwar societies",
+        "Japanese history textbook controversies - ongoing debates about how to teach the war",
+        "War crimes and accountability - Nuremberg/Tokyo trials and their limits"
+      ]
+    },
+    {
+      "title": "Oral Histories of the Comfort Women",
+      "author": "Survivor testimonies",
+      "source": "Primary Source Reader Part 5",
+      "pages": "various",
+      "type": "primary",
+      "summary": "The 'comfort women' testimonies document one of the war's worst atrocities: the systematic sexual enslavement of women by the Japanese military. Estimates suggest 50,000-200,000 women, mostly Korean but also Chinese, Filipino, Dutch, and others, were forced into military brothels. Survivors remained silent for decades; only in the 1990s did they begin speaking publicly.\n\nThese testimonies are difficult to read but essential. They document kidnapping, confinement, repeated rape, and physical abuse. They also document survival, resistance, and the courage required to speak decades later. The ongoing disputes over comfort women memorials and Japanese government apologies show how unresolved historical trauma continues to poison regional relations.\n\nCONTENT WARNING: These readings contain descriptions of sexual violence. Students should be prepared for disturbing content.",
+      "keyQuotes": [
+        {"quote": "I was not a 'comfort woman.' I was a sex slave.", "page": "survivor testimony"},
+        {"quote": "For fifty years I could not speak. The shame was unbearable.", "page": "survivor testimony"},
+        {"quote": "I want the Japanese government to acknowledge what they did to us.", "page": "survivor testimony"}
+      ],
+      "thematicExamples": [
+        "Military sexual violence as systematic policy - not individual crimes but organized system",
+        "Decades of silence - shame, trauma, and social stigma prevented survivors from speaking",
+        "Demands for recognition - survivors seeking acknowledgment, not just compensation",
+        "Contested memory - Japan and Korea dispute facts, responsibility, and appropriate response"
+      ],
+      "realLifeConnections": [
+        "Ongoing Japan-Korea disputes over comfort women memorials and government statements",
+        "Wartime sexual violence as weapon - patterns seen in conflicts worldwide",
+        "Survivor-centered approaches to historical justice - listening to those who experienced atrocities",
+        "Statute of limitations on historical crimes - when does accountability expire?"
+      ]
+    }
+  ],
+  "overallSynthesis": "These readings bring us face-to-face with the human cost of the nationalism and imperialism we've studied abstractly. Tokutomi Sohō's Social Darwinism (Plate 17) and Fukuzawa's 'Leaving Asia' (Plate 12) provided intellectual justification for empire; these documents show what empire actually meant for its victims.\n\nThe comfort women testimonies are particularly important because they challenge both Japanese denial and the abstraction of 'historical atrocities.' These were individual women with names and lives, violated systematically by a state that claimed to be liberating Asia. Their survival and eventual testimony represent a form of resistance that outlasted the empire itself.\n\nThe ongoing disputes over comfort women—memorials erected and removed, apologies made and retracted, historical facts denied and reaffirmed—show that this history isn't 'past.' Korean anger and Japanese defensiveness continue to shape regional relations. Understanding why this issue remains so contentious requires understanding what happened, why it remained suppressed so long, and what genuine reconciliation might require.\n\nCONTENT NOTE: These are emotionally difficult readings. Students should be prepared for disturbing content and supported in processing it.",
+  "executiveSummary": "Japan's fifteen-year war in Asia (1931-1945) caused immense suffering: millions dead in China, Korea colonized and exploited, Southeast Asia occupied. The 'comfort women' system—military sexual slavery—represents one of the war's most horrific aspects. These readings bring us face-to-face with both the ideology that drove Japanese aggression and the human cost of that aggression.\n\nThe comfort women testimonies are difficult to read but essential. These women, mostly Korean but also Chinese, Filipino, Dutch, and others, were forced into sexual slavery by the Japanese military. Their stories remained suppressed for decades; only in the 1990s did survivors begin speaking out. The ongoing disputes over comfort women memorials show how unresolved historical trauma continues to poison Japan-Korea relations.",
+  "keywords": [
+    {
+      "term": "Comfort Women (慰安婦)",
+      "definition": "Euphemism for women forced into sexual slavery by Japanese military",
+      "relevance": "Symbol of wartime atrocities; ongoing source of Japan-Korea tension"
+    },
+    {
+      "term": "Greater East Asia Co-Prosperity Sphere",
+      "definition": "Japanese imperial ideology claiming to 'liberate' Asia from Western colonialism",
+      "relevance": "Shows how empire was justified; reality was exploitation"
+    },
+    {
+      "term": "Nanjing Massacre (1937)",
+      "definition": "Mass killing and rape of Chinese civilians after Japanese capture of Nanjing",
+      "relevance": "One of war's worst atrocities; still disputed in Japan"
+    },
+    {
+      "term": "Fifteen-Year War",
+      "definition": "Term for Japan's wars 1931-1945 (Manchuria through Pacific War)",
+      "relevance": "Emphasizes continuity of Japanese aggression"
+    },
+    {
+      "term": "Historical Memory",
+      "definition": "How societies remember and interpret their past",
+      "relevance": "Japan, China, Korea remember this war very differently"
+    }
+  ],
+  "keyPassages": [
+    {
+      "quote": "I was taken from my village at age sixteen. I didn't know what awaited me. We were told we would work in a factory.",
+      "source": "Comfort woman testimony",
+      "page": "Oral Histories"
+    },
+    {
+      "quote": "We are liberating Asia from white imperialism. The suffering now will lead to prosperity later.",
+      "source": "Japanese wartime propaganda",
+      "page": "Japan at War"
+    },
+    {
+      "quote": "I have waited fifty years to tell this story. No one wanted to hear it.",
+      "source": "Comfort woman testimony",
+      "page": "Oral Histories"
+    }
+  ],
+  "peopleplacesthings": {
+    "people": [
+      "Comfort women survivors - witnesses to atrocity",
+      "Kim Hak-sun - first comfort woman to publicly testify (1991)",
+      "Hirohito - Emperor during the war"
+    ],
+    "places": [
+      "Nanjing - site of 1937 massacre",
+      "Manchuria - Japan's puppet state (Manchukuo)",
+      "Comfort stations - throughout occupied Asia"
+    ],
+    "things": [
+      "Comfort women system - military sexual slavery",
+      "Co-Prosperity Sphere - imperial ideology",
+      "Unit 731 - biological warfare experiments"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "How did Japan justify its empire, and how did that justification compare to Western imperialism?",
+      "talkingPoints": "Japan claimed to liberate Asia from the West. But Japan's rule was equally (or more) brutal. The ideology was self-serving—Pan-Asianism served Japanese interests. Compare to Western 'civilizing mission' rhetoric."
+    },
+    {
+      "question": "Why did the comfort women remain silent for so long, and what changed in the 1990s?",
+      "talkingPoints": "Shame, stigma, disbelief. Cold War politics muted criticism of Japan (US ally). Korean democratization and women's movements enabled testimony. Kim Hak-sun's 1991 testimony broke the silence."
+    },
+    {
+      "question": "How should we think about responsibility and reconciliation for wartime atrocities?",
+      "talkingPoints": "Japan has apologized (sort of)—but politicians keep undercutting apologies. Victims want official acknowledgment and compensation. Compare to Germany's approach to Holocaust memory."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "1931",
+      "event": "Manchurian Incident; Japan creates puppet state"
+    },
+    {
+      "date": "1937",
+      "event": "Full-scale war with China begins; Nanjing Massacre"
+    },
+    {
+      "date": "1941",
+      "event": "Pearl Harbor; Pacific War begins"
+    },
+    {
+      "date": "1945",
+      "event": "Atomic bombs; Japan surrenders"
+    },
+    {
+      "date": "1991",
+      "event": "Kim Hak-sun first comfort woman to testify publicly"
+    }
+  ],
+  "connections": {
+    "fromPrevious": "Plates 17-19 traced nationalism in Japan, Korea, China. Those nationalisms collided violently in this war.",
+    "toNext": "Plate 22 examines Japan's postwar reconstruction under American occupation. How did Japan transform from militarist empire to pacifist democracy?",
+    "broaderThemes": "Wartime atrocities remain unresolved in East Asian international relations. Understanding this history is essential for understanding contemporary Japan-Korea-China tensions."
+  },
+  "nextPreview": {
+    "plate": 22,
+    "topic": "Rebuilding Japan",
+    "preview": "American occupation (1945-1952) transformed Japan: new constitution, land reform, demilitarization. How did defeated Japan become an economic miracle?",
+    "readings": ["Constitution of Japan (1947)", "The American School"]
+  },
+  "teachingNotes": [
+    "The comfort women testimonies are disturbing. Warn students and provide context.",
+    "This is sensitive material for Korean, Chinese, and Japanese students. Be prepared for strong reactions.",
+    "Avoid false balance: The historical facts of comfort women system are established. Denialism exists but is not legitimate scholarship.",
+    "Connect to contemporary disputes: comfort women statues, textbook controversies, Yasukuni Shrine visits.",
+    "Consider showing clips from documentary 'The Apology' (2016) about surviving comfort women."
+  ],
+  "map": {
+    "center": [30, 125],
+    "zoom": 3,
+    "locations": [
+      {
+        "name": "Nanjing",
+        "nameChinese": "南京",
+        "lat": 32.0603,
+        "lng": 118.7969,
+        "type": "battle",
+        "description": "Site of 1937 massacre; 200,000+ killed"
+      },
+      {
+        "name": "Manchuria (Manchukuo)",
+        "nameChinese": "滿洲國",
+        "lat": 43.8171,
+        "lng": 125.3235,
+        "type": "region",
+        "description": "Japanese puppet state 1932-1945"
+      },
+      {
+        "name": "Seoul (Keijō)",
+        "nameChinese": "京城",
+        "lat": 37.5665,
+        "lng": 126.9780,
+        "type": "capital",
+        "description": "Colonial capital; comfort women recruited here"
+      },
+      {
+        "name": "Manila",
+        "lat": 14.5995,
+        "lng": 120.9842,
+        "type": "city",
+        "description": "Philippines under Japanese occupation"
+      },
+      {
+        "name": "Hiroshima",
+        "nameChinese": "廣島",
+        "lat": 34.3853,
+        "lng": 132.4553,
+        "type": "city",
+        "description": "Atomic bomb, August 6, 1945"
+      },
+      {
+        "name": "Nagasaki",
+        "nameChinese": "長崎",
+        "lat": 32.7503,
+        "lng": 129.8777,
+        "type": "city",
+        "description": "Atomic bomb, August 9, 1945"
+      }
+    ]
+  }
+}

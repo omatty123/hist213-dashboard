@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Platebook - Plate 7: Joseon Reform</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* Header row */
+    .header {
+      display: flex;
+      margin-bottom: 5px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Readings row */
+    .readings-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+      font-size: 9px;
+    }
+    .reading-item {
+      flex: 1;
+      border: 1px solid #aaa;
+      padding: 3px 6px;
+      background: #f9f9f9;
+    }
+    .reading-item strong { font-size: 9px; }
+
+    /* Section labels */
+    .label {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 3px;
+      background: #fff;
+    }
+
+    /* Person/Place/Thing table */
+    .ppt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+    .ppt-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+      width: 33.33%;
+    }
+    .ppt-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      height: 20px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin-bottom: 4px;
+    }
+    .timeline-box {
+      border: 1px solid #aaa;
+      padding: 6px 12px;
+      height: 78px;
+      position: relative;
+      background-color: #fefdfb;
+    }
+    .timeline-line {
+      position: absolute;
+      bottom: 24px;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      background: #333;
+    }
+    .timeline-ticks {
+      position: absolute;
+      bottom: 24px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
+      width: 2px;
+      height: 12px;
+      background: #333;
+    }
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8px;
+      text-align: center;
+    }
+    .timeline-labels span {
+      max-width: 70px;
+      line-height: 1.2;
+    }
+
+    /* Map */
+    .map-section {
+      margin-bottom: 4px;
+    }
+    .map-container {
+      display: flex;
+      gap: 8px;
+      margin-top: 3px;
+    }
+    .map-box {
+      position: relative;
+      border: 1px solid #aaa;
+      background: #f5f5f5;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+    }
+    .map-box iframe {
+      width: 100%;
+      height: 120px;
+      border: none;
+    }
+    .map-legend {
+      width: 180px;
+      font-size: 9px;
+      padding: 6px;
+      border: 1px solid #aaa;
+      background: #fefdfb;
+    }
+    .legend-item {
+      margin-bottom: 3px;
+      line-height: 1.2;
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+    .map-quote {
+      font-style: italic;
+      font-size: 9px;
+      text-align: center;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Questions table */
+    .questions-section {
+      margin-bottom: 4px;
+    }
+    .questions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .questions-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+    }
+    .questions-table th:last-child {
+      width: 45%;
+    }
+    .questions-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+    .questions-table .q-num {
+      width: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: none;
+    }
+    .question-cell {
+      min-height: 28px;
+    }
+    .answer-cell {
+      min-height: 28px;
+    }
+
+    /* Bottom section */
+    .bottom-section {
+      display: flex;
+      gap: 6px;
+    }
+    .causes-box, .notes-box {
+      flex: 1;
+    }
+    .bottom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-weight: 600;
+      font-size: 9px;
+      text-align: left;
+      background: #fff;
+    }
+    .bottom-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 9px;
+      vertical-align: top;
+      height: 65px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Filled content styling */
+    .filled {
+      color: #000;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .filled strong {
+      font-weight: 600;
+    }
+
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="plate-num">Plate # 7</div>
+    <div class="topic">Joseon Reform: Politics, Economy, Culture</div>
+    <div class="date">Jan 21</div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings-row">
+    <div class="reading-item"><strong>SKT Ch. 22:</strong> On Reform (Yu Hyŏngwŏn, Yi Ik, Pak Chega) — land, currency, technology</div>
+    <div class="reading-item"><strong>Ebrey Ch. 15:</strong> pp. 254-263 — factionalism, Crown Prince Sado, slavery decline, Northern Learning</div>
+  </div>
+
+  <!-- Person / Place / Thing -->
+  <table class="ppt-table">
+    <thead>
+      <tr>
+        <th><span class="label">Person</span></th>
+        <th><span class="label">Place</span></th>
+        <th><span class="label">Thing</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="filled"><strong>Sirhak Reformers</strong> — Yu Hyŏngwŏn (land), Yi Ik (limits), Pak Chega (technology)</td>
+        <td class="filled"><strong>Hanyang (Seoul)</strong> — Capital; center of yangban power and factional strife</td>
+        <td class="filled"><strong>Sirhak (實學)</strong> — 'Practical Learning'; empirical reform over Neo-Confucian metaphysics</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>King Yeongjo</strong> (r. 1724-1776) — Tried to end factionalism; killed his own son</td>
+        <td class="filled"><strong>Beijing</strong> — Source of knowledge; Pak Chega visited 4 times, observed superior tools</td>
+        <td class="filled"><strong>Factionalism</strong> — Westerners, Easterners, Southerners, Northerners, Patriarchs, Disciples</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Crown Prince Sado</strong> (1735-1762) — Mentally ill; starved to death in rice chest by father</td>
+        <td class="filled"><strong>Suwon (Hwaseong)</strong> — King Chŏngjo's fortress; site of Sado's reburial (1795 procession)</td>
+        <td class="filled"><strong>Pansori (판소리)</strong> — Oral song tradition; satirized yangban; Chunhyang most famous story</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <span class="label">Timeline: Politics, Reform, Culture</span>
+    <div class="timeline-box">
+      <div class="timeline-labels">
+        <span>1598<br><em>Imjin War ends</em></span>
+        <span>1637<br><em>Injo bows to Qing</em></span>
+        <span>1724<br><em>Yeongjo begins</em></span>
+        <span>1762<br><em>Sado killed</em></span>
+        <span>1776<br><em>Chŏngjo; Pak to Beijing</em></span>
+        <span>1750-90<br><em>Slavery: 30%→10%</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-section">
+    <span class="label">Map: Proposed Maritime Trade Routes (Pak Chega's Vision)</span>
+    <div class="map-container">
+      <div class="map-box" style="flex:1; max-width:100%;">
+        <iframe src="joseon-maritime-trade-minimal.html"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Penetrating Questions -->
+  <div class="questions-section">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th colspan="2"><span class="label">Penetrating Questions</span></th>
+          <th><span class="label">Key Points</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="q-num">1</td>
+          <td class="question-cell filled">Yi Ik: "The poor do not have enough land to stand an awl on" yet "the power of one man gags the mouths of the hundred" — what does this say about ideas vs. power?</td>
+          <td class="answer-cell filled">Reformers were yangban proposing to confiscate yangban land. Ideas alone don't change society — you need political power. None of these proposals was implemented.</td>
+        </tr>
+        <tr>
+          <td class="q-num">2</td>
+          <td class="question-cell filled">How does Crown Prince Sado's tragedy illuminate the political system reformers tried to change?</td>
+          <td class="answer-cell filled">Sado's mental illness and murder by his father shows the suffocating pressure of Confucian court politics. Factionalism destroyed families. Same system that produced scholarship also produced cruelty.</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">Slavery declined 30%→10% without reform legislation. What does this tell us about how social change happens?</td>
+          <td class="answer-cell filled">Economic forces (commercialization, runaway slaves, hired labor) achieved what reformers couldn't legislate. Change sometimes comes from below, not elite proposals.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom: Causes/Effects + Notes -->
+  <div class="bottom-section">
+    <div class="causes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Connections</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              <strong>From Plate 6:</strong> Qianlong's letter to George III. Now Korean thinkers debate whether to learn from that same Qing — cultural pride vs. practical necessity.<br>
+              <strong>Broader theme:</strong> Challenges "stagnant Asia" narrative. Koreans debated reform NOT because Westerners told them to, but because their own society was in crisis.<br>
+              <strong>To Plate 8:</strong> Compare Tokugawa Japan — strict hierarchy to prevent change. Korea debated but couldn't implement. Both disrupted by Western pressure in 19th century.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Teaching Notes</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              • TWO READINGS: Balance SKT primary sources with Ebrey political/cultural context<br>
+              • Yi Ik's "gag the mouths" quote is most memorable — use it!<br>
+              • Crown Prince Sado story is dramatic — consider clip from "The Throne" (2015)<br>
+              • "Those who are idle and yet eat their fill are the great parasites" resonates with students<br>
+              • Ask: "What reforms do we know are needed today but seem politically impossible?"
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

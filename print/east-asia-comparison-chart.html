@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>East Asia 1600-1800: Population & GDP</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #fff;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .charts-container {
+            display: flex;
+            gap: 30px;
+        }
+        .chart-panel {
+            flex: 1;
+        }
+        .chart-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+        .legend-custom {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 11px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .notes {
+            font-size: 10px;
+            color: #666;
+            margin-top: 20px;
+            line-height: 1.5;
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+        }
+        .source {
+            font-size: 9px;
+            color: #666;
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+        .source a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .source a:hover {
+            text-decoration: underline;
+        }
+        @media print {
+            body { padding: 10px; }
+            .charts-container { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>East Asia in Comparative Perspective, 1600-1800</h1>
+    <div class="subtitle">China, Japan, and Korea: Population Growth and Economic Output</div>
+
+    <div class="charts-container">
+        <div class="chart-panel">
+            <div class="chart-title">Population (millions)</div>
+            <div class="chart-wrapper">
+                <canvas id="popChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-panel">
+            <div class="chart-title">GDP per Capita (1990 int'l $)</div>
+            <div class="chart-wrapper">
+                <canvas id="gdpChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="legend-custom">
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #dc2626;"></div>
+            <span>China</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #2563eb;"></div>
+            <span>Japan</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #059669;"></div>
+            <span>Korea</span>
+        </div>
+    </div>
+
+    <!-- European Comparison -->
+    <div class="chart-title" style="margin-top: 25px;">GDP per Capita: East Asia vs. Europe (1990 int'l $)</div>
+    <div class="chart-wrapper" style="height: 280px;">
+        <canvas id="comparisonChart"></canvas>
+    </div>
+
+    <div class="legend-custom" style="margin-top: 10px;">
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #dc2626;"></div>
+            <span>China</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #2563eb;"></div>
+            <span>Japan</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #f59e0b;"></div>
+            <span>Netherlands</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #8b5cf6;"></div>
+            <span>Britain</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #64748b;"></div>
+            <span>France</span>
+        </div>
+    </div>
+
+    <div class="notes">
+        <strong>Key observations:</strong><br>
+        • <strong>The "Great Divergence"</strong> — Netherlands and Britain were 2-3x richer than East Asia by 1700, but this gap was recent (Atlantic trade) and would widen dramatically after 1800<br>
+        • <strong>France ≈ Japan</strong> — French GDP per capita (~$1,000) was only ~50% higher than Japan (~$670) in 1800<br>
+        • <strong>Netherlands declining</strong> — Dutch Golden Age peaked ~1650; Britain overtook by 1800<br>
+        • <strong>China stable</strong> — maintained ~$600/capita while population doubled; Qing managed extensive growth<br>
+        • Challenges both "backward Asia" AND "equal until 1800" narratives — Europe was richer, but not by as much as later assumed
+
+        <div class="source">
+            <strong>Sources:</strong><br>
+            • <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023" target="_blank">Maddison Project Database 2023</a> (GDP per capita)<br>
+            • <a href="https://ourworldindata.org/grapher/gdp-per-capita-maddison-project-database" target="_blank">Our World in Data: GDP per Capita</a><br>
+            • <a href="https://www.statista.com/statistics/1066956/population-japan-historical/" target="_blank">Statista: Japan Historical Population</a><br>
+            • <a href="https://www.statista.com/statistics/1304081/china-population-development-historical/" target="_blank">Statista: China Historical Population</a><br>
+            • <a href="https://www.statista.com/statistics/1067164/population-south-korea-historical/" target="_blank">Statista: Korea Historical Population</a><br>
+            • <a href="https://en.wikipedia.org/wiki/List_of_regions_by_past_GDP_(PPP)_per_capita" target="_blank">Wikipedia: Regions by Past GDP per Capita</a>
+        </div>
+    </div>
+
+    <script>
+        // Color scheme
+        const colors = {
+            china: '#dc2626',
+            japan: '#2563eb',
+            korea: '#059669'
+        };
+
+        // Population data (millions)
+        const popData = {
+            labels: ['1600', '1650', '1700', '1750', '1800'],
+            datasets: [
+                {
+                    label: 'China',
+                    data: [160, 140, 150, 225, 300],
+                    borderColor: colors.china,
+                    backgroundColor: colors.china + '20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5
+                },
+                {
+                    label: 'Japan',
+                    data: [12, 17, 27, 30, 30],
+                    borderColor: colors.japan,
+                    backgroundColor: colors.japan + '20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5
+                },
+                {
+                    label: 'Korea',
+                    data: [14, 10, 12, 15, 18],
+                    borderColor: colors.korea,
+                    backgroundColor: colors.korea + '20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5
+                }
+            ]
+        };
+
+        // GDP per capita data (1990 international dollars)
+        const gdpData = {
+            labels: ['1600', '1650', '1700', '1750', '1800'],
+            datasets: [
+                {
+                    label: 'China',
+                    data: [600, 600, 600, 600, 600],
+                    borderColor: colors.china,
+                    backgroundColor: colors.china + '20',
+                    fill: false,
+                    tension: 0.1,
+                    pointRadius: 5
+                },
+                {
+                    label: 'Japan',
+                    data: [520, 520, 570, 620, 670],
+                    borderColor: colors.japan,
+                    backgroundColor: colors.japan + '20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5
+                },
+                {
+                    label: 'Korea',
+                    data: [600, 550, 580, 600, 600],
+                    borderColor: colors.korea,
+                    backgroundColor: colors.korea + '20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5
+                }
+            ]
+        };
+
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    grid: { color: '#f0f0f0' }
+                },
+                y: {
+                    grid: { color: '#f0f0f0' },
+                    beginAtZero: false
+                }
+            }
+        };
+
+        // Population chart
+        new Chart(document.getElementById('popChart'), {
+            type: 'line',
+            data: popData,
+            options: {
+                ...commonOptions,
+                scales: {
+                    ...commonOptions.scales,
+                    y: {
+                        ...commonOptions.scales.y,
+                        min: 0,
+                        max: 350,
+                        ticks: {
+                            callback: v => v + 'M'
+                        }
+                    }
+                },
+                plugins: {
+                    ...commonOptions.plugins,
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + 'M'
+                        }
+                    }
+                }
+            }
+        });
+
+        // GDP chart
+        new Chart(document.getElementById('gdpChart'), {
+            type: 'line',
+            data: gdpData,
+            options: {
+                ...commonOptions,
+                scales: {
+                    ...commonOptions.scales,
+                    y: {
+                        ...commonOptions.scales.y,
+                        min: 400,
+                        max: 800,
+                        ticks: {
+                            callback: v => '$' + v
+                        }
+                    }
+                },
+                plugins: {
+                    ...commonOptions.plugins,
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y
+                        }
+                    }
+                }
+            }
+        });
+
+        // East Asia vs Europe comparison (GDP per capita, 1990 int'l $)
+        const comparisonData = {
+            labels: ['1600', '1650', '1700', '1750', '1800'],
+            datasets: [
+                {
+                    label: 'China',
+                    data: [600, 600, 600, 600, 600],
+                    borderColor: '#dc2626',
+                    backgroundColor: '#dc262620',
+                    fill: false,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    borderWidth: 2
+                },
+                {
+                    label: 'Japan',
+                    data: [520, 520, 570, 620, 670],
+                    borderColor: '#2563eb',
+                    backgroundColor: '#2563eb20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    borderWidth: 2
+                },
+                {
+                    label: 'Netherlands',
+                    data: [2370, 2170, 2130, 2030, 1820],
+                    borderColor: '#f59e0b',
+                    backgroundColor: '#f59e0b20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    borderWidth: 2,
+                    borderDash: [5, 5]
+                },
+                {
+                    label: 'Britain',
+                    data: [1090, 1100, 1560, 1690, 2080],
+                    borderColor: '#8b5cf6',
+                    backgroundColor: '#8b5cf620',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    borderWidth: 2,
+                    borderDash: [5, 5]
+                },
+                {
+                    label: 'France',
+                    data: [910, 960, 910, 1030, 1090],
+                    borderColor: '#64748b',
+                    backgroundColor: '#64748b20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    borderWidth: 2,
+                    borderDash: [5, 5]
+                }
+            ]
+        };
+
+        new Chart(document.getElementById('comparisonChart'), {
+            type: 'line',
+            data: comparisonData,
+            options: {
+                ...commonOptions,
+                scales: {
+                    ...commonOptions.scales,
+                    y: {
+                        ...commonOptions.scales.y,
+                        min: 0,
+                        max: 2500,
+                        ticks: {
+                            callback: v => '$' + v
+                        }
+                    }
+                },
+                plugins: {
+                    ...commonOptions.plugins,
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

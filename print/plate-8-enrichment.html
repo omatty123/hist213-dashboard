@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokugawa Japan's Four Gates | HIST/EAST 213</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root {
+            --ink: #2c2416;
+            --ink-light: #5c5040;
+            --ink-faint: #8a8070;
+            --paper: #f7f3eb;
+            --paper-dark: #e8e0d0;
+            --vermilion: #c73e1d;
+            --indigo: #264653;
+            --green: #2d6a4f;
+            --purple: #7b2d8e;
+            --gold: #b8860b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #3d2817 0%, #5a3d2b 100%);
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-title .jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        .header-title h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .header-title p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .header-badge {
+            background: var(--gold);
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* Myth callout */
+        .myth-callout {
+            background: linear-gradient(135deg, #fef9e7 0%, #fdf6e3 100%);
+            border-left: 4px solid var(--vermilion);
+            padding: 1rem 1.5rem;
+            margin: 1rem 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .myth-callout strong { color: var(--vermilion); }
+
+        /* Main Layout */
+        .main-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            height: calc(100vh - 200px);
+            min-height: 500px;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #fff;
+            overflow-y: auto;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .sidebar-section {
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar-section-header {
+            padding: 0.75rem 1rem;
+            background: var(--paper);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-section-header h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-light);
+            font-weight: 600;
+        }
+
+        .sidebar-section-header .count {
+            font-size: 0.65rem;
+            background: #fff;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            color: var(--ink-faint);
+        }
+
+        .location-list { list-style: none; }
+
+        .location-item {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid #f5f5f5;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .location-item:hover { background: rgba(74, 55, 40, 0.04); }
+        .location-item.active { background: rgba(74, 55, 40, 0.08); }
+
+        .location-item.nagasaki { border-left-color: var(--vermilion); }
+        .location-item.tsushima { border-left-color: var(--indigo); }
+        .location-item.satsuma { border-left-color: var(--green); }
+        .location-item.matsumae { border-left-color: var(--purple); }
+
+        .location-item .name {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .location-item .jp-name {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.2rem;
+            color: var(--ink);
+        }
+
+        .location-item .en-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .location-item .controller {
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .location-item .description {
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            line-height: 1.5;
+        }
+
+        .location-item .partner-tag {
+            display: inline-block;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 2px;
+            margin-top: 0.4rem;
+            margin-right: 0.2rem;
+            background: var(--paper-dark);
+            color: var(--ink-light);
+            border: 1px solid #ddd;
+        }
+
+        .location-item .gate-badge {
+            display: inline-block;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.15rem 0.4rem;
+            border-radius: 2px;
+            margin-top: 0.4rem;
+            color: #fff;
+        }
+
+        .location-item.nagasaki .gate-badge { background: var(--vermilion); }
+        .location-item.tsushima .gate-badge { background: var(--indigo); }
+        .location-item.satsuma .gate-badge { background: var(--green); }
+        .location-item.matsumae .gate-badge { background: var(--purple); }
+
+        /* Map Container */
+        .map-container { position: relative; }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            background: #d4e5e5;
+        }
+
+        /* Map Legend */
+        .map-legend {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(8px);
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            border: 1px solid rgba(0,0,0,0.08);
+            max-width: 200px;
+        }
+
+        .map-legend h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.75rem;
+            color: var(--ink);
+        }
+
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .legend-dot.nagasaki { background: var(--vermilion); }
+        .legend-dot.tsushima { background: var(--indigo); }
+        .legend-dot.satsuma { background: var(--green); }
+        .legend-dot.matsumae { background: var(--purple); }
+        .legend-dot.city { background: var(--ink-light); }
+
+        .legend-line {
+            width: 20px;
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        .legend-line.trade {
+            background: repeating-linear-gradient(90deg, var(--ink-faint) 0 4px, transparent 4px 8px);
+        }
+
+        /* Popup Styles */
+        .leaflet-popup-content-wrapper {
+            background: #fff;
+            border-radius: 4px;
+            padding: 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            min-width: 260px;
+        }
+
+        .leaflet-popup-tip { background: #fff; }
+
+        .popup-content { padding: 1rem; }
+
+        .popup-content .popup-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .popup-content .jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .popup-content .popup-header.nagasaki .jp { color: var(--vermilion); }
+        .popup-content .popup-header.tsushima .jp { color: var(--indigo); }
+        .popup-content .popup-header.satsuma .jp { color: var(--green); }
+        .popup-content .popup-header.matsumae .jp { color: var(--purple); }
+
+        .popup-content .names { flex: 1; }
+
+        .popup-content .en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .popup-content .romaji {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--ink-faint);
+        }
+
+        .popup-content .popup-body {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: var(--ink-light);
+        }
+
+        .popup-content .popup-body p { margin-bottom: 0.5rem; }
+
+        .popup-content .trade-box {
+            background: var(--paper);
+            padding: 0.5rem 0.7rem;
+            border-radius: 3px;
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+        }
+
+        .popup-content .trade-box .exports { color: var(--green); }
+        .popup-content .trade-box .imports { color: var(--vermilion); }
+
+        /* Trade Section */
+        .trade-section {
+            background: #fff;
+            padding: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .trade-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--ink-light) 0%, transparent 100%);
+        }
+
+        .trade-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .trade-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .trade-card {
+            background: var(--paper);
+            border-radius: 4px;
+            padding: 1rem;
+            border-top: 4px solid;
+        }
+
+        .trade-card.dutch { border-color: #e76f51; }
+        .trade-card.china { border-color: #e63946; }
+        .trade-card.korea { border-color: var(--indigo); }
+        .trade-card.ryukyu { border-color: var(--green); }
+
+        .trade-card .partner {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .trade-card .gate {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            margin-bottom: 0.6rem;
+        }
+
+        .trade-card .flow {
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .trade-card .out { color: var(--green); margin-bottom: 0.25rem; }
+        .trade-card .in { color: #9d4444; }
+        .trade-card .out::before { content: "↑ "; font-weight: 600; }
+        .trade-card .in::before { content: "↓ "; font-weight: 600; }
+
+        /* Sankin Section */
+        .sankin-section {
+            background: linear-gradient(135deg, #3d2817 0%, #5a3d2b 100%);
+            padding: 1.5rem;
+            color: #fff;
+        }
+
+        .sankin-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .sankin-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .sankin-header .jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .sankin-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .sankin-header p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            font-style: italic;
+        }
+
+        .sankin-content {
+            background: rgba(0,0,0,0.2);
+            padding: 1.25rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .sankin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .sankin-grid { grid-template-columns: 1fr; }
+        }
+
+        .sankin-item strong {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .sankin-item {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 1.25rem;
+        }
+
+        footer .course {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gold);
+            margin-bottom: 0.2rem;
+        }
+
+        footer p { font-size: 0.8rem; }
+
+        footer a { color: rgba(255,255,255,0.8); }
+
+        /* Gokaido Section */
+        .gokaido-section {
+            background: var(--paper);
+            padding: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .gokaido-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .gokaido-header {
+            text-align: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .gokaido-header .jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3rem;
+            color: var(--ink-light);
+        }
+
+        .gokaido-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .gokaido-header p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            font-style: italic;
+        }
+
+        .gokaido-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1rem;
+            min-height: 420px;
+        }
+
+        @media (max-width: 800px) {
+            .gokaido-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gokaido-sidebar {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        .route-list {
+            list-style: none;
+        }
+
+        .route-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .route-item:hover {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .route-item.active {
+            background: rgba(0,0,0,0.04);
+        }
+
+        .route-item .route-color {
+            width: 6px;
+            min-height: 40px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .route-item.tokaido .route-color { background: #e63946; }
+        .route-item.nakasendo .route-color { background: #457b9d; }
+        .route-item.koshu .route-color { background: #2a9d8f; }
+        .route-item.oshu .route-color { background: #e9c46a; }
+        .route-item.nikko .route-color { background: #9b59b6; }
+
+        .route-item .route-info {
+            flex: 1;
+        }
+
+        .route-item .route-name {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1rem;
+            color: var(--ink);
+            margin-bottom: 0.2rem;
+        }
+
+        .route-item .route-name span {
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-left: 0.4rem;
+        }
+
+        .route-item .route-desc {
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            margin-bottom: 0.15rem;
+        }
+
+        .route-item .route-note {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            font-style: italic;
+        }
+
+        .gokaido-map-container {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        #gokaido-map {
+            width: 100%;
+            height: 100%;
+            min-height: 420px;
+            background: #f5f3ef;
+        }
+
+        .gokaido-legend {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(8px);
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 0.75rem;
+        }
+
+        .gokaido-legend h4 {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.7rem;
+            color: var(--ink-light);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .gokaido-legend .legend-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.3rem;
+            color: var(--ink);
+        }
+
+        .gokaido-legend .legend-row .line {
+            width: 18px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .gokaido-legend .legend-row.tokaido .line { background: #e63946; }
+        .gokaido-legend .legend-row.nakasendo .line { background: #457b9d; }
+        .gokaido-legend .legend-row.koshu .line { background: #2a9d8f; }
+        .gokaido-legend .legend-row.oshu .line { background: #e9c46a; }
+        .gokaido-legend .legend-row.nikko .line { background: #9b59b6; }
+
+        .gokaido-legend .legend-row.stations .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid var(--ink-light);
+        }
+
+        /* Print styles */
+        @media print {
+            .main-container { height: auto; }
+            .map-container { height: 400px; }
+            .map-legend { position: static; margin: 1rem; }
+            .gokaido-layout { height: auto; }
+            #gokaido-map { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <span class="jp">四つの口</span>
+            <h1>Tokugawa Japan's Four Gates</h1>
+            <p>Managed Foreign Relations, 1639–1853</p>
+        </div>
+        <span class="header-badge">Plate 8 · Enrichment</span>
+    </header>
+
+    <div class="myth-callout">
+        <strong>Beyond "Sakoku" 鎖国:</strong> The traditional narrative of total Japanese isolation is a myth.
+        The Tokugawa shogunate maintained active trade and diplomatic relations through four carefully controlled "gates" (<em>kuchi</em> 口).
+        Rather than closure, this was <em>managed engagement</em>—the bakufu controlled who traded, where, and with whom.
+    </div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-section-header">
+                    <h3>The Four Gates</h3>
+                    <span class="count">4</span>
+                </div>
+                <ul class="location-list">
+                    <li class="location-item nagasaki" data-id="nagasaki">
+                        <div class="name">
+                            <span class="jp-name">長崎</span>
+                            <span class="en-name">Nagasaki</span>
+                        </div>
+                        <div class="controller">Shogunal control via Nagasaki bugyō</div>
+                        <div class="description">Largest trade gate. Dutch VOC on Dejima island; Chinese merchants in Tōjin yashiki. Silk, sugar, medicines, books.</div>
+                        <span class="gate-badge">Gate 1</span>
+                        <span class="partner-tag">Dutch</span>
+                        <span class="partner-tag">Chinese</span>
+                    </li>
+                    <li class="location-item tsushima" data-id="tsushima">
+                        <div class="name">
+                            <span class="jp-name">対馬</span>
+                            <span class="en-name">Tsushima</span>
+                        </div>
+                        <div class="controller">Sō clan — hereditary Korea intermediaries</div>
+                        <div class="description">Joseon Korea via waegwan in Pusan. 12 Korean embassies (tsūshinshi) to Edo.</div>
+                        <span class="gate-badge">Gate 2</span>
+                        <span class="partner-tag">Korea</span>
+                    </li>
+                    <li class="location-item satsuma" data-id="satsuma">
+                        <div class="name">
+                            <span class="jp-name">薩摩</span>
+                            <span class="en-name">Satsuma</span>
+                        </div>
+                        <div class="controller">Shimazu clan — controlled Ryukyu after 1609</div>
+                        <div class="description">Ryukyu Kingdom (tributary to Japan and China). Indirect China access via Ryukyu tribute missions.</div>
+                        <span class="gate-badge">Gate 3</span>
+                        <span class="partner-tag">Ryukyu</span>
+                    </li>
+                    <li class="location-item matsumae" data-id="matsumae">
+                        <div class="name">
+                            <span class="jp-name">松前</span>
+                            <span class="en-name">Matsumae</span>
+                        </div>
+                        <div class="controller">Matsumae clan — no rice, trade-based economy</div>
+                        <div class="description">Ainu of Ezo (Hokkaido); Santan trade reaching Qing China. Furs, marine products.</div>
+                        <span class="gate-badge">Gate 4</span>
+                        <span class="partner-tag">Ainu</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-header">
+                    <h3>Key Cities</h3>
+                    <span class="count">3</span>
+                </div>
+                <ul class="location-list">
+                    <li class="location-item" data-id="edo">
+                        <div class="name">
+                            <span class="jp-name">江戸</span>
+                            <span class="en-name">Edo</span>
+                        </div>
+                        <div class="description">Shogunal capital. Center of sankin-kōtai system. ~1 million population by 1700.</div>
+                    </li>
+                    <li class="location-item" data-id="kyoto">
+                        <div class="name">
+                            <span class="jp-name">京都</span>
+                            <span class="en-name">Kyoto</span>
+                        </div>
+                        <div class="description">Imperial capital. Ceremonial center, cultural heartland.</div>
+                    </li>
+                    <li class="location-item" data-id="osaka">
+                        <div class="name">
+                            <span class="jp-name">大坂</span>
+                            <span class="en-name">Osaka</span>
+                        </div>
+                        <div class="description">"Kitchen of Japan." Commercial hub, rice exchange.</div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="map-container">
+            <div id="map"></div>
+            <div class="map-legend">
+                <h4>Legend</h4>
+                <div class="legend-item">
+                    <span class="legend-dot nagasaki"></span>
+                    <span>1. Nagasaki (Dutch/China)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot tsushima"></span>
+                    <span>2. Tsushima (Korea)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot satsuma"></span>
+                    <span>3. Satsuma (Ryukyu)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot matsumae"></span>
+                    <span>4. Matsumae (Ainu)</span>
+                </div>
+                <div class="legend-item" style="margin-top: 0.5rem;">
+                    <span class="legend-dot city"></span>
+                    <span>Major City</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-line trade"></span>
+                    <span>Trade Route</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="trade-section">
+        <div class="trade-container">
+            <div class="section-header">
+                <h2>What Flowed Through the Gates</h2>
+            </div>
+            <div class="trade-grid">
+                <div class="trade-card dutch">
+                    <div class="partner">Dutch (VOC)</div>
+                    <div class="gate">via Nagasaki · Dejima</div>
+                    <div class="flow">
+                        <div class="out">Silver, copper, camphor, porcelain</div>
+                        <div class="in">Silk, sugar, spices, instruments, books</div>
+                    </div>
+                </div>
+                <div class="trade-card china">
+                    <div class="partner">China</div>
+                    <div class="gate">via Nagasaki · Tōjin yashiki</div>
+                    <div class="flow">
+                        <div class="out">Silver, copper, marine products</div>
+                        <div class="in">Raw silk, medicines, books, sugar, dyes</div>
+                    </div>
+                </div>
+                <div class="trade-card korea">
+                    <div class="partner">Joseon Korea</div>
+                    <div class="gate">via Tsushima · Pusan waegwan</div>
+                    <div class="flow">
+                        <div class="out">Silver, copper, pepper (re-export)</div>
+                        <div class="in">Ginseng, cotton, tiger skins, books</div>
+                    </div>
+                </div>
+                <div class="trade-card ryukyu">
+                    <div class="partner">Ryukyu</div>
+                    <div class="gate">via Satsuma</div>
+                    <div class="flow">
+                        <div class="out">Silver, swords, lacquerware</div>
+                        <div class="in">Chinese silk, medicines, sugar, awamori</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sankin-section">
+        <div class="sankin-container">
+            <div class="sankin-header">
+                <span class="jp">参勤交代</span>
+                <h2>Sankin-kōtai: The Shogun's Leash</h2>
+                <p>Alternate attendance — daimyō required to spend every other year in Edo</p>
+            </div>
+            <div class="sankin-content">
+                <div class="sankin-grid">
+                    <div class="sankin-item">
+                        <strong>Purpose</strong>
+                        Drain daimyō wealth through travel expenses; keep wives and heirs as permanent hostages in Edo
+                    </div>
+                    <div class="sankin-item">
+                        <strong>Effect</strong>
+                        Created national road network (Tōkaidō, Nakasendō); post towns; unified culture and language
+                    </div>
+                    <div class="sankin-item">
+                        <strong>Scale</strong>
+                        ~260 daimyō domains; some processions numbered 1,000+ attendants; 30-50% of domain budgets
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gokaido-section">
+        <div class="gokaido-container">
+            <div class="gokaido-header">
+                <span class="jp">五街道</span>
+                <h2>The Five Highways (Gokaidō)</h2>
+                <p>Major roads radiating from Nihonbashi in Edo — the infrastructure of sankin-kōtai</p>
+            </div>
+            <div class="gokaido-layout">
+                <div class="gokaido-sidebar">
+                    <ul class="route-list">
+                        <li class="route-item tokaido active" data-route="tokaido">
+                            <div class="route-color"></div>
+                            <div class="route-info">
+                                <div class="route-name">東海道 <span>Tōkaidō</span></div>
+                                <div class="route-desc">Coastal route to Kyoto · 53 stations · ~500 km</div>
+                                <div class="route-note">Most traveled, featured in Hiroshige's famous prints</div>
+                            </div>
+                        </li>
+                        <li class="route-item nakasendo" data-route="nakasendo">
+                            <div class="route-color"></div>
+                            <div class="route-info">
+                                <div class="route-name">中山道 <span>Nakasendō</span></div>
+                                <div class="route-desc">Mountain route to Kyoto · 69 stations · ~540 km</div>
+                                <div class="route-note">Inland alternative, avoiding coastal flooding</div>
+                            </div>
+                        </li>
+                        <li class="route-item koshu" data-route="koshu">
+                            <div class="route-color"></div>
+                            <div class="route-info">
+                                <div class="route-name">甲州街道 <span>Kōshū Kaidō</span></div>
+                                <div class="route-desc">To Kai Province · 44 stations · ~210 km</div>
+                                <div class="route-note">Connected to Nakasendō at Shimosuwa</div>
+                            </div>
+                        </li>
+                        <li class="route-item oshu" data-route="oshu">
+                            <div class="route-color"></div>
+                            <div class="route-info">
+                                <div class="route-name">奥州街道 <span>Ōshū Kaidō</span></div>
+                                <div class="route-desc">Northern route · 27 stations · ~200 km</div>
+                                <div class="route-note">To Shirakawa, gateway to Tōhoku</div>
+                            </div>
+                        </li>
+                        <li class="route-item nikko" data-route="nikko">
+                            <div class="route-color"></div>
+                            <div class="route-info">
+                                <div class="route-name">日光街道 <span>Nikkō Kaidō</span></div>
+                                <div class="route-desc">To Nikkō shrine · 21 stations · ~140 km</div>
+                                <div class="route-note">Pilgrimage route to Tokugawa Ieyasu's mausoleum</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="gokaido-map-container">
+                    <div id="gokaido-map"></div>
+                    <div class="gokaido-legend">
+                        <h4>五街道 Gokaidō</h4>
+                        <div class="legend-row tokaido"><span class="line"></span> Tōkaidō</div>
+                        <div class="legend-row nakasendo"><span class="line"></span> Nakasendō</div>
+                        <div class="legend-row koshu"><span class="line"></span> Kōshū Kaidō</div>
+                        <div class="legend-row oshu"><span class="line"></span> Ōshū Kaidō</div>
+                        <div class="legend-row nikko"><span class="line"></span> Nikkō Kaidō</div>
+                        <div class="legend-row stations"><span class="dot"></span> Post station</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="course">HIST/EAST 213 · Modern East Asia</div>
+        <p>Sources: <a href="https://www.nippon.com/en/features/c00104/">Arano Yasunori</a> · Toby, <em>State and Diplomacy</em> (1984)</p>
+    </footer>
+
+    <script>
+        // Location data
+        const locations = {
+            // Four Gates
+            nagasaki: {
+                name: 'Nagasaki',
+                jp: '長崎',
+                romaji: 'Nagasaki-guchi',
+                lat: 32.7503,
+                lng: 129.8777,
+                type: 'gate',
+                color: '#c73e1d',
+                controller: 'Shogunal control via Nagasaki bugyō (governor)',
+                partners: ['Dutch VOC (Dejima)', 'Chinese merchants (Tōjin yashiki)'],
+                description: 'The largest and most important of the four gates. Direct shogunal control made this the primary point for Western contact and Chinese trade.',
+                exports: 'Silver, copper, camphor, porcelain',
+                imports: 'Silk, sugar, medicines, scientific instruments, books'
+            },
+            tsushima: {
+                name: 'Tsushima',
+                jp: '対馬',
+                romaji: 'Tsushima-guchi',
+                lat: 34.2048,
+                lng: 129.2879,
+                type: 'gate',
+                color: '#264653',
+                controller: 'Sō clan — hereditary intermediaries',
+                partners: ['Joseon Korea via waegwan in Pusan'],
+                description: 'The gateway to Korea. The Sō clan managed diplomatic relations and trade, hosting Korean embassies (tsūshinshi) that traveled to Edo.',
+                exports: 'Silver, copper, pepper (re-export)',
+                imports: 'Ginseng, cotton, tiger skins, books'
+            },
+            satsuma: {
+                name: 'Satsuma',
+                jp: '薩摩',
+                romaji: 'Satsuma-guchi',
+                lat: 31.5966,
+                lng: 130.5571,
+                type: 'gate',
+                color: '#2d6a4f',
+                controller: 'Shimazu clan — controlled Ryukyu after 1609 invasion',
+                partners: ['Ryukyu Kingdom'],
+                description: 'Through Ryukyu (a tributary to both Japan and China), Satsuma gained indirect access to Chinese goods via Ryukyu\'s tribute missions to Beijing.',
+                exports: 'Silver, swords, lacquerware',
+                imports: 'Chinese silk, medicines, sugar, awamori'
+            },
+            matsumae: {
+                name: 'Matsumae',
+                jp: '松前',
+                romaji: 'Matsumae-guchi',
+                lat: 41.4283,
+                lng: 140.1069,
+                type: 'gate',
+                color: '#7b2d8e',
+                controller: 'Matsumae clan — only domain without rice agriculture',
+                partners: ['Ainu people of Ezo', 'Santan trade to Qing'],
+                description: 'The northern gate to Ezo (Hokkaido). Trade with Ainu peoples brought furs, marine products, and indirect connections to Qing China via Sakhalin.',
+                exports: 'Rice, sake, iron goods',
+                imports: 'Furs, marine products, eagle feathers'
+            },
+            // Major cities
+            edo: {
+                name: 'Edo',
+                jp: '江戸',
+                romaji: 'Edo',
+                lat: 35.6762,
+                lng: 139.6503,
+                type: 'city',
+                color: '#5c5040',
+                description: 'Shogunal capital. Center of the sankin-kōtai system where daimyō maintained residences. By 1700, one of the world\'s largest cities with ~1 million people.'
+            },
+            kyoto: {
+                name: 'Kyoto',
+                jp: '京都',
+                romaji: 'Kyōto',
+                lat: 35.0116,
+                lng: 135.7681,
+                type: 'city',
+                color: '#5c5040',
+                description: 'Imperial capital. Home of the emperor, ceremonial center of Japan, cultural heartland.'
+            },
+            osaka: {
+                name: 'Osaka',
+                jp: '大坂',
+                romaji: 'Ōsaka',
+                lat: 34.6937,
+                lng: 135.5023,
+                type: 'city',
+                color: '#5c5040',
+                description: '"Kitchen of Japan." Commercial hub, site of the rice exchange that set national prices.'
+            }
+        };
+
+        // Trading partner locations (for trade routes)
+        const partners = {
+            korea: { lat: 35.1796, lng: 129.0756, name: 'Pusan (Korea)' },
+            ryukyu: { lat: 26.2124, lng: 127.6809, name: 'Ryukyu (Naha)' },
+            china: { lat: 31.2304, lng: 121.4737, name: 'China coast' },
+            ainu: { lat: 43.0642, lng: 141.3469, name: 'Ezo (Ainu lands)' }
+        };
+
+        // Initialize map centered on Japan
+        const map = L.map('map', {
+            zoomControl: true
+        }).setView([36.5, 136], 6);
+
+        // Light terrain tile layer
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 12
+        }).addTo(map);
+
+        // Trade routes (dashed lines)
+        const tradeRoutes = [
+            // Nagasaki to China coast
+            { from: locations.nagasaki, to: partners.china, color: '#c73e1d' },
+            // Tsushima to Pusan
+            { from: locations.tsushima, to: partners.korea, color: '#264653' },
+            // Satsuma to Ryukyu
+            { from: locations.satsuma, to: partners.ryukyu, color: '#2d6a4f' },
+            // Matsumae to Ainu lands
+            { from: locations.matsumae, to: partners.ainu, color: '#7b2d8e' }
+        ];
+
+        tradeRoutes.forEach(route => {
+            L.polyline([
+                [route.from.lat, route.from.lng],
+                [route.to.lat, route.to.lng]
+            ], {
+                color: route.color,
+                weight: 3,
+                opacity: 0.6,
+                dashArray: '8, 6'
+            }).addTo(map);
+        });
+
+        // Create custom icon
+        function createIcon(loc, size = 24) {
+            const isGate = loc.type === 'gate';
+            const actualSize = isGate ? 30 : 22;
+
+            return L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: ${actualSize}px;
+                    height: ${actualSize}px;
+                    border-radius: 50%;
+                    background: ${loc.color};
+                    color: #fff;
+                    font-family: 'Noto Sans JP', sans-serif;
+                    font-size: ${isGate ? '12px' : '10px'};
+                    font-weight: bold;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                    border: 2px solid #fff;
+                ">${isGate ? loc.jp.charAt(0) : '●'}</div>`,
+                iconSize: [actualSize, actualSize],
+                iconAnchor: [actualSize/2, actualSize/2],
+                popupAnchor: [0, -actualSize/2]
+            });
+        }
+
+        // Create popup content
+        function createPopup(loc) {
+            const typeClass = loc.type === 'gate' ?
+                (loc.name.toLowerCase() === 'nagasaki' ? 'nagasaki' :
+                 loc.name.toLowerCase() === 'tsushima' ? 'tsushima' :
+                 loc.name.toLowerCase() === 'satsuma' ? 'satsuma' : 'matsumae') : '';
+
+            let content = `
+                <div class="popup-content">
+                    <div class="popup-header ${typeClass}">
+                        <span class="jp">${loc.jp}</span>
+                        <div class="names">
+                            <div class="en">${loc.name}</div>
+                            <div class="romaji">${loc.romaji}</div>
+                        </div>
+                    </div>
+                    <div class="popup-body">
+                        <p>${loc.description}</p>
+            `;
+
+            if (loc.controller) {
+                content += `<p><strong>Controller:</strong> ${loc.controller}</p>`;
+            }
+
+            if (loc.partners) {
+                content += `<p><strong>Partners:</strong> ${loc.partners.join(', ')}</p>`;
+            }
+
+            if (loc.exports) {
+                content += `
+                    <div class="trade-box">
+                        <div class="exports"><strong>↑ Exports:</strong> ${loc.exports}</div>
+                        <div class="imports"><strong>↓ Imports:</strong> ${loc.imports}</div>
+                    </div>
+                `;
+            }
+
+            content += '</div></div>';
+            return content;
+        }
+
+        // Add markers
+        const markers = {};
+        Object.keys(locations).forEach(key => {
+            const loc = locations[key];
+            const marker = L.marker([loc.lat, loc.lng], {
+                icon: createIcon(loc),
+                zIndexOffset: loc.type === 'gate' ? 1000 : 500
+            }).addTo(map);
+
+            marker.bindPopup(createPopup(loc), {
+                maxWidth: 300
+            });
+
+            markers[key] = marker;
+        });
+
+        // Add partner location labels
+        Object.keys(partners).forEach(key => {
+            const p = partners[key];
+            L.marker([p.lat, p.lng], {
+                icon: L.divIcon({
+                    className: 'partner-label',
+                    html: `<div style="
+                        font-size: 11px;
+                        color: #5c5040;
+                        font-style: italic;
+                        white-space: nowrap;
+                        background: rgba(255,255,255,0.8);
+                        padding: 2px 6px;
+                        border-radius: 3px;
+                    ">${p.name}</div>`,
+                    iconSize: [100, 20],
+                    iconAnchor: [50, 10]
+                }),
+                interactive: false
+            }).addTo(map);
+        });
+
+        // Sidebar click handlers
+        document.querySelectorAll('.location-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const id = this.dataset.id;
+
+                document.querySelectorAll('.location-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+
+                if (markers[id]) {
+                    const loc = locations[id];
+                    map.setView([loc.lat, loc.lng], 8, { animate: true });
+                    markers[id].openPopup();
+                }
+            });
+        });
+
+        // Fit bounds to show all of Japan
+        map.fitBounds([
+            [26, 127],  // Ryukyu
+            [45, 146]   // Northern Hokkaido
+        ], { padding: [30, 30] });
+
+        // ========================================
+        // GOKAIDO (Five Routes) MAP
+        // ========================================
+
+        const gokaidoMap = L.map('gokaido-map', {
+            zoomControl: true
+        }).setView([35.5, 137.5], 7);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 12
+        }).addTo(gokaidoMap);
+
+        // Route colors
+        const routeColors = {
+            tokaido: '#e63946',
+            nakasendo: '#457b9d',
+            koshu: '#2a9d8f',
+            oshu: '#e9c46a',
+            nikko: '#9b59b6'
+        };
+
+        // Five Routes data with waypoints (simplified for clarity)
+        const gokaidoRoutes = {
+            tokaido: {
+                name: 'Tōkaidō',
+                jp: '東海道',
+                color: '#e63946',
+                description: 'The coastal route connecting Edo to Kyoto, 53 post stations',
+                // Key waypoints along the route
+                path: [
+                    [35.6762, 139.6503], // Edo (Nihonbashi)
+                    [35.5333, 139.5833], // Kawasaki
+                    [35.4437, 139.6380], // Kanagawa
+                    [35.3192, 139.5503], // Fujisawa
+                    [35.2556, 139.1550], // Odawara
+                    [35.1019, 139.0714], // Hakone
+                    [35.0950, 138.8617], // Mishima
+                    [35.0269, 138.6683], // Numazu
+                    [34.9756, 138.3831], // Fuji
+                    [34.9769, 138.2500], // Yoshiwara
+                    [34.8850, 138.0833], // Kanbara
+                    [34.9833, 137.8500], // Mariko
+                    [34.9764, 137.7728], // Okitsu
+                    [34.9025, 137.5167], // Hamamatsu
+                    [34.7692, 137.3922], // Maisaka
+                    [34.7000, 137.0500], // Toyohashi
+                    [34.9553, 136.9081], // Okazaki
+                    [35.1167, 136.9500], // Chiryu
+                    [35.1814, 136.9064], // Narumi (near Nagoya)
+                    [35.0117, 136.5081], // Kuwana
+                    [34.9667, 136.4333], // Yokkaichi
+                    [34.8500, 136.1167], // Kameyama
+                    [34.7917, 136.0833], // Seki
+                    [34.9333, 135.8000], // Tsuchiyama
+                    [34.9667, 135.9500], // Minakuchi
+                    [35.0167, 135.8667], // Kusatsu
+                    [35.0117, 135.7681]  // Kyoto
+                ],
+                stations: [
+                    { name: 'Nihonbashi', jp: '日本橋', lat: 35.6839, lng: 139.7744 },
+                    { name: 'Odawara', jp: '小田原', lat: 35.2556, lng: 139.1550 },
+                    { name: 'Hakone', jp: '箱根', lat: 35.1858, lng: 139.0258 },
+                    { name: 'Hamamatsu', jp: '浜松', lat: 34.7108, lng: 137.7261 },
+                    { name: 'Okazaki', jp: '岡崎', lat: 34.9553, lng: 137.1728 },
+                    { name: 'Kuwana', jp: '桑名', lat: 35.0633, lng: 136.6839 },
+                    { name: 'Kusatsu', jp: '草津', lat: 35.0167, lng: 135.9608 },
+                    { name: 'Kyoto', jp: '京都', lat: 35.0117, lng: 135.7681 }
+                ]
+            },
+            nakasendo: {
+                name: 'Nakasendō',
+                jp: '中山道',
+                color: '#457b9d',
+                description: 'The inland mountain route to Kyoto, 69 post stations',
+                path: [
+                    [35.6839, 139.7744], // Nihonbashi
+                    [35.7333, 139.7167], // Itabashi
+                    [35.8167, 139.6000], // Warabi
+                    [35.9000, 139.4833], // Urawa
+                    [35.9667, 139.3333], // Omiya
+                    [36.0500, 139.2500], // Ageo
+                    [36.1500, 139.2000], // Okegawa
+                    [36.2500, 139.0500], // Konosu
+                    [36.3500, 138.8500], // Kumagaya
+                    [36.3167, 138.6333], // Fukaya
+                    [36.2667, 138.4500], // Honjo
+                    [36.3333, 138.2500], // Takasaki
+                    [36.3833, 138.8833], // Annaka
+                    [36.3500, 138.6000], // Matsuida
+                    [36.3333, 138.5500], // Sakamoto
+                    [36.3417, 138.5333], // Karuizawa
+                    [36.2333, 138.1667], // Oiwake
+                    [36.1500, 138.1000], // Iwamurada
+                    [36.0667, 138.1167], // Shionada
+                    [36.0833, 138.0167], // Wada
+                    [36.0833, 137.9667], // Shimosuwa
+                    [35.9833, 137.8333], // Shiojiri
+                    [35.8500, 137.7333], // Niekawa
+                    [35.7667, 137.6500], // Narai
+                    [35.7000, 137.5667], // Yabuhara
+                    [35.6333, 137.5000], // Miyano-koshi
+                    [35.5333, 137.3167], // Fukushima
+                    [35.4833, 137.2667], // Agematsu
+                    [35.4500, 137.1500], // Suhara
+                    [35.4167, 137.0333], // Nojiri
+                    [35.3833, 136.9500], // Midono
+                    [35.3500, 136.8500], // Tsumago
+                    [35.3167, 136.7833], // Magome
+                    [35.3333, 136.5167], // Oi
+                    [35.3667, 136.3833], // Mitake
+                    [35.4167, 136.2333], // Fushimi
+                    [35.4333, 136.0667], // Ota
+                    [35.4667, 135.9333], // Unuma
+                    [35.4833, 135.8000], // Kanō
+                    [35.4500, 135.7500], // Kawanamiji
+                    [35.3833, 135.6500], // Mino-Akasaka
+                    [35.3500, 135.5833], // Tarui
+                    [35.3167, 135.5000], // Sekigahara
+                    [35.2833, 135.4167], // Imasu
+                    [35.2333, 135.2333], // Kashiwabara
+                    [35.1833, 135.1500], // Samegai
+                    [35.1333, 135.0500], // Bamba
+                    [35.1167, 134.9667], // Torimoto
+                    [35.0833, 134.8833], // Takamiya
+                    [35.0667, 134.8000], // Echigawa
+                    [35.0500, 134.7000], // Musa
+                    [35.0333, 134.6167], // Moriyama
+                    [35.0167, 135.8667], // Kusatsu
+                    [35.0117, 135.7681]  // Kyoto
+                ],
+                stations: [
+                    { name: 'Nihonbashi', jp: '日本橋', lat: 35.6839, lng: 139.7744 },
+                    { name: 'Takasaki', jp: '高崎', lat: 36.3219, lng: 139.0032 },
+                    { name: 'Karuizawa', jp: '軽井沢', lat: 36.3481, lng: 138.5978 },
+                    { name: 'Shimosuwa', jp: '下諏訪', lat: 36.0708, lng: 138.0842 },
+                    { name: 'Narai', jp: '奈良井', lat: 35.9633, lng: 137.8128 },
+                    { name: 'Magome', jp: '馬籠', lat: 35.5275, lng: 137.5667 },
+                    { name: 'Sekigahara', jp: '関ヶ原', lat: 35.3653, lng: 136.4614 },
+                    { name: 'Kyoto', jp: '京都', lat: 35.0117, lng: 135.7681 }
+                ]
+            },
+            koshu: {
+                name: 'Kōshū Kaidō',
+                jp: '甲州街道',
+                color: '#2a9d8f',
+                description: 'Route to Kai Province (modern Yamanashi), 44 stations',
+                path: [
+                    [35.6839, 139.7744], // Nihonbashi
+                    [35.6833, 139.7000], // Naito-Shinjuku
+                    [35.6833, 139.5833], // Takaido
+                    [35.7000, 139.4667], // Fuchu
+                    [35.7000, 139.3500], // Hino
+                    [35.6667, 139.2500], // Hachioji
+                    [35.6333, 139.1167], // Kobotoke
+                    [35.6000, 139.0500], // Kotsukue
+                    [35.5500, 138.9333], // Uenohara
+                    [35.5000, 138.8333], // Tsuru
+                    [35.4667, 138.7167], // Saruhashi
+                    [35.4500, 138.6000], // Kofu
+                    [35.6500, 138.5333], // Nirasaki
+                    [35.8167, 138.3000], // Nagasaka
+                    [35.9500, 138.2500], // Kobuchizawa
+                    [36.0708, 138.0842]  // Shimosuwa (connects to Nakasendo)
+                ],
+                stations: [
+                    { name: 'Nihonbashi', jp: '日本橋', lat: 35.6839, lng: 139.7744 },
+                    { name: 'Shinjuku', jp: '新宿', lat: 35.6895, lng: 139.6917 },
+                    { name: 'Hachioji', jp: '八王子', lat: 35.6558, lng: 139.3239 },
+                    { name: 'Kofu', jp: '甲府', lat: 35.6636, lng: 138.5683 },
+                    { name: 'Shimosuwa', jp: '下諏訪', lat: 36.0708, lng: 138.0842 }
+                ]
+            },
+            oshu: {
+                name: 'Ōshū Kaidō',
+                jp: '奥州街道',
+                color: '#e9c46a',
+                description: 'Northern route to Shirakawa, 27 stations',
+                path: [
+                    [35.6839, 139.7744], // Nihonbashi
+                    [35.7500, 139.8000], // Senju
+                    [35.8333, 139.8167], // Soka
+                    [35.9000, 139.8500], // Koshigaya
+                    [35.9667, 139.8667], // Kasukabe
+                    [36.0500, 139.8833], // Sugito
+                    [36.1167, 139.9000], // Satte
+                    [36.2000, 139.9167], // Kurihashi
+                    [36.3000, 139.9333], // Koga
+                    [36.4000, 139.9500], // Noda
+                    [36.5000, 139.9667], // Mamayu
+                    [36.6000, 139.9833], // Oyama
+                    [36.7667, 140.0167], // Mamada
+                    [36.8667, 140.0500], // Utsunomiya
+                    [36.9667, 140.0833], // Hakozaki
+                    [37.0667, 140.1167], // Ujie
+                    [37.1333, 140.1333], // Kitsuregawa
+                    [37.2000, 140.1500], // Sakuyama
+                    [37.2667, 140.1667], // Otawara
+                    [37.3333, 140.1833], // Nabeyama
+                    [37.4000, 140.2000], // Ashino
+                    [37.1311, 140.2067]  // Shirakawa
+                ],
+                stations: [
+                    { name: 'Nihonbashi', jp: '日本橋', lat: 35.6839, lng: 139.7744 },
+                    { name: 'Senju', jp: '千住', lat: 35.7483, lng: 139.8044 },
+                    { name: 'Koga', jp: '古河', lat: 36.1939, lng: 139.7019 },
+                    { name: 'Utsunomiya', jp: '宇都宮', lat: 36.5551, lng: 139.8828 },
+                    { name: 'Shirakawa', jp: '白河', lat: 37.1311, lng: 140.2067 }
+                ]
+            },
+            nikko: {
+                name: 'Nikkō Kaidō',
+                jp: '日光街道',
+                color: '#9b59b6',
+                description: 'Pilgrimage route to Nikkō shrine, 21 stations',
+                path: [
+                    [35.6839, 139.7744], // Nihonbashi
+                    [35.7483, 139.8044], // Senju
+                    [35.8333, 139.8167], // Soka
+                    [35.9000, 139.8500], // Koshigaya
+                    [35.9667, 139.8667], // Kasukabe
+                    [36.0500, 139.8833], // Sugito
+                    [36.1167, 139.9000], // Satte
+                    [36.2000, 139.8833], // Kurihashi - branches from Oshu
+                    [36.2500, 139.8333], // Naka
+                    [36.3333, 139.7833], // Koganei
+                    [36.4167, 139.7500], // Ishihashi
+                    [36.5000, 139.6833], // Suzumenomiya
+                    [36.5551, 139.8828], // Utsunomiya
+                    [36.6333, 139.7167], // Tokuyama
+                    [36.7333, 139.6667], // Okariya
+                    [36.7500, 139.6000], // Imaichi
+                    [36.7589, 139.5992]  // Nikko
+                ],
+                stations: [
+                    { name: 'Nihonbashi', jp: '日本橋', lat: 35.6839, lng: 139.7744 },
+                    { name: 'Senju', jp: '千住', lat: 35.7483, lng: 139.8044 },
+                    { name: 'Utsunomiya', jp: '宇都宮', lat: 36.5551, lng: 139.8828 },
+                    { name: 'Imaichi', jp: '今市', lat: 36.7211, lng: 139.6853 },
+                    { name: 'Nikkō', jp: '日光', lat: 36.7589, lng: 139.5992 }
+                ]
+            }
+        };
+
+        // Add Edo (Nihonbashi) marker
+        const edoMarker = L.marker([35.6839, 139.7744], {
+            icon: L.divIcon({
+                className: 'edo-marker',
+                html: `<div style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    background: #c73e1d;
+                    color: #fff;
+                    font-family: 'Noto Sans JP', sans-serif;
+                    font-size: 14px;
+                    font-weight: bold;
+                    box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+                    border: 3px solid #fff;
+                ">江戸</div>`,
+                iconSize: [36, 36],
+                iconAnchor: [18, 18]
+            }),
+            zIndexOffset: 2000
+        }).addTo(gokaidoMap);
+
+        edoMarker.bindPopup(`
+            <div class="popup-content">
+                <div class="popup-header" style="border-left: 4px solid #c73e1d; padding-left: 8px;">
+                    <span class="jp" style="color: #c73e1d;">日本橋</span>
+                    <div class="names">
+                        <div class="en">Nihonbashi, Edo</div>
+                        <div class="romaji">Starting point of all five routes</div>
+                    </div>
+                </div>
+                <div class="popup-body">
+                    <p>The "Bridge of Japan" in Edo was the official starting point (zero milestone) for all five highways. Distances throughout Japan were measured from here.</p>
+                </div>
+            </div>
+        `, { maxWidth: 280 });
+
+        // Store route polylines for highlighting
+        const routePolylines = {};
+
+        // Add routes to map
+        Object.keys(gokaidoRoutes).forEach(routeKey => {
+            const route = gokaidoRoutes[routeKey];
+
+            // Main route line
+            const polyline = L.polyline(route.path, {
+                color: route.color,
+                weight: 4,
+                opacity: 0.8
+            }).addTo(gokaidoMap);
+
+            routePolylines[routeKey] = polyline;
+
+            // Add station markers
+            route.stations.forEach((station, index) => {
+                // Skip Nihonbashi (already have Edo marker)
+                if (station.name === 'Nihonbashi') return;
+
+                const stationMarker = L.marker([station.lat, station.lng], {
+                    icon: L.divIcon({
+                        className: 'station-marker',
+                        html: `<div style="
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            background: #fff;
+                            border: 3px solid ${route.color};
+                            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+                        "></div>`,
+                        iconSize: [12, 12],
+                        iconAnchor: [6, 6]
+                    }),
+                    zIndexOffset: 500
+                }).addTo(gokaidoMap);
+
+                stationMarker.bindPopup(`
+                    <div class="popup-content">
+                        <div class="popup-header" style="border-left: 4px solid ${route.color}; padding-left: 8px;">
+                            <span class="jp" style="color: ${route.color};">${station.jp}</span>
+                            <div class="names">
+                                <div class="en">${station.name}</div>
+                                <div class="romaji">${route.name} post station</div>
+                            </div>
+                        </div>
+                    </div>
+                `, { maxWidth: 200 });
+            });
+        });
+
+        // Sidebar click handlers for Gokaido routes
+        document.querySelectorAll('.route-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const routeKey = this.dataset.route;
+                const route = gokaidoRoutes[routeKey];
+
+                // Update active state
+                document.querySelectorAll('.route-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+
+                // Highlight selected route, dim others
+                Object.keys(routePolylines).forEach(key => {
+                    if (key === routeKey) {
+                        routePolylines[key].setStyle({ opacity: 1, weight: 6 });
+                    } else {
+                        routePolylines[key].setStyle({ opacity: 0.3, weight: 3 });
+                    }
+                });
+
+                // Fit bounds to show the route
+                gokaidoMap.fitBounds(routePolylines[routeKey].getBounds(), { padding: [40, 40] });
+            });
+        });
+
+        // Double-click to reset view
+        gokaidoMap.on('dblclick', function() {
+            Object.keys(routePolylines).forEach(key => {
+                routePolylines[key].setStyle({ opacity: 0.8, weight: 4 });
+            });
+            gokaidoMap.setView([35.5, 137.5], 7);
+        });
+    </script>
+
+</body>
+</html>

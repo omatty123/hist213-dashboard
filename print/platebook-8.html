@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Platebook - Plate 8: Rise of Tokugawa</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* Header row */
+    .header {
+      display: flex;
+      margin-bottom: 5px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Readings row */
+    .readings-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+      font-size: 9px;
+    }
+    .reading-item {
+      flex: 1;
+      border: 1px solid #aaa;
+      padding: 3px 6px;
+      background: #f9f9f9;
+    }
+    .reading-item strong { font-size: 9px; }
+
+    /* Section labels */
+    .label {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 3px;
+      background: #fff;
+    }
+
+    /* Person/Place/Thing table */
+    .ppt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+    .ppt-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+      width: 33.33%;
+    }
+    .ppt-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      height: 20px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin-bottom: 4px;
+    }
+    .timeline-box {
+      border: 1px solid #aaa;
+      padding: 6px 12px;
+      height: 78px;
+      position: relative;
+      background-color: #fefdfb;
+    }
+    .timeline-line {
+      position: absolute;
+      bottom: 24px;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      background: #333;
+    }
+    .timeline-ticks {
+      position: absolute;
+      bottom: 24px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
+      width: 2px;
+      height: 12px;
+      background: #333;
+    }
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8px;
+      text-align: center;
+    }
+    .timeline-labels span {
+      max-width: 70px;
+      line-height: 1.2;
+    }
+
+    /* Map */
+    .map-section {
+      margin-bottom: 4px;
+    }
+    .map-container {
+      display: flex;
+      gap: 8px;
+      margin-top: 3px;
+    }
+    .map-box {
+      position: relative;
+      border: 1px solid #aaa;
+      background: #f5f5f5;
+      width: 100%;
+      height: 100px;
+      overflow: hidden;
+      padding: 8px;
+    }
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      font-size: 9px;
+    }
+    .map-loc strong { font-weight: 600; }
+    .map-quote {
+      font-style: italic;
+      font-size: 9px;
+      text-align: center;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Questions table */
+    .questions-section {
+      margin-bottom: 4px;
+    }
+    .questions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .questions-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+    }
+    .questions-table th:last-child {
+      width: 45%;
+    }
+    .questions-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+    .questions-table .q-num {
+      width: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: none;
+    }
+    .question-cell {
+      min-height: 28px;
+    }
+    .answer-cell {
+      min-height: 28px;
+    }
+
+    /* Bottom section */
+    .bottom-section {
+      display: flex;
+      gap: 6px;
+    }
+    .causes-box, .notes-box {
+      flex: 1;
+    }
+    .bottom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-weight: 600;
+      font-size: 9px;
+      text-align: left;
+      background: #fff;
+    }
+    .bottom-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 9px;
+      vertical-align: top;
+      height: 65px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Filled content styling */
+    .filled {
+      color: #000;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .filled strong {
+      font-weight: 600;
+    }
+
+    /* Leaflet map label styling */
+    .map-label {
+      background: transparent !important;
+      border: none !important;
+    }
+
+    @media print {
+      body { padding: 0; }
+      #tokugawa-map {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="plate-num">Plate # 8</div>
+    <div class="topic">Rise of Tokugawa: Military Government and Social Order</div>
+    <div class="date">Jan 24</div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings-row">
+    <div class="reading-item"><strong>Primary:</strong> Tokugawa Ieyasu on Social Order, Laws of Military Households (1615), Yamaga Sokō's Way of the Samurai</div>
+    <div class="reading-item"><strong>Ebrey Ch. 17:</strong> Tokugawa Japan — political structure, sankin-kōtai, sakoku, urban growth</div>
+  </div>
+
+  <!-- Person / Place / Thing -->
+  <table class="ppt-table">
+    <thead>
+      <tr>
+        <th><span class="label">Person</span></th>
+        <th><span class="label">Place</span></th>
+        <th><span class="label">Thing</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="filled"><strong>Tokugawa Ieyasu</strong> (1543-1616) — Third unifier; founded 265-year shogunate</td>
+        <td class="filled"><strong>Edo (Tokyo)</strong> — Shogunal capital; world's largest city by 1700 (~1 million)</td>
+        <td class="filled"><strong>Shinōkōshō (士農工商)</strong> — Four-class hierarchy: samurai, farmers, artisans, merchants</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Yamaga Sokō</strong> (1622-1685) — Confucian philosopher; asked "What justifies samurai?"</td>
+        <td class="filled"><strong>Kyoto</strong> — Imperial capital; emperor symbolic but powerless</td>
+        <td class="filled"><strong>Buke Shohatto</strong> — Laws for Military Households (1615); controlled daimyo</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Toyotomi Hideyoshi</strong> (1536-1598) — Previous unifier; his dynasty failed</td>
+        <td class="filled"><strong>Nagasaki</strong> — Sole port for Dutch/Chinese trade under sakoku</td>
+        <td class="filled"><strong>Sankin-kōtai</strong> — Alternate attendance; daimyo families as hostages in Edo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <span class="label">Timeline: From Civil War to 250 Years of Peace</span>
+    <div class="timeline-box">
+      <div class="timeline-labels">
+        <span>1467-1615<br><em>Sengoku (civil war)</em></span>
+        <span>1600<br><em>Sekigahara</em></span>
+        <span>1603<br><em>Ieyasu = Shogun</em></span>
+        <span>1615<br><em>Buke Shohatto</em></span>
+        <span>1635<br><em>Sakoku formalized</em></span>
+        <span>1637-38<br><em>Shimabara (last war)</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-section">
+    <span class="label">Map: Tokugawa Japan</span>
+    <div id="tokugawa-map" style="width:100%; height:160px; border:1px solid #aaa; border-radius:4px; margin-top:3px;"></div>
+    <div class="map-quote">"One who cultivates the way of the warrior only in times of crisis is like a rat who bites his captor." — Tokugawa Ieyasu</div>
+  </div>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize map centered on central Japan, wide view
+    const map = L.map('tokugawa-map', {
+      zoomControl: false,
+      attributionControl: false
+    }).setView([35.5, 136.5], 6);
+
+    // Light tiles for print
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 10
+    }).addTo(map);
+
+    // Location data
+    const locations = [
+      { name: 'Edo 江戸', lat: 35.6762, lng: 139.6503, type: 'capital', desc: 'Shogunal capital' },
+      { name: 'Kyoto 京都', lat: 35.0116, lng: 135.7681, type: 'imperial', desc: 'Imperial capital' },
+      { name: 'Osaka 大阪', lat: 34.6937, lng: 135.5023, type: 'city', desc: 'Commercial hub' },
+      { name: 'Nagasaki 長崎', lat: 32.7503, lng: 129.8777, type: 'port', desc: 'Dutch/Chinese trade' },
+      { name: 'Sekigahara', lat: 35.3667, lng: 136.4667, type: 'battle', desc: '1600 battle' },
+      { name: 'Shimabara 島原', lat: 32.6283, lng: 130.2186, type: 'battle', desc: '1637-38 rebellion' },
+      { name: 'Satsuma 薩摩', lat: 31.5966, lng: 130.5571, type: 'domain', desc: 'Outer domain (tozama)' },
+      { name: 'Chōshū 長州', lat: 34.1861, lng: 131.4705, type: 'domain', desc: 'Outer domain (tozama)' }
+    ];
+
+    const colors = {
+      capital: '#c41e3a',
+      imperial: '#9b59b6',
+      city: '#2980b9',
+      port: '#27ae60',
+      battle: '#e67e22',
+      domain: '#7f8c8d'
+    };
+
+    // Add markers
+    locations.forEach(loc => {
+      const marker = L.circleMarker([loc.lat, loc.lng], {
+        radius: loc.type === 'capital' ? 8 : 6,
+        fillColor: colors[loc.type],
+        color: '#fff',
+        weight: 2,
+        fillOpacity: 0.9
+      }).addTo(map);
+
+      // Add label
+      L.marker([loc.lat, loc.lng], {
+        icon: L.divIcon({
+          className: 'map-label',
+          html: '<span style="font-size:8px;font-weight:600;white-space:nowrap;background:rgba(255,255,255,0.85);padding:1px 3px;border-radius:2px;color:#333;">' + loc.name + '</span>',
+          iconAnchor: [-8, 4]
+        })
+      }).addTo(map);
+
+      marker.bindPopup('<strong>' + loc.name + '</strong><br><em>' + loc.desc + '</em>', { closeButton: false });
+    });
+
+    // Draw Tōkaidō route (Edo → Kyoto)
+    const tokaido = [
+      [35.6762, 139.6503], // Edo
+      [35.1815, 136.9066], // Nagoya area
+      [35.0116, 135.7681]  // Kyoto
+    ];
+    L.polyline(tokaido, {
+      color: '#c41e3a',
+      weight: 2,
+      dashArray: '5, 5',
+      opacity: 0.7
+    }).addTo(map);
+
+    // Fit bounds to show all of Japan nicely
+    map.fitBounds([[31, 129], [36.5, 140]], { padding: [5, 5] });
+  });
+  </script>
+
+  <!-- Penetrating Questions -->
+  <div class="questions-section">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th colspan="2"><span class="label">Penetrating Questions</span></th>
+          <th><span class="label">Key Points</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="q-num">1</td>
+          <td class="question-cell filled">Ieyasu: "One who cultivates the way of the warrior only in times of crisis is like a rat who bites his captor" — how does this differ from Western heroism?</td>
+          <td class="answer-cell filled">Western narratives valorize improvised courage (underdogs, last stands). Ieyasu dismisses this as desperation. True mastery = constant preparation, not crisis improvisation.</td>
+        </tr>
+        <tr>
+          <td class="q-num">2</td>
+          <td class="question-cell filled">Yamaga Sokō: "The samurai eats without growing, uses without making, profits without selling. What is the justification?" How do societies justify non-productive elites?</td>
+          <td class="answer-cell filled">Sokō's answer: moral authority. Samurai have leisure for ethical cultivation that busy farmers lack. Compare: clergy, academia, military in peacetime. Is it convincing?</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">The Buke Shohatto calls marriage alliances "the root of treason." Why was the shogunate obsessed with who married whom?</td>
+          <td class="answer-cell filled">Marriage = political alliance = potential coalition against Tokugawa. Control reproduction = control succession = control the future. Parallel: Habsburg marriages.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom: Connections + Teaching Notes -->
+  <div class="bottom-section">
+    <div class="causes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Connections</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              <strong>From Plate 7:</strong> Joseon Korea debated reform but couldn't implement. Japan took a different path: freeze society to prevent instability.<br>
+              <strong>Broader theme:</strong> Both faced post-war order. Korea chose debate; Japan chose control. Which was "better"? Depends on what you value.<br>
+              <strong>To Plates 10-11:</strong> When Western pressure comes (1850s), both Qing and Tokugawa face the question: can rigid systems adapt?
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Teaching Notes</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              • The "rat" quote is gold — vivid, memorable, counterintuitive<br>
+              • Sokō's "idler" anxiety is relatable — students facing job markets understand obsolete skills<br>
+              • Frugality edicts surprise students: samurai = austere, not flashy<br>
+              • Edo's size (1 million) shocks students — compare to London, Paris<br>
+              • Compare to Plate 7: Korea debated, Japan imposed. Neither obviously superior.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>提案된 朝鮮 海上貿易路 | Proposed Chosŏn Maritime Trade Routes</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Reliable Leaflet.curve CDN -->
+    <script src="https://unpkg.com/@elfalem/leaflet.curve@0.9.2/dist/leaflet.curve.js"></script>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: #f8fafc;
+            color: #1e293b;
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+            visibility: hidden;
+        }
+
+        #map.ready {
+            visibility: visible;
+        }
+
+        .map-title {
+            background: rgba(255, 255, 255, 0.9);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            padding: 16px 22px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            line-height: 1.3;
+        }
+
+        .map-title .main {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+        }
+
+        .map-title .sub {
+            font-size: 15px;
+            color: #64748b;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .legend {
+            background: rgba(255, 255, 255, 0.9);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 14px;
+            min-width: 260px;
+            color: #334155;
+        }
+
+        .legend .heading {
+            font-weight: 800;
+            font-size: 14px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #475569;
+        }
+
+        .legend .row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 12px 0;
+        }
+
+        .legend .line-preview {
+            width: 40px;
+            height: 1px;
+            border-bottom-width: 3px;
+            border-bottom-style: dashed;
+        }
+
+        .legend .markers {
+            margin-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 14px;
+        }
+
+        .legend .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        /* Large English Label Styling */
+        .city-label {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            color: #0f172a;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 1), -2px -2px 4px rgba(255, 255, 255, 1);
+            white-space: nowrap;
+        }
+
+        .leaflet-tooltip-left:before,
+        .leaflet-tooltip-right:before {
+            display: none;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: white !important;
+            border-radius: 8px;
+            color: #1e293b !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .leaflet-popup-tip {
+            background: white !important;
+        }
+
+        .leaflet-control-zoom a {
+            background: white !important;
+            color: #1e293b !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mapDiv = document.getElementById("map");
+
+            const map = L.map("map", {
+                zoomControl: true,
+                zoomSnap: 0.1
+            });
+
+            // Premium Light Basemap (CARTO Voyager)
+            L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+                subdomains: "abcd",
+                maxZoom: 10,
+                minZoom: 3,
+                attribution: '&copy; CARTO'
+            }).addTo(map);
+
+            // Locations (Primary English Names)
+            const chinese = [
+                { eng: "Dengzhou", han: "登州", ll: [37.81, 120.76], pos: 'top' },
+                { eng: "Laizhou", han: "萊州", ll: [37.18, 119.94], pos: 'bottom' },
+                { eng: "Liaodong", han: "遼東", ll: [38.80, 121.25], pos: 'left' },
+                { eng: "Zhejiang", han: "浙江", ll: [29.86, 121.55], pos: 'right' },
+                { eng: "Hubei", han: "湖北", ll: [30.50, 114.30], pos: 'left', inland: true }
+            ];
+
+            const korean = [
+                { eng: "Changyŏn", han: "長淵", ll: [38.25, 125.10], pos: 'right' },
+                { eng: "Sŏnch'ŏn", han: "宣川", ll: [39.82, 124.95], pos: 'right' },
+                { eng: "Ŭnjin", han: "恩津", ll: [36.20, 127.00], pos: 'top' },
+                { eng: "Yŏsan", han: "礪山", ll: [35.95, 126.95], pos: 'bottom' }
+            ];
+
+            function addMarker(p, color) {
+                const marker = L.circleMarker(p.ll, {
+                    radius: p.inland ? 5 : 7,
+                    color: color,
+                    weight: 2.5,
+                    fillColor: color,
+                    fillOpacity: 0.9
+                }).addTo(map);
+
+                // Large Static Label (English)
+                marker.bindTooltip(`${p.eng}`, {
+                    permanent: true,
+                    direction: p.pos || 'auto',
+                    className: 'city-label',
+                    offset: [0, 0]
+                }).openTooltip();
+
+                marker.bindPopup(`<b>${p.eng}</b><br>${p.han}`);
+            }
+
+            // Updated colors for light theme visibility
+            chinese.forEach(p => addMarker(p, "#dc2626")); // Stronger Red
+            korean.forEach(p => addMarker(p, "#2563eb"));  // Stronger Blue
+
+            const style = (c, dash) => ({ color: c, weight: 4, opacity: 0.8, dashArray: dash || "12 14", lineCap: "round", fill: false });
+
+            function curve(start, cp, end, color, dash) {
+                if (typeof L.curve === 'function') {
+                    L.curve(['M', start, 'Q', cp, end], style(color, dash)).addTo(map);
+                } else {
+                    L.polyline([start, end], style(color, dash)).addTo(map);
+                }
+            }
+
+            // Trade Routes
+            curve([38.80, 121.25], [38.5, 124.0], [39.82, 124.95], "#2563eb");     // Liaodong -> Sŏnch'ŏn
+            curve([37.81, 120.76], [38.8, 123.0], [38.25, 125.10], "#dc2626");     // Dengzhou -> Changyŏn
+            curve([37.18, 119.94], [38.2, 122.5], [38.25, 125.10], "#dc2626");     // Laizhou -> Changyŏn
+            curve([29.86, 121.55], [33.0, 125.5], [36.20, 127.00], "#059669");     // Zhejiang -> Ŭnjin
+            curve([29.86, 121.55], [32.5, 125.8], [35.95, 126.95], "#059669");     // Zhejiang -> Yŏsan
+            curve([30.50, 114.30], [30.2, 118.00], [29.86, 121.55], "#64748b", "5 10"); // Inland
+
+            // UI
+            const title = L.control({ position: "topleft" });
+            title.onAdd = () => {
+                const d = L.DomUtil.create("div", "map-title");
+                d.innerHTML = `<div class="main">Proposed Chosŏn Maritime Trade Routes</div><div class="sub">17th - 19th Century Networks</div>`;
+                return d;
+            };
+            title.addTo(map);
+
+            const legend = L.control({ position: "bottomright" });
+            legend.onAdd = () => {
+                const d = L.DomUtil.create("div", "legend");
+                d.innerHTML = `
+          <div class="heading">Trade Routes</div>
+          <div class="row"><div class="line-preview" style="border-bottom-color: #dc2626"></div> Northern Route (Red)</div>
+          <div class="row"><div class="line-preview" style="border-bottom-color: #2563eb"></div> Bay Route (Blue)</div>
+          <div class="row"><div class="line-preview" style="border-bottom-color: #059669"></div> Southern Route (Green)</div>
+          <div class="markers">
+            <div class="row"><span class="dot" style="background: #dc2626"></span> Chinese Hubs / Inland</div>
+            <div class="row"><span class="dot" style="background: #2563eb"></span> Korean Ports</div>
+          </div>
+        `;
+                return d;
+            };
+            legend.addTo(map);
+
+            map.fitBounds(L.latLngBounds([...chinese, ...korean].map(p => p.ll)).pad(0.3));
+            mapDiv.classList.add("ready");
+        });
+    </script>
+</body>
+
+</html>

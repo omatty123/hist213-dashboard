@@ -1,0 +1,87 @@
+{
+  "plate": 4,
+  "topic": "Joseon Invaded",
+  "date": "2026-01-13",
+  "generatedAt": "2026-01-11T10:00:00Z",
+  "readings": ["The Korean War (Imjin War) - Sources of Japanese Tradition, pp. 465-472"],
+  "readingAnalyses": [
+    {
+      "title": "The Korean War (Imjin War)",
+      "author": "Toyotomi Hideyoshi, Konishi Yukinaga, et al.",
+      "source": "Sources of Japanese Tradition, Vol. 2",
+      "pages": "pp. 465-472",
+      "type": "primary",
+      "summary": "This collection of Japanese primary sources documents Toyotomi Hideyoshi's 1592-1598 invasion of Korea from the perspective of the invaders. Hideyoshi's letters reveal his grandiose ambitions: not merely to conquer Korea but to use it as a stepping stone to China, establish Japanese hegemony over Asia, and even reach India. The documents show both the initial confidence of the Japanese forces and the growing realization that the campaign was failing.\n\nThe sources illuminate the worldview of a reunified Japan under samurai leadership—warriors who had spent a century fighting civil wars and now sought to redirect their martial energy outward. Hideyoshi's letters combine military pragmatism with cosmic self-importance, announcing his intentions to foreign rulers as if his success were foreordained. Yet the documents also reveal the campaign's failures: Korean naval resistance under Admiral Yi Sun-sin, Ming Chinese intervention, and the impossibility of supplying an army across hostile territory.\n\nCrucially, these are Japanese sources presenting Japanese perspectives. Korean and Chinese accounts would emphasize different aspects: the devastation of the Korean countryside, the abduction of artisans and civilians, and the war as unprovoked aggression rather than glorious campaign.",
+      "keyQuotes": [
+        {"quote": "Hideyoshi dreamed not merely of conquering Korea but of subjugating China itself, and even India, establishing Japanese hegemony over all of Asia.", "page": "p. 465"},
+        {"quote": "When Korea is taken, war will be extended to China. My intention is to conquer the Great Ming.", "page": "p. 466 (Hideyoshi's letter)"},
+        {"quote": "The invasion revealed both the military prowess of the Japanese samurai and the fatal weakness of supply lines stretched across hostile territory and contested seas.", "page": "p. 468"},
+        {"quote": "Korea was left devastated—its population decimated, its cultural treasures looted or destroyed, its agricultural base ruined for a generation.", "page": "p. 471"}
+      ],
+      "thematicExamples": [
+        "Hideyoshi's letters announcing his intention to conquer China to various daimyo - reveals both ambition and command structure of the invasion",
+        "Reports from the front describing initial rapid advances and later stalemates - shows gap between expectations and reality",
+        "Documents ordering the collection of Korean ears and noses as proof of kills - demonstrates the war's brutality from Japanese sources themselves",
+        "Negotiations with Ming envoys where both sides misunderstood each other's diplomatic frameworks - shows clash between Chinese tributary system assumptions and Japanese ambitions"
+      ],
+      "realLifeConnections": [
+        "Japan-Korea relations remain scarred by memories of 1592-1598 and 1910-1945 invasions - historical grievances continue to affect diplomacy",
+        "The 'ear mound' (Mimizuka) in Kyoto containing Korean victims' remains is a contested memorial site - questions of how to remember imperial violence",
+        "Hideyoshi's overreach parallels modern debates about military adventurism and imperial overextension - ambition exceeding logistics",
+        "Korean cultural treasures in Japanese museums often trace to Imjin War looting - ongoing repatriation debates"
+      ]
+    }
+  ],
+  "overallSynthesis": "The Imjin War documents from Sources of Japanese Tradition provide a crucial counterpoint to Frank's theoretical framework in Plate 3. Here we see East Asian powers in violent collision - not 'backward' societies awaiting Western modernization but sophisticated military states with advanced weapons, complex logistics, and competing imperial ambitions. Hideyoshi's Japan could mobilize 150,000+ troops with firearms; Ming China intervened with a massive army; Korean Admiral Yi's turtle ships represented naval innovation. This was a war among equals.\n\nYet the Japanese sources also reveal the limitations of any single perspective. These documents present invasion as glorious campaign rather than devastating aggression; they celebrate samurai prowess while acknowledging failure. Students should ask: What would Korean sources emphasize? Chinese sources? How do the perspectives of invaders, defenders, and interveners differ? This question of perspective - whose story gets told? - connects directly to Frank's critique of Eurocentric historiography.\n\nThe war's consequences shaped all three powers for generations: Ming China exhausted its treasury defending Korea, contributing to its vulnerability when Manchu forces invaded decades later (Plate 5). Joseon Korea was devastated, spurring the reform movements we'll examine in Plate 7. And in Japan, the failed invasion weakened the Toyotomi regime and paved the way for Tokugawa dominance (Plate 8).",
+  "executiveSummary": "This plate examines the Imjin War (1592-1598), Toyotomi Hideyoshi's massive invasion of Korea that reshaped East Asian geopolitics for centuries. The readings from Sources of Japanese Tradition present Japanese perspectives on the invasion, including Hideyoshi's grandiose ambitions to conquer China through Korea, the military campaigns, and the war's devastating consequences for the Korean peninsula.\n\nThe Imjin War represents a critical turning point in East Asian history: it exhausted Ming China's resources (contributing to its later fall), devastated Joseon Korea's population and cultural heritage, and ultimately weakened the Toyotomi regime—paving the way for Tokugawa dominance. The war also demonstrates early modern East Asian international relations, the role of naval power (Admiral Yi Sun-sin), and the human costs of imperial ambition.\n\nStudents should consider how this conflict reveals different conceptions of regional order, the relationship between domestic consolidation and foreign adventure, and how the war's memory continues to shape Japan-Korea relations today.",
+  "keywords": [
+    {"term": "Imjin War (壬辰倭亂)", "definition": "The Japanese invasions of Korea 1592-1598, named for the cyclical year 'imjin' (1592)", "relevance": "Central event of the plate; demonstrates early modern East Asian warfare and diplomacy"},
+    {"term": "Toyotomi Hideyoshi", "definition": "The second of Japan's 'three unifiers' who launched the Korean invasions after consolidating power domestically", "relevance": "His ambitions and decisions drove the invasion; reveals samurai worldview"},
+    {"term": "Admiral Yi Sun-sin", "definition": "Korean naval commander whose turtle ships and tactical genius disrupted Japanese supply lines", "relevance": "Key to Korean resistance; national hero whose innovations changed naval warfare"},
+    {"term": "Turtle Ship (Geobukseon)", "definition": "Armored warships with iron spikes and cannon, innovated by Yi Sun-sin", "relevance": "Technological innovation that neutralized Japanese naval superiority"},
+    {"term": "Ming Intervention", "definition": "China's military support for Joseon Korea against Japanese invasion", "relevance": "Demonstrates tributary system in action; exhausted Ming resources"}
+  ],
+  "keyPassages": [
+    {"quote": "Hideyoshi dreamed not merely of conquering Korea but of subjugating China itself, and even India, establishing Japanese hegemony over all of Asia.", "source": "Sources of Japanese Tradition", "page": "465"},
+    {"quote": "The invasion revealed both the military prowess of the Japanese samurai and the fatal weakness of supply lines stretched across hostile territory and contested seas.", "source": "Sources of Japanese Tradition", "page": "468"},
+    {"quote": "Korea was left devastated—its population decimated, its cultural treasures looted or destroyed, its agricultural base ruined for a generation.", "source": "Sources of Japanese Tradition", "page": "471"}
+  ],
+  "peopleplacesthings": {
+    "people": ["Toyotomi Hideyoshi", "Admiral Yi Sun-sin", "King Seonjo of Joseon"],
+    "places": ["Busan (landing point)", "Pyongyang (northern advance)", "Hansando (naval battle site)"],
+    "things": ["Turtle Ships", "Tributary System", "Samurai Military Culture"]
+  },
+  "keyQuestions": [
+    {"question": "Why did Hideyoshi believe conquering Korea and China was achievable, and what does this reveal about Japanese self-perception after unification?", "talkingPoints": "Discuss samurai confidence after civil war victories; limited knowledge of continental powers; need to redirect warrior energies; parallel to European overseas expansion"},
+    {"question": "How did the Imjin War demonstrate both the strengths and limitations of the East Asian tributary system?", "talkingPoints": "Ming intervention showed system worked defensively; but also revealed Ming overextension; Korea as 'lips and teeth' to China; costs to all parties"},
+    {"question": "What explains Korean resilience despite initial military defeats, and what role did Admiral Yi and civilian resistance play?", "talkingPoints": "Naval superiority cut supply lines; guerrilla warfare (uibyeong/righteous armies); importance of logistics over battlefield victories; technological innovation"}
+  ],
+  "timeline": [
+    {"date": "1590", "event": "Hideyoshi completes unification of Japan, begins planning continental invasion"},
+    {"date": "1592 (April)", "event": "Japanese forces land at Busan, rapidly advance northward"},
+    {"date": "1592 (June)", "event": "Pyongyang falls; King Seonjo flees toward Chinese border"},
+    {"date": "1592 (July)", "event": "Admiral Yi's naval victories at Hansando cut Japanese supply lines"},
+    {"date": "1593", "event": "Ming forces enter Korea; Japanese retreat to coastal enclaves"},
+    {"date": "1597", "event": "Second invasion launched after failed peace negotiations"},
+    {"date": "1598", "event": "Hideyoshi dies; Japanese forces withdraw from Korea"}
+  ],
+  "connections": {
+    "fromPrevious": "Plates 1-3 established the cultural, religious, and conceptual frameworks of East Asia, including ideas of modernity. The Imjin War shows these civilizations in violent collision—testing Confucian governance, Buddhist institutions, and regional hierarchies.",
+    "toNext": "Plate 5 (Rise of Qing) directly follows: the Ming exhaustion from defending Korea contributed to their vulnerability to Manchu conquest. The war's costs accelerated Ming decline.",
+    "broaderThemes": "The Imjin War prefigures later Japanese imperialism in Korea (1876-1945); demonstrates how domestic political dynamics drive foreign policy; raises questions about how wars are remembered differently by victors, losers, and victims."
+  },
+  "nextPreview": {
+    "plate": 5,
+    "topic": "Rise of Qing, Creation of Manchu Empire",
+    "preview": "We'll examine how the Ming dynasty's decline—partly caused by the Korean war's costs—enabled the Manchu conquest and the establishment of the Qing dynasty, transforming China's ruling order.",
+    "readings": ["Fall of the Ming", "SHI Kefa's Letters", "Rise of Qing"]
+  },
+  "teachingNotes": [
+    "Students may ask about parallels to Japan's 20th-century colonization of Korea—worth discussing but keep focus on 16th century context",
+    "The reading presents Japanese perspectives; balance with discussion of Korean experience and memory",
+    "Common misconception: Japan was technologically superior—actually, Korean turtle ships and Chinese numbers offset Japanese infantry advantages",
+    "Visual aids: Map showing invasion routes and Yi Sun-sin's naval battles; images of turtle ships",
+    "Engaging story: Yi Sun-sin's final battle at Noryang, where he was killed in the moment of victory, is deeply moving",
+    "Contemporary connection: The Imjin War remains a source of tension in Japan-Korea relations; Hideyoshi statues, war shrines, and historical textbooks are contested"
+  ]
+}

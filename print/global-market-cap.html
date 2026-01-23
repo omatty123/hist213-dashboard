@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Market Leaders 2026</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            color: #cbd5e1;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .country-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .country-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .country-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .flag {
+            font-size: 2rem;
+        }
+
+        .country-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .total-cap {
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .company {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .company:last-child {
+            border-bottom: none;
+        }
+
+        .rank {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 14px;
+            flex-shrink: 0;
+        }
+
+        .rank-1 { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #1a1a2e; }
+        .rank-2 { background: linear-gradient(135deg, #c0c0c0, #a8a8a8); color: #1a1a2e; }
+        .rank-3 { background: linear-gradient(135deg, #cd7f32, #b87333); color: #fff; }
+
+        .company-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .company-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .company-name a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .company-name a:hover {
+            color: #00d4ff;
+            text-decoration: underline;
+        }
+
+        .sector {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .market-cap {
+            text-align: right;
+            margin-left: 12px;
+        }
+
+        .cap-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #00d4ff;
+        }
+
+        .cap-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .cap-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        /* Sector colors */
+        .sector-tech { background: linear-gradient(90deg, #00d4ff, #0099cc); }
+        .sector-finance { background: linear-gradient(90deg, #10b981, #059669); }
+        .sector-healthcare { background: linear-gradient(90deg, #f472b6, #db2777); }
+        .sector-energy { background: linear-gradient(90deg, #f59e0b, #d97706); }
+        .sector-luxury { background: linear-gradient(90deg, #a855f7, #7c3aed); }
+        .sector-industrial { background: linear-gradient(90deg, #6b7280, #4b5563); }
+        .sector-auto { background: linear-gradient(90deg, #ef4444, #dc2626); }
+        .sector-consumer { background: linear-gradient(90deg, #ec4899, #be185d); }
+
+        .chart-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .region-totals {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 16px;
+        }
+
+        .region-badge {
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .region-badge.east-asia {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(249, 115, 22, 0.2));
+            border: 2px solid rgba(239, 68, 68, 0.5);
+            color: #fca5a5;
+        }
+
+        .region-badge.europe {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.2));
+            border: 2px solid rgba(59, 130, 246, 0.5);
+            color: #93c5fd;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 380px;
+        }
+
+        .insights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .insight-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid;
+        }
+
+        .insight-card.luxury { border-color: #a855f7; }
+        .insight-card.tech { border-color: #00d4ff; }
+        .insight-card.diverse { border-color: #10b981; }
+
+        .insight-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .insight-text {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .grid { grid-template-columns: 1fr; }
+            .country-card { padding: 18px; }
+        }
+
+        @media print {
+            body { background: #fff; color: #000; }
+            .country-card { border: 1px solid #ddd; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Global Market Leaders</h1>
+            <p class="subtitle">Top 3 Companies by Market Capitalization</p>
+            <span class="date-badge">January 2026</span>
+        </header>
+
+        <div class="chart-section">
+            <h2 class="chart-title">Market Cap Comparison: Top 3 Companies by Country</h2>
+            <div class="region-totals">
+                <div class="region-badge east-asia">East Asia: $3,173B</div>
+                <div class="region-badge europe">Europe: $2,274B</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- #1 China: $1,453B -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="flag">🇨🇳</span>
+                    <span class="country-name">China (PRC)</span>
+                    <span class="total-cap">Top 3: $1,453B</span>
+                </div>
+                <div class="company">
+                    <div class="rank rank-1">1</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/tencent/marketcap/" target="_blank">Tencent</a></div>
+                        <div class="sector">Tech / Gaming</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$694B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-tech" style="width: 100%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-2">2</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/alibaba/marketcap/" target="_blank">Alibaba</a></div>
+                        <div class="sector">E-commerce / Tech</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$403B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-tech" style="width: 58%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-3">3</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/icbc/marketcap/" target="_blank">ICBC</a></div>
+                        <div class="sector">Banking / State</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$356B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-finance" style="width: 51%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- #2 Korea: $1,101B -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="flag">🇰🇷</span>
+                    <span class="country-name">South Korea (ROK)</span>
+                    <span class="total-cap">Top 3: $1,127B</span>
+                </div>
+                <div class="company">
+                    <div class="rank rank-1">1</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/samsung/marketcap/" target="_blank">Samsung Electronics</a></div>
+                        <div class="sector">Semiconductors</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$682B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-tech" style="width: 95%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-2">2</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/sk-hynix/marketcap/" target="_blank">SK Hynix</a></div>
+                        <div class="sector">Semiconductors</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$348B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-tech" style="width: 50%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-3">3</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/hyundai/marketcap/" target="_blank">Hyundai Motor</a></div>
+                        <div class="sector">Automotive</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$97B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-auto" style="width: 14%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- #3 France: $879B -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="flag">🇫🇷</span>
+                    <span class="country-name">France</span>
+                    <span class="total-cap">Top 3: $837B</span>
+                </div>
+                <div class="company">
+                    <div class="rank rank-1">1</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/lvmh/marketcap/" target="_blank">LVMH</a></div>
+                        <div class="sector">Luxury Goods</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$340B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-luxury" style="width: 53%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-2">2</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/hermes/marketcap/" target="_blank">Hermès</a></div>
+                        <div class="sector">Luxury Goods</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$257B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-luxury" style="width: 44%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-3">3</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/l-oreal/marketcap/" target="_blank">L'Oréal</a></div>
+                        <div class="sector">Consumer / Beauty</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$240B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-consumer" style="width: 27%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- #4 UK: $776B -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="flag">🇬🇧</span>
+                    <span class="country-name">United Kingdom</span>
+                    <span class="total-cap">Top 3: $776B</span>
+                </div>
+                <div class="company">
+                    <div class="rank rank-1">1</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/hsbc/marketcap/" target="_blank">HSBC Holdings</a></div>
+                        <div class="sector">Banking / Finance</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$286B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-finance" style="width: 41%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-2">2</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/astrazeneca/marketcap/" target="_blank">AstraZeneca</a></div>
+                        <div class="sector">Healthcare / Pharma</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$281B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-healthcare" style="width: 40%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-3">3</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/shell/marketcap/" target="_blank">Shell</a></div>
+                        <div class="sector">Energy / Oil & Gas</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$209B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-energy" style="width: 30%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- #5 Germany: $661B -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="flag">🇩🇪</span>
+                    <span class="country-name">Germany</span>
+                    <span class="total-cap">Top 3: $661B</span>
+                </div>
+                <div class="company">
+                    <div class="rank rank-1">1</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/sap/marketcap/" target="_blank">SAP</a></div>
+                        <div class="sector">Software / Tech</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$263B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-tech" style="width: 38%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-2">2</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/siemens/marketcap/" target="_blank">Siemens</a></div>
+                        <div class="sector">Industrial</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$232B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-industrial" style="width: 33%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-3">3</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/allianz/marketcap/" target="_blank">Allianz</a></div>
+                        <div class="sector">Insurance / Finance</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$166B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-finance" style="width: 24%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- #6 Japan: $593B -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="flag">🇯🇵</span>
+                    <span class="country-name">Japan</span>
+                    <span class="total-cap">Top 3: $593B</span>
+                </div>
+                <div class="company">
+                    <div class="rank rank-1">1</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/toyota/marketcap/" target="_blank">Toyota</a></div>
+                        <div class="sector">Automotive</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$280B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-auto" style="width: 39%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-2">2</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/mitsubishi-ufj-financial/marketcap/" target="_blank">Mitsubishi UFJ</a></div>
+                        <div class="sector">Banking / Finance</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$165B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-finance" style="width: 23%"></div></div>
+                    </div>
+                </div>
+                <div class="company">
+                    <div class="rank rank-3">3</div>
+                    <div class="company-info">
+                        <div class="company-name"><a href="https://companiesmarketcap.com/hitachi/marketcap/" target="_blank">Hitachi</a></div>
+                        <div class="sector">Industrial / Tech</div>
+                    </div>
+                    <div class="market-cap">
+                        <div class="cap-value">$148B</div>
+                        <div class="cap-bar"><div class="cap-bar-fill sector-industrial" style="width: 21%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="insights">
+            <div class="insight-card luxury">
+                <div class="insight-title">🇫🇷 France = Luxury</div>
+                <div class="insight-text">2 of top 3 French companies are luxury brands. LVMH + Hermès = $597B combined, rivaling UK's diversified top 3.</div>
+            </div>
+            <div class="insight-card tech">
+                <div class="insight-title">🇰🇷 Korea = Semiconductors</div>
+                <div class="insight-text">Samsung + SK Hynix = $1,030B, controlling ~70% of global memory chip market. Hyundai ($97B) is a distant #3.</div>
+            </div>
+            <div class="insight-card diverse">
+                <div class="insight-title">🇨🇳 China = Tech Giants</div>
+                <div class="insight-text">Tencent + Alibaba = $1,097B in tech alone. ICBC ($356B) is the largest bank globally but only #3 in China.</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Data sources: <a href="https://companiesmarketcap.com/" target="_blank">CompaniesMarketCap</a>, <a href="https://disfold.com/" target="_blank">Disfold</a>, <a href="https://www.tradingview.com/" target="_blank">TradingView</a></p>
+            <p style="margin-top: 8px;">Market caps fluctuate daily. Last updated: January 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Plugin to draw region separator
+        const regionSeparator = {
+            id: 'regionSeparator',
+            afterDraw: (chart) => {
+                const ctx = chart.ctx;
+                const xAxis = chart.scales.x;
+                const yAxis = chart.scales.y;
+                // Draw line between Japan (index 2) and France (index 3)
+                const x = (xAxis.getPixelForValue(2) + xAxis.getPixelForValue(3)) / 2;
+                ctx.save();
+                ctx.beginPath();
+                ctx.setLineDash([5, 5]);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.lineWidth = 2;
+                ctx.moveTo(x, yAxis.top);
+                ctx.lineTo(x, yAxis.bottom + 10);
+                ctx.stroke();
+                ctx.restore();
+            }
+        };
+
+        // Chart.js comparison chart - grouped by country
+        const ctx = document.getElementById('comparisonChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    ['🇨🇳 China', 'Top 3: $1,453B', 'GDP: $19.4T'],
+                    ['🇰🇷 Korea', 'Top 3: $1,127B', 'GDP: $1.9T'],
+                    ['🇯🇵 Japan', 'Top 3: $593B', 'GDP: $4.3T'],
+                    ['🇫🇷 France', 'Top 3: $837B', 'GDP: $3.4T'],
+                    ['🇬🇧 UK', 'Top 3: $776B', 'GDP: $4.0T'],
+                    ['🇩🇪 Germany', 'Top 3: $661B', 'GDP: $5.0T']
+                ],
+                datasets: [
+                    {
+                        label: '#1',
+                        data: [694, 682, 280, 340, 286, 263],
+                        backgroundColor: 'rgba(255, 215, 0, 0.85)',
+                        borderColor: 'rgba(255, 215, 0, 1)',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    },
+                    {
+                        label: '#2',
+                        data: [403, 348, 165, 257, 281, 232],
+                        backgroundColor: 'rgba(192, 192, 192, 0.85)',
+                        borderColor: 'rgba(192, 192, 192, 1)',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    },
+                    {
+                        label: '#3',
+                        data: [356, 97, 148, 240, 209, 166],
+                        backgroundColor: 'rgba(205, 127, 50, 0.85)',
+                        borderColor: 'rgba(205, 127, 50, 1)',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#94a3b8',
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const companiesByIndex = [
+                                    ['Tencent', 'Alibaba', 'ICBC'],           // China
+                                    ['Samsung', 'SK Hynix', 'Hyundai'],       // Korea
+                                    ['Toyota', 'Mitsubishi UFJ', 'Hitachi'], // Japan
+                                    ['LVMH', 'Hermès', 'L\'Oréal'],          // France
+                                    ['HSBC', 'AstraZeneca', 'Shell'],         // UK
+                                    ['SAP', 'Siemens', 'Allianz']            // Germany
+                                ];
+                                const rank = context.datasetIndex;
+                                const countryIndex = context.dataIndex;
+                                const company = companiesByIndex[countryIndex][rank];
+                                return company + ': $' + context.raw + 'B';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 800,
+                        ticks: {
+                            color: '#94a3b8',
+                            callback: function(value) {
+                                return '$' + value + 'B';
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255,255,255,0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#e2e8f0',
+                            font: {
+                                size: 11
+                            },
+                            callback: function(value, index) {
+                                const labels = this.chart.data.labels[index];
+                                return labels; // Chart.js handles array as multiline
+                            }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            },
+            plugins: [regionSeparator]
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plate 3: What is Modernity? — Option B</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: letter; margin: 0.4in; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+      padding: 16px;
+      max-width: 8.5in;
+      margin: 0 auto;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+      background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+    }
+    .header {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .topic {
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 4px 16px;
+      font-weight: 600;
+      font-size: 12px;
+    }
+    .timelines-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .timeline-column {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 12px;
+    }
+    .timeline-header {
+      display: inline-block;
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 3px 12px;
+      font-weight: 600;
+      font-size: 10px;
+      margin-bottom: 12px;
+    }
+    .timeline-track {
+      position: relative;
+      padding-left: 80px;
+      min-height: 380px;
+    }
+    .timeline-line {
+      position: absolute;
+      left: 70px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #999;
+    }
+    .timeline-event {
+      position: relative;
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    .timeline-event::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border: 2px solid #666;
+      border-radius: 50%;
+    }
+    .timeline-year {
+      position: absolute;
+      left: -90px;
+      top: 0;
+      font-weight: 600;
+      font-size: 10px;
+      width: 70px;
+      text-align: right;
+    }
+    .timeline-text {
+      font-size: 10px;
+      color: #333;
+    }
+    .timeline-blank {
+      background: rgba(255,255,255,0.8);
+      border: 1px dashed #bbb;
+      border-radius: 3px;
+      min-height: 36px;
+      margin-left: 14px;
+      margin-bottom: 16px;
+    }
+    .question-section {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 12px;
+    }
+    .question-header {
+      display: inline-block;
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 3px 12px;
+      font-weight: 600;
+      font-size: 10px;
+      margin-bottom: 10px;
+    }
+    .question-text {
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .writing-lines {
+      background-image: linear-gradient(transparent 19px, #ddd 19px);
+      background-size: 100% 20px;
+      min-height: 100px;
+    }
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic">What is Modernity?</span>
+  </div>
+
+  <div class="timelines-container">
+    <div class="timeline-column">
+      <span class="timeline-header">European Modernity</span>
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+        <div class="timeline-event">
+          <span class="timeline-year">1450s</span>
+          <div class="timeline-text">Gutenberg printing press</div>
+        </div>
+        <div class="timeline-event">
+          <span class="timeline-year">1492</span>
+          <div class="timeline-text">Columbus reaches Americas</div>
+        </div>
+        <div class="timeline-event">
+          <span class="timeline-year">1517</span>
+          <div class="timeline-text">Protestant Reformation begins</div>
+        </div>
+        <div class="timeline-event">
+          <span class="timeline-year">1687</span>
+          <div class="timeline-text">Newton's Principia</div>
+        </div>
+        <div class="timeline-event">
+          <span class="timeline-year">1776</span>
+          <div class="timeline-text">American Revolution</div>
+        </div>
+        <div class="timeline-event">
+          <span class="timeline-year">1789</span>
+          <div class="timeline-text">French Revolution</div>
+        </div>
+        <div class="timeline-event">
+          <span class="timeline-year">1760s-1840s</span>
+          <div class="timeline-text">Industrial Revolution</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-column">
+      <span class="timeline-header">Asian Modernity</span>
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+        <div class="timeline-event">
+          <span class="timeline-year">1040s</span>
+          <div class="timeline-text">Movable type invented (China)</div>
+        </div>
+        <div class="timeline-event">
+          <span class="timeline-year">1405-33</span>
+          <div class="timeline-text">Zheng He's voyages</div>
+        </div>
+        <div class="timeline-event">
+          <span class="timeline-year">1443</span>
+          <div class="timeline-text">Hangul created (Korea)</div>
+        </div>
+        <div class="timeline-event">
+          <span class="timeline-year">1600s</span>
+          <div class="timeline-text">China = 25% of world GDP</div>
+        </div>
+        <div class="timeline-blank"></div>
+        <div class="timeline-blank"></div>
+        <div class="timeline-blank"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-section">
+    <span class="question-header">The Big Question</span>
+    <div class="question-text">Looking at these two timelines: Who decides when "modernity" begins? What events are missing from the Asian side — and why might they be left out of standard textbooks?</div>
+    <div class="writing-lines"></div>
+  </div>
+
+</body>
+</html>

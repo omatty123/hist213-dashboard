@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>East Asia vs Europe: The Longue Durée (1000-1800)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #fff;
+            padding: 20px;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .chart-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            color: #333;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 320px;
+        }
+        .legend-custom {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 12px;
+            font-size: 10px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+        }
+        .legend-line {
+            width: 16px;
+            height: 2px;
+            border-radius: 1px;
+        }
+        .legend-dashed {
+            background: repeating-linear-gradient(90deg, currentColor 0 4px, transparent 4px 8px);
+            height: 2px;
+            width: 16px;
+        }
+        .notes {
+            font-size: 10px;
+            color: #666;
+            margin-top: 20px;
+            line-height: 1.5;
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+        }
+        .period-label {
+            font-size: 9px;
+            color: #999;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .source {
+            font-size: 9px;
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        .source a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .source a:hover {
+            text-decoration: underline;
+        }
+        .caveat {
+            background: #fef3c7;
+            border-left: 3px solid #f59e0b;
+            padding: 8px 12px;
+            margin-top: 15px;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+        @media print {
+            body { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>The Longue Durée: East Asia and Europe, 1000-1800 CE</h1>
+    <div class="subtitle">Total GDP in Billions of 1990 International Dollars (Maddison Project Estimates)</div>
+
+    <div class="chart-title">Total GDP: 800 Years of History</div>
+    <div class="chart-wrapper">
+        <canvas id="longChart"></canvas>
+    </div>
+    <div class="period-label">Song Dynasty (960-1279) • Yuan (1271-1368) • Ming (1368-1644) • Qing (1644-1912)</div>
+
+    <div class="legend-custom">
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #dc2626;"></div>
+            <span>China (Maddison)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #dc2626; opacity: 0.5;"></div>
+            <span>China (Pomeranz est.)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #2563eb;"></div>
+            <span>Japan</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #f59e0b;"></div>
+            <span>Netherlands</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #8b5cf6;"></div>
+            <span>Britain</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #ec4899;"></div>
+            <span>Italy (N.)</span>
+        </div>
+    </div>
+
+    <div class="caveat">
+        <strong>Data caveat:</strong> Total GDP = population × GDP per capita. Both figures are estimated for pre-modern periods.<br>
+        • <strong>Maddison</strong> (solid): Traditional estimates — China stagnant at ~$600/capita<br>
+        • <strong>Pomeranz</strong> (dashed): Revisionist higher estimates — China's richest regions matched Europe until ~1800
+    </div>
+
+    <div class="notes">
+        <strong>Key observations:</strong><br>
+        • <strong>China dominated the world economy</strong> — For 800+ years, China's total GDP dwarfed all of Europe combined. In 1820, China was still ~33% of world GDP<br>
+        • <strong>Scale matters</strong> — Even with "only" $600/capita, 300 million people = $180 billion. Britain's $2,000/capita × 16 million = only $33 billion<br>
+        • <strong>The "Rise of the West" was recent</strong> — Britain didn't overtake China in total GDP until after 1850 (with colonies). Not shown on this chart<br>
+        • <strong>China's "decline" was relative</strong> — China kept growing; Europe just grew faster after 1800 (Industrial Revolution)<br>
+        • <strong>European countries were tiny</strong> — Netherlands' entire economy (~$4B) was smaller than a single Chinese province<br>
+        • <strong>Pomeranz vs. Maddison</strong> — The gap between the two China lines shows scholarly debate, but either way China was dominant
+
+        <div class="source">
+            <strong>Sources:</strong><br>
+            • <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023" target="_blank">Maddison Project Database 2023</a><br>
+            • <a href="https://ourworldindata.org/grapher/gdp-per-capita-maddison-project-database" target="_blank">Our World in Data: GDP per Capita</a><br>
+            • <a href="https://en.wikipedia.org/wiki/List_of_regions_by_past_GDP_(PPP)_per_capita" target="_blank">Wikipedia: Regions by Past GDP per Capita</a><br>
+            • Broadberry, S. et al. (2015). <em>British Economic Growth, 1270–1870</em><br>
+            • van Zanden, J.L. (2009). <em>The Long Road to the Industrial Revolution</em><br>
+            • Pomeranz, K. (2000). <em>The Great Divergence: China, Europe, and the Making of the Modern World Economy</em>
+        </div>
+    </div>
+
+    <script>
+        // Total GDP data (billions of 1990 international dollars) - Maddison Project estimates
+        // Calculated as: population × GDP per capita
+        // Note: Pre-1500 data is highly speculative; some scholars dispute these figures
+        const longData = {
+            labels: ['1000', '1200', '1300', '1400', '1500', '1600', '1700', '1800'],
+            datasets: [
+                {
+                    label: 'China (Maddison)',
+                    // Pop (M): 60, 115, 85, 75, 100, 160, 150, 300
+                    // Per cap: 450, 520, 500, 500, 600, 600, 600, 600
+                    data: [27, 60, 43, 38, 60, 96, 90, 180],
+                    borderColor: '#dc2626',
+                    backgroundColor: '#dc262620',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    borderWidth: 2.5
+                },
+                {
+                    label: 'China (Pomeranz)',
+                    // Higher per capita estimates × same population
+                    // Per cap: 600, 750, 700, 650, 750, 800, 900, 1000
+                    data: [36, 86, 60, 49, 75, 128, 135, 300],
+                    borderColor: '#dc2626',
+                    backgroundColor: '#dc262630',
+                    fill: '-1', // Fill to previous dataset (Maddison) to show the "debate zone"
+                    tension: 0.3,
+                    pointRadius: 4,
+                    borderWidth: 2,
+                    borderDash: [2, 2],
+                    pointStyle: 'triangle'
+                },
+                {
+                    label: 'Japan',
+                    // Pop (M): 5, 7, 8, 10, 15, 12, 27, 30
+                    data: [2, 3, 3, 4, 8, 6, 15, 20],
+                    borderColor: '#2563eb',
+                    backgroundColor: '#2563eb20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    borderWidth: 2.5
+                },
+                {
+                    label: 'Netherlands',
+                    // Pop (M): 0.3, 0.5, 0.6, 0.8, 1.0, 1.5, 1.9, 2.1
+                    data: [0.1, 0.3, 0.4, 0.7, 1.2, 3.6, 4.0, 3.8],
+                    borderColor: '#f59e0b',
+                    backgroundColor: '#f59e0b20',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    borderWidth: 2,
+                    borderDash: [5, 5]
+                },
+                {
+                    label: 'Britain',
+                    // Pop (M): 2, 3, 4, 4, 5, 5.5, 8.5, 16
+                    data: [0.8, 1.5, 2.4, 2.8, 3.8, 6, 13, 33],
+                    borderColor: '#8b5cf6',
+                    backgroundColor: '#8b5cf620',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    borderWidth: 2,
+                    borderDash: [5, 5]
+                },
+                {
+                    label: 'Italy (N.)',
+                    // Pop (M): 4, 6, 8, 8, 9, 9, 9, 9
+                    data: [1.8, 4.2, 8.8, 11, 13, 11, 10, 10],
+                    borderColor: '#ec4899',
+                    backgroundColor: '#ec489920',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    borderWidth: 2,
+                    borderDash: [5, 5]
+                }
+            ]
+        };
+
+        new Chart(document.getElementById('longChart'), {
+            type: 'line',
+            data: longData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y + 'B',
+                            afterBody: function(context) {
+                                const year = context[0].label;
+                                const notes = {
+                                    '1000': 'Song Dynasty China; Norman Conquest upcoming',
+                                    '1200': 'Song golden age; Crusades era in Europe',
+                                    '1300': 'Mongol Empire; Black Death coming',
+                                    '1400': 'Ming restoration; Italian Renaissance',
+                                    '1500': 'Columbus; Ming stability; European expansion',
+                                    '1600': 'Qing conquest; Dutch Golden Age; Tokugawa',
+                                    '1700': 'Qing prosperity; British rise',
+                                    '1800': 'Industrial Revolution beginning'
+                                };
+                                return notes[year] ? ['\n' + notes[year]] : [];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: '#f0f0f0' },
+                        title: {
+                            display: true,
+                            text: 'Year (CE)',
+                            font: { size: 11 }
+                        }
+                    },
+                    y: {
+                        grid: { color: '#f0f0f0' },
+                        min: 0,
+                        max: 320,
+                        ticks: {
+                            callback: v => '$' + v + 'B'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Total GDP (billions, 1990 int\'l $)',
+                            font: { size: 11 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

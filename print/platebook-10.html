@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Platebook - Plate 10: Qing vs. the West</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* Header row */
+    .header {
+      display: flex;
+      margin-bottom: 5px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Section labels */
+    .label {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 3px;
+      background: #fff;
+    }
+
+    /* Person/Place/Thing table */
+    .ppt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+    .ppt-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+      width: 33.33%;
+    }
+    .ppt-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      height: 20px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin-bottom: 4px;
+    }
+    .timeline-box {
+      border: 1px solid #aaa;
+      padding: 6px 16px;
+      height: 78px;
+      position: relative;
+      background-color: #fefdfb;
+    }
+    .timeline-line {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: #333;
+    }
+    .timeline-ticks {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
+      width: 2px;
+      height: 12px;
+      background: #333;
+    }
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      text-align: center;
+    }
+    .timeline-labels span {
+      max-width: 90px;
+      line-height: 1.3;
+    }
+
+    /* Map */
+    .map-section {
+      margin-bottom: 4px;
+    }
+    .map-subtitle {
+      font-size: 9px;
+      font-style: italic;
+      color: #555;
+      margin-left: 8px;
+    }
+    .map-box {
+      border: 1px solid #aaa;
+      background: #f5f5f5;
+      margin-top: 3px;
+      padding: 10px;
+      min-height: 100px;
+    }
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 9px;
+    }
+    .map-loc strong { font-weight: 600; }
+    .map-quote {
+      font-style: italic;
+      font-size: 9px;
+      text-align: center;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Questions table */
+    .questions-section {
+      margin-bottom: 4px;
+    }
+    .questions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .questions-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+    }
+    .questions-table th:last-child {
+      width: 45%;
+    }
+    .questions-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+    .questions-table .q-num {
+      width: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: none;
+    }
+    .question-cell {
+      min-height: 32px;
+    }
+    .answer-cell {
+      min-height: 32px;
+    }
+
+    /* Bottom section */
+    .bottom-section {
+      display: flex;
+      gap: 6px;
+    }
+    .causes-box, .notes-box {
+      flex: 1;
+    }
+    .bottom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-weight: 600;
+      font-size: 9px;
+      text-align: left;
+      background: #fff;
+    }
+    .bottom-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 9px;
+      vertical-align: top;
+      height: 70px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Filled content styling */
+    .filled {
+      color: #000;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .filled strong {
+      font-weight: 600;
+    }
+
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="plate-num">Plate # 10</div>
+    <div class="topic">Qing vs. the West</div>
+    <div class="date">Jan 28</div>
+  </div>
+
+  <!-- Person / Place / Thing -->
+  <table class="ppt-table">
+    <thead>
+      <tr>
+        <th><span class="label">Person</span></th>
+        <th><span class="label">Place</span></th>
+        <th><span class="label">Thing</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="filled"><strong>Lin Zexu</strong> — Qing commissioner who destroyed opium</td>
+        <td class="filled"><strong>Canton (Guangzhou)</strong> — center of opium trade conflict</td>
+        <td class="filled"><strong>Opium</strong> — drug that caused the crisis</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Queen Victoria</strong> — British monarch (letter never delivered)</td>
+        <td class="filled"><strong>Hong Kong</strong> — ceded to Britain</td>
+        <td class="filled"><strong>Treaty of Nanjing</strong> — first 'unequal treaty'</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Daoguang Emperor</strong> — Qing ruler during the war</td>
+        <td class="filled"><strong>Treaty Ports</strong> — Shanghai, Xiamen, Fuzhou, Ningbo</td>
+        <td class="filled"><strong>Extraterritoriality</strong> — legal privilege for foreigners</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <span class="label">Timeline: Qing vs. the West</span>
+    <div class="timeline-box">
+      <div class="timeline-labels">
+        <span>1793<br><em>Macartney Mission rejected—but no war</em></span>
+        <span>1839<br><em>Lin Zexu destroys opium at Canton; writes letter to Victoria</em></span>
+        <span>1840-1842<br><em>First Opium War—British naval victories</em></span>
+        <span>1842<br><em>Treaty of Nanjing—first 'unequal treaty'</em></span>
+        <span>1856-1860<br><em>Second Opium War—more concessions extracted</em></span>
+        <span>1997<br><em>Hong Kong returned to China—'humiliation' officially ended</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-section">
+    <span class="label">Map</span>
+    <div class="map-box">
+      <div class="map-locations">
+        <div class="map-loc"><strong>Guangzhou (Canton)</strong> (廣州) — Center of opium trade; Lin Zexu destroyed opium here</div>
+        <div class="map-loc"><strong>Hong Kong</strong> (香港) — Ceded to Britain 'in perpetuity' (returned 1997)</div>
+        <div class="map-loc"><strong>Shanghai</strong> (上海) — Treaty port; became major commercial center</div>
+        <div class="map-loc"><strong>Xiamen (Amoy)</strong> (廈門) — Treaty port opened 1842</div>
+        <div class="map-loc"><strong>Fuzhou</strong> (福州) — Treaty port opened 1842</div>
+        <div class="map-loc"><strong>Ningbo</strong> (寧波) — Treaty port opened 1842</div>
+        <div class="map-loc"><strong>Nanjing</strong> (南京) — Where the treaty was signed, August 1842</div>
+      </div>
+    </div>
+    <div class="map-quote">"Let us ask, where is your conscience? I have heard that the smoking of opium is very strictly forbidden by your country; that is because the harm caused by opium is clearly understood. Since it is not permitted to do harm to your own country, then even less should you let it be passed on to the harm of other countries." — Commissioner Lin Zexu, Letter to Queen Victoria</div>
+  </div>
+
+  <!-- Penetrating Questions -->
+  <div class="questions-section">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th colspan="2"><span class="label">Penetrating Questions</span></th>
+          <th><span class="label">Very short answers</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="q-num">1</td>
+          <td class="question-cell filled">Was the Opium War about 'free trade' or drug trafficking?</td>
+          <td class="answer-cell filled">Britain framed it as opening trade; China saw it as defending against poison. Consider: Would we accept 'free trade' arguments for drug cartels today? But also: What alternatives did Britain have for solving trade deficit?</td>
+        </tr>
+        <tr>
+          <td class="q-num">2</td>
+          <td class="question-cell filled">Why did China lose, and what does this tell us about comparative military strength?</td>
+          <td class="answer-cell filled">British naval and artillery superiority was decisive. But why was Qing military so weak? Internal focus, financial constraints, technological gap. Connect to Frank's argument: Was this the moment the 'Great Divergence' became visible?</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom: Causes/Effects + Notes -->
+  <div class="bottom-section">
+    <div class="causes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              <strong>From Plate 9:</strong> Plate 6 showed Qianlong confidently rejecting British demands. Just 50 years later, China was forced to accept worse terms at gunpoint. What changed?<br>
+<strong>Context:</strong> The Opium War initiated a fundamental reordering of East Asia's relationship with the West. Every subsequent reform movement—Self-Strengthening, Meiji, etc.—responded to this shock.<br>
+<strong>To Plate 11:</strong> Plate 11 examines Japan's similar encounter with Western pressure—but with very different outcomes. Why did Japan avoid 'unequal treaties' longer?
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Notes</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              • Read Lin Zexu's letter aloud—it's eloquent and makes a compelling moral argument. Then discuss why it 'failed.'<br>
+              • The Treaty of Nanjing is short—have students identify specific provisions and discuss their implications.<br>
+              • Avoid simplistic 'China victim, West villain' framing while acknowledging real moral asymmetry.<br>
+              • Connect to contemporary drug policy debates—how do nations respond to drug crises?<br>
+              • Show a map of treaty ports and areas of foreign control—visualize what 'unequal treaties' meant spatially.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

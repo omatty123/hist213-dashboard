@@ -1,0 +1,211 @@
+{
+  "plate": 7,
+  "topic": "Joseon Reform",
+  "date": "2026-01-21",
+  "generatedAt": "2026-01-21T14:00:00Z",
+  "customMapUrl": "print/joseon-maritime-trade.html",
+  "readings": [
+    "On Reform (Sources of Korean Tradition, Ch. 22, pp. 70-116)",
+    "Ebrey & Walthall, Ch. 15: Joseon Korea (pp. 254-263)"
+  ],
+  "readingAnalyses": [
+    {
+      "title": "Reform Proposals (SKT Chapter 22)",
+      "author": "Yu Hyŏngwŏn, Yi Ik, Chŏng Yagyong, Kim Yuk, Pak Chega",
+      "source": "Sources of Korean Tradition, Vol. 2",
+      "pages": "70-116",
+      "type": "primary",
+      "summary": "Primary source excerpts from major Sirhak ('Practical Learning') scholars proposing reforms to land distribution, currency, and technology. Yu Hyŏngwŏn advocated radical redistribution based on the ancient well-field model; Yi Ik proposed pragmatic limits on landholding; Pak Chega argued Korea must learn from 'barbarian' Qing China to overcome technological backwardness.",
+      "keyQuotes": [
+        {"quote": "Land is the foundation of everything under heaven. If that foundation is firmly established and in order, then everything else resting on that firm foundation will also be in perfect order.", "page": "74"},
+        {"quote": "The rich have vast lands that extend beyond the ridges in the fields, but the poor do not have enough land to stand an awl on; therefore the rich get richer and the poor get poorer.", "page": "81"},
+        {"quote": "A hundred would be overjoyed, but one would not be, and if the power of that one man would be enough to gag the mouths of the other hundred, how would one be able to carry it out?", "page": "81"},
+        {"quote": "Those who are idle and yet eat their fill are the great parasites of the country. That those who are idle and yet eat their fill increase every day is because the yangban get more prosperous every day.", "page": "109"},
+        {"quote": "If we now want to throw out the barbarians, we must first know what kind of people the barbarians are. If we want to revere China, there is no greater reverence than to put the Chinese ways into practice.", "page": "104"}
+      ],
+      "thematicExamples": [
+        "Yu Hyŏngwŏn's 100-myo land allocation: every farmer receives standardized grants, with additional allotments for scholars based on rank",
+        "Pak Chega's devastating comparison: one Chinese winnowing fan lets one man process ten thousand sŏk of rice; Korean winnowing takes multiple workers one day for ten measures",
+        "Yi Ik's realist assessment: reform would benefit a hundred but harm one, and that one person's power 'gags the mouths' of the hundred",
+        "The Ch'oe clan holding lands yielding 10,000 bags of grain - taking the livelihoods of 3,990 people to enrich one family"
+      ],
+      "realLifeConnections": [
+        "Yi Ik's insight that 'the power of one man gags the mouths of the hundred' captures how entrenched interests block reforms that would benefit the majority - applicable to modern policy gridlock",
+        "Pak Chega's argument for learning from 'barbarians' parallels debates about technology transfer from geopolitical rivals",
+        "Land concentration parallels modern wealth inequality debates about the 1% vs 99%"
+      ]
+    },
+    {
+      "title": "Joseon Korea 1392-1800 (Ebrey Ch. 15)",
+      "author": "Patricia Ebrey & Anne Walthall",
+      "source": "Modern East Asia from 1600",
+      "pages": "254-263",
+      "type": "secondary",
+      "summary": "Provides essential political, economic, and cultural context for the reform debates. Covers factional strife culminating in Crown Prince Sado's tragic death (1762), economic changes including slavery's decline and commercialization, and cultural developments like Northern Learning and vernacular literature.",
+      "keyQuotes": [
+        {"quote": "King Yeongjo decided to lock the prince in a small rice chest in the palace courtyard and left him to starve to death, which he did eight days later.", "page": "256"},
+        {"quote": "Between 1750 and 1790, there was a sharp reduction in the slave population from about 30 percent to less than 10 percent of the population.", "page": "257"},
+        {"quote": "The Northern Learning scholars urged that Korea learn from the Qing Dynasty to improve the economy and the material aspects of life.", "page": "260"}
+      ],
+      "thematicExamples": [
+        "Crown Prince Sado's mental illness and murder by his father illustrates the suffocating pressure of Confucian court politics",
+        "Factions named for compass directions (Westerners, Easterners, Southerners, Northerners) plus Patriarchs and Disciples fought bitter purges",
+        "Currency returned to circulation in 1654 after Kim Yuk persuaded the king to accept cash for taxes",
+        "Chunhyang story: romantic tale of yangban son and courtesan's daughter that 'affirms the superiority of love over stifling convention'",
+        "Hong Daeyong rejected the idea that China was the center of the earth and criticized yangban disdain for manual labor"
+      ],
+      "realLifeConnections": [
+        "Crown Prince Sado's story inspired the acclaimed Korean film 'The Throne' (2015) - useful classroom connection",
+        "The decline of slavery shows that major social change was possible even without explicit reform legislation",
+        "Northern Learning's pragmatic embrace of 'enemy' knowledge parallels modern debates about learning from China"
+      ]
+    }
+  ],
+  "overallSynthesis": "The reform proposals must be read against the broader context Ebrey provides: late Joseon was a society in flux. Politically, bitter factional strife between Westerners, Southerners, Patriarchs, and Disciples produced purges and executions - culminating in the tragedy of Crown Prince Sado, starved to death by his own father King Yeongjo in 1762. Economically, significant changes were underway: slavery declined from 30% to under 10% of the population, currency returned to circulation after 1654, and commercialization expanded through fifth-day markets. Culturally, a new openness emerged - the Northern Learning (Pukhak) movement urged Korea to learn from Qing China despite viewing Manchus as 'barbarians,' while vernacular literature flourished in sijo poetry, novels like Chunhyang, and pansori oral traditions.\n\nAgainst this backdrop, the Sirhak reformers diagnosed three interconnected crises: concentrated land ownership impoverishing peasants, inadequate monetary systems hampering commerce, and technological backwardness compared to China. The tragedy is that none of their proposals was implemented - reformers had to propose confiscating property from the very yangban class they belonged to. Korea entered the nineteenth century with the same structural problems, only to face Western and Japanese imperialism with an unreformed economy and society.",
+  "keywords": [
+    {"term": "Sirhak (實學)", "definition": "'Practical Learning' - scholarly movement emphasizing empirical study and concrete reforms over abstract Neo-Confucian metaphysics", "relevance": "The intellectual movement uniting all the reform proposals; Korea's internal critique of its own society"},
+    {"term": "Well-field system (chŏngjŏn)", "definition": "Ancient Chinese ideal dividing land into nine squares - eight for peasant families, one central plot for the lord", "relevance": "Classical model reformers invoked for legitimacy; shows how they looked backward to justify moving forward"},
+    {"term": "Northern Learning (Pukhak)", "definition": "Late 18th-century movement advocating learning from Qing China despite Manchus being 'barbarians'", "relevance": "Most radical position - willing to learn from 'enemies' for practical benefits"},
+    {"term": "Yangban (兩班)", "definition": "Hereditary aristocratic class of scholars/officials dominating Joseon society", "relevance": "Both the authors of reform proposals AND the main obstacle to implementation"},
+    {"term": "Factionalism", "definition": "Bitter political divisions (Westerners, Easterners, Southerners, Northerners, Patriarchs, Disciples) that produced purges and executions", "relevance": "Political context that made coordinated reform impossible"},
+    {"term": "Crown Prince Sado", "definition": "Son of King Yeongjo who became mentally ill and was starved to death in a rice chest by his father in 1762", "relevance": "Symbol of the dysfunction and cruelty within the Confucian political system"},
+    {"term": "Pansori (판소리)", "definition": "Oral song tradition performed by singers with drum accompaniment; often satirized yangban", "relevance": "Shows cultural vitality and social criticism from below, not just elite reformers"}
+  ],
+  "keyPassages": [
+    {"quote": "Land is the foundation of everything under heaven. If that foundation is firmly established and in order, then everything else resting on that firm foundation will also be in perfect order.", "source": "Yu Hyŏngwŏn, Pangye surok", "page": "SKT 74"},
+    {"quote": "The rich have vast lands that extend beyond the ridges in the fields, but the poor do not have enough land to stand an awl on; therefore the rich get richer and the poor get poorer.", "source": "Yi Ik", "page": "SKT 81"},
+    {"quote": "A hundred would be overjoyed, but one would not be, and if the power of that one man would be enough to gag the mouths of the other hundred, how would one be able to carry it out?", "source": "Yi Ik", "page": "SKT 81"},
+    {"quote": "Those who are idle and yet eat their fill are the great parasites of the country.", "source": "Pak Chega", "page": "SKT 109"},
+    {"quote": "King Yeongjo decided to lock the prince in a palace courtyard rice chest and left him to starve to death, which he did eight days later.", "source": "Ebrey", "page": "256"}
+  ],
+  "peopleplacesthings": {
+    "people": [
+      "Yu Hyŏngwŏn (1622-1673) - Sirhak pioneer, proposed radical land redistribution",
+      "Yi Ik (1681-1763) - Pragmatic reformer, proposed limited-field system",
+      "Pak Chega (b. 1750) - Northern Learning advocate, urged learning from Qing",
+      "King Yeongjo (r. 1724-1776) - Tried to end factionalism, killed his own son",
+      "Crown Prince Sado (1735-1762) - Tragic figure, mentally ill, starved to death",
+      "King Chŏngjo (r. 1776-1800) - Son of Sado, model king, banned subversive books"
+    ],
+    "places": [
+      "Hanyang (Seoul) - Capital, center of yangban power and factional strife",
+      "Beijing - Source of new knowledge via tribute missions; Pak Chega visited four times",
+      "Kyŏnggi Province - First to adopt tax reforms"
+    ],
+    "things": [
+      "Pangye surok - Yu Hyŏngwŏn's massive reform treatise",
+      "Pukhak ŭi - Pak Chega's Discourse on Northern Learning (1776)",
+      "Chunhyang - Most popular romantic novel, yangban son loves courtesan's daughter",
+      "Rice chest - Where Crown Prince Sado was locked and starved to death"
+    ]
+  },
+  "keyQuestions": [
+    {"question": "Yi Ik says even if reform would benefit a hundred people, the one person it would harm has 'power enough to gag the mouths of the hundred.' What does this tell us about ideas vs. power?", "talkingPoints": "Reformers were members of the very class whose interests their proposals threatened. Ideas alone don't change society - you need political power. This is why none of these proposals was implemented until external pressure in the late 19th century."},
+    {"question": "Pak Chega argues Korea should learn from Qing China even though the Manchus are 'barbarians.' Is this hypocrisy or pragmatism?", "talkingPoints": "He separates technology from cultural identity. Practical benefits outweigh cultural pride. Modern parallel: China adopting market capitalism while maintaining Communist Party rule. Can you separate useful knowledge from its source?"},
+    {"question": "How does the tragedy of Crown Prince Sado illuminate the political system these reformers were trying to change?", "talkingPoints": "Sado's mental illness and murder by his father shows the suffocating pressure of Confucian court politics. Factionalism wasn't just abstract - it destroyed families. The same system that produced great scholarship also produced cruelty."},
+    {"question": "Slavery declined from 30% to under 10% without any reform legislation. What does this tell us about how social change happens?", "talkingPoints": "Economic forces (commercialization, runaway slaves, hired labor) achieved what reformers couldn't legislate. Sometimes change comes from below, not from elite proposals. But the yangban land system remained intact."}
+  ],
+  "timeline": [
+    {"date": "1592-1598", "event": "Imjin War devastates Korea; spurs reform thinking"},
+    {"date": "1622-1673", "event": "Life of Yu Hyŏngwŏn; writes Pangye surok"},
+    {"date": "1637", "event": "King Injo bows to Qing; Korea becomes tributary state to 'barbarians'"},
+    {"date": "1654", "event": "Currency returns to circulation after Kim Yuk's advocacy"},
+    {"date": "1681-1763", "event": "Life of Yi Ik; proposes limited-field system"},
+    {"date": "1724-1776", "event": "Reign of King Yeongjo; attempts to end factionalism"},
+    {"date": "1762", "event": "Crown Prince Sado starved to death in rice chest"},
+    {"date": "1776", "event": "Pak Chega's first trip to Beijing; writes Pukhak ŭi"},
+    {"date": "1776-1800", "event": "Reign of King Chŏngjo (Sado's son); cultural flourishing"},
+    {"date": "1750-1790", "event": "Slavery declines from 30% to under 10% of population"}
+  ],
+  "connections": {
+    "fromPrevious": "Plate 6 covered Qing's encounter with the West (Qianlong's letter to George III). Now we see Korean thinkers debating whether to learn from that same Qing China - a question of cultural pride vs. practical necessity. The Manchus were 'barbarians' but had conquered China and developed advanced technology.",
+    "toNext": "Plate 8 examines Tokugawa Japan's consolidation. Compare: Tokugawa established strict hierarchy to prevent change; Joseon reformers actively debated restructuring but couldn't implement. Different approaches to stability vs. reform - both would be disrupted by Western pressure in the 19th century.",
+    "broaderThemes": "These readings challenge the 'stagnant Asia' narrative. Korean intellectuals engaged in sophisticated debates about economics, technology, and social structure - not because Westerners told them to, but because their own society was in crisis. The pattern of recognizing problems but failing to implement solutions due to entrenched interests is universal."
+  },
+  "nextPreview": {
+    "plate": 8,
+    "topic": "Rise of Tokugawa",
+    "preview": "After a century of civil war, Tokugawa Ieyasu unified Japan and established a system designed to prevent future conflict through strict social hierarchy. How does Japan's 'freezing' of society compare to Korea's active but frustrated reform debates?",
+    "readings": ["Laws of Military Households", "Way of the Samurai"]
+  },
+  "teachingNotes": [
+    "TWO READINGS: Balance SKT primary sources with Ebrey's political/cultural context",
+    "Yi Ik's line about 'one person's power gagging the mouths of the hundred' is the most memorable quote - use it!",
+    "Pak Chega's comparison of Chinese vs Korean tools (winnowing fans, looms) is vivid and accessible",
+    "Crown Prince Sado story is dramatic - consider showing clip from 'The Throne' (2015)",
+    "Connect to Frank's ReORIENT: these are internal reform debates, not responses to Western pressure",
+    "Ask students: 'What reforms do we know are needed today but seem politically impossible?' (climate, inequality)",
+    "The yangban-as-parasites theme resonates with students - 'idle and yet eat their fill'",
+    "Map shows proposed maritime trade routes that reformers advocated"
+  ],
+  "map": {
+    "center": [36.5, 127.5],
+    "zoom": 5,
+    "locations": [
+      {"name": "Hanyang (Seoul)", "nameChinese": "漢陽", "lat": 37.5665, "lng": 126.9780, "type": "capital", "description": "Joseon capital; center of yangban power and reform debates"},
+      {"name": "Beijing", "nameChinese": "北京", "lat": 39.9042, "lng": 116.4074, "type": "capital", "description": "Source of new knowledge; Pak Chega visited four times"},
+      {"name": "Suwon (Hwaseong)", "nameChinese": "水原", "lat": 37.2636, "lng": 127.0286, "type": "city", "description": "King Chŏngjo's new fortress; site of Crown Prince Sado's reburial"}
+    ]
+  },
+  "enrichment": {
+    "title": "Kisaeng Sijo: Women's Voices in Chosŏn Poetry",
+    "introduction": "The kisaeng (기생) were professional female entertainers trained in poetry, music, and dance. Their sijo poems offer a rare non-elite female perspective on love and loss in Chosŏn society. These poems circulated orally before being compiled into anthologies in the 18th-19th centuries—the same period that saw pansori and vernacular literature flourish.",
+    "connectionToReadings": "Like Chunhyang (mentioned in Ebrey), kisaeng sijo explore love across social boundaries. The kisaeng were 'destined forever to fall in love and never able to retain a lover.' Their emotional directness parallels the social critique found in pansori traditions.",
+    "poets": [
+      {
+        "name": "Hongnang",
+        "nameKorean": "홍랑",
+        "dates": "16th-17th century",
+        "bio": "Kisaeng from Kyŏngsŏng in the far northeast. Met the poet Ch'oe Kyŏngch'ang when he traveled there on government business. When they parted as he returned to Seoul, she attached this sijo to a willow branch—following the Chinese custom of giving willow at farewells.",
+        "poems": [
+          {
+            "title": "Wild Willow Branch",
+            "translator": "Richard Rutt",
+            "text": "I chose a wild willow branch and plucked it to send it to you.\nI want you to plant it by the window where you sleep.\nWhen new leaves open in the night rains, think it is I that have come to you.",
+            "note": "The poem transforms parting into continued presence through the living willow."
+          }
+        ]
+      },
+      {
+        "name": "Hwang Jini",
+        "nameKorean": "황진이",
+        "dates": "1506-1560",
+        "bio": "The most famous kisaeng poet. Only six sijo survive, but her legendary beauty, wit, and defiance of convention made her an icon. Her poems use elaborate wordplay and double meanings.",
+        "poems": [
+          {
+            "title": "Long Winter Night",
+            "translator": "Larry Gross",
+            "text": "Oh that I might capture the essence of this deep midwinter night\nAnd fold it softly into the waft of a spring-moon quilt,\nThen fondly uncoil it the night my beloved returns.",
+            "note": "Written about the winter solstice (dongji). Compares long winter nights waiting for a lover with short spring nights spent together."
+          },
+          {
+            "title": "I Cut in Two",
+            "translator": "Peter H. Lee",
+            "text": "I cut in two\nA long November night, and\nPlace half under the coverlet,\nSweet-scented as a spring breeze.\nAnd when he comes, I shall take it out,\nUnroll it inch by inch, to stretch the night.",
+            "note": "Same theme as 'Long Winter Night'—the impossible wish to store time for later use with a lover."
+          },
+          {
+            "title": "Blue Mountains Speak of My Desire",
+            "translator": "Peter H. Lee",
+            "text": "Blue mountains speak of my desire,\nGreen waters reflect my Lover's love:\nThe mountains unchanging,\nThe waters flowing by.\nSometimes it seems the waters cannot forget me,\nThey part in tears, regretting, running away.",
+            "note": "Mountains (unchanging) and water (flowing) represent the constancy of desire versus the transience of love."
+          }
+        ]
+      }
+    ],
+    "discussionQuestions": [
+      {
+        "question": "How do these kisaeng poems compare to the elite male reformers we read about? What voices are missing from the reform debates?",
+        "talkingPoints": "The reformers were yangban men proposing to redistribute yangban land. Kisaeng occupied the lowest social position—their daughters became kisaeng, their sons slaves. Yet they produced poetry admired by the very class that exploited them."
+      },
+      {
+        "question": "What does it mean that kisaeng poetry survived 'only against the odds'—passed orally before male scholars compiled anthologies?",
+        "talkingPoints": "Women's literary production was systematically undervalued. The survival of these poems required male appreciation and preservation. How does this shape what we can know about women's experiences?"
+      }
+    ],
+    "sources": [
+      {"title": "Songs of the Kisaeng", "authors": "Constantine Contogenis & Wolhee Choe (trans.)", "publisher": "BOA Editions", "year": 1997},
+      {"title": "The Bamboo Grove: An Introduction to Sijo", "authors": "Richard Rutt", "publisher": "University of California Press", "year": 1971}
+    ]
+  }
+}

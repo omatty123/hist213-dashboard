@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>East Asian Cities c. 1700 | Population Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root {
+            --ink: #2c2416;
+            --ink-light: #5c5040;
+            --ink-faint: #8a8070;
+            --paper: #f7f3eb;
+            --paper-dark: #e8e0d0;
+            --china: #c1272d;
+            --japan: #bc002d;
+            --korea: #003478;
+            --gold: #b8860b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-title h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .header-title p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .header-badge {
+            background: var(--gold);
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .time-slider-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .time-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+        }
+
+        #year-slider {
+            width: 150px;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        #year-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        #year-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        #year-slider::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        .intro-text {
+            background: #fff;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .intro-text strong { color: var(--china); }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            height: calc(100vh - 180px);
+            min-height: 500px;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #fff;
+            overflow-y: auto;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .sidebar-section {
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar-section-header {
+            padding: 0.75rem 1rem;
+            background: var(--paper);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-section-header h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-light);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-section-header .flag {
+            font-size: 1rem;
+        }
+
+        .sidebar-section-header .total {
+            font-size: 0.7rem;
+            background: #fff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            color: var(--ink-faint);
+        }
+
+        .city-list { list-style: none; }
+
+        .city-item {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #f5f5f5;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .city-item:hover { background: rgba(0,0,0,0.02); }
+        .city-item.active { background: rgba(0,0,0,0.05); }
+
+        .city-item .rank {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--ink-faint);
+            width: 24px;
+            text-align: center;
+        }
+
+        .city-item .city-info { flex: 1; }
+
+        .city-item .city-name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .city-item .city-name .local {
+            font-size: 1.1rem;
+        }
+
+        .city-item.china .city-name .local { font-family: 'Noto Sans SC', sans-serif; }
+        .city-item.japan .city-name .local { font-family: 'Noto Sans JP', sans-serif; }
+        .city-item.korea .city-name .local { font-family: 'Noto Sans KR', sans-serif; }
+
+        .city-item .city-name .english {
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.9rem;
+            color: var(--ink);
+        }
+
+        .city-item .population {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+        }
+
+        .city-item .population strong {
+            color: var(--ink);
+        }
+
+        /* Map */
+        .map-container { position: relative; }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            background: #e8e4d8;
+        }
+
+        /* Legend */
+        .map-legend {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            max-width: 220px;
+        }
+
+        .map-legend h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .legend-section {
+            margin-bottom: 0.75rem;
+        }
+
+        .legend-section:last-child { margin-bottom: 0; }
+
+        .legend-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-faint);
+            margin-bottom: 0.4rem;
+        }
+
+        .legend-circles {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+        }
+
+        .legend-circle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .legend-circle {
+            border-radius: 50%;
+            background: rgba(150, 100, 50, 0.3);
+            border: 2px solid rgba(150, 100, 50, 0.7);
+        }
+
+        .legend-circle-label {
+            font-size: 0.65rem;
+            color: var(--ink-light);
+        }
+
+        .legend-countries {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .legend-country {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .legend-dot.china { background: var(--china); }
+        .legend-dot.japan { background: var(--japan); }
+        .legend-dot.korea { background: var(--korea); }
+
+        /* Popup */
+        .leaflet-popup-content-wrapper {
+            background: #fff;
+            border-radius: 4px;
+            padding: 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            min-width: 220px;
+        }
+
+        .leaflet-popup-tip { background: #fff; }
+
+        .popup-content { padding: 1rem; }
+
+        .popup-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .popup-header .local {
+            font-size: 1.4rem;
+        }
+
+        .popup-header.china .local { font-family: 'Noto Sans SC', sans-serif; color: var(--china); }
+        .popup-header.japan .local { font-family: 'Noto Sans JP', sans-serif; color: var(--japan); }
+        .popup-header.korea .local { font-family: 'Noto Sans KR', sans-serif; color: var(--korea); }
+
+        .popup-header .names { flex: 1; }
+
+        .popup-header .english {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .popup-header .country {
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+
+        .popup-body {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.5;
+        }
+
+        .popup-body .pop-stat {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.25rem;
+        }
+
+        .popup-body .pop-note {
+            font-size: 0.75rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .popup-body .description {
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* Comparison section */
+        .comparison-section {
+            background: #fff;
+            padding: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .comparison-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--ink-light) 0%, transparent 100%);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+
+        .comparison-card {
+            background: var(--paper);
+            border-radius: 4px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .comparison-card .region {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-faint);
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-card .big-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .comparison-card.china .big-number { color: var(--china); }
+        .comparison-card.japan .big-number { color: var(--japan); }
+        .comparison-card.korea .big-number { color: var(--korea); }
+
+        .comparison-card .label {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+        }
+
+        .comparison-card .cities {
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.75rem;
+        }
+
+        footer a { color: rgba(255,255,255,0.8); }
+
+        @media print {
+            .main-container { height: auto; }
+            #map { height: 450px; }
+            .map-legend { position: static; margin: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <h1>Urban Giants of East Asia</h1>
+            <p>Major cities by population, <span id="year-display">c. 1700</span></p>
+        </div>
+        <div class="time-slider-container">
+            <span class="time-label">1600</span>
+            <input type="range" id="year-slider" min="1600" max="1800" step="100" value="1700">
+            <span class="time-label">1800</span>
+        </div>
+    </header>
+
+    <div class="intro-text" id="intro-text">
+        <strong>Context:</strong> <span id="context-text">By 1700, East Asia contained some of the world's largest cities.
+        Edo (Tokyo) rivaled or exceeded London and Paris, while Beijing anchored the Qing empire.</span>
+        Circle sizes are proportional to estimated population—note that pre-modern figures are approximate.
+    </div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-section-header">
+                    <h3><span class="flag">🇨🇳</span> Qing China</h3>
+                    <span class="total">~2.8M urban</span>
+                </div>
+                <ul class="city-list" id="china-cities"></ul>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-section-header">
+                    <h3><span class="flag">🇯🇵</span> Tokugawa Japan</h3>
+                    <span class="total">~2.0M urban</span>
+                </div>
+                <ul class="city-list" id="japan-cities"></ul>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-section-header">
+                    <h3><span class="flag">🇰🇷</span> Joseon Korea</h3>
+                    <span class="total">~200K urban</span>
+                </div>
+                <ul class="city-list" id="korea-cities"></ul>
+            </div>
+        </aside>
+
+        <div class="map-container">
+            <div id="map"></div>
+            <div class="map-legend">
+                <h4>Population c. 1700</h4>
+                <div class="legend-section">
+                    <div class="legend-label">Circle Size = Population</div>
+                    <div class="legend-circles">
+                        <div class="legend-circle-item">
+                            <div class="legend-circle" style="width: 20px; height: 20px;"></div>
+                            <span class="legend-circle-label">100K</span>
+                        </div>
+                        <div class="legend-circle-item">
+                            <div class="legend-circle" style="width: 35px; height: 35px;"></div>
+                            <span class="legend-circle-label">500K</span>
+                        </div>
+                        <div class="legend-circle-item">
+                            <div class="legend-circle" style="width: 50px; height: 50px;"></div>
+                            <span class="legend-circle-label">1M</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="legend-section">
+                    <div class="legend-label">By Country</div>
+                    <div class="legend-countries">
+                        <div class="legend-country"><span class="legend-dot china"></span> Qing China</div>
+                        <div class="legend-country"><span class="legend-dot japan"></span> Tokugawa Japan</div>
+                        <div class="legend-country"><span class="legend-dot korea"></span> Joseon Korea</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="comparison-section">
+        <div class="comparison-container">
+            <div class="section-header">
+                <h2>Regional Comparison</h2>
+            </div>
+            <div class="comparison-grid">
+                <div class="comparison-card china">
+                    <div class="region">Qing China</div>
+                    <div class="big-number">~150M</div>
+                    <div class="label">Total population</div>
+                    <div class="cities">Beijing, Nanjing, Hangzhou, Suzhou, Guangzhou...</div>
+                </div>
+                <div class="comparison-card japan">
+                    <div class="region">Tokugawa Japan</div>
+                    <div class="big-number">~30M</div>
+                    <div class="label">Total population</div>
+                    <div class="cities">Edo, Kyoto, Osaka, Nagoya, Kanazawa...</div>
+                </div>
+                <div class="comparison-card korea">
+                    <div class="region">Joseon Korea</div>
+                    <div class="big-number">~10M</div>
+                    <div class="label">Total population</div>
+                    <div class="cities">Hanyang (Seoul), Pyongyang, Kaesong...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Population estimates are approximate. Sources: Rozman (1973), Skinner (1977), various historical demography studies.</p>
+    </footer>
+
+    <script>
+        // City data with populations for 1600, 1700, and 1800
+        // Sources: Rozman (1973), Skinner (1977), Mosk (2001), various historical demography studies
+        const cities = [
+            // China
+            {
+                id: 'beijing',
+                name: 'Beijing',
+                local: '北京',
+                country: 'china',
+                countryName: { 1600: 'Ming China', 1700: 'Qing China', 1800: 'Qing China' },
+                lat: 39.9042,
+                lng: 116.4074,
+                population: { 1600: 700000, 1700: 900000, 1800: 1100000 },
+                description: {
+                    1600: 'Imperial capital of the Ming dynasty. Center of government in its final decades.',
+                    1700: 'Imperial capital of the Qing dynasty. Center of government, with the Forbidden City at its heart.',
+                    1800: 'Qing capital at its height. Population growing with imperial expansion.'
+                }
+            },
+            {
+                id: 'nanjing',
+                name: 'Nanjing',
+                local: '南京',
+                country: 'china',
+                countryName: { 1600: 'Ming China', 1700: 'Qing China', 1800: 'Qing China' },
+                lat: 32.0603,
+                lng: 118.7969,
+                population: { 1600: 600000, 1700: 500000, 1800: 530000 },
+                description: {
+                    1600: 'Secondary Ming capital. One of the world\'s largest and wealthiest cities.',
+                    1700: 'Former Ming capital. Major commercial and cultural center in the Yangzi Delta.',
+                    1800: 'Major commercial center, recovering from earlier Qing-era decline.'
+                }
+            },
+            {
+                id: 'hangzhou',
+                name: 'Hangzhou',
+                local: '杭州',
+                country: 'china',
+                countryName: { 1600: 'Ming China', 1700: 'Qing China', 1800: 'Qing China' },
+                lat: 30.2741,
+                lng: 120.1551,
+                population: { 1600: 350000, 1700: 400000, 1800: 500000 },
+                description: {
+                    1600: 'Southern terminus of the Grand Canal. Center of Ming silk industry.',
+                    1700: 'Southern terminus of the Grand Canal. Famous for West Lake and silk production.',
+                    1800: 'Thriving commercial hub. Silk exports increasing with Western trade.'
+                }
+            },
+            {
+                id: 'suzhou',
+                name: 'Suzhou',
+                local: '蘇州',
+                country: 'china',
+                countryName: { 1600: 'Ming China', 1700: 'Qing China', 1800: 'Qing China' },
+                lat: 31.2989,
+                lng: 120.5853,
+                population: { 1600: 400000, 1700: 350000, 1800: 500000 },
+                description: {
+                    1600: '"Venice of China" at its cultural peak. Center of Ming literati culture.',
+                    1700: 'The "Venice of China." Center of silk weaving and renowned for classical gardens.',
+                    1800: 'Major textile center. Population recovering from Ming-Qing transition.'
+                }
+            },
+            {
+                id: 'guangzhou',
+                name: 'Guangzhou',
+                local: '廣州',
+                country: 'china',
+                countryName: { 1600: 'Ming China', 1700: 'Qing China', 1800: 'Qing China' },
+                lat: 23.1291,
+                lng: 113.2644,
+                population: { 1600: 200000, 1700: 300000, 1800: 600000 },
+                description: {
+                    1600: 'Southern trading port. Gateway to Southeast Asian maritime trade.',
+                    1700: 'Major southern port. Gateway for foreign trade, later the only port open to Europeans.',
+                    1800: 'Sole legal port for Western trade. Canton System creates explosive growth.'
+                }
+            },
+            {
+                id: 'xian',
+                name: "Xi'an",
+                local: '西安',
+                country: 'china',
+                countryName: { 1600: 'Ming China', 1700: 'Qing China', 1800: 'Qing China' },
+                lat: 34.3416,
+                lng: 108.9398,
+                population: { 1600: 300000, 1700: 250000, 1800: 300000 },
+                description: {
+                    1600: 'Former Tang capital (Chang\'an). Provincial center in northwest.',
+                    1700: 'Ancient Tang capital (Chang\'an). Major city in northwest China.',
+                    1800: 'Regional center. Gateway to Central Asian trade routes.'
+                }
+            },
+            {
+                id: 'fuzhou',
+                name: 'Fuzhou',
+                local: '福州',
+                country: 'china',
+                countryName: { 1600: 'Ming China', 1700: 'Qing China', 1800: 'Qing China' },
+                lat: 26.0745,
+                lng: 119.2965,
+                population: { 1600: 150000, 1700: 200000, 1800: 300000 },
+                description: {
+                    1600: 'Fujian provincial capital. Center of maritime trade networks.',
+                    1700: 'Coastal trading port in Fujian province. Center of lacquerware production.',
+                    1800: 'Growing port city. Tea export trade driving expansion.'
+                }
+            },
+            // Japan - Tokugawa
+            {
+                id: 'edo',
+                name: 'Edo',
+                local: '江戸',
+                country: 'japan',
+                countryName: { 1600: 'Tokugawa Japan', 1700: 'Tokugawa Japan', 1800: 'Tokugawa Japan' },
+                lat: 35.6762,
+                lng: 139.6503,
+                population: { 1600: 150000, 1700: 1000000, 1800: 1200000 },
+                description: {
+                    1600: 'Tokugawa Ieyasu\'s new capital. Just beginning its explosive growth.',
+                    1700: 'Shogunal capital. By 1700, likely the world\'s largest city. Center of sankin-kōtai system.',
+                    1800: 'World\'s largest city. Over a million residents in shogunal capital.'
+                }
+            },
+            {
+                id: 'kyoto',
+                name: 'Kyoto',
+                local: '京都',
+                country: 'japan',
+                countryName: { 1600: 'Tokugawa Japan', 1700: 'Tokugawa Japan', 1800: 'Tokugawa Japan' },
+                lat: 35.0116,
+                lng: 135.7681,
+                population: { 1600: 300000, 1700: 400000, 1800: 350000 },
+                description: {
+                    1600: 'Imperial capital. Still Japan\'s largest city at century\'s start.',
+                    1700: 'Imperial capital. Center of traditional arts, crafts, and Buddhist institutions.',
+                    1800: 'Imperial residence. Cultural center, but eclipsed by Edo and Osaka.'
+                }
+            },
+            {
+                id: 'osaka',
+                name: 'Osaka',
+                local: '大坂',
+                country: 'japan',
+                countryName: { 1600: 'Tokugawa Japan', 1700: 'Tokugawa Japan', 1800: 'Tokugawa Japan' },
+                lat: 34.6937,
+                lng: 135.5023,
+                population: { 1600: 200000, 1700: 380000, 1800: 400000 },
+                description: {
+                    1600: 'Castle town destroyed in 1615 siege. Rebuilding as commercial center.',
+                    1700: '"Kitchen of Japan." Commercial hub with the rice exchange that set national prices.',
+                    1800: 'Japan\'s commercial capital. Merchant culture at its height.'
+                }
+            },
+            {
+                id: 'nagoya',
+                name: 'Nagoya',
+                local: '名古屋',
+                country: 'japan',
+                countryName: { 1600: 'Tokugawa Japan', 1700: 'Tokugawa Japan', 1800: 'Tokugawa Japan' },
+                lat: 35.1815,
+                lng: 136.9066,
+                population: { 1600: 30000, 1700: 100000, 1800: 110000 },
+                description: {
+                    1600: 'New castle town being built by Tokugawa branch family.',
+                    1700: 'Castle town of the Owari branch of the Tokugawa. Major city on the Tōkaidō.',
+                    1800: 'Fourth largest Japanese city. Center of ceramic production.'
+                }
+            },
+            {
+                id: 'kanazawa',
+                name: 'Kanazawa',
+                local: '金沢',
+                country: 'japan',
+                countryName: { 1600: 'Tokugawa Japan', 1700: 'Tokugawa Japan', 1800: 'Tokugawa Japan' },
+                lat: 36.5613,
+                lng: 136.6562,
+                population: { 1600: 50000, 1700: 100000, 1800: 120000 },
+                description: {
+                    1600: 'Castle town of powerful Maeda clan. Growing rapidly.',
+                    1700: 'Castle town of the wealthy Maeda domain (Kaga). Center of arts and crafts.',
+                    1800: 'Fifth largest city. Maeda domain famous for Kutani ware.'
+                }
+            },
+            {
+                id: 'hiroshima',
+                name: 'Hiroshima',
+                local: '広島',
+                country: 'japan',
+                countryName: { 1600: 'Tokugawa Japan', 1700: 'Tokugawa Japan', 1800: 'Tokugawa Japan' },
+                lat: 34.3853,
+                lng: 132.4553,
+                population: { 1600: 30000, 1700: 60000, 1800: 70000 },
+                description: {
+                    1600: 'Castle town under Asano domain. Regional administrative center.',
+                    1700: 'Castle town of the Asano domain. Strategic location in western Honshu.',
+                    1800: 'Regional center connecting western Japan to Osaka.'
+                }
+            },
+            // Korea - Joseon
+            {
+                id: 'hanyang',
+                name: 'Hanyang (Seoul)',
+                local: '한양',
+                country: 'korea',
+                countryName: { 1600: 'Joseon Korea', 1700: 'Joseon Korea', 1800: 'Joseon Korea' },
+                lat: 37.5665,
+                lng: 126.9780,
+                population: { 1600: 100000, 1700: 200000, 1800: 190000 },
+                description: {
+                    1600: 'Joseon capital recovering from Imjin War devastation (1592-1598).',
+                    1700: 'Capital of Joseon dynasty since 1394. Center of government and yangban culture.',
+                    1800: 'Royal capital. Population stable under late Joseon governance.'
+                }
+            },
+            {
+                id: 'pyongyang',
+                name: 'Pyongyang',
+                local: '평양',
+                country: 'korea',
+                countryName: { 1600: 'Joseon Korea', 1700: 'Joseon Korea', 1800: 'Joseon Korea' },
+                lat: 39.0392,
+                lng: 125.7625,
+                population: { 1600: 30000, 1700: 50000, 1800: 40000 },
+                description: {
+                    1600: 'Devastated by Japanese invasion. Slowly rebuilding.',
+                    1700: 'Ancient capital of Goguryeo. Major city in the northern region.',
+                    1800: 'Northern regional center. Some recovery after 18th century conflicts.'
+                }
+            },
+            {
+                id: 'kaesong',
+                name: 'Kaesong',
+                local: '개성',
+                country: 'korea',
+                countryName: { 1600: 'Joseon Korea', 1700: 'Joseon Korea', 1800: 'Joseon Korea' },
+                lat: 37.9708,
+                lng: 126.5544,
+                population: { 1600: 25000, 1700: 40000, 1800: 35000 },
+                description: {
+                    1600: 'Former Goryeo capital. Recovering from Imjin War.',
+                    1700: 'Former Goryeo capital. Commercial center known for ginseng trade.',
+                    1800: 'Ginseng trading center. Merchant class growing in influence.'
+                }
+            }
+        ];
+
+        // Current year state
+        let currentYear = 1700;
+
+        // Country colors
+        const countryColors = {
+            china: '#c1272d',
+            japan: '#bc002d',
+            korea: '#003478'
+        };
+
+        // Historical country totals for comparison section
+        const countryTotals = {
+            china: { 1600: 110000000, 1700: 150000000, 1800: 300000000 },
+            japan: { 1600: 15000000, 1700: 30000000, 1800: 30000000 },
+            korea: { 1600: 6000000, 1700: 10000000, 1800: 13000000 }
+        };
+
+        // Calculate circle radius from population
+        function getRadius(population) {
+            // Scale: sqrt for area-proportional circles
+            // Base: 100K = 15px radius, 1M = ~47px
+            return Math.sqrt(population / 100000) * 15;
+        }
+
+        // Get population for current year
+        function getPopulation(city) {
+            return city.population[currentYear];
+        }
+
+        // Get description for current year
+        function getDescription(city) {
+            return city.description[currentYear] || city.description[1700];
+        }
+
+        // Get country name for current year
+        function getCountryName(city) {
+            return city.countryName[currentYear] || city.countryName[1700];
+        }
+
+        // Sort cities by current year's population
+        function sortCitiesByPopulation() {
+            return [...cities].sort((a, b) => getPopulation(b) - getPopulation(a));
+        }
+
+        // Populate sidebar
+        function populateSidebar() {
+            const containers = {
+                china: document.getElementById('china-cities'),
+                japan: document.getElementById('japan-cities'),
+                korea: document.getElementById('korea-cities')
+            };
+
+            // Clear existing
+            Object.values(containers).forEach(c => c.innerHTML = '');
+
+            // Group and rank within each country
+            const byCountry = { china: [], japan: [], korea: [] };
+            cities.forEach(city => byCountry[city.country].push(city));
+
+            // Sort each country's cities by current year population
+            Object.keys(byCountry).forEach(country => {
+                byCountry[country].sort((a, b) => getPopulation(b) - getPopulation(a));
+            });
+
+            // Calculate urban totals per country
+            const urbanTotals = { china: 0, japan: 0, korea: 0 };
+            Object.keys(byCountry).forEach(country => {
+                urbanTotals[country] = byCountry[country].reduce((sum, city) => sum + getPopulation(city), 0);
+            });
+
+            // Update sidebar headers
+            document.querySelectorAll('.sidebar-section-header .total').forEach((el, i) => {
+                const countries = ['china', 'japan', 'korea'];
+                const total = urbanTotals[countries[i]];
+                el.textContent = `~${(total / 1000000).toFixed(1)}M urban`;
+            });
+
+            Object.keys(byCountry).forEach(country => {
+                byCountry[country].forEach((city, index) => {
+                    const pop = getPopulation(city);
+                    const li = document.createElement('li');
+                    li.className = `city-item ${country}`;
+                    li.dataset.id = city.id;
+                    li.innerHTML = `
+                        <div class="rank">${index + 1}</div>
+                        <div class="city-info">
+                            <div class="city-name">
+                                <span class="local">${city.local}</span>
+                                <span class="english">${city.name}</span>
+                            </div>
+                            <div class="population"><strong>${(pop / 1000).toFixed(0)}K</strong> people</div>
+                        </div>
+                    `;
+                    li.addEventListener('click', function() {
+                        document.querySelectorAll('.city-item').forEach(i => i.classList.remove('active'));
+                        this.classList.add('active');
+                        map.setView([city.lat, city.lng], 7, { animate: true });
+                        markers[city.id].openPopup();
+                    });
+                    containers[country].appendChild(li);
+                });
+            });
+        }
+
+        // Update comparison section
+        function updateComparison() {
+            const cards = document.querySelectorAll('.comparison-card');
+            const countries = ['china', 'japan', 'korea'];
+
+            cards.forEach((card, i) => {
+                const country = countries[i];
+                const total = countryTotals[country][currentYear];
+                card.querySelector('.big-number').textContent = `~${(total / 1000000).toFixed(0)}M`;
+            });
+        }
+
+        populateSidebar();
+
+        // Initialize map
+        const map = L.map('map', {
+            zoomControl: true
+        }).setView([35, 125], 5);
+
+        // Light map tiles
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 10
+        }).addTo(map);
+
+        // Add subtle country labels
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+            subdomains: 'abcd',
+            maxZoom: 10,
+            opacity: 0.5
+        }).addTo(map);
+
+        // Create popup content
+        function createPopup(city) {
+            const pop = getPopulation(city);
+            const desc = getDescription(city);
+            const countryName = getCountryName(city);
+            return `
+                <div class="popup-content">
+                    <div class="popup-header ${city.country}">
+                        <span class="local">${city.local}</span>
+                        <div class="names">
+                            <div class="english">${city.name}</div>
+                            <div class="country">${countryName}</div>
+                        </div>
+                    </div>
+                    <div class="popup-body">
+                        <div class="pop-stat">~${(pop / 1000).toFixed(0)}K</div>
+                        <div class="pop-note">estimated population c. ${currentYear}</div>
+                        <div class="description">${desc}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add city circles to map
+        const markers = {};
+
+        function drawMarkers() {
+            // Remove existing markers
+            Object.values(markers).forEach(m => map.removeLayer(m));
+
+            // Sort by population ascending so larger circles are drawn on top
+            const sortedForDrawing = [...cities].sort((a, b) => getPopulation(a) - getPopulation(b));
+
+            sortedForDrawing.forEach(city => {
+                const pop = getPopulation(city);
+                const radius = getRadius(pop);
+                const color = countryColors[city.country];
+
+                const circle = L.circleMarker([city.lat, city.lng], {
+                    radius: radius,
+                    fillColor: color,
+                    fillOpacity: 0.5,
+                    color: color,
+                    weight: 2,
+                    opacity: 0.8
+                }).addTo(map);
+
+                circle.bindPopup(createPopup(city), { maxWidth: 280 });
+
+                markers[city.id] = circle;
+            });
+        }
+
+        // Initial draw
+        drawMarkers();
+
+        // Year slider functionality
+        const yearSlider = document.getElementById('year-slider');
+        const yearDisplay = document.getElementById('year-display');
+
+        yearSlider.addEventListener('input', function() {
+            currentYear = parseInt(this.value);
+            yearDisplay.textContent = `c. ${currentYear}`;
+
+            // Update everything
+            populateSidebar();
+            drawMarkers();
+            updateComparison();
+            updateLegendYear();
+            updateContextText();
+        });
+
+        function updateLegendYear() {
+            const legendTitle = document.querySelector('.map-legend h4');
+            if (legendTitle) {
+                legendTitle.textContent = `Population c. ${currentYear}`;
+            }
+        }
+
+        // Context text for each era
+        const contextTexts = {
+            1600: 'At the dawn of the 17th century, China under the late Ming remained the world\'s most urbanized region. Japan was emerging from civil war, with Kyoto still its largest city. Edo was just beginning its meteoric rise under Tokugawa Ieyasu.',
+            1700: 'By 1700, East Asia contained some of the world\'s largest cities. Edo (Tokyo) rivaled or exceeded London and Paris, while Beijing anchored the Qing empire.',
+            1800: 'By 1800, Edo was definitively the world\'s largest city at over 1 million. Guangzhou was booming as China\'s sole legal port for Western trade. Japan\'s urban population had stabilized while China\'s was growing rapidly.'
+        };
+
+        function updateContextText() {
+            const contextEl = document.getElementById('context-text');
+            if (contextEl) {
+                contextEl.textContent = contextTexts[currentYear];
+            }
+        }
+
+        // Initialize comparison
+        updateComparison();
+
+        // Fit bounds to show all cities
+        const allCoords = cities.map(c => [c.lat, c.lng]);
+        map.fitBounds(allCoords, { padding: [50, 50] });
+    </script>
+
+</body>
+</html>

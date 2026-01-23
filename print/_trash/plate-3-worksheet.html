@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>East Asia Today</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: letter; margin: 0.4in; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+      padding: 16px;
+      max-width: 8.5in;
+      margin: 0 auto;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+      background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+    }
+    .header {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .topic {
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 4px 16px;
+      font-weight: 600;
+      font-size: 12px;
+    }
+    .main-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .map-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-outline {
+      width: 100%;
+    }
+    .map-num {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border: 1.5px solid #333;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+    }
+    .map-box {
+      position: relative;
+    }
+    .fill-section {
+      display: flex;
+      flex-direction: column;
+    }
+    .section-label {
+      display: inline-block;
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 3px 10px;
+      font-weight: 600;
+      font-size: 9px;
+      margin-bottom: 6px;
+      width: fit-content;
+    }
+    .fill-table {
+      border-collapse: collapse;
+      font-size: 10px;
+      background: rgba(255,255,255,0.6);
+      width: 100%;
+    }
+    .fill-table th, .fill-table td {
+      border: 1px solid #ccc;
+      padding: 6px 4px;
+      text-align: center;
+    }
+    .fill-table th {
+      background: #e8e8e8;
+      font-weight: 600;
+      font-size: 9px;
+    }
+    .fill-table td {
+      height: 36px;
+    }
+    .fill-table td:nth-child(1) { width: 30px; }
+    .fill-table td:nth-child(2) { width: 30%; }
+    .fill-table td:nth-child(3) { width: 30%; }
+    .fill-table td:nth-child(4) { width: 15%; }
+    .fill-table td:nth-child(5) { width: 15%; }
+    .key-section {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px;
+    }
+    .key-label {
+      display: inline-block;
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 2px 10px;
+      font-weight: 600;
+      font-size: 9px;
+      margin-bottom: 6px;
+    }
+    .key-table {
+      border-collapse: collapse;
+      font-size: 9px;
+    }
+    .key-table th, .key-table td {
+      border: 1px solid #ddd;
+      padding: 4px 8px;
+      text-align: center;
+    }
+    .key-table th {
+      background: #f0f0f0;
+      font-weight: 600;
+    }
+    .key-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+    }
+    .key-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+    .sources {
+      margin-top: 8px;
+      font-size: 8px;
+      color: #888;
+      text-align: center;
+    }
+    @media print {
+      body { padding: 0; }
+    }
+    @page {
+      margin: 0.4in;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic">East Asia Today</span>
+  </div>
+
+  <div class="main-row">
+    <div class="map-box">
+      <img src="asia-map-blank.png" class="map-outline" alt="Blank map of Asia">
+      <span class="map-num" style="top: 45.5%; left: 56.9%;">1</span>
+      <span class="map-num" style="top: 5.8%; left: 64.8%;">2</span>
+      <span class="map-num" style="top: 42.8%; left: 89.6%;">3</span>
+      <span class="map-num" style="top: 81.3%; left: 57.2%;">4</span>
+      <span class="map-num" style="top: 44.3%; left: 78.7%;">5</span>
+      <span class="map-num" style="top: 35.7%; left: 77.2%;">6</span>
+      <span class="map-num" style="top: 64.7%; left: 70.8%;">7</span>
+      <span class="map-num" style="top: 22.5%; left: 55.9%;">8</span>
+    </div>
+
+    <div class="fill-section">
+      <span class="section-label">Fill In</span>
+      <table class="fill-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Polity</th>
+            <th>Leader</th>
+            <th>Pop.</th>
+            <th>GDP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>6</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>7</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>8</td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  </body>
+</html>

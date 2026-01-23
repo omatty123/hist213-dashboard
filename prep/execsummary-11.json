@@ -1,0 +1,240 @@
+{
+  "plate": 11,
+  "topic": "Tokugawa vs. the West",
+  "date": "2026-01-30",
+  "generatedAt": "2026-01-04T16:30:00.000Z",
+  "readings": [
+    "Harris Treaty of 1858",
+    "Daimyo Responses to American Demands"
+  ],
+  "readingAnalyses": [
+    {
+      "title": "Harris Treaty of 1858",
+      "author": "Townsend Harris / Tokugawa negotiators",
+      "source": "Sources of Japanese Tradition",
+      "pages": "SJT",
+      "type": "primary",
+      "summary": "The Harris Treaty established the template for Japan's 'unequal treaties' with Western powers. American consul Townsend Harris negotiated terms that mirrored China's post-Opium War concessions: extraterritoriality for American citizens, fixed tariff rates limiting Japanese revenue, and opening of additional ports. Yet the circumstances differed crucially: Japan signed without a war, through negotiation rather than defeat.\n\nThe treaty's provisions reveal both Western demands and Japanese adaptation. Harris argued that signing voluntarily would be better than waiting for Britain (fresh from victories in China) to impose harsher terms by force. Japanese negotiators extracted what concessions they could—later revision dates, limitations on where foreigners could travel. The document shows Japan entering the Western treaty system on unfavorable but not catastrophic terms.",
+      "keyQuotes": [
+        {"quote": "The President of the United States has sent me to request that American ships may be allowed to enter Japanese ports.", "page": "SJT"},
+        {"quote": "American citizens committing offenses in Japan shall be tried by American consular courts.", "page": "treaty text"},
+        {"quote": "All duties shall be paid in Japanese currency at rates established by this treaty.", "page": "treaty text"}
+      ],
+      "thematicExamples": [
+        "Extraterritoriality provisions - Americans beyond Japanese law, same humiliation as in China",
+        "Tariff limitations - Japan couldn't protect domestic industries or raise revenue through customs",
+        "Port opening requirements - strategic locations for American commercial and military access"
+      ],
+      "realLifeConnections": [
+        "Japan's relentless pursuit of treaty revision (achieved 1899) shows how 'unequal' status motivated reform",
+        "Status of Forces Agreements for US military bases today echo extraterritoriality debates",
+        "Trade negotiations continue to involve questions of sovereignty and external pressure"
+      ]
+    },
+    {
+      "title": "Daimyo Responses to American Demands",
+      "author": "Various domain lords",
+      "source": "Sources of Japanese Tradition",
+      "pages": "SJT",
+      "type": "primary",
+      "summary": "The shogunate's unprecedented consultation with daimyo on foreign policy reveals a regime in crisis—traditionally, daimyo had no voice in national matters. Their responses ranged from defiant resistance ('expel the barbarians') to pragmatic accommodation ('study Western methods to strengthen Japan') to opportunistic positioning (using the crisis to advance domain interests).\n\nThese documents show that Japan's response to the West was neither unanimous nor predetermined. The eventual Meiji transformation emerged from intense debate among competing visions. The 'sonnō jōi' (revere emperor, expel barbarians) slogan initially meant armed resistance to foreigners; only later did it transform into 'revere emperor, modernize Japan.' The daimyo opinions capture a society thinking through an existential challenge in real time.",
+      "keyQuotes": [
+        {"quote": "If we try to drive them away, we will make them our enemies. If we show them friendship, we can make them our friends.", "page": "SJT"},
+        {"quote": "To exchange our precious land's customs for the ways of the barbarians would be to disgrace our ancestors.", "page": "SJT"},
+        {"quote": "The foreigners have superior weapons. We must learn their techniques before we can resist them.", "page": "SJT"}
+      ],
+      "thematicExamples": [
+        "Accommodation arguments - learn from the West to eventually resist it (later mainstream Meiji position)",
+        "Resistance arguments - Western contact would pollute Japan's sacred traditions",
+        "Opportunistic arguments - some daimyo saw crisis as chance to weaken shogunate"
+      ],
+      "realLifeConnections": [
+        "Contemporary Japanese debates about military normalization echo 19th-century arguments about national defense",
+        "The tension between preserving tradition and adopting foreign practices remains relevant globally",
+        "How societies respond to external pressure - accommodation vs. resistance - is a universal dilemma"
+      ]
+    }
+  ],
+  "overallSynthesis": "The Harris Treaty and daimyo responses together reveal Japan at a crossroads. Unlike China, which was forced into its treaty system through military defeat, Japan entered through negotiation—but this distinction should not be overstated. Harris explicitly warned that Britain might impose worse terms by force; Japan signed from weakness, not choice.\n\nYet the daimyo debates show something China lacked: a structured political arena where alternatives could be debated. The shogunate's consultation—itself a sign of weakness—created space for competing visions. The voices urging 'learn Western techniques to resist the West' would eventually triumph, but only after the 'expel the barbarians' faction tried and failed at armed resistance.\n\nThe comparison with Qing China (Plate 10) is instructive. Both faced similar pressures; both signed similar treaties. But Japan's decentralized political system (powerful domains, marginalized shogunate) created opportunities for new coalitions that would overthrow the old order. China's more centralized system made such transformation harder. The difference wasn't cultural superiority but political structure—and the contingent choices made by specific actors in specific moments.",
+  "executiveSummary": "Commodore Matthew Perry's 'Black Ships' arrived in Edo Bay in 1853, demanding that Japan end its sakoku ('closed country') policies and open to American trade. Unlike China, which had been forced open by war, Japan negotiated—first the Convention of Kanagawa (1854), then the Harris Treaty (1858). The daimyo responses reveal intense debate: some advocated resistance, others accommodation, still others saw opportunity for reform.\n\nJapan ultimately signed 'unequal treaties' similar to China's, including extraterritoriality and tariff limits. But the outcome was profoundly different: rather than a 'century of humiliation,' Japan embarked on rapid transformation. Within decades, it would renegotiate these treaties from a position of strength. Understanding why Japan's response differed from China's is one of the central puzzles of modern East Asian history—and the readings help us see that Japan's path was neither inevitable nor uncontested.",
+  "keywords": [
+    {
+      "term": "Black Ships (黒船)",
+      "definition": "Japanese term for Perry's steam-powered warships that arrived in 1853",
+      "relevance": "Symbol of Western technological superiority and the end of isolation"
+    },
+    {
+      "term": "Harris Treaty (1858)",
+      "definition": "Commercial treaty between US and Japan opening ports and granting extraterritoriality",
+      "relevance": "Created 'unequal' conditions similar to China's treaties"
+    },
+    {
+      "term": "Sonnō jōi (尊王攘夷)",
+      "definition": "'Revere the Emperor, Expel the Barbarians'—initially anti-foreign slogan",
+      "relevance": "Rallying cry for those who opposed treaty-making; later transformed into reform movement"
+    },
+    {
+      "term": "Bakumatsu (幕末)",
+      "definition": "'End of the bakufu'—period from Perry's arrival to Meiji Restoration (1853-1868)",
+      "relevance": "Era of crisis, debate, and transformation"
+    },
+    {
+      "term": "Unequal Treaties",
+      "definition": "Treaties granting Western powers extraterritoriality, tariff control, and other privileges",
+      "relevance": "Japan would spend decades working to revise these; full revision achieved 1899"
+    }
+  ],
+  "keyPassages": [
+    {
+      "quote": "The President of the United States has sent me to request that American ships may be allowed to enter Japanese ports to obtain supplies of coal, provisions, and water.",
+      "source": "Perry's message to Japan",
+      "page": "1853"
+    },
+    {
+      "quote": "If we try to drive them away, we will make them our enemies. If we show them friendship, we can make them our friends.",
+      "source": "Daimyo response advocating accommodation",
+      "page": "SJT"
+    },
+    {
+      "quote": "To exchange our precious land's customs for the ways of the barbarians would be to disgrace our ancestors.",
+      "source": "Daimyo response opposing treaties",
+      "page": "SJT"
+    }
+  ],
+  "peopleplacesthings": {
+    "people": [
+      "Commodore Matthew Perry - US naval commander",
+      "Townsend Harris - US diplomat who negotiated 1858 treaty",
+      "Ii Naosuke - bakufu official who signed treaties"
+    ],
+    "places": [
+      "Edo Bay (Tokyo Bay) - where Perry arrived",
+      "Shimoda - first opened port",
+      "Yokohama - major treaty port"
+    ],
+    "things": [
+      "Black Ships - Perry's steam warships",
+      "Convention of Kanagawa (1854) - first treaty",
+      "Harris Treaty (1858) - commercial treaty"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "Why did Japan avoid a war like the Opium War?",
+      "talkingPoints": "Japan observed China's fate and learned. Geographic factors (island nation) mattered. Internal debates produced consensus for negotiation. But also: US was less aggressive than Britain, more interested in coaling stations than opium."
+    },
+    {
+      "question": "What did the daimyo responses reveal about divisions within Japan?",
+      "talkingPoints": "Some wanted resistance ('expel the barbarians'), others accommodation, others reform. These debates would fuel the Meiji Restoration. Note: Many who initially opposed treaties later led modernization."
+    },
+    {
+      "question": "Why did Japan's 'opening' lead to transformation rather than humiliation?",
+      "talkingPoints": "This is a complex question with no single answer. Consider: Timing (Japan had more warning), scale (Japan was smaller, more cohesive), leadership (reform-minded samurai), luck. Avoid cultural essentialism."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "1853",
+      "event": "Perry's Black Ships arrive in Edo Bay"
+    },
+    {
+      "date": "1854",
+      "event": "Convention of Kanagawa—first treaty"
+    },
+    {
+      "date": "1858",
+      "event": "Harris Treaty—commercial opening, extraterritoriality"
+    },
+    {
+      "date": "1860",
+      "event": "Ii Naosuke assassinated for signing treaties"
+    },
+    {
+      "date": "1868",
+      "event": "Meiji Restoration—new government begins transformation"
+    },
+    {
+      "date": "1899",
+      "event": "Unequal treaties finally revised—Japan achieves equality"
+    }
+  ],
+  "connections": {
+    "fromPrevious": "Plate 10 showed China's traumatic 'opening' via the Opium War. Japan faced similar pressure but responded very differently. Why?",
+    "toNext": "Plate 12 examines Meiji Transformation—the reforms that made Japan the first non-Western industrial power. The Black Ships set this in motion.",
+    "broaderThemes": "Japan and China faced the same challenge (Western pressure) with different outcomes. Understanding why requires examining internal structures, leadership, and choices—not cultural destiny."
+  },
+  "nextPreview": {
+    "plate": 12,
+    "topic": "Meiji Transformation",
+    "preview": "The Meiji government launched comprehensive reforms: ending samurai privileges, building railroads and factories, creating a conscript army, drafting a constitution. How did Japan transform so rapidly?",
+    "readings": ["Meiji Primary Sources, Sources of Japanese Tradition"]
+  },
+  "teachingNotes": [
+    "Show images of Black Ships—the visual contrast between steam warships and Japanese vessels is striking.",
+    "The daimyo responses show real debate, not monolithic 'Japan.' Have students identify different positions.",
+    "Be careful with 'Japan succeeded, China failed' framing—both faced genuine dilemmas with no easy answers.",
+    "MIT Visualizing Cultures 'Black Ships and Samurai' has excellent images and analysis.",
+    "Connect to contemporary Japan-US relations: the alliance began with gunboat diplomacy."
+  ],
+  "map": {
+    "center": [35.5, 139],
+    "zoom": 6,
+    "locations": [
+      {
+        "name": "Uraga (Edo Bay)",
+        "nameChinese": "浦賀",
+        "lat": 35.2297,
+        "lng": 139.7234,
+        "type": "other",
+        "description": "Where Perry's Black Ships first anchored, July 1853"
+      },
+      {
+        "name": "Edo (Tokyo)",
+        "nameChinese": "江戶",
+        "lat": 35.6762,
+        "lng": 139.6503,
+        "type": "capital",
+        "description": "Shogunal capital; center of crisis and debate"
+      },
+      {
+        "name": "Shimoda",
+        "nameChinese": "下田",
+        "lat": 34.6711,
+        "lng": 138.9451,
+        "type": "city",
+        "description": "First port opened to Americans (1854)"
+      },
+      {
+        "name": "Hakodate",
+        "nameChinese": "函館",
+        "lat": 41.7686,
+        "lng": 140.7288,
+        "type": "city",
+        "description": "Second port opened (1854)"
+      },
+      {
+        "name": "Yokohama",
+        "nameChinese": "横浜",
+        "lat": 35.4437,
+        "lng": 139.6380,
+        "type": "city",
+        "description": "Major treaty port; grew rapidly after opening"
+      },
+      {
+        "name": "Kyoto",
+        "nameChinese": "京都",
+        "lat": 35.0116,
+        "lng": 135.7681,
+        "type": "capital",
+        "description": "Imperial capital; 'revere the emperor' movement centered here"
+      },
+      {
+        "name": "Satsuma (Kagoshima)",
+        "lat": 31.5966,
+        "lng": 130.5571,
+        "type": "region",
+        "description": "Powerful domain that would lead Meiji Restoration"
+      }
+    ]
+  }
+}

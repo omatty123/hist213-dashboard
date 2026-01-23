@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Platebook - Plate 18: Korean Nationalism</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* Header row */
+    .header {
+      display: flex;
+      margin-bottom: 5px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Section labels */
+    .label {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 3px;
+      background: #fff;
+    }
+
+    /* Person/Place/Thing table */
+    .ppt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+    .ppt-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+      width: 33.33%;
+    }
+    .ppt-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      height: 20px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin-bottom: 4px;
+    }
+    .timeline-box {
+      border: 1px solid #aaa;
+      padding: 6px 16px;
+      height: 78px;
+      position: relative;
+      background-color: #fefdfb;
+    }
+    .timeline-line {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: #333;
+    }
+    .timeline-ticks {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
+      width: 2px;
+      height: 12px;
+      background: #333;
+    }
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      text-align: center;
+    }
+    .timeline-labels span {
+      max-width: 90px;
+      line-height: 1.3;
+    }
+
+    /* Map */
+    .map-section {
+      margin-bottom: 4px;
+    }
+    .map-subtitle {
+      font-size: 9px;
+      font-style: italic;
+      color: #555;
+      margin-left: 8px;
+    }
+    .map-box {
+      border: 1px solid #aaa;
+      background: #f5f5f5;
+      margin-top: 3px;
+      padding: 10px;
+      min-height: 100px;
+    }
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 9px;
+    }
+    .map-loc strong { font-weight: 600; }
+    .map-quote {
+      font-style: italic;
+      font-size: 9px;
+      text-align: center;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Questions table */
+    .questions-section {
+      margin-bottom: 4px;
+    }
+    .questions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .questions-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+    }
+    .questions-table th:last-child {
+      width: 45%;
+    }
+    .questions-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+    .questions-table .q-num {
+      width: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: none;
+    }
+    .question-cell {
+      min-height: 32px;
+    }
+    .answer-cell {
+      min-height: 32px;
+    }
+
+    /* Bottom section */
+    .bottom-section {
+      display: flex;
+      gap: 6px;
+    }
+    .causes-box, .notes-box {
+      flex: 1;
+    }
+    .bottom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-weight: 600;
+      font-size: 9px;
+      text-align: left;
+      background: #fff;
+    }
+    .bottom-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 9px;
+      vertical-align: top;
+      height: 70px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Filled content styling */
+    .filled {
+      color: #000;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .filled strong {
+      font-weight: 600;
+    }
+
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="plate-num">Plate # 18</div>
+    <div class="topic">Korean Nationalism</div>
+    <div class="date">Feb 18</div>
+  </div>
+
+  <!-- Person / Place / Thing -->
+  <table class="ppt-table">
+    <thead>
+      <tr>
+        <th><span class="label">Person</span></th>
+        <th><span class="label">Place</span></th>
+        <th><span class="label">Thing</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="filled"><strong>An Jung</strong> — geun - assassin of Itō Hirobumi</td>
+        <td class="filled"><strong>Pagoda Park (Tapgol)</strong> — where Declaration was read</td>
+        <td class="filled"><strong>Declaration of Independence</strong> — founding document</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Thirty</strong> — three Representatives - signers of Declaration</td>
+        <td class="filled"><strong>Harbin</strong> — where An Jung-geun shot Itō</td>
+        <td class="filled"><strong>March First Movement</strong> — mass uprising</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Yu Gwan</strong> — sun - young female martyr of March First</td>
+        <td class="filled"><strong>Seodaemun Prison</strong> — where nationalists were held</td>
+        <td class="filled"><strong>Provisional Government</strong> — exile government in Shanghai</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <span class="label">Timeline: Korean Nationalism</span>
+    <div class="timeline-box">
+      <div class="timeline-labels">
+        <span>1905<br><em>Japan makes Korea a protectorate</em></span>
+        <span>1909<br><em>An Jung-geun assassinates Itō Hirobumi</em></span>
+        <span>1910<br><em>Japan formally annexes Korea</em></span>
+        <span>March 1, 1919<br><em>Declaration of Independence read; March First Movement begins</em></span>
+        <span>1919<br><em>Provisional Government established in Shanghai</em></span>
+        <span>1945<br><em>Liberation from Japan (but then division)</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-section">
+    <span class="label">Map</span>
+    <div class="map-box">
+      <div class="map-locations">
+        <div class="map-loc"><strong>Pagoda Park (Seoul)</strong> (塔洞公園) — Where Declaration of Independence was read, March 1, 1919</div>
+        <div class="map-loc"><strong>Seodaemun Prison</strong> (西大門刑務所) — Where Korean nationalists were imprisoned and tortured</div>
+        <div class="map-loc"><strong>Harbin</strong> (哈爾濱) — Where An Jung-geun assassinated Itō Hirobumi (1909)</div>
+        <div class="map-loc"><strong>Shanghai</strong> (上海) — Site of Korean Provisional Government in exile</div>
+        <div class="map-loc"><strong>Cheonan</strong> (天安) — Home of Yu Gwan-sun; memorial site</div>
+      </div>
+    </div>
+    <div class="map-quote">"We hereby declare that Korea is an independent state and that Koreans are a self-governing people." — Declaration of Independence</div>
+  </div>
+
+  <!-- Penetrating Questions -->
+  <div class="questions-section">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th colspan="2"><span class="label">Penetrating Questions</span></th>
+          <th><span class="label">Very short answers</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="q-num">1</td>
+          <td class="question-cell filled">How does Korean nationalism differ from Japanese nationalism?</td>
+          <td class="answer-cell filled">Japanese nationalism was expansionist, based on power. Korean nationalism was defensive, based on victimhood and justice claims. Japanese cited Social Darwinism; Koreans cited civilization and righteousness. What are the implications of these different foundations?</td>
+        </tr>
+        <tr>
+          <td class="q-num">2</td>
+          <td class="question-cell filled">Why did the March First Movement fail to achieve independence?</td>
+          <td class="answer-cell filled">International community didn't support; Wilson's self-determination didn't apply to Japan's colonies. Japan had military power to suppress. But did it 'fail'? It created national consciousness, exile government, martyrs.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom: Causes/Effects + Notes -->
+  <div class="bottom-section">
+    <div class="causes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              <strong>From Plate 17:</strong> Plate 17 examined the Japanese nationalism that justified colonizing Korea. Now we see the Korean response.<br>
+<strong>Context:</strong> Colonialism creates nationalism among the colonized. But the content of that nationalism varies. Compare Korean, Indian, Vietnamese nationalisms as responses to colonialism.<br>
+<strong>To Plate 19:</strong> Plate 19 examines Chinese nationalism—also forged in humiliation and resistance, but with different dynamics.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Notes</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              • Read the Declaration of Independence aloud—it's eloquent and moving.<br>
+              • An Jung-geun is hero in Korea, terrorist in Japan. Good example of contested historical memory.<br>
+              • Yu Gwan-sun, a teenage girl tortured to death, is a major nationalist icon. Her story is powerful.<br>
+              • March First is a national holiday in South Korea; understanding why helps understand Korean identity.<br>
+              • Contemporary connection: Japan-Korea disputes often invoke this colonial history.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>朝鮮: 遼東의 肺腑 | Joseon as the Lungs and Heart of Liaodong</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background: #f8fafc;
+            color: #1e293b;
+            font-family: system-ui, -apple-system, sans-serif;
+            overflow: hidden;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .map-title {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 14px 18px;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            line-height: 1.35;
+            max-width: 300px;
+        }
+
+        .map-title .main {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+        }
+
+        .map-title .sub {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .map-title .quote {
+            font-size: 12px;
+            font-style: italic;
+            color: #64748b;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            line-height: 1.5;
+        }
+
+        .legend {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 14px 16px;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            font-size: 13px;
+            min-width: 170px;
+            color: #334155;
+        }
+
+        .legend .header {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #475569;
+        }
+
+        .legend .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+
+        .legend .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            flex-shrink: 0;
+        }
+
+        .legend .line {
+            width: 28px;
+            height: 0;
+            border-top: 3px dashed;
+            flex-shrink: 0;
+        }
+
+        .city-label {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            color: #0f172a;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-shadow: 2px 2px 3px rgba(255,255,255,1), -2px -2px 3px rgba(255,255,255,1), 0 0 8px rgba(255,255,255,0.9);
+            white-space: nowrap;
+        }
+
+        .city-label-capital {
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .leaflet-tooltip-left:before,
+        .leaflet-tooltip-right:before,
+        .leaflet-tooltip-top:before,
+        .leaflet-tooltip-bottom:before {
+            display: none;
+        }
+
+        .leaflet-control-zoom a {
+            background: white !important;
+            color: #1e293b !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        const map = L.map("map", {
+            zoomControl: true,
+            zoomSnap: 0.1
+        });
+
+        // Light basemap (CARTO Voyager)
+        L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+            subdomains: "abcd",
+            maxZoom: 10,
+            minZoom: 4,
+            attribution: '© CARTO © OpenStreetMap'
+        }).addTo(map);
+
+        // Locations with real coordinates
+        const locations = [
+            // Manchuria / Qing heartland (red)
+            { eng: "Shenyang", han: "瀋陽", ll: [41.8057, 123.4315], type: "capital", color: "#dc2626", pos: "right" },
+            { eng: "Liaoyang", han: "遼陽", ll: [41.2733, 123.1728], type: "city", color: "#dc2626", pos: "left" },
+
+            // Liaodong Peninsula (red)
+            { eng: "Lüshun", han: "旅順", ll: [38.8512, 121.2615], type: "port", color: "#dc2626", pos: "bottom" },
+
+            // Border (teal)
+            { eng: "Dandong", han: "丹東", ll: [40.1290, 124.3930], type: "border", color: "#0d9488", pos: "left" },
+            { eng: "Ŭiju", han: "義州", ll: [40.1167, 124.4333], type: "border", color: "#0d9488", pos: "right" },
+
+            // Korea / Joseon (blue)
+            { eng: "Hanyang", han: "漢陽", ll: [37.5665, 126.9780], type: "capital", color: "#2563eb", pos: "right" },
+            { eng: "P'yŏngyang", han: "平壤", ll: [39.0392, 125.7625], type: "city", color: "#2563eb", pos: "right" }
+        ];
+
+        // Add markers with permanent labels
+        locations.forEach(loc => {
+            const radius = loc.type === "capital" ? 9 : 7;
+
+            const marker = L.circleMarker(loc.ll, {
+                radius: radius,
+                color: loc.color,
+                weight: 2.5,
+                fillColor: loc.color,
+                fillOpacity: 0.9
+            }).addTo(map);
+
+            const labelClass = loc.type === "capital" ? "city-label city-label-capital" : "city-label";
+
+            marker.bindTooltip(`${loc.eng} ${loc.han}`, {
+                permanent: true,
+                direction: loc.pos || "auto",
+                className: labelClass,
+                offset: [0, 0]
+            }).openTooltip();
+        });
+
+        // Strategic connection lines
+        const routeStyle = {
+            weight: 3.5,
+            opacity: 0.7,
+            dashArray: "10 8",
+            lineCap: "round",
+            color: "#dc2626"
+        };
+
+        // Shenyang → Liaoyang → Dandong → Ŭiju (land route)
+        L.polyline([
+            [41.8057, 123.4315],
+            [41.2733, 123.1728],
+            [40.1290, 124.3930],
+            [40.1167, 124.4333]
+        ], routeStyle).addTo(map);
+
+        // Ŭiju → Pyongyang → Hanyang (Korea spine)
+        L.polyline([
+            [40.1167, 124.4333],
+            [39.0392, 125.7625],
+            [37.5665, 126.9780]
+        ], { ...routeStyle, color: "#2563eb", opacity: 0.5 }).addTo(map);
+
+        // Liaodong sea route threat
+        L.polyline([
+            [38.8512, 121.2615],
+            [39.2, 123.3],
+            [39.0392, 125.7625]
+        ], { ...routeStyle, opacity: 0.4, dashArray: "6 10" }).addTo(map);
+
+        // Korea highlight polygon
+        const koreaOutline = [
+            [43.0, 124.2], [42.5, 129.5], [38.3, 131.5],
+            [34.5, 129.0], [34.3, 126.5], [35.8, 125.3],
+            [37.8, 124.6], [39.8, 124.5], [43.0, 124.2]
+        ];
+
+        L.polygon(koreaOutline, {
+            color: "#2563eb",
+            weight: 2,
+            fillColor: "#2563eb",
+            fillOpacity: 0.08,
+            dashArray: "6 4"
+        }).addTo(map);
+
+        // Title
+        const titleControl = L.control({ position: "topleft" });
+        titleControl.onAdd = function() {
+            const div = L.DomUtil.create("div", "map-title");
+            div.innerHTML = `
+                <div class="main">Joseon: Lungs & Heart of Liaodong</div>
+                <div class="sub">朝鮮: 遼東의 肺腑</div>
+                <div class="quote">"Korea is the lungs and heart of Liaodong and Shenyang — whoever controls Korea threatens the Manchu heartland."</div>
+            `;
+            return div;
+        };
+        titleControl.addTo(map);
+
+        // Legend
+        const legend = L.control({ position: "bottomright" });
+        legend.onAdd = function() {
+            const div = L.DomUtil.create("div", "legend");
+            div.innerHTML = `
+                <div class="header">Legend</div>
+                <div class="row"><span class="dot" style="background: #dc2626"></span> Manchuria / Qing</div>
+                <div class="row"><span class="dot" style="background: #2563eb"></span> Joseon Korea</div>
+                <div class="row"><span class="dot" style="background: #0d9488"></span> Yalu River Border</div>
+                <div class="row"><span class="line" style="border-color: #dc2626"></span> Strategic Link</div>
+            `;
+            return div;
+        };
+        legend.addTo(map);
+
+        // Fit bounds
+        map.fitBounds([[34, 119], [44, 132]]);
+    </script>
+</body>
+</html>

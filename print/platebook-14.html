@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Platebook - Plate 14: Tonghak Rebellion</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* Header row */
+    .header {
+      display: flex;
+      margin-bottom: 5px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Section labels */
+    .label {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 3px;
+      background: #fff;
+    }
+
+    /* Person/Place/Thing table */
+    .ppt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+    .ppt-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+      width: 33.33%;
+    }
+    .ppt-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      height: 20px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin-bottom: 4px;
+    }
+    .timeline-box {
+      border: 1px solid #aaa;
+      padding: 6px 16px;
+      height: 78px;
+      position: relative;
+      background-color: #fefdfb;
+    }
+    .timeline-line {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: #333;
+    }
+    .timeline-ticks {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
+      width: 2px;
+      height: 12px;
+      background: #333;
+    }
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      text-align: center;
+    }
+    .timeline-labels span {
+      max-width: 90px;
+      line-height: 1.3;
+    }
+
+    /* Map */
+    .map-section {
+      margin-bottom: 4px;
+    }
+    .map-subtitle {
+      font-size: 9px;
+      font-style: italic;
+      color: #555;
+      margin-left: 8px;
+    }
+    .map-box {
+      border: 1px solid #aaa;
+      background: #f5f5f5;
+      margin-top: 3px;
+      padding: 10px;
+      min-height: 100px;
+    }
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 9px;
+    }
+    .map-loc strong { font-weight: 600; }
+    .map-quote {
+      font-style: italic;
+      font-size: 9px;
+      text-align: center;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Questions table */
+    .questions-section {
+      margin-bottom: 4px;
+    }
+    .questions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .questions-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+    }
+    .questions-table th:last-child {
+      width: 45%;
+    }
+    .questions-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+    .questions-table .q-num {
+      width: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: none;
+    }
+    .question-cell {
+      min-height: 32px;
+    }
+    .answer-cell {
+      min-height: 32px;
+    }
+
+    /* Bottom section */
+    .bottom-section {
+      display: flex;
+      gap: 6px;
+    }
+    .causes-box, .notes-box {
+      flex: 1;
+    }
+    .bottom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-weight: 600;
+      font-size: 9px;
+      text-align: left;
+      background: #fff;
+    }
+    .bottom-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 9px;
+      vertical-align: top;
+      height: 70px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Filled content styling */
+    .filled {
+      color: #000;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .filled strong {
+      font-weight: 600;
+    }
+
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="plate-num">Plate # 14</div>
+    <div class="topic">Tonghak Rebellion</div>
+    <div class="date">Feb 6</div>
+  </div>
+
+  <!-- Person / Place / Thing -->
+  <table class="ppt-table">
+    <thead>
+      <tr>
+        <th><span class="label">Person</span></th>
+        <th><span class="label">Place</span></th>
+        <th><span class="label">Thing</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="filled"><strong>Ch'oe Cheu (1824</strong> — 1864) - Founder of Tonghak; illegitimate yangban son who received revelation in 1860; executed for heterodoxy 1864</td>
+        <td class="filled"><strong>Gobu County</strong> — Where uprising began January 1894 over corrupt magistrate's taxation</td>
+        <td class="filled"><strong>Donggyeong Daejeon (Scripture of Eastern Learning)</strong> — Core Tonghak scripture compiled from Ch'oe Cheu's writings</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Ch'oe Sihyong (1827</strong> — 1898) - Second Tonghak leader; organized movement underground; executed after 1894 uprising</td>
+        <td class="filled"><strong>Jeonju</strong> — Provincial capital of Jeolla; captured by Tonghak forces April 1894</td>
+        <td class="filled"><strong>Yongdam Yusa (Songs of Yongdam)</strong> — Tonghak religious poetry in Korean vernacular for common believers</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Jeon Bong</strong> — jun (1855-1895) - Military commander of Tonghak Peasant Army; 'General Green Bean'; captured and executed</td>
+        <td class="filled"><strong>Gongju</strong> — Site of final battle November 1894; Tonghak forces defeated by Japanese-supported government troops</td>
+        <td class="filled"><strong>Jeonju Peace Agreement (June 1894)</strong> — Truce between rebels and government establishing peasant self-governance bureaus</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Jo Byeong</strong> — gap - Corrupt magistrate of Gobu whose illegal taxation sparked the initial uprising</td>
+        <td class="filled"><strong>Jeolla Province</strong> — Southern agricultural region; center of Tonghak strength and rebellion</td>
+        <td class="filled"><strong>Twelve</strong> — Point Reform Program - Tonghak demands including land reform, anti-corruption, and expulsion of foreigners</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>King Gojong (r. 1864</strong> — 1907) - Joseon monarch who requested Chinese military assistance against rebels</td>
+        <td class="filled"><strong>Incheon</strong> — Port where Japanese and Chinese forces landed June 1894</td>
+        <td class="filled"><strong>Treaty of Shimonoseki (1895)</strong> — Ended Sino-Japanese War; China recognized Korean 'independence' and ceded Taiwan to Japan</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Yuan Shikai</strong> — Chinese military commander in Korea; recommended intervention</td>
+        <td class="filled"><strong>Pyongyang</strong> — Major battle site of Sino-Japanese War; Japanese victory September 1894</td>
+        <td class="filled"><strong>Cheondogyo</strong> — Name adopted by Tonghak 1905; 'Religion of the Heavenly Way'</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Son Byong</strong> — hui (1861-1922) - Third Tonghak leader; renamed movement Cheondogyo; led March First Movement 1919</td>
+        <td class="filled"><strong>Shimonoseki</strong> — Japanese city where peace treaty signed April 1895</td>
+        <td class="filled"></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <span class="label">Timeline: Tonghak Rebellion</span>
+    <div class="timeline-box">
+      <div class="timeline-labels">
+        <span>1860<br><em>Ch'oe Cheu receives mystical revelation; founds Tonghak (Eastern Learning)</em></span>
+        <span>1861<br><em>Ch'oe Cheu writes 'On Spreading Virtue' and 'On Learning Truth'</em></span>
+        <span>1864<br><em>Ch'oe Cheu executed by Joseon government for spreading heterodoxy</em></span>
+        <span>1864-1892<br><em>Ch'oe Sihyong leads Tonghak underground; movement grows in southern provinces</em></span>
+        <span>1892-1893<br><em>Tonghak petitions for founder's posthumous pardon and religious recognition</em></span>
+        <span>January 1894<br><em>Gobu Uprising: Peasants led by Jeon Bong-jun rebel against corrupt magistrate Jo Byeong-gap</em></span>
+        <span>March 1894<br><em>Tonghak Peasant Army formally organized; issues proclamation against corrupt officials</em></span>
+        <span>April 1894<br><em>Peasant Army captures Jeonju, provincial capital of Jeolla</em></span>
+        <span>June 1894<br><em>Joseon government requests Chinese military assistance; Japan also sends troops</em></span>
+        <span>June 11, 1894<br><em>Jeonju Peace Agreement: Rebels agree to disperse; peasant self-governance bureaus established</em></span>
+        <span>July 1894<br><em>Japan seizes Korean royal palace; forces reform cabinet</em></span>
+        <span>August 1, 1894<br><em>First Sino-Japanese War officially begins</em></span>
+        <span>September 1894<br><em>Battle of Pyongyang: Decisive Japanese victory over Chinese forces</em></span>
+        <span>October 1894<br><em>Tonghak forces re-mobilize to resist Japanese presence</em></span>
+        <span>November 1894<br><em>Battle of Gongju: Tonghak forces decisively defeated</em></span>
+        <span>December 1894<br><em>Jeon Bong-jun captured</em></span>
+        <span>March 1895<br><em>Jeon Bong-jun executed in Seoul</em></span>
+        <span>April 1895<br><em>Treaty of Shimonoseki: China recognizes Korean 'independence,' cedes Taiwan to Japan</em></span>
+        <span>1898<br><em>Ch'oe Sihyong captured and executed</em></span>
+        <span>1905<br><em>Son Byong-hui renames Tonghak as Cheondogyo (Religion of the Heavenly Way)</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-section">
+    <span class="label">Map</span>
+    <div class="map-box">
+      <div class="map-locations">
+        <div class="map-loc"><strong>Gobu</strong> (古阜) — Where Tonghak uprising began January 1894 against corrupt magistrate Jo Byeong-gap</div>
+        <div class="map-loc"><strong>Jeonju</strong> (全州) — Provincial capital of Jeolla; captured by Tonghak forces April 1894; site of Peace Agreement</div>
+        <div class="map-loc"><strong>Gongju</strong> (公州) — Site of final battle November 1894; Tonghak forces decisively defeated</div>
+        <div class="map-loc"><strong>Hanyang (Seoul)</strong> (漢陽) — Royal capital; government requested Chinese help; Japan seized palace July 1894</div>
+        <div class="map-loc"><strong>Incheon</strong> (仁川) — Treaty port where Japanese and Chinese forces landed June 1894</div>
+        <div class="map-loc"><strong>Pyongyang</strong> (平壤) — Major battle of Sino-Japanese War September 1894; decisive Japanese victory</div>
+        <div class="map-loc"><strong>Asan</strong> (牙山) — Site of first land battle of Sino-Japanese War; Chinese forces defeated July 1894</div>
+        <div class="map-loc"><strong>Gyeongju</strong> (慶州) — Ch'oe Cheu's birthplace in southeastern Korea; Tonghak spread from here</div>
+      </div>
+    </div>
+    <div class="map-quote">"My mind is your mind. How could men know it? They may know Heaven and earth, but they know not the spirit. Yet I am the spirit. Now you shall attain this eternal truth, cultivate it, write it, and teach it to all people." — Ch'oe Cheu, 'On Learning Truth'</div>
+  </div>
+
+  <!-- Penetrating Questions -->
+  <div class="questions-section">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th colspan="2"><span class="label">Penetrating Questions</span></th>
+          <th><span class="label">Very short answers</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="q-num">1</td>
+          <td class="question-cell filled">How was Tonghak similar to and different from the Taiping movement in China?</td>
+          <td class="answer-cell filled">Similarities: Both peasant-based, religious ideology justifying rebellion, social reform demands, millenarian elements, charismatic founders with divine revelations. Differences: Tonghak was explicitly 'Eastern Learning' vs. Taiping's Christianity-derived ideology; Tonghak smaller scale but triggered international war; Taiping nearly overthrew dynasty while Tonghak never threatened Seoul; Tonghak survived as religion (Cheondogyo) while Taiping completely destroyed.</td>
+        </tr>
+        <tr>
+          <td class="q-num">2</td>
+          <td class="question-cell filled">Was Tonghak primarily anti-foreign, reformist, or revolutionary?</td>
+          <td class="answer-cell filled">All three elements present in tension. Anti-foreign: Founded to counter Western Learning, rebels demanded expulsion of Japanese/Western barbarians. Reformist: Jeonju Peace Agreement shows willingness to work within system for reform; demands focused on corrupt officials not overthrowing monarchy. Revolutionary: 'Human beings are heaven' challenged entire yangban social hierarchy; peasant self-governance bureaus were proto-democratic. The foreign intervention prevented us from seeing which tendency would have dominated.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom: Causes/Effects + Notes -->
+  <div class="bottom-section">
+    <div class="causes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              <strong>From Plate 13:</strong> Plate 13 examined China's Taiping Rebellion (1850-1864) - a massive religious-peasant uprising that nearly overthrew the Qing dynasty. The Tonghak Rebellion invites direct comparison: both were led by charismatic founders who claimed divine revelation, both mobilized peasants with promises of social reform, both faced brutal suppression. Key differences: Taiping was influenced by Christianity while Tonghak explicitly rejected Western Learning; Taiping was larger and came closer to success; but Tonghak's international consequences were more dramatic. The suppression of Taiping relied on Western-trained forces and created regional strongmen; Tonghak suppression required foreign intervention that triggered war. Ask students: Why did a smaller rebellion in Korea have larger international consequences than the massive Taiping uprising?<br>
+<strong>Context:</strong> The Tonghak Rebellion exemplifies several course themes: (1) How domestic crisis invites foreign intervention that transforms local conflicts into international wars; (2) The emergence of indigenous responses to Western imperialism that draw on traditional resources while creating something new; (3) The tension between reform and revolution - Tonghak leaders signed the Jeonju Peace Agreement hoping for reform, but foreign intervention foreclosed that possibility; (4) Korea's tragic position as battleground for larger powers - 'shrimp among whales'; (5) How historical memory serves present politics - both Koreas claim Tonghak for radically different purposes.<br>
+<strong>To Plate 15:</strong> Plate 15 (Joseon's Slow Evolution) examines Korea's attempts at reform in the aftermath of the Sino-Japanese War. The Gabo Reforms (1894-1896) implemented many changes the Tonghak rebels had demanded - abolition of slavery, end of status discrimination, modernization of government - but under Japanese pressure rather than Korean initiative. Students should consider: Did Tonghak 'fail' if many of its reform demands were eventually enacted? What's the difference between reform achieved through rebellion vs. reform imposed by foreign power?
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Notes</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              • The film 'Run High, Run Far' (Plate 16) depicts the Tonghak Rebellion - preview it here so students know to watch for key themes<br>
+              • Ch'oe Cheu's revelation narrative parallels Hong Xiuquan's - both sick, received divine message, founded new religion. But Ch'oe explicitly rejected Christianity; Hong adapted it. Ask students why this difference matters.<br>
+              • The doctrine 'in nae ch'on' (human beings are heaven) is revolutionary - it challenges the entire yangban social order. Connect to modern human rights discourse.<br>
+              • Jeon Bong-jun's nickname 'General Green Bean' (Nokdu Janggun) humanizes him - he was short but commanded loyalty. South Korean democracy activists adopted him as symbol.<br>
+              • The Jeonju Peace Agreement shows rebels weren't trying to overthrow the state - they wanted reform. Foreign intervention, not rebel intransigence, prevented peaceful resolution.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

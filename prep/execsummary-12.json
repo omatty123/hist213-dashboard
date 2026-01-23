@@ -1,0 +1,212 @@
+{
+  "plate": 12,
+  "topic": "Meiji Transformation",
+  "date": "2026-02-02",
+  "generatedAt": "2026-01-04T17:00:00.000Z",
+  "readings": [
+    "Meiji Primary Sources (Fukuzawa Yukichi), Sources of Japanese Tradition, pp. 669-764"
+  ],
+  "readingAnalyses": [
+    {
+      "title": "Fukuzawa Yukichi: An Encouragement of Learning and 'Leaving Asia'",
+      "author": "Fukuzawa Yukichi (福澤諭吉)",
+      "source": "Sources of Japanese Tradition, Vol. 2",
+      "pages": "pp. 669-764",
+      "type": "primary",
+      "summary": "Fukuzawa Yukichi was Meiji Japan's most influential intellectual—a former samurai who became the leading advocate for Western learning and 'civilization.' His 'An Encouragement of Learning' (1872-76), which sold millions of copies, opened with the revolutionary claim that 'Heaven did not create men above men, nor set men below men'—a direct challenge to the hereditary status system that had defined Tokugawa Japan.\n\nYet Fukuzawa's egalitarianism had limits. His infamous 1885 essay 'Leaving Asia' (Datsu-A Ron) argued that Japan should abandon 'backward' Asian neighbors and align with the 'civilized' West. China and Korea, he wrote, were holding Japan back; Japan must treat them as Westerners did—with force if necessary. This text reveals how Meiji reformers internalized Western racial hierarchies while ostensibly embracing Western 'universal' values.\n\nThe tension in Fukuzawa's thought—equality among Japanese, hierarchy among nations—captures the contradictions of Meiji modernization. Japan adopted Western institutions while developing its own imperial ambitions. The path from 'civilization and enlightenment' to Asian empire was shorter than Fukuzawa's admirers acknowledge.",
+      "keyQuotes": [
+        {"quote": "Heaven did not create men above men, nor set men below men.", "page": "p. 670"},
+        {"quote": "We must not wait for our neighbors to become enlightened... We must leave the ranks of Asian nations and cast our lot with the civilized nations of the West.", "page": "p. 755"},
+        {"quote": "The only way to maintain our independence is to adopt Western civilization.", "page": "SJT"},
+        {"quote": "We should deal with China and Korea in the same way the Western nations do.", "page": "p. 756"}
+      ],
+      "thematicExamples": [
+        "Fukuzawa's attack on hereditary status - the 'encouragement of learning' meant ability should replace birth",
+        "The 'civilization' discourse - ranking nations on a scale from barbarism to civilization with the West at top",
+        "'Leaving Asia' as justification for imperialism - if neighbors won't reform, Japan may have to 'civilize' them by force",
+        "Keio University (which Fukuzawa founded) as model of new education - practical learning over classical scholarship"
+      ],
+      "realLifeConnections": [
+        "Fukuzawa's face on the ¥10,000 note - debates continue about whether this honors a racist imperialist or a modernizing hero",
+        "Contemporary Japanese debates about Asian relations still echo the 'Asian solidarity' vs. 'Western alignment' tension",
+        "The idea that some nations are 'developed' and others 'developing' descends from Fukuzawa's civilizational hierarchy",
+        "Educational meritocracy promises (learn hard, succeed) and limits (structural barriers remain) continue today"
+      ]
+    }
+  ],
+  "overallSynthesis": "Fukuzawa Yukichi embodies both the achievements and contradictions of Meiji Japan. His advocacy for education, equality (among Japanese), and institutional reform helped transform Japan into a modern nation-state. His 'Encouragement of Learning' was genuinely revolutionary in attacking hereditary privilege and promoting merit.\n\nYet 'Leaving Asia' reveals the dark side of 'civilization' discourse. By accepting Western categories—some nations civilized, others barbaric—Fukuzawa provided intellectual justification for Japanese imperialism. If China and Korea wouldn't 'modernize,' Japan could treat them as Westerners treated 'backward' peoples. The path from Meiji enlightenment to Asian empire ran through this logic.\n\nFor students, Fukuzawa poses the question: Can you separate progressive domestic reforms from racist foreign policy? Meiji Japan built schools, railroads, and constitutional government while also preparing to colonize its neighbors. Fukuzawa supported both projects. Understanding how these fit together—rather than treating them as contradictions—is essential for grasping modern Japanese history.\n\nThe comparison with Korean Sirhak reformers (Plate 7) is instructive. Yu Hyŏngwŏn proposed practical reforms while remaining within Confucian tradition; Fukuzawa proposed practical reforms while explicitly rejecting Asian tradition in favor of Western 'civilization.' Both sought to strengthen their nations, but their frameworks—and their legacies—differed profoundly.",
+  "executiveSummary": "The Meiji Restoration of 1868 initiated one of history's most dramatic national transformations. Young samurai from 'outer' domains (Satsuma, Chōshū) overthrew the Tokugawa shogunate, 'restored' the emperor to symbolic power, and launched comprehensive reforms: abolishing the samurai class, creating a conscript army, building railroads and telegraph lines, establishing universal education, and eventually drafting Asia's first constitution.\n\nFukuzawa Yukichi's writings capture the intellectual ferment of the era. His famous essay 'Leaving Asia' (Datsu-A Ron) argued Japan should abandon Asian backwardness and join the 'civilized' West. This raises uncomfortable questions: Was Meiji modernization also Westernization? Did Japan internalize Western racism toward other Asians? The reforms were remarkably successful in building state power, but they also created an authoritarian system that would lead to militarism and empire.",
+  "keywords": [
+    {
+      "term": "Meiji Restoration (明治維新)",
+      "definition": "1868 overthrow of Tokugawa shogunate and 'restoration' of imperial rule",
+      "relevance": "Launched Japan's transformation into modern industrial power"
+    },
+    {
+      "term": "Fukuzawa Yukichi",
+      "definition": "Leading Meiji intellectual who promoted Western learning and 'civilization'",
+      "relevance": "His face is on the ¥10,000 note; represents Meiji's intellectual revolution"
+    },
+    {
+      "term": "Bunmei Kaika (文明開化)",
+      "definition": "'Civilization and Enlightenment'—slogan promoting Western ways",
+      "relevance": "Captures Meiji era's embrace of Western 'civilization' as model"
+    },
+    {
+      "term": "Datsu-A Ron (脱亜論)",
+      "definition": "Fukuzawa's essay 'Leaving Asia'—Japan should align with West, not backward Asia",
+      "relevance": "Controversial text showing how Meiji leaders internalized Western hierarchies"
+    },
+    {
+      "term": "Conscription",
+      "definition": "1873 law requiring all males to serve in the military, ending samurai monopoly on arms",
+      "relevance": "Created modern mass army; transformed who could be a warrior"
+    }
+  ],
+  "keyPassages": [
+    {
+      "quote": "We must not wait for our neighbors to become enlightened... We must leave the ranks of Asian nations and cast our lot with the civilized nations of the West.",
+      "source": "Fukuzawa Yukichi, 'Leaving Asia'",
+      "page": "1885"
+    },
+    {
+      "quote": "The only way to maintain our independence is to adopt Western civilization. Those who oppose it must be treated as enemies of the nation.",
+      "source": "Fukuzawa Yukichi",
+      "page": "SJT"
+    },
+    {
+      "quote": "Heaven did not create men above men, nor set men below men.",
+      "source": "Fukuzawa Yukichi, opening line of An Encouragement of Learning",
+      "page": "SJT"
+    }
+  ],
+  "peopleplacesthings": {
+    "people": [
+      "Fukuzawa Yukichi - leading Meiji intellectual",
+      "Emperor Meiji - symbolic leader of restoration",
+      "Itō Hirobumi - architect of Meiji constitution"
+    ],
+    "places": [
+      "Tokyo (formerly Edo) - renamed capital",
+      "Satsuma and Chōshū - domains that led restoration",
+      "Yokohama - window to Western world"
+    ],
+    "things": [
+      "Charter Oath (1868) - principles of new government",
+      "Conscription (1873) - universal military service",
+      "Meiji Constitution (1889) - Asia's first constitution"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "Was Meiji 'modernization' the same as 'Westernization'?",
+      "talkingPoints": "Meiji leaders borrowed selectively: German constitution, British navy, French law. But they also consciously preserved 'Japanese spirit.' The slogan was 'Japanese spirit, Western technology' (wakon yōsai). Was this possible?"
+    },
+    {
+      "question": "How should we evaluate Fukuzawa's 'Leaving Asia' today?",
+      "talkingPoints": "It's both a product of its time and troublingly racist. Fukuzawa internalized Western hierarchies and applied them to other Asians. This thinking contributed to later Japanese imperialism. But he also championed equality and education."
+    },
+    {
+      "question": "Why did Japan 'succeed' at modernization where China (seemingly) 'failed'?",
+      "talkingPoints": "This framing is problematic but worth examining. Consider: scale (Japan smaller), timing (more warning), social structure (samurai could transform), luck. Avoid cultural essentialism about 'Japanese discipline.'"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "1868",
+      "event": "Meiji Restoration; Charter Oath issued"
+    },
+    {
+      "date": "1871",
+      "event": "Domains abolished, prefectures created"
+    },
+    {
+      "date": "1872",
+      "event": "First railroad (Tokyo-Yokohama)"
+    },
+    {
+      "date": "1873",
+      "event": "Conscription law—all males must serve"
+    },
+    {
+      "date": "1885",
+      "event": "Fukuzawa's 'Leaving Asia' published"
+    },
+    {
+      "date": "1889",
+      "event": "Meiji Constitution promulgated"
+    }
+  ],
+  "connections": {
+    "fromPrevious": "Plate 11 showed Japan's crisis upon Western arrival. Meiji Restoration was the response: transform or be colonized.",
+    "toNext": "Plate 13 examines China during the same period—the Taiping Rebellion nearly destroyed the Qing while Japan was transforming.",
+    "broaderThemes": "Meiji Japan becomes the model for later Asian modernizers. But its 'success' also led to imperialism that devastated neighbors. 'Modernization' isn't always benign."
+  },
+  "nextPreview": {
+    "plate": 13,
+    "topic": "Taiping and other rebellions",
+    "preview": "While Japan was transforming, China faced the Taiping Rebellion—the deadliest civil war in history. How did internal crisis shape China's very different path?",
+    "readings": ["The Crisis Within (Spence)", "Heavenly Kingdom of Taipings"]
+  },
+  "teachingNotes": [
+    "Fukuzawa's 'Leaving Asia' is short—have students read it and react. Expect strong opinions.",
+    "The Pacific Century documentary (linked in dashboard) has good footage on Meiji transformation.",
+    "Show before/after images: samurai vs. conscript soldiers, Edo vs. gas-lit Tokyo.",
+    "Avoid triumphalism: Meiji 'success' also created the war machine that attacked Asia.",
+    "Contemporary connection: Japan's post-WWII recovery echoed Meiji patterns of state-led development."
+  ],
+  "map": {
+    "center": [36, 138],
+    "zoom": 5,
+    "locations": [
+      {
+        "name": "Tokyo",
+        "nameChinese": "東京",
+        "lat": 35.6762,
+        "lng": 139.6503,
+        "type": "capital",
+        "description": "Renamed from Edo; became modern capital"
+      },
+      {
+        "name": "Kagoshima (Satsuma)",
+        "nameChinese": "鹿児島",
+        "lat": 31.5966,
+        "lng": 130.5571,
+        "type": "city",
+        "description": "Domain that led Meiji Restoration"
+      },
+      {
+        "name": "Hagi (Chōshū)",
+        "nameChinese": "萩",
+        "lat": 34.4083,
+        "lng": 131.3989,
+        "type": "city",
+        "description": "Chōshū domain capital; many Meiji leaders from here"
+      },
+      {
+        "name": "Yokohama",
+        "nameChinese": "横浜",
+        "lat": 35.4437,
+        "lng": 139.6380,
+        "type": "city",
+        "description": "Treaty port; first railroad connected it to Tokyo"
+      },
+      {
+        "name": "Kyoto",
+        "nameChinese": "京都",
+        "lat": 35.0116,
+        "lng": 135.7681,
+        "type": "city",
+        "description": "Former imperial capital; emperor moved to Tokyo"
+      },
+      {
+        "name": "Osaka",
+        "nameChinese": "大阪",
+        "lat": 34.6937,
+        "lng": 135.5023,
+        "type": "city",
+        "description": "Commercial center; early industrial development"
+      }
+    ]
+  }
+}

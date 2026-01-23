@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Korea Position Verification</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; padding: 20px; background: #eee; }
+    h2 { margin: 16px 0 8px; font-size: 14px; }
+    .map-container {
+      position: relative;
+      display: inline-block;
+      border: 2px solid #333;
+    }
+    .map-img { display: block; max-width: 600px; }
+    .marker {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff0000;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 10px;
+      font-weight: bold;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    .key { margin-top: 12px; font-size: 12px; }
+    .key-item { margin: 4px 0; }
+    .pass { color: green; }
+    .fail { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Step 1: Verify positions on POLITICAL map</h1>
+  <p>Do my markers match the city labels?</p>
+
+  <h2>Political Map with My Markers</h2>
+  <div class="map-container">
+    <img src="korea-political.png" class="map-img" alt="Political">
+    <!-- User-measured coordinates from click tool -->
+    <span class="marker" style="top: 23%; left: 37.8%;">1</span>
+    <span class="marker" style="top: 24.4%; left: 33.5%;">2</span>
+    <span class="marker" style="top: 62.4%; left: 35.8%;">3</span>
+    <span class="marker" style="top: 90.4%; left: 29.9%;">4</span>
+    <span class="marker" style="top: 62.4%; left: 65.2%;">5</span>
+    <span class="marker" style="top: 50.7%; left: 59.2%;">6</span>
+    <span class="marker" style="top: 43%; left: 43.2%;">7</span>
+  </div>
+
+  <div class="key">
+    <div class="key-item">1 = Seoul</div>
+    <div class="key-item">2 = Incheon</div>
+    <div class="key-item">3 = Gwangju</div>
+    <div class="key-item">4 = Jeju</div>
+    <div class="key-item">5 = Busan</div>
+    <div class="key-item">6 = Daegu</div>
+    <div class="key-item">7 = Daejeon</div>
+  </div>
+
+  <hr style="margin: 30px 0;">
+
+  <h1>Step 2: Translated positions on BLANK map</h1>
+  <p>Positions adjusted for the different framing of the blank map.</p>
+
+  <h2>Blank Map with Translated Markers</h2>
+  <div class="map-container">
+    <img src="korea-outline.gif" class="map-img" alt="Blank">
+    <!-- Same coordinates on blank map (will need adjustment) -->
+    <span class="marker" style="top: 23%; left: 37.8%;">1</span>
+    <span class="marker" style="top: 24.4%; left: 33.5%;">2</span>
+    <span class="marker" style="top: 62.4%; left: 35.8%;">3</span>
+    <span class="marker" style="top: 90.4%; left: 29.9%;">4</span>
+    <span class="marker" style="top: 62.4%; left: 65.2%;">5</span>
+    <span class="marker" style="top: 50.7%; left: 59.2%;">6</span>
+    <span class="marker" style="top: 43%; left: 43.2%;">7</span>
+  </div>
+
+</body>
+</html>

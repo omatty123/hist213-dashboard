@@ -1,0 +1,126 @@
+{
+  "plate": 9,
+  "topic": "Presentation brainstorm / Current events",
+  "date": "2026-01-26",
+  "generatedAt": "2026-01-04T16:30:00.000Z",
+  "readings": [],
+  "executiveSummary": "This discussion day bridges our historical study with contemporary East Asia. Students will brainstorm presentation topics while we examine current events through the lens of historical patterns. How do today's headlines—US-China tensions, North Korea's nuclear program, Japan-Korea disputes, Taiwan's status—connect to the structures and dynamics we've studied?\n\nThe goal is twofold: help students identify compelling presentation topics that connect past and present, and demonstrate that historical knowledge illuminates contemporary affairs. We'll discuss what makes a good presentation topic, how to frame historical questions, and how to connect primary sources to broader arguments.",
+  "keywords": [
+    {
+      "term": "Historical Continuity",
+      "definition": "Patterns, structures, or dynamics that persist across time periods",
+      "relevance": "Good presentation topics often identify how historical patterns inform contemporary events"
+    },
+    {
+      "term": "Primary Sources",
+      "definition": "Documents, artifacts, or other materials created during the period being studied",
+      "relevance": "Strong presentations anchor arguments in primary source evidence"
+    },
+    {
+      "term": "Historiography",
+      "definition": "The study of how history has been written; competing interpretations of the past",
+      "relevance": "Presentations should engage with scholarly debates, not just report facts"
+    },
+    {
+      "term": "Contemporary Relevance",
+      "definition": "Connections between historical events and present-day issues",
+      "relevance": "The best presentations show why historical understanding matters today"
+    }
+  ],
+  "keyPassages": [],
+  "peopleplacesthings": {
+    "people": [
+      "Student presenters",
+      "Contemporary leaders (Xi Jinping, etc.)",
+      "Historical figures students might focus on"
+    ],
+    "places": [
+      "Taiwan - contested status, historical roots",
+      "Korean Peninsula - division, historical context",
+      "South China Sea - territorial disputes"
+    ],
+    "things": [
+      "US-China relations - historical precedents",
+      "Japan-Korea disputes - historical memory",
+      "Economic development models - East Asian miracle"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "What contemporary East Asian issue interests you most, and what historical background would illuminate it?",
+      "talkingPoints": "Encourage students to start with what interests them now, then dig into historical roots. China's rise → Frank's argument about Asian-centered world economy. Japan-Korea tensions → Imjin War, colonial period."
+    },
+    {
+      "question": "What makes a historical argument compelling?",
+      "talkingPoints": "Evidence from primary sources, engagement with counter-arguments, clear thesis, connection to broader themes. Avoid mere chronology—make an argument about significance or causation."
+    },
+    {
+      "question": "How do historical narratives shape contemporary politics?",
+      "talkingPoints": "Comfort women debates, Yasukuni Shrine, Taiwan independence movement all involve competing historical narratives. Understanding these debates requires knowing what happened AND how it's been remembered."
+    }
+  ],
+  "timeline": [],
+  "connections": {
+    "fromPrevious": "Plates 1-8 established foundations: East Asian cultural sphere, theoretical frameworks, early modern inter-state relations. Now we connect this to the present.",
+    "toNext": "Plates 10-11 examine the 'opening' of China and Japan to the West—a turning point that still shapes East Asian identities and politics.",
+    "broaderThemes": "This day emphasizes skills: how to frame historical questions, how to connect past and present, how to construct arguments from evidence."
+  },
+  "nextPreview": {
+    "plate": 10,
+    "topic": "Qing vs. the West",
+    "preview": "The Opium War (1839-1842) forced China into 'unequal treaties' and began what Chinese call the 'century of humiliation.' How did we get from Qianlong's confident rejection to this?",
+    "readings": ["Commissioner Lin's Letter to Queen Victoria", "Treaty of Nanjing"]
+  },
+  "teachingNotes": [
+    "Bring recent news articles about East Asia to spark discussion.",
+    "Have students write down 2-3 possible presentation topics before discussion.",
+    "Create small groups based on regional focus (China, Japan, Korea) or thematic interest.",
+    "Discuss presentation logistics: length, format, sources required, grading criteria.",
+    "This is a good day to take the temperature—what are students confused about? What interests them most?",
+    "Consider showing a short news clip about a current East Asian issue as discussion starter."
+  ],
+  "map": {
+    "center": [35, 125],
+    "zoom": 3,
+    "locations": [
+      {
+        "name": "Taiwan",
+        "nameChinese": "臺灣",
+        "lat": 23.6978,
+        "lng": 120.9605,
+        "type": "region",
+        "description": "Contested status; historical roots in Qing, Japanese colonial, and Cold War periods"
+      },
+      {
+        "name": "Korean DMZ",
+        "lat": 38.0,
+        "lng": 127.0,
+        "type": "other",
+        "description": "Division rooted in WWII and Cold War; historical context essential"
+      },
+      {
+        "name": "South China Sea",
+        "lat": 15.0,
+        "lng": 115.0,
+        "type": "region",
+        "description": "Territorial disputes involve historical claims going back centuries"
+      },
+      {
+        "name": "Pyongyang",
+        "nameChinese": "平壤",
+        "lat": 39.0392,
+        "lng": 125.7625,
+        "type": "capital",
+        "description": "North Korea's nuclear program has historical roots"
+      },
+      {
+        "name": "Hong Kong",
+        "nameChinese": "香港",
+        "lat": 22.3193,
+        "lng": 114.1694,
+        "type": "city",
+        "description": "2020s unrest connected to colonial history and 1997 handover"
+      }
+    ]
+  }
+}

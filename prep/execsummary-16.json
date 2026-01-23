@@ -1,0 +1,125 @@
+{
+  "plate": 16,
+  "topic": "Tonghak in Film",
+  "date": "2026-02-11",
+  "generatedAt": "2026-01-04T17:30:00.000Z",
+  "readings": [],
+  "executiveSummary": "Today we watch Im Kwon-taek's 'Run High, Run Far' (Gaebyeok, 1991), an epic film about the Tonghak Rebellion. Im is Korea's most celebrated director, known for films that explore Korean identity, tradition, and historical memory. This film portrays the 1894 uprising through the eyes of ordinary participants, showing both the idealism of the movement and the brutal suppression that followed.\n\nFilm as historical interpretation raises important questions: How does 'Run High, Run Far' construct a narrative of national resistance? What aspects does it emphasize or downplay? How does popular culture shape historical memory? Korean cinema has returned repeatedly to the late Joseon and colonial periods as sites of national trauma and heroism. This film was made in 1991, when Korea was democratizing—how might that context shape its portrayal of popular uprising?",
+  "keywords": [
+    {
+      "term": "Im Kwon-taek (임권택)",
+      "definition": "Director of 'Run High, Run Far'; Korea's most prolific and acclaimed filmmaker",
+      "relevance": "His films repeatedly explore Korean history and identity"
+    },
+    {
+      "term": "Historical Film",
+      "definition": "Cinema that depicts past events; always involves interpretation and selection",
+      "relevance": "Films shape how societies remember their past"
+    },
+    {
+      "term": "National Cinema",
+      "definition": "Films that explore and construct national identity",
+      "relevance": "Korean cinema often engages with historical trauma as identity formation"
+    },
+    {
+      "term": "1991 Context",
+      "definition": "Film made during Korea's democratization after decades of military dictatorship",
+      "relevance": "Story of popular uprising resonated with contemporary democracy movement"
+    }
+  ],
+  "keyPassages": [],
+  "peopleplacesthings": {
+    "people": [
+      "Im Kwon-taek - director",
+      "Jeon Bongjun - historical Tonghak leader depicted",
+      "Characters representing peasant participants"
+    ],
+    "places": [
+      "Jeolla Province - setting of the film",
+      "Gongju - climactic battle location",
+      "Rural Korea - depicted landscape"
+    ],
+    "things": [
+      "Peasant Army - protagonists of the film",
+      "Bamboo spears - iconic weapons of Tonghak fighters",
+      "Japanese/Chinese intervention - historical backdrop"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "How does the film portray the Tonghak movement's motivations?",
+      "talkingPoints": "Watch for: Religious elements, social grievances, anti-foreign sentiment, leadership dynamics. Is it primarily religious, nationalist, or class-based in the film's telling?"
+    },
+    {
+      "question": "What perspective does the film take on historical events?",
+      "talkingPoints": "Whose story is told? Are there heroes and villains? How are foreign powers portrayed? Is the government shown as legitimate or corrupt? Compare to what we learned from primary sources."
+    },
+    {
+      "question": "How might the film's 1991 context shape its interpretation?",
+      "talkingPoints": "Korea had just democratized after the 1987 uprising. A film about peasant resistance to corrupt government would resonate. Is this a film about the past or a commentary on the present?"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "1894",
+      "event": "Historical Tonghak Rebellion (depicted in film)"
+    },
+    {
+      "date": "1987",
+      "event": "June Democracy Movement in South Korea"
+    },
+    {
+      "date": "1991",
+      "event": "'Run High, Run Far' released"
+    }
+  ],
+  "connections": {
+    "fromPrevious": "Plates 14-15 examined the historical Tonghak Rebellion and Joseon debates. Now we see how cinema interprets these events.",
+    "toNext": "After midterm break, Plate 17 examines Japanese nationalism. How do nations construct their identities through remembering (and forgetting)?",
+    "broaderThemes": "Historical memory is contested and constructed. Film is one medium through which societies process their past. Compare to how Japanese, Chinese, and Korean films depict this era differently."
+  },
+  "nextPreview": {
+    "plate": 17,
+    "topic": "Japanese Nationalism",
+    "preview": "After midterm break, we examine how Japanese nationalism developed in the late 19th century—and how it justified imperial expansion.",
+    "readings": ["Tokutomi Soho: Nationalist's View (SJT)"]
+  },
+  "teachingNotes": [
+    "The film is long (over 2 hours)—you may need to show selected scenes rather than the full film.",
+    "Prepare discussion questions before screening to focus viewing.",
+    "Have students take notes on specific scenes that struck them.",
+    "Compare the film's portrayal to the historical readings—what matches, what differs?",
+    "Discuss how films shape popular understanding of history, often more than academic work.",
+    "If time, show clips from other Korean historical films for comparison."
+  ],
+  "map": {
+    "center": [35.5, 127],
+    "zoom": 7,
+    "locations": [
+      {
+        "name": "Jeolla Province",
+        "nameChinese": "全羅道",
+        "lat": 35.1595,
+        "lng": 126.8526,
+        "type": "region",
+        "description": "Setting of the film; heartland of Tonghak movement"
+      },
+      {
+        "name": "Jeonju",
+        "nameChinese": "全州",
+        "lat": 35.8242,
+        "lng": 127.1480,
+        "type": "city",
+        "description": "Provincial capital; key location in film"
+      },
+      {
+        "name": "Gongju",
+        "nameChinese": "公州",
+        "lat": 36.4467,
+        "lng": 127.1192,
+        "type": "battle",
+        "description": "Site of climactic battle and defeat"
+      }
+    ]
+  }
+}

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Platebook - Plate 6: Rise of Qing &amp; Encounter with the West</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* Header row */
+    .header {
+      display: flex;
+      margin-bottom: 5px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Section labels */
+    .label {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 3px;
+      background: #fff;
+    }
+
+    /* Person/Place/Thing table */
+    .ppt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+    .ppt-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+      width: 33.33%;
+    }
+    .ppt-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      height: 20px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin-bottom: 4px;
+    }
+    .timeline-box {
+      border: 1px solid #aaa;
+      padding: 6px 16px;
+      height: 78px;
+      position: relative;
+      background-color: #fefdfb;
+    }
+    .timeline-line {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: #333;
+    }
+    .timeline-ticks {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
+      width: 2px;
+      height: 12px;
+      background: #333;
+    }
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      text-align: center;
+    }
+    .timeline-labels span {
+      max-width: 90px;
+      line-height: 1.3;
+    }
+
+    /* Map */
+    .map-section {
+      margin-bottom: 4px;
+    }
+    .map-container {
+      display: flex;
+      gap: 8px;
+      margin-top: 3px;
+    }
+    .map-box {
+      position: relative;
+      border: 1px solid #aaa;
+      background: #f5f5f5;
+      flex: 1;
+      min-height: 140px;
+      overflow: hidden;
+    }
+    .map-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .map-marker {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: #c00;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+      border: 1px solid #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    .map-legend {
+      width: 180px;
+      font-size: 9px;
+      padding: 4px;
+      border: 1px solid #aaa;
+      background: #fefdfb;
+    }
+    .legend-item {
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+    .legend-num {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: #c00;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 14px;
+      margin-right: 4px;
+    }
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 9px;
+      padding: 8px;
+    }
+    .map-loc strong { font-weight: 600; }
+    .map-quote {
+      font-style: italic;
+      font-size: 9px;
+      text-align: center;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Questions table */
+    .questions-section {
+      margin-bottom: 4px;
+    }
+    .questions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .questions-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 10px;
+      text-align: left;
+      background: #fff;
+    }
+    .questions-table th:last-child {
+      width: 45%;
+    }
+    .questions-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 10px;
+      vertical-align: top;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+    .questions-table .q-num {
+      width: 18px;
+      font-weight: 700;
+      text-align: center;
+      background: none;
+    }
+    .question-cell {
+      min-height: 32px;
+    }
+    .answer-cell {
+      min-height: 32px;
+    }
+
+    /* Bottom section */
+    .bottom-section {
+      display: flex;
+      gap: 6px;
+    }
+    .causes-box, .notes-box {
+      flex: 1;
+    }
+    .bottom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-table th {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-weight: 600;
+      font-size: 9px;
+      text-align: left;
+      background: #fff;
+    }
+    .bottom-table td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      font-size: 9px;
+      vertical-align: top;
+      height: 70px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(176, 161, 142, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    }
+
+    /* Filled content styling */
+    .filled {
+      color: #000;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .filled strong {
+      font-weight: 600;
+    }
+
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="plate-num">Plate # 6</div>
+    <div class="topic">Rise of Qing &amp; Encounter with the West</div>
+    <div class="date">Jan 16</div>
+  </div>
+
+  <!-- Person / Place / Thing -->
+  <table class="ppt-table">
+    <thead>
+      <tr>
+        <th><span class="label">Person</span></th>
+        <th><span class="label">Place</span></th>
+        <th><span class="label">Thing</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="filled"><strong>Conquest Leaders</strong> — Nurhaci (founder), Dorgon (strategist), Wu Sangui (collaborator)</td>
+        <td class="filled"><strong>Conquest Sites</strong> — Shanhaiguan (pass), Beijing (fell 1644), Jiangyin (81-day siege), Yangzhou (massacre)</td>
+        <td class="filled"><strong>Conquest Tools</strong> — Seven Grievances (1618 casus belli), Banner System (military org), Queue ('lose hair or head')</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>Resisters</strong> — Yan Yingyuan (Jiangyin defender, died rather than submit)</td>
+        <td class="filled"><strong>Trade/Diplomacy</strong> — Canton (sole Western port), Chengde (Macartney audience)</td>
+        <td class="filled"><strong>Foreign Relations</strong> — Canton System (trade restriction), Tributary System (China's framework), Kowtow (ritual Macartney refused)</td>
+      </tr>
+      <tr>
+        <td class="filled"><strong>1793 Encounter</strong> — Qianlong Emperor (rejected British), Lord Macartney (refused kowtow)</td>
+        <td class="filled"></td>
+        <td class="filled"></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <span class="label">Timeline: Rise of Qing &amp; Encounter with the West</span>
+    <div class="timeline-box">
+      <div class="timeline-labels">
+        <span>1618<br><em>Nurhaci's Seven Grievances; war on Ming begins</em></span>
+        <span>1644<br><em>Wu Sangui opens Shanhaiguan; Manchus take Beijing</em></span>
+        <span>1645<br><em>Queue edict; Jiangyin siege (81 days, 60,000 dead)</em></span>
+        <span>1757<br><em>Canton System restricts all Western trade to one port</em></span>
+        <span>1793<br><em>Qianlong rejects Macartney: 'We possess all things'</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-section">
+    <span class="label">Map</span>
+    <div class="map-container">
+      <div class="map-box">
+        <img src="asia-map-blank.png" alt="Map">
+        
+      </div>
+      <div class="map-locations">
+        <div class="map-loc"><strong>Shanhaiguan</strong> (山海关) — Where Wu Sangui let Manchus through, 1644</div>
+        <div class="map-loc"><strong>Beijing</strong> (北京) — Fell to Li Zicheng, then Manchus, 1644</div>
+        <div class="map-loc"><strong>Jiangyin</strong> (江阴) — 81-day siege; 60,000 dead resisting queue</div>
+        <div class="map-loc"><strong>Yangzhou</strong> (扬州) — Site of notorious massacre, 1645</div>
+        <div class="map-loc"><strong>Canton (Guangzhou)</strong> (广州) — Sole port for Western trade under Canton System</div>
+        <div class="map-loc"><strong>Chengde (Jehol)</strong> (承德) — Summer palace; where Qianlong received Macartney, 1793</div>
+      </div>
+    </div>
+    <div class="map-quote">"Since the time of our ancestors, we have overseen the border region for the great Ming dynasty... Among these abuses of power, seven are most atrocious." — Nurhaci's Seven Grievances</div>
+  </div>
+
+  <!-- Penetrating Questions -->
+  <div class="questions-section">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th colspan="2"><span class="label">Penetrating Questions</span></th>
+          <th><span class="label">Very short answers</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="q-num">1</td>
+          <td class="question-cell filled">Was Wu Sangui a traitor or a pragmatist?</td>
+          <td class="answer-cell filled">He invited foreigners to conquer his own country. But his family was hostage; Li Zicheng had seized his concubine; the Ming was already fallen. He was rewarded with a princedom. Later he rebelled against Qing (1673-1681) and died fighting them. Loyalty to whom? Ming? China? Himself? His choice enabled conquest but may have been rational given circumstances.</td>
+        </tr>
+        <tr>
+          <td class="q-num">2</td>
+          <td class="question-cell filled">Why did the queue matter so much that 60,000 people died at Jiangyin?</td>
+          <td class="answer-cell filled">Hair was a gift from parents in Confucian culture - not to be cut. The queue was a visible marker of submission to Manchu rule. Refusing meant choosing death over collaboration. Compare to other regimes marking bodies: tattoos, uniforms, identity papers. What makes some symbols worth dying for?</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom: Causes/Effects + Notes -->
+  <div class="bottom-section">
+    <div class="causes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              <strong>From Plate 5:</strong> Plate 5 examined the Fall of Ming through internal crisis. Today we see how the Manchus exploited that crisis to conquer China - and how, 150 years later, the dynasty born in violence had become confident enough to dismiss European requests.<br>
+<strong>Context:</strong> These readings challenge simple narratives of 'Chinese decline' or 'Western rise.' In 1793, China was at its height - largest territory, huge economy, sophisticated administration. The Qing weren't backward; they were operating a different system. The question is why that system couldn't adapt to challenges that came after.<br>
+<strong>To Plate 7:</strong> Plate 7 examines Joseon Korea's reform debates. Like China, Korea operated within the tributary system and faced questions about engagement with outsiders. How did a tributary state navigate when the center was so confident?
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes-box">
+      <table class="bottom-table">
+        <thead>
+          <tr><th><span class="label">Notes</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="filled">
+              • Read Wu Sangui's 'crying tears of blood' line aloud - the desperation is palpable. Then read Dorgon's cold, calculating reply offering a princedom.<br>
+              • The Jiangyin numbers are staggering: 81 days, 60,000 dead, 75,000 Qing casualties. Ask students: was this heroism or futility? Both?<br>
+              • Show the map with conquest locations (Shanhaiguan, Jiangyin, Yangzhou) AND Macartney locations (Canton, Chengde). Same empire, different moments.<br>
+              • The queue question is great for discussion: what symbols would YOU die for? What makes resistance meaningful when it can't succeed?<br>
+              • Connect conquest violence to Qianlong's confidence: the dynasty that killed 60,000 at Jiangyin now claims to 'possess all things.' How does memory work?
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

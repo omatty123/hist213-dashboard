@@ -1,0 +1,151 @@
+{
+  "plate": 6,
+  "topic": "Rise of Qing & Encounter with the West",
+  "date": "2026-01-16",
+  "generatedAt": "2026-01-16T06:30:00.000Z",
+  "readings": ["Rise of Qing (Nurhaci, Wu Sangui, Queue, Jiangyin)", "Qianlong's 1793 Letter to King George III", "Reception of the First English Ambassador to China"],
+  "executiveSummary": "From frontier rebellion to supreme confidence in 175 years. Nurhaci's Seven Grievances (1618) launched the Manchu conquest; Wu Sangui's betrayal opened the gates (1644); the queue edict marked submission on bodies—60,000 died at Jiangyin refusing to shave. By 1793, this dynasty born in blood had become so confident that when Britain sent Lord Macartney requesting open trade, additional ports, a permanent ambassador, and an end to the Canton System's restrictions, Qianlong dismissed it all. 'Our Celestial Empire possesses all things in prolific abundance'—China needed nothing from 'outside barbarians.' Macartney's refusal to kowtow symbolized the clash: two systems with incompatible assumptions about sovereignty and trade. The emperor's confidence wasn't delusion—China was still the world's largest economy. But his inability to imagine a different kind of threat meant the system that seemed eternal in 1793 would crack within 50 years when Britain returned with opium and gunboats.",
+  "readingAnalyses": [
+    {
+      "title": "The Manchu Conquest: Primary Sources",
+      "author": "Various",
+      "source": "Sources of Chinese Tradition",
+      "pages": "pp. 21-39",
+      "type": "primary",
+      "summary": "A collection of foundational documents from the Qing conquest: Nurhaci's Seven Grievances (1618) declaring war on Ming; the Wu Sangui-Dorgon letters (1644) that opened Shanhaiguan to the Manchus; the queue edict forcing Chinese to shave their heads; and the siege of Jiangyin where 60,000 died rather than submit. These documents reveal how a frontier people conquered the world's largest empire through military skill, strategic collaboration, and brutal enforcement of submission.",
+      "keyQuotes": [
+        {"quote": "Since the time of our ancestors, we have overseen the border region for the great Ming dynasty and for many years have shown our loyalty and obedience... Among these abuses of power, seven are most atrocious.", "page": "p. 21"},
+        {"quote": "Crying tears of blood, I implore your aid.", "page": "p. 25"},
+        {"quote": "If your excellence is willing to lead your troops to us, we will enfeoff you with a domain and ennoble you as a prince.", "page": "p. 27"},
+        {"quote": "Lose your hair or lose your head.", "page": "p. 32"},
+        {"quote": "Cut off our heads, we refuse to shave our hair!", "page": "p. 34"},
+        {"quote": "For eighty days they kept hair to show loyalty... Sixty thousand people were of one mind and died for righteousness.", "page": "p. 39"}
+      ],
+      "thematicExamples": [
+        "Nurhaci frames rebellion as response to Ming injustice, not raw ambition - classic 'righteous revolt' rhetoric that legitimizes violence",
+        "Wu Sangui's letter shows desperation: he invites foreign conquest to defeat domestic rebels, prioritizing personal survival over dynasty",
+        "Dorgon's reply offers Wu a princedom - collaboration was rewarded, creating incentives for elite defection",
+        "The queue was about marking submission on bodies - those who refused died, making compliance visible and resistance deadly",
+        "Jiangyin's 81-day siege shows that resistance was possible but ultimately futile against Manchu military superiority"
+      ],
+      "realLifeConnections": [
+        "Collaboration vs. resistance: Wu Sangui's choice mirrors dilemmas faced by elites during any regime change - collaborate and survive, or resist and die?",
+        "The queue parallels modern state control over bodies: dress codes, identification requirements, visible markers of belonging",
+        "Jiangyin's martyrdom became a symbol for later Chinese nationalism - the same story can mean 'futile resistance' or 'heroic sacrifice' depending on who tells it"
+      ]
+    },
+    {
+      "title": "Two Edicts from the Qianlong Emperor (1793)",
+      "author": "Qianlong Emperor",
+      "source": "Changing China (Gentzler, 1977)",
+      "pages": "pp. 119-125",
+      "type": "primary",
+      "summary": "150 years after the conquest, the Qing Emperor rejects British requests for expanded trade, permanent ambassador, and additional ports. Qianlong frames China as self-sufficient 'Celestial Empire' needing nothing from 'outside barbarians.' The tone reveals absolute confidence - the dynasty born in Nurhaci's rebellion now claims universal sovereignty.",
+      "keyQuotes": [
+        {"quote": "You, O King, live beyond the confines of many seas, nevertheless, impelled by your humble desire to partake of the benefits of our civilization, you have dispatched a mission respectfully bearing your memorial.", "page": "p. 1"},
+        {"quote": "Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders.", "page": "p. 2"},
+        {"quote": "I set no value on objects strange or ingenious, and have no use for your country's manufactures.", "page": "p. 4"},
+        {"quote": "Tremblingly obey and show no negligence! A special mandate!", "page": "p. 7"}
+      ],
+      "thematicExamples": [
+        "The tributary framework: George III's diplomatic letter becomes a 'memorial' (subject's petition), his gifts become 'tribute'",
+        "Self-sufficiency as ideology: 'possesses all things' reflects Qing confidence at territorial height",
+        "The 'reciprocity' argument: Qianlong asks how Britain would accommodate a Chinese ambassador - turning Western logic against itself"
+      ],
+      "realLifeConnections": [
+        "Compare to modern trade disputes: Who sets the terms? Whose system is 'normal'?",
+        "The 'Celestial Empire' claim parallels any great power's assumption that its way is universal"
+      ]
+    },
+    {
+      "title": "The Reception of the First English Ambassador to China, 1792",
+      "author": "Eva March Tappan (ed.)",
+      "source": "The World's Story (1914)",
+      "pages": "pp. 126-127",
+      "type": "secondary",
+      "summary": "British account of the Macartney mission: the 'Tribute-bearer from England' flag, the kowtow controversy, the warm but fruitless audience, the 'empty compliments.' Despite massive expense and personal cordiality, the mission achieved nothing - the Chinese system had no space for sovereign-to-sovereign diplomacy.",
+      "keyQuotes": [
+        {"quote": "Even before the ambassador landed, the Chinese contrived to run up a flag on the vessel that bore him up the Peiho, whereon was written 'Tribute-bearer from England.'", "page": "p. 1"},
+        {"quote": "Lord Macartney told the Chinese legate that he would not perform the kowtow unless a high officer of state would kowtow before a picture of the King of England.", "page": "p. 1"},
+        {"quote": "The splendid embassy was viewed only as a congratulatory mission and treated as such. The Chinese were certainly not wanting in politeness, nor did the emperor even treat them rudely; but empty compliments were not the object of this expensive expedition.", "page": "p. 2"}
+      ],
+      "thematicExamples": [
+        "The flag incident: Chinese bureaucracy controlled the narrative regardless of British intentions",
+        "The kowtow negotiation: both sides committed to symbolic dignity",
+        "Personal warmth vs. institutional rigidity: the emperor was gracious, the system inflexible"
+      ],
+      "realLifeConnections": [
+        "Modern summit diplomacy often produces similar outcomes: warm encounters without substantive results",
+        "The failure despite massive investment raises questions about when engagement is worth the cost"
+      ]
+    }
+  ],
+  "overallSynthesis": "Today's readings trace an arc from violent conquest to confident empire. In 1618, Nurhaci issued his Seven Grievances - a frontier chieftain's declaration of war against the world's largest state. By 1644, Wu Sangui's desperate plea ('crying tears of blood') opened the gates to Manchu armies. The queue edict and Jiangyin massacre showed how submission was enforced: 'lose your hair or lose your head.' Yet 150 years later, this dynasty born in blood had become so confident that Qianlong could dismiss the British as remote barbarians whose goods China did not need. The Celestial Empire that told George III to 'tremblingly obey' was built on the bones of Jiangyin's 60,000 martyrs. This trajectory - from desperate rebellion to supreme confidence - is essential for understanding why the Opium Wars would come as such a shock. The system that seemed eternal in 1793 would crack within fifty years.",
+  "keywords": [
+    {"term": "Seven Grievances (1618)", "definition": "Nurhaci's declaration of war against Ming, listing injustices as justification for revolt", "relevance": "Shows how conquest was framed as righteous response to oppression"},
+    {"term": "Wu Sangui (1612-1678)", "definition": "Ming general who opened Shanhaiguan pass to Manchus to defeat Li Zicheng's rebels", "relevance": "Embodies the collaboration that enabled conquest - rewarded with princedom"},
+    {"term": "Dorgon (1612-1650)", "definition": "Manchu prince regent who led the conquest and negotiated with Wu Sangui", "relevance": "Architect of the strategy combining military force with elite co-optation"},
+    {"term": "Queue (bianzi)", "definition": "Manchu hairstyle forced on Chinese: shaved front, braided back. 'Lose your hair or lose your head.'", "relevance": "Visible marker of submission - resistance meant death"},
+    {"term": "Jiangyin Siege (1645)", "definition": "81-day resistance to queue edict; 60,000 died rather than submit", "relevance": "Symbol of futile but heroic resistance to Manchu rule"},
+    {"term": "Celestial Empire (Tianchao)", "definition": "Qing self-conception as center of civilization, ruler of 'all under heaven'", "relevance": "The confidence Qianlong displayed to Macartney came from this worldview"},
+    {"term": "Canton System", "definition": "Restriction of all Western trade to single port of Guangzhou (1757-1842)", "relevance": "The system Macartney sought to break; would be destroyed by Opium War"},
+    {"term": "Kowtow (ketou)", "definition": "Nine prostrations before the emperor, symbolizing subject status", "relevance": "Macartney refused; the controversy reveals incompatible diplomatic systems"}
+  ],
+  "keyPassages": [
+    {"quote": "Since the time of our ancestors, we have overseen the border region for the great Ming dynasty... Among these abuses of power, seven are most atrocious.", "source": "Nurhaci's Seven Grievances", "page": "p. 21"},
+    {"quote": "Crying tears of blood, I implore your aid.", "source": "Wu Sangui to Dorgon", "page": "p. 25"},
+    {"quote": "Lose your hair or lose your head.", "source": "Queue Edict", "page": "p. 32"},
+    {"quote": "For eighty days they kept hair to show loyalty... Sixty thousand people were of one mind and died for righteousness.", "source": "Siege of Jiangyin", "page": "p. 39"},
+    {"quote": "Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders.", "source": "Qianlong's Edict", "page": "p. 2"}
+  ],
+  "peopleplacesthings": {
+    "people": ["Conquest Leaders — Nurhaci (founder), Dorgon (strategist), Wu Sangui (collaborator)", "Resisters — Yan Yingyuan (Jiangyin defender, died rather than submit)", "1793 Encounter — Qianlong Emperor (rejected British), Lord Macartney (refused kowtow)"],
+    "places": ["Conquest Sites — Shanhaiguan (pass), Beijing (fell 1644), Jiangyin (81-day siege), Yangzhou (massacre)", "Trade/Diplomacy — Canton (sole Western port), Chengde (Macartney audience)"],
+    "things": ["Conquest Tools — Seven Grievances (1618 casus belli), Banner System (military org), Queue ('lose hair or head')", "Foreign Relations — Canton System (trade restriction), Tributary System (China's framework), Kowtow (ritual Macartney refused)"]
+  },
+  "map": {
+    "center": [32, 115],
+    "zoom": 5,
+    "locations": [
+      {"name": "Shanhaiguan", "nameChinese": "山海关", "lat": 40.0, "lng": 119.75, "type": "battle", "description": "Where Wu Sangui let Manchus through, 1644"},
+      {"name": "Beijing", "nameChinese": "北京", "lat": 39.9, "lng": 116.4, "type": "capital", "description": "Fell to Li Zicheng, then Manchus, 1644"},
+      {"name": "Jiangyin", "nameChinese": "江阴", "lat": 31.9, "lng": 120.3, "type": "battle", "description": "81-day siege; 60,000 dead resisting queue"},
+      {"name": "Yangzhou", "nameChinese": "扬州", "lat": 32.4, "lng": 119.4, "type": "battle", "description": "Site of notorious massacre, 1645"},
+      {"name": "Canton (Guangzhou)", "nameChinese": "广州", "lat": 23.1, "lng": 113.3, "type": "city", "description": "Sole port for Western trade under Canton System"},
+      {"name": "Chengde (Jehol)", "nameChinese": "承德", "lat": 40.97, "lng": 117.93, "type": "city", "description": "Summer palace; where Qianlong received Macartney, 1793"}
+    ]
+  },
+  "keyQuestions": [
+    {"question": "Was Wu Sangui a traitor or a pragmatist?", "talkingPoints": "He invited foreigners to conquer his own country. But his family was hostage; Li Zicheng had seized his concubine; the Ming was already fallen. He was rewarded with a princedom. Later he rebelled against Qing (1673-1681) and died fighting them. Loyalty to whom? Ming? China? Himself? His choice enabled conquest but may have been rational given circumstances."},
+    {"question": "Why did the queue matter so much that 60,000 people died at Jiangyin?", "talkingPoints": "Hair was a gift from parents in Confucian culture - not to be cut. The queue was a visible marker of submission to Manchu rule. Refusing meant choosing death over collaboration. Compare to other regimes marking bodies: tattoos, uniforms, identity papers. What makes some symbols worth dying for?"},
+    {"question": "How did the dynasty that massacred Jiangyin become the 'Celestial Empire' that dismissed Macartney?", "talkingPoints": "150 years of consolidation, territorial expansion, prosperity. The violence was forgotten (or suppressed). By 1793, Qing ruled the largest Chinese empire ever. Qianlong's confidence wasn't delusion - China was still the world's largest economy. The question is what he couldn't see coming."},
+    {"question": "What do these readings reveal about how empires are made and sustained?", "talkingPoints": "Conquest requires violence AND collaboration (Wu Sangui). Submission must be visible (queue). Resistance is possible but costly (Jiangyin). Confidence can blind you to threats (Qianlong). The seeds of decline may be planted at the moment of greatest strength."}
+  ],
+  "timeline": [
+    {"date": "1618", "event": "Nurhaci's Seven Grievances; war on Ming begins"},
+    {"date": "1644", "event": "Wu Sangui opens Shanhaiguan; Manchus take Beijing"},
+    {"date": "1645", "event": "Queue edict; Jiangyin siege (81 days, 60,000 dead)"},
+    {"date": "1757", "event": "Canton System restricts all Western trade to one port"},
+    {"date": "1793", "event": "Qianlong rejects Macartney: 'We possess all things'"}
+  ],
+  "connections": {
+    "fromPrevious": "Plate 5 examined the Fall of Ming through internal crisis. Today we see how the Manchus exploited that crisis to conquer China - and how, 150 years later, the dynasty born in violence had become confident enough to dismiss European requests.",
+    "toNext": "Plate 7 examines Joseon Korea's reform debates. Like China, Korea operated within the tributary system and faced questions about engagement with outsiders. How did a tributary state navigate when the center was so confident?",
+    "broaderThemes": "These readings challenge simple narratives of 'Chinese decline' or 'Western rise.' In 1793, China was at its height - largest territory, huge economy, sophisticated administration. The Qing weren't backward; they were operating a different system. The question is why that system couldn't adapt to challenges that came after."
+  },
+  "nextPreview": {
+    "plate": 7,
+    "topic": "Joseon Reform",
+    "preview": "Korean reformers grappled with similar questions from inside the tributary system. What options did smaller states have?",
+    "readings": ["On Reform - Sources of Korean Tradition"]
+  },
+  "teachingNotes": [
+    "Read Wu Sangui's 'crying tears of blood' line aloud - the desperation is palpable. Then read Dorgon's cold, calculating reply offering a princedom.",
+    "The Jiangyin numbers are staggering: 81 days, 60,000 dead, 75,000 Qing casualties. Ask students: was this heroism or futility? Both?",
+    "Show the map with conquest locations (Shanhaiguan, Jiangyin, Yangzhou) AND Macartney locations (Canton, Chengde). Same empire, different moments.",
+    "The queue question is great for discussion: what symbols would YOU die for? What makes resistance meaningful when it can't succeed?",
+    "Connect conquest violence to Qianlong's confidence: the dynasty that killed 60,000 at Jiangyin now claims to 'possess all things.' How does memory work?",
+    "Anticipate student sympathy for British 'free trade' - complicate by noting Britain's own protectionism and the opium that would 'balance' trade.",
+    "The arc from 1618 to 1793 is key: desperate rebellion → brutal conquest → supreme confidence. What comes next? (Opium War, 50 years later)"
+  ]
+}

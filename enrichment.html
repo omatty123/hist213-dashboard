@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIST 213 - Enrichment Materials</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f5f7;
+      --surface: #fff;
+      --surface-alt: #fafafa;
+      --border: #e5e5e5;
+      --text: #1d1d1f;
+      --text-muted: #86868b;
+      --accent: #0071e3;
+      --accent-light: #e1f0ff;
+      --film: #7b1fa2;
+      --film-light: #f3e5f5;
+      --scholarship: #1565c0;
+      --scholarship-light: #e3f2fd;
+      --news: #e65100;
+      --news-light: #fff3e0;
+      --resource: #2e7d32;
+      --resource-light: #e8f5e9;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .course-title { font-weight: 600; font-size: 15px; }
+    .back-link {
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+    .enrichment-header {
+      background: linear-gradient(165deg, #5c3d6e 0%, #7b4f8e 40%, #9c6fb0 70%, #b88fc4 100%);
+      color: white;
+      padding: 28px 32px;
+      border-radius: 12px 12px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .enrichment-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="30" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="80" cy="25" r="2.5" fill="rgba(255,255,255,0.1)"/><circle cx="35" cy="60" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="70" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="15" cy="80" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="90" cy="85" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: 150px 150px;
+      pointer-events: none;
+    }
+    .enrichment-header .label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .enrichment-header h1 {
+      font-size: 26px;
+      font-weight: 300;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+    .enrichment-header .date {
+      font-size: 13px;
+      opacity: 0.8;
+      position: relative;
+    }
+    .enrichment-header .reading-ref {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-top: 14px;
+      position: relative;
+    }
+
+    .enrichment-body {
+      background: var(--surface);
+      border-radius: 0 0 12px 12px;
+      padding: 24px 28px;
+    }
+
+    .section { margin-bottom: 32px; }
+    .section:last-child { margin-bottom: 0; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .section-icon.film { background: var(--film-light); }
+    .section-icon.scholarship { background: var(--scholarship-light); }
+    .section-icon.news { background: var(--news-light); }
+    .section-icon.resource { background: var(--resource-light); }
+    .section-icon.discussion { background: var(--accent-light); }
+    .section-icon.literature { background: #fce4ec; }
+
+    /* Literature / Poetry Styles */
+    .literature-intro {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .poet-section {
+      margin-bottom: 24px;
+      padding: 16px;
+      background: var(--surface-alt);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .poet-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .poet-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .poet-korean {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .poet-dates {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+    .poet-bio {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .poem-card {
+      background: white;
+      border: 1px solid #e0d6e8;
+      border-left: 3px solid #9c6fb0;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .poem-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #5c3d6e;
+      margin-bottom: 10px;
+    }
+    .poem-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text);
+      font-style: italic;
+      padding: 12px 16px;
+      background: #faf8fc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .poem-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .translator {
+      font-weight: 500;
+    }
+    .poem-note {
+      font-style: italic;
+    }
+    .literature-connection {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: #faf8fc;
+      border-radius: 6px;
+    }
+    .literature-sources {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+    .literature-sources a {
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .film-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+    .film-card {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .film-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .film-card .title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .film-card .title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--film);
+    }
+    .film-card .year {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--film-light);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .film-card .director {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .film-card .notes {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .film-card .relevance {
+      font-size: 12px;
+      color: var(--film);
+      background: var(--film-light);
+      padding: 8px 12px;
+      border-radius: 6px;
+      border-left: 3px solid var(--film);
+    }
+    .film-card .film-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .film-card .streaming {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .film-card .watch-link,
+    .film-card .imdb-link {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .film-card .watch-link {
+      background: var(--film);
+      color: white;
+    }
+    .film-card .watch-link:hover {
+      background: #9c27b0;
+    }
+    .film-card .imdb-link {
+      background: #f5c518;
+      color: #000;
+    }
+    .film-card .imdb-link:hover {
+      background: #e6b800;
+    }
+    .film-card .title a {
+      color: var(--film);
+      text-decoration: none;
+    }
+    .film-card .title a:hover {
+      text-decoration: underline;
+    }
+
+    .subsection-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin: 20px 0 12px;
+      font-weight: 600;
+    }
+
+    .clip-suggestions {
+      background: var(--film-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .clip-suggestions ul {
+      list-style: none;
+      padding: 0;
+    }
+    .clip-suggestions li {
+      font-size: 13px;
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .clip-suggestions li::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      color: var(--film);
+      font-size: 10px;
+    }
+
+    .scholarship-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .scholarship-table th {
+      background: var(--scholarship-light);
+      color: var(--scholarship);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    .scholarship-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .scholarship-table .title-cell {
+      font-weight: 500;
+    }
+    .scholarship-table .title-cell a {
+      color: var(--scholarship);
+      text-decoration: none;
+    }
+    .scholarship-table .title-cell a:hover {
+      text-decoration: underline;
+    }
+    .scholarship-table .finding {
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .news-card {
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .news-card:last-child { border-bottom: none; }
+    .news-date {
+      font-size: 11px;
+      color: var(--news);
+      background: var(--news-light);
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      height: fit-content;
+    }
+    .news-content { flex: 1; }
+    .news-headline {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .news-headline a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .news-headline a:hover {
+      color: var(--news);
+      text-decoration: underline;
+    }
+    .news-source {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .news-source a {
+      color: var(--news);
+      text-decoration: none;
+    }
+    .news-source a:hover {
+      text-decoration: underline;
+    }
+    .news-connection {
+      font-size: 12px;
+      color: var(--news);
+      padding: 8px 12px;
+      background: var(--news-light);
+      border-radius: 6px;
+      border-left: 3px solid var(--news);
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .resource-card {
+      background: var(--resource-light);
+      border: 1px solid rgba(46, 125, 50, 0.2);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .resource-card a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--resource);
+      text-decoration: none;
+    }
+    .resource-card a:hover { text-decoration: underline; }
+    .resource-card .desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .discussion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .discussion-card {
+      background: var(--accent-light);
+      border: 1px solid rgba(0, 113, 227, 0.2);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .discussion-card .angle {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .discussion-card .question {
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .no-data {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    .no-data h2 { margin-bottom: 10px; color: var(--text); }
+
+    @media print {
+      header { display: none; }
+      main { padding: 0; }
+      .enrichment-header { border-radius: 0; }
+      .film-card:hover { transform: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="back-link">← Back to Dashboard</a>
+      <span class="course-title">HIST 213 · Enrichment Materials</span>
+    </div>
+  </header>
+
+  <main>
+    <div id="content">
+      <div class="no-data">
+        <h2>Loading...</h2>
+        <p>Fetching enrichment materials</p>
+      </div>
+    </div>
+  </main>
+
+<script>
+async function loadEnrichment() {
+  const params = new URLSearchParams(window.location.search);
+  const plate = params.get('plate');
+
+  if (!plate) {
+    showNoData('No plate specified', 'Add ?plate=7 to the URL');
+    return;
+  }
+
+  try {
+    const response = await fetch(`enrichment/plate-${plate}.json`);
+    if (!response.ok) {
+      showNoData(`No enrichment data for Plate ${plate}`, 'Enrichment materials have not been generated yet.');
+      return;
+    }
+    const data = await response.json();
+    renderEnrichment(data);
+  } catch (e) {
+    showNoData('Error loading data', e.message);
+  }
+}
+
+function showNoData(title, message) {
+  document.getElementById('content').innerHTML = `
+    <div class="no-data">
+      <h2>${title}</h2>
+      <p>${message}</p>
+      <p style="margin-top:20px"><a href="index.html">Return to Dashboard</a></p>
+    </div>
+  `;
+}
+
+function formatDate(d) {
+  const dt = new Date(d + 'T12:00:00');
+  return dt.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+function renderEnrichment(data) {
+  let h = '';
+
+  // Header
+  h += `
+    <div class="enrichment-header">
+      <div class="label">Enrichment Materials</div>
+      <h1>Plate ${data.plate}: ${data.topic}</h1>
+      <div class="date">${formatDate(data.date)}</div>
+      <div class="reading-ref">📖 ${data.reading.title}</div>
+    </div>
+    <div class="enrichment-body">
+  `;
+
+  // Films & Documentaries
+  if (data.films) {
+    h += `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon film">🎬</div>
+          <div class="section-title">Films & Documentaries</div>
+        </div>
+    `;
+
+    if (data.films.feature && data.films.feature.length) {
+      h += '<div class="subsection-title">Feature Films</div>';
+      h += '<div class="film-grid">';
+      for (const film of data.films.feature) {
+        h += `
+          <div class="film-card">
+            <div class="title-row">
+              <div class="title">${film.url ? `<a href="${film.url}" target="_blank">${film.title}</a>` : film.title}</div>
+              <div class="year">${film.year}</div>
+            </div>
+            <div class="director">Dir: ${film.director}${film.runtime ? ` · ${film.runtime}` : ''}</div>
+            <div class="notes">${film.notes}</div>
+            ${film.relevance ? `<div class="relevance">${film.relevance}</div>` : ''}
+            <div class="film-links">
+              ${film.streaming ? `<span class="streaming">📺 ${film.streaming}</span>` : ''}
+              ${film.url ? `<a href="${film.url}" target="_blank" class="watch-link">▶ Watch</a>` : ''}
+              ${film.imdb ? `<a href="${film.imdb}" target="_blank" class="imdb-link">IMDb</a>` : ''}
+            </div>
+          </div>
+        `;
+      }
+      h += '</div>';
+    }
+
+    if (data.films.documentaries && data.films.documentaries.length) {
+      h += '<div class="subsection-title">Documentaries</div>';
+      h += '<div class="film-grid">';
+      for (const doc of data.films.documentaries) {
+        h += `
+          <div class="film-card">
+            <div class="title-row">
+              <div class="title">${doc.url ? `<a href="${doc.url}" target="_blank">${doc.title}</a>` : doc.title}</div>
+              <div class="year">${doc.year}</div>
+            </div>
+            <div class="notes">${doc.notes}</div>
+            ${doc.relevance ? `<div class="relevance">${doc.relevance}</div>` : ''}
+            <div class="film-links">
+              ${doc.streaming ? `<span class="streaming">📺 ${doc.streaming}</span>` : ''}
+              ${doc.url ? `<a href="${doc.url}" target="_blank" class="watch-link">▶ Watch</a>` : ''}
+            </div>
+          </div>
+        `;
+      }
+      h += '</div>';
+    }
+
+    if (data.films.clipSuggestions && data.films.clipSuggestions.length) {
+      h += '<div class="subsection-title">Clip Suggestions for Class</div>';
+      h += '<div class="clip-suggestions"><ul>';
+      for (const clip of data.films.clipSuggestions) {
+        h += `<li>${clip}</li>`;
+      }
+      h += '</ul></div>';
+    }
+
+    h += '</div>';
+  }
+
+  // Recent Scholarship
+  if (data.scholarship && data.scholarship.length) {
+    h += `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon scholarship">📚</div>
+          <div class="section-title">Recent Scholarship</div>
+        </div>
+        <table class="scholarship-table">
+          <tr>
+            <th>Publication</th>
+            <th>Year</th>
+            <th>Key Finding</th>
+          </tr>
+    `;
+    for (const item of data.scholarship) {
+      h += `
+        <tr>
+          <td class="title-cell">
+            ${item.url ? `<a href="${item.url}" target="_blank">${item.title}</a>` : item.title}
+            <div class="finding" style="font-style:italic">${item.author}${item.publication ? ` · ${item.publication}` : ''}</div>
+          </td>
+          <td>${item.year}</td>
+          <td>${item.finding}</td>
+        </tr>
+      `;
+    }
+    h += '</table></div>';
+  }
+
+  // In the News
+  if (data.news && data.news.length) {
+    h += `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon news">📰</div>
+          <div class="section-title">In the News</div>
+        </div>
+    `;
+    for (const item of data.news) {
+      h += `
+        <div class="news-card">
+          <div class="news-date">${item.date}</div>
+          <div class="news-content">
+            <div class="news-headline">${item.url ? `<a href="${item.url}" target="_blank">${item.headline}</a>` : item.headline}</div>
+            <div class="news-source">${item.source}${item.url ? ` · <a href="${item.url}" target="_blank">Read →</a>` : ''}</div>
+            <div class="news-connection">${item.connection}</div>
+          </div>
+        </div>
+      `;
+    }
+    h += '</div>';
+  }
+
+  // Digital Resources
+  if (data.resources && data.resources.length) {
+    h += `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon resource">🔗</div>
+          <div class="section-title">Digital Resources</div>
+        </div>
+        <div class="resource-grid">
+    `;
+    for (const res of data.resources) {
+      h += `
+        <div class="resource-card">
+          <a href="${res.url}" target="_blank">${res.title}</a>
+          <div class="desc">${res.description}</div>
+        </div>
+      `;
+    }
+    h += '</div></div>';
+  }
+
+  // Literature / Poetry
+  if (data.literature) {
+    h += `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon literature">📜</div>
+          <div class="section-title">${data.literature.title || 'Literature'}</div>
+        </div>
+        <div class="literature-intro">${data.literature.introduction}</div>
+    `;
+    if (data.literature.poets) {
+      for (const poet of data.literature.poets) {
+        h += `
+          <div class="poet-section">
+            <div class="poet-header">
+              <span class="poet-name">${poet.name}</span>
+              <span class="poet-korean">${poet.nameKorean || ''}</span>
+              <span class="poet-dates">${poet.dates}</span>
+            </div>
+            <div class="poet-bio">${poet.bio}</div>
+        `;
+        if (poet.poems) {
+          for (const poem of poet.poems) {
+            h += `
+              <div class="poem-card">
+                <div class="poem-title">"${poem.title}"</div>
+                <div class="poem-text">${poem.text.replace(/\n/g, '<br>')}</div>
+                <div class="poem-meta">
+                  <span class="translator">Trans. ${poem.translator}</span>
+                  ${poem.note ? `<span class="poem-note">${poem.note}</span>` : ''}
+                </div>
+              </div>
+            `;
+          }
+        }
+        h += '</div>';
+      }
+    }
+    if (data.literature.connectionToReadings) {
+      h += `<div class="literature-connection"><strong>Connection to readings:</strong> ${data.literature.connectionToReadings}</div>`;
+    }
+    if (data.literature.sources) {
+      h += '<div class="literature-sources"><strong>Sources:</strong> ';
+      h += data.literature.sources.map(s =>
+        s.url ? `<a href="${s.url}" target="_blank">${s.title}</a> (${s.year})` : `${s.title} (${s.year})`
+      ).join(', ');
+      h += '</div>';
+    }
+    h += '</div>';
+  }
+
+  // Discussion Hooks
+  if (data.discussionHooks && data.discussionHooks.length) {
+    h += `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon discussion">💬</div>
+          <div class="section-title">Discussion Hooks</div>
+        </div>
+        <div class="discussion-grid">
+    `;
+    for (const hook of data.discussionHooks) {
+      const angleLabels = {
+        'contemporary': 'Contemporary Connection',
+        'film': 'Film Connection',
+        'historical': 'Historical Connection',
+        'current_events': 'Current Events',
+        'literature': 'Literature Connection'
+      };
+      h += `
+        <div class="discussion-card">
+          <div class="angle">${angleLabels[hook.angle] || hook.angle}</div>
+          <div class="question">${hook.question}</div>
+        </div>
+      `;
+    }
+    h += '</div></div>';
+  }
+
+  h += '</div>'; // close enrichment-body
+
+  document.getElementById('content').innerHTML = h;
+  document.title = `Enrichment: Plate ${data.plate} - ${data.topic}`;
+}
+
+loadEnrichment();
+</script>
+</body>
+</html>

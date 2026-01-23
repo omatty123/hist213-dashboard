@@ -1,0 +1,226 @@
+{
+  "plate": 25,
+  "topic": "Japan rises again",
+  "date": "2026-03-06",
+  "generatedAt": "2026-01-04T18:00:00.000Z",
+  "readings": [
+    "Environmental Activism, Feminism"
+  ],
+  "readingAnalyses": [
+    {
+      "title": "Environmental Activism: The Minamata Case",
+      "author": "Victim testimonies and activist documents",
+      "source": "Primary Source Reader Part 5",
+      "pages": "1950s-1970s",
+      "type": "primary",
+      "summary": "The Minamata readings document Japan's most notorious environmental disaster: the mercury poisoning of thousands of people by Chisso Corporation's chemical plant in Minamata, Kumamoto Prefecture. Beginning in the 1950s, the company discharged methylmercury into Minamata Bay, where it bioaccumulated in fish consumed by local fishing communities. Victims suffered horrific neurological damage: tremors, loss of motor control, sensory disturbances, and in severe cases, death. Children were born with congenital Minamata disease.\n\nThe readings trace the long struggle for recognition and justice. For years, Chisso denied responsibility while victims faced social ostracism - their disease was rumored to be contagious. Local and national governments sided with the company, prioritizing economic growth over public health. Only through grassroots organizing, investigative journalism, and ultimately litigation did victims force acknowledgment of the truth. The landmark 1973 Kumamoto District Court ruling held Chisso liable and established principles of corporate environmental responsibility.\n\nMinamata became a symbol of the environmental costs of Japan's economic miracle. The disaster revealed how rapid industrialization, corporate irresponsibility, and government complicity could sacrifice entire communities. It also demonstrated the power of citizen activism to challenge the development-at-all-costs ideology that dominated postwar Japan.",
+      "keyQuotes": [
+        {"quote": "Our children were born deformed, and the company told us it wasn't their fault. We knew it was the fish. We knew because the cats died first, dancing in circles before they fell.", "page": "Victim testimony"},
+        {"quote": "They called us hysterical. They said we were hurting Minamata's economy. But we were dying, and no one would listen.", "page": "Activist account"},
+        {"quote": "When we finally won in court, they told us it was too late for compensation - the statute of limitations had passed. We had been waiting for justice, and the law punished us for waiting.", "page": "Legal aftermath"},
+        {"quote": "The economic miracle was built on our bodies. We are the hidden cost of Japan's success.", "page": "Victim reflection"}
+      ],
+      "thematicExamples": [
+        "Corporate denial and delay tactics: Chisso knew about contamination for years but continued discharging waste while denying causation",
+        "Government complicity: officials sided with industry, suppressed research, and pressured victims to accept inadequate settlements",
+        "Grassroots organizing: victims and allies built a movement despite social stigma and powerful opposition"
+      ],
+      "realLifeConnections": [
+        "Contemporary environmental justice movements from Flint water crisis to Cancer Alley - who bears the cost of industrial development?",
+        "The 2011 Fukushima nuclear disaster raised similar questions about corporate responsibility and government oversight",
+        "Climate change as a distributional justice issue - the poor and marginalized bear disproportionate costs of environmental harm"
+      ]
+    },
+    {
+      "title": "Japanese Feminism",
+      "author": "Feminist activists and scholars",
+      "source": "Primary Source Reader Part 5",
+      "pages": "1970s-1990s",
+      "type": "primary",
+      "summary": "The Japanese feminism readings trace women's movements from the postwar period through the 1990s, focusing on how activists challenged the gender system that underwrote Japan's economic miracle. Postwar Japan institutionalized a rigid gender division: men as corporate 'salarymen' devoted to their companies, women as 'professional housewives' managing homes and children. The readings trace how feminists challenged this system, from the 1970s 'uman ribu' (women's liberation) movement through struggles for the Equal Employment Opportunity Law (1985) and beyond.\n\nActivists confronted not only legal discrimination but also deeply embedded cultural norms about femininity, motherhood, and women's 'proper place' in society. The economic miracle, feminists argued, was underwritten by women's unpaid domestic labor - the salaryman could devote himself to Toyota because his wife managed everything else. When women challenged this arrangement, they faced not only legal barriers but cultural expectations that rendered their aspirations illegitimate.\n\nThe readings document both achievements and limits. The 1985 Equal Employment Opportunity Law was a milestone, but it lacked enforcement mechanisms and companies created 'two-track' systems to maintain gender hierarchy. Japan continues to rank near the bottom of developed nations on gender equality indices, showing the persistence of structures these activists challenged.",
+      "keyQuotes": [
+        {"quote": "We are told Japan is the most successful country in Asia. But success for whom? Not for women who work twice as hard for half the recognition.", "page": "Feminist manifesto"},
+        {"quote": "The economic miracle was built on the unpaid labor of women - cooking, cleaning, raising children, caring for the elderly. This labor has no value in GDP statistics.", "page": "Feminist critique"},
+        {"quote": "They tell us we should be grateful for the Equal Employment Opportunity Law. But it has no penalties. Companies ignore it. We are still 'office flowers' expected to serve tea and quit when we marry.", "page": "Working woman's testimony"},
+        {"quote": "My mother gave up everything for my father's career. She managed the household, raised the children, and never complained. I refuse to disappear like she did.", "page": "Young feminist activist"}
+      ],
+      "thematicExamples": [
+        "The 'M-curve' pattern - Japanese women's workforce participation drops sharply during childbearing years, reflecting pressure to choose between career and family",
+        "The 'two-track' employment system - companies dividing workers into career track (mostly men) and general track (mostly women with limited advancement)",
+        "Tanaka Mitsu and the 1970s 'uman ribu' movement - radical feminism challenging the entire structure of patriarchal capitalism"
+      ],
+      "realLifeConnections": [
+        "Japan still ranks near the bottom of developed nations on the World Economic Forum's Gender Gap Index (120th of 156 countries in 2021)",
+        "The global #MeToo movement arrived late in Japan, revealing continued reluctance to challenge male power structures",
+        "Japan's demographic crisis (low birthrate, aging population) is partly attributed to women's rational choice not to bear children in an unequal system"
+      ]
+    }
+  ],
+  "overallSynthesis": "These two readings together reveal that Japan's postwar 'economic miracle' was not simply a triumph of development but a contested achievement with profound costs distributed unequally across society. The Minamata case shows how rapid industrialization poisoned communities while corporations and government officials prioritized growth over human welfare. The fishermen and their families who suffered were dismissed as obstacles to progress, their bodies bearing the toxic burden of Japan's ascent to economic superpower status.\n\nThe feminist readings reveal a parallel story: the economic miracle was underwritten by women's unpaid domestic labor and by a gender system that confined women to supporting roles. The salaryman who devoted his life to Sony or Toyota could only do so because his wife managed everything else. When women challenged this arrangement, they faced not only legal discrimination but cultural expectations deeply embedded in Japanese notions of femininity and national success.\n\nBoth movements - environmental and feminist - challenged the dominant narrative of 'Japan as Number One.' They asked uncomfortable questions: Success for whom? At what cost? Who decides what counts as 'development'? These questions connect to the course's broader themes about modernity's contradictions and the voices that get silenced in triumphalist national narratives. As the final content plate, this session invites students to reconsider everything they've learned: national 'success' always has winners and losers, development models embed particular values and power structures, and the people who bear the costs often must organize and fight to have their stories heard.",
+  "executiveSummary": "Japan's postwar economic miracle transformed a devastated nation into the world's second-largest economy by the 1980s. But growth came with costs: environmental destruction (Minamata disease, air pollution), grueling work culture, and persistent gender inequality. The readings focus on social movements that challenged the miracle's dark side: environmental activists who fought corporate polluters and feminists who demanded equality in a patriarchal society.\n\nThis final plate asks students to consider the full picture: What did Japan's 'success' actually mean? The economic miracle was real, but so were its costs. Women made gains but remained second-class citizens in many ways. Environmental disasters were covered up before activists forced accountability. As we conclude the course, we return to questions raised at the beginning: What is 'modernity'? Whose voices get heard? What are the costs of 'development'?",
+  "keywords": [
+    {
+      "term": "Minamata Disease",
+      "definition": "Mercury poisoning from industrial waste that killed and disabled thousands",
+      "relevance": "Symbol of environmental costs of rapid industrialization"
+    },
+    {
+      "term": "Salaryman (サラリーマン)",
+      "definition": "White-collar male employee devoted to company; icon of postwar Japan",
+      "relevance": "Represents both economic success and human costs (overwork, conformity)"
+    },
+    {
+      "term": "Japanese Feminism",
+      "definition": "Movements for women's equality in employment, family law, and politics",
+      "relevance": "Challenged male-dominated society that economic miracle reinforced"
+    },
+    {
+      "term": "Bubble Economy",
+      "definition": "1980s asset bubble that burst in 1990, beginning 'Lost Decades'",
+      "relevance": "Miracle had limits; Japan has struggled since"
+    },
+    {
+      "term": "Lost Decades",
+      "definition": "Period of economic stagnation from 1990 to present",
+      "relevance": "Shows limits of Japanese model; informs contemporary debates"
+    }
+  ],
+  "keyPassages": [
+    {
+      "quote": "Our children were born deformed, and the company told us it wasn't their fault. We knew it was the fish.",
+      "source": "Minamata victim testimony",
+      "page": "Environmental readings"
+    },
+    {
+      "quote": "We are told Japan is the most successful country in Asia. But success for whom?",
+      "source": "Japanese feminist",
+      "page": "Feminism readings"
+    },
+    {
+      "quote": "The economic miracle was built on the unpaid labor of women and the poisoned bodies of the poor.",
+      "source": "Critical analysis",
+      "page": "Readings"
+    }
+  ],
+  "peopleplacesthings": {
+    "people": [
+      "Minamata victims - fought for recognition",
+      "Feminist activists - challenged patriarchy",
+      "Environmental activists - sued corporations"
+    ],
+    "places": [
+      "Minamata - site of mercury poisoning",
+      "Tokyo - economic center",
+      "Yokkaichi - air pollution disaster"
+    ],
+    "things": [
+      "Minamata disease - mercury poisoning",
+      "Bubble economy - 1980s excess",
+      "Lost Decades - post-bubble stagnation"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "What were the human and environmental costs of Japan's economic miracle?",
+      "talkingPoints": "Minamata, air pollution, overwork, gender inequality. These weren't accidents but structural features of the development model. Who paid the price for Japan's success?"
+    },
+    {
+      "question": "How do social movements challenge dominant narratives of 'success'?",
+      "talkingPoints": "Environmental and feminist activists told different stories than the 'Japan as Number One' narrative. Whose stories get told? Whose get suppressed? This connects to course themes about Eurocentrism."
+    },
+    {
+      "question": "As we conclude the course, what have we learned about 'modernity' in East Asia?",
+      "talkingPoints": "Return to Plate 3's questions. Modernity has meant different things in different places. It brought both liberation and new forms of oppression. There is no single path. The story isn't over."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "1950s-1980s",
+      "event": "Economic miracle; high growth"
+    },
+    {
+      "date": "1956",
+      "event": "Minamata disease first recognized"
+    },
+    {
+      "date": "1970s",
+      "event": "Environmental movement gains strength"
+    },
+    {
+      "date": "1985",
+      "event": "Equal Employment Opportunity Law (limited)"
+    },
+    {
+      "date": "1989-1990",
+      "event": "Bubble peaks and bursts"
+    },
+    {
+      "date": "1990s-2020s",
+      "event": "'Lost Decades' of stagnation"
+    }
+  ],
+  "connections": {
+    "fromPrevious": "Plate 24 examined Korean development. Japan's model was similar in some ways (state-led, export-oriented) but with different outcomes.",
+    "toNext": "This is the final content plate. Next week: student presentations! Prepare to share what you've learned.",
+    "broaderThemes": "The course has traced East Asia from traditional foundations through Western encounter, nationalism, war, and reconstruction. We end by asking: What have these societies gained and lost?"
+  },
+  "nextPreview": {
+    "plate": null,
+    "topic": "Final Presentations",
+    "preview": "Next week students present their research projects. Synthesize what you've learned; connect past to present; make an argument about significance.",
+    "readings": []
+  },
+  "teachingNotes": [
+    "This is the last content class. Take time for synthesis and reflection.",
+    "Minamata story is powerful—consider showing documentary clips.",
+    "Gender inequality in Japan persists. Japan ranks poorly on global gender gap indices.",
+    "The 'Lost Decades' challenge triumphalist narratives. Japan's model had limits.",
+    "Return to opening questions: What is modernity? What is East Asia? How do these categories hold up after a quarter's study?"
+  ],
+  "map": {
+    "center": [34, 135],
+    "zoom": 5,
+    "locations": [
+      {
+        "name": "Minamata",
+        "nameChinese": "水俣",
+        "lat": 32.2128,
+        "lng": 130.4067,
+        "type": "city",
+        "description": "Site of mercury poisoning disaster"
+      },
+      {
+        "name": "Yokkaichi",
+        "nameChinese": "四日市",
+        "lat": 34.9649,
+        "lng": 136.6249,
+        "type": "city",
+        "description": "Air pollution disaster; 'Yokkaichi asthma'"
+      },
+      {
+        "name": "Tokyo",
+        "nameChinese": "東京",
+        "lat": 35.6762,
+        "lng": 139.6503,
+        "type": "capital",
+        "description": "Economic center; corporate headquarters"
+      },
+      {
+        "name": "Osaka",
+        "nameChinese": "大阪",
+        "lat": 34.6937,
+        "lng": 135.5023,
+        "type": "city",
+        "description": "Industrial center"
+      },
+      {
+        "name": "Fukushima",
+        "nameChinese": "福島",
+        "lat": 37.7500,
+        "lng": 140.4678,
+        "type": "city",
+        "description": "2011 nuclear disaster (contemporary parallel)"
+      }
+    ]
+  }
+}

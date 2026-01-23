@@ -1,0 +1,167 @@
+{
+  "plate": 1,
+  "topic": "Introduction to the class, geography of East Asia",
+  "date": "2026-01-05",
+  "generatedAt": "2026-01-15T10:00:00.000Z",
+  "readings": [],
+  "executiveSummary": "Welcome to HIST 213: East Asia in the Modern World. This first session establishes the geographic and conceptual foundations for our semester-long exploration of China, Korea, and Japan from 1600 to the present. We'll begin by asking a deceptively simple question: What is 'East Asia'?\n\nGeographically, we're studying a region of remarkable diversity—from the frozen steppes of Manchuria to the tropical coasts of southern China, from the volcanic islands of Japan to the mountainous Korean peninsula. Yet these societies share deep historical connections: the influence of Chinese civilization, the spread of Buddhism, Confucian ethics, and (for China and Korea) the Chinese writing system. Today we'll map this region, introduce key geographic features that shaped its history, and preview the major themes of the course: encounters with the West, internal transformations, the rise of nationalism, war and revolution, and the emergence of contemporary East Asia.",
+  "keywords": [
+    {
+      "term": "East Asia",
+      "definition": "China, Korea, and Japan—societies linked by geographic proximity, shared cultural elements (Confucianism, Buddhism, Chinese script), and historical interaction",
+      "relevance": "The region we're studying; understanding what holds it together (and what divides it) is our first task"
+    },
+    {
+      "term": "Middle Kingdom (中國 Zhōngguó)",
+      "definition": "China's name for itself, literally 'Central State'—reflects a worldview placing China at civilization's center",
+      "relevance": "Introduces concept of Sinocentrism; China saw itself as the center of the civilized world"
+    },
+    {
+      "term": "Sinosphere / Chinese Cultural Sphere",
+      "definition": "The zone of Chinese cultural influence including Korea, Japan, Vietnam—shared use of Chinese characters, Confucian values, Buddhist practices",
+      "relevance": "Explains why we study these societies together; they borrowed heavily from Chinese civilization"
+    },
+    {
+      "term": "Tribute System",
+      "definition": "The diplomatic framework through which China conducted foreign relations—neighboring states sent tribute to acknowledge China's cultural centrality",
+      "relevance": "How East Asian international relations worked before Western powers arrived"
+    },
+    {
+      "term": "Modern East Asia",
+      "definition": "Our period of study: roughly 1600 to present, beginning with established Qing, Joseon, and Tokugawa regimes",
+      "relevance": "Defines our chronological scope; 'modern' here means the last 400+ years"
+    }
+  ],
+  "keyPassages": [],
+  "peopleplacesthings": {
+    "people": [
+      "No specific historical figures for Day 1—focus on geography and course overview"
+    ],
+    "places": [
+      "China (中國) — The 'Middle Kingdom'; world's oldest continuous civilization",
+      "Korea (韓國/朝鮮) — Peninsula between China and Japan; historically a bridge and a buffer",
+      "Japan (日本) — Island nation; borrowed from China but developed distinctly"
+    ],
+    "things": [
+      "Chinese characters (漢字) — Shared writing system across East Asia",
+      "Confucianism — Ethical system emphasizing hierarchy, education, family",
+      "Buddhism — Religion that spread from India through China to Korea and Japan"
+    ]
+  },
+  "keyQuestions": [
+    {
+      "question": "What is 'East Asia' and why study these three countries together?",
+      "talkingPoints": "Geographic proximity, shared cultural heritage (Confucianism, Buddhism, Chinese script), historical interaction. But also: this is a Western category—Chinese, Koreans, and Japanese didn't necessarily see themselves as part of one 'region.'"
+    },
+    {
+      "question": "Where is the center of the world?",
+      "talkingPoints": "For most of history, China considered itself the center (Middle Kingdom). Europeans put themselves at the center. Maps reflect worldviews. Show Chinese vs. European world maps. Ask: Who decides where the center is?"
+    },
+    {
+      "question": "What does 'modern' mean in this course?",
+      "talkingPoints": "We start around 1600—not because East Asia was 'pre-modern' before, but because this is when the three major regimes (Qing, Joseon, Tokugawa) consolidated. 'Modernity' is contested—we'll return to this question throughout the course."
+    }
+  ],
+  "timeline": [
+    {"date": "c. 1600 BCE", "event": "Shang Dynasty — earliest Chinese writing"},
+    {"date": "221 BCE", "event": "Qin unifies China — first empire, standardized script"},
+    {"date": "57 BCE", "event": "Traditional founding of Korean kingdom of Silla"},
+    {"date": "c. 300 CE", "event": "Chinese script adopted in Japan"},
+    {"date": "618–907", "event": "Tang Dynasty — height of Chinese cultural influence; Korea and Japan send students"},
+    {"date": "1392", "event": "Joseon Dynasty founded in Korea (lasts until 1897)"},
+    {"date": "1368–1644", "event": "Ming Dynasty in China"},
+    {"date": "1603", "event": "Tokugawa Shogunate established in Japan (lasts until 1868)"},
+    {"date": "1644", "event": "Qing Dynasty begins in China (lasts until 1912)"},
+    {"date": "c. 1600", "event": "Our course begins: three established East Asian regimes"}
+  ],
+  "connections": {
+    "fromPrevious": "This is the first class — we're establishing foundations for the entire course",
+    "toNext": "Plate 2 will explore what actually unites East Asia: language, religion, and culture. Plate 3 will ask the harder question: What is 'modernity' and was it invented by the West?",
+    "broaderThemes": "The question 'What is East Asia?' will echo throughout the course. We'll see how Western imperialism, nationalism, and Cold War divisions reshaped regional identities."
+  },
+  "nextPreview": {
+    "plate": 2,
+    "topic": "East Asian Language, Religion, Culture",
+    "preview": "Having established the geographic frame, we'll explore what actually unites these societies: shared writing systems, Confucian ethics, Buddhist practices, and borrowed governmental models.",
+    "readings": ["Schoppa, 'Basic Identities' (pp. 2-23)"]
+  },
+  "teachingNotes": [
+    "This is Day 1 — no readings assigned yet. Focus on course overview and geographic orientation.",
+    "Show maps! Physical geography (rivers, mountains, coastlines) shaped history. The Yellow River, Yangtze, Korean peninsula as bridge/buffer, Japanese islands as insular space.",
+    "Ask students what they already know (or think they know) about East Asia. Surface assumptions to address throughout the course.",
+    "Introduce the syllabus: course structure, assignments, expectations. This is housekeeping day.",
+    "The 'Middle Kingdom' concept is key — China saw itself as civilization's center. This will matter when we discuss encounters with the West.",
+    "Preview the arc: established regimes (1600s) → Western pressure (1800s) → internal transformation → nationalism → war → contemporary era",
+    "Consider a brief icebreaker: Have students share one thing they hope to learn about East Asia this semester."
+  ],
+  "map": {
+    "center": [35, 115],
+    "zoom": 4,
+    "locations": [
+      {
+        "name": "Beijing",
+        "nameChinese": "北京",
+        "lat": 39.9042,
+        "lng": 116.4074,
+        "type": "capital",
+        "description": "Capital of China since Ming Dynasty; 'Northern Capital'"
+      },
+      {
+        "name": "Seoul (Hanyang)",
+        "nameChinese": "漢陽/首爾",
+        "lat": 37.5665,
+        "lng": 126.9780,
+        "type": "capital",
+        "description": "Capital of Joseon Korea since 1394"
+      },
+      {
+        "name": "Edo (Tokyo)",
+        "nameChinese": "江戶/東京",
+        "lat": 35.6762,
+        "lng": 139.6503,
+        "type": "capital",
+        "description": "Seat of Tokugawa Shogunate; became Tokyo in 1868"
+      },
+      {
+        "name": "Kyoto",
+        "nameChinese": "京都",
+        "lat": 35.0116,
+        "lng": 135.7681,
+        "type": "city",
+        "description": "Imperial capital of Japan; 'Western Capital'"
+      },
+      {
+        "name": "Nanjing",
+        "nameChinese": "南京",
+        "lat": 32.0603,
+        "lng": 118.7969,
+        "type": "city",
+        "description": "Ming capital 1368-1421; 'Southern Capital'"
+      },
+      {
+        "name": "Yellow River",
+        "nameChinese": "黃河",
+        "lat": 35.0,
+        "lng": 110.0,
+        "type": "region",
+        "description": "Cradle of Chinese civilization; 'China's Sorrow'"
+      },
+      {
+        "name": "Yangtze River",
+        "nameChinese": "長江",
+        "lat": 30.5,
+        "lng": 117.0,
+        "type": "region",
+        "description": "China's longest river; divides north and south"
+      },
+      {
+        "name": "Manchuria",
+        "nameChinese": "滿洲",
+        "lat": 45.0,
+        "lng": 125.0,
+        "type": "region",
+        "description": "Homeland of the Manchus who founded Qing Dynasty"
+      }
+    ]
+  }
+}

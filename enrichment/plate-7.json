@@ -1,0 +1,247 @@
+{
+  "plate": 7,
+  "topic": "Joseon Reform",
+  "date": "2026-01-21",
+  "generatedAt": "2026-01-18T12:00:00.000Z",
+  "reading": {
+    "title": "On Reform (Sources of Korean Tradition, Ch. 22)",
+    "authors": ["Yu Hyŏngwŏn", "Yi Ik", "Chŏng Yagyong", "Pak Chega"],
+    "summary": "Sirhak scholars proposed comprehensive reforms addressing land distribution, currency policy, and technological modernization in late Joseon Korea."
+  },
+  "films": {
+    "feature": [
+      {
+        "title": "The Throne (사도)",
+        "year": 2015,
+        "director": "Lee Joon-ik",
+        "notes": "Crown Prince Sado's tragic story. Depicts 18th-century Joseon court politics, yangban culture, and reform tensions.",
+        "streaming": "Amazon Prime, Apple TV",
+        "runtime": "125 min",
+        "relevance": "Shows the rigid Neo-Confucian hierarchies and factional politics that Sirhak thinkers criticized",
+        "url": "https://www.amazon.com/Throne-Song-Kang-ho/dp/B08C9NQF6Y",
+        "imdb": "https://www.imdb.com/title/tt4010918/"
+      },
+      {
+        "title": "Admiral: Roaring Currents (명량)",
+        "year": 2014,
+        "director": "Kim Han-min",
+        "notes": "Yi Sun-sin at the Battle of Myeongnyang. Record-breaking Korean film.",
+        "streaming": "Netflix, Amazon Prime, Apple TV",
+        "runtime": "126 min",
+        "relevance": "Shows the devastating Imjin War aftermath that prompted Sirhak reform thinking",
+        "url": "https://www.netflix.com/title/80011706",
+        "imdb": "https://www.imdb.com/title/tt3541262/"
+      },
+      {
+        "title": "Hansan: Rising Dragon",
+        "year": 2022,
+        "director": "Kim Han-min",
+        "notes": "Prequel to Admiral. Battle of Hansan Island (1592).",
+        "streaming": "Amazon Prime",
+        "runtime": "130 min",
+        "relevance": "Another perspective on the Imjin War's destruction of Korea",
+        "url": "https://www.amazon.com/Hansan-Rising-Dragon-Park-Hae/dp/B0BCX8X3FN",
+        "imdb": "https://www.imdb.com/title/tt21109538/"
+      },
+      {
+        "title": "Uprising (폭군의 시대)",
+        "year": 2024,
+        "director": "Kim Sang-man",
+        "notes": "Two childhood friends on opposite sides of a slave rebellion in Joseon. Netflix original.",
+        "streaming": "Netflix",
+        "runtime": "124 min",
+        "relevance": "Directly addresses class inequality and the yangban parasitism that reformers criticized",
+        "url": "https://www.netflix.com/title/81672158",
+        "imdb": "https://www.imdb.com/title/tt27987046/"
+      },
+      {
+        "title": "Chunhyang (춘향뎐)",
+        "year": 2000,
+        "director": "Im Kwon-taek",
+        "notes": "Classic Korean love story in pansori style. Depicts commoner vs. yangban class divide.",
+        "streaming": "MUBI",
+        "runtime": "120 min",
+        "relevance": "Visualizes the class system and Confucian values that Sirhak thinkers navigated",
+        "url": "https://mubi.com/en/us/films/chunhyang",
+        "imdb": "https://www.imdb.com/title/tt0245837/"
+      }
+    ],
+    "documentaries": [
+      {
+        "title": "Korea: The Never-Ending War",
+        "year": 2019,
+        "notes": "PBS documentary with historical context on Korea's path to division",
+        "streaming": "PBS",
+        "relevance": "Connects Joseon-era divisions to modern Korea",
+        "url": "https://www.pbs.org/weta/korea-never-ending-war/"
+      }
+    ],
+    "clipSuggestions": [
+      "The Throne: Prince Sado's confrontation with his father shows the suffocating Confucian hierarchy",
+      "Uprising (2024): Opening scenes depicting the social stratification between slaves and yangban",
+      "Admiral: Devastation of the Imjin War that spurred reform thinking"
+    ]
+  },
+  "scholarship": [
+    {
+      "title": "Beyond the Discourse of Practical Learning",
+      "author": "Various",
+      "year": 2019,
+      "publication": "Korean Studies (Project MUSE)",
+      "finding": "Reexamines how 20th-century nationalists appropriated Sirhak as proto-modern thought",
+      "url": "https://muse.jhu.edu/journal/109"
+    },
+    {
+      "title": "Northern Learning and Qing Influence",
+      "author": "Various",
+      "year": 2020,
+      "publication": "Harvard Journal of Asiatic Studies",
+      "finding": "Traces how Pak Chega's advocacy of learning from Qing China influenced later reforms",
+      "url": "https://muse.jhu.edu/journal/433"
+    },
+    {
+      "title": "Land Reform and the Origins of the Korean Economic Miracle",
+      "author": "Various",
+      "year": 2021,
+      "publication": "Journal of Korean Studies (Duke UP)",
+      "finding": "Connects 1950 land reform to Sirhak proposals 300 years earlier",
+      "url": "https://muse.jhu.edu/journal/515"
+    }
+  ],
+  "news": [
+    {
+      "headline": "Korea passes boardroom reform, curbing chaebol power",
+      "source": "Korea Herald",
+      "date": "2025",
+      "connection": "Pak Chega's critique of yangban 'parasites' echoes modern complaints about chaebol concentration",
+      "url": "https://www.koreaherald.com/article/10561294"
+    },
+    {
+      "headline": "Royal Tombs of the Joseon Dynasty - UNESCO World Heritage",
+      "source": "UNESCO",
+      "date": "Inscribed 2009",
+      "connection": "International recognition of Joseon heritage that Sirhak scholars documented",
+      "url": "https://whc.unesco.org/en/list/1319/"
+    },
+    {
+      "headline": "South Korea's Chaebol Challenge",
+      "source": "Council on Foreign Relations",
+      "date": "Backgrounder",
+      "connection": "Analysis of how family conglomerates dominate Korea's economy - parallels to yangban concentration of wealth",
+      "url": "https://www.cfr.org/backgrounders/south-koreas-chaebol-challenge"
+    },
+    {
+      "headline": "Chaebol reforms are crucial for South Korea's future",
+      "source": "East Asia Forum",
+      "date": "2021",
+      "connection": "Economic reform debates echo Sirhak critiques of entrenched privilege",
+      "url": "https://eastasiaforum.org/2021/03/24/chaebol-reforms-are-crucial-for-south-koreas-future/"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Academy of Korean Studies: Encyclopedia of Korean Culture",
+      "url": "https://encykorea.aks.ac.kr/",
+      "description": "Comprehensive entries on Sirhak thinkers (Yu Hyŏngwŏn, Yi Ik, Chŏng Yagyong)"
+    },
+    {
+      "title": "Korean History Portal (국사편찬위원회)",
+      "url": "https://www.history.go.kr/",
+      "description": "Original documents from Joseon era, some translated"
+    },
+    {
+      "title": "Asia for Educators - Korea",
+      "url": "http://afe.easia.columbia.edu/main_pop/kpct/kp_choson.htm",
+      "description": "Columbia University teaching resources on Joseon Korea"
+    },
+    {
+      "title": "Royal Tombs of Joseon - Cultural Heritage",
+      "url": "https://royal.cha.go.kr/ENG/contents/E106030000.do",
+      "description": "Official Korean cultural heritage site for Joseon royal tombs"
+    }
+  ],
+  "literature": {
+    "title": "Kisaeng Sijo: Women's Voices in Chosŏn Poetry",
+    "introduction": "The kisaeng (기생) were professional female entertainers trained in poetry, music, and dance. Their sijo poems offer a rare non-elite female perspective on love and loss in Chosŏn society. Like the Chunhyang story mentioned in Ebrey, kisaeng sijo explore love across social boundaries.",
+    "poets": [
+      {
+        "name": "Hongnang",
+        "nameKorean": "홍랑",
+        "dates": "16th-17th century",
+        "bio": "Kisaeng from Kyŏngsŏng. Met the poet Ch'oe Kyŏngch'ang when he traveled there on government business. When they parted as he returned to Seoul, she attached this sijo to a willow branch—following the Chinese custom of giving willow at farewells.",
+        "poems": [
+          {
+            "title": "Wild Willow Branch",
+            "translator": "Richard Rutt",
+            "text": "I chose a wild willow branch and plucked it to send it to you.\nI want you to plant it by the window where you sleep.\nWhen new leaves open in the night rains, think it is I that have come to you.",
+            "note": "The poem transforms parting into continued presence through the living willow."
+          }
+        ]
+      },
+      {
+        "name": "Hwang Jini",
+        "nameKorean": "황진이",
+        "dates": "1506-1560",
+        "bio": "The most famous kisaeng poet. Only six sijo survive, but her legendary beauty, wit, and defiance of convention made her an icon. Her poems use elaborate wordplay and double meanings.",
+        "poems": [
+          {
+            "title": "Long Winter Night",
+            "translator": "Larry Gross",
+            "text": "Oh that I might capture the essence of this deep midwinter night\nAnd fold it softly into the waft of a spring-moon quilt,\nThen fondly uncoil it the night my beloved returns.",
+            "note": "Written about the winter solstice (dongji). The impossible wish to store time for later use with a lover."
+          },
+          {
+            "title": "I Cut in Two",
+            "translator": "Peter H. Lee",
+            "text": "I cut in two\nA long November night, and\nPlace half under the coverlet,\nSweet-scented as a spring breeze.\nAnd when he comes, I shall take it out,\nUnroll it inch by inch, to stretch the night.",
+            "note": "Same theme—preserving night for the beloved's return."
+          },
+          {
+            "title": "Blue Mountains Speak of My Desire",
+            "translator": "Peter H. Lee",
+            "text": "Blue mountains speak of my desire,\nGreen waters reflect my Lover's love:\nThe mountains unchanging,\nThe waters flowing by.\nSometimes it seems the waters cannot forget me,\nThey part in tears, regretting, running away.",
+            "note": "Mountains (unchanging) and water (flowing) represent the constancy of desire versus the transience of love."
+          }
+        ]
+      }
+    ],
+    "connectionToReadings": "The reformers were yangban men proposing to redistribute yangban land. Kisaeng occupied the lowest social position—their daughters became kisaeng, their sons slaves. Yet they produced poetry admired by the very class that exploited them. Their voices offer a counterpoint to the elite male reform discourse.",
+    "sources": [
+      {
+        "title": "Songs of the Kisaeng",
+        "authors": "Constantine Contogenis & Wolhee Choe (trans.)",
+        "publisher": "BOA Editions",
+        "year": 1997,
+        "url": "https://archive.org/details/KLTI18"
+      },
+      {
+        "title": "The Bamboo Grove: An Introduction to Sijo",
+        "authors": "Richard Rutt",
+        "publisher": "University of California Press",
+        "year": 1971
+      }
+    ]
+  },
+  "discussionHooks": [
+    {
+      "question": "Pak Chega argued Korea should learn technology from 'barbarian' Qing China. How does this compare to modern debates about technology transfer from geopolitical rivals?",
+      "angle": "contemporary"
+    },
+    {
+      "question": "The Throne (2015) depicts the suffocating Confucian hierarchy. How do films shape our understanding of the society Sirhak thinkers critiqued?",
+      "angle": "film"
+    },
+    {
+      "question": "South Korea's 1950 land reform finally redistributed land as Sirhak scholars proposed 300 years earlier. Why did it take a war and foreign occupation to implement these ideas?",
+      "angle": "historical"
+    },
+    {
+      "question": "Is the modern critique of Korean chaebol the same as Pak Chega's attack on yangban parasites, or fundamentally different?",
+      "angle": "current_events"
+    },
+    {
+      "question": "How do kisaeng poems compare to the elite male reformers we read about? What voices are missing from the reform debates?",
+      "angle": "literature"
+    }
+  ]
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Final Project Brainstorm | HIST 213</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page { size: letter; margin: 0.5in; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 11pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 0.5in;
+      max-width: 8.5in;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    header .course {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+    }
+
+    .name-date {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .name-date .field {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .name-date label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+    }
+
+    .name-date .line {
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+      min-width: 100px;
+    }
+
+    .section {
+      margin-bottom: 1rem;
+    }
+
+    .section-header {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 0.3rem 0.6rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .notes-box {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.5rem;
+      min-height: 70px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px);
+      background-size: 100% 1.4rem, 100% 1.4rem;
+    }
+
+    .notes-box.tall { min-height: 100px; }
+
+    .idea-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .idea-box {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.5rem;
+      min-height: 90px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px);
+      background-size: 100% 1.4rem;
+    }
+
+    .idea-box .number {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: #999;
+      margin-bottom: 0.25rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .prompt-list {
+      list-style: none;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .prompt-list li {
+      padding: 0.3rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .prompt-list li::before {
+      content: '?';
+      position: absolute;
+      left: 0;
+      color: #999;
+      font-weight: 600;
+    }
+
+    .format-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .format-option {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      background: #f5f5f5;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .format-option .box {
+      width: 12px;
+      height: 12px;
+      border: 1px solid #999;
+      border-radius: 2px;
+    }
+
+    .theme-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .theme-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      background: #e8e8e8;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      color: #555;
+    }
+
+    .tip-box {
+      background: #f0f7ff;
+      border-left: 3px solid #3b82f6;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .tip-box strong {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .checkpoint {
+      background: #f9f9f9;
+      border-radius: 4px;
+      padding: 0.75rem;
+    }
+
+    .checkpoint h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .checkpoint-list {
+      list-style: none;
+      font-size: 0.8rem;
+    }
+
+    .checkpoint-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      padding: 0.25rem 0;
+    }
+
+    .checkbox {
+      width: 12px;
+      height: 12px;
+      border: 1px solid #999;
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    @media print {
+      body { padding: 0; }
+      .notes-box, .idea-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>Final Project Brainstorm</h1>
+      <span class="course">HIST/EAST 213 · Discussion Prep</span>
+    </div>
+  </header>
+
+  <div class="name-date">
+    <div class="field"><label>Name</label><div class="line"></div></div>
+    <div class="field"><label>Date</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">1. What grabbed you?</div>
+    <p style="font-size: 0.85rem; color: #666; margin-bottom: 0.5rem;">From everything we've covered, what topics, moments, or questions stuck with you?</p>
+    <div class="theme-tags">
+      <span class="theme-tag">Imjin War</span>
+      <span class="theme-tag">Ming-Qing transition</span>
+      <span class="theme-tag">Tokugawa order</span>
+      <span class="theme-tag">Sankin-kōtai</span>
+      <span class="theme-tag">Sakoku</span>
+      <span class="theme-tag">Joseon reform</span>
+      <span class="theme-tag">Opium Wars</span>
+      <span class="theme-tag">Meiji</span>
+      <span class="theme-tag">Taiping</span>
+      <span class="theme-tag">Tonghak</span>
+      <span class="theme-tag">Nationalism</span>
+      <span class="theme-tag">Pacific War</span>
+      <span class="theme-tag">Comfort women</span>
+      <span class="theme-tag">Mao</span>
+      <span class="theme-tag">Korean division</span>
+    </div>
+    <div class="notes-box"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">2. Three possible topics</div>
+    <p style="font-size: 0.85rem; color: #666; margin-bottom: 0.5rem;">Brainstorm three directions. They don't have to be perfect — just possibilities.</p>
+    <div class="idea-grid">
+      <div class="idea-box"><div class="number">Idea 1</div></div>
+      <div class="idea-box"><div class="number">Idea 2</div></div>
+      <div class="idea-box"><div class="number">Idea 3</div></div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-header">3. Narrow it down</div>
+      <ul class="prompt-list">
+        <li>Which idea excites you most?</li>
+        <li>Which has sources you can actually access?</li>
+        <li>Which lets you make an argument (not just describe)?</li>
+      </ul>
+      <div class="notes-box"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">4. Format</div>
+      <p style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">What format fits your topic best?</p>
+      <div class="format-options">
+        <div class="format-option"><div class="box"></div> Research paper</div>
+        <div class="format-option"><div class="box"></div> Podcast/audio</div>
+        <div class="format-option"><div class="box"></div> Video essay</div>
+        <div class="format-option"><div class="box"></div> Website/digital</div>
+        <div class="format-option"><div class="box"></div> Creative project</div>
+        <div class="format-option"><div class="box"></div> Other</div>
+      </div>
+      <div class="tip-box">
+        <strong>Note:</strong> Non-traditional formats still need research and argument. A podcast isn't easier — it's different.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">5. The "So What?" Test</div>
+    <p style="font-size: 0.85rem; color: #666; margin-bottom: 0.5rem;">Why does your topic matter? Who cares? What's at stake?</p>
+    <div class="notes-box"></div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-header">6. Sources — What do you have?</div>
+      <ul class="prompt-list">
+        <li>Primary sources from class you could use?</li>
+        <li>Additional sources you'd need to find?</li>
+        <li>Any films, images, objects relevant?</li>
+      </ul>
+      <div class="notes-box"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">7. Questions for discussion</div>
+      <p style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">What do you want feedback on? What are you unsure about?</p>
+      <div class="notes-box"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="checkpoint">
+      <h4>Before you leave today</h4>
+      <ul class="checkpoint-list">
+        <li><div class="checkbox"></div> I have a topic direction (even if rough)</li>
+        <li><div class="checkbox"></div> I know what format I'm leaning toward</li>
+        <li><div class="checkbox"></div> I have at least one source in mind</li>
+        <li><div class="checkbox"></div> I got feedback from classmates or 마선생님</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>

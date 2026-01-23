@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Primary Source Analysis | HIST 213</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page { size: letter; margin: 0.5in; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 11pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 0.5in;
+      max-width: 8.5in;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    header .course {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+    }
+
+    .name-date {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .name-date .field {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .name-date label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+    }
+
+    .name-date .line {
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+      min-width: 100px;
+    }
+
+    .section {
+      margin-bottom: 1rem;
+    }
+
+    .section-header {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 0.3rem 0.6rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1rem;
+    }
+
+    .field-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .field-row label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+      white-space: nowrap;
+    }
+
+    .field-row .input {
+      flex: 1;
+      border-bottom: 1px solid #ddd;
+      min-height: 1.2rem;
+    }
+
+    .notes-box {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.5rem;
+      min-height: 80px;
+      background-color: #fefdfb;
+      background-image:
+        linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 161, 142, 0.08) 1px, transparent 1px);
+      background-size: 100% 1.4rem, 100% 1.4rem;
+    }
+
+    .notes-box.tall { min-height: 120px; }
+    .notes-box.short { min-height: 60px; }
+
+    .question-list {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .question-list li {
+      padding: 0.4rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+      border-bottom: 1px dotted #ddd;
+    }
+
+    .question-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #999;
+    }
+
+    .question-list li:last-child {
+      border-bottom: none;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .essay-structure {
+      background: #f5f5f5;
+      border-radius: 4px;
+      padding: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .essay-structure h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .essay-structure ul {
+      margin-left: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .essay-structure li {
+      margin-bottom: 0.25rem;
+    }
+
+    .tip-box {
+      background: #fffbeb;
+      border-left: 3px solid #d4a017;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .tip-box strong {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    @media print {
+      body { padding: 0; }
+      .notes-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>Primary Source Analysis</h1>
+      <span class="course">HIST/EAST 213 · 3-Page Essay Prep</span>
+    </div>
+  </header>
+
+  <div class="name-date">
+    <div class="field"><label>Name</label><div class="line"></div></div>
+    <div class="field"><label>Date</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">1. Source Identification</div>
+    <div class="field-grid">
+      <div class="field-row"><label>Title</label><div class="input"></div></div>
+      <div class="field-row"><label>Author</label><div class="input"></div></div>
+      <div class="field-row"><label>Date</label><div class="input"></div></div>
+      <div class="field-row"><label>Type</label><div class="input"></div></div>
+      <div class="field-row" style="grid-column: span 2;"><label>Found in</label><div class="input"></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">2. Context — What world produced this source?</div>
+    <ul class="question-list">
+      <li>What was happening politically, socially, or culturally when this was written?</li>
+      <li>Who was the intended audience? Why does that matter?</li>
+      <li>What genre is this (edict, letter, memoir, philosophy)? What conventions shape it?</li>
+    </ul>
+    <div class="notes-box"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">3. Argument — What is the author trying to do?</div>
+    <ul class="question-list">
+      <li>What is the author's main claim or purpose?</li>
+      <li>What assumptions does the author make? What goes unsaid?</li>
+      <li>Who or what is the author arguing against (even implicitly)?</li>
+    </ul>
+    <div class="notes-box"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">4. Evidence — What specific details stand out?</div>
+    <p style="font-size: 0.85rem; color: #666; margin-bottom: 0.5rem;">Copy 2-3 key quotes that you'll use in your essay. Note page numbers.</p>
+    <div class="notes-box tall"></div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-header">5. Significance — So what?</div>
+      <ul class="question-list">
+        <li>What does this reveal about its time/place?</li>
+        <li>How does it connect to course themes?</li>
+        <li>What would we miss without this source?</li>
+      </ul>
+      <div class="notes-box short"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">6. Your Thesis</div>
+      <p style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">Draft a one-sentence argument about what this source reveals:</p>
+      <div class="notes-box short"></div>
+      <div class="tip-box">
+        <strong>Tip:</strong> A thesis isn't a summary ("This document describes X"). It's a claim ("This document reveals Y about Z").
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">Essay Structure (3 Pages)</div>
+    <div class="essay-structure">
+      <div class="two-col">
+        <div>
+          <h4>Page 1: Introduction + Context</h4>
+          <ul>
+            <li>Hook: A striking quote or detail</li>
+            <li>Introduce the source (who, what, when)</li>
+            <li>Historical context (brief)</li>
+            <li><strong>Thesis statement</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Page 2: Analysis</h4>
+          <ul>
+            <li>Close reading of key passages</li>
+            <li>What the author argues + how</li>
+            <li>What's revealed vs. what's hidden</li>
+            <li>Use quotes as evidence</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top: 0.5rem;">
+        <h4>Page 3: Significance + Conclusion</h4>
+        <ul>
+          <li>Connect to broader course themes (modernity, encounters, reform, nationalism...)</li>
+          <li>What does this source help us understand that we couldn't see otherwise?</li>
+          <li>Conclusion: Restate thesis with greater nuance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

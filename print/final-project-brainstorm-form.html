@@ -13,6 +13,8 @@
             --accent: #1e40af;
             --border: #d6d3d1;
             --input-bg: #fff;
+            --success: #166534;
+            --success-bg: #f0fdf4;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -219,6 +221,7 @@
             border: 1px solid #86efac;
             border-radius: 4px;
             padding: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .checklist h3 {
@@ -249,6 +252,68 @@
             accent-color: #166534;
         }
 
+        /* Submit button */
+        .submit-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .submit-btn {
+            background: var(--ink);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #374151;
+        }
+
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        /* Status messages */
+        .status {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .status.success {
+            background: var(--success-bg);
+            border: 1px solid #86efac;
+            color: var(--success);
+            display: block;
+        }
+
+        .status.error {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+            display: block;
+        }
+
+        .status.loading {
+            background: #f5f5f4;
+            border: 1px solid var(--border);
+            color: var(--ink-light);
+            display: block;
+        }
+
         /* Save indicator */
         .save-notice {
             position: fixed;
@@ -276,7 +341,7 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-            .save-notice { display: none; }
+            .save-notice, .submit-section { display: none; }
         }
     </style>
 </head>
@@ -287,130 +352,142 @@
         <span class="course">HIST/EAST 213 · Discussion Prep</span>
     </header>
 
-    <div class="name-date">
-        <div>
-            <label>Name</label>
-            <input type="text" id="name" placeholder="Your name">
-        </div>
-        <div>
-            <label>Date</label>
-            <input type="text" id="date" placeholder="Today's date">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="section-header">1. What grabbed you?</div>
-        <p class="topic-list">Topics to consider: Imjin War · Ming-Qing transition · Tokugawa order · Sankin-kotai · Sakoku · Joseon reform · Opium Wars · Meiji · Taiping · Tonghak · Nationalism · Pacific War · Comfort women · Mao · Korean division</p>
-        <textarea id="grabbed" class="medium" placeholder="From everything we've covered, what topics, moments, or questions stuck with you?"></textarea>
-    </div>
-
-    <div class="section">
-        <div class="section-header">2. Three possible topics</div>
-        <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">Brainstorm three directions. They don't have to be perfect — just possibilities.</p>
-        <div class="ideas-grid">
-            <div class="idea-box">
-                <label>Idea 1</label>
-                <textarea id="idea1" placeholder="Your first idea..."></textarea>
+    <form id="brainstormForm">
+        <div class="name-date">
+            <div>
+                <label>Name</label>
+                <input type="text" name="name" id="name" placeholder="Your name" required>
             </div>
-            <div class="idea-box">
-                <label>Idea 2</label>
-                <textarea id="idea2" placeholder="Your second idea..."></textarea>
-            </div>
-            <div class="idea-box">
-                <label>Idea 3</label>
-                <textarea id="idea3" placeholder="Your third idea..."></textarea>
+            <div>
+                <label>Date</label>
+                <input type="text" name="date" id="date" placeholder="Today's date">
             </div>
         </div>
-    </div>
 
-    <div class="section">
-        <div class="section-header">3. Narrow it down</div>
-        <div class="prompts">
-            <p>Which idea excites you most?</p>
-            <p>Which has sources you can actually access?</p>
-            <p>Which lets you make an argument (not just describe)?</p>
+        <div class="section">
+            <div class="section-header">1. What grabbed you?</div>
+            <p class="topic-list">Topics to consider: Imjin War · Ming-Qing transition · Tokugawa order · Sankin-kotai · Sakoku · Joseon reform · Opium Wars · Meiji · Taiping · Tonghak · Nationalism · Pacific War · Comfort women · Mao · Korean division</p>
+            <textarea name="grabbed" id="grabbed" class="medium" placeholder="From everything we've covered, what topics, moments, or questions stuck with you?"></textarea>
         </div>
-        <textarea id="narrowDown" class="short" placeholder="Your answer..."></textarea>
-    </div>
 
-    <div class="section">
-        <div class="section-header">4. Format</div>
-        <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">What format fits your topic best?</p>
-        <div class="format-options">
-            <label class="format-option">
-                <input type="checkbox" id="formatPaper"> Research paper
-            </label>
-            <label class="format-option">
-                <input type="checkbox" id="formatPodcast"> Podcast/audio
-            </label>
-            <label class="format-option">
-                <input type="checkbox" id="formatVideo"> Video essay
-            </label>
-            <label class="format-option">
-                <input type="checkbox" id="formatWebsite"> Website/digital
-            </label>
-            <label class="format-option">
-                <input type="checkbox" id="formatCreative"> Creative project
-            </label>
+        <div class="section">
+            <div class="section-header">2. Three possible topics</div>
+            <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">Brainstorm three directions. They don't have to be perfect — just possibilities.</p>
+            <div class="ideas-grid">
+                <div class="idea-box">
+                    <label>Idea 1</label>
+                    <textarea name="idea1" id="idea1" placeholder="Your first idea..."></textarea>
+                </div>
+                <div class="idea-box">
+                    <label>Idea 2</label>
+                    <textarea name="idea2" id="idea2" placeholder="Your second idea..."></textarea>
+                </div>
+                <div class="idea-box">
+                    <label>Idea 3</label>
+                    <textarea name="idea3" id="idea3" placeholder="Your third idea..."></textarea>
+                </div>
+            </div>
         </div>
-        <div class="other-format">
-            <span style="font-size: 0.95rem;">Other:</span>
-            <input type="text" id="formatOther" placeholder="Describe your format...">
+
+        <div class="section">
+            <div class="section-header">3. Narrow it down</div>
+            <div class="prompts">
+                <p>Which idea excites you most?</p>
+                <p>Which has sources you can actually access?</p>
+                <p>Which lets you make an argument (not just describe)?</p>
+            </div>
+            <textarea name="narrowDown" id="narrowDown" class="short" placeholder="Your answer..."></textarea>
         </div>
-        <div class="tip-box">
-            <strong>Note:</strong> Non-traditional formats still need research and argument. A podcast isn't easier — it's different.
+
+        <div class="section">
+            <div class="section-header">4. Format</div>
+            <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">What format fits your topic best?</p>
+            <div class="format-options">
+                <label class="format-option">
+                    <input type="checkbox" name="formatPaper" id="formatPaper"> Research paper
+                </label>
+                <label class="format-option">
+                    <input type="checkbox" name="formatPodcast" id="formatPodcast"> Podcast/audio
+                </label>
+                <label class="format-option">
+                    <input type="checkbox" name="formatVideo" id="formatVideo"> Video essay
+                </label>
+                <label class="format-option">
+                    <input type="checkbox" name="formatWebsite" id="formatWebsite"> Website/digital
+                </label>
+                <label class="format-option">
+                    <input type="checkbox" name="formatCreative" id="formatCreative"> Creative project
+                </label>
+            </div>
+            <div class="other-format">
+                <span style="font-size: 0.95rem;">Other:</span>
+                <input type="text" name="formatOther" id="formatOther" placeholder="Describe your format...">
+            </div>
+            <div class="tip-box">
+                <strong>Note:</strong> Non-traditional formats still need research and argument. A podcast isn't easier — it's different.
+            </div>
         </div>
-    </div>
 
-    <div class="section">
-        <div class="section-header">5. The "So What?" Test</div>
-        <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">Why does your topic matter? Who cares? What's at stake?</p>
-        <textarea id="soWhat" class="medium" placeholder="Your answer..."></textarea>
-    </div>
-
-    <div class="section">
-        <div class="section-header">6. Sources — What do you have?</div>
-        <div class="prompts">
-            <p>Primary sources from class you could use?</p>
-            <p>Additional sources you'd need to find?</p>
-            <p>Any films, images, objects relevant?</p>
+        <div class="section">
+            <div class="section-header">5. The "So What?" Test</div>
+            <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">Why does your topic matter? Who cares? What's at stake?</p>
+            <textarea name="soWhat" id="soWhat" class="medium" placeholder="Your answer..."></textarea>
         </div>
-        <textarea id="sources" class="medium" placeholder="Your answer..."></textarea>
-    </div>
 
-    <div class="section">
-        <div class="section-header">7. Questions for discussion</div>
-        <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">What do you want feedback on? What are you unsure about?</p>
-        <textarea id="questions" class="short" placeholder="Your questions..."></textarea>
-    </div>
-
-    <div class="section">
-        <div class="checklist">
-            <h3>Before you leave today</h3>
-            <label class="checklist-item">
-                <input type="checkbox" id="checkTopic"> I have a topic direction (even if rough)
-            </label>
-            <label class="checklist-item">
-                <input type="checkbox" id="checkFormat"> I know what format I'm leaning toward
-            </label>
-            <label class="checklist-item">
-                <input type="checkbox" id="checkSource"> I have at least one source in mind
-            </label>
-            <label class="checklist-item">
-                <input type="checkbox" id="checkFeedback"> I got feedback from classmates or 마선생님
-            </label>
+        <div class="section">
+            <div class="section-header">6. Sources — What do you have?</div>
+            <div class="prompts">
+                <p>Primary sources from class you could use?</p>
+                <p>Additional sources you'd need to find?</p>
+                <p>Any films, images, objects relevant?</p>
+            </div>
+            <textarea name="sources" id="sources" class="medium" placeholder="Your answer..."></textarea>
         </div>
-    </div>
 
-    <div class="save-notice" id="saveNotice">Saved to browser</div>
+        <div class="section">
+            <div class="section-header">7. Questions for discussion</div>
+            <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.75rem;">What do you want feedback on? What are you unsure about?</p>
+            <textarea name="questions" id="questions" class="short" placeholder="Your questions..."></textarea>
+        </div>
+
+        <div class="section">
+            <div class="checklist">
+                <h3>Before you leave today</h3>
+                <label class="checklist-item">
+                    <input type="checkbox" name="checkTopic" id="checkTopic"> I have a topic direction (even if rough)
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" name="checkFormat" id="checkFormat"> I know what format I'm leaning toward
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" name="checkSource" id="checkSource"> I have at least one source in mind
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" name="checkFeedback" id="checkFeedback"> I got feedback from classmates or 마선생님
+                </label>
+            </div>
+        </div>
+
+        <div class="submit-section">
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Response</button>
+            <div class="status" id="status"></div>
+        </div>
+    </form>
+
+    <div class="save-notice" id="saveNotice">Draft saved</div>
 
     <script>
-        // Auto-save to localStorage
+        // ===========================================
+        // CONFIGURATION - Set your Google Script URL here
+        // ===========================================
+        const GOOGLE_SCRIPT_URL = ''; // Paste your deployed Google Apps Script URL here
+
+        // Auto-save to localStorage (draft saving)
         const formId = 'finalProjectBrainstorm';
         const textFields = ['name', 'date', 'grabbed', 'idea1', 'idea2', 'idea3', 'narrowDown', 'formatOther', 'soWhat', 'sources', 'questions'];
         const checkboxFields = ['formatPaper', 'formatPodcast', 'formatVideo', 'formatWebsite', 'formatCreative', 'checkTopic', 'checkFormat', 'checkSource', 'checkFeedback'];
 
-        // Load saved data
+        // Load saved draft data
         textFields.forEach(field => {
             const el = document.getElementById(field);
             const saved = localStorage.getItem(`${formId}_${field}`);
@@ -423,7 +500,7 @@
             if (saved === 'true') el.checked = true;
         });
 
-        // Save on change
+        // Save draft on change
         let saveTimeout;
         const saveNotice = document.getElementById('saveNotice');
 
@@ -449,6 +526,85 @@
                 localStorage.setItem(`${formId}_${field}`, el.checked);
                 showSaveNotice();
             });
+        });
+
+        // Form submission
+        const form = document.getElementById('brainstormForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const status = document.getElementById('status');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Check if URL is configured
+            if (!GOOGLE_SCRIPT_URL) {
+                status.className = 'status error';
+                status.textContent = 'Form not configured. Please contact your instructor.';
+                return;
+            }
+
+            // Collect form data
+            const formData = {
+                timestamp: new Date().toISOString(),
+                name: document.getElementById('name').value,
+                date: document.getElementById('date').value,
+                grabbed: document.getElementById('grabbed').value,
+                idea1: document.getElementById('idea1').value,
+                idea2: document.getElementById('idea2').value,
+                idea3: document.getElementById('idea3').value,
+                narrowDown: document.getElementById('narrowDown').value,
+                format: [
+                    document.getElementById('formatPaper').checked ? 'Research paper' : '',
+                    document.getElementById('formatPodcast').checked ? 'Podcast/audio' : '',
+                    document.getElementById('formatVideo').checked ? 'Video essay' : '',
+                    document.getElementById('formatWebsite').checked ? 'Website/digital' : '',
+                    document.getElementById('formatCreative').checked ? 'Creative project' : '',
+                    document.getElementById('formatOther').value
+                ].filter(Boolean).join(', '),
+                soWhat: document.getElementById('soWhat').value,
+                sources: document.getElementById('sources').value,
+                questions: document.getElementById('questions').value,
+                checklist: [
+                    document.getElementById('checkTopic').checked ? 'Has topic' : '',
+                    document.getElementById('checkFormat').checked ? 'Knows format' : '',
+                    document.getElementById('checkSource').checked ? 'Has source' : '',
+                    document.getElementById('checkFeedback').checked ? 'Got feedback' : ''
+                ].filter(Boolean).join(', ')
+            };
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            status.className = 'status loading';
+            status.textContent = 'Saving your response...';
+
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // With no-cors, we can't read the response, but if no error thrown, assume success
+                status.className = 'status success';
+                status.textContent = '✓ Response submitted successfully! Your instructor will receive your brainstorm.';
+                submitBtn.textContent = 'Submitted';
+
+                // Clear local storage after successful submission
+                [...textFields, ...checkboxFields].forEach(field => {
+                    localStorage.removeItem(`${formId}_${field}`);
+                });
+
+            } catch (error) {
+                status.className = 'status error';
+                status.textContent = 'Error submitting form. Please try again or contact your instructor.';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Response';
+                console.error('Submission error:', error);
+            }
         });
     </script>
 

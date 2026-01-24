@@ -218,6 +218,15 @@
     .map-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; font-size: 11px; }
     .map-legend-item { display: flex; align-items: center; gap: 4px; }
     .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .map-location-key { background: var(--surface-alt); border-radius: 8px; padding: 14px 16px; margin-top: 12px; }
+    .map-location-key::before { content: 'Map Legend'; display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 10px; }
+    .map-key-item { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+    .map-key-item:last-child { border-bottom: none; }
+    .map-key-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 2px; }
+    .map-key-name { font-size: 13px; font-weight: 500; color: var(--text); }
+    .map-key-desc { font-size: 12px; color: var(--text-muted); }
+    .map-label { background: rgba(255,255,255,0.9) !important; border: 1px solid var(--border) !important; border-radius: 4px !important; padding: 2px 6px !important; font-size: 11px !important; font-weight: 500 !important; color: var(--text) !important; box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important; }
+    .map-label::before { display: none !important; }
     .plate-selector { position: relative; }
     .plate-dropdown { position: absolute; top: 100%; left: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; min-width: 450px; max-height: 450px; overflow-y: auto; display: none; z-index: 200; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
     .plate-dropdown.open { display: block; }
@@ -587,16 +596,19 @@ function renderMap(mapData) {
 
   var h = '<div class="prep-section"><h3>Map</h3>';
   h += '<div class="map-container"><div id="prep-map"></div></div>';
-  h += '<div class="map-legend">';
 
   var colors = {'capital': '#e63946', 'city': '#457b9d', 'region': '#2a9d8f', 'battle': '#f4a261', 'other': '#6c757d'};
-  var usedTypes = {};
+
+  // Location key - list all places with their colors
+  h += '<div class="map-location-key">';
   for (var i = 0; i < mapData.locations.length; i++) {
-    usedTypes[mapData.locations[i].type || 'other'] = true;
-  }
-  for (var type in usedTypes) {
-    var label = type.charAt(0).toUpperCase() + type.slice(1);
-    h += '<div class="map-legend-item"><div class="map-legend-dot" style="background:' + colors[type] + '"></div>' + label + '</div>';
+    var loc = mapData.locations[i];
+    var color = colors[loc.type] || colors.other;
+    var displayName = loc.name + (loc.nameChinese ? ' (' + loc.nameChinese + ')' : '');
+    h += '<div class="map-key-item"><div class="map-key-dot" style="background:' + color + '"></div>';
+    h += '<span class="map-key-name">' + displayName + '</span>';
+    if (loc.description) h += '<span class="map-key-desc"> — ' + loc.description + '</span>';
+    h += '</div>';
   }
   h += '</div></div>';
 
@@ -639,6 +651,15 @@ function initMap(mapData) {
         fillOpacity: 0.8
       }).addTo(currentMap);
 
+      // Add permanent label next to marker
+      marker.bindTooltip(loc.name, {
+        permanent: true,
+        direction: 'right',
+        offset: [8, 0],
+        className: 'map-label'
+      });
+
+      // Popup with full details on click
       var popup = '<strong>' + loc.name + '</strong>';
       if (loc.nameChinese) popup += ' (' + loc.nameChinese + ')';
       if (loc.description) popup += '<br><span style="font-size:11px">' + loc.description + '</span>';

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Dive Reference | HIST 213</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --surface: #fafafa;
+      --black: #0a0a0a;
+      --red: #FF3B30;
+      --gray-600: #666666;
+      --gray-400: #999999;
+      --border: #e0e0e0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: var(--black);
+      padding: 48px 48px 40px;
+    }
+    .header-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .header-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -2px;
+      margin-bottom: 12px;
+    }
+    .header-subtitle {
+      font-size: 16px;
+      color: #888;
+      max-width: 600px;
+    }
+
+    /* Content */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px;
+    }
+
+    /* Topic Card */
+    .topic-card {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .topic-card:last-child {
+      border-bottom: none;
+    }
+    .topic-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .topic-num {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+    .topic-num.red { background: var(--red); }
+    .topic-num.black { background: var(--black); }
+    .topic-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.5px;
+    }
+    .topic-desc {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    /* Links Section */
+    .links-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .link-item {
+      display: block;
+      font-size: 14px;
+      color: var(--black);
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      transition: color 0.15s;
+    }
+    .link-item:hover {
+      color: var(--red);
+    }
+    .link-item:last-child {
+      border-bottom: none;
+    }
+    .link-item .arrow {
+      color: var(--red);
+      margin-right: 8px;
+    }
+    .link-item .source {
+      font-weight: 500;
+    }
+    .link-item .desc {
+      color: var(--gray-600);
+      margin-left: 4px;
+    }
+    .link-item.secondary {
+      color: var(--gray-600);
+    }
+
+    /* Featured Card (Manchuria/Xinjiang) */
+    .featured-card {
+      background: var(--black);
+      padding: 32px;
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+    .featured-card .topic-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .featured-card .topic-num {
+      background: var(--red);
+    }
+    .featured-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--red);
+    }
+    .featured-card .topic-title {
+      color: white;
+    }
+    .featured-card .topic-desc {
+      color: #aaa;
+    }
+    .featured-card .links-label {
+      color: var(--red);
+    }
+    .featured-card .link-item {
+      color: white;
+      border-color: #333;
+    }
+    .featured-card .link-item:hover {
+      color: var(--red);
+    }
+    .featured-card .link-item.secondary {
+      color: #888;
+    }
+
+    /* Two Column Links */
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--gray-600);
+      text-decoration: none;
+      margin-bottom: 24px;
+    }
+    .back-link:hover {
+      color: var(--black);
+    }
+
+    /* Print styles */
+    @media print {
+      .header { padding: 24px; }
+      .header-title { font-size: 36px; }
+      .content { padding: 24px; }
+      .topic-card { page-break-inside: avoid; }
+      .link-item { font-size: 12px; }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .header { padding: 32px 24px; }
+      .header-title { font-size: 36px; }
+      .content { padding: 24px; }
+      .topic-title { font-size: 22px; }
+      .links-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-label">HIST/EAST 213 &middot; MODERN EAST ASIA</div>
+    <h1 class="header-title">DEEP DIVE</h1>
+    <p class="header-subtitle">7 topics from class that deserve more attention &mdash; with resources to explore further</p>
+  </div>
+
+  <div class="content">
+    <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+    <!-- 01: Socialist Realism -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num red">01</div>
+        <h2 class="topic-title">Socialist Realism</h2>
+      </div>
+      <p class="topic-desc">
+        State-sanctioned art glorifying communist values through idealized workers, peasants, and revolutionary heroes. Dominant in USSR, China, and North Korea from 1930s-1980s. Modern echoes persist in North Korean media and some Chinese cinema.
+      </p>
+      <div class="links-label">GO DEEPER</div>
+      <a href="https://www.theartstory.org/movement/socialist-realism/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">TheArtStory</span>
+        <span class="desc">Movement Overview with visual examples</span>
+      </a>
+      <a href="https://www.britannica.com/art/Socialist-Realism" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Britannica</span>
+        <span class="desc">Soviet Stalinism & Propaganda</span>
+      </a>
+      <a href="https://www.tate.org.uk/art/art-terms/s/socialist-realism" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Tate</span>
+        <span class="desc">Definition + key examples</span>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/Socialist_realism" target="_blank" class="link-item secondary">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Wikipedia</span>
+        <span class="desc">Comprehensive overview with film section</span>
+      </a>
+    </div>
+
+    <!-- 02: WEIRD Bias -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num black">02</div>
+        <h2 class="topic-title">WEIRD Bias in Psychology</h2>
+      </div>
+      <p class="topic-desc">
+        Western, Educated, Industrialized, Rich, Democratic &mdash; 12% of humanity, yet 96% of psychology research subjects. East Asian societies show different patterns in self-concept, social cognition, and decision-making that challenge "universal" findings.
+      </p>
+      <div class="links-label">GO DEEPER</div>
+      <a href="https://news.harvard.edu/gazette/story/2020/09/joseph-henrich-explores-weird-societies/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Harvard Gazette</span>
+        <span class="desc">Joseph Henrich interview on WEIRD societies</span>
+      </a>
+      <a href="https://thedecisionlab.com/insights/society/behavioral-science-is-weird-and-this-should-concern-us" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">The Decision Lab</span>
+        <span class="desc">Why this should concern us</span>
+      </a>
+      <a href="https://www2.psych.ubc.ca/~henrich/pdfs/WeirdPeople.pdf" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Original Paper (PDF)</span>
+        <span class="desc">"The Weirdest People in the World?"</span>
+      </a>
+      <a href="https://simplyputpsych.co.uk/psych-101-1/understanding-weird-western-educated-industrialized-rich-and-democratic" target="_blank" class="link-item secondary">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Simply Put Psych</span>
+        <span class="desc">Accessible explainer</span>
+      </a>
+    </div>
+
+    <!-- 03: Geopower -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num red">03</div>
+        <h2 class="topic-title">East Asian Geopower Rankings</h2>
+      </div>
+      <p class="topic-desc">
+        Power is multidimensional. China leads military + manufacturing. Japan dominates tech + soft power. South Korea wins cultural exports. Rankings shift based on what you measure &mdash; the Lowy Institute tracks 8 dimensions across 27 countries.
+      </p>
+      <div class="links-label">GO DEEPER</div>
+      <a href="https://power.lowyinstitute.org/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Lowy Asia Power Index</span>
+        <span class="desc">Interactive map &amp; data explorer</span>
+      </a>
+      <a href="https://power.lowyinstitute.org/downloads/lowy-institute-2025-asia-power-index-key-findings-report.pdf" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">2025 Key Findings (PDF)</span>
+        <span class="desc">Latest annual report</span>
+      </a>
+      <a href="https://www.pewresearch.org/short-reads/2023/12/05/in-east-asia-many-people-see-chinas-power-and-influence-as-a-major-threat/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Pew Research</span>
+        <span class="desc">How East Asians view China's power</span>
+      </a>
+      <a href="https://cdn.cfr.org/sites/default/files/report_pdf/medeirosdp_final-no.-3.pdf" target="_blank" class="link-item secondary">
+        <span class="arrow">&rarr;</span>
+        <span class="source">CFR Report (PDF)</span>
+        <span class="desc">Major Power Rivalry in East Asia</span>
+      </a>
+    </div>
+
+    <!-- 04: North Korea -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num black">04</div>
+        <h2 class="topic-title">North Korea's Paradox</h2>
+      </div>
+      <p class="topic-desc">
+        Despite sanctions and isolation, GDP grew 3.7% in 2024. Pyongyang's skyline transformed since 2012 with "Pyonghattan" towers. Russia trade up 54%. TV ownership at 91%, refrigerators 36%. The regime adapts more than collapse narratives suggest.
+      </p>
+      <div class="links-label">GO DEEPER</div>
+      <a href="https://www.38north.org/2024/02/what-to-make-of-north-koreas-forward-looking-economic-strategy-and-prospects/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">38 North</span>
+        <span class="desc">Forward-looking economic strategy analysis</span>
+      </a>
+      <a href="https://www.ncnk.org/resources/briefing-papers/all-briefing-papers/north-koreas-shackled-economy" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">NCNK</span>
+        <span class="desc">North Korea's Shackled Economy briefing</span>
+      </a>
+      <a href="https://qz.com/1300685/the-state-of-the-north-korean-economy-might-surprise-you" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Quartz</span>
+        <span class="desc">"The state of the NK economy might surprise you"</span>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/North_Korean_economic_reform" target="_blank" class="link-item secondary">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Wikipedia</span>
+        <span class="desc">North Korean economic reform overview</span>
+      </a>
+    </div>
+
+    <!-- 05: Japan Rice -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num red">05</div>
+        <h2 class="topic-title">Japan's Rice Fortress</h2>
+      </div>
+      <p class="topic-desc">
+        778% tariff on imported rice. 2024 shortage sent prices up 92%. Food sovereignty argues nations can define their own agricultural policy &mdash; but Japan's overall food self-sufficiency is just 38%. Rice is cultural identity, not just calories.
+      </p>
+      <div class="links-label">GO DEEPER</div>
+      <a href="https://time.com/7283809/japan-us-trade-talks-rice-agriculture-protectionism-reform-trump-tariffs/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">TIME</span>
+        <span class="desc">Why rice is a sticking point in US-Japan trade</span>
+      </a>
+      <a href="https://www.asiapacific.ca/publication/how-subsidies-tariffs-climate-change-sap-japans-food-security" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Asia Pacific Foundation</span>
+        <span class="desc">Subsidies, tariffs &amp; climate change</span>
+      </a>
+      <a href="https://www.asianstudies.org/publications/eaa/archives/the-japan-rice-paradox/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Association for Asian Studies</span>
+        <span class="desc">The Japan Rice Paradox</span>
+      </a>
+      <a href="https://ers.usda.gov/sites/default/files/_laserfiche/outlooks/38485/38019_rcs0303-01.pdf" target="_blank" class="link-item secondary">
+        <span class="arrow">&rarr;</span>
+        <span class="source">USDA (PDF)</span>
+        <span class="desc">Rice Sector Policies in Japan</span>
+      </a>
+    </div>
+
+    <!-- 06: Greater Bay Area -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num black">06</div>
+        <h2 class="topic-title">The Greater Bay Area</h2>
+      </div>
+      <p class="topic-desc">
+        86 million people. 9 cities + Hong Kong + Macau. GDP exceeding &yen;14.5 trillion. Shenzhen went from fishing village to "China's Silicon Valley" in 40 years. Designed to rival Tokyo Bay and San Francisco &mdash; testing "one country, two systems" limits.
+      </p>
+      <div class="links-label">GO DEEPER</div>
+      <a href="https://www.mckinsey.com/cn/our-insights/perspectives-on-china-blog/the-rise-of-chinas-greater-bay-area" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">McKinsey</span>
+        <span class="desc">The rise of China's Greater Bay Area</span>
+      </a>
+      <a href="https://www.business.hsbc.com/en-gb/insights/market-and-regulatory-insights/the-greater-bay-area-at-the-forefront-of-chinese-development" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">HSBC Insights</span>
+        <span class="desc">At the forefront of Chinese development</span>
+      </a>
+      <a href="https://www.scmp.com/economy/economic-indicators/article/3165178/chinas-big-shenzhen-plans-aim-transform-greater-bay" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">South China Morning Post</span>
+        <span class="desc">China's big Shenzhen plans</span>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/Guangdong%E2%80%93Hong_Kong%E2%80%93Macao_Greater_Bay_Area" target="_blank" class="link-item secondary">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Wikipedia</span>
+        <span class="desc">Guangdong-Hong Kong-Macao GBA</span>
+      </a>
+    </div>
+
+    <!-- 07: Manchuria & Xinjiang (Featured) -->
+    <div class="topic-card featured-card">
+      <div class="topic-header">
+        <div class="topic-num">07</div>
+        <div class="featured-label">FINAL PROJECT TERRITORY</div>
+        <h2 class="topic-title">Manchuria &amp; Xinjiang</h2>
+      </div>
+      <p class="topic-desc">
+        China's contested frontiers. Manchuria: Qing homeland &rarr; Japanese puppet state &rarr; industrial heartland. Xinjiang: Silk Road crossroads &rarr; Turkic-Muslim region &rarr; "new frontier." Both reveal how place, ethnicity, and empire collide across Chinese, Japanese, Korean, and indigenous memories.
+      </p>
+      <div class="links-grid">
+        <div>
+          <div class="links-label">MANCHURIA</div>
+          <a href="https://www.thecollector.com/japanese-colonialism-in-manchuria/" target="_blank" class="link-item">
+            <span class="arrow">&rarr;</span>
+            <span class="source">TheCollector</span>
+            <span class="desc">Dark History of Japanese Colonialism</span>
+          </a>
+          <a href="https://www.britannica.com/place/Manchukuo" target="_blank" class="link-item">
+            <span class="arrow">&rarr;</span>
+            <span class="source">Britannica</span>
+            <span class="desc">Manchukuo overview</span>
+          </a>
+          <a href="https://www.jstor.org/stable/j.ctt1tfjc1r" target="_blank" class="link-item secondary">
+            <span class="arrow">&rarr;</span>
+            <span class="source">JSTOR</span>
+            <span class="desc">The Making of Japanese Manchuria</span>
+          </a>
+        </div>
+        <div>
+          <div class="links-label">XINJIANG</div>
+          <a href="https://www.britannica.com/place/Xinjiang/History" target="_blank" class="link-item">
+            <span class="arrow">&rarr;</span>
+            <span class="source">Britannica</span>
+            <span class="desc">Xinjiang History</span>
+          </a>
+          <a href="http://www.silkroadfoundation.org/newsletter/vol3num1/2_xinjiang.php" target="_blank" class="link-item">
+            <span class="arrow">&rarr;</span>
+            <span class="source">Silk Road Foundation</span>
+            <span class="desc">China's Pre- and Post-Modern Crossroad</span>
+          </a>
+          <a href="https://www.jstor.org/stable/j.ctvwh8c04" target="_blank" class="link-item secondary">
+            <span class="arrow">&rarr;</span>
+            <span class="source">JSTOR</span>
+            <span class="desc">Cultures of Ancient Xinjiang</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

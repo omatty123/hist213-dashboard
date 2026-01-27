@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The First Opium War (1839-1842) - Animated</title>
+  <title>The First Opium War (1839-1842)</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
@@ -18,65 +18,51 @@
     #map-container {
       position: relative;
       width: 100%;
-      height: 70vh;
-      min-height: 400px;
+      height: 60vh;
+      min-height: 350px;
     }
     #map { height: 100%; width: 100%; }
-
-    .city-label {
-      background: none !important;
-      border: none !important;
-      box-shadow: none !important;
-      font-size: 11px;
-      font-weight: 600;
-      color: #fff;
-      white-space: nowrap;
-      text-shadow: 1px 1px 3px #000, -1px -1px 3px #000;
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-    .city-label.visible { opacity: 1; }
 
     .leaflet-control-attribution { display: none; }
 
     /* Timeline bar */
     #timeline {
       background: #16213e;
-      padding: 20px 30px;
+      padding: 16px 24px;
     }
     #timeline-title {
-      font-size: 13px;
+      font-size: 12px;
       color: #888;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
     #timeline-bar {
       position: relative;
-      height: 4px;
+      height: 6px;
       background: #333;
-      border-radius: 2px;
+      border-radius: 3px;
       margin-bottom: 8px;
     }
     #timeline-progress {
       height: 100%;
       background: linear-gradient(90deg, #e63946, #f4a261);
-      border-radius: 2px;
+      border-radius: 3px;
       width: 0%;
-      transition: width 0.3s;
+      transition: width 0.5s ease;
     }
     #timeline-labels {
       display: flex;
       justify-content: space-between;
-      font-size: 11px;
+      font-size: 10px;
       color: #666;
     }
 
     /* Event display */
     #event-display {
       background: #0f0f1a;
-      padding: 24px 30px;
-      min-height: 120px;
+      padding: 20px 24px;
+      min-height: 100px;
     }
     #event-date {
       font-size: 14px;
@@ -85,82 +71,72 @@
       margin-bottom: 6px;
     }
     #event-text {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.5;
       color: #fff;
     }
-    #event-text .highlight {
+    .highlight {
       color: #f4a261;
       font-weight: 600;
     }
 
     /* Controls */
     #controls {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
+      background: #16213e;
+      padding: 12px 24px;
       display: flex;
       gap: 10px;
+      justify-content: center;
     }
     .btn {
-      background: rgba(0,0,0,0.8);
+      background: #333;
       color: #fff;
-      border: 1px solid #444;
-      padding: 10px 20px;
+      border: none;
+      padding: 12px 24px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 500;
       transition: all 0.2s;
     }
-    .btn:hover { background: rgba(50,50,50,0.9); border-color: #666; }
-    .btn.primary { background: #e63946; border-color: #e63946; }
+    .btn:hover { background: #444; }
+    .btn.primary { background: #e63946; }
     .btn.primary:hover { background: #c62828; }
-
-    /* Explosion animation */
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.5); opacity: 0.7; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .attacking {
-      animation: pulse 0.5s ease-in-out 3;
-    }
   </style>
 </head>
 <body>
+  <div id="controls">
+    <button class="btn primary" id="playBtn">▶ Play Animation</button>
+    <button class="btn" id="resetBtn">↺ Reset</button>
+  </div>
+
   <div id="map-container">
     <div id="map"></div>
-    <div id="controls">
-      <button class="btn primary" id="playBtn">▶ Play</button>
-      <button class="btn" id="resetBtn">↺ Reset</button>
-    </div>
   </div>
 
   <div id="timeline">
-    <div id="timeline-title">The First Opium War</div>
+    <div id="timeline-title">The First Opium War Timeline</div>
     <div id="timeline-bar">
       <div id="timeline-progress"></div>
     </div>
     <div id="timeline-labels">
       <span>Mar 1839</span>
-      <span>May 1841</span>
-      <span>Jul 1842</span>
+      <span>1840</span>
+      <span>1841</span>
       <span>Aug 1842</span>
     </div>
   </div>
 
   <div id="event-display">
-    <div id="event-date">Press Play to Begin</div>
-    <div id="event-text">Watch the British naval campaign unfold along China's coast...</div>
+    <div id="event-date">Ready</div>
+    <div id="event-text">Press <strong>Play Animation</strong> to watch the British campaign unfold along China's coast.</div>
   </div>
 
   <script>
     // Initialize map
     const map = L.map('map', {
       zoomControl: false,
-      dragging: false,
+      dragging: true,
       scrollWheelZoom: false
     });
 
@@ -168,13 +144,13 @@
       subdomains: 'abcd'
     }).addTo(map);
 
-    map.setView([28, 118], 5);
+    map.setView([27, 118], 5);
 
-    // Cities data
+    // Cities with coordinates
     const cities = {
-      guangzhou: { name: "Guangzhou (Canton)", lat: 23.129, lng: 113.253 },
+      guangzhou: { name: "Guangzhou", lat: 23.129, lng: 113.253 },
       hongkong: { name: "Hong Kong", lat: 22.32, lng: 114.17 },
-      xiamen: { name: "Xiamen (Amoy)", lat: 24.48, lng: 118.09 },
+      xiamen: { name: "Xiamen", lat: 24.48, lng: 118.09 },
       ningbo: { name: "Ningbo", lat: 29.868, lng: 121.544 },
       shanghai: { name: "Shanghai", lat: 31.23, lng: 121.47 },
       zhenjiang: { name: "Zhenjiang", lat: 32.19, lng: 119.45 },
@@ -182,188 +158,113 @@
       hangzhou: { name: "Hangzhou", lat: 30.25, lng: 120.17 }
     };
 
-    // Create markers (initially hidden)
+    // Create all markers (dim at start)
     const markers = {};
-    const labels = {};
-
     Object.keys(cities).forEach(key => {
       const city = cities[key];
       markers[key] = L.circleMarker([city.lat, city.lng], {
-        radius: 8,
-        color: '#fff',
-        weight: 2,
-        fillColor: '#444',
-        fillOpacity: 0.8,
-        opacity: 0.3
-      }).addTo(map);
-
-      labels[key] = L.marker([city.lat, city.lng], {
-        icon: L.divIcon({
-          className: 'city-label',
-          html: city.name,
-          iconAnchor: [-12, 6]
-        })
-      }).addTo(map);
+        radius: 7,
+        color: '#555',
+        weight: 1,
+        fillColor: '#333',
+        fillOpacity: 0.5
+      }).addTo(map).bindTooltip(city.name, { permanent: false, direction: 'top' });
     });
 
-    // Animation events
+    // Events sequence
     const events = [
-      {
-        date: "March 30, 1839",
-        text: "Commissioner <span class='highlight'>Lin Zexu</span> seizes British opium in <span class='highlight'>Guangzhou</span>. 20,000 chests destroyed.",
-        city: "guangzhou",
-        color: "#e63946",
-        progress: 0
-      },
-      {
-        date: "June 1840",
-        text: "Britain dispatches <span class='highlight'>warships and troops</span> to China. The fleet arrives at the Pearl River Delta.",
-        city: null,
-        progress: 15
-      },
-      {
-        date: "July 1840",
-        text: "<span class='highlight'>Hangzhou</span> comes under British naval attack.",
-        city: "hangzhou",
-        color: "#e63946",
-        progress: 20
-      },
-      {
-        date: "January 1841",
-        text: "<span class='highlight'>Hong Kong</span> seized by British forces. It will be ceded 'in perpetuity.'",
-        city: "hongkong",
-        color: "#9d4edd",
-        progress: 35
-      },
-      {
-        date: "May 1841",
-        text: "<span class='highlight'>Guangzhou captured</span>. The city where the conflict began falls to British troops.",
-        city: "guangzhou",
-        color: "#e63946",
-        progress: 45
-      },
-      {
-        date: "August 1841",
-        text: "<span class='highlight'>Xiamen (Amoy)</span> falls to British naval bombardment.",
-        city: "xiamen",
-        color: "#f4a261",
-        progress: 55
-      },
-      {
-        date: "October 1841",
-        text: "<span class='highlight'>Ningbo</span> captured. Disease spreads among British forces, causing a pause.",
-        city: "ningbo",
-        color: "#f4a261",
-        progress: 65
-      },
-      {
-        date: "June 1842",
-        text: "After recovering from disease, British forces take <span class='highlight'>Shanghai</span>.",
-        city: "shanghai",
-        color: "#f4a261",
-        progress: 80
-      },
-      {
-        date: "July 1842",
-        text: "<span class='highlight'>Zhenjiang</span> falls. The path to Nanjing is open.",
-        city: "zhenjiang",
-        color: "#f4a261",
-        progress: 90
-      },
-      {
-        date: "August 29, 1842",
-        text: "China capitulates. The <span class='highlight'>Treaty of Nanjing</span> is signed — the first 'unequal treaty.'",
-        city: "nanjing",
-        color: "#4cc9f0",
-        progress: 100
-      }
+      { date: "March 30, 1839", text: "Commissioner <span class='highlight'>Lin Zexu</span> seizes and destroys 20,000 chests of British opium in <span class='highlight'>Guangzhou</span>.", city: "guangzhou", color: "#e63946", progress: 5 },
+      { date: "June 1840", text: "Britain dispatches <span class='highlight'>warships and troops</span>. The Royal Navy arrives at the Pearl River Delta.", city: null, progress: 15 },
+      { date: "July 1840", text: "<span class='highlight'>Hangzhou</span> comes under British naval bombardment.", city: "hangzhou", color: "#e63946", progress: 25 },
+      { date: "January 1841", text: "<span class='highlight'>Hong Kong</span> seized. It will be ceded to Britain 'in perpetuity.'", city: "hongkong", color: "#9d4edd", progress: 35 },
+      { date: "May 1841", text: "<span class='highlight'>Guangzhou captured</span>. The city where the crisis began falls.", city: "guangzhou", color: "#ff6b6b", progress: 45 },
+      { date: "August 1841", text: "<span class='highlight'>Xiamen (Amoy)</span> falls to British bombardment.", city: "xiamen", color: "#f4a261", progress: 55 },
+      { date: "October 1841", text: "<span class='highlight'>Ningbo</span> captured. Disease among British forces causes a pause.", city: "ningbo", color: "#f4a261", progress: 65 },
+      { date: "June 1842", text: "Campaign resumes. <span class='highlight'>Shanghai</span> falls to British forces.", city: "shanghai", color: "#f4a261", progress: 75 },
+      { date: "July 1842", text: "<span class='highlight'>Zhenjiang</span> captured. The path to Nanjing lies open.", city: "zhenjiang", color: "#f4a261", progress: 88 },
+      { date: "August 29, 1842", text: "China capitulates. The <span class='highlight'>Treaty of Nanjing</span> is signed — first 'unequal treaty.' Five ports forced open.", city: "nanjing", color: "#4cc9f0", progress: 100 }
     ];
 
-    let currentEvent = -1;
+    let currentIndex = 0;
     let isPlaying = false;
-    let animationTimer = null;
+    let timer = null;
 
-    function showEvent(index) {
-      if (index >= events.length) {
-        isPlaying = false;
-        document.getElementById('playBtn').textContent = '▶ Play';
-        return;
-      }
-
-      currentEvent = index;
-      const event = events[index];
-
-      // Update text
+    function updateDisplay(event) {
       document.getElementById('event-date').textContent = event.date;
       document.getElementById('event-text').innerHTML = event.text;
       document.getElementById('timeline-progress').style.width = event.progress + '%';
 
-      // Update city marker
       if (event.city && markers[event.city]) {
-        const marker = markers[event.city];
-        marker.setStyle({
+        markers[event.city].setStyle({
+          color: event.color,
           fillColor: event.color,
-          opacity: 1,
-          fillOpacity: 0.9
+          fillOpacity: 0.9,
+          weight: 3,
+          radius: 10
         });
-
-        // Add attacking animation
-        const el = marker.getElement();
-        if (el) {
-          el.classList.add('attacking');
-          setTimeout(() => el.classList.remove('attacking'), 1500);
-        }
-
-        // Show label
-        const labelEl = labels[event.city].getElement();
-        if (labelEl) {
-          labelEl.querySelector('.city-label').classList.add('visible');
-        }
-      }
-
-      // Schedule next event
-      if (isPlaying) {
-        animationTimer = setTimeout(() => showEvent(index + 1), 4000);
+        markers[event.city].openTooltip();
       }
     }
 
-    function play() {
+    function nextEvent() {
+      if (currentIndex >= events.length) {
+        stopAnimation();
+        document.getElementById('event-date').textContent = "The End";
+        document.getElementById('event-text').innerHTML = "The First Opium War ended with China's defeat. Five <span class='highlight'>treaty ports</span> opened. <span class='highlight'>Hong Kong</span> ceded. The 'Century of Humiliation' began.";
+        return;
+      }
+
+      updateDisplay(events[currentIndex]);
+      currentIndex++;
+
       if (isPlaying) {
-        isPlaying = false;
-        clearTimeout(animationTimer);
-        document.getElementById('playBtn').textContent = '▶ Play';
-      } else {
-        isPlaying = true;
-        document.getElementById('playBtn').textContent = '⏸ Pause';
-        showEvent(currentEvent + 1);
+        timer = setTimeout(nextEvent, 3500);
       }
     }
 
-    function reset() {
+    function startAnimation() {
+      if (isPlaying) return;
+      isPlaying = true;
+      document.getElementById('playBtn').textContent = '⏸ Pause';
+      nextEvent();
+    }
+
+    function stopAnimation() {
       isPlaying = false;
-      clearTimeout(animationTimer);
-      currentEvent = -1;
-      document.getElementById('playBtn').textContent = '▶ Play';
-      document.getElementById('event-date').textContent = 'Press Play to Begin';
-      document.getElementById('event-text').textContent = "Watch the British naval campaign unfold along China's coast...";
+      document.getElementById('playBtn').textContent = '▶ Play Animation';
+      if (timer) clearTimeout(timer);
+    }
+
+    function togglePlay() {
+      if (isPlaying) {
+        stopAnimation();
+      } else {
+        startAnimation();
+      }
+    }
+
+    function resetAnimation() {
+      stopAnimation();
+      currentIndex = 0;
+      document.getElementById('event-date').textContent = 'Ready';
+      document.getElementById('event-text').innerHTML = 'Press <strong>Play Animation</strong> to watch the British campaign unfold along China\'s coast.';
       document.getElementById('timeline-progress').style.width = '0%';
 
       // Reset all markers
       Object.keys(markers).forEach(key => {
         markers[key].setStyle({
-          fillColor: '#444',
-          opacity: 0.3,
-          fillOpacity: 0.8
+          color: '#555',
+          fillColor: '#333',
+          fillOpacity: 0.5,
+          weight: 1,
+          radius: 7
         });
-        const labelEl = labels[key].getElement();
-        if (labelEl) {
-          labelEl.querySelector('.city-label').classList.remove('visible');
-        }
+        markers[key].closeTooltip();
       });
     }
 
-    document.getElementById('playBtn').addEventListener('click', play);
-    document.getElementById('resetBtn').addEventListener('click', reset);
+    document.getElementById('playBtn').addEventListener('click', togglePlay);
+    document.getElementById('resetBtn').addEventListener('click', resetAnimation);
   </script>
 </body>
 </html>

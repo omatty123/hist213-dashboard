@@ -324,51 +324,42 @@
     </div>
   </div>
 
-  <!-- Maps -->
+  <!-- Map + Charts combined -->
   <div class="map-section">
-    <span class="label">Maps</span>
-    <div style="display: flex; gap: 8px; margin-top: 3px;">
-      <div style="flex: 1;">
-        <img src="https://visualizingcultures.mit.edu/opium_wars_01/image/map_OpRoutes.gif" alt="Opium Trade Routes" style="width: 100%; height: 140px; object-fit: contain; background: #f9f9f9; border: 1px solid #aaa;">
-        <div style="font-size: 8px; color: #666; margin-top: 2px;">Opium Trade Routes (MIT Visualizing Cultures)</div>
+    <span class="label">Map & Data</span>
+    <div style="display: flex; gap: 6px; margin-top: 3px;">
+      <!-- Left: MIT Map -->
+      <div style="flex: 1.2;">
+        <img src="https://visualizingcultures.mit.edu/opium_wars_01/image/map_OpRoutes.gif" alt="Opium Trade Routes" style="width: 100%; height: 115px; object-fit: contain; background: #fafafa; border: 1px solid #ccc;">
+        <div style="font-size: 7px; color: #888; margin-top: 1px;">Opium routes: India → China (MIT Visualizing Cultures)</div>
       </div>
-      <div style="flex: 1;">
-        <iframe src="opium-war-treaty-ports.html" style="width: 100%; height: 140px; border: 1px solid #aaa;"></iframe>
-        <div style="font-size: 8px; color: #666; margin-top: 2px;"><a href="opium-war-treaty-ports.html" style="color: #0066cc;">Treaty Ports 1842 →</a></div>
+      <!-- Right: Charts stacked -->
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+        <!-- Tea chart -->
+        <div style="border: 1px solid #ccc; padding: 4px 6px; background: #fafafa;">
+          <div style="font-size: 7px; font-weight: 600; color: #2e7d32;">TEA TO BRITAIN (lbs)</div>
+          <div style="display: flex; align-items: flex-end; gap: 8px; height: 28px; margin-top: 2px;">
+            <div style="text-align: center;"><div style="background: #2e7d32; width: 18px; height: 3px;"></div><div style="font-size: 6px;">1700: 92K</div></div>
+            <div style="text-align: center;"><div style="background: #2e7d32; width: 18px; height: 10px;"></div><div style="font-size: 6px;">1751: 2.7M</div></div>
+            <div style="text-align: center;"><div style="background: #2e7d32; width: 18px; height: 26px;"></div><div style="font-size: 6px;">1800: 23M</div></div>
+          </div>
+          <div style="font-size: 6px; color: #666;">£3.6M silver/yr → China</div>
+        </div>
+        <!-- Opium chart -->
+        <div style="border: 1px solid #ccc; padding: 4px 6px; background: #fafafa;">
+          <div style="font-size: 7px; font-weight: 600; color: #8b0000;">OPIUM TO CHINA (chests)</div>
+          <div style="display: flex; align-items: flex-end; gap: 3px; height: 32px; margin-top: 2px;">
+            <div style="text-align: center;"><div style="background: #8b0000; width: 12px; height: 2px;"></div><div style="font-size: 5px;">1773<br>1K</div></div>
+            <div style="text-align: center;"><div style="background: #8b0000; width: 12px; height: 3px;"></div><div style="font-size: 5px;">1790<br>4K</div></div>
+            <div style="text-align: center;"><div style="background: #8b0000; width: 12px; height: 5px;"></div><div style="font-size: 5px;">1820<br>10K</div></div>
+            <div style="text-align: center;"><div style="background: #8b0000; width: 12px; height: 8px;"></div><div style="font-size: 5px;">1828<br>18K</div></div>
+            <div style="text-align: center; background: #ffe0e0; padding: 0 1px;"><div style="background: #c41e3a; width: 12px; height: 16px;"></div><div style="font-size: 5px;"><b>1839</b><br><b>40K</b></div></div>
+            <div style="text-align: center;"><div style="background: #8b0000; width: 12px; height: 28px;"></div><div style="font-size: 5px;">1865<br>76K</div></div>
+            <div style="text-align: center;"><div style="background: #8b0000; width: 12px; height: 30px;"></div><div style="font-size: 5px;">1884<br>81K</div></div>
+          </div>
+          <div style="font-size: 6px; color: #666;">1839: Lin Zexu → War (Spence)</div>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- Charts: Tea & Opium Trade -->
-  <div class="map-section">
-    <span class="label">Charts: The Trade Imbalance</span>
-    <div class="map-box" style="padding: 6px 10px; margin-top: 3px;">
-      <table style="width: 100%; border-collapse: collapse; font-size: 8px;">
-        <tr>
-          <td style="width: 35%; vertical-align: top; padding-right: 10px; border-right: 1px solid #ddd;">
-            <div style="font-weight: 600; color: #2e7d32; margin-bottom: 3px;">TEA EXPORTS TO BRITAIN (lbs)</div>
-            <div style="display: flex; align-items: flex-end; gap: 6px; height: 40px;">
-              <div style="text-align: center;"><div style="background: #2e7d32; width: 20px; height: 4px; margin: 0 auto;"></div><div style="font-size: 7px; margin-top: 2px;">1700<br><b>92K</b></div></div>
-              <div style="text-align: center;"><div style="background: #2e7d32; width: 20px; height: 12px; margin: 0 auto;"></div><div style="font-size: 7px; margin-top: 2px;">1751<br><b>2.7M</b></div></div>
-              <div style="text-align: center;"><div style="background: #2e7d32; width: 20px; height: 38px; margin: 0 auto;"></div><div style="font-size: 7px; margin-top: 2px;">1800<br><b>23M</b></div></div>
-            </div>
-            <div style="font-size: 7px; color: #666; margin-top: 3px;">→ £3.6M silver/yr drain</div>
-          </td>
-          <td style="width: 65%; vertical-align: top; padding-left: 10px;">
-            <div style="font-weight: 600; color: #8b0000; margin-bottom: 3px;">OPIUM IMPORTS TO CHINA (chests) — 1 chest ≈ 140 lbs</div>
-            <div style="display: flex; align-items: flex-end; gap: 4px; height: 40px;">
-              <div style="text-align: center;"><div style="background: #8b0000; width: 16px; height: 2px; margin: 0 auto;"></div><div style="font-size: 6px; margin-top: 1px;">1773<br><b>1K</b></div></div>
-              <div style="text-align: center;"><div style="background: #8b0000; width: 16px; height: 4px; margin: 0 auto;"></div><div style="font-size: 6px; margin-top: 1px;">1790<br><b>4K</b></div></div>
-              <div style="text-align: center;"><div style="background: #8b0000; width: 16px; height: 6px; margin: 0 auto;"></div><div style="font-size: 6px; margin-top: 1px;">1820s<br><b>10K</b></div></div>
-              <div style="text-align: center;"><div style="background: #8b0000; width: 16px; height: 10px; margin: 0 auto;"></div><div style="font-size: 6px; margin-top: 1px;">1828<br><b>18K</b></div></div>
-              <div style="text-align: center; background: #fff0f0; padding: 1px 2px; border-radius: 2px;"><div style="background: #c41e3a; width: 16px; height: 20px; margin: 0 auto;"></div><div style="font-size: 6px; margin-top: 1px;"><b>1839</b><br><b>40K</b></div></div>
-              <div style="text-align: center;"><div style="background: #8b0000; width: 16px; height: 34px; margin: 0 auto;"></div><div style="font-size: 6px; margin-top: 1px;">1865<br><b>76K</b></div></div>
-              <div style="text-align: center;"><div style="background: #8b0000; width: 16px; height: 38px; margin: 0 auto;"></div><div style="font-size: 6px; margin-top: 1px;">1884<br><b>81K</b></div></div>
-            </div>
-            <div style="font-size: 7px; color: #666; margin-top: 3px;">1839 = Lin Zexu destroys opium → War | Source: Spence, <em>Chinese Roundabout</em></div>
-          </td>
-        </tr>
-      </table>
     </div>
   </div>
 

@@ -93,6 +93,18 @@
       color: var(--black);
       letter-spacing: -0.5px;
     }
+    .project-badge {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      background: var(--red);
+      color: white;
+      padding: 4px 8px;
+      margin-left: 12px;
+      vertical-align: middle;
+    }
     .topic-desc {
       font-size: 15px;
       color: #444;
@@ -223,7 +235,7 @@
   <div class="header">
     <div class="header-label">HIST/EAST 213 &middot; MODERN EAST ASIA</div>
     <h1 class="header-title">DEEP DIVE</h1>
-    <p class="header-subtitle">7 topics from class that deserve more attention &mdash; with resources to explore further</p>
+    <p class="header-subtitle">8 topics from class that deserve more attention &mdash; all potential final project material</p>
   </div>
 
   <div class="content">
@@ -233,7 +245,7 @@
     <div class="topic-card">
       <div class="topic-header">
         <div class="topic-num red">01</div>
-        <h2 class="topic-title">Socialist Realism</h2>
+        <h2 class="topic-title">Socialist Realism<span class="project-badge">FINAL PROJECT</span></h2>
       </div>
       <p class="topic-desc">
         State-sanctioned art glorifying communist values through idealized workers, peasants, and revolutionary heroes. Dominant in USSR, China, and North Korea from 1930s-1980s. Modern echoes persist in North Korean media and some Chinese cinema.
@@ -265,7 +277,7 @@
     <div class="topic-card">
       <div class="topic-header">
         <div class="topic-num black">02</div>
-        <h2 class="topic-title">WEIRD Bias in Psychology</h2>
+        <h2 class="topic-title">WEIRD Bias in Psychology<span class="project-badge">FINAL PROJECT</span></h2>
       </div>
       <p class="topic-desc">
         Western, Educated, Industrialized, Rich, Democratic &mdash; 12% of humanity, yet 96% of psychology research subjects. East Asian societies show different patterns in self-concept, social cognition, and decision-making that challenge "universal" findings.
@@ -297,7 +309,7 @@
     <div class="topic-card">
       <div class="topic-header">
         <div class="topic-num red">03</div>
-        <h2 class="topic-title">East Asian Geopower Rankings</h2>
+        <h2 class="topic-title">East Asian Geopower Rankings<span class="project-badge">FINAL PROJECT</span></h2>
       </div>
       <p class="topic-desc">
         Power is multidimensional. China leads military + manufacturing. Japan dominates tech + soft power. South Korea wins cultural exports. Rankings shift based on what you measure &mdash; the Lowy Institute tracks 8 dimensions across 27 countries.
@@ -329,7 +341,7 @@
     <div class="topic-card">
       <div class="topic-header">
         <div class="topic-num black">04</div>
-        <h2 class="topic-title">North Korea's Paradox</h2>
+        <h2 class="topic-title">North Korea's Paradox<span class="project-badge">FINAL PROJECT</span></h2>
       </div>
       <p class="topic-desc">
         Despite sanctions and isolation, GDP grew 3.7% in 2024. Pyongyang's skyline transformed since 2012 with "Pyonghattan" towers. Russia trade up 54%. TV ownership at 91%, refrigerators 36%. The regime adapts more than collapse narratives suggest.
@@ -361,31 +373,42 @@
     <div class="topic-card">
       <div class="topic-header">
         <div class="topic-num red">05</div>
-        <h2 class="topic-title">Japan's Rice Fortress</h2>
+        <h2 class="topic-title">Japan's Rice Fortress<span class="project-badge">FINAL PROJECT</span></h2>
       </div>
       <p class="topic-desc">
-        778% tariff on imported rice. 2024 shortage sent prices up 92%. Food sovereignty argues nations can define their own agricultural policy &mdash; but Japan's overall food self-sufficiency is just 38%. Rice is cultural identity, not just calories.
+        778% tariff on imported rice. <strong>Summer 2024: empty shelves, panic buying, prices doubled.</strong> Nankai Trough earthquake warning triggered stockpiling. Government finally released 210,000 tonnes from reserves in Feb 2025. Food sovereignty meets real crisis &mdash; Japan's overall food self-sufficiency is just 38%.
       </p>
-      <div class="links-label">GO DEEPER</div>
+      <div class="links-label">2024 RICE CRISIS</div>
+      <a href="https://www.bbc.com/news/articles/c28nl588nqgo" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">BBC</span>
+        <span class="desc">Japan's rice shortage: Empty shelves &amp; long queues</span>
+      </a>
+      <a href="https://www.reuters.com/world/asia-pacific/japan-release-government-held-rice-reserves-ease-tight-supplies-2025-02-28/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Reuters</span>
+        <span class="desc">Japan releases reserves to ease tight supplies</span>
+      </a>
+      <a href="https://www.japantimes.co.jp/news/2024/08/27/japan/science-health/japan-rice-shortage/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Japan Times</span>
+        <span class="desc">Why Japan ran out of rice</span>
+      </a>
+      <a href="https://www.reuters.com/commentary/how-rice-prices-could-throw-japans-pm-off-course-2026-01-19/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Reuters Commentary</span>
+        <span class="desc">How rice prices could throw Japan's PM off course (2026)</span>
+      </a>
+      <div class="links-label" style="margin-top: 16px;">FOOD SOVEREIGNTY THEORY</div>
       <a href="https://time.com/7283809/japan-us-trade-talks-rice-agriculture-protectionism-reform-trump-tariffs/" target="_blank" class="link-item">
         <span class="arrow">&rarr;</span>
         <span class="source">TIME</span>
         <span class="desc">Why rice is a sticking point in US-Japan trade</span>
       </a>
-      <a href="https://www.asiapacific.ca/publication/how-subsidies-tariffs-climate-change-sap-japans-food-security" target="_blank" class="link-item">
-        <span class="arrow">&rarr;</span>
-        <span class="source">Asia Pacific Foundation</span>
-        <span class="desc">Subsidies, tariffs &amp; climate change</span>
-      </a>
-      <a href="https://www.asianstudies.org/publications/eaa/archives/the-japan-rice-paradox/" target="_blank" class="link-item">
+      <a href="https://www.asianstudies.org/publications/eaa/archives/the-japan-rice-paradox/" target="_blank" class="link-item secondary">
         <span class="arrow">&rarr;</span>
         <span class="source">Association for Asian Studies</span>
         <span class="desc">The Japan Rice Paradox</span>
-      </a>
-      <a href="https://ers.usda.gov/sites/default/files/_laserfiche/outlooks/38485/38019_rcs0303-01.pdf" target="_blank" class="link-item secondary">
-        <span class="arrow">&rarr;</span>
-        <span class="source">USDA (PDF)</span>
-        <span class="desc">Rice Sector Policies in Japan</span>
       </a>
     </div>
 
@@ -393,7 +416,7 @@
     <div class="topic-card">
       <div class="topic-header">
         <div class="topic-num black">06</div>
-        <h2 class="topic-title">The Greater Bay Area</h2>
+        <h2 class="topic-title">The Greater Bay Area<span class="project-badge">FINAL PROJECT</span></h2>
       </div>
       <p class="topic-desc">
         86 million people. 9 cities + Hong Kong + Macau. GDP exceeding &yen;14.5 trillion. Shenzhen went from fishing village to "China's Silicon Valley" in 40 years. Designed to rival Tokyo Bay and San Francisco &mdash; testing "one country, two systems" limits.
@@ -426,49 +449,91 @@
       <div class="topic-header">
         <div class="topic-num">07</div>
         <div class="featured-label">FINAL PROJECT TERRITORY</div>
-        <h2 class="topic-title">Manchuria &amp; Xinjiang</h2>
+        <h2 class="topic-title">Dongbei &amp; Xinjiang NOW</h2>
       </div>
       <p class="topic-desc">
-        China's contested frontiers. Manchuria: Qing homeland &rarr; Japanese puppet state &rarr; industrial heartland. Xinjiang: Silk Road crossroads &rarr; Turkic-Muslim region &rarr; "new frontier." Both reveal how place, ethnicity, and empire collide across Chinese, Japanese, Korean, and indigenous memories.
+        Forget the history textbooks. <strong>Dongbei is having a cultural renaissance.</strong> Harbin's ice festival went viral in 2024 (3M visitors in 3 days). "The Long Season" TV drama captivated China. <strong>Xinjiang tourism exploded</strong> &mdash; 300M visitors in 2024. Foreign vloggers are everywhere. The "To the Wonder" drama made Altay a hot destination. These regions are alive with new media, new economies, and new stories.
       </p>
       <div class="links-grid">
         <div>
-          <div class="links-label">MANCHURIA</div>
-          <a href="https://www.thecollector.com/japanese-colonialism-in-manchuria/" target="_blank" class="link-item">
+          <div class="links-label">DONGBEI RENAISSANCE</div>
+          <a href="https://www.youtube.com/watch?v=dW03IqqHQPA" target="_blank" class="link-item">
             <span class="arrow">&rarr;</span>
-            <span class="source">TheCollector</span>
-            <span class="desc">Dark History of Japanese Colonialism</span>
+            <span class="source">YouTube</span>
+            <span class="desc">"The Long Season" &mdash; critically acclaimed drama</span>
           </a>
-          <a href="https://www.britannica.com/place/Manchukuo" target="_blank" class="link-item">
+          <a href="https://www.youtube.com/watch?v=IM9IkRwS56M" target="_blank" class="link-item">
             <span class="arrow">&rarr;</span>
-            <span class="source">Britannica</span>
-            <span class="desc">Manchukuo overview</span>
+            <span class="source">YouTube</span>
+            <span class="desc">Harbin Ice Festival 2024 went viral</span>
           </a>
-          <a href="https://www.jstor.org/stable/j.ctt1tfjc1r" target="_blank" class="link-item secondary">
+          <a href="https://www.sixthtone.com/news/1013970" target="_blank" class="link-item">
             <span class="arrow">&rarr;</span>
-            <span class="source">JSTOR</span>
-            <span class="desc">The Making of Japanese Manchuria</span>
+            <span class="source">Sixth Tone</span>
+            <span class="desc">How Harbin became China's hottest destination</span>
+          </a>
+          <a href="https://www.scmp.com/news/china/politics/article/3248044/dongbei-renaissance-chinas-rust-belt-cities-find-new-life-tourism-industry" target="_blank" class="link-item secondary">
+            <span class="arrow">&rarr;</span>
+            <span class="source">SCMP</span>
+            <span class="desc">Rust belt cities find new life in tourism</span>
           </a>
         </div>
         <div>
-          <div class="links-label">XINJIANG</div>
-          <a href="https://www.britannica.com/place/Xinjiang/History" target="_blank" class="link-item">
+          <div class="links-label">XINJIANG VLOGGER BOOM</div>
+          <a href="https://www.youtube.com/results?search_query=xinjiang+vlog+2024" target="_blank" class="link-item">
             <span class="arrow">&rarr;</span>
-            <span class="source">Britannica</span>
-            <span class="desc">Xinjiang History</span>
+            <span class="source">YouTube</span>
+            <span class="desc">Search: Xinjiang vlogs (street life, food, cities)</span>
           </a>
-          <a href="http://www.silkroadfoundation.org/newsletter/vol3num1/2_xinjiang.php" target="_blank" class="link-item">
+          <a href="https://www.scmp.com/news/china/politics/article/3282178/chinas-xinjiang-region-welcomes-record-300-million-tourists-2024" target="_blank" class="link-item">
             <span class="arrow">&rarr;</span>
-            <span class="source">Silk Road Foundation</span>
-            <span class="desc">China's Pre- and Post-Modern Crossroad</span>
+            <span class="source">SCMP</span>
+            <span class="desc">300 million tourists in 2024 &mdash; record numbers</span>
           </a>
-          <a href="https://www.jstor.org/stable/j.ctvwh8c04" target="_blank" class="link-item secondary">
+          <a href="https://www.youtube.com/watch?v=FzA8iFxgEQM" target="_blank" class="link-item">
             <span class="arrow">&rarr;</span>
-            <span class="source">JSTOR</span>
-            <span class="desc">Cultures of Ancient Xinjiang</span>
+            <span class="source">YouTube</span>
+            <span class="desc">"To the Wonder" drama boosted Altay tourism</span>
+          </a>
+          <a href="https://www.cnn.com/travel/xinjiang-tourism-western-china-intl-hnk/index.html" target="_blank" class="link-item secondary">
+            <span class="arrow">&rarr;</span>
+            <span class="source">CNN Travel</span>
+            <span class="desc">Xinjiang's complex tourism boom</span>
           </a>
         </div>
       </div>
+    </div>
+
+    <!-- 08: Dejima -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num red">08</div>
+        <h2 class="topic-title">Dejima &amp; Tokugawa "Foreigners"<span class="project-badge">FINAL PROJECT</span></h2>
+      </div>
+      <p class="topic-desc">
+        A 120m x 75m artificial island in Nagasaki harbor &mdash; Japan's only official window to the West for 200 years (1641-1853). Dutch traders lived under strict surveillance. How did Tokugawa artists portray these "exotic" visitors? <strong>Kawahara Keiga's paintings</strong> offer a fascinating lens on cross-cultural perception, isolation policy, and controlled exchange.
+      </p>
+      <div class="links-label">GO DEEPER</div>
+      <a href="https://www.sensesatlas.com/dejima-island-through-the-eyes-of-kawahara-keiga/" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Senses Atlas</span>
+        <span class="desc">Dejima through Kawahara Keiga's eyes</span>
+      </a>
+      <a href="https://www.oldphotosjapan.com/photos/904/dejima-island-nagasaki-19th-century-vintage-albumen-print" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Old Photos Japan</span>
+        <span class="desc">19th century vintage photographs of Dejima</span>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/Dejima" target="_blank" class="link-item">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Wikipedia</span>
+        <span class="desc">Dejima history &amp; reconstruction</span>
+      </a>
+      <a href="https://nagasakidejima.jp/en/" target="_blank" class="link-item secondary">
+        <span class="arrow">&rarr;</span>
+        <span class="source">Official Site</span>
+        <span class="desc">Dejima Museum (reconstructed site)</span>
+      </a>
     </div>
 
   </div>

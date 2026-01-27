@@ -10,103 +10,153 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #1a1a2e;
-      color: #fff;
+      background: #f5f5f5;
+      color: #1a1a1a;
       min-height: 100vh;
     }
 
     #map-container {
       position: relative;
       width: 100%;
-      height: 60vh;
-      min-height: 350px;
+      height: 55vh;
+      min-height: 300px;
     }
     #map { height: 100%; width: 100%; }
 
-    .leaflet-control-attribution { display: none; }
-
-    /* Timeline bar */
-    #timeline {
-      background: #16213e;
-      padding: 16px 24px;
-    }
-    #timeline-title {
-      font-size: 12px;
-      color: #888;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    #timeline-bar {
-      position: relative;
-      height: 6px;
-      background: #333;
-      border-radius: 3px;
-      margin-bottom: 8px;
-    }
-    #timeline-progress {
-      height: 100%;
-      background: linear-gradient(90deg, #e63946, #f4a261);
-      border-radius: 3px;
-      width: 0%;
-      transition: width 0.5s ease;
-    }
-    #timeline-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 10px;
-      color: #666;
-    }
-
-    /* Event display */
-    #event-display {
-      background: #0f0f1a;
-      padding: 20px 24px;
-      min-height: 100px;
-    }
-    #event-date {
-      font-size: 14px;
-      color: #e63946;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    #event-text {
-      font-size: 16px;
-      line-height: 1.5;
-      color: #fff;
-    }
-    .highlight {
-      color: #f4a261;
-      font-weight: 600;
-    }
+    .leaflet-control-attribution { font-size: 9px; }
 
     /* Controls */
     #controls {
-      background: #16213e;
+      background: #fff;
       padding: 12px 24px;
       display: flex;
       gap: 10px;
       justify-content: center;
+      border-bottom: 1px solid #ddd;
     }
     .btn {
-      background: #333;
-      color: #fff;
+      background: #e0e0e0;
+      color: #333;
       border: none;
-      padding: 12px 24px;
+      padding: 12px 28px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       transition: all 0.2s;
     }
-    .btn:hover { background: #444; }
-    .btn.primary { background: #e63946; }
-    .btn.primary:hover { background: #c62828; }
+    .btn:hover { background: #d0d0d0; }
+    .btn.primary { background: #c41e3a; color: #fff; }
+    .btn.primary:hover { background: #a01830; }
+
+    /* Timeline */
+    #timeline {
+      background: #fff;
+      padding: 20px 24px 16px;
+      border-top: 1px solid #ddd;
+    }
+    #timeline-title {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+    #timeline-track {
+      position: relative;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    #timeline-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #c41e3a, #e76f51);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    #timeline-marker {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background: #c41e3a;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      left: 0%;
+      transition: left 0.4s ease;
+      z-index: 10;
+    }
+    #timeline-marker::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+    }
+    #timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    /* Event display */
+    #event-display {
+      background: #fff;
+      padding: 20px 24px;
+      border-top: 1px solid #eee;
+      min-height: 90px;
+    }
+    #event-date {
+      font-size: 13px;
+      color: #c41e3a;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    #event-text {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #333;
+    }
+    .highlight {
+      color: #c41e3a;
+      font-weight: 600;
+    }
+
+    /* Year display on marker */
+    #current-year {
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #c41e3a;
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
   <div id="controls">
-    <button class="btn primary" id="playBtn">▶ Play Animation</button>
+    <button class="btn primary" id="playBtn">▶ Play</button>
     <button class="btn" id="resetBtn">↺ Reset</button>
   </div>
 
@@ -115,38 +165,35 @@
   </div>
 
   <div id="timeline">
-    <div id="timeline-title">The First Opium War Timeline</div>
-    <div id="timeline-bar">
+    <div id="timeline-title">The First Opium War</div>
+    <div id="timeline-track">
       <div id="timeline-progress"></div>
+      <div id="timeline-marker">
+        <div id="current-year">1839</div>
+      </div>
     </div>
     <div id="timeline-labels">
-      <span>Mar 1839</span>
+      <span>1839</span>
       <span>1840</span>
       <span>1841</span>
-      <span>Aug 1842</span>
+      <span>1842</span>
     </div>
   </div>
 
   <div id="event-display">
     <div id="event-date">Ready</div>
-    <div id="event-text">Press <strong>Play Animation</strong> to watch the British campaign unfold along China's coast.</div>
+    <div id="event-text">Press <strong>Play</strong> to watch the British naval campaign unfold along China's coast.</div>
   </div>
 
   <script>
-    // Initialize map
-    const map = L.map('map', {
-      zoomControl: false,
-      dragging: true,
-      scrollWheelZoom: false
-    });
+    const map = L.map('map', { zoomControl: true, dragging: true, scrollWheelZoom: false });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      subdomains: 'abcd'
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd', attribution: '© CARTO'
     }).addTo(map);
 
-    map.setView([27, 118], 5);
+    map.setView([27, 117], 5);
 
-    // Cities with coordinates
     const cities = {
       guangzhou: { name: "Guangzhou", lat: 23.129, lng: 113.253 },
       hongkong: { name: "Hong Kong", lat: 22.32, lng: 114.17 },
@@ -158,31 +205,25 @@
       hangzhou: { name: "Hangzhou", lat: 30.25, lng: 120.17 }
     };
 
-    // Create all markers (dim at start)
     const markers = {};
     Object.keys(cities).forEach(key => {
       const city = cities[key];
       markers[key] = L.circleMarker([city.lat, city.lng], {
-        radius: 7,
-        color: '#555',
-        weight: 1,
-        fillColor: '#333',
-        fillOpacity: 0.5
+        radius: 6, color: '#999', weight: 1, fillColor: '#ccc', fillOpacity: 0.6
       }).addTo(map).bindTooltip(city.name, { permanent: false, direction: 'top' });
     });
 
-    // Events sequence
     const events = [
-      { date: "March 30, 1839", text: "Commissioner <span class='highlight'>Lin Zexu</span> seizes and destroys 20,000 chests of British opium in <span class='highlight'>Guangzhou</span>.", city: "guangzhou", color: "#e63946", progress: 5 },
-      { date: "June 1840", text: "Britain dispatches <span class='highlight'>warships and troops</span>. The Royal Navy arrives at the Pearl River Delta.", city: null, progress: 15 },
-      { date: "July 1840", text: "<span class='highlight'>Hangzhou</span> comes under British naval bombardment.", city: "hangzhou", color: "#e63946", progress: 25 },
-      { date: "January 1841", text: "<span class='highlight'>Hong Kong</span> seized. It will be ceded to Britain 'in perpetuity.'", city: "hongkong", color: "#9d4edd", progress: 35 },
-      { date: "May 1841", text: "<span class='highlight'>Guangzhou captured</span>. The city where the crisis began falls.", city: "guangzhou", color: "#ff6b6b", progress: 45 },
-      { date: "August 1841", text: "<span class='highlight'>Xiamen (Amoy)</span> falls to British bombardment.", city: "xiamen", color: "#f4a261", progress: 55 },
-      { date: "October 1841", text: "<span class='highlight'>Ningbo</span> captured. Disease among British forces causes a pause.", city: "ningbo", color: "#f4a261", progress: 65 },
-      { date: "June 1842", text: "Campaign resumes. <span class='highlight'>Shanghai</span> falls to British forces.", city: "shanghai", color: "#f4a261", progress: 75 },
-      { date: "July 1842", text: "<span class='highlight'>Zhenjiang</span> captured. The path to Nanjing lies open.", city: "zhenjiang", color: "#f4a261", progress: 88 },
-      { date: "August 29, 1842", text: "China capitulates. The <span class='highlight'>Treaty of Nanjing</span> is signed — first 'unequal treaty.' Five ports forced open.", city: "nanjing", color: "#4cc9f0", progress: 100 }
+      { date: "March 1839", year: "1839", text: "Commissioner <span class='highlight'>Lin Zexu</span> destroys 20,000 chests of British opium in <span class='highlight'>Guangzhou</span>.", city: "guangzhou", color: "#c41e3a", progress: 0 },
+      { date: "June 1840", year: "1840", text: "Britain dispatches <span class='highlight'>warships and troops</span>. The Royal Navy arrives.", city: null, progress: 28 },
+      { date: "July 1840", year: "1840", text: "<span class='highlight'>Hangzhou</span> under British bombardment.", city: "hangzhou", color: "#c41e3a", progress: 32 },
+      { date: "January 1841", year: "1841", text: "<span class='highlight'>Hong Kong</span> seized — ceded to Britain 'in perpetuity.'", city: "hongkong", color: "#7b2d8e", progress: 48 },
+      { date: "May 1841", year: "1841", text: "<span class='highlight'>Guangzhou captured</span>. The city where it began falls.", city: "guangzhou", color: "#e63946", progress: 56 },
+      { date: "August 1841", year: "1841", text: "<span class='highlight'>Xiamen</span> falls to bombardment.", city: "xiamen", color: "#e76f51", progress: 62 },
+      { date: "October 1841", year: "1841", text: "<span class='highlight'>Ningbo</span> captured. Disease causes a pause.", city: "ningbo", color: "#e76f51", progress: 68 },
+      { date: "June 1842", year: "1842", text: "Campaign resumes. <span class='highlight'>Shanghai</span> falls.", city: "shanghai", color: "#e76f51", progress: 82 },
+      { date: "July 1842", year: "1842", text: "<span class='highlight'>Zhenjiang</span> captured. Path to Nanjing open.", city: "zhenjiang", color: "#e76f51", progress: 90 },
+      { date: "August 1842", year: "1842", text: "<span class='highlight'>Treaty of Nanjing</span> signed. First 'unequal treaty.' Five ports opened.", city: "nanjing", color: "#2874a6", progress: 100 }
     ];
 
     let currentIndex = 0;
@@ -193,14 +234,12 @@
       document.getElementById('event-date').textContent = event.date;
       document.getElementById('event-text').innerHTML = event.text;
       document.getElementById('timeline-progress').style.width = event.progress + '%';
+      document.getElementById('timeline-marker').style.left = event.progress + '%';
+      document.getElementById('current-year').textContent = event.year;
 
       if (event.city && markers[event.city]) {
         markers[event.city].setStyle({
-          color: event.color,
-          fillColor: event.color,
-          fillOpacity: 0.9,
-          weight: 3,
-          radius: 10
+          color: event.color, fillColor: event.color, fillOpacity: 0.9, weight: 3, radius: 10
         });
         markers[event.city].openTooltip();
       }
@@ -210,16 +249,12 @@
       if (currentIndex >= events.length) {
         stopAnimation();
         document.getElementById('event-date').textContent = "The End";
-        document.getElementById('event-text').innerHTML = "The First Opium War ended with China's defeat. Five <span class='highlight'>treaty ports</span> opened. <span class='highlight'>Hong Kong</span> ceded. The 'Century of Humiliation' began.";
+        document.getElementById('event-text').innerHTML = "China defeated. <span class='highlight'>5 treaty ports</span> forced open. <span class='highlight'>Hong Kong</span> ceded. The 'Century of Humiliation' began.";
         return;
       }
-
       updateDisplay(events[currentIndex]);
       currentIndex++;
-
-      if (isPlaying) {
-        timer = setTimeout(nextEvent, 3500);
-      }
+      if (isPlaying) timer = setTimeout(nextEvent, 3000);
     }
 
     function startAnimation() {
@@ -231,34 +266,25 @@
 
     function stopAnimation() {
       isPlaying = false;
-      document.getElementById('playBtn').textContent = '▶ Play Animation';
+      document.getElementById('playBtn').textContent = '▶ Play';
       if (timer) clearTimeout(timer);
     }
 
     function togglePlay() {
-      if (isPlaying) {
-        stopAnimation();
-      } else {
-        startAnimation();
-      }
+      isPlaying ? stopAnimation() : startAnimation();
     }
 
     function resetAnimation() {
       stopAnimation();
       currentIndex = 0;
       document.getElementById('event-date').textContent = 'Ready';
-      document.getElementById('event-text').innerHTML = 'Press <strong>Play Animation</strong> to watch the British campaign unfold along China\'s coast.';
+      document.getElementById('event-text').innerHTML = 'Press <strong>Play</strong> to watch the British naval campaign unfold.';
       document.getElementById('timeline-progress').style.width = '0%';
+      document.getElementById('timeline-marker').style.left = '0%';
+      document.getElementById('current-year').textContent = '1839';
 
-      // Reset all markers
       Object.keys(markers).forEach(key => {
-        markers[key].setStyle({
-          color: '#555',
-          fillColor: '#333',
-          fillOpacity: 0.5,
-          weight: 1,
-          radius: 7
-        });
+        markers[key].setStyle({ color: '#999', fillColor: '#ccc', fillOpacity: 0.6, weight: 1, radius: 6 });
         markers[key].closeTooltip();
       });
     }

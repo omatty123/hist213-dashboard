@@ -3,66 +3,44 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>鴉片戰爭與通商口岸 | Opium War & Treaty Ports (1842)</title>
+    <title>Opium War & Treaty Ports (1842)</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <style>
-        html, body { height: 100%; margin: 0; background: #0b0d10; font-family: system-ui, -apple-system, sans-serif; }
+        html, body { height: 100%; margin: 0; background: #f5f5f5; font-family: system-ui, -apple-system, sans-serif; }
         #map { height: 100%; width: 100%; }
 
-        .map-title {
-            color: #f2f5f7;
-            background: rgba(10, 12, 16, 0.9);
-            padding: 14px 18px;
-            border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            max-width: 280px;
-        }
-        .map-title .main { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
-        .map-title .han { font-size: 14px; opacity: 0.7; margin-top: 2px; }
-        .map-title .sub { font-size: 12px; opacity: 0.75; margin-top: 6px; line-height: 1.4; }
-
-        .legend {
-            color: #f2f5f7;
-            background: rgba(10, 12, 16, 0.9);
-            padding: 12px 14px;
-            border-radius: 10px;
+        .city-label {
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
             font-size: 11px;
-            line-height: 1.6;
+            font-weight: 600;
+            color: #333;
+            white-space: nowrap;
         }
-        .legend-title { font-weight: 600; margin-bottom: 8px; font-size: 12px; }
-        .legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
-        .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-        .legend-line { width: 20px; height: 3px; flex-shrink: 0; }
-
-        .leaflet-popup-content-wrapper {
-            background: rgba(14, 16, 20, 0.95);
-            color: #f2f5f7;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        .city-label .han {
+            font-size: 10px;
+            color: #666;
+            font-weight: 400;
         }
-        .leaflet-popup-tip { background: rgba(14, 16, 20, 0.95); }
-        .leaflet-popup-content { margin: 10px 12px; font-size: 13px; line-height: 1.5; }
-        .popup-han { font-size: 16px; font-weight: 600; }
-        .popup-name { font-size: 13px; opacity: 0.85; margin-top: 2px; }
-        .popup-desc { font-size: 11px; opacity: 0.7; margin-top: 6px; }
-        .popup-year { font-size: 10px; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 6px; }
 
         .back-link {
             position: fixed;
             top: 12px;
             right: 12px;
-            background: rgba(10, 12, 16, 0.9);
-            color: #f2f5f7;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
             padding: 8px 14px;
             border-radius: 8px;
             text-decoration: none;
             font-size: 12px;
             z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-        .back-link:hover { background: rgba(30, 32, 40, 0.95); }
+        .back-link:hover { background: #fff; }
     </style>
 </head>
 <body>
@@ -72,156 +50,102 @@
     <script>
         const map = L.map("map", { zoomControl: true, preferCanvas: true });
 
-        // Dark basemap from CARTO
-        L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+        // Light basemap from CARTO
+        L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
             subdomains: "abcd",
             maxZoom: 12,
             minZoom: 4,
             attribution: '© OpenStreetMap © CARTO'
         }).addTo(map);
 
-        // Title control
-        const titleControl = L.control({ position: "topleft" });
-        titleControl.onAdd = function() {
-            const div = L.DomUtil.create("div", "map-title");
-            div.innerHTML = `
-                <div class="main">Opium War & Treaty Ports</div>
-                <div class="han">鴉片戰爭與通商口岸 (1842)</div>
-                <div class="sub">After China's defeat, the Treaty of Nanjing forced open five ports to British trade and ceded Hong Kong.</div>
-            `;
-            return div;
-        };
-        titleControl.addTo(map);
-
-        // Legend control
-        const legendControl = L.control({ position: "bottomleft" });
-        legendControl.onAdd = function() {
-            const div = L.DomUtil.create("div", "legend");
-            div.innerHTML = `
-                <div class="legend-title">Legend</div>
-                <div class="legend-item"><div class="legend-dot" style="background: #e63946;"></div> Opium Trade Center</div>
-                <div class="legend-item"><div class="legend-dot" style="background: #f77f00;"></div> Treaty Port (1842)</div>
-                <div class="legend-item"><div class="legend-dot" style="background: #9d4edd;"></div> Ceded Territory</div>
-                <div class="legend-item"><div class="legend-dot" style="background: #4cc9f0;"></div> Treaty Signed</div>
-                <div class="legend-item"><div class="legend-line" style="background: #e63946; opacity: 0.6;"></div> Opium trade flow</div>
-            `;
-            return div;
-        };
-        legendControl.addTo(map);
-
         // Locations with real coordinates
         const locations = {
             canton: {
-                name: "Guangzhou (Canton)",
+                name: "Canton",
                 han: "廣州",
                 lat: 23.129,
                 lng: 113.253,
-                type: "opium",
-                color: "#e63946",
-                radius: 10,
-                desc: "Center of opium trade. Lin Zexu destroyed 20,000 chests of opium here in 1839.",
-                year: "1839"
+                color: "#c41e3a",
+                radius: 8,
+                labelOffset: [12, -5]
             },
             hongkong: {
                 name: "Hong Kong",
                 han: "香港",
                 lat: 22.32,
                 lng: 114.17,
-                type: "ceded",
-                color: "#9d4edd",
-                radius: 10,
-                desc: "Ceded to Britain 'in perpetuity.' Returned to China in 1997.",
-                year: "1842-1997"
+                color: "#7b2d8e",
+                radius: 8,
+                labelOffset: [12, 0]
             },
             shanghai: {
                 name: "Shanghai",
                 han: "上海",
                 lat: 31.23,
                 lng: 121.47,
-                type: "treaty",
-                color: "#f77f00",
-                radius: 9,
-                desc: "Treaty port. Became China's largest commercial center by 1900.",
-                year: "1842"
+                color: "#d35400",
+                radius: 7,
+                labelOffset: [10, -5]
             },
             xiamen: {
-                name: "Xiamen (Amoy)",
+                name: "Xiamen",
                 han: "廈門",
                 lat: 24.48,
                 lng: 118.09,
-                type: "treaty",
-                color: "#f77f00",
-                radius: 8,
-                desc: "Treaty port across from Taiwan. Major emigration hub.",
-                year: "1842"
+                color: "#d35400",
+                radius: 6,
+                labelOffset: [10, 0]
             },
             fuzhou: {
                 name: "Fuzhou",
                 han: "福州",
                 lat: 26.075,
                 lng: 119.308,
-                type: "treaty",
-                color: "#f77f00",
-                radius: 8,
-                desc: "Treaty port. Provincial capital of Fujian.",
-                year: "1842"
+                color: "#d35400",
+                radius: 6,
+                labelOffset: [10, -5]
             },
             ningbo: {
                 name: "Ningbo",
                 han: "寧波",
                 lat: 29.868,
                 lng: 121.544,
-                type: "treaty",
-                color: "#f77f00",
-                radius: 8,
-                desc: "Treaty port. Historic trading city since Tang dynasty.",
-                year: "1842"
+                color: "#d35400",
+                radius: 6,
+                labelOffset: [10, 0]
             },
             nanjing: {
                 name: "Nanjing",
                 han: "南京",
                 lat: 32.05,
                 lng: 118.767,
-                type: "treaty-signed",
-                color: "#4cc9f0",
-                radius: 9,
-                desc: "Treaty of Nanjing signed here on August 29, 1842. First 'unequal treaty.'",
-                year: "1842"
+                color: "#2874a6",
+                radius: 7,
+                labelOffset: [-60, -5]
             }
         };
 
-        // Add markers
+        // Add markers and labels
         for (const key in locations) {
             const loc = locations[key];
-            const marker = L.circleMarker([loc.lat, loc.lng], {
+
+            // Circle marker
+            L.circleMarker([loc.lat, loc.lng], {
                 radius: loc.radius,
-                color: loc.color,
+                color: "#fff",
                 weight: 2,
                 fillColor: loc.color,
-                fillOpacity: 0.85
+                fillOpacity: 0.9
             }).addTo(map);
 
-            marker.bindPopup(`
-                <div class="popup-han">${loc.han}</div>
-                <div class="popup-name">${loc.name}</div>
-                <div class="popup-desc">${loc.desc}</div>
-                <span class="popup-year">${loc.year}</span>
-            `);
+            // Text label
+            const labelIcon = L.divIcon({
+                className: 'city-label',
+                html: `${loc.name} <span class="han">${loc.han}</span>`,
+                iconAnchor: [-loc.labelOffset[0], -loc.labelOffset[1]]
+            });
+            L.marker([loc.lat, loc.lng], { icon: labelIcon }).addTo(map);
         }
-
-        // Draw opium trade route (simplified: India → Canton)
-        // British ships brought opium from India to Canton
-        const opiumRoute = [
-            [22.32, 114.17],   // Hong Kong area (British staging)
-            [23.129, 113.253] // Canton
-        ];
-
-        L.polyline(opiumRoute, {
-            weight: 3,
-            opacity: 0.5,
-            dashArray: "8 6",
-            color: "#e63946"
-        }).addTo(map);
 
         // Draw coastal treaty port connections
         const coastalPorts = [
@@ -234,9 +158,9 @@
 
         L.polyline(coastalPorts, {
             weight: 2,
-            opacity: 0.35,
-            dashArray: "4 4",
-            color: "#f77f00"
+            opacity: 0.4,
+            dashArray: "6 4",
+            color: "#d35400"
         }).addTo(map);
 
         // Fit map to show all locations with padding

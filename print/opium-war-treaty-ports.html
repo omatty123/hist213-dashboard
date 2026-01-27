@@ -13,19 +13,19 @@
             background: none !important;
             border: none !important;
             box-shadow: none !important;
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 600;
             color: #222;
             white-space: nowrap;
+            text-shadow: 1px 1px 2px #fff, -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff;
         }
-        .leaflet-control-zoom { display: none; }
-        .leaflet-control-attribution { font-size: 8px; }
+        .leaflet-control-attribution { font-size: 9px; }
     </style>
 </head>
 <body>
     <div id="map"></div>
     <script>
-        const map = L.map("map", { zoomControl: false, attributionControl: true, dragging: false, scrollWheelZoom: false });
+        const map = L.map("map", { zoomControl: true });
 
         L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
             subdomains: "abcd", maxZoom: 10, minZoom: 4,
@@ -33,29 +33,31 @@
         }).addTo(map);
 
         const locations = [
-            { name: "Canton 廣州", lat: 23.129, lng: 113.253, color: "#c41e3a", r: 6, dx: 8, dy: 3 },
-            { name: "Hong Kong 香港", lat: 22.32, lng: 114.17, color: "#7b2d8e", r: 6, dx: 8, dy: 3 },
-            { name: "Xiamen 廈門", lat: 24.48, lng: 118.09, color: "#d35400", r: 5, dx: 6, dy: 3 },
-            { name: "Fuzhou 福州", lat: 26.075, lng: 119.308, color: "#d35400", r: 5, dx: 6, dy: 3 },
-            { name: "Ningbo 寧波", lat: 29.868, lng: 121.544, color: "#d35400", r: 5, dx: 6, dy: 3 },
-            { name: "Shanghai 上海", lat: 31.23, lng: 121.47, color: "#d35400", r: 5, dx: 6, dy: 3 },
-            { name: "Nanjing 南京", lat: 32.05, lng: 118.767, color: "#2874a6", r: 5, dx: -55, dy: 3 }
+            { name: "Canton 廣州", lat: 23.129, lng: 113.253, color: "#c41e3a", r: 7, dx: 10, dy: 4 },
+            { name: "Hong Kong 香港", lat: 22.32, lng: 114.17, color: "#7b2d8e", r: 7, dx: 10, dy: 4 },
+            { name: "Xiamen 廈門", lat: 24.48, lng: 118.09, color: "#d35400", r: 6, dx: 8, dy: 4 },
+            { name: "Fuzhou 福州", lat: 26.075, lng: 119.308, color: "#d35400", r: 6, dx: 8, dy: 4 },
+            { name: "Ningbo 寧波", lat: 29.868, lng: 121.544, color: "#d35400", r: 6, dx: 8, dy: 4 },
+            { name: "Shanghai 上海", lat: 31.23, lng: 121.47, color: "#d35400", r: 6, dx: 8, dy: 4 },
+            { name: "Nanjing 南京", lat: 32.05, lng: 118.767, color: "#2874a6", r: 6, dx: -58, dy: 4 }
         ];
 
         locations.forEach(loc => {
             L.circleMarker([loc.lat, loc.lng], {
-                radius: loc.r, color: "#fff", weight: 1.5, fillColor: loc.color, fillOpacity: 0.9
+                radius: loc.r, color: "#fff", weight: 2, fillColor: loc.color, fillOpacity: 0.9
             }).addTo(map);
             L.marker([loc.lat, loc.lng], {
                 icon: L.divIcon({ className: 'city-label', html: loc.name, iconAnchor: [-loc.dx, loc.dy] })
             }).addTo(map);
         });
 
-        L.polyline([[23.129,113.253],[24.48,118.09],[26.075,119.308],[29.868,121.544],[31.23,121.47]], {
-            weight: 1.5, opacity: 0.5, dashArray: "4 3", color: "#d35400"
-        }).addTo(map);
+        // Coastal route line
+        L.polyline([
+            [23.129, 113.253], [24.48, 118.09], [26.075, 119.308], [29.868, 121.544], [31.23, 121.47]
+        ], { weight: 2, opacity: 0.5, dashArray: "6 4", color: "#d35400" }).addTo(map);
 
-        map.setView([27, 117], 5);
+        // Fit to show all points
+        map.fitBounds([[21, 111], [33, 123]], { padding: [20, 20] });
     </script>
 </body>
 </html>

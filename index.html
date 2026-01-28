@@ -259,6 +259,7 @@
       </div>
     </div>
     <div class="header-tools">
+      <button id="postClassNotesBtn" onclick="openPostClassNotes()" style="display:none">📝 Post Class Notes</button>
       <button id="enrichmentBtn" onclick="openEnrichment()" style="display:none">✨ Enrichment</button>
       <button id="printWorksheetBtn" onclick="openPrintWorksheet()" style="display:none">🖨️ Print Worksheet</button>
       <button onclick="window.open('resources.html','_blank')">📚 Resources</button>
@@ -331,6 +332,7 @@ var plates = [
 var currentPlateIndex = 0;
 var availableWorksheets = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]; // All plates have worksheets
 var availableEnrichment = [7, 8]; // Plates with enrichment data (expand as you generate more)
+var postClassNotes = {9: 'print/deep-dive-reference.html', 10: 'print/exec-summary-10.html'}; // Plates with post-class notes
 
 function openPrintWorksheet() {
   var p = plates[currentPlateIndex];
@@ -343,6 +345,23 @@ function openEnrichment() {
   var p = plates[currentPlateIndex];
   if (p && p.plate) {
     window.open('print/plate-' + p.plate + '-enrichment.html', '_blank');
+  }
+}
+
+function openPostClassNotes() {
+  var p = plates[currentPlateIndex];
+  if (p && p.plate && postClassNotes[p.plate]) {
+    window.open(postClassNotes[p.plate], '_blank');
+  }
+}
+
+function updatePostClassNotesButton() {
+  var btn = document.getElementById('postClassNotesBtn');
+  var p = plates[currentPlateIndex];
+  if (p && p.plate && postClassNotes[p.plate]) {
+    btn.style.display = 'inline-block';
+  } else {
+    btn.style.display = 'none';
   }
 }
 
@@ -414,6 +433,7 @@ async function loadPlate(i) {
 
   updateWorksheetButton();
   updateEnrichmentButton();
+  updatePostClassNotesButton();
   document.getElementById("currentPlate").textContent = p.plate ? "Day " + p.plate : p.topic;
   document.getElementById("weekTheme").textContent = "Week " + p.week + " · " + (p.theme || "");
   document.getElementById("plateTitle").textContent = p.plate ? "Day " + p.plate + ": " + p.topic : p.topic;

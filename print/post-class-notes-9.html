@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 9: Post Class Notes | HIST 213</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      color: #1a1a1a;
+      line-height: 1.5;
+      padding: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+    .back-link {
+      font-size: 13px;
+      color: #666;
+      text-decoration: none;
+    }
+    .back-link:hover { color: #000; }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-top: 8px;
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .section {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+    .section p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    .project-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      background: #FF3B30;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 3px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .link-item {
+      display: block;
+      font-size: 13px;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 10px 12px;
+      background: #f8f9fa;
+      border: 1px solid #e8e8e8;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .link-item:hover {
+      background: #fff;
+      border-color: #0066cc;
+      color: #0066cc;
+    }
+    .link-item .source {
+      font-weight: 600;
+      display: block;
+    }
+    .link-item .desc {
+      font-size: 11px;
+      color: #666;
+      margin-top: 2px;
+      display: block;
+    }
+
+    .key-point {
+      background: #fff3cd;
+      border-left: 3px solid #ffc107;
+      padding: 12px 16px;
+      font-size: 13px;
+      margin-top: 12px;
+      border-radius: 0 6px 6px 0;
+    }
+    .key-point.blue { background: #e3f2fd; border-left-color: #2196f3; }
+    .key-point.green { background: #e8f5e9; border-left-color: #4caf50; }
+    .key-point.red { background: #ffebee; border-left-color: #f44336; }
+
+    .charts-row {
+      display: flex;
+      gap: 16px;
+    }
+    .chart-box {
+      flex: 1;
+      background: #fafafa;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 16px;
+    }
+    .chart-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .links-grid { grid-template-columns: 1fr; }
+      .charts-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+    <h1>Final Project Deep Dive</h1>
+    <p class="subtitle">Day 9 &mdash; 9 topics from Monday's brainstorm session</p>
+  </header>
+
+  <!-- 01: Socialist Realism -->
+  <div class="section">
+    <div class="section-title">Topic 1</div>
+    <h2>Socialist Realism <span class="project-badge">FINAL PROJECT</span></h2>
+    <p>State-sanctioned art glorifying communist values through idealized workers, peasants, and revolutionary heroes. Dominant in USSR, China, and North Korea from 1930s-1980s. Modern echoes persist in North Korean media and some Chinese cinema.</p>
+    <div class="links-grid">
+      <a href="https://www.theartstory.org/movement/socialist-realism/" target="_blank" class="link-item">
+        <span class="source">TheArtStory</span>
+        <span class="desc">Movement overview with visual examples</span>
+      </a>
+      <a href="https://www.britannica.com/art/Socialist-Realism" target="_blank" class="link-item">
+        <span class="source">Britannica</span>
+        <span class="desc">Soviet Stalinism & Propaganda</span>
+      </a>
+      <a href="https://www.tate.org.uk/art/art-terms/s/socialist-realism" target="_blank" class="link-item">
+        <span class="source">Tate</span>
+        <span class="desc">Definition + key examples</span>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/Socialist_realism" target="_blank" class="link-item">
+        <span class="source">Wikipedia</span>
+        <span class="desc">Comprehensive overview with film section</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 02: WEIRD Bias -->
+  <div class="section">
+    <div class="section-title">Topic 2</div>
+    <h2>WEIRD Bias in Psychology <span class="project-badge">FINAL PROJECT</span></h2>
+    <p>Western, Educated, Industrialized, Rich, Democratic &mdash; 12% of humanity, yet 96% of psychology research subjects. East Asian societies show different patterns in self-concept, social cognition, and decision-making that challenge "universal" findings.</p>
+    <div class="links-grid">
+      <a href="https://news.harvard.edu/gazette/story/2020/09/joseph-henrich-explores-weird-societies/" target="_blank" class="link-item">
+        <span class="source">Harvard Gazette</span>
+        <span class="desc">Joseph Henrich interview on WEIRD societies</span>
+      </a>
+      <a href="https://thedecisionlab.com/insights/society/behavioral-science-is-weird-and-this-should-concern-us" target="_blank" class="link-item">
+        <span class="source">The Decision Lab</span>
+        <span class="desc">Why this should concern us</span>
+      </a>
+      <a href="https://www2.psych.ubc.ca/~henrich/pdfs/WeirdPeople.pdf" target="_blank" class="link-item">
+        <span class="source">Original Paper (PDF)</span>
+        <span class="desc">"The Weirdest People in the World?"</span>
+      </a>
+      <a href="https://simplyputpsych.co.uk/psych-101-1/understanding-weird-western-educated-industrialized-rich-and-democratic" target="_blank" class="link-item">
+        <span class="source">Simply Put Psych</span>
+        <span class="desc">Accessible explainer</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 03: Geopower -->
+  <div class="section">
+    <div class="section-title">Topic 3</div>
+    <h2>East Asian Geopower Rankings <span class="project-badge">FINAL PROJECT</span></h2>
+    <p>Power is multidimensional. China leads military + manufacturing. Japan dominates tech + soft power. South Korea wins cultural exports. Rankings shift based on what you measure &mdash; the Lowy Institute tracks 8 dimensions across 27 countries.</p>
+    <div class="links-grid">
+      <a href="https://power.lowyinstitute.org/" target="_blank" class="link-item">
+        <span class="source">Lowy Asia Power Index</span>
+        <span class="desc">Interactive map & data explorer</span>
+      </a>
+      <a href="https://power.lowyinstitute.org/downloads/lowy-institute-2025-asia-power-index-key-findings-report.pdf" target="_blank" class="link-item">
+        <span class="source">2025 Key Findings (PDF)</span>
+        <span class="desc">Latest annual report</span>
+      </a>
+      <a href="https://www.pewresearch.org/short-reads/2023/12/05/in-east-asia-many-people-see-chinas-power-and-influence-as-a-major-threat/" target="_blank" class="link-item">
+        <span class="source">Pew Research</span>
+        <span class="desc">How East Asians view China's power</span>
+      </a>
+      <a href="https://cdn.cfr.org/sites/default/files/report_pdf/medeirosdp_final-no.-3.pdf" target="_blank" class="link-item">
+        <span class="source">CFR Report (PDF)</span>
+        <span class="desc">Major Power Rivalry in East Asia</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 04: North Korea -->
+  <div class="section">
+    <div class="section-title">Topic 4</div>
+    <h2>North Korea's Paradox <span class="project-badge">FINAL PROJECT</span></h2>
+    <p>Despite sanctions and isolation, GDP grew 3.7% in 2024. Pyongyang's skyline transformed since 2012 with "Pyonghattan" towers. Russia trade up 54%. TV ownership at 91%, refrigerators 36%. The regime adapts more than collapse narratives suggest.</p>
+    <div class="links-grid">
+      <a href="https://www.38north.org/2024/02/what-to-make-of-north-koreas-forward-looking-economic-strategy-and-prospects/" target="_blank" class="link-item">
+        <span class="source">38 North</span>
+        <span class="desc">Forward-looking economic strategy analysis</span>
+      </a>
+      <a href="https://www.ncnk.org/resources/briefing-papers/all-briefing-papers/north-koreas-shackled-economy" target="_blank" class="link-item">
+        <span class="source">NCNK</span>
+        <span class="desc">North Korea's Shackled Economy briefing</span>
+      </a>
+      <a href="https://qz.com/1300685/the-state-of-the-north-korean-economy-might-surprise-you" target="_blank" class="link-item">
+        <span class="source">Quartz</span>
+        <span class="desc">"The state of the NK economy might surprise you"</span>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/North_Korean_economic_reform" target="_blank" class="link-item">
+        <span class="source">Wikipedia</span>
+        <span class="desc">North Korean economic reform overview</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 05: Japan Rice -->
+  <div class="section">
+    <div class="section-title">Topic 5</div>
+    <h2>Japan's Rice Crisis <span class="project-badge">FINAL PROJECT</span></h2>
+    <p>Prices doubled. Ishiba's approval collapsed to 22%. Farm minister resigned. <strong>Rice helped bring down a government.</strong> Now PM Takaichi faces the same dilemma: protect farmers or lower prices? 778% import tariff meets 38% food self-sufficiency.</p>
+    <div class="links-grid">
+      <a href="https://theconversation.com/soaring-rice-prices-are-stirring-political-trouble-in-japan-history-shows-this-often-leads-to-a-change-of-government-257490" target="_blank" class="link-item">
+        <span class="source">The Conversation</span>
+        <span class="desc">Rice prices & government change &mdash; historical pattern</span>
+      </a>
+      <a href="https://www.reuters.com/commentary/how-rice-prices-could-throw-japans-pm-off-course-2026-01-19/" target="_blank" class="link-item">
+        <span class="source">Reuters</span>
+        <span class="desc">How rice could throw Japan's PM off course</span>
+      </a>
+      <a href="https://japantoday.com/category/politics/japan-rice-prices-double-raising-pressure-on-pm" target="_blank" class="link-item">
+        <span class="source">Japan Today</span>
+        <span class="desc">Prices double, pressure mounts</span>
+      </a>
+      <a href="https://mises.org/mises-wire/japan-rice-price-crisis-reveals-twofold-policy-dilemma" target="_blank" class="link-item">
+        <span class="source">Mises Institute</span>
+        <span class="desc">The twofold policy dilemma</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 06: Greater Bay Area -->
+  <div class="section">
+    <div class="section-title">Topic 6</div>
+    <h2>The Greater Bay Area <span class="project-badge">FINAL PROJECT</span></h2>
+    <p>86 million people. 9 cities + Hong Kong + Macau. GDP exceeding &yen;14.5 trillion. Shenzhen went from fishing village to "China's Silicon Valley" in 40 years. Designed to rival Tokyo Bay and San Francisco &mdash; testing "one country, two systems" limits.</p>
+    <div class="links-grid">
+      <a href="https://www.mckinsey.com/cn/our-insights/perspectives-on-china-blog/the-rise-of-chinas-greater-bay-area" target="_blank" class="link-item">
+        <span class="source">McKinsey</span>
+        <span class="desc">The rise of China's Greater Bay Area</span>
+      </a>
+      <a href="https://www.business.hsbc.com/en-gb/insights/market-and-regulatory-insights/the-greater-bay-area-at-the-forefront-of-chinese-development" target="_blank" class="link-item">
+        <span class="source">HSBC Insights</span>
+        <span class="desc">At the forefront of Chinese development</span>
+      </a>
+      <a href="https://www.scmp.com/economy/economic-indicators/article/3165178/chinas-big-shenzhen-plans-aim-transform-greater-bay" target="_blank" class="link-item">
+        <span class="source">South China Morning Post</span>
+        <span class="desc">China's big Shenzhen plans</span>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/Guangdong%E2%80%93Hong_Kong%E2%80%93Macao_Greater_Bay_Area" target="_blank" class="link-item">
+        <span class="source">Wikipedia</span>
+        <span class="desc">Guangdong-Hong Kong-Macao GBA</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 07: Dongbei & Xinjiang -->
+  <div class="section">
+    <div class="section-title">Topic 7 &mdash; Featured</div>
+    <h2>Dongbei & Xinjiang NOW <span class="project-badge">FINAL PROJECT</span></h2>
+    <p>Forget the history textbooks. <strong>Dongbei is having a cultural renaissance.</strong> Harbin's ice festival went viral in 2024 (3M visitors in 3 days). "The Long Season" TV drama captivated China. <strong>Xinjiang tourism exploded</strong> &mdash; 300M visitors in 2024. Foreign vloggers are everywhere. These regions are alive with new media, new economies, and new stories.</p>
+    <div class="charts-row">
+      <div class="chart-box">
+        <div class="chart-title">Dongbei Renaissance</div>
+        <a href="https://www.youtube.com/watch?v=hz2kRc2Nv_M" target="_blank" class="link-item" style="margin-bottom: 8px;">
+          <span class="source">YouTube</span>
+          <span class="desc">Dongbei street life & culture vlog</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=IM9IkRwS56M" target="_blank" class="link-item" style="margin-bottom: 8px;">
+          <span class="source">YouTube</span>
+          <span class="desc">Harbin Ice Festival 2024 viral moment</span>
+        </a>
+        <a href="https://www.sixthtone.com/news/1013594" target="_blank" class="link-item">
+          <span class="source">Sixth Tone</span>
+          <span class="desc">What is the "Dongbei Renaissance"?</span>
+        </a>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">Xinjiang Vlogger Boom</div>
+        <a href="https://www.youtube.com/results?search_query=xinjiang+vlog+2024" target="_blank" class="link-item" style="margin-bottom: 8px;">
+          <span class="source">YouTube</span>
+          <span class="desc">Search: Xinjiang vlogs (street life, food, cities)</span>
+        </a>
+        <a href="https://www.scmp.com/news/china/politics/article/3282178/chinas-xinjiang-region-welcomes-record-300-million-tourists-2024" target="_blank" class="link-item" style="margin-bottom: 8px;">
+          <span class="source">SCMP</span>
+          <span class="desc">300 million tourists in 2024 &mdash; record</span>
+        </a>
+        <a href="https://www.cnn.com/travel/xinjiang-tourism-western-china-intl-hnk/index.html" target="_blank" class="link-item">
+          <span class="source">CNN Travel</span>
+          <span class="desc">Xinjiang's complex tourism boom</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08: Opium Wars -->
+  <div class="section">
+    <div class="section-title">Topic 8</div>
+    <h2>The Opium Wars: Visual Archive <span class="project-badge">FINAL PROJECT</span></h2>
+    <p>MIT's Visualizing Cultures project offers an extraordinary visual archive of the First Opium War. <strong>Sherwill's lithographs</strong> show industrial-scale opium production at Patna. <strong>Shiva Lal's paintings</strong> humanize Indian workers in the same factory. The <em>Nemesis</em> &mdash; first iron warship ever built &mdash; destroyed Chinese junks.</p>
+    <div class="key-point blue">
+      <strong>Coming up:</strong> Day 10 covers the Opium Wars in depth. See <a href="post-class-notes-10.html">Day 10 Post Class Notes</a> for visual archive and analysis.
+    </div>
+    <div class="links-grid" style="margin-top: 16px;">
+      <a href="https://visualizingcultures.mit.edu/opium_wars_01/" target="_blank" class="link-item">
+        <span class="source">MIT Visualizing Cultures</span>
+        <span class="desc">Full archive: essays, galleries, curriculum</span>
+      </a>
+      <a href="https://visualizingcultures.mit.edu/opium_wars_01/patna_shiva_lal/index.htm" target="_blank" class="link-item">
+        <span class="source">Shiva Lal Gallery</span>
+        <span class="desc">19 paintings of Indian opium workers (1857)</span>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/Nemesis_(1839)" target="_blank" class="link-item">
+        <span class="source">Wikipedia</span>
+        <span class="desc">HMS Nemesis &mdash; the "devil ship"</span>
+      </a>
+      <a href="post-class-notes-10.html" class="link-item">
+        <span class="source">Day 10 Notes</span>
+        <span class="desc">Our curated visual guide with charts & maps</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 09: Dejima -->
+  <div class="section">
+    <div class="section-title">Topic 9</div>
+    <h2>Dejima & Tokugawa "Foreigners" <span class="project-badge">FINAL PROJECT</span></h2>
+    <p>A 120m x 75m artificial island in Nagasaki harbor &mdash; Japan's only official window to the West for 200 years (1641-1853). Dutch traders lived under strict surveillance. How did Tokugawa artists portray these "exotic" visitors? <strong>Kawahara Keiga's paintings</strong> offer a fascinating lens on cross-cultural perception.</p>
+    <div class="links-grid">
+      <a href="https://www.sensesatlas.com/dejima-island-through-the-eyes-of-kawahara-keiga/" target="_blank" class="link-item">
+        <span class="source">Senses Atlas</span>
+        <span class="desc">Dejima through Kawahara Keiga's eyes</span>
+      </a>
+      <a href="https://www.oldphotosjapan.com/photos/904/dejima-island-nagasaki-19th-century-vintage-albumen-print" target="_blank" class="link-item">
+        <span class="source">Old Photos Japan</span>
+        <span class="desc">19th century vintage photographs of Dejima</span>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/Dejima" target="_blank" class="link-item">
+        <span class="source">Wikipedia</span>
+        <span class="desc">Dejima history & reconstruction</span>
+      </a>
+      <a href="https://nagasakidejima.jp/en/" target="_blank" class="link-item">
+        <span class="source">Official Site</span>
+        <span class="desc">Dejima Museum (reconstructed site)</span>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

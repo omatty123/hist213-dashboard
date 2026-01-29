@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Did the US Gain from the Opium Trade in China?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #fff;
+            --paper-warm: #faf8f5;
+            --paper-dark: #f0ede8;
+            --sepia: #8b7355;
+            --red: #8b2500;
+            --gold: #a67c00;
+            --border: #ddd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* HERO - Full Width */
+        .hero {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(20,15,10,0.7), rgba(20,15,10,0.85)),
+                        url('https://lh3.googleusercontent.com/ci/AL18g_RHmfzAlajpqVDHZMGAJgpd0cw0sNiXx9bQshMD2DLQhGlw-_M9bWWNAhQ1hjiBKupQsI_z_g=s1200');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 4rem;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .hero .deck {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 550px;
+        }
+
+        .hero-caption {
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .hero-caption a { color: rgba(255,255,255,0.6); }
+
+        /* TWO COLUMN LAYOUT */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .two-col { grid-template-columns: 1fr; }
+            .sidebar { order: -1; }
+        }
+
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .main-content h2:first-child { margin-top: 0; }
+
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--ink-light);
+        }
+
+        .main-content strong { color: var(--ink); }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            align-self: start;
+        }
+
+        .sidebar-card {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-card-head {
+            background: var(--ink);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .sidebar-card-body {
+            padding: 1rem;
+        }
+
+        .sidebar-card-body p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-card-body p:last-child { margin-bottom: 0; }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-faint);
+        }
+
+        /* FOOTNOTES */
+        .fn {
+            font-size: 0.65rem;
+            color: var(--red);
+            vertical-align: super;
+            text-decoration: none;
+            margin-left: 1px;
+        }
+
+        .fn:hover { text-decoration: underline; }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--paper-warm);
+        }
+
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .pull-quote .attrib {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            font-style: normal;
+        }
+
+        /* FULL WIDTH IMAGE SECTION */
+        .full-image-section {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .full-image-section img {
+            width: 100%;
+            display: block;
+        }
+
+        .full-image-section .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 1rem 2rem;
+            font-size: 0.85rem;
+        }
+
+        .full-image-section .caption a { color: var(--gold); }
+
+        /* FAMILY CARDS SECTION */
+        .families-section {
+            background: var(--ink);
+            padding: 4rem 2rem;
+        }
+
+        .families-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .families-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .families-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .families-header p {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .family-card {
+            background: var(--paper);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .family-card-head {
+            background: var(--red);
+            color: #fff;
+            padding: 1rem 1.25rem;
+        }
+
+        .family-card-head h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .family-card-head .role {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .family-card-body {
+            padding: 1.25rem;
+        }
+
+        .family-card-body p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .family-card-body .legacy {
+            background: var(--paper-dark);
+            padding: 0.75rem;
+            border-left: 3px solid var(--gold);
+            font-size: 0.85rem;
+        }
+
+        .family-card-body .legacy strong {
+            color: var(--ink);
+        }
+
+        /* TIMELINE SECTION */
+        .timeline-section {
+            background: var(--paper-warm);
+            padding: 4rem 2rem;
+        }
+
+        .timeline-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        .tl-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tl-item:last-child { border-bottom: none; }
+
+        .tl-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        .tl-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .tl-content p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        /* SOURCES SECTION */
+        .sources-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .sources-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .source-group h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+            margin-bottom: 0.75rem;
+        }
+
+        .source-group ul {
+            list-style: none;
+        }
+
+        .source-group li {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .source-group a {
+            color: var(--ink-light);
+            text-decoration: none;
+        }
+
+        .source-group a:hover {
+            color: var(--red);
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+        }
+
+        footer a { color: var(--gold); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero { height: auto; min-height: 400px; padding: 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .two-col { padding: 2rem 1rem; }
+            .families-section { padding: 2rem 1rem; }
+            .tl-item { grid-template-columns: 70px 1fr; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
+            <h1>What Did the United States Gain from the Opium Trade in China?</h1>
+            <p class="deck">How New England merchants built fortunes, railroads, and elite institutions on drug money—and how we forgot.</p>
+        </div>
+        <div class="hero-caption">
+            William Daniell, "Canton Factories," c. 1805. <a href="https://artsandculture.google.com/asset/canton-factories-william-daniell/IgG-g3wdsqPsSg" target="_blank">Google Arts & Culture</a>
+        </div>
+    </section>
+
+    <!-- MAIN TWO-COLUMN LAYOUT -->
+    <div class="two-col">
+        <main class="main-content">
+            <h2>The Basic Facts</h2>
+            <p>American traders were the <strong>second largest opium dealers</strong> in China after the British.<a href="#fn1" class="fn">1</a> They operated primarily through <strong>Russell & Company</strong>, founded in Canton in 1824, which became "the largest American trading house in China" by the 1840s.<a href="#fn2" class="fn">2</a></p>
+
+            <p>Americans shipped <strong>Turkish opium</strong> (from Smyrna) to compete with British Indian opium. The competition "drove down the price of opium, leading to an increase in the availability of the drug for Chinese consumers."<a href="#fn3" class="fn">3</a></p>
+
+            <p>By the late 1820s, Russell & Company was delivering approximately 1,500 chests of opium annually to Canton, worth roughly $2 million.<a href="#fn4" class="fn">4</a></p>
+
+            <div class="pull-quote">
+                <p>"The importation of opium that Western nations forced upon China was the most continued and systematic international crime of modern times."</p>
+                <div class="attrib">— John King Fairbank, American China historian<a href="#fn5" class="fn">5</a></div>
+            </div>
+
+            <h2>The Delano-Roosevelt Connection</h2>
+            <p><strong>Warren Delano II</strong> (1809–1898) went to Canton at age 24 and became Chief of Operations for Russell & Company. His "greatest achievement was the expansion of Russell & Company's trade in opium."<a href="#fn6" class="fn">6</a></p>
+
+            <p>Warren Delano claimed that opium smuggling was <strong>"a fair, honorable, and legitimate trade."</strong><a href="#fn7" class="fn">7</a></p>
+
+            <p>After losing his fortune in the Panic of 1857, Delano <strong>returned to China in 1860</strong> and rebuilt his wealth through the opium trade.<a href="#fn8" class="fn">8</a> During the Civil War, he shipped opium to the Medical Bureau of the U.S. War Department.<a href="#fn9" class="fn">9</a></p>
+
+            <p><strong>The lineage:</strong> Warren Delano II → his daughter Sara Delano → married James Roosevelt → their son: <strong>Franklin Delano Roosevelt</strong>, 32nd President of the United States.<a href="#fn10" class="fn">10</a></p>
+
+            <h2>From Opium to Railroads</h2>
+            <p>John Murray Forbes "quickly made a fortune in Canton, working closely with the rich hong merchant Wu Bingjian (known as Howqua)." Howqua "and his family later appointed the company to manage their investments in the USA, including the financing of railroads."<a href="#fn11" class="fn">11</a></p>
+
+            <div class="pull-quote">
+                <p>"When American merchants sold their Chinese cargoes on the American market, they converted Chinese goods into U.S. dollars, accumulating piles of capital... The capital from this trade fueled America's industrial revolution."</p>
+                <div class="attrib">— Historian John Haddad, via WBUR<a href="#fn12" class="fn">12</a></div>
+            </div>
+
+            <p>Forbes became president of Michigan Central Railroad (1846–1855) and director of the Chicago, Burlington and Quincy Railroad.<a href="#fn13" class="fn">13</a></p>
+
+            <h2>The Treaty of Wangxia (1844)</h2>
+            <p>The United States gained "most favored nation" status through the Treaty of Wangxia, meaning Americans received all the treaty port privileges Britain had extracted through the Opium War—<strong>without fighting the war themselves</strong>.<a href="#fn3" class="fn">3</a></p>
+
+            <p><strong>The irony:</strong> Article XXXIII of the treaty officially required the U.S. to prevent its citizens from trading opium. In practice, American merchants had already been smuggling opium for decades.<a href="#fn14" class="fn">14</a></p>
+
+            <h2>How Americans Justified It</h2>
+            <p>Warren Delano called it "a fair, honorable, and legitimate trade."<a href="#fn7" class="fn">7</a> Other justifications included:</p>
+            <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--ink-light);">
+                <li><strong>"If we don't, the British will anyway"</strong></li>
+                <li>Free trade ideology</li>
+                <li>Compartmentalization: opium was just "part of the business"</li>
+                <li>Distance: Boston society didn't see Canton</li>
+            </ul>
+
+            <h2>The Silence</h2>
+            <p>The Forbes House Museum, in creating its Digital Opium Exhibit, describes the effort as "an effort by the Forbes House Museum trustees, staff and guides to <strong>confront the complicated history</strong> of harm, addiction, and wealth generated by the opium trade."<a href="#fn15" class="fn">15</a></p>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">Key Numbers</div>
+                <div class="sidebar-card-body">
+                    <div class="stat-grid">
+                        <div class="stat">
+                            <div class="stat-num">#2</div>
+                            <div class="stat-label">Largest opium dealers (after Britain)</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">10%</div>
+                            <div class="stat-label">Of China addicted by 1900</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">$2M</div>
+                            <div class="stat-label">Annual opium trade (1820s)</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">1824</div>
+                            <div class="stat-label">Russell & Co. founded</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">The Forbes Museum Acknowledges</div>
+                <div class="sidebar-card-body">
+                    <p>"Eleven members of the Forbes extended family traded in China between 1785 and 1887, profiting from tea and other exports, and from smuggling opium."</p>
+                    <p style="font-size: 0.75rem; color: var(--ink-faint);">— <a href="https://www.forbeshousemuseum.org/digital-opium-exhibit/" target="_blank">Forbes House Museum Digital Opium Exhibit</a></p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">Opium Imports (1650–1880)</div>
+                <div class="sidebar-card-body" style="padding: 0;">
+                    <img src="https://asiapacificcurriculum.ca/sites/default/files/inline-images/opium-imports-web%20-%20remove%20figure%20title.png" alt="Opium imports into China 1650-1880" style="width: 100%; display: block;">
+                    <p style="padding: 0.75rem; font-size: 0.75rem; margin: 0;">Opium imports into China, 1650–1880. <a href="https://asiapacificcurriculum.ca/learning-module/opium-wars-china" target="_blank">Asia Pacific Curriculum</a></p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">Discussion Questions</div>
+                <div class="sidebar-card-body">
+                    <p><strong>1.</strong> Are descendants or institutions responsible for fortunes built on opium?</p>
+                    <p><strong>2.</strong> Why is British involvement well-known but American involvement obscure?</p>
+                    <p><strong>3.</strong> Does knowing the Delano fortune came from opium change how we see FDR?</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- FAMILIES SECTION - FULL WIDTH DARK -->
+    <section class="families-section">
+        <div class="families-inner">
+            <div class="families-header">
+                <h2>The Fortunes Made</h2>
+                <p>Boston families that built American institutions with China trade profits</p>
+            </div>
+            <div class="family-grid">
+                <div class="family-card">
+                    <div class="family-card-head">
+                        <h3>The Delanos</h3>
+                        <div class="role">Russell & Company leadership</div>
+                    </div>
+                    <div class="family-card-body">
+                        <p>Warren Delano II was Chief of Operations for Russell & Co. in Macao, Canton, and Hong Kong. His "greatest achievement was the expansion of Russell & Company's trade in opium."<a href="#fn6" class="fn">6</a></p>
+                        <div class="legacy"><strong>Legacy:</strong> Grandfather of President Franklin Delano Roosevelt</div>
+                    </div>
+                </div>
+                <div class="family-card">
+                    <div class="family-card-head">
+                        <h3>The Forbes Brothers</h3>
+                        <div class="role">Russell & Company partners</div>
+                    </div>
+                    <div class="family-card-body">
+                        <p>John Murray and Robert Bennet Forbes ran Russell & Co. from the 1830s. Robert managed opium sales from the Lintin storeship, earning over $30,000/year.<a href="#fn11" class="fn">11</a></p>
+                        <div class="legacy"><strong>Legacy:</strong> Chicago, Burlington & Quincy Railroad; Forbes family fortune</div>
+                    </div>
+                </div>
+                <div class="family-card">
+                    <div class="family-card-head">
+                        <h3>The Lows</h3>
+                        <div class="role">Russell & Company partner</div>
+                    </div>
+                    <div class="family-card-body">
+                        <p>Abiel Abbot Low started as a clerk at Russell & Co. in 1833, became partner, then founded A.A. Low & Brother with the hong merchant Howqua.<a href="#fn16" class="fn">16</a></p>
+                        <div class="legacy"><strong>Legacy:</strong> Low Memorial Library at Columbia University<a href="#fn17" class="fn">17</a></div>
+                    </div>
+                </div>
+                <div class="family-card">
+                    <div class="family-card-head">
+                        <h3>The Russells</h3>
+                        <div class="role">Company founders</div>
+                    </div>
+                    <div class="family-card-body">
+                        <p>Samuel Russell founded Russell & Company in Canton in 1824. His cousin William H. Russell co-founded Yale's Skull and Bones secret society.<a href="#fn18" class="fn">18</a></p>
+                        <div class="legacy"><strong>Legacy:</strong> Yale land; Skull & Bones; Russell Trust Association<a href="#fn19" class="fn">19</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+        <div class="timeline-inner">
+            <div class="timeline-header">
+                <h2>Timeline: American Opium Trade</h2>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1784</div>
+                <div class="tl-content">
+                    <h4>First American ship reaches Canton</h4>
+                    <p>The <em>Empress of China</em> arrives, beginning U.S.-China trade.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1824</div>
+                <div class="tl-content">
+                    <h4>Russell & Company founded</h4>
+                    <p>Samuel Russell establishes what becomes the largest American trading house in China.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1827</div>
+                <div class="tl-content">
+                    <h4>Russell & Co. becomes largest American opium dealer</h4>
+                    <p>Delivering ~1,500 chests annually to Canton.<a href="#fn4" class="fn">4</a></p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1839</div>
+                <div class="tl-content">
+                    <h4>Russell & Co. exits opium trade</h4>
+                    <p>One month before Commissioner Lin Zexu arrives to destroy British opium.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1842</div>
+                <div class="tl-content">
+                    <h4>Treaty of Nanjing ends First Opium War</h4>
+                    <p>Britain gains Hong Kong and treaty ports. U.S. watches.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1844</div>
+                <div class="tl-content">
+                    <h4>Treaty of Wangxia</h4>
+                    <p>U.S. gains "most favored nation" status—all British privileges, no war.<a href="#fn3" class="fn">3</a></p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1860</div>
+                <div class="tl-content">
+                    <h4>Warren Delano returns to China</h4>
+                    <p>After losing fortune in Panic of 1857, rebuilds wealth in Hong Kong opium trade.<a href="#fn8" class="fn">8</a></p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1891</div>
+                <div class="tl-content">
+                    <h4>Russell & Company closes</h4>
+                    <p>67 years of operation. Fortunes already invested in railroads, banks, institutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="sources-section">
+        <h2>Sources</h2>
+        <div class="sources-grid">
+            <div class="source-group">
+                <h4>Scholarly Works</h4>
+                <ul>
+                    <li><a href="https://muse.jhu.edu/book/35841/" target="_blank">Jacques M. Downs, <em>The Golden Ghetto</em></a> (HKU Press, 1997)</li>
+                    <li><a href="https://www.hachettebookgroup.com/titles/james-bradley/the-china-mirage/9780316196666/?lens=little-brown" target="_blank">James Bradley, <em>The China Mirage</em></a> (Little, Brown, 2015)</li>
+                    <li><a href="https://tupress.temple.edu/books/america-s-first-adventure-in-china" target="_blank">John R. Haddad, <em>America's First Adventure in China</em></a> (Temple, 2013)</li>
+                </ul>
+            </div>
+            <div class="source-group">
+                <h4>Primary Sources & Archives</h4>
+                <ul>
+                    <li id="fn2"><a href="https://www.loc.gov/item/mm80038562/" target="_blank">Library of Congress: Russell & Co. records, 1812–1894</a></li>
+                    <li id="fn10"><a href="https://www.archives.gov/publications/prologue/1999/fall/roosevelt-family-history" target="_blank">National Archives: "A Notable Passage to China" (Butow, 1999)</a></li>
+                </ul>
+            </div>
+            <div class="source-group">
+                <h4>Museum & Institutional Sources</h4>
+                <ul>
+                    <li id="fn15"><a href="https://www.forbeshousemuseum.org/digital-opium-exhibit/" target="_blank">Forbes House Museum: Digital Opium Exhibit</a></li>
+                    <li id="fn17"><a href="https://www.nps.gov/places/low-memorial-library.htm" target="_blank">NPS: Low Memorial Library</a></li>
+                </ul>
+            </div>
+            <div class="source-group">
+                <h4>Journalism & Reference</h4>
+                <ul>
+                    <li id="fn12"><a href="https://www.wbur.org/news/2017/07/31/opium-boston-history" target="_blank">WBUR: "How Profits From Opium Shaped Boston"</a></li>
+                    <li id="fn7"><a href="https://www.americanheritage.com/fair-honorable-and-legitimate-trade" target="_blank">American Heritage: "A Fair, Honorable, and Legitimate Trade"</a></li>
+                    <li id="fn1"><a href="https://history.state.gov/milestones/1830-1860/china-1" target="_blank">State Dept: Milestones 1830–1860</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <h4 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-top: 2rem;">Additional Citations</h4>
+        <p style="font-size: 0.8rem; color: var(--ink-faint); line-height: 1.6;">
+            <span id="fn3">[3]</span> State Dept. |
+            <span id="fn4">[4]</span> <a href="https://en.wikipedia.org/wiki/Russell_%26_Company" target="_blank">Wikipedia: Russell & Co.</a> |
+            <span id="fn5">[5]</span> Fairbank, quoted in Forbes Museum |
+            <span id="fn6">[6]</span> <a href="https://medium.com/@littlebrown/old-china-new-china-58303eafdbdd" target="_blank">Bradley, China Mirage excerpt</a> |
+            <span id="fn8">[8]</span> <a href="https://en.wikipedia.org/wiki/Warren_Delano_Jr." target="_blank">Wikipedia: Warren Delano Jr.</a> |
+            <span id="fn9">[9]</span> Wikipedia: Warren Delano Jr. |
+            <span id="fn11">[11]</span> <a href="https://industrialhistoryhk.org/forbes-robert-bennet/" target="_blank">Industrial History HK</a> |
+            <span id="fn13">[13]</span> <a href="https://en.wikipedia.org/wiki/John_Murray_Forbes" target="_blank">Wikipedia: John Murray Forbes</a> |
+            <span id="fn14">[14]</span> <a href="https://history.state.gov/historicaldocuments/frus1913/d229" target="_blank">State Dept: Historical Documents</a> |
+            <span id="fn16">[16]</span> <a href="https://en.wikipedia.org/wiki/Abiel_Abbot_Low" target="_blank">Wikipedia: Abiel Abbot Low</a> |
+            <span id="fn18">[18]</span> <a href="https://en.wikipedia.org/wiki/Samuel_Russell" target="_blank">Wikipedia: Samuel Russell</a> |
+            <span id="fn19">[19]</span> Bradley, China Mirage
+        </p>
+
+        <h4 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-top: 2rem;">Image Credits</h4>
+        <p style="font-size: 0.8rem; color: var(--ink-faint);">
+            Hero: William Daniell, "Canton Factories" (c. 1805–06), <a href="https://artsandculture.google.com/asset/canton-factories-william-daniell/IgG-g3wdsqPsSg" target="_blank">Google Arts & Culture</a>, Public Domain. |
+            Chart: "Opium imports into China 1650–1880," <a href="https://asiapacificcurriculum.ca/learning-module/opium-wars-china" target="_blank">Asia Pacific Curriculum</a>.
+        </p>
+    </section>
+
+    <footer>
+        HIST/EAST 213: Modern East Asia | Winter 2026 | <a href="#">Back to top</a>
+    </footer>
+
+</body>
+</html>

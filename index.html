@@ -566,10 +566,20 @@ function renderSidebar(p, i) {
     h += '</div>';
   }
   
+  // Deep Dives for specific plates
+  if (p.plate === 10) {
+    h += '<div class="section-title">📚 Deep Dive</div>';
+    h += '<a href="print/us-opium-deep-dive.html" target="_blank" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<div class="title">US Gains from the Opium Trade</div>';
+    h += '<div class="author">Russell & Co., the Delanos, Forbes family</div>';
+    h += '<div class="source">How New England merchants built fortunes on drug money</div>';
+    h += '</a>';
+  }
+
   var ni = i + 1;
   while (ni < plates.length && plates[ni].noClass) ni++;
   var nx = plates[ni];
-  
+
   h += '<div class="section-title">Coming Up Next</div>';
   if (nx) {
     h += '<div class="upcoming-card">';

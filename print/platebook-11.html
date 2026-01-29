@@ -326,20 +326,43 @@
 
   <!-- Map -->
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Uraga (Edo Bay)</strong> (浦賀) — Where Perry's Black Ships first anchored, July 1853</div>
-        <div class="map-loc"><strong>Edo (Tokyo)</strong> (江戶) — Shogunal capital; center of crisis and debate</div>
-        <div class="map-loc"><strong>Shimoda</strong> (下田) — First port opened to Americans (1854)</div>
-        <div class="map-loc"><strong>Hakodate</strong> (函館) — Second port opened (1854)</div>
-        <div class="map-loc"><strong>Yokohama</strong> (横浜) — Major treaty port; grew rapidly after opening</div>
-        <div class="map-loc"><strong>Kyoto</strong> (京都) — Imperial capital; 'revere the emperor' movement centered here</div>
-        <div class="map-loc"><strong>Satsuma (Kagoshima)</strong> — Powerful domain that would lead Meiji Restoration</div>
-      </div>
-    </div>
-    <div class="map-quote">"The President of the United States has sent me to request that American ships may be allowed to enter Japanese ports to obtain supplies of coal, provisions, and water." — Perry's message to Japan</div>
+    <span class="label">Map: Japan's Treaty Ports 1853–1867</span>
+    <div id="map" style="height: 180px; border: 1px solid #aaa; border-radius: 4px; margin-top: 3px;"></div>
+    <div class="map-quote">"The President of the United States has sent me to request that American ships may be allowed to enter Japanese ports." — Perry's message to Japan</div>
   </div>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const map = L.map('map', { zoomControl: false, attributionControl: false }).setView([36.5, 137], 5);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd', maxZoom: 10
+      }).addTo(map);
+
+      const locations = [
+        { name: "Uraga 浦賀", lat: 35.2297, lng: 139.7234, color: "#c0392b", desc: "Perry arrival 1853" },
+        { name: "Edo 江戸", lat: 35.6762, lng: 139.6503, color: "#8e44ad", desc: "Shogunal capital" },
+        { name: "Shimoda 下田", lat: 34.6711, lng: 138.9451, color: "#2980b9", desc: "First port 1854" },
+        { name: "Hakodate 函館", lat: 41.7686, lng: 140.7288, color: "#2980b9", desc: "Second port 1854" },
+        { name: "Yokohama 横浜", lat: 35.4437, lng: 139.6380, color: "#2980b9", desc: "Major treaty port" },
+        { name: "Kyoto 京都", lat: 35.0116, lng: 135.7681, color: "#d4af37", desc: "Imperial capital" },
+        { name: "Kagoshima 鹿児島", lat: 31.5966, lng: 130.5571, color: "#27ae60", desc: "Satsuma domain" },
+        { name: "Shimonoseki 下関", lat: 33.9500, lng: 130.9500, color: "#e67e22", desc: "Bombardment 1864" }
+      ];
+
+      locations.forEach(loc => {
+        L.circleMarker([loc.lat, loc.lng], {
+          radius: 6, color: loc.color, weight: 2, fillColor: loc.color, fillOpacity: 0.8
+        }).addTo(map).bindTooltip(loc.name, { permanent: true, direction: 'right', offset: [8, 0], className: 'map-label' });
+      });
+    });
+  </script>
+  <style>
+    .map-label { background: rgba(255,255,255,0.9); border: none; box-shadow: none; font-size: 8px; font-weight: 600; padding: 1px 4px; }
+    .leaflet-tooltip-right:before { display: none; }
+  </style>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

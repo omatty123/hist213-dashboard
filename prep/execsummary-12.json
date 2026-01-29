@@ -15,10 +15,21 @@
       "type": "primary",
       "summary": "Fukuzawa Yukichi was Meiji Japan's most influential intellectual—a former samurai who became the leading advocate for Western learning and 'civilization.' His 'An Encouragement of Learning' (1872-76), which sold millions of copies, opened with the revolutionary claim that 'Heaven did not create men above men, nor set men below men'—a direct challenge to the hereditary status system that had defined Tokugawa Japan.\n\nYet Fukuzawa's egalitarianism had limits. His infamous 1885 essay 'Leaving Asia' (Datsu-A Ron) argued that Japan should abandon 'backward' Asian neighbors and align with the 'civilized' West. China and Korea, he wrote, were holding Japan back; Japan must treat them as Westerners did—with force if necessary. This text reveals how Meiji reformers internalized Western racial hierarchies while ostensibly embracing Western 'universal' values.\n\nThe tension in Fukuzawa's thought—equality among Japanese, hierarchy among nations—captures the contradictions of Meiji modernization. Japan adopted Western institutions while developing its own imperial ambitions. The path from 'civilization and enlightenment' to Asian empire was shorter than Fukuzawa's admirers acknowledge.",
       "keyQuotes": [
-        {"quote": "Heaven did not create men above men, nor set men below men.", "page": "p. 670"},
-        {"quote": "We must not wait for our neighbors to become enlightened... We must leave the ranks of Asian nations and cast our lot with the civilized nations of the West.", "page": "p. 755"},
-        {"quote": "The only way to maintain our independence is to adopt Western civilization.", "page": "SJT"},
-        {"quote": "We should deal with China and Korea in the same way the Western nations do.", "page": "p. 756"}
+        {
+          "quote": "Heaven did not create men above men, nor set men below men.",
+          "page": "p. 670",
+          "verificationPath": "Course PDF (SJT pp. 669-764): https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
+        },
+        {
+          "quote": "We must not wait for our neighbors to become enlightened... We must leave the ranks of Asian nations and cast our lot with the civilized nations of the West.",
+          "page": "p. 755",
+          "verificationPath": "Course PDF (SJT pp. 669-764): https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
+        },
+        {
+          "quote": "We should deal with China and Korea in the same way the Western nations do.",
+          "page": "p. 756",
+          "verificationPath": "Course PDF (SJT pp. 669-764): https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
+        }
       ],
       "thematicExamples": [
         "Fukuzawa's attack on hereditary status - the 'encouragement of learning' meant ability should replace birth",
@@ -66,18 +77,15 @@
   "keyPassages": [
     {
       "quote": "We must not wait for our neighbors to become enlightened... We must leave the ranks of Asian nations and cast our lot with the civilized nations of the West.",
-      "source": "Fukuzawa Yukichi, 'Leaving Asia'",
-      "page": "1885"
-    },
-    {
-      "quote": "The only way to maintain our independence is to adopt Western civilization. Those who oppose it must be treated as enemies of the nation.",
-      "source": "Fukuzawa Yukichi",
-      "page": "SJT"
+      "source": "Fukuzawa Yukichi, 'Leaving Asia' (Datsu-A Ron)",
+      "page": "p. 755",
+      "verificationPath": "Course PDF: https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
     },
     {
       "quote": "Heaven did not create men above men, nor set men below men.",
-      "source": "Fukuzawa Yukichi, opening line of An Encouragement of Learning",
-      "page": "SJT"
+      "source": "Fukuzawa Yukichi, An Encouragement of Learning (1872)",
+      "page": "p. 670",
+      "verificationPath": "Course PDF: https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
     }
   ],
   "peopleplacesthings": {
@@ -107,8 +115,8 @@
       "talkingPoints": "It's both a product of its time and troublingly racist. Fukuzawa internalized Western hierarchies and applied them to other Asians. This thinking contributed to later Japanese imperialism. But he also championed equality and education."
     },
     {
-      "question": "Why did Japan 'succeed' at modernization where China (seemingly) 'failed'?",
-      "talkingPoints": "This framing is problematic but worth examining. Consider: scale (Japan smaller), timing (more warning), social structure (samurai could transform), luck. Avoid cultural essentialism about 'Japanese discipline.'"
+      "question": "Why could Japan IMPLEMENT reforms that China couldn't during this period?",
+      "talkingPoints": "REFRAME THE QUESTION: Not 'succeed vs. fail' but 'what were the obstacles to implementation?' (1) China was fighting Taiping Rebellion (1850-64, 20-30M dead) — you can't reform during existential civil war. (2) Scale: reforming an empire vs. an archipelago. (3) Qing were conquest dynasty — Manchu reforms could undermine Manchu power. (4) Japan's domain system created competition to modernize. (5) Samurai could be redirected (stipends → bonds); China had no equivalent convertible elite. This is about STRUCTURAL CONDITIONS, not national character."
     }
   ],
   "timeline": [
@@ -138,9 +146,9 @@
     }
   ],
   "connections": {
-    "fromPrevious": "Plate 11 showed Japan's crisis upon Western arrival. Meiji Restoration was the response: transform or be colonized.",
-    "toNext": "Plate 13 examines China during the same period—the Taiping Rebellion nearly destroyed the Qing while Japan was transforming.",
-    "broaderThemes": "Meiji Japan becomes the model for later Asian modernizers. But its 'success' also led to imperialism that devastated neighbors. 'Modernization' isn't always benign."
+    "fromPrevious": "Plate 11 showed Japan's crisis upon Western arrival. Meiji Restoration was ONE possible response — but remember China couldn't pursue this path because it was simultaneously fighting the deadliest civil war in human history.",
+    "toNext": "Plate 13 examines China during the SAME period — while Japan was transforming, China was losing 20-30 million people to the Taiping Rebellion. This isn't 'China failed to reform' — it's 'China was fighting for survival.'",
+    "broaderThemes": "Meiji Japan becomes the model for later Asian modernizers. But its 'success' also led to imperialism that devastated neighbors. 'Modernization' isn't always benign. And the Japan/China comparison requires examining OBSTACLES TO IMPLEMENTATION, not national character."
   },
   "nextPreview": {
     "plate": 13,

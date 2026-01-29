@@ -18,23 +18,28 @@
       "keyQuotes": [
         {
           "quote": "My mind is your mind. How could men know it? They may know Heaven and earth, but they know not the spirit. Yet I am the spirit. Now you shall attain this eternal truth, cultivate it, write it, and teach it to all people.",
-          "page": "p. 232"
+          "page": "p. 232",
+          "verificationPath": "Course PDF (SKT pp. 228-235): https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
         },
         {
-          "quote": "In April 1860 the whole world was in turmoil, and the hearts of the people turned evil. And a strange rumor spread in the world, saying: 'The Westerners cultivated high ethics, and there is nothing they cannot do. There is no one who can stand before their attacking military power, and even China is being destroyed.'",
-          "page": "p. 232"
+          "quote": "In April 1860 the whole world was in turmoil, and the hearts of the people turned evil. And a strange rumor spread in the world, saying: 'The Westerners cultivated high ethics, and there is nothing they cannot do...'",
+          "page": "p. 232",
+          "verificationPath": "Course PDF (SKT pp. 228-235): https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
         },
         {
-          "quote": "Human beings are heaven (in nae ch'on) and all are equal; there are no differences among humans, so distinctions of high and low violate God's will. Gentlemen, please vow to abandon distinctions of high and low without fail.",
-          "page": "p. 229"
+          "quote": "Human beings are heaven (in nae ch'on) and all are equal; there are no differences among humans, so distinctions of high and low violate God's will.",
+          "page": "p. 229",
+          "verificationPath": "Course PDF (SKT pp. 228-235): https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
         },
         {
-          "quote": "I was born in the East and received the truth in the East. Therefore, the Way is the Heavenly Way and the doctrine is the Eastern Learning (Tonghak). Moreover, since there is division of East and West in geography, how could one say West is East and East is West?",
-          "page": "p. 233"
+          "quote": "I was born in the East and received the truth in the East. Therefore, the Way is the Heavenly Way and the doctrine is the Eastern Learning.",
+          "page": "p. 233",
+          "verificationPath": "Course PDF (SKT pp. 228-235): https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
         },
         {
-          "quote": "Treat all persons at home as God. Do filial duty to your parents with all your strength, respect your husbands wholly, and love your children and daughters-in-law. Regard your servants as your own children, love even animals, and do not cut young trees.",
-          "page": "p. 234"
+          "quote": "Treat all persons at home as God. Do filial duty to your parents with all your strength... Regard your servants as your own children, love even animals.",
+          "page": "p. 234",
+          "verificationPath": "Course PDF (SKT pp. 228-235): https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
         }
       ],
       "thematicExamples": [
@@ -58,15 +63,13 @@
       "keyQuotes": [
         {
           "quote": "We will sweep away the corrupt officials who have sucked the blood of the people.",
-          "page": "Tonghak proclamation"
-        },
-        {
-          "quote": "The foreigners and their goods have flooded our land while our people starve.",
-          "page": "Peasant grievance"
+          "page": "Tonghak proclamation — VERIFY exact page from course PDF",
+          "verificationPath": "Course PDF: https://drive.google.com/file/d/1I1ObGHD1eoZlci6KmK6s-R9kmp5Q4FND/view"
         },
         {
           "quote": "Punish corrupt officials and powerful landlords. Give land to the tillers. Drive out the Japanese and Western barbarians.",
-          "page": "Twelve-point reform program"
+          "page": "Twelve-point reform program — VERIFY exact page from course PDF",
+          "verificationPath": "Course PDF: https://drive.google.com/file/d/1I1ObGHD1eoZlci6KmK6s-R9kmp5Q4FND/view"
         }
       ],
       "thematicExamples": [
@@ -122,29 +125,34 @@
   ],
   "keyPassages": [
     {
-      "quote": "My mind is your mind. How could men know it? They may know Heaven and earth, but they know not the spirit. Yet I am the spirit. Now you shall attain this eternal truth, cultivate it, write it, and teach it to all people.",
+      "quote": "My mind is your mind. How could men know it? They may know Heaven and earth, but they know not the spirit. Yet I am the spirit.",
       "source": "Ch'oe Cheu, 'On Learning Truth'",
-      "page": "p. 232"
+      "page": "p. 232",
+      "verificationPath": "https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
     },
     {
       "quote": "Human beings are heaven (in nae ch'on) and all are equal; there are no differences among humans, so distinctions of high and low violate God's will.",
       "source": "Ch'oe Sihyong",
-      "page": "p. 229"
+      "page": "p. 229",
+      "verificationPath": "https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
     },
     {
-      "quote": "In April 1860 the whole world was in turmoil... And a strange rumor spread in the world, saying: 'The Westerners cultivated high ethics, and there is nothing they cannot do. There is no one who can stand before their attacking military power, and even China is being destroyed.'",
+      "quote": "In April 1860 the whole world was in turmoil... 'The Westerners cultivated high ethics, and there is nothing they cannot do... even China is being destroyed.'",
       "source": "Ch'oe Cheu, 'On Learning Truth'",
-      "page": "p. 232"
+      "page": "p. 232",
+      "verificationPath": "https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
     },
     {
-      "quote": "I was born in the East and received the truth in the East. Therefore, the Way is the Heavenly Way and the doctrine is the Eastern Learning. Moreover, since there is division of East and West in geography, how could one say West is East and East is West?",
+      "quote": "I was born in the East and received the truth in the East. Therefore, the Way is the Heavenly Way and the doctrine is the Eastern Learning.",
       "source": "Ch'oe Cheu, 'On Learning Truth'",
-      "page": "p. 233"
+      "page": "p. 233",
+      "verificationPath": "https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
     },
     {
-      "quote": "Treat all persons at home as God. Do filial duty to your parents with all your strength, respect your husbands wholly, and love your children and daughters-in-law. Regard your servants as your own children, love even animals.",
+      "quote": "Treat all persons at home as God... Regard your servants as your own children, love even animals.",
       "source": "Ch'oe Sihyong, 'On Practicing Truth at Home'",
-      "page": "p. 234"
+      "page": "p. 234",
+      "verificationPath": "https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"
     }
   ],
   "peopleplacesthings": {

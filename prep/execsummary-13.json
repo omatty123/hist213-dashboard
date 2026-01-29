@@ -16,9 +16,21 @@
       "type": "secondary",
       "summary": "Spence contextualizes the Taiping Rebellion within Qing China's compound crisis: the aftermath of Opium War defeat, population pressure, administrative decay, and ethnic tension between Manchu rulers and Han majority. The rebellion wasn't an isolated event but the largest of numerous uprisings that shook China from the 1850s through the 1870s—Nian in the north, Muslim rebellions in Yunnan and the northwest.\n\nCrucially, Spence shows that the Qing survived not through imperial military strength but through provincial initiative. Zeng Guofan's Hunan Army and Li Hongzhang's Anhui Army—raised, funded, and commanded by Chinese (Han) officials—defeated the Taiping. This decentralization saved the dynasty short-term but created long-term problems: regional armies, provincial power, and ultimately the warlordism that would plague China into the 20th century.\n\nThe comparison with Meiji Japan is implicit but devastating: while Japan was unifying under central reform leadership, China was fragmenting under provincial strongmen. Same decade, opposite trajectories.",
       "keyQuotes": [
-        {"quote": "For a generation the bones of the innocent have lain unburied on the plains.", "page": "Spence"},
-        {"quote": "The Qing dynasty survived, but the world that emerged from the rebellions was fundamentally different.", "page": "Spence"},
-        {"quote": "Regional armies, initially raised to suppress rebellion, became permanent features of Chinese politics.", "page": "Spence"}
+        {
+          "quote": "For a generation the bones of the innocent have lain unburied on the plains.",
+          "page": "VERIFY from course PDF",
+          "verificationPath": "Course PDF (Spence): https://drive.google.com/file/d/1DQ6QnVtXRuQ6l-txpOrrXt2XctrHlkZt/view"
+        },
+        {
+          "quote": "The Qing dynasty survived, but the world that emerged from the rebellions was fundamentally different.",
+          "page": "VERIFY from course PDF",
+          "verificationPath": "Course PDF (Spence): https://drive.google.com/file/d/1DQ6QnVtXRuQ6l-txpOrrXt2XctrHlkZt/view"
+        },
+        {
+          "quote": "Regional armies, initially raised to suppress rebellion, became permanent features of Chinese politics.",
+          "page": "VERIFY from course PDF",
+          "verificationPath": "Course PDF (Spence): https://drive.google.com/file/d/1DQ6QnVtXRuQ6l-txpOrrXt2XctrHlkZt/view"
+        }
       ],
       "thematicExamples": [
         "Zeng Guofan as Confucian hero/regional warlord - his army saved the dynasty but also weakened central authority",
@@ -39,9 +51,21 @@
       "type": "primary",
       "summary": "The Taiping primary sources reveal a movement far more radical than the Qing it challenged. Hong Xiuquan's religious visions—he believed himself the younger brother of Jesus Christ, sent to establish God's kingdom on earth—combined heterodox Christianity with Chinese apocalyptic traditions. The Taiping land system promised equal distribution of all property: 'There shall be no inequality, and no person shall be without food or clothing.'\n\nThe movement's radical gender policies—women could serve in the army, foot-binding was banned, separate quarters for men and women enforced—challenged Confucian patriarchy more fundamentally than anything until the 20th century. Yet these ideals were often contradicted by practice: Hong maintained a harem; discipline collapsed; the 'Heavenly Kingdom' became as brutal as the empire it opposed.\n\nThe Taiping challenge frightens precisely because it shows that alternatives to the existing order could be imagined—and nearly succeeded. Twenty to thirty million dead testify to how seriously the Qing took this threat.",
       "keyQuotes": [
-        {"quote": "The Heavenly Father, the Supreme Lord and Great God, is the true god, the one God.", "page": "SCT"},
-        {"quote": "All the land in the empire shall be farmed jointly by the people of the empire... There shall be no inequality.", "page": "SCT"},
-        {"quote": "The customs of the demons (Manchus) must be completely eliminated.", "page": "SCT"}
+        {
+          "quote": "The Heavenly Father, the Supreme Lord and Great God, is the true god, the one God.",
+          "page": "VERIFY from course PDF",
+          "verificationPath": "Course PDF (SCT): https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
+        },
+        {
+          "quote": "All the land in the empire shall be farmed jointly by the people of the empire... There shall be no inequality.",
+          "page": "VERIFY from course PDF",
+          "verificationPath": "Course PDF (SCT): https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
+        },
+        {
+          "quote": "The customs of the demons (Manchus) must be completely eliminated.",
+          "page": "VERIFY from course PDF",
+          "verificationPath": "Course PDF (SCT): https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
+        }
       ],
       "thematicExamples": [
         "Hong Xiuquan's visions - failed examination candidate becomes messianic leader, showing how blocked mobility could radicalize",
@@ -87,18 +111,21 @@
   "keyPassages": [
     {
       "quote": "The Heavenly Father, the Supreme Lord and Great God, is the true god, the one God. There is no other beside him.",
-      "source": "Taiping religious text",
-      "page": "SCT"
+      "source": "Taiping religious text, Sources of Chinese Tradition",
+      "page": "VERIFY from course PDF",
+      "verificationPath": "https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
     },
     {
       "quote": "All the land in the empire shall be farmed jointly by the people of the empire... There shall be no inequality.",
-      "source": "Taiping Land System",
-      "page": "SCT"
+      "source": "Taiping Land System, Sources of Chinese Tradition",
+      "page": "VERIFY from course PDF",
+      "verificationPath": "https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
     },
     {
       "quote": "For a generation the bones of the innocent have lain unburied on the plains.",
-      "source": "Zeng Guofan, describing the devastation",
-      "page": "Spence"
+      "source": "Spence, The Search for Modern China",
+      "page": "VERIFY from course PDF",
+      "verificationPath": "https://drive.google.com/file/d/1DQ6QnVtXRuQ6l-txpOrrXt2XctrHlkZt/view"
     }
   ],
   "peopleplacesthings": {
@@ -125,7 +152,7 @@
     },
     {
       "question": "Why did internal rebellion do more damage to China than foreign aggression?",
-      "talkingPoints": "The Opium War killed perhaps 20,000; Taiping killed 20-30 million. Internal crisis was more devastating than imperialism. But they were connected: Opium War had weakened Qing legitimacy."
+      "talkingPoints": "The Opium War killed perhaps 20,000; Taiping killed 20-30 million. Internal crisis was FAR more devastating than imperialism. But they were connected: Opium War weakened Qing legitimacy. KEY POINT FOR JAPAN/CHINA COMPARISON: Japan was transforming 1868-1890 while China was (a) fighting Taiping 1850-64, (b) fighting Nian Rebellion 1851-68, (c) fighting Muslim rebellions 1856-73. China didn't 'fail to reform' — it was fighting for survival on multiple fronts simultaneously."
     },
     {
       "question": "How did the Taiping suppression change China's political structure?",
@@ -159,9 +186,9 @@
     }
   ],
   "connections": {
-    "fromPrevious": "Plate 12 showed Japan's successful transformation under Meiji. China during the same period faced devastating internal rebellion.",
-    "toNext": "Plate 14 examines the Tonghak Rebellion in Korea—another millenarian uprising against a weakening dynasty.",
-    "broaderThemes": "Taiping shows how 'Western' ideas (Christianity) could be transformed in Chinese contexts. Also shows how internal crisis can be more destructive than imperialism."
+    "fromPrevious": "Plate 12 showed Japan's Meiji transformation. But look at the TIMELINE: Taiping Rebellion 1850-1864, Meiji Restoration 1868. Japan transformed AFTER China's civil war ended, while China was still recovering from losing 20-30 million people. This isn't about 'Japan succeeded, China failed' — it's about WHEN and UNDER WHAT CONDITIONS reform was attempted.",
+    "toNext": "Plate 14 examines the Tonghak Rebellion in Korea — another millenarian uprising against a weakening dynasty, but with very different international consequences.",
+    "broaderThemes": "Taiping shows: (1) Internal crisis can be more destructive than imperialism (Opium War killed ~20,000; Taiping killed 20-30 million). (2) 'Western' ideas (Christianity) were transformed in Chinese contexts. (3) The Japan/China comparison must account for the fact that China was fighting for survival during Japan's reform window."
   },
   "nextPreview": {
     "plate": 14,

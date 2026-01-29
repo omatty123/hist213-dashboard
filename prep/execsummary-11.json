@@ -16,9 +16,16 @@
       "type": "primary",
       "summary": "The Harris Treaty established the template for Japan's 'unequal treaties' with Western powers. American consul Townsend Harris negotiated terms that mirrored China's post-Opium War concessions: extraterritoriality for American citizens, fixed tariff rates limiting Japanese revenue, and opening of additional ports. Yet the circumstances differed crucially: Japan signed without a war, through negotiation rather than defeat.\n\nThe treaty's provisions reveal both Western demands and Japanese adaptation. Harris argued that signing voluntarily would be better than waiting for Britain (fresh from victories in China) to impose harsher terms by force. Japanese negotiators extracted what concessions they could—later revision dates, limitations on where foreigners could travel. The document shows Japan entering the Western treaty system on unfavorable but not catastrophic terms.",
       "keyQuotes": [
-        {"quote": "The President of the United States has sent me to request that American ships may be allowed to enter Japanese ports.", "page": "SJT"},
-        {"quote": "American citizens committing offenses in Japan shall be tried by American consular courts.", "page": "treaty text"},
-        {"quote": "All duties shall be paid in Japanese currency at rates established by this treaty.", "page": "treaty text"}
+        {
+          "quote": "Americans committing offenses in Japan shall be tried in American Consular courts, and punished according to American law.",
+          "page": "Article VI",
+          "verificationPath": "Harris Treaty full text: https://worldjpn.net/documents/texts/pw/18580729.T1E.html"
+        },
+        {
+          "quote": "Duties shall be paid to the government of Japan, on all goods landed in the country... according to the tariff hereunto appended.",
+          "page": "Article IV",
+          "verificationPath": "Harris Treaty full text: https://worldjpn.net/documents/texts/pw/18580729.T1E.html"
+        }
       ],
       "thematicExamples": [
         "Extraterritoriality provisions - Americans beyond Japanese law, same humiliation as in China",
@@ -39,9 +46,16 @@
       "type": "primary",
       "summary": "The shogunate's unprecedented consultation with daimyo on foreign policy reveals a regime in crisis—traditionally, daimyo had no voice in national matters. Their responses ranged from defiant resistance ('expel the barbarians') to pragmatic accommodation ('study Western methods to strengthen Japan') to opportunistic positioning (using the crisis to advance domain interests).\n\nThese documents show that Japan's response to the West was neither unanimous nor predetermined. The eventual Meiji transformation emerged from intense debate among competing visions. The 'sonnō jōi' (revere emperor, expel barbarians) slogan initially meant armed resistance to foreigners; only later did it transform into 'revere emperor, modernize Japan.' The daimyo opinions capture a society thinking through an existential challenge in real time.",
       "keyQuotes": [
-        {"quote": "If we try to drive them away, we will make them our enemies. If we show them friendship, we can make them our friends.", "page": "SJT"},
-        {"quote": "To exchange our precious land's customs for the ways of the barbarians would be to disgrace our ancestors.", "page": "SJT"},
-        {"quote": "The foreigners have superior weapons. We must learn their techniques before we can resist them.", "page": "SJT"}
+        {
+          "quote": "Although our country's territory is not extensive, foreigners both fear and respect us... the Americans who arrived recently, though fully aware of the Bakufu's prohibition... insisted on presenting their written requests... They were arrogant and discourteous, their actions an outrage.",
+          "page": "Tokugawa Nariaki memorandum",
+          "verificationPath": "Course PDF: https://drive.google.com/file/d/1H5bRd2kGVHdlD8tXNk9Yfyx0ZV3YPzX0/view — VERIFY PAGE NUMBER"
+        },
+        {
+          "quote": "[Accommodation argument - exact quote needs verification from course PDF]",
+          "page": "NEEDS VERIFICATION",
+          "verificationPath": "Course PDF: https://drive.google.com/file/d/1H5bRd2kGVHdlD8tXNk9Yfyx0ZV3YPzX0/view"
+        }
       ],
       "thematicExamples": [
         "Accommodation arguments - learn from the West to eventually resist it (later mainstream Meiji position)",
@@ -86,19 +100,16 @@
   ],
   "keyPassages": [
     {
-      "quote": "The President of the United States has sent me to request that American ships may be allowed to enter Japanese ports to obtain supplies of coal, provisions, and water.",
-      "source": "Perry's message to Japan",
-      "page": "1853"
+      "quote": "Americans committing offenses in Japan shall be tried in American Consular courts, and punished according to American law.",
+      "source": "Harris Treaty of 1858, Article VI",
+      "page": "Article VI",
+      "verificationPath": "https://worldjpn.net/documents/texts/pw/18580729.T1E.html"
     },
     {
-      "quote": "If we try to drive them away, we will make them our enemies. If we show them friendship, we can make them our friends.",
-      "source": "Daimyo response advocating accommodation",
-      "page": "SJT"
-    },
-    {
-      "quote": "To exchange our precious land's customs for the ways of the barbarians would be to disgrace our ancestors.",
-      "source": "Daimyo response opposing treaties",
-      "page": "SJT"
+      "quote": "Although our country's territory is not extensive, foreigners both fear and respect us... the Americans who arrived recently... were arrogant and discourteous, their actions an outrage. Indeed, this was the greatest disgrace we have suffered since the dawn of our history.",
+      "source": "Tokugawa Nariaki, Memorandum to the Bakufu (1853)",
+      "page": "VERIFY from course PDF",
+      "verificationPath": "https://drive.google.com/file/d/1H5bRd2kGVHdlD8tXNk9Yfyx0ZV3YPzX0/view"
     }
   ],
   "peopleplacesthings": {
@@ -121,7 +132,7 @@
   "keyQuestions": [
     {
       "question": "Why did Japan avoid a war like the Opium War?",
-      "talkingPoints": "Japan observed China's fate and learned. Geographic factors (island nation) mattered. Internal debates produced consensus for negotiation. But also: US was less aggressive than Britain, more interested in coaling stations than opium."
+      "talkingPoints": "Multiple factors — NOT simply 'Japan learned.' (1) TIMING: Japan had warning; Perry came 15 years after Opium War. (2) DIFFERENT AGGRESSOR: US wanted coaling stations, not drug markets — less at stake. (3) POLITICAL STRUCTURE: Bakufu could negotiate without appearing weak to single emperor; Qing had no such flexibility. (4) SCALE: Smaller polity, faster decision-making. Avoid framing this as Japanese wisdom vs. Chinese stubbornness — the structural conditions differed profoundly."
     },
     {
       "question": "What did the daimyo responses reveal about divisions within Japan?",
@@ -129,7 +140,7 @@
     },
     {
       "question": "Why did Japan's 'opening' lead to transformation rather than humiliation?",
-      "talkingPoints": "This is a complex question with no single answer. Consider: Timing (Japan had more warning), scale (Japan was smaller, more cohesive), leadership (reform-minded samurai), luck. Avoid cultural essentialism."
+      "talkingPoints": "REJECT THE PREMISE FIRST: Japan DID experience humiliation — unequal treaties lasted until 1899. The question assumes a false binary. Better framing: What structural conditions enabled faster IMPLEMENTATION of reforms? (1) No concurrent civil war (China had Taiping, 20-30M dead). (2) Domain rivalry created competition to modernize. (3) Samurai class could be redirected (stipends → bonds → investment) rather than eliminated. (4) Smaller scale = faster coordination. This is about OBSTACLES TO IMPLEMENTATION, not learning or willingness."
     }
   ],
   "timeline": [
@@ -159,9 +170,9 @@
     }
   ],
   "connections": {
-    "fromPrevious": "Plate 10 showed China's traumatic 'opening' via the Opium War. Japan faced similar pressure but responded very differently. Why?",
-    "toNext": "Plate 12 examines Meiji Transformation—the reforms that made Japan the first non-Western industrial power. The Black Ships set this in motion.",
-    "broaderThemes": "Japan and China faced the same challenge (Western pressure) with different outcomes. Understanding why requires examining internal structures, leadership, and choices—not cultural destiny."
+    "fromPrevious": "Plate 10 showed China's traumatic 'opening' via the Opium War. Japan faced similar pressure but under DIFFERENT CONDITIONS: (1) 15 years of warning, (2) US wanted coaling stations not drug markets, (3) no concurrent civil war draining resources. The question isn't 'why did Japan respond better?' but 'what structural differences shaped different outcomes?'",
+    "toNext": "Plate 12 examines Meiji Transformation. But remember: China was fighting the Taiping Rebellion (20-30M dead) during the same period Japan was transforming. Compare implementation OBSTACLES, not national character.",
+    "broaderThemes": "Japan and China faced the same challenge (Western pressure) with different outcomes. Understanding why requires examining internal structures, OBSTACLES TO IMPLEMENTATION, and historical conjuncture—not cultural destiny or 'learning.'"
   },
   "nextPreview": {
     "plate": 12,
@@ -172,9 +183,10 @@
   "teachingNotes": [
     "Show images of Black Ships—the visual contrast between steam warships and Japanese vessels is striking.",
     "The daimyo responses show real debate, not monolithic 'Japan.' Have students identify different positions.",
-    "Be careful with 'Japan succeeded, China failed' framing—both faced genuine dilemmas with no easy answers.",
+    "REJECT 'Japan succeeded, China failed' framing EXPLICITLY. Ask: What were the OBSTACLES to implementation in each case? China was fighting a civil war that killed 20-30 million people during Japan's reform window. That's not about 'learning' or 'willingness.'",
     "MIT Visualizing Cultures 'Black Ships and Samurai' has excellent images and analysis.",
-    "Connect to contemporary Japan-US relations: the alliance began with gunboat diplomacy."
+    "Connect to contemporary Japan-US relations: the alliance began with gunboat diplomacy.",
+    "KEY POINT: Japan also signed unequal treaties and didn't revise them until 1899. The 'humiliation' framing applies to both—Japan just had fewer obstacles to eventual recovery."
   ],
   "map": {
     "center": [35.5, 139],

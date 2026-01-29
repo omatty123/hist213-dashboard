@@ -132,21 +132,21 @@
   "keyQuestions": [
     {
       "question": "Why did Japan avoid a war like the Opium War?",
-      "basicAnswer": "Japan learned from China's example. They saw what happened when China resisted, so they negotiated instead. The US was also less aggressive than Britain.",
-      "midAnswer": "Structural differences, not just 'learning.' (1) TIMING: 15 years warning — Japan watched China's humiliation. (2) DIFFERENT AGGRESSOR: US wanted coaling stations, not drug markets; less at stake, less reason to fight. (3) POLITICAL STRUCTURE: Bakufu could negotiate without undermining its own legitimacy the way Qing couldn't. (4) SCALE: Smaller polity = faster decision-making. Not Japanese wisdom vs. Chinese stubbornness — different structural conditions.",
-      "advancedAnswer": "Challenge the premise. Did Japan actually 'avoid' the Opium War outcome? Japan signed unequal treaties too — extraterritoriality, tariff limits, the works. They got the SAME RESULT through different means. The real questions: (1) Could China have negotiated? Britain had specific economic interests (opium profits) that REQUIRED war; the US had no equivalent. (2) Qing tributary system ideology made Japan-style negotiation nearly impossible — the Emperor couldn't treat 'barbarians' as equals without undermining the entire cosmological order. (3) Maybe the question is Eurocentric — it assumes negotiation was always available to China when structurally it may not have been. Japan didn't avoid humiliation; they just experienced it differently."
+      "basicAnswer": "Japan learned from China's example and negotiated instead of resisting.",
+      "midAnswer": "Different structures, not smarter leaders. 15 years warning + US wanted ports not drugs + smaller scale = different outcome.",
+      "advancedAnswer": "Did they 'avoid' it? Japan signed unequal treaties too. Same humiliation, different delivery method."
     },
     {
       "question": "What did the daimyo responses reveal about divisions within Japan?",
-      "basicAnswer": "Japan was divided. Some daimyo wanted to fight ('expel the barbarians'), others wanted to negotiate and learn from the West. This debate continued until the Meiji Restoration.",
-      "midAnswer": "Three positions: (1) RESISTANCE — expel the barbarians, preserve tradition. (2) ACCOMMODATION — negotiate now, learn Western techniques to resist later. (3) OPPORTUNISM — use the crisis to weaken the shogunate and advance domain interests. Key insight: Many who initially demanded resistance (Satsuma, Chōshū) later LED modernization. The positions weren't fixed.",
-      "advancedAnswer": "The consultation itself was revolutionary. Bakufu asking daimyo opinions = admission of weakness. This created a political arena that hadn't existed before — suddenly alternatives could be debated publicly. China had no equivalent forum. The irony: the 'expel barbarians' faction's FAILURE at armed resistance (Shimonoseki, Kagoshima bombardments) convinced them Western technology was necessary. They didn't change their goals (strong Japan), just their methods. 'Sonnō jōi' transformed from 'expel barbarians' to 'restore emperor and modernize.' Same slogan, opposite meaning."
+      "basicAnswer": "Japan was split: resist vs. accommodate vs. use the crisis for political advantage.",
+      "midAnswer": "The consultation itself was revolutionary — bakufu asking opinions = admission of weakness.",
+      "advancedAnswer": "'Expel barbarians' guys later LED modernization. Same slogan, opposite meaning. Positions weren't fixed."
     },
     {
       "question": "Why did Japan's 'opening' lead to transformation rather than humiliation?",
-      "basicAnswer": "Japan adapted quickly. They adopted Western technology and institutions while preserving Japanese spirit. Strong leadership and national unity made rapid modernization possible.",
-      "midAnswer": "Reject the binary. Japan DID experience humiliation — unequal treaties lasted until 1899! Better question: What enabled faster implementation? (1) No concurrent civil war (China had Taiping, 20-30M dead). (2) Domain competition drove modernization race. (3) Samurai could be redirected (stipends → bonds → investment). (4) Smaller scale = faster coordination. It's about obstacles to implementation, not willingness.",
-      "advancedAnswer": "The question is ideological. It assumes 'transformation' and 'humiliation' are opposites — but Japan's transformation WAS humiliating (foreign dictation of tariffs, extraterritoriality) AND produced its own horrors (imperialism, 1945). China's 'humiliation' also produced transformation (just later, and differently). The real question: Why do we frame Japan's path as 'success'? Because it looks like Western modernization? That's measuring Asia by European standards. On a 150-year view: Japan's path → empire → catastrophic defeat → US occupation. China's path → revolution → world's 2nd largest economy. Which 'succeeded'? The framing reveals our assumptions more than the history."
+      "basicAnswer": "Quick adaptation + strong leadership + national unity.",
+      "midAnswer": "Wrong binary. Japan WAS humiliated (unequal treaties until 1899). Better Q: What enabled faster IMPLEMENTATION?",
+      "advancedAnswer": "Japan's 'success' → imperialism → 1945 catastrophe. China's 'failure' → world's #2 economy. Which succeeded?"
     }
   ],
   "timeline": [

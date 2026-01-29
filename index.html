@@ -181,6 +181,13 @@
     .question-card { background: var(--surface-alt); border-radius: 6px; padding: 12px; margin-bottom: 10px; }
     .question-card .q { font-weight: 500; margin-bottom: 6px; font-size: 13px; }
     .question-card .a { font-size: 12px; color: var(--text-muted); padding-left: 10px; border-left: 2px solid var(--accent); }
+    .tiered-answers { border-left: none; padding-left: 0; }
+    .answer-tier { padding: 8px 10px; margin-bottom: 6px; border-radius: 4px; background: rgba(255,255,255,0.03); border-left: 3px solid var(--border); }
+    .answer-tier:last-child { margin-bottom: 0; }
+    .tier-label { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 6px; border-radius: 3px; margin-right: 8px; }
+    .tier-label.basic { background: #2d4a3e; color: #7fca9f; }
+    .tier-label.mid { background: #4a4a2d; color: #caca7f; }
+    .tier-label.advanced { background: #4a2d2d; color: #ca7f7f; }
     .timeline-table { width: 100%; border-collapse: collapse; font-size: 12px; }
     .timeline-table th { background: var(--accent-light); color: var(--accent); padding: 8px; text-align: left; width: 100px; }
     .timeline-table td { padding: 8px; border-bottom: 1px solid var(--border); }
@@ -741,7 +748,17 @@ function renderPrepContent(data, p) {
     for (var q = 0; q < maxQuestions; q++) {
       var kq = data.keyQuestions[q];
       h += '<div class="question-card"><div class="q">' + (q+1) + '. ' + kq.question + '</div>';
-      h += '<div class="a">' + kq.talkingPoints + '</div></div>';
+      // Handle both old format (talkingPoints) and new tiered format
+      if (kq.basicAnswer) {
+        h += '<div class="a tiered-answers">';
+        h += '<div class="answer-tier"><span class="tier-label basic">Basic</span> ' + kq.basicAnswer + '</div>';
+        if (kq.midAnswer) h += '<div class="answer-tier"><span class="tier-label mid">Mid</span> ' + kq.midAnswer + '</div>';
+        if (kq.advancedAnswer) h += '<div class="answer-tier"><span class="tier-label advanced">Advanced</span> ' + kq.advancedAnswer + '</div>';
+        h += '</div>';
+      } else if (kq.talkingPoints) {
+        h += '<div class="a">' + kq.talkingPoints + '</div>';
+      }
+      h += '</div>';
     }
     h += '</div>';
   }

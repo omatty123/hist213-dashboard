@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Dive: PRC Trade Wars & Tariff History | Plate 10 Connection</title>
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --parchment: #f5f1e8;
+      --gold: #c9a227;
+      --accent: #8b4513;
+      --red: #c0392b;
+      --blue: #2980b9;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--ink);
+      color: #222;
+      line-height: 1.6;
+    }
+    nav.breadcrumb {
+      background: var(--ink);
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    nav.breadcrumb a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    nav.breadcrumb a:hover { text-decoration: underline; }
+    nav.breadcrumb .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+    nav.breadcrumb .current { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+    .hero {
+      background: linear-gradient(135deg, #8b0000 0%, #1a1a2e 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
+    .hero .connection {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+
+    main {
+      background: var(--parchment);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h2 {
+      color: var(--ink);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.5rem;
+      margin: 2rem 0 1rem;
+      font-size: 1.5rem;
+    }
+    h2:first-of-type { margin-top: 0; }
+
+    h3 {
+      color: var(--accent);
+      margin: 1.5rem 0 0.75rem;
+      font-size: 1.2rem;
+    }
+
+    p { margin-bottom: 1rem; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .stat-card .number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--red);
+    }
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.25rem;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin: 1.5rem 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--gold);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid var(--parchment);
+    }
+    .timeline-item .date {
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .trade-war-box {
+      background: white;
+      border-left: 4px solid var(--red);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .trade-war-box.resolved {
+      border-left-color: #27ae60;
+    }
+    .trade-war-box.ongoing {
+      border-left-color: #e67e22;
+    }
+    .trade-war-box h4 {
+      margin: 0 0 0.5rem;
+      color: var(--ink);
+    }
+    .trade-war-box .status {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .status.escalating { background: #fdeaea; color: #c0392b; }
+    .status.resolved { background: #e8f5e9; color: #27ae60; }
+    .status.ongoing { background: #fff3e0; color: #e67e22; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: var(--ink);
+      color: white;
+    }
+    tr:hover { background: rgba(0,0,0,0.03); }
+
+    .source {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 0.25rem;
+    }
+    .source a { color: var(--blue); }
+
+    .callout {
+      background: linear-gradient(135deg, #fff9e6 0%, #fff 100%);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout-title {
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .historical-echo {
+      background: var(--ink);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    .historical-echo h3 {
+      color: var(--gold);
+      margin-top: 0;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--gold);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: #555;
+    }
+
+    .sources-section {
+      background: #f0f0f0;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+    .sources-section h3 { margin-top: 0; color: var(--ink); }
+    .sources-section ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    .sources-section li {
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+    .sources-section a { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <nav class="breadcrumb">
+    <a href="../index.html"><span style="font-size: 1.2rem;">&larr;</span> Back to Dashboard</a>
+    <span class="sep">|</span>
+    <span class="current">Plate 10: Qing vs. the West &mdash; Contemporary Connection</span>
+  </nav>
+
+  <div class="hero">
+    <h1>PRC Trade Wars & Tariff History</h1>
+    <p class="subtitle">From Canton System to Container Ships: China's Trade Conflicts Then and Now</p>
+    <div class="connection">
+      <strong>Historical Echo:</strong> In 1839, Commissioner Lin Zexu seized and destroyed British opium, triggering the first Opium War.<br>
+      In 2025, tariffs on both sides exceed 100%. The methods change; the stakes remain enormous.
+    </div>
+  </div>
+
+  <main>
+    <h2>China's Trade Position Today</h2>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="number">$6.3T</div>
+        <div class="label">Total Trade (2024)</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">$988B</div>
+        <div class="label">Trade Surplus (2024)</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">#1</div>
+        <div class="label">World's Largest Exporter</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">14.7%</div>
+        <div class="label">Share of Global Exports</div>
+      </div>
+    </div>
+
+    <p class="source">Source: <a href="https://www.worldstopexports.com/chinas-top-import-partners/" target="_blank">World's Top Exports (2024)</a>, <a href="https://www.congress.gov/crs-product/IF12990" target="_blank">Congressional Research Service</a></p>
+
+    <h3>Top Trading Partners (2024)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Partner</th>
+          <th>Trade Volume</th>
+          <th>Relationship</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ASEAN</strong></td>
+          <td>~$900B</td>
+          <td>Largest partner (bloc); trade up 9.1% in 2024</td>
+        </tr>
+        <tr>
+          <td><strong>United States</strong></td>
+          <td>$582.5B</td>
+          <td>4th largest partner; $295B deficit for US</td>
+        </tr>
+        <tr>
+          <td><strong>European Union</strong></td>
+          <td>~$780B</td>
+          <td>2nd largest; EV tariff dispute ongoing</td>
+        </tr>
+        <tr>
+          <td><strong>Taiwan</strong></td>
+          <td>$199B (imports)</td>
+          <td>Largest import source (semiconductors)</td>
+        </tr>
+        <tr>
+          <td><strong>Japan</strong></td>
+          <td>~$300B</td>
+          <td>Declining (-3.6% in 2024)</td>
+        </tr>
+        <tr>
+          <td><strong>South Korea</strong></td>
+          <td>~$280B</td>
+          <td>Declining (-1.9% in 2024)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="source">Source: <a href="https://en.wikipedia.org/wiki/List_of_the_largest_trading_partners_of_China" target="_blank">Wikipedia: Largest Trading Partners of China</a></p>
+
+    <h2>Active Trade Wars & Disputes</h2>
+
+    <h3>1. US-China Trade War (2018&ndash;Present)</h3>
+    <div class="trade-war-box">
+      <h4>The Big One</h4>
+      <span class="status escalating">Escalating</span>
+      <p style="margin-top: 0.75rem;">The largest trade conflict in modern history, affecting over $600 billion in bilateral trade.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="date">July 2018</span>
+        <p>US imposes 25% tariffs on $34B of Chinese goods. China retaliates with equivalent tariffs. <strong>Trade war begins.</strong></p>
+      </div>
+      <div class="timeline-item">
+        <span class="date">September 2018</span>
+        <p>US levies 10% tariffs on $200B more Chinese imports (later raised to 25%). China retaliates on $60B of US goods.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="date">Late 2019</span>
+        <p>Peak escalation: US tariffs of 15-30% on $550B; China tariffs of 5-25% on $185B of US goods.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="date">January 2020</span>
+        <p>"Phase One" deal signed. US reduces some tariffs; China commits to buy more US goods (commitments largely unmet).</p>
+      </div>
+      <div class="timeline-item">
+        <span class="date">2021&ndash;2024</span>
+        <p>Biden administration maintains Trump tariffs. Average US tariff on China: ~19%. Targeted increases on EVs, solar, batteries in 2024.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="date">February 2025</span>
+        <p>Trump 2.0: 10% tariff citing fentanyl emergency. Raised to 20% in March.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="date">April 2025</span>
+        <p><strong>Peak:</strong> US tariffs hit 145%; China retaliates at 125%. China suspends critical mineral exports.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="date">May 2025</span>
+        <p>Geneva negotiations: 90-day reduction to 30% (US) and 10% (China). Extended to November 2025.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="date">Current (Jan 2026)</span>
+        <p>US tariffs: <strong>47.5%</strong> on all Chinese goods. China tariffs: <strong>31.9%</strong> on all US goods.</p>
+      </div>
+    </div>
+    <p class="source">Sources: <a href="https://www.piie.com/research/piie-charts/2019/us-china-trade-war-tariffs-date-chart" target="_blank">Peterson Institute</a>, <a href="https://en.wikipedia.org/wiki/China%E2%80%93United_States_trade_war" target="_blank">Wikipedia</a>, <a href="https://taxfoundation.org/research/all/federal/trump-tariffs-trade-war/" target="_blank">Tax Foundation</a></p>
+
+    <div class="callout">
+      <div class="callout-title">By the Numbers: US-China Tariff Escalation</div>
+      <p><strong>Before trade war (2017):</strong> Average US tariff on China: ~3%</p>
+      <p><strong>Current (2026):</strong> Average US tariff on China: 47.5%</p>
+      <p><strong>Increase:</strong> More than <strong>15x higher</strong> than before the trade war began.</p>
+    </div>
+
+    <h3>2. EU-China EV Dispute (2023&ndash;Present)</h3>
+    <div class="trade-war-box ongoing">
+      <h4>Electric Vehicle Tariffs</h4>
+      <span class="status ongoing">WTO Panel Active</span>
+    </div>
+    <p><strong>Background:</strong> Chinese EV market share in EU surged from 3.5% (2020) to 27.2% (Q2 2024). EU launched anti-subsidy investigation in October 2023.</p>
+    <p><strong>EU Action (October 2024):</strong> Countervailing duties for 5 years:</p>
+    <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+      <li>BYD: 17.4%</li>
+      <li>Geely: 19.9%</li>
+      <li>SAIC: 37.6%</li>
+      <li>Other cooperating producers: 20.8%</li>
+      <li>Non-cooperating: 37.6%</li>
+    </ul>
+    <p><strong>China Retaliation:</strong> Anti-dumping probes into EU pork, dairy, and brandy (targeting French Cognac with temporary duties).</p>
+    <p><strong>Current Status:</strong> WTO panel established April 2025; composed October 2025. 17 countries reserved third-party rights.</p>
+    <p class="source">Sources: <a href="https://www.wto.org/english/tratop_e/dispu_e/cases_e/ds630_e.htm" target="_blank">WTO DS630</a>, <a href="https://www.csis.org/blogs/trustee-china-hand/slamming-brakes-eu-votes-impose-tariffs-chinese-evs" target="_blank">CSIS</a></p>
+
+    <h3>3. Canada-China Canola & EV Dispute (2024&ndash;Present)</h3>
+    <div class="trade-war-box">
+      <h4>Tit-for-Tat Escalation</h4>
+      <span class="status escalating">Escalating</span>
+    </div>
+    <p><strong>Canada's Move:</strong> 100% tariff on Chinese EVs; 25% on steel and aluminum.</p>
+    <p><strong>China's Retaliation:</strong></p>
+    <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+      <li>100% duties on Canadian canola oil, canola meal, and peas</li>
+      <li>25% tariffs on pork and seafood</li>
+      <li>Anti-dumping investigation into canola seed (September 2024)</li>
+    </ul>
+    <p><strong>Impact:</strong> China buys 65% of Canada's canola seed exports ($15.8B total canola exports in 2023). Exports to China collapsed 63% between 2024-2025.</p>
+    <p class="source">Source: <a href="https://www.canolacouncil.org/china-update/" target="_blank">Canola Council of Canada</a>, <a href="https://www.mltaikins.com/insights/a-new-era-in-canada-china-trade-key-tariff-changes-and-industry-impacts/" target="_blank">MLT Aikins</a></p>
+
+    <h3>4. Australia-China Trade War (2020&ndash;2024) <span style="color: #27ae60; font-weight: normal;">&mdash; RESOLVED</span></h3>
+    <div class="trade-war-box resolved">
+      <h4>Barley, Wine, and COVID Origins</h4>
+      <span class="status resolved">Resolved</span>
+    </div>
+    <p><strong>Trigger:</strong> Australia called for international COVID-19 origin investigation (April 2020). China's ambassador suggested boycott.</p>
+    <p><strong>China's Actions:</strong></p>
+    <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+      <li>80.5% tariff on Australian barley (May 2020)</li>
+      <li>206% tariff on Australian wine (November 2020)</li>
+      <li>Informal restrictions on coal, beef, lobster, timber, copper</li>
+    </ul>
+    <p><strong>Resolution:</strong></p>
+    <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+      <li>Barley tariffs removed: August 2023</li>
+      <li>Wine tariffs removed: March 2024</li>
+    </ul>
+    <p><strong>Outcome:</strong> Australian exporters diversified to new markets during restrictions. When China reopened, 76% of barley exports returned to China due to price premiums.</p>
+    <p class="source">Sources: <a href="https://www.foreignminister.gov.au/minister/penny-wong/media-release/resolution-barley-dispute-china" target="_blank">Australian Foreign Minister</a>, <a href="https://en.wikipedia.org/wiki/Australia%E2%80%93China_trade_war" target="_blank">Wikipedia</a></p>
+
+    <h2>WTO Disputes Involving China (2020&ndash;2025)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Case</th>
+          <th>Parties</th>
+          <th>Issue</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DS543</td>
+          <td>China vs US</td>
+          <td>Original 2018 tariffs</td>
+          <td>US lost (2020); appealed to paralyzed Appellate Body</td>
+        </tr>
+        <tr>
+          <td>DS611</td>
+          <td>EU vs China</td>
+          <td>IP rights / anti-suit injunctions</td>
+          <td>EU won; arbitration award July 2025</td>
+        </tr>
+        <tr>
+          <td>DS630</td>
+          <td>China vs EU</td>
+          <td>EV countervailing duties</td>
+          <td>Panel composed October 2025</td>
+        </tr>
+        <tr>
+          <td>DS633</td>
+          <td>China vs US</td>
+          <td>February 2025 tariffs (10%)</td>
+          <td>US claims national security exemption</td>
+        </tr>
+        <tr>
+          <td>DS638</td>
+          <td>China vs US</td>
+          <td>"Reciprocal tariffs" (April 2025)</td>
+          <td>Consultations requested</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="source">Source: <a href="https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm" target="_blank">WTO Dispute Settlement</a></p>
+
+    <div class="callout">
+      <div class="callout-title">The WTO's Paralysis</div>
+      <p>The US has blocked appointments to the WTO Appellate Body since 2019, effectively paralyzing the dispute resolution system. Cases can be won at the panel level but "appealed into the void" with no resolution. Both the US and China now operate with little risk of binding legal consequence.</p>
+    </div>
+
+    <h2>China's Critical Minerals Leverage</h2>
+    <p>In April 2025, China suspended exports of critical minerals to the US, revealing a strategic vulnerability in global supply chains:</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="number">80%</div>
+        <div class="label">Global Gallium Production</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">60%</div>
+        <div class="label">Global Germanium Production</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">78%</div>
+        <div class="label">Global Antimony Production</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">70%</div>
+        <div class="label">Rare Earth Processing</div>
+      </div>
+    </div>
+
+    <p><strong>Timeline of Restrictions:</strong></p>
+    <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+      <li><strong>July 2023:</strong> Export restrictions on gallium and germanium (chip production)</li>
+      <li><strong>October 2023:</strong> Restrictions on high-purity graphite (EV batteries)</li>
+      <li><strong>December 2024:</strong> Ban on graphite, gallium, germanium, antimony exports to US</li>
+      <li><strong>April 2025:</strong> Temporary suspension of all critical mineral exports to US</li>
+    </ul>
+    <p class="source">Source: <a href="https://trendsresearch.org/insight/critical-minerals-and-the-u-s-china-trade-war/" target="_blank">TRENDS Research</a>, <a href="https://eastasiaforum.org/2025/02/19/how-china-is-weaponising-its-dominance-in-critical-minerals-trade/" target="_blank">East Asia Forum</a></p>
+
+    <div class="historical-echo">
+      <h3>Historical Echo: From Tea to Semiconductors</h3>
+      <p style="margin-bottom: 1rem;">In the 18th century, Britain had a trade deficit problem with China. China wanted silver; Britain wanted tea, silk, and porcelain. The "solution" was opium&mdash;a product China didn't want but couldn't stop.</p>
+      <p style="margin-bottom: 1rem;">Today, the tables have turned in some ways: The US runs a $295 billion deficit with China (2024). China dominates critical minerals and manufacturing. The US uses tariffs; China uses export controls.</p>
+      <p><strong>The question for students:</strong> What are the continuities and discontinuities between Qing-era trade conflicts and today's trade wars? Who has leverage? How do states respond when trade becomes a weapon?</p>
+    </div>
+
+    <h2>Summary: China's Recent Trade Wars</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Conflict</th>
+          <th>Duration</th>
+          <th>Peak Tariffs</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>US-China</td>
+          <td>2018&ndash;present</td>
+          <td>US: 145% / China: 125%</td>
+          <td>Ongoing (47.5% / 31.9%)</td>
+        </tr>
+        <tr>
+          <td>EU-China (EVs)</td>
+          <td>2023&ndash;present</td>
+          <td>EU: up to 37.6%</td>
+          <td>WTO panel active</td>
+        </tr>
+        <tr>
+          <td>Canada-China</td>
+          <td>2024&ndash;present</td>
+          <td>100% both sides (targeted)</td>
+          <td>Escalating</td>
+        </tr>
+        <tr>
+          <td>Australia-China</td>
+          <td>2020&ndash;2024</td>
+          <td>206% (wine), 80.5% (barley)</td>
+          <td><strong>Resolved</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sources-section">
+      <h3>Sources</h3>
+      <ul>
+        <li><a href="https://www.piie.com/research/piie-charts/2019/us-china-trade-war-tariffs-date-chart" target="_blank">Peterson Institute: US-China Trade War Tariffs Chart</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/China%E2%80%93United_States_trade_war" target="_blank">Wikipedia: China-United States Trade War</a></li>
+        <li><a href="https://www.congress.gov/crs-product/IF12990" target="_blank">Congressional Research Service: U.S.-China Tariff Actions Since 2018</a></li>
+        <li><a href="https://taxfoundation.org/research/all/federal/trump-tariffs-trade-war/" target="_blank">Tax Foundation: Trump Tariffs and Trade War</a></li>
+        <li><a href="https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm" target="_blank">WTO Dispute Settlement: Chronological List</a></li>
+        <li><a href="https://www.worldstopexports.com/chinas-top-import-partners/" target="_blank">World's Top Exports: China's Trading Partners 2024</a></li>
+        <li><a href="https://www.csis.org/blogs/trustee-china-hand/slamming-brakes-eu-votes-impose-tariffs-chinese-evs" target="_blank">CSIS: EU Votes to Impose Tariffs on Chinese EVs</a></li>
+        <li><a href="https://www.foreignminister.gov.au/minister/penny-wong/media-release/resolution-wine-dispute-china" target="_blank">Australian Foreign Minister: Resolution of Wine Dispute</a></li>
+        <li><a href="https://www.canolacouncil.org/china-update/" target="_blank">Canola Council of Canada: China Update</a></li>
+        <li><a href="https://eastasiaforum.org/2025/02/19/how-china-is-weaponising-its-dominance-in-critical-minerals-trade/" target="_blank">East Asia Forum: China Weaponising Critical Minerals</a></li>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>

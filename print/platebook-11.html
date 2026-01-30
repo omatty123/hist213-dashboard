@@ -44,6 +44,21 @@
       font-size: 12px;
     }
 
+    /* Readings row */
+    .readings-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+      font-size: 9px;
+    }
+    .reading-item {
+      flex: 1;
+      border: 1px solid #aaa;
+      padding: 3px 6px;
+      background: #f9f9f9;
+    }
+    .reading-item strong { font-size: 9px; }
+
     /* Section labels */
     .label {
       border: 1px solid #000;
@@ -138,12 +153,6 @@
     .map-section {
       margin-bottom: 4px;
     }
-    .map-subtitle {
-      font-size: 9px;
-      font-style: italic;
-      color: #555;
-      margin-left: 8px;
-    }
     .map-box {
       border: 1px solid #aaa;
       background: #f5f5f5;
@@ -151,13 +160,6 @@
       padding: 10px;
       min-height: 100px;
     }
-    .map-locations {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      font-size: 9px;
-    }
-    .map-loc strong { font-weight: 600; }
     .map-quote {
       font-style: italic;
       font-size: 9px;
@@ -267,8 +269,14 @@
   <!-- Header -->
   <div class="header">
     <div class="plate-num">Plate # 11</div>
-    <div class="topic">Tokugawa vs. the West</div>
-    <div class="date">Jan 30</div>
+    <div class="topic">Tokugawa vs. the West: Treaty and Debate</div>
+    <div class="date">Jan 31</div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings-row">
+    <div class="reading-item"><strong>Harris Treaty (1858):</strong> US-Japan commercial treaty granting extraterritoriality, port openings, fixed tariffs</div>
+    <div class="reading-item"><strong>Daimyo Responses:</strong> Nariaki's 10 reasons against peace vs. Ii Naosuke's case for strategic opening</div>
   </div>
 
   <!-- Person / Place / Thing -->
@@ -282,35 +290,34 @@
     </thead>
     <tbody>
       <tr>
-        <td class="filled"><strong>Commodore Matthew Perry</strong> — US naval commander</td>
-        <td class="filled"><strong>Edo Bay (Tokyo Bay)</strong> — where Perry arrived</td>
-        <td class="filled"><strong>Black Ships</strong> — Perry's steam warships</td>
+        <td class="filled"><strong>Townsend Harris</strong> — US Consul-General who negotiated 1858 treaty</td>
+        <td class="filled"><strong>Uraga (Edo Bay)</strong> — Where Perry arrived; "greatest disgrace"</td>
+        <td class="filled"><strong>Harris Treaty (1858)</strong> — Commercial treaty granting extraterritoriality</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Townsend Harris</strong> — US diplomat who negotiated 1858 treaty</td>
-        <td class="filled"><strong>Shimoda</strong> — first opened port</td>
-        <td class="filled"><strong>Convention of Kanagawa (1854)</strong> — first treaty</td>
+        <td class="filled"><strong>Tokugawa Nariaki</strong> — Daimyo who gave 10 reasons against peace</td>
+        <td class="filled"><strong>Kanagawa/Yokohama</strong> — Major treaty port; opened July 4, 1859</td>
+        <td class="filled"><strong>Extraterritoriality</strong> — Americans tried under US law, not Japanese</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Ii Naosuke</strong> — bakufu official who signed treaties</td>
-        <td class="filled"><strong>Yokohama</strong> — major treaty port</td>
-        <td class="filled"><strong>Harris Treaty (1858)</strong> — commercial treaty</td>
+        <td class="filled"><strong>Ii Naosuke</strong> — Signed treaties; assassinated 1860 by resistance samurai</td>
+        <td class="filled"><strong>Nagasaki</strong> — Existing Dutch trade window; opened to Americans 1859</td>
+        <td class="filled"><strong>Sonno joi (尊王攘夷)</strong> — "Revere Emperor, Expel Barbarians"</td>
       </tr>
-
     </tbody>
   </table>
 
   <!-- Timeline -->
   <div class="timeline-section">
-    <span class="label">Timeline: Tokugawa vs. the West (Ebrey ends 1867)</span>
+    <span class="label">Timeline: From Perry to Meiji</span>
     <div class="timeline-box">
       <div class="timeline-labels">
-        <span>1853<br><em>Perry's Black Ships arrive in Edo Bay</em></span>
-        <span>1854<br><em>Convention of Kanagawa—first treaty</em></span>
-        <span>1858<br><em>Harris Treaty—extraterritoriality</em></span>
+        <span>1853<br><em>Perry arrives; daimyo debate</em></span>
+        <span>1854<br><em>Kanagawa treaty</em></span>
+        <span>1858<br><em>Harris Treaty signed</em></span>
         <span>1860<br><em>Ii Naosuke assassinated</em></span>
-        <span>1864<br><em>Western bombardment of Shimonoseki</em></span>
-        <span>1867<br><em>Last shogun resigns—Tokugawa ends</em></span>
+        <span>1864<br><em>Shimonoseki bombed</em></span>
+        <span>1868<br><em>Meiji Restoration</em></span>
       </div>
       <div class="timeline-line"></div>
       <div class="timeline-ticks">
@@ -326,9 +333,9 @@
 
   <!-- Map -->
   <div class="map-section">
-    <span class="label">Map: Japan's Treaty Ports 1853–1867</span>
-    <div id="map" style="height: 180px; border: 1px solid #aaa; border-radius: 4px; margin-top: 3px;"></div>
-    <div class="map-quote">"The President of the United States has sent me to request that American ships may be allowed to enter Japanese ports." — Perry's message to Japan</div>
+    <span class="label">Map: Treaty Ports Opened by Harris Treaty</span>
+    <div id="map" style="height: 140px; border: 1px solid #aaa; border-radius: 4px; margin-top: 3px;"></div>
+    <div class="map-quote">"To raise the drawbridge is to imprison oneself and make it impossible to hold out indefinitely." — Ii Naosuke</div>
   </div>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -347,9 +354,8 @@
         { name: "Shimoda 下田", lat: 34.6711, lng: 138.9451, color: "#2980b9", desc: "First port 1854" },
         { name: "Hakodate 函館", lat: 41.7686, lng: 140.7288, color: "#2980b9", desc: "Second port 1854" },
         { name: "Yokohama 横浜", lat: 35.4437, lng: 139.6380, color: "#2980b9", desc: "Major treaty port" },
-        { name: "Kyoto 京都", lat: 35.0116, lng: 135.7681, color: "#d4af37", desc: "Imperial capital" },
-        { name: "Kagoshima 鹿児島", lat: 31.5966, lng: 130.5571, color: "#27ae60", desc: "Satsuma domain" },
-        { name: "Shimonoseki 下関", lat: 33.9500, lng: 130.9500, color: "#e67e22", desc: "Bombardment 1864" }
+        { name: "Nagasaki 長崎", lat: 32.7503, lng: 129.8779, color: "#27ae60", desc: "Dutch window" },
+        { name: "Hyogo 兵庫", lat: 34.6901, lng: 135.1955, color: "#e67e22", desc: "To open 1863" }
       ];
 
       locations.forEach(loc => {
@@ -370,37 +376,42 @@
       <thead>
         <tr>
           <th colspan="2"><span class="label">Penetrating Questions</span></th>
-          <th><span class="label">Very short answers</span></th>
+          <th><span class="label">Key Points</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="q-num">1</td>
-          <td class="question-cell filled">Why did Japan avoid a war like the Opium War?</td>
-          <td class="answer-cell filled">Japan observed China's fate and learned. Geographic factors (island nation) mattered. Internal debates produced consensus for negotiation. But also: US was less aggressive than Britain, more interested in coaling stations than opium.</td>
+          <td class="question-cell filled">Nariaki: "The greatest disgrace since the dawn of our history." Ii Naosuke: "To raise the drawbridge is to imprison oneself." Who was right?</td>
+          <td class="answer-cell filled">Both were patriots with different strategic assessments. Nariaki: honor and morale. Ii Naosuke: survival and adaptation. History vindicated Ii Naosuke—but only after armed resistance failed (1864).</td>
         </tr>
         <tr>
           <td class="q-num">2</td>
-          <td class="question-cell filled">What did the daimyo responses reveal about divisions within Japan?</td>
-          <td class="answer-cell filled">Some wanted resistance ('expel the barbarians'), others accommodation, others reform. These debates would fuel the Meiji Restoration. Note: Many who initially opposed treaties later led modernization.</td>
+          <td class="question-cell filled">The Harris Treaty banned opium. Does this mean Japan negotiated "better" than China?</td>
+          <td class="answer-cell filled">No. The US didn't trade opium; Britain did. Japan still accepted extraterritoriality, fixed tariffs, MFN clauses. Different aggressor, different commodities—not Japanese cleverness vs. Chinese failure.</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">Ii Naosuke proposed building warships disguised as "merchant vessels" to secretly train a navy. Is such deception justified?</td>
+          <td class="answer-cell filled">"Strategic opening": engage to strengthen, then compete. Ii acknowledged he was advocating revolutionary change—his views "conflict with existing laws."</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Bottom: Causes/Effects + Notes -->
+  <!-- Bottom: Connections + Notes -->
   <div class="bottom-section">
     <div class="causes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+          <tr><th><span class="label">Connections</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              <strong>From Plate 10:</strong> Plate 10 showed China's traumatic 'opening' via the Opium War. Japan faced similar pressure but responded very differently. Why?<br>
-<strong>Context:</strong> Japan and China faced the same challenge (Western pressure) with different outcomes. Understanding why requires examining internal structures, leadership, and choices—not cultural destiny.<br>
-<strong>To Plate 12:</strong> Plate 12 examines Meiji Transformation—the reforms that made Japan the first non-Western industrial power. The Black Ships set this in motion.
+              <strong>From Plate 10:</strong> China's opening via Opium War. Japan faced similar pressure with key differences: 15 years warning, no concurrent civil war, Americans wanted ports not drugs.<br>
+              <strong>Broader theme:</strong> Both signed "unequal treaties." Reject "Japan succeeded, China failed" framing. Better: What obstacles did each face in responding?<br>
+              <strong>To Plate 12:</strong> Meiji Transformation. "Learn from the West" triumphed—but through Satsuma/Choshu, who overthrew Tokugawa entirely.
             </td>
           </tr>
         </tbody>
@@ -409,16 +420,16 @@
     <div class="notes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Notes</span></th></tr>
+          <tr><th><span class="label">Teaching Notes</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              • Show images of Black Ships—the visual contrast between steam warships and Japanese vessels is striking.<br>
-              • The daimyo responses show real debate, not monolithic 'Japan.' Have students identify different positions.<br>
-              • Be careful with 'Japan succeeded, China failed' framing—both faced genuine dilemmas with no easy answers.<br>
-              • MIT Visualizing Cultures 'Black Ships and Samurai' has excellent images and analysis.<br>
-              • Connect to contemporary Japan-US relations: the alliance began with gunboat diplomacy.
+              • KEY DEBATE: Have students argue Nariaki vs. Ii Naosuke positions<br>
+              • Ii Naosuke's assassination (1860) shows debate wasn't just rhetorical—people died<br>
+              • "Secret navy" proposal shows sophisticated strategic thinking—still relevant today<br>
+              • Nariaki's 10 REASONS: national prestige, Christianity threat, trade drains resources, precedent, foothold leads to more demands...<br>
+              • VISUAL: MIT "Black Ships and Samurai" for images
             </td>
           </tr>
         </tbody>

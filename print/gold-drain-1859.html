@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Gold Drain of 1859</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #fff;
+            --paper-warm: #faf8f5;
+            --paper-dark: #f0ede8;
+            --gold: #b8860b;
+            --gold-light: #d4a84b;
+            --silver: #708090;
+            --red: #8b2500;
+            --border: #ddd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* NAV */
+        nav {
+            background: var(--ink);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        nav .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+        nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero-coins {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+        .hero .deck {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* MAIN */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ink);
+        }
+        h2:first-child { margin-top: 0; }
+
+        p { margin-bottom: 1rem; color: var(--ink-light); }
+        p strong { color: var(--ink); }
+
+        /* ARBITRAGE DIAGRAM */
+        .arbitrage-box {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .arbitrage-title {
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+        }
+        .arbitrage-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+        .arb-step {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem 0.75rem;
+            position: relative;
+        }
+        .arb-step::after {
+            content: '→';
+            position: absolute;
+            right: -0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+        .arb-step:last-child::after { display: none; }
+        .arb-num {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: #fff;
+            background: var(--ink);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+        }
+        .arb-coin {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .arb-amount {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--ink);
+        }
+        .arb-desc {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            margin-top: 0.25rem;
+        }
+        .arb-profit {
+            margin-top: 1.5rem;
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 6px;
+            color: #fff;
+        }
+        .arb-profit strong {
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        /* RATIO COMPARISON */
+        .ratio-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .ratio-card {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .ratio-card.world { border-top: 4px solid var(--silver); }
+        .ratio-card.japan { border-top: 4px solid var(--gold); }
+        .ratio-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+            margin-bottom: 0.5rem;
+        }
+        .ratio-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        .ratio-card.world .ratio-value { color: var(--silver); }
+        .ratio-card.japan .ratio-value { color: var(--gold); }
+        .ratio-meaning {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-top: 0.5rem;
+        }
+
+        /* STATS */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: var(--ink);
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* QUOTE */
+        .pull-quote {
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--paper-warm);
+        }
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+        .pull-quote .attrib {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            font-style: normal;
+        }
+
+        /* CONNECTION BOX */
+        .connection-box {
+            background: var(--paper-dark);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .connection-box h3 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+            margin-bottom: 0.75rem;
+        }
+        .connection-box p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .connection-box p:last-child { margin-bottom: 0; }
+
+        /* SOURCES */
+        .sources {
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+        }
+        .sources h3 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+            margin-bottom: 0.75rem;
+        }
+        .sources ul {
+            list-style: none;
+        }
+        .sources li {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+        .sources a { color: var(--ink-light); }
+        .sources a:hover { color: var(--gold); }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+        }
+        footer a { color: var(--gold); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero { padding: 2rem 1rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .main-content { padding: 2rem 1rem; }
+            .arbitrage-steps { grid-template-columns: 1fr 1fr; }
+            .arb-step::after { display: none; }
+            .ratio-box { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html">← Back to Dashboard</a>
+    <span class="sep">|</span>
+    <span class="context">Plate 11: Tokugawa vs. the West</span>
+</nav>
+
+<section class="hero">
+    <div class="hero-coins">🥇 ⇄ 🥈</div>
+    <h1>The Great Gold Drain of 1859</h1>
+    <p class="deck">How a treaty clause let foreign traders turn $4 into $12 overnight, draining Japan of gold and destabilizing the Tokugawa economy.</p>
+</section>
+
+<div class="main-content">
+
+    <h2>The Setup: Two Different Worlds</h2>
+    <p>For over 200 years, Japan's monetary system operated in isolation. The Tokugawa shogunate maintained a <strong>bimetallic system</strong> where gold and silver coins circulated together at exchange rates set by the government, not by international markets.</p>
+
+    <p>The problem: Japan's gold-to-silver ratio was radically different from the rest of the world.</p>
+
+    <div class="ratio-box">
+        <div class="ratio-card world">
+            <div class="ratio-label">World Market Ratio</div>
+            <div class="ratio-value">15.5 : 1</div>
+            <div class="ratio-meaning">15.5 ounces of silver = 1 ounce of gold</div>
+        </div>
+        <div class="ratio-card japan">
+            <div class="ratio-value">5 : 1</div>
+            <div class="ratio-label">Japan's Effective Ratio</div>
+            <div class="ratio-meaning">Gold was dramatically undervalued</div>
+        </div>
+    </div>
+
+    <p>This mismatch didn't matter while Japan was closed. But the moment the Harris Treaty opened the ports and mandated <strong>weight-for-weight currency exchange</strong>, it created one of the greatest arbitrage opportunities in monetary history.</p>
+
+    <h2>The Arbitrage: How It Worked</h2>
+
+    <div class="arbitrage-box">
+        <div class="arbitrage-title">The Money Machine (One Cycle)</div>
+        <div class="arbitrage-steps">
+            <div class="arb-step">
+                <div class="arb-num">1</div>
+                <div class="arb-coin">🪙</div>
+                <div class="arb-amount">4 Mexican $</div>
+                <div class="arb-desc">Start with silver dollars</div>
+            </div>
+            <div class="arb-step">
+                <div class="arb-num">2</div>
+                <div class="arb-coin">🥈</div>
+                <div class="arb-amount">12 ichibu</div>
+                <div class="arb-desc">Exchange at treaty rate (3:1 by weight)</div>
+            </div>
+            <div class="arb-step">
+                <div class="arb-num">3</div>
+                <div class="arb-coin">🥇</div>
+                <div class="arb-amount">3 koban</div>
+                <div class="arb-desc">Convert to gold (4 ichibu = 1 koban)</div>
+            </div>
+            <div class="arb-step">
+                <div class="arb-num">4</div>
+                <div class="arb-coin">💰</div>
+                <div class="arb-amount">12 Mexican $</div>
+                <div class="arb-desc">Sell gold abroad at world price</div>
+            </div>
+        </div>
+        <div class="arb-profit">
+            <strong>300% profit per cycle</strong><br>
+            Repeat indefinitely until Japan runs out of gold
+        </div>
+    </div>
+
+    <p>The math was irresistible. A trader could <strong>triple their money</strong> with each round trip. Foreign merchants descended on the treaty ports like sharks.</p>
+
+    <h2>The Damage</h2>
+
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-num">~25</div>
+            <div class="stat-label">tonnes of gold drained</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">190</div>
+            <div class="stat-label">tonnes/year global production</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">13%</div>
+            <div class="stat-label">of world annual output</div>
+        </div>
+    </div>
+
+    <p>Estimates range from 100,000 to 20 million koban leaving Japan. The most credible scholarly estimates suggest around <strong>25 tonnes of gold</strong> flowed out in just a few months. For context, the entire world only produced about 190 tonnes of gold per year.</p>
+
+    <div class="pull-quote">
+        <p>"An American trader could magically turn four Mexican dollars into twelve Mexican dollars."</p>
+        <div class="attrib">— JP Koning, monetary historian</div>
+    </div>
+
+    <h2>Japan's Countermove: The Nishu-gin</h2>
+    <p>The Tokugawa government wasn't stupid. Anticipating the problem, they introduced a new coin called the <strong>nishu-gin</strong>, carefully calibrated so that two of them equaled one Mexican dollar by weight.</p>
+
+    <p>This meant Japanese officials could hand over 2 nishu per dollar instead of 3 ichibu. Since it took 8 nishu (not 4 ichibu) to get a koban, the arbitrage opportunity was supposed to disappear.</p>
+
+    <p>But the Americans protested. The treaty said weight-for-weight exchange of <em>existing</em> coins. Creating new coins to evade the terms was, they argued, a violation. The shogunate eventually backed down.</p>
+
+    <h2>The Consequences</h2>
+    <p>The gold drain contributed to <strong>massive inflation</strong> as the shogunate debased the currency to compensate. Combined with the sudden flood of foreign goods undercutting domestic producers, and cholera epidemics that arrived on foreign ships, the 1860s became a decade of economic crisis.</p>
+
+    <p>This chaos fueled anti-foreign sentiment and undermined faith in the shogunate. The slogan <strong>sonnō jōi</strong> ("revere the emperor, expel the barbarians") gained traction not just from wounded pride, but from real economic pain.</p>
+
+    <div class="connection-box">
+        <h3>Course Connection: Silver Arbitrage Redux</h3>
+        <p><strong>Remember Plate 2?</strong> We started this course talking about how silver flowed INTO China and Japan from the Americas, disrupting traditional economies. Now we see the reverse: gold flowing OUT of Japan to the West.</p>
+        <p><strong>The pattern:</strong> When isolated monetary systems connect to global markets, arbitrage opportunities emerge. Someone always profits. In the 16th century, it was Asian merchants accumulating American silver. In 1859, it was Western traders draining Japanese gold.</p>
+        <p><strong>The lesson:</strong> "Free trade" and "fair exchange" are never neutral. The terms of integration determine who wins.</p>
+    </div>
+
+    <div class="sources">
+        <h3>Sources</h3>
+        <ul>
+            <li><a href="https://www.bullionstar.com/blogs/jp-koning/the-great-japanese-gold-trade-of-1859/" target="_blank">JP Koning, "The Great Japanese Gold Trade of 1859" (BullionStar, 2019)</a></li>
+            <li><a href="https://content.ucpress.edu/chapters/10363.ch01.pdf" target="_blank">Masato Shizume, "Japan and the British Gold Standard, ca. 1715–1885" (UC Press)</a></li>
+            <li><a href="https://www.britannica.com/event/Harris-Treaty" target="_blank">Encyclopædia Britannica, "Harris Treaty"</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<footer>
+    <a href="../index.html">← Back to Dashboard</a> |
+    HIST/EAST 213: Modern East Asia | Winter 2026
+</footer>
+
+</body>
+</html>

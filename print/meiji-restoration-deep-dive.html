@@ -110,85 +110,235 @@
         nav .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
         nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
 
-        /* MAP SECTION */
-        .map-section {
+        /* MAP SECTION - Full width with sidebar */
+        .map-section-full {
             background: var(--paper-dark);
-            padding: 3rem 2rem;
         }
-        .map-container {
-            max-width: 1100px;
+        .map-header-bar {
+            background: linear-gradient(135deg, #1a2a3a 0%, #2d3a4a 100%);
+            padding: 1.5rem 2rem;
+        }
+        .map-header-content {
+            max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 2rem;
-            align-items: start;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
-        .map-header {
-            grid-column: 1 / -1;
-            text-align: center;
-            margin-bottom: 1rem;
+        .map-header-content .japanese-title {
+            font-size: 2rem;
+            color: var(--gold);
         }
-        .map-header h2 {
+        .map-header-content h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            color: #fff;
+            margin: 0;
         }
-        .map-header p {
-            color: var(--ink-light);
-            max-width: 600px;
-            margin: 0 auto;
+        .map-header-content p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin: 0.2rem 0 0;
         }
-        #map {
-            height: 500px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
+        .map-main-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            height: 600px;
         }
-        .map-legend {
+        .map-sidebar {
+            background: #fff;
+            overflow-y: auto;
+            border-right: 1px solid #e0e0e0;
+        }
+        .sidebar-section {
+            border-bottom: 1px solid #eee;
+        }
+        .sidebar-section-header {
+            padding: 0.75rem 1rem;
             background: var(--paper);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .map-legend h3 {
-            font-size: 0.7rem;
+        .sidebar-section-header h3 {
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            color: var(--ink-light);
+            font-weight: 600;
+        }
+        .sidebar-section-header .toggle {
             color: var(--ink-faint);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
+            font-size: 0.7rem;
+            background: #fff;
+            padding: 0.15rem 0.4rem;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        .location-list { list-style: none; }
+        .location-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f5f5f5;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .location-item:hover { background: rgba(45, 90, 90, 0.04); }
+        .location-item.active {
+            background: rgba(45, 90, 90, 0.08);
+            border-left: 3px solid var(--shogun);
+        }
+        .location-item.rebel { border-left: 3px solid var(--satsuma); }
+        .location-item.shogunate { border-left: 3px solid var(--shogun); }
+        .location-item.imperial { border-left: 3px solid var(--imperial); }
+        .location-item.battle { border-left: 3px solid var(--gold); }
+        .location-item .name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.15rem;
+        }
+        .location-item .japanese-name {
+            font-size: 1.2rem;
+            color: var(--ink);
+        }
+        .location-item .english-name {
+            font-size: 0.85rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
+        .location-item .subtext {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            margin-bottom: 0.25rem;
+        }
+        .location-item .description {
+            font-size: 0.72rem;
+            color: var(--ink-light);
+            line-height: 1.45;
+        }
+        .rebel-badge, .shogun-badge, .imperial-badge {
+            display: inline-block;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.15rem 0.4rem;
+            border-radius: 2px;
+            margin-top: 0.4rem;
+            color: #fff;
+        }
+        .rebel-badge { background: var(--satsuma); }
+        .shogun-badge { background: var(--shogun); }
+        .imperial-badge { background: var(--imperial); }
+
+        .map-container { position: relative; }
+        #map {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            background: #f5f3ef;
+        }
+        .map-legend {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 0.875rem 1rem;
+            border-radius: 8px;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .map-legend h4 {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-light);
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+        .legend-group { margin-bottom: 0.75rem; }
+        .legend-group:last-child { margin-bottom: 0; }
+        .legend-group-title {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--ink-faint);
+            margin-bottom: 0.35rem;
         }
         .legend-item {
             display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 4px;
-            transition: background 0.2s;
-        }
-        .legend-item:hover { background: var(--paper-warm); }
-        .legend-item:last-child { margin-bottom: 0; }
-        .legend-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 3px;
-        }
-        .legend-item h4 {
-            font-size: 0.9rem;
-            margin-bottom: 0.15rem;
-        }
-        .legend-item p {
-            font-size: 0.75rem;
-            color: var(--ink-light);
-            line-height: 1.4;
-        }
-        .legend-item .jp {
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.3rem;
             font-size: 0.7rem;
-            color: var(--ink-faint);
+            color: var(--ink);
+        }
+        .legend-item:last-child { margin-bottom: 0; }
+        .legend-swatch {
+            width: 16px;
+            height: 10px;
+            border-radius: 2px;
+            opacity: 0.7;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        .legend-line {
+            width: 20px;
+            height: 3px;
+            border-radius: 1px;
+        }
+        .legend-line.alliance {
+            background: var(--gold);
+            background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 4px, transparent 4px, transparent 7px);
+        }
+        .legend-line.march {
+            background: var(--imperial);
+        }
+
+        /* Domain label on map */
+        .domain-label {
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            font-size: 14px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.12);
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        /* Leaflet popup styling */
+        .leaflet-popup-content-wrapper {
+            background: #fff;
+            color: var(--ink);
+            border-radius: 4px;
+            padding: 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+        .leaflet-popup-content { margin: 0; min-width: 240px; }
+        .leaflet-popup-tip { background: #fff; }
+        .popup-content { padding: 1rem; }
+        .popup-content .popup-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #eee;
+        }
+        .popup-content .japanese { font-size: 1.5rem; }
+        .popup-content .names { flex: 1; }
+        .popup-content .english { font-size: 1rem; font-weight: 600; color: var(--ink); }
+        .popup-content .clan { font-size: 0.8rem; color: var(--ink-faint); }
+        .popup-content .popup-body { font-size: 0.8rem; line-height: 1.55; color: var(--ink-light); }
+        .popup-content .popup-body p { margin-bottom: 0.5rem; }
+        .popup-content .modern-location {
+            background: var(--paper);
+            padding: 0.4rem 0.6rem;
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            border-left: 3px solid var(--gold);
         }
 
         /* TWO COLUMN LAYOUT */
@@ -429,16 +579,20 @@
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            .map-container {
+            .map-main-container {
                 grid-template-columns: 1fr;
+                height: auto;
             }
-            .map-legend {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
+            .map-sidebar {
+                max-height: 300px;
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            #map { min-height: 400px; }
+            .map-header-content {
+                flex-direction: column;
+                text-align: center;
                 gap: 0.5rem;
-            }
-            .map-legend h3 {
-                grid-column: 1 / -1;
             }
             .two-col { grid-template-columns: 1fr; }
             .sidebar { order: -1; }
@@ -527,45 +681,148 @@
     </section>
 
     <!-- MAP SECTION -->
-    <section class="map-section">
-        <div class="map-container">
-            <div class="map-header">
+    <section class="map-section-full">
+        <div class="map-header-bar">
+            <div class="map-header-content">
+                <span class="japanese-title">薩長土肥</span>
                 <h2>Geography of Revolution</h2>
-                <p>The four domains that led the Meiji Restoration were all <em>tozama</em> ("outside") lords—clans that had opposed Tokugawa Ieyasu at Sekigahara in 1600 and were excluded from the shogunate's inner circle for over two centuries.</p>
+                <p>The four <em>tozama</em> domains that overthrew the Tokugawa · Warring States to Meiji (1600–1868)</p>
             </div>
-            <div id="map"></div>
-            <div class="map-legend">
-                <h3>Key Locations</h3>
-                <div class="legend-item" data-target="satsuma">
-                    <div class="legend-dot" style="background: var(--satsuma);"></div>
-                    <div>
-                        <h4>Satsuma Domain</h4>
-                        <p class="jp">薩摩藩 · Kagoshima</p>
-                        <p>Shimazu clan. Naval power, early modernizers.</p>
+        </div>
+        <div class="map-main-container">
+            <aside class="map-sidebar">
+                <!-- Rebel Domains -->
+                <div class="sidebar-section">
+                    <div class="sidebar-section-header">
+                        <h3>Tozama Domains (Rebels)</h3>
+                        <span class="toggle">4</span>
                     </div>
+                    <ul class="location-list">
+                        <li class="location-item rebel" data-lat="31.5966" data-lng="130.5571" data-id="satsuma">
+                            <div class="name">
+                                <span class="japanese-name">薩摩</span>
+                                <span class="english-name">Satsuma</span>
+                            </div>
+                            <div class="subtext">Shimazu clan · Kagoshima</div>
+                            <div class="description">Naval power. Bombarded by British 1863, then modernized rapidly. Provided military leadership.</div>
+                            <span class="rebel-badge">Rebel</span>
+                        </li>
+                        <li class="location-item rebel" data-lat="34.1859" data-lng="131.4705" data-id="choshu">
+                            <div class="name">
+                                <span class="japanese-name">長州</span>
+                                <span class="english-name">Chōshū</span>
+                            </div>
+                            <div class="subtext">Mōri clan · Yamaguchi</div>
+                            <div class="description">Radical reformers. Created mixed-class militia (Kiheitai). Controlled Shimonoseki Strait.</div>
+                            <span class="rebel-badge">Rebel</span>
+                        </li>
+                        <li class="location-item rebel" data-lat="33.5597" data-lng="133.5311" data-id="tosa">
+                            <div class="name">
+                                <span class="japanese-name">土佐</span>
+                                <span class="english-name">Tosa</span>
+                            </div>
+                            <div class="subtext">Yamauchi clan · Kōchi</div>
+                            <div class="description">Constitutional moderates. Sakamoto Ryōma brokered the Satchō Alliance.</div>
+                            <span class="rebel-badge">Rebel</span>
+                        </li>
+                        <li class="location-item rebel" data-lat="33.2494" data-lng="130.2988" data-id="hizen">
+                            <div class="name">
+                                <span class="japanese-name">肥前</span>
+                                <span class="english-name">Hizen</span>
+                            </div>
+                            <div class="subtext">Nabeshima clan · Saga</div>
+                            <div class="description">Technology leaders. Built Japan's first reverberatory furnace and cannons.</div>
+                            <span class="rebel-badge">Rebel</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="legend-item" data-target="choshu">
-                    <div class="legend-dot" style="background: var(--choshu);"></div>
-                    <div>
-                        <h4>Chōshū Domain</h4>
-                        <p class="jp">長州藩 · Yamaguchi</p>
-                        <p>Mōri clan. Radical reformers, military innovators.</p>
+                <!-- Power Centers -->
+                <div class="sidebar-section">
+                    <div class="sidebar-section-header">
+                        <h3>Power Centers</h3>
+                        <span class="toggle">2</span>
                     </div>
+                    <ul class="location-list">
+                        <li class="location-item shogunate" data-lat="35.6762" data-lng="139.6503" data-id="edo">
+                            <div class="name">
+                                <span class="japanese-name">江戸</span>
+                                <span class="english-name">Edo (Tokyo)</span>
+                            </div>
+                            <div class="subtext">Tokugawa shogunate HQ</div>
+                            <div class="description">Seat of shogunal power for 265 years. Surrendered without battle in 1868.</div>
+                            <span class="shogun-badge">Shogunate</span>
+                        </li>
+                        <li class="location-item imperial" data-lat="35.0116" data-lng="135.7681" data-id="kyoto">
+                            <div class="name">
+                                <span class="japanese-name">京都</span>
+                                <span class="english-name">Kyoto</span>
+                            </div>
+                            <div class="subtext">Imperial capital</div>
+                            <div class="description">Site of the 1868 coup. Satsuma-Chōshū forces seized the palace and declared imperial restoration.</div>
+                            <span class="imperial-badge">Imperial</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="legend-item" data-target="tosa">
-                    <div class="legend-dot" style="background: var(--tosa);"></div>
-                    <div>
-                        <h4>Tosa Domain</h4>
-                        <p class="jp">土佐藩 · Kōchi</p>
-                        <p>Yamauchi clan. Constitutional moderates.</p>
+                <!-- Key Battles -->
+                <div class="sidebar-section">
+                    <div class="sidebar-section-header">
+                        <h3>Key Battles</h3>
+                        <span class="toggle">2</span>
                     </div>
+                    <ul class="location-list">
+                        <li class="location-item battle" data-lat="34.9211" data-lng="135.7556" data-id="toba">
+                            <div class="name">
+                                <span class="japanese-name">鳥羽伏見</span>
+                                <span class="english-name">Toba-Fushimi</span>
+                            </div>
+                            <div class="subtext">January 1868</div>
+                            <div class="description">First battle of Boshin War. 5,000 imperial troops defeated 15,000 shogunate forces.</div>
+                        </li>
+                        <li class="location-item battle" data-lat="41.7687" data-lng="140.7288" data-id="hakodate">
+                            <div class="name">
+                                <span class="japanese-name">函館</span>
+                                <span class="english-name">Hakodate</span>
+                            </div>
+                            <div class="subtext">May 1869</div>
+                            <div class="description">Final battle. Tokugawa loyalists' Republic of Ezo surrendered, ending the Boshin War.</div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="legend-item" data-target="hizen">
-                    <div class="legend-dot" style="background: var(--hizen);"></div>
-                    <div>
-                        <h4>Hizen Domain</h4>
-                        <p class="jp">肥前藩 · Saga</p>
-                        <p>Nabeshima clan. Technology and industry.</p>
+            </aside>
+
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-legend">
+                    <h4>Legend</h4>
+                    <div class="legend-group">
+                        <div class="legend-group-title">Domains</div>
+                        <div class="legend-item">
+                            <span class="legend-swatch" style="background: var(--satsuma);"></span>
+                            Satsuma 薩摩
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-swatch" style="background: var(--choshu);"></span>
+                            Chōshū 長州
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-swatch" style="background: var(--tosa);"></span>
+                            Tosa 土佐
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-swatch" style="background: var(--hizen);"></span>
+                            Hizen 肥前
+                        </div>
+                    </div>
+                    <div class="legend-group">
+                        <div class="legend-group-title">Routes</div>
+                        <div class="legend-item">
+                            <span class="legend-line alliance"></span>
+                            Satchō Alliance
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-line march"></span>
+                            Boshin War march
+                        </div>
                     </div>
                 </div>
             </div>
@@ -795,109 +1052,231 @@
     </footer>
 
     <script>
-        // Initialize map centered on Japan
-        const map = L.map('map').setView([33.5, 133], 6);
+        // Location data
+        const locations = [
+            // Rebel Domains
+            {
+                id: 'satsuma', name: 'Satsuma', japanese: '薩摩',
+                lat: 31.5966, lng: 130.5571, type: 'rebel',
+                clan: 'Shimazu clan', modern: 'Kagoshima, Kyushu',
+                leaders: 'Saigō Takamori, Ōkubo Toshimichi',
+                description: 'Japan\'s second-largest domain. The Shimazu controlled Ryukyu trade and built a modern navy after the 1863 British bombardment.'
+            },
+            {
+                id: 'choshu', name: 'Chōshū', japanese: '長州',
+                lat: 34.1859, lng: 131.4705, type: 'rebel',
+                clan: 'Mōri clan', modern: 'Yamaguchi, Honshu',
+                leaders: 'Kido Takayoshi, Itō Hirobumi, Yamagata Aritomo',
+                description: 'Center of radical reform. Created the Kiheitai mixed-class militia. Controlled the strategic Shimonoseki Strait.'
+            },
+            {
+                id: 'tosa', name: 'Tosa', japanese: '土佐',
+                lat: 33.5597, lng: 133.5311, type: 'rebel',
+                clan: 'Yamauchi clan', modern: 'Kōchi, Shikoku',
+                leaders: 'Sakamoto Ryōma, Itagaki Taisuke',
+                description: 'Produced key intermediaries. Sakamoto Ryōma brokered the Satchō Alliance. Later became a center of the freedom and people\'s rights movement.'
+            },
+            {
+                id: 'hizen', name: 'Hizen', japanese: '肥前',
+                lat: 33.2494, lng: 130.2988, type: 'rebel',
+                clan: 'Nabeshima clan', modern: 'Saga, Kyushu',
+                leaders: 'Ōkuma Shigenobu, Etō Shinpei',
+                description: 'Technology leaders. Built Japan\'s first reverberatory furnace, cannon foundry, and experimental steam engine.'
+            },
+            // Power Centers
+            {
+                id: 'edo', name: 'Edo (Tokyo)', japanese: '江戸',
+                lat: 35.6762, lng: 139.6503, type: 'shogunate',
+                clan: 'Tokugawa shogunate', modern: 'Tokyo',
+                leaders: 'Tokugawa Yoshinobu (last shogun)',
+                description: 'Seat of shogunal power for 265 years. Surrendered peacefully in 1868 after Saigō Takamori negotiated with Katsu Kaishū.'
+            },
+            {
+                id: 'kyoto', name: 'Kyoto', japanese: '京都',
+                lat: 35.0116, lng: 135.7681, type: 'imperial',
+                clan: 'Imperial court', modern: 'Kyoto',
+                leaders: 'Emperor Meiji (Mutsuhito)',
+                description: 'Imperial capital. On January 3, 1868, Satsuma-Chōshū forces seized the palace and declared the "restoration" of imperial rule.'
+            },
+            // Battles
+            {
+                id: 'toba', name: 'Toba-Fushimi', japanese: '鳥羽伏見',
+                lat: 34.9211, lng: 135.7556, type: 'battle',
+                clan: null, modern: 'South of Kyoto',
+                leaders: null,
+                description: 'January 27-30, 1868. First major battle of the Boshin War. 5,000 imperial troops with modern weapons defeated 15,000 shogunate forces. The imperial banner turned the tide.'
+            },
+            {
+                id: 'hakodate', name: 'Hakodate', japanese: '函館',
+                lat: 41.7687, lng: 140.7288, type: 'battle',
+                clan: null, modern: 'Hakodate, Hokkaido',
+                leaders: null,
+                description: 'May 1869. Final battle of the Boshin War. Tokugawa loyalists who had declared the Republic of Ezo surrendered. The 265-year shogunate was over.'
+            }
+        ];
 
-        // Light tiles for readability
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            maxZoom: 10
-        }).addTo(map);
-
-        // Domain locations with data
-        const domains = {
+        // Domain territories (approximate)
+        const territories = {
             satsuma: {
-                name: 'Satsuma Domain',
-                jp: '薩摩藩',
-                coords: [31.5966, 130.5571], // Kagoshima
-                color: '#c41e3a',
-                desc: 'Shimazu clan headquarters. Naval power and early modernizers. Controlled Ryukyu trade.'
+                name: '薩摩', color: '#c41e3a',
+                coords: [[32.5, 129.5], [32.5, 131.5], [31, 131.5], [30.5, 130.5], [31, 129.5], [32.5, 129.5]]
             },
             choshu: {
-                name: 'Chōshū Domain',
-                jp: '長州藩',
-                coords: [34.1859, 131.4705], // Yamaguchi/Hagi
-                color: '#2e5090',
-                desc: 'Mōri clan domain. Center of radical reform and military innovation. Controlled Shimonoseki Strait.'
+                name: '長州', color: '#2e5090',
+                coords: [[34.8, 130.5], [34.8, 132], [33.8, 132.5], [33.5, 131.5], [34, 130.5], [34.8, 130.5]]
             },
             tosa: {
-                name: 'Tosa Domain',
-                jp: '土佐藩',
-                coords: [33.5597, 133.5311], // Kochi
-                color: '#228b22',
-                desc: 'Yamauchi clan domain. Produced key intermediaries including Sakamoto Ryōma.'
+                name: '土佐', color: '#228b22',
+                coords: [[34, 132.5], [34, 134.5], [33, 134.5], [32.5, 133.5], [33, 132.5], [34, 132.5]]
             },
             hizen: {
-                name: 'Hizen Domain',
-                jp: '肥前藩',
-                coords: [33.2494, 130.2988], // Saga
-                color: '#8b4513',
-                desc: 'Nabeshima clan domain. Leader in Western technology and industry.'
-            },
-            edo: {
-                name: 'Edo',
-                jp: '江戸 (Tokyo)',
-                coords: [35.6762, 139.6503],
-                color: '#1a3a5c',
-                desc: 'Seat of the Tokugawa shogunate. Political center of Japan for 265 years.'
-            },
-            kyoto: {
-                name: 'Kyoto',
-                jp: '京都',
-                coords: [35.0116, 135.7681],
-                color: '#8b0000',
-                desc: 'Imperial capital. Site of the 1868 restoration coup.'
+                name: '肥前', color: '#8b4513',
+                coords: [[33.8, 129.5], [33.8, 130.5], [33, 130.5], [32.5, 130], [33, 129.3], [33.8, 129.5]]
             }
         };
 
-        const markers = {};
+        // Initialize map
+        const map = L.map('map', { zoomControl: true }).setView([35, 135], 6);
 
-        // Create markers
-        Object.keys(domains).forEach(key => {
-            const d = domains[key];
-            const isCapital = (key === 'edo' || key === 'kyoto');
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 12
+        }).addTo(map);
 
-            const marker = L.circleMarker(d.coords, {
-                radius: isCapital ? 10 : 14,
-                fillColor: d.color,
-                color: '#fff',
+        // Add territory polygons
+        Object.keys(territories).forEach(key => {
+            const t = territories[key];
+            const polygon = L.polygon(t.coords, {
+                color: t.color,
                 weight: 2,
-                opacity: 1,
-                fillOpacity: 0.85
+                opacity: 0.6,
+                fillColor: t.color,
+                fillOpacity: 0.15,
+                dashArray: '5, 5'
             }).addTo(map);
 
-            marker.bindPopup(`
-                <div style="min-width: 200px;">
-                    <strong style="font-size: 1.1em;">${d.name}</strong><br>
-                    <span style="color: #666;">${d.jp}</span>
-                    <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #ddd;">
-                    <p style="margin: 0; font-size: 0.9em; line-height: 1.4;">${d.desc}</p>
-                </div>
-            `);
-
-            markers[key] = marker;
+            // Add label
+            const center = polygon.getBounds().getCenter();
+            const label = L.divIcon({
+                className: 'domain-label',
+                html: t.name,
+                iconSize: [60, 20],
+                iconAnchor: [30, 10]
+            });
+            L.marker(center, { icon: label, interactive: false }).addTo(map);
         });
 
-        // Draw Satchō Alliance connection
-        const allianceLine = L.polyline([
-            domains.satsuma.coords,
-            domains.choshu.coords
+        // Add Satchō Alliance line
+        L.polyline([
+            [31.5966, 130.5571], // Satsuma
+            [34.1859, 131.4705]  // Chōshū
         ], {
             color: '#a67c00',
             weight: 3,
-            dashArray: '10, 10',
-            opacity: 0.7
-        }).addTo(map);
+            opacity: 0.7,
+            dashArray: '10, 8'
+        }).addTo(map).bindPopup('<strong>Satchō Alliance (1866)</strong><br>Secret pact brokered by Sakamoto Ryōma');
 
-        allianceLine.bindPopup('<strong>Satchō Alliance (1866)</strong><br>Secret agreement brokered by Sakamoto Ryōma');
+        // Add Boshin War march route
+        L.polyline([
+            [35.0116, 135.7681], // Kyoto
+            [34.9211, 135.7556], // Toba-Fushimi
+            [35.6762, 139.6503], // Edo
+            [41.7687, 140.7288]  // Hakodate
+        ], {
+            color: '#8b0000',
+            weight: 3,
+            opacity: 0.6
+        }).addTo(map).bindPopup('<strong>Boshin War (1868-69)</strong><br>Imperial army\'s march from Kyoto to Hakodate');
 
-        // Legend click interaction
-        document.querySelectorAll('.legend-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const target = item.dataset.target;
-                if (markers[target]) {
-                    map.setView(domains[target].coords, 8);
-                    markers[target].openPopup();
+        // Custom icon factory
+        function createIcon(type, japanese) {
+            const colors = {
+                rebel: '#c41e3a',
+                shogunate: '#1a3a5c',
+                imperial: '#8b0000',
+                battle: '#a67c00'
+            };
+            const size = type === 'battle' ? 28 : 34;
+
+            return L.divIcon({
+                className: 'custom-div-icon',
+                html: `<div style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: ${size}px;
+                    height: ${size}px;
+                    border-radius: 50%;
+                    background: ${colors[type]};
+                    color: #fff;
+                    font-size: ${type === 'battle' ? '10px' : '12px'};
+                    font-weight: bold;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                    border: 2px solid #fff;
+                ">${japanese.slice(0, 2)}</div>`,
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2],
+                popupAnchor: [0, -size / 2]
+            });
+        }
+
+        // Create popup content
+        function createPopupContent(loc) {
+            const leaderSection = loc.leaders
+                ? `<p><strong>Key figures:</strong> ${loc.leaders}</p>`
+                : '';
+            return `
+                <div class="popup-content">
+                    <div class="popup-header">
+                        <span class="japanese">${loc.japanese}</span>
+                        <div class="names">
+                            <div class="english">${loc.name}</div>
+                            <div class="clan">${loc.clan || ''}</div>
+                        </div>
+                    </div>
+                    <div class="popup-body">
+                        <p>${loc.description}</p>
+                        ${leaderSection}
+                        <div class="modern-location">
+                            <strong>Modern:</strong> ${loc.modern}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add markers
+        const markers = {};
+        locations.forEach(loc => {
+            const marker = L.marker([loc.lat, loc.lng], {
+                icon: createIcon(loc.type, loc.japanese),
+                zIndexOffset: loc.type === 'rebel' ? 1000 : 500
+            }).addTo(map);
+
+            marker.bindPopup(createPopupContent(loc), {
+                maxWidth: 280,
+                className: 'custom-popup'
+            });
+
+            markers[loc.id] = marker;
+        });
+
+        // Sidebar click handlers
+        document.querySelectorAll('.location-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const lat = parseFloat(this.dataset.lat);
+                const lng = parseFloat(this.dataset.lng);
+                const id = this.dataset.id;
+
+                document.querySelectorAll('.location-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+
+                map.setView([lat, lng], 8, { animate: true });
+
+                if (markers[id]) {
+                    markers[id].openPopup();
                 }
             });
         });

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Domains That Toppled the Shogun</title>
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Domains That Toppled the Shogun">
+    <meta property="og:description" content="How four 'outside' domains—excluded from power for 250 years—overthrew the Tokugawa shogunate and launched Japan into modernity.">
+    <meta property="og:url" content="https://omatty123.github.io/hist213-dashboard/print/meiji-restoration-deep-dive.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #fff;
+            --paper-warm: #faf8f5;
+            --paper-dark: #f0ede8;
+            --imperial: #8b0000;
+            --shogun: #1a3a5c;
+            --gold: #a67c00;
+            --satsuma: #c41e3a;
+            --choshu: #2e5090;
+            --tosa: #228b22;
+            --hizen: #8b4513;
+            --border: #ddd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 60vh;
+            min-height: 450px;
+            background: linear-gradient(rgba(10,10,15,0.6), rgba(10,10,15,0.85)),
+                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Boshin_war.jpg/1280px-Boshin_war.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            display: flex;
+            align-items: flex-end;
+            padding: 4rem;
+        }
+
+        .hero-content { max-width: 750px; }
+
+        .hero-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .hero .deck {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+        }
+
+        .hero-caption {
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .hero-caption a { color: rgba(255,255,255,0.6); }
+
+        /* NAV */
+        nav {
+            background: var(--ink);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+        nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+        /* MAP SECTION */
+        .map-section {
+            background: var(--paper-dark);
+            padding: 3rem 2rem;
+        }
+        .map-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 2rem;
+            align-items: start;
+        }
+        .map-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .map-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .map-header p {
+            color: var(--ink-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        #map {
+            height: 500px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+        .map-legend {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.25rem;
+        }
+        .map-legend h3 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .legend-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .legend-item:hover { background: var(--paper-warm); }
+        .legend-item:last-child { margin-bottom: 0; }
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        .legend-item h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.15rem;
+        }
+        .legend-item p {
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            line-height: 1.4;
+        }
+        .legend-item .jp {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ink);
+        }
+        .main-content h2:first-child { margin-top: 0; }
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--ink-light);
+        }
+        .main-content strong { color: var(--ink); }
+
+        /* SIDEBAR */
+        .sidebar { align-self: start; }
+        .sidebar-card {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-card-head {
+            background: var(--ink);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        .sidebar-card-body { padding: 1rem; }
+        .sidebar-card-body p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+        .sidebar-card-body p:last-child { margin-bottom: 0; }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 4px solid var(--imperial);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--paper-warm);
+        }
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        .pull-quote .attrib {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            font-style: normal;
+        }
+
+        /* DOMAIN CARDS - FULL WIDTH */
+        .domains-section {
+            background: var(--ink);
+            padding: 4rem 2rem;
+        }
+        .domains-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .domains-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .domains-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .domains-header p { color: rgba(255,255,255,0.6); }
+
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .domain-card {
+            background: var(--paper);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .domain-card-head {
+            color: #fff;
+            padding: 1rem 1.25rem;
+        }
+        .domain-card-head.satsuma { background: var(--satsuma); }
+        .domain-card-head.choshu { background: var(--choshu); }
+        .domain-card-head.tosa { background: var(--tosa); }
+        .domain-card-head.hizen { background: var(--hizen); }
+
+        .domain-card-head h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.2rem;
+        }
+        .domain-card-head .jp {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        .domain-card-head .role {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-top: 0.25rem;
+        }
+        .domain-card-body { padding: 1.25rem; }
+        .domain-card-body p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+        .domain-card-body .leader {
+            background: var(--paper-dark);
+            padding: 0.75rem;
+            border-left: 3px solid;
+            font-size: 0.85rem;
+        }
+        .domain-card-body .leader.satsuma { border-color: var(--satsuma); }
+        .domain-card-body .leader.choshu { border-color: var(--choshu); }
+        .domain-card-body .leader.tosa { border-color: var(--tosa); }
+        .domain-card-body .leader.hizen { border-color: var(--hizen); }
+
+        /* TIMELINE */
+        .timeline-section {
+            background: var(--paper-warm);
+            padding: 4rem 2rem;
+        }
+        .timeline-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .timeline-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+        .tl-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .tl-item:last-child { border-bottom: none; }
+        .tl-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--imperial);
+        }
+        .tl-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .tl-content p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        /* SOURCES */
+        .sources-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .sources-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ink);
+        }
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .source-group h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+            margin-bottom: 0.75rem;
+        }
+        .source-group ul { list-style: none; }
+        .source-group li {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+        .source-group a {
+            color: var(--ink-light);
+            text-decoration: none;
+        }
+        .source-group a:hover {
+            color: var(--imperial);
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+        }
+        footer a { color: var(--gold); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .map-container {
+                grid-template-columns: 1fr;
+            }
+            .map-legend {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            .map-legend h3 {
+                grid-column: 1 / -1;
+            }
+            .two-col { grid-template-columns: 1fr; }
+            .sidebar { order: -1; }
+            .domain-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 320px;
+                padding: 1.5rem;
+                padding-top: 2rem;
+            }
+            .hero h1 { font-size: 1.6rem; line-height: 1.25; }
+            .hero .deck { font-size: 0.95rem; }
+            .hero-label { font-size: 0.6rem; }
+            .hero-caption {
+                position: static;
+                margin-top: 1rem;
+                font-size: 0.6rem;
+            }
+
+            nav { padding: 0.5rem 1rem; flex-wrap: wrap; }
+
+            .map-section { padding: 2rem 1rem; }
+            #map { height: 350px; }
+            .map-legend {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            .legend-item { padding: 0.25rem; }
+
+            .two-col { padding: 2rem 1rem; gap: 2rem; }
+            .main-content h2 { font-size: 1.3rem; }
+
+            .pull-quote { padding: 1rem 1.25rem; }
+            .pull-quote p { font-size: 1.1rem; }
+
+            .domains-section { padding: 2rem 1rem; }
+            .domains-header h2 { font-size: 1.5rem; }
+            .domain-card-head h3 { font-size: 1.1rem; }
+
+            .timeline-section { padding: 2rem 1rem; }
+            .timeline-header h2 { font-size: 1.5rem; }
+            .tl-item {
+                grid-template-columns: 70px 1fr;
+                gap: 1rem;
+            }
+            .tl-year { font-size: 1.1rem; }
+
+            .sources-section { padding: 2rem 1rem; }
+            .sources-grid { grid-template-columns: 1fr; }
+
+            footer { padding: 1.5rem 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.4rem; }
+            .tl-item { grid-template-columns: 1fr; }
+            .tl-year { margin-bottom: 0.25rem; }
+            nav .context { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="../index.html">
+            <span style="font-size: 1.2rem;">&larr;</span> Back to Dashboard
+        </a>
+        <span class="sep">|</span>
+        <span class="context">Plate 12: The Meiji Restoration</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
+            <h1>The Domains That Toppled the Shogun</h1>
+            <p class="deck">How four "outside" domains—excluded from power for 250 years—formed an unlikely alliance, overthrew the Tokugawa shogunate, and launched Japan into modernity.</p>
+        </div>
+        <div class="hero-caption">
+            Battle of Toba-Fushimi, 1868. <a href="https://commons.wikimedia.org/wiki/File:Boshin_war.jpg" target="_blank">Wikimedia Commons</a>
+        </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section class="map-section">
+        <div class="map-container">
+            <div class="map-header">
+                <h2>Geography of Revolution</h2>
+                <p>The four domains that led the Meiji Restoration were all <em>tozama</em> ("outside") lords—clans that had opposed Tokugawa Ieyasu at Sekigahara in 1600 and were excluded from the shogunate's inner circle for over two centuries.</p>
+            </div>
+            <div id="map"></div>
+            <div class="map-legend">
+                <h3>Key Locations</h3>
+                <div class="legend-item" data-target="satsuma">
+                    <div class="legend-dot" style="background: var(--satsuma);"></div>
+                    <div>
+                        <h4>Satsuma Domain</h4>
+                        <p class="jp">薩摩藩 · Kagoshima</p>
+                        <p>Shimazu clan. Naval power, early modernizers.</p>
+                    </div>
+                </div>
+                <div class="legend-item" data-target="choshu">
+                    <div class="legend-dot" style="background: var(--choshu);"></div>
+                    <div>
+                        <h4>Chōshū Domain</h4>
+                        <p class="jp">長州藩 · Yamaguchi</p>
+                        <p>Mōri clan. Radical reformers, military innovators.</p>
+                    </div>
+                </div>
+                <div class="legend-item" data-target="tosa">
+                    <div class="legend-dot" style="background: var(--tosa);"></div>
+                    <div>
+                        <h4>Tosa Domain</h4>
+                        <p class="jp">土佐藩 · Kōchi</p>
+                        <p>Yamauchi clan. Constitutional moderates.</p>
+                    </div>
+                </div>
+                <div class="legend-item" data-target="hizen">
+                    <div class="legend-dot" style="background: var(--hizen);"></div>
+                    <div>
+                        <h4>Hizen Domain</h4>
+                        <p class="jp">肥前藩 · Saga</p>
+                        <p>Nabeshima clan. Technology and industry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TWO COLUMN CONTENT -->
+    <div class="two-col">
+        <main class="main-content">
+            <h2>The Tozama Problem</h2>
+            <p>When Tokugawa Ieyasu unified Japan after the Battle of Sekigahara (1600), he divided the daimyō into categories. The <strong>fudai</strong> (hereditary vassals) who had supported him received domains near Edo and positions in the shogunate. The <strong>tozama</strong> (outside lords) who had opposed him—or joined too late—were pushed to the periphery.</p>
+
+            <p>For 250 years, tozama domains like Satsuma and Chōshū were excluded from the shogunate's decision-making. They could not hold positions in the central government. But this exclusion had an unintended consequence: <strong>they had no stake in preserving the system.</strong></p>
+
+            <div class="pull-quote">
+                <p>"Revere the Emperor, Expel the Barbarians"</p>
+                <div class="attrib">尊王攘夷 (sonnō jōi) — the rallying cry that united anti-shogunate forces</div>
+            </div>
+
+            <h2>From Rivals to Allies</h2>
+            <p>Satsuma and Chōshū had been bitter rivals. In 1863, when Chōshū radicals attempted a coup in Kyoto, <strong>Satsuma helped the shogunate drive them out</strong>. The two domains seemed destined for war.</p>
+
+            <p>But the foreign crisis changed everything. After British warships bombarded Kagoshima (1863) and a combined Western fleet destroyed Chōshū's coastal defenses (1864), both domains realized that fighting foreigners was futile—and that the shogunate was too weak to protect Japan.</p>
+
+            <p>In 1866, the unthinkable happened: <strong>Sakamoto Ryōma</strong>, a Tosa samurai acting as intermediary, brokered the secret <strong>Satchō Alliance</strong> (薩長同盟). Former enemies agreed to work together against the shogunate.</p>
+
+            <h2>The Restoration</h2>
+            <p>On January 3, 1868, Satsuma and Chōshū forces seized the imperial palace in Kyoto and announced the "restoration" of imperial rule. The teenage Emperor Meiji—just 15 years old—became the symbolic center of a new government.</p>
+
+            <p>The shogun, Tokugawa Yoshinobu, had already returned his political authority to the emperor weeks earlier, hoping to remain influential in a new coalition government. But the Satchō leaders maneuvered to exclude him entirely, provoking the <strong>Boshin War</strong> (1868–1869).</p>
+
+            <p>Within 18 months, the last Tokugawa loyalists surrendered. The 265-year shogunate was over.</p>
+
+            <h2>Why Did They Win?</h2>
+            <p><strong>Superior weapons:</strong> Both Satsuma and Chōshū had been secretly purchasing modern rifles and artillery from Western merchants—including through Thomas Glover in Nagasaki.</p>
+
+            <p><strong>Military reforms:</strong> Chōshū's <em>Kiheitai</em> (奇兵隊) mixed samurai and commoners, breaking the class monopoly on warfare. Satsuma trained a modern navy.</p>
+
+            <p><strong>Imperial legitimacy:</strong> By claiming to act in the emperor's name, the rebels transformed from traitors into loyalists overnight.</p>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">The Sekigahara Grudge</div>
+                <div class="sidebar-card-body">
+                    <p>At Sekigahara (1600), the Shimazu of Satsuma and Mōri of Chōshū fought against Tokugawa Ieyasu. They lost—and spent 250 years nursing the grudge.</p>
+                    <p>Mōri clan tradition held that every New Year's morning, a retainer would ask: "Has the time come to overthrow the Tokugawa?" The answer was always: "Not yet."</p>
+                    <p>In 1868, the answer finally changed.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">Key Figures</div>
+                <div class="sidebar-card-body">
+                    <p><strong>Saigō Takamori</strong> (Satsuma) — Military leader of the restoration forces. Later led the Satsuma Rebellion (1877) against the government he helped create.</p>
+                    <p><strong>Ōkubo Toshimichi</strong> (Satsuma) — Political strategist. Dominated early Meiji government until his assassination in 1878.</p>
+                    <p><strong>Kido Takayoshi</strong> (Chōshū) — Helped draft the Charter Oath. Architect of the abolition of domains.</p>
+                    <p><strong>Sakamoto Ryōma</strong> (Tosa) — Brokered the Satchō Alliance. Assassinated in 1867, just before the restoration.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">Discussion Questions</div>
+                <div class="sidebar-card-body">
+                    <p><strong>1.</strong> Why did exclusion from power make the tozama domains more willing to overthrow the system?</p>
+                    <p><strong>2.</strong> How did foreign pressure transform domestic rivals into allies?</p>
+                    <p><strong>3.</strong> The Meiji leaders claimed to "restore" the emperor—but created something entirely new. Why use the language of restoration?</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- DOMAIN CARDS -->
+    <section class="domains-section">
+        <div class="domains-inner">
+            <div class="domains-header">
+                <h2>The Four Great Domains</h2>
+                <p>薩長土肥 (Sacchōdohi) — The alliance that made modern Japan</p>
+            </div>
+            <div class="domain-grid">
+                <div class="domain-card">
+                    <div class="domain-card-head satsuma">
+                        <h3>Satsuma</h3>
+                        <div class="jp">薩摩藩</div>
+                        <div class="role">Naval power · Early modernizers</div>
+                    </div>
+                    <div class="domain-card-body">
+                        <p>Located in southern Kyushu, Satsuma was Japan's second-largest domain. The Shimazu clan controlled the Ryukyu Kingdom and maintained secret trade with China, accumulating wealth outside shogunal oversight.</p>
+                        <p>After the British bombardment of Kagoshima (1863), Satsuma pivoted from anti-foreign resistance to aggressive modernization, purchasing Western warships and training a modern navy.</p>
+                        <div class="leader satsuma"><strong>Key leaders:</strong> Saigō Takamori, Ōkubo Toshimichi</div>
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-head choshu">
+                        <h3>Chōshū</h3>
+                        <div class="jp">長州藩</div>
+                        <div class="role">Military reformers · Radical ideologues</div>
+                    </div>
+                    <div class="domain-card-body">
+                        <p>The Mōri clan's domain at the western tip of Honshu controlled the strategic Shimonoseki Strait. Chōshū became the center of sonnō jōi ("revere the emperor, expel the barbarians") radicalism.</p>
+                        <p>After Western powers destroyed their coastal batteries (1864), Chōshū reformed its military, creating mixed-class militia units (Kiheitai) armed with modern weapons.</p>
+                        <div class="leader choshu"><strong>Key leaders:</strong> Kido Takayoshi, Itō Hirobumi, Yamagata Aritomo</div>
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-head tosa">
+                        <h3>Tosa</h3>
+                        <div class="jp">土佐藩</div>
+                        <div class="role">Constitutional moderates · Brokers</div>
+                    </div>
+                    <div class="domain-card-body">
+                        <p>On the Pacific coast of Shikoku, Tosa produced key intermediaries who bridged the Satsuma-Chōshū divide. Tosa leaders favored a constitutional settlement that would include the shogun.</p>
+                        <p>When the hardliners prevailed, Tosa still contributed forces to the imperial army—but later became a center of opposition to Satchō dominance and the movement for elected assemblies.</p>
+                        <div class="leader tosa"><strong>Key leaders:</strong> Sakamoto Ryōma, Itagaki Taisuke</div>
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-head hizen">
+                        <h3>Hizen</h3>
+                        <div class="jp">肥前藩</div>
+                        <div class="role">Technology · Industry</div>
+                    </div>
+                    <div class="domain-card-body">
+                        <p>Based in Saga in northern Kyushu, Hizen was Japan's leader in Western technology. The Nabeshima clan built Japan's first reverberatory furnace, cannon foundry, and experimental steam engine.</p>
+                        <p>Though less prominent in the military campaigns, Hizen contributed crucial technical expertise to the new government and dominated early industrialization efforts.</p>
+                        <div class="leader hizen"><strong>Key leaders:</strong> Ōkuma Shigenobu, Etō Shinpei</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+        <div class="timeline-inner">
+            <div class="timeline-header">
+                <h2>Timeline: Fall of the Shogunate</h2>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1853</div>
+                <div class="tl-content">
+                    <h4>Perry arrives</h4>
+                    <p>American "Black Ships" force Japan to open ports, exposing shogunal weakness.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1863</div>
+                <div class="tl-content">
+                    <h4>Bombardment of Kagoshima</h4>
+                    <p>British warships destroy much of Satsuma's capital after the Namamugi Incident. Satsuma pivots to modernization.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1864</div>
+                <div class="tl-content">
+                    <h4>Shimonoseki Campaign</h4>
+                    <p>Combined Western fleet destroys Chōshū's coastal defenses. Both major anti-foreign domains now recognize the need to modernize.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1866</div>
+                <div class="tl-content">
+                    <h4>Satchō Alliance</h4>
+                    <p>Sakamoto Ryōma brokers secret agreement between former rivals Satsuma and Chōshū. The shogunate's days are numbered.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1867</div>
+                <div class="tl-content">
+                    <h4>Shogun returns authority</h4>
+                    <p>Tokugawa Yoshinobu surrenders political power to Emperor Meiji, hoping to remain influential. He is outmaneuvered.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1868</div>
+                <div class="tl-content">
+                    <h4>Meiji Restoration</h4>
+                    <p>January 3: Imperial forces seize power in Kyoto. The Boshin War begins; Tokugawa loyalists are defeated within 18 months.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1871</div>
+                <div class="tl-content">
+                    <h4>Abolition of domains</h4>
+                    <p>The new government abolishes all 270+ domains, replacing them with centrally-controlled prefectures. The samurai era ends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="sources-section">
+        <h2>Sources & Further Reading</h2>
+        <div class="sources-grid">
+            <div class="source-group">
+                <h4>Scholarly Works</h4>
+                <ul>
+                    <li>Marius Jansen, <em>The Making of Modern Japan</em> (Harvard, 2000)</li>
+                    <li>Albert Craig, <em>Chōshū in the Meiji Restoration</em> (Harvard, 1961)</li>
+                    <li>Mark Ravina, <em>The Last Samurai: The Life and Battles of Saigō Takamori</em> (Wiley, 2004)</li>
+                </ul>
+            </div>
+            <div class="source-group">
+                <h4>Primary Sources</h4>
+                <ul>
+                    <li><a href="https://www.ndl.go.jp/modern/e/index.html" target="_blank">National Diet Library: Modern Japan in Archives</a></li>
+                    <li>W.G. Beasley, ed., <em>Select Documents on Japanese Foreign Policy, 1853–1868</em></li>
+                </ul>
+            </div>
+            <div class="source-group">
+                <h4>Course Readings</h4>
+                <ul>
+                    <li>Ebrey & Walthall, <em>Modern East Asia</em>, Chapter 9</li>
+                    <li>Fukuzawa Yukichi, "Leaving Asia" (1885)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="../index.html">&larr; Back to Dashboard</a> |
+        HIST/EAST 213: Modern East Asia | Winter 2026 |
+        <a href="#">Back to top</a>
+    </footer>
+
+    <script>
+        // Initialize map centered on Japan
+        const map = L.map('map').setView([33.5, 133], 6);
+
+        // Light tiles for readability
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            maxZoom: 10
+        }).addTo(map);
+
+        // Domain locations with data
+        const domains = {
+            satsuma: {
+                name: 'Satsuma Domain',
+                jp: '薩摩藩',
+                coords: [31.5966, 130.5571], // Kagoshima
+                color: '#c41e3a',
+                desc: 'Shimazu clan headquarters. Naval power and early modernizers. Controlled Ryukyu trade.'
+            },
+            choshu: {
+                name: 'Chōshū Domain',
+                jp: '長州藩',
+                coords: [34.1859, 131.4705], // Yamaguchi/Hagi
+                color: '#2e5090',
+                desc: 'Mōri clan domain. Center of radical reform and military innovation. Controlled Shimonoseki Strait.'
+            },
+            tosa: {
+                name: 'Tosa Domain',
+                jp: '土佐藩',
+                coords: [33.5597, 133.5311], // Kochi
+                color: '#228b22',
+                desc: 'Yamauchi clan domain. Produced key intermediaries including Sakamoto Ryōma.'
+            },
+            hizen: {
+                name: 'Hizen Domain',
+                jp: '肥前藩',
+                coords: [33.2494, 130.2988], // Saga
+                color: '#8b4513',
+                desc: 'Nabeshima clan domain. Leader in Western technology and industry.'
+            },
+            edo: {
+                name: 'Edo',
+                jp: '江戸 (Tokyo)',
+                coords: [35.6762, 139.6503],
+                color: '#1a3a5c',
+                desc: 'Seat of the Tokugawa shogunate. Political center of Japan for 265 years.'
+            },
+            kyoto: {
+                name: 'Kyoto',
+                jp: '京都',
+                coords: [35.0116, 135.7681],
+                color: '#8b0000',
+                desc: 'Imperial capital. Site of the 1868 restoration coup.'
+            }
+        };
+
+        const markers = {};
+
+        // Create markers
+        Object.keys(domains).forEach(key => {
+            const d = domains[key];
+            const isCapital = (key === 'edo' || key === 'kyoto');
+
+            const marker = L.circleMarker(d.coords, {
+                radius: isCapital ? 10 : 14,
+                fillColor: d.color,
+                color: '#fff',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.85
+            }).addTo(map);
+
+            marker.bindPopup(`
+                <div style="min-width: 200px;">
+                    <strong style="font-size: 1.1em;">${d.name}</strong><br>
+                    <span style="color: #666;">${d.jp}</span>
+                    <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #ddd;">
+                    <p style="margin: 0; font-size: 0.9em; line-height: 1.4;">${d.desc}</p>
+                </div>
+            `);
+
+            markers[key] = marker;
+        });
+
+        // Draw Satchō Alliance connection
+        const allianceLine = L.polyline([
+            domains.satsuma.coords,
+            domains.choshu.coords
+        ], {
+            color: '#a67c00',
+            weight: 3,
+            dashArray: '10, 10',
+            opacity: 0.7
+        }).addTo(map);
+
+        allianceLine.bindPopup('<strong>Satchō Alliance (1866)</strong><br>Secret agreement brokered by Sakamoto Ryōma');
+
+        // Legend click interaction
+        document.querySelectorAll('.legend-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const target = item.dataset.target;
+                if (markers[target]) {
+                    map.setView(domains[target].coords, 8);
+                    markers[target].openPopup();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

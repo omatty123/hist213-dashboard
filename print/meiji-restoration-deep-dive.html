@@ -341,6 +341,37 @@
             border-left: 3px solid var(--gold);
         }
 
+        /* Population Chart */
+        .pop-chart { display: flex; flex-direction: column; gap: 0.5rem; }
+        .pop-row {
+            display: grid;
+            grid-template-columns: 40px 1fr 32px;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .pop-year {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--ink-light);
+        }
+        .pop-bar-container {
+            height: 16px;
+            background: var(--paper-dark);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .pop-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--imperial) 0%, var(--satsuma) 100%);
+            border-radius: 2px;
+        }
+        .pop-num {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-align: right;
+        }
+
         /* TWO COLUMN LAYOUT */
         .two-col {
             display: grid;
@@ -881,6 +912,51 @@
                     <p><strong>Ōkubo Toshimichi</strong> (Satsuma) — Political strategist. Dominated early Meiji government until his assassination in 1878.</p>
                     <p><strong>Kido Takayoshi</strong> (Chōshū) — Helped draft the Charter Oath. Architect of the abolition of domains.</p>
                     <p><strong>Sakamoto Ryōma</strong> (Tosa) — Brokered the Satchō Alliance. Assassinated in 1867, just before the restoration.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">Japan's Population, 1600–1850</div>
+                <div class="sidebar-card-body">
+                    <div class="pop-chart">
+                        <div class="pop-row">
+                            <span class="pop-year">1600</span>
+                            <div class="pop-bar-container">
+                                <div class="pop-bar" style="width: 35%;"></div>
+                            </div>
+                            <span class="pop-num">12M</span>
+                        </div>
+                        <div class="pop-row">
+                            <span class="pop-year">1650</span>
+                            <div class="pop-bar-container">
+                                <div class="pop-bar" style="width: 55%;"></div>
+                            </div>
+                            <span class="pop-num">18M</span>
+                        </div>
+                        <div class="pop-row">
+                            <span class="pop-year">1721</span>
+                            <div class="pop-bar-container">
+                                <div class="pop-bar" style="width: 88%;"></div>
+                            </div>
+                            <span class="pop-num">30M</span>
+                        </div>
+                        <div class="pop-row">
+                            <span class="pop-year">1800</span>
+                            <div class="pop-bar-container">
+                                <div class="pop-bar" style="width: 91%;"></div>
+                            </div>
+                            <span class="pop-num">31M</span>
+                        </div>
+                        <div class="pop-row">
+                            <span class="pop-year">1850</span>
+                            <div class="pop-bar-container">
+                                <div class="pop-bar" style="width: 94%;"></div>
+                            </div>
+                            <span class="pop-num">32M</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.7rem; color: var(--ink-faint); margin-top: 0.75rem;">Rapid growth 1600–1720, then stagnation. The 1721 census counted 26M commoners plus ~4M samurai.</p>
+                    <p style="font-size: 0.65rem; color: var(--ink-faint); margin-top: 0.5rem;">Source: <a href="https://rekishinihon.com/2013/06/07/interesting-population-statistics-of-japan/" target="_blank">Rekishi Nihon</a></p>
                 </div>
             </div>
 

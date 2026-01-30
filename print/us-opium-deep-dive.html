@@ -100,11 +100,6 @@
             padding: 3rem 2rem;
         }
 
-        @media (max-width: 900px) {
-            .two-col { grid-template-columns: 1fr; }
-            .sidebar { order: -1; }
-        }
-
         .main-content h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
@@ -419,6 +414,38 @@
             text-decoration: underline;
         }
 
+        /* CANTON FACTORIES SECTION */
+        .canton-section {
+            position: relative;
+        }
+        .canton-section img {
+            width: 100%;
+            display: block;
+        }
+        .canton-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem;
+        }
+        .canton-caption-inner {
+            max-width: 800px;
+        }
+        .canton-text {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .canton-credit {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.7rem;
+        }
+        .canton-credit a {
+            color: var(--gold);
+        }
+
         /* FOOTER */
         footer {
             background: var(--ink);
@@ -431,18 +458,136 @@
         footer a { color: var(--gold); }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero { height: auto; min-height: 400px; padding: 2rem; }
-            .hero h1 { font-size: 2rem; }
-            .two-col { padding: 2rem 1rem; }
-            .families-section { padding: 2rem 1rem; }
-            .tl-item { grid-template-columns: 70px 1fr; gap: 1rem; }
+        @media (max-width: 900px) {
+            .two-col { grid-template-columns: 1fr; }
+            .sidebar {
+                order: -1;
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1rem;
+            }
+            .sidebar-card { margin-bottom: 0; }
+            /* Limit Howqua portrait height on tablet/mobile */
+            .sidebar-card-body img {
+                max-height: 250px;
+                width: 100%;
+                object-fit: cover;
+                object-position: top;
+            }
         }
 
-        @media (max-width: 900px) {
-            section > div[style*="grid-template-columns: 1fr 1fr"] {
+        @media (max-width: 768px) {
+            /* Hero */
+            .hero {
+                height: auto;
+                min-height: 300px;
+                padding: 1.5rem;
+                padding-top: 2rem;
+            }
+            .hero h1 { font-size: 1.6rem; line-height: 1.25; }
+            .hero .deck { font-size: 0.95rem; }
+            .hero-label { font-size: 0.6rem; margin-bottom: 0.75rem; }
+            .hero-caption {
+                position: static;
+                margin-top: 1rem;
+                font-size: 0.6rem;
+                color: rgba(255,255,255,0.5);
+            }
+
+            /* Navigation */
+            nav { padding: 0.5rem 1rem !important; flex-wrap: wrap; }
+
+            /* Two Column */
+            .two-col { padding: 1.5rem 1rem; gap: 2rem; }
+            .main-content h2 { font-size: 1.3rem; margin-top: 2rem; }
+            .main-content p { font-size: 0.95rem; }
+
+            /* Pull Quote */
+            .pull-quote { padding: 1rem 1.25rem; margin: 1.5rem 0; }
+            .pull-quote p { font-size: 1.1rem; }
+
+            /* Sidebar - single column on phone */
+            .sidebar {
                 grid-template-columns: 1fr !important;
             }
+            .sidebar-card { margin-bottom: 1rem; }
+            /* Further limit portrait on phone */
+            .sidebar-card-body img {
+                max-height: 200px;
+            }
+            .stat-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .stat-num { font-size: 1.5rem; }
+
+            /* Families Section */
+            .families-section { padding: 2rem 1rem; }
+            .families-header h2 { font-size: 1.5rem; }
+            .family-grid { grid-template-columns: 1fr; }
+            .family-card-head h3 { font-size: 1.1rem; }
+
+            /* Timeline */
+            .timeline-section { padding: 2rem 1rem; }
+            .timeline-header h2 { font-size: 1.5rem; }
+            .tl-item {
+                grid-template-columns: 60px 1fr;
+                gap: 0.75rem;
+                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .tl-year { font-size: 1.2rem; }
+            .tl-content h4 { font-size: 0.95rem; }
+            .tl-content p { font-size: 0.85rem; }
+
+            /* Sources */
+            .sources-section { padding: 2rem 1rem; }
+            .sources-section h2 { font-size: 1.3rem; }
+            .sources-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+            /* Canton section - stack caption below image */
+            .canton-caption {
+                position: static;
+                background: var(--ink);
+                padding: 1.25rem;
+            }
+            .canton-text {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+            .canton-credit {
+                font-size: 0.65rem;
+            }
+
+            /* Footer */
+            footer { padding: 1.5rem 1rem; font-size: 0.75rem; }
+
+            /* Full width sections with two columns */
+            section > div[style*="grid-template-columns: 1fr 1fr"] {
+                display: block !important;
+            }
+            section > div[style*="grid-template-columns: 1fr 1fr"] > div {
+                margin-bottom: 1.5rem;
+            }
+
+            /* Inline figures */
+            figure { margin: 1.5rem 0; }
+            figcaption { font-size: 0.75rem; }
+
+            /* Human cost section */
+            .human-cost-section { padding: 2rem 1rem !important; }
+            .human-cost-grid {
+                display: block !important;
+            }
+            .human-cost-grid > div { margin-bottom: 1.5rem; }
+            .human-cost-grid h3 { font-size: 1.3rem; }
+            .human-cost-grid p { font-size: 0.9rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.4rem; }
+            .hero .deck { font-size: 0.9rem; }
+            .stat-grid { grid-template-columns: 1fr; }
+            .tl-item { grid-template-columns: 1fr; }
+            .tl-year { margin-bottom: 0.25rem; }
         }
     </style>
 </head>
@@ -591,8 +736,8 @@
     </div>
 
     <!-- FULL WIDTH IMAGE: HUMAN COST -->
-    <section style="background: var(--paper-dark); padding: 3rem 2rem;">
-        <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+    <section class="human-cost-section" style="background: var(--paper-dark); padding: 3rem 2rem;">
+        <div class="human-cost-grid" style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
             <div>
                 <img src="images/opium-smokers.jpg" alt="Two wealthy Chinese opium smokers, 19th century gouache" style="width: 100%; border: 1px solid var(--border);">
                 <p style="font-size: 0.7rem; color: var(--ink-faint); margin-top: 0.5rem;">Anonymous Chinese artist, <em>Two wealthy Chinese opium smokers</em>, 19th century, gouache on rice-paper. <a href="https://wellcomecollection.org/works/wnrv6rfc" target="_blank">Wellcome Collection</a>, ref. 25052i. Public Domain Mark.</p>
@@ -660,12 +805,12 @@
     </section>
 
     <!-- FULL WIDTH IMAGE: CANTON FACTORIES -->
-    <section style="position: relative;">
-        <img src="images/canton-factories.jpg" alt="European Factories at Canton showing national flags" style="width: 100%; display: block;">
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem;">
-            <div style="max-width: 800px;">
-                <p style="color: #fff; font-size: 1rem; margin-bottom: 0.5rem;"><strong>The Thirteen Factories at Canton</strong> — The only place where Westerners could legally trade with China. The American flag flies prominently among European nations. Russell & Company operated from this narrow strip of waterfront, where fortunes were made and opium deals arranged.</p>
-                <p style="color: rgba(255,255,255,0.6); font-size: 0.7rem;">Anonymous Chinese artist, <em>View of the Canton Factories</em>, c. 1805–1806, oil on canvas. William Daniell. <a href="https://artsandculture.google.com/asset/view-of-the-canton-factories-william-daniell/IgG-g3wdsqPsSg" target="_blank" style="color: var(--gold);">Hong Kong Museum of Art via Google Arts & Culture</a>. Public Domain.</p>
+    <section class="canton-section">
+        <img src="images/canton-factories.jpg" alt="European Factories at Canton showing national flags">
+        <div class="canton-caption">
+            <div class="canton-caption-inner">
+                <p class="canton-text"><strong>The Thirteen Factories at Canton</strong> — The only place where Westerners could legally trade with China. The American flag flies prominently among European nations. Russell & Company operated from this narrow strip of waterfront, where fortunes were made and opium deals arranged.</p>
+                <p class="canton-credit">Anonymous Chinese artist, <em>View of the Canton Factories</em>, c. 1805–1806, oil on canvas. William Daniell. <a href="https://artsandculture.google.com/asset/view-of-the-canton-factories-william-daniell/IgG-g3wdsqPsSg" target="_blank">Hong Kong Museum of Art via Google Arts & Culture</a>. Public Domain.</p>
             </div>
         </div>
     </section>

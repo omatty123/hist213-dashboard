@@ -325,20 +325,87 @@
   </div>
 
   <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #taiping-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    .taiping-legend {
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #f2f5f7; background: rgba(10, 12, 16, 0.9);
+      padding: 8px 10px; border-radius: 6px; font-size: 9px; line-height: 1.5;
+    }
+    .taiping-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .taiping-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .taiping-title {
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #f2f5f7; background: rgba(10, 12, 16, 0.9);
+      padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+    }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+      background: rgba(14, 16, 20, 0.95); color: #f2f5f7;
+      font-family: system-ui, sans-serif; font-size: 10px;
+    }
+    .leaflet-popup-content { margin: 8px 10px; }
+  </style>
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Jintian</strong> (金田) — Where Taiping uprising began, January 1851</div>
-        <div class="map-loc"><strong>Nanjing (Tianjing)</strong> (南京/天京) — Taiping capital 1853-1864; 'Heavenly Capital'</div>
-        <div class="map-loc"><strong>Shanghai</strong> (上海) — Treaty port defended by foreign forces and Qing</div>
-        <div class="map-loc"><strong>Changsha</strong> (長沙) — Hunan capital; base of Zeng Guofan's army</div>
-        <div class="map-loc"><strong>Wuhan</strong> (武漢) — Major city fought over multiple times</div>
-        <div class="map-loc"><strong>Beijing</strong> (北京) — Qing capital; never directly threatened but terrified</div>
-      </div>
-    </div>
-    <div class="map-quote">"The Heavenly Father, the Supreme Lord and Great God, is the true god, the one God. There is no other beside him." — Taiping religious text</div>
+    <span class="label">Map: Taiping Rebellion 1850-1864</span>
+    <div id="taiping-map"></div>
   </div>
+  <script>
+    (function() {
+      const map = L.map('taiping-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd', maxZoom: 10, minZoom: 4
+      }).addTo(map);
+
+      // Title
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'taiping-title');
+        div.innerHTML = '太平天國 Taiping Heavenly Kingdom';
+        return div;
+      };
+      titleControl.addTo(map);
+
+      // Legend
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'taiping-legend');
+        div.innerHTML = `
+          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#e63946;"></span> Taiping Origin</div>
+          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#f4a261;"></span> Taiping Capital</div>
+          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#457b9d;"></span> Contested Cities</div>
+          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#8d99ae;"></span> Qing Strongholds</div>
+        `;
+        return div;
+      };
+      legendControl.addTo(map);
+
+      // Locations with verified coordinates
+      const locations = [
+        { name: "Jintian", cn: "金田", desc: "Uprising began Jan 1851", lat: 23.5983, lng: 110.113, color: "#e63946", radius: 8 },
+        { name: "Nanjing (Tianjing)", cn: "南京/天京", desc: "Taiping capital 1853-1864", lat: 32.05, lng: 118.767, color: "#f4a261", radius: 9 },
+        { name: "Shanghai", cn: "上海", desc: "Treaty port; defended by foreigners", lat: 31.224, lng: 121.469, color: "#457b9d", radius: 7 },
+        { name: "Changsha", cn: "長沙", desc: "Zeng Guofan's Hunan Army base", lat: 28.228, lng: 112.939, color: "#8d99ae", radius: 7 },
+        { name: "Wuhan", cn: "武漢", desc: "Fought over repeatedly", lat: 30.583, lng: 114.283, color: "#457b9d", radius: 7 },
+        { name: "Beijing", cn: "北京", desc: "Qing capital; never reached", lat: 39.917, lng: 116.383, color: "#8d99ae", radius: 8 }
+      ];
+
+      locations.forEach(function(loc) {
+        L.circleMarker([loc.lat, loc.lng], {
+          radius: loc.radius, fillColor: loc.color, color: '#fff', weight: 1.5, fillOpacity: 0.9
+        }).addTo(map).bindPopup(`<b>${loc.cn} ${loc.name}</b><br>${loc.desc}`);
+      });
+
+      // Taiping march route (Jintian → Nanjing)
+      L.polyline([
+        [23.5983, 110.113], [28.228, 112.939], [30.583, 114.283], [32.05, 118.767]
+      ], { weight: 2, opacity: 0.7, dashArray: '6 4', color: '#e63946' }).addTo(map)
+        .bindPopup('Taiping Northern Expedition<br><small>1851-1853</small>');
+
+      map.fitBounds([[22, 108], [41, 123]]);
+    })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

@@ -373,22 +373,88 @@
   </div>
 
   <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #tonghak-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    .tonghak-legend {
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #f2f5f7; background: rgba(10, 12, 16, 0.9);
+      padding: 8px 10px; border-radius: 6px; font-size: 9px; line-height: 1.5;
+    }
+    .tonghak-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .tonghak-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .tonghak-title {
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #f2f5f7; background: rgba(10, 12, 16, 0.9);
+      padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+    }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+      background: rgba(14, 16, 20, 0.95); color: #f2f5f7;
+      font-family: system-ui, sans-serif; font-size: 10px;
+    }
+    .leaflet-popup-content { margin: 8px 10px; }
+  </style>
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Gobu</strong> (古阜) — Where Tonghak uprising began January 1894 against corrupt magistrate Jo Byeong-gap</div>
-        <div class="map-loc"><strong>Jeonju</strong> (全州) — Provincial capital of Jeolla; captured by Tonghak forces April 1894; site of Peace Agreement</div>
-        <div class="map-loc"><strong>Gongju</strong> (公州) — Site of final battle November 1894; Tonghak forces decisively defeated</div>
-        <div class="map-loc"><strong>Hanyang (Seoul)</strong> (漢陽) — Royal capital; government requested Chinese help; Japan seized palace July 1894</div>
-        <div class="map-loc"><strong>Incheon</strong> (仁川) — Treaty port where Japanese and Chinese forces landed June 1894</div>
-        <div class="map-loc"><strong>Pyongyang</strong> (平壤) — Major battle of Sino-Japanese War September 1894; decisive Japanese victory</div>
-        <div class="map-loc"><strong>Asan</strong> (牙山) — Site of first land battle of Sino-Japanese War; Chinese forces defeated July 1894</div>
-        <div class="map-loc"><strong>Gyeongju</strong> (慶州) — Ch'oe Cheu's birthplace in southeastern Korea; Tonghak spread from here</div>
-      </div>
-    </div>
-    <div class="map-quote">"My mind is your mind. How could men know it? They may know Heaven and earth, but they know not the spirit. Yet I am the spirit. Now you shall attain this eternal truth, cultivate it, write it, and teach it to all people." — Ch'oe Cheu, 'On Learning Truth'</div>
+    <span class="label">Map: Tonghak Rebellion & Sino-Japanese War 1894</span>
+    <div id="tonghak-map"></div>
   </div>
+  <script>
+    (function() {
+      const map = L.map('tonghak-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd', maxZoom: 10, minZoom: 5
+      }).addTo(map);
+
+      // Title
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'tonghak-title');
+        div.innerHTML = '東學農民運動 Tonghak Peasant Revolution';
+        return div;
+      };
+      titleControl.addTo(map);
+
+      // Legend
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'tonghak-legend');
+        div.innerHTML = `
+          <div class="tonghak-legend-item"><span class="tonghak-legend-dot" style="background:#e63946;"></span> Tonghak Sites</div>
+          <div class="tonghak-legend-item"><span class="tonghak-legend-dot" style="background:#457b9d;"></span> Sino-Japanese War</div>
+          <div class="tonghak-legend-item"><span class="tonghak-legend-dot" style="background:#8d99ae;"></span> Political Centers</div>
+        `;
+        return div;
+      };
+      legendControl.addTo(map);
+
+      // Locations with verified coordinates
+      const locations = [
+        { name: "Gobu", kr: "古阜", desc: "Uprising began Jan 1894", lat: 35.619, lng: 126.744, color: "#e63946", radius: 8 },
+        { name: "Jeonju", kr: "全州", desc: "Captured Apr 1894; Peace Agreement", lat: 35.822, lng: 127.149, color: "#e63946", radius: 8 },
+        { name: "Gongju", kr: "公州", desc: "Final defeat Nov 1894", lat: 36.456, lng: 127.125, color: "#e63946", radius: 7 },
+        { name: "Seoul (Hanyang)", kr: "漢陽", desc: "Royal capital; Japan seized palace", lat: 37.533, lng: 127.025, color: "#8d99ae", radius: 9 },
+        { name: "Incheon", kr: "仁川", desc: "Foreign troops landed Jun 1894", lat: 37.456, lng: 126.705, color: "#457b9d", radius: 7 },
+        { name: "Pyongyang", kr: "平壤", desc: "Sino-Japanese War Sep 1894", lat: 39.019, lng: 125.738, color: "#457b9d", radius: 8 },
+        { name: "Asan", kr: "牙山", desc: "First land battle Jul 1894", lat: 36.807, lng: 126.980, color: "#457b9d", radius: 7 },
+        { name: "Gyeongju", kr: "慶州", desc: "Ch'oe Cheu's birthplace", lat: 35.835, lng: 129.264, color: "#f4a261", radius: 6 }
+      ];
+
+      locations.forEach(function(loc) {
+        L.circleMarker([loc.lat, loc.lng], {
+          radius: loc.radius, fillColor: loc.color, color: '#fff', weight: 1.5, fillOpacity: 0.9
+        }).addTo(map).bindPopup(`<b>${loc.kr} ${loc.name}</b><br>${loc.desc}`);
+      });
+
+      // Tonghak movement route
+      L.polyline([
+        [35.619, 126.744], [35.822, 127.149], [36.456, 127.125]
+      ], { weight: 2, opacity: 0.7, dashArray: '6 4', color: '#e63946' }).addTo(map)
+        .bindPopup('Tonghak advance & defeat<br><small>Jan-Nov 1894</small>');
+
+      map.fitBounds([[34.5, 125], [40, 130]]);
+    })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Iwakura Mission: Japan Learns the West</title>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Iwakura Mission: Japan Learns the West">
+    <meta property="og:description" content="How 107 Japanese officials spent two years studying Western civilization—and returned to transform their nation.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #fff;
+            --paper-warm: #faf8f5;
+            --paper-dark: #f0ede8;
+            --imperial: #8b0000;
+            --meiji-red: #bc002d;
+            --usa: #3c3b6e;
+            --uk: #012169;
+            --france: #002654;
+            --germany: #000000;
+            --russia: #d52b1e;
+            --gold: #a67c00;
+            --border: #ddd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
+                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Iwakura_mission.jpg/1280px-Iwakura_mission.jpg');
+            background-size: cover;
+            background-position: center 20%;
+            display: flex;
+            align-items: flex-end;
+            padding: 4rem;
+        }
+
+        .hero-content { max-width: 800px; }
+
+        .hero-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .jp-title {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1rem;
+        }
+
+        .hero .deck {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 650px;
+        }
+
+        .hero-caption {
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .hero-caption a { color: rgba(255,255,255,0.6); }
+
+        /* NAV */
+        nav {
+            background: var(--ink);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+        nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+        /* STATS BAR */
+        .stats-bar {
+            background: linear-gradient(135deg, #1a2a3a 0%, #0f1a24 100%);
+            padding: 1.5rem 2rem;
+        }
+        .stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+        }
+        .stat-item {
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.25rem;
+        }
+
+        /* MAP SECTION */
+        .map-section-full {
+            background: var(--paper-dark);
+        }
+        .map-header-bar {
+            background: linear-gradient(135deg, var(--meiji-red) 0%, #8b0000 100%);
+            padding: 1.5rem 2rem;
+        }
+        .map-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .map-header-content .japanese-title {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+        }
+        .map-header-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin: 0;
+        }
+        .map-header-content p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            margin: 0.2rem 0 0;
+        }
+        .map-main-container {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            height: 650px;
+        }
+        .map-sidebar {
+            background: #fff;
+            overflow-y: auto;
+            border-right: 1px solid #e0e0e0;
+        }
+        .sidebar-intro {
+            padding: 1rem;
+            background: var(--paper-warm);
+            border-bottom: 1px solid #eee;
+            font-size: 0.8rem;
+            color: var(--ink-light);
+        }
+        .sidebar-section {
+            border-bottom: 1px solid #eee;
+        }
+        .sidebar-section-header {
+            padding: 0.75rem 1rem;
+            background: var(--paper);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sidebar-section-header h3 {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-light);
+            font-weight: 600;
+        }
+        .location-list { list-style: none; }
+        .location-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f5f5f5;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+        .location-item:hover { background: rgba(188, 0, 45, 0.04); }
+        .location-item.active {
+            background: rgba(188, 0, 45, 0.08);
+            border-left-color: var(--meiji-red);
+        }
+        .location-item .name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.2rem;
+        }
+        .location-item .flag {
+            font-size: 1.2rem;
+        }
+        .location-item .country-name {
+            font-size: 0.9rem;
+            color: var(--ink);
+            font-weight: 600;
+        }
+        .location-item .duration {
+            font-size: 0.65rem;
+            color: var(--ink-faint);
+            background: var(--paper-dark);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+        }
+        .location-item .key-learning {
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            line-height: 1.4;
+            margin-top: 0.3rem;
+        }
+
+        .map-container { position: relative; }
+        #map {
+            width: 100%;
+            height: 100%;
+            min-height: 600px;
+            background: #f5f3ef;
+        }
+        .map-legend {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 1rem;
+            border-radius: 8px;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .map-legend h4 {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-light);
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.3rem;
+            font-size: 0.7rem;
+            color: var(--ink);
+        }
+        .legend-line {
+            width: 24px;
+            height: 3px;
+            border-radius: 1px;
+        }
+        .legend-line.outbound {
+            background: var(--meiji-red);
+        }
+        .legend-line.return {
+            background: var(--gold);
+            background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 4px, transparent 4px, transparent 7px);
+        }
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--meiji-red);
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Leaflet popup styling */
+        .leaflet-popup-content-wrapper {
+            background: #fff;
+            color: var(--ink);
+            border-radius: 4px;
+            padding: 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+        .leaflet-popup-content { margin: 0; min-width: 280px; }
+        .leaflet-popup-tip { background: #fff; }
+        .popup-content { padding: 1rem; }
+        .popup-content .popup-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+        .popup-content .popup-flag { font-size: 2rem; }
+        .popup-content .popup-names { flex: 1; }
+        .popup-content .popup-country { font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+        .popup-content .popup-dates { font-size: 0.75rem; color: var(--ink-faint); }
+        .popup-content .popup-body { font-size: 0.82rem; line-height: 1.55; color: var(--ink-light); }
+        .popup-content .popup-body p { margin-bottom: 0.5rem; }
+        .popup-content .key-takeaway {
+            background: linear-gradient(135deg, rgba(188, 0, 45, 0.08), rgba(188, 0, 45, 0.04));
+            padding: 0.6rem 0.8rem;
+            border-radius: 4px;
+            margin-top: 0.6rem;
+            border-left: 3px solid var(--meiji-red);
+        }
+        .popup-content .key-takeaway strong {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--meiji-red);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--meiji-red);
+        }
+        .main-content h2:first-child { margin-top: 0; }
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--ink-light);
+        }
+        .main-content strong { color: var(--ink); }
+
+        /* SIDEBAR */
+        .sidebar { align-self: start; }
+        .sidebar-card {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-card-head {
+            background: var(--ink);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        .sidebar-card-body { padding: 1rem; }
+        .sidebar-card-body p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+        .sidebar-card-body p:last-child { margin-bottom: 0; }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 4px solid var(--meiji-red);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--paper-warm);
+        }
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        .pull-quote .attrib {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            font-style: normal;
+        }
+
+        /* COUNTRY CARDS */
+        .countries-section {
+            background: linear-gradient(180deg, var(--ink) 0%, #1a2a3a 100%);
+            padding: 4rem 2rem;
+        }
+        .countries-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .countries-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .countries-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .countries-header p { color: rgba(255,255,255,0.6); }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .country-card {
+            background: var(--paper);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+        .country-card:hover { transform: translateY(-4px); }
+        .country-card-head {
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .country-card-head.usa { background: linear-gradient(135deg, #3c3b6e, #2a2a5e); }
+        .country-card-head.uk { background: linear-gradient(135deg, #012169, #001144); }
+        .country-card-head.france { background: linear-gradient(135deg, #002654, #001433); }
+        .country-card-head.germany { background: linear-gradient(135deg, #333, #1a1a1a); }
+        .country-card-head.russia { background: linear-gradient(135deg, #d52b1e, #a82218); }
+        .country-card-head.other { background: linear-gradient(135deg, #666, #444); }
+
+        .country-card-head .card-flag { font-size: 1.8rem; }
+        .country-card-head .card-info { flex: 1; }
+        .country-card-head h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: #fff;
+            margin: 0;
+        }
+        .country-card-head .card-duration {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .country-card-body { padding: 1.25rem; }
+        .country-card-body .learned-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+            margin-bottom: 0.5rem;
+        }
+        .country-card-body ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .country-card-body li {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+        .country-card-body li:last-child { border-bottom: none; }
+        .country-card-body li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--meiji-red);
+        }
+        .country-card-body .impact {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.8rem;
+            color: var(--ink);
+        }
+        .country-card-body .impact strong {
+            color: var(--meiji-red);
+        }
+
+        /* LEADERS SECTION */
+        .leaders-section {
+            background: var(--paper-warm);
+            padding: 4rem 2rem;
+        }
+        .leaders-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .leaders-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .leaders-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .leaders-header .jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--ink-faint);
+        }
+        .leader-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        .leader-card {
+            text-align: center;
+        }
+        .leader-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: #ddd;
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .leader-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        .leader-card .jp-name {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.85rem;
+            color: var(--ink-faint);
+            margin-bottom: 0.5rem;
+        }
+        .leader-card .role {
+            font-size: 0.75rem;
+            color: var(--meiji-red);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .leader-card p {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            margin-top: 0.5rem;
+        }
+
+        /* TIMELINE */
+        .timeline-section {
+            background: var(--paper);
+            padding: 4rem 2rem;
+        }
+        .timeline-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .timeline-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+        .tl-item {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .tl-item:last-child { border-bottom: none; }
+        .tl-date {
+            text-align: right;
+        }
+        .tl-date .month {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-faint);
+        }
+        .tl-date .year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--meiji-red);
+        }
+        .tl-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .tl-content p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+        .tl-content .location {
+            display: inline-block;
+            background: var(--paper-dark);
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            margin-top: 0.3rem;
+        }
+
+        /* LEGACY */
+        .legacy-section {
+            background: linear-gradient(135deg, var(--meiji-red) 0%, #6b0020 100%);
+            padding: 4rem 2rem;
+        }
+        .legacy-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .legacy-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: left;
+        }
+        .legacy-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+        .legacy-item h4 {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .legacy-item p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* SOURCES */
+        .sources-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .sources-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ink);
+        }
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .source-group h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+            margin-bottom: 0.75rem;
+        }
+        .source-group ul { list-style: none; }
+        .source-group li {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+        .source-group a {
+            color: var(--ink-light);
+            text-decoration: none;
+        }
+        .source-group a:hover {
+            color: var(--meiji-red);
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+        }
+        footer a { color: var(--gold); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .country-grid { grid-template-columns: repeat(2, 1fr); }
+            .leader-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 900px) {
+            .map-main-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .map-sidebar {
+                max-height: 300px;
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            #map { min-height: 450px; }
+            .two-col { grid-template-columns: 1fr; }
+            .sidebar { order: -1; }
+            .stats-inner { grid-template-columns: repeat(3, 1fr); }
+            .stat-item:nth-child(4), .stat-item:nth-child(5) {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 400px;
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 { font-size: 2rem; }
+            .hero .jp-title { font-size: 1.1rem; }
+            .hero .deck { font-size: 1rem; }
+
+            .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .stat-number { font-size: 1.6rem; }
+
+            .country-grid { grid-template-columns: 1fr; }
+            .leader-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .legacy-grid { grid-template-columns: 1fr; }
+
+            .tl-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            .tl-date { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="../index.html">
+            <span style="font-size: 1.2rem;">&larr;</span> Back to Dashboard
+        </a>
+        <span class="sep">|</span>
+        <span class="context">Deep Dive: The Iwakura Mission (1871-1873)</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
+            <h1>The Iwakura Mission</h1>
+            <div class="jp-title">岩倉使節団</div>
+            <p class="deck">In 1871, half of Japan's new government boarded a ship to learn how the West became powerful. What they discovered—and what they chose to adopt—shaped modern Japan.</p>
+        </div>
+        <div class="hero-caption">
+            Members of the Iwakura Mission, 1872. <a href="https://commons.wikimedia.org/wiki/File:Iwakura_mission.jpg" target="_blank">Wikimedia Commons</a>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <div class="stat-number">107</div>
+                <div class="stat-label">Envoys & Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1 yr 10 mo</div>
+                <div class="stat-label">Duration</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Countries Visited</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Volumes of Reports</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">43</div>
+                <div class="stat-label">Female Students</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAP SECTION -->
+    <section class="map-section-full">
+        <div class="map-header-bar">
+            <div class="map-header-content">
+                <span class="japanese-title">世界一周</span>
+                <div>
+                    <h2>Around the World in 631 Days</h2>
+                    <p>December 1871 – September 1873 · Click countries to explore what Japan learned</p>
+                </div>
+            </div>
+        </div>
+        <div class="map-main-container">
+            <aside class="map-sidebar">
+                <div class="sidebar-intro">
+                    <strong>The Mission's Goals:</strong> Renegotiate unequal treaties, study Western institutions, and determine what Japan should adopt. The treaty renegotiation failed—but the learning mission succeeded beyond expectations.
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-section-header">
+                        <h3>Route & Key Stops</h3>
+                    </div>
+                    <ul class="location-list">
+                        <li class="location-item" data-id="usa">
+                            <div class="name">
+                                <span class="flag">🇺🇸</span>
+                                <span class="country-name">United States</span>
+                                <span class="duration">7 months</span>
+                            </div>
+                            <div class="key-learning">First stop. Industrial factories, railroads, public education, democracy in action.</div>
+                        </li>
+                        <li class="location-item" data-id="uk">
+                            <div class="name">
+                                <span class="flag">🇬🇧</span>
+                                <span class="country-name">Great Britain</span>
+                                <span class="duration">4 months</span>
+                            </div>
+                            <div class="key-learning">Industrial powerhouse. Naval supremacy, banking, constitutional monarchy.</div>
+                        </li>
+                        <li class="location-item" data-id="france">
+                            <div class="name">
+                                <span class="flag">🇫🇷</span>
+                                <span class="country-name">France</span>
+                                <span class="duration">2 months</span>
+                            </div>
+                            <div class="key-learning">Recovering from defeat. Centralized government, legal codes, military reform.</div>
+                        </li>
+                        <li class="location-item" data-id="belgium">
+                            <div class="name">
+                                <span class="flag">🇧🇪</span>
+                                <span class="country-name">Belgium</span>
+                                <span class="duration">2 weeks</span>
+                            </div>
+                            <div class="key-learning">Small nation success. Industrial efficiency despite limited resources.</div>
+                        </li>
+                        <li class="location-item" data-id="netherlands">
+                            <div class="name">
+                                <span class="flag">🇳🇱</span>
+                                <span class="country-name">Netherlands</span>
+                                <span class="duration">2 weeks</span>
+                            </div>
+                            <div class="key-learning">Japan's old trading partner. Water management, colonial administration.</div>
+                        </li>
+                        <li class="location-item" data-id="germany">
+                            <div class="name">
+                                <span class="flag">🇩🇪</span>
+                                <span class="country-name">Germany</span>
+                                <span class="duration">1 month</span>
+                            </div>
+                            <div class="key-learning">Rising power. Bismarck's realpolitik, military discipline, education system.</div>
+                        </li>
+                        <li class="location-item" data-id="russia">
+                            <div class="name">
+                                <span class="flag">🇷🇺</span>
+                                <span class="country-name">Russia</span>
+                                <span class="duration">2 weeks</span>
+                            </div>
+                            <div class="key-learning">Northern neighbor. Military threat assessment, Trans-Siberian ambitions.</div>
+                        </li>
+                        <li class="location-item" data-id="other">
+                            <div class="name">
+                                <span class="flag">🌍</span>
+                                <span class="country-name">Other Stops</span>
+                                <span class="duration">Various</span>
+                            </div>
+                            <div class="key-learning">Denmark, Sweden, Italy, Austria, Switzerland—gathering comparative data.</div>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-legend">
+                    <h4>Route</h4>
+                    <div class="legend-item">
+                        <span class="legend-line outbound"></span>
+                        Outbound journey
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-line return"></span>
+                        Return via Suez
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot"></span>
+                        Major stop
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TWO COLUMN CONTENT -->
+    <div class="two-col">
+        <main class="main-content">
+            <h2>Why Send Half the Government Abroad?</h2>
+            <p>In December 1871, just three years after the Meiji Restoration, Japan sent <strong>nearly half of its top leadership</strong> on a diplomatic mission around the world. The group included the three most powerful men in the new government—Iwakura Tomomi, Ōkubo Toshimichi, and Kido Takayoshi—plus 48 officials and 59 students.</p>
+
+            <p>This was extraordinary—but <strong>Japan wasn't alone</strong>. The Qing dynasty had sent the Burlingame Mission (1868) and would launch the Chinese Educational Mission (1872-1881) sending 120 students to America, overlapping exactly with Iwakura. Both East Asian powers recognized the need to learn from the West. The question is why their reform trajectories diverged.</p>
+
+            <p>Imagine the entire U.S. Cabinet, plus the Speaker of the House and key senators, leaving the country for two years. Who would run things? The answer: a "caretaker government" was left behind under Saigō Takamori, with strict instructions not to make any major changes.</p>
+
+            <p>The mission had two official goals: <strong>renegotiate the unequal treaties</strong> imposed on Japan in the 1850s, and <strong>study Western institutions</strong> to determine what Japan should adopt.</p>
+
+            <div class="pull-quote">
+                <p>"We must not follow blindly the footsteps of other nations, but must study their progress carefully and adapt only what suits our own circumstances."</p>
+                <div class="attrib">— Kido Takayoshi, mission member</div>
+            </div>
+
+            <h2>The Treaty Failure</h2>
+            <p>The treaty renegotiation was a disaster. The Americans politely refused to revise the terms—and the Japanese delegation discovered they'd left Japan without the proper credentials to negotiate anyway. They had to send a ship back to get the documents, wasting months.</p>
+
+            <p>Every Western power gave the same answer: Japan could have treaty revision when it became "civilized"—meaning when it had Western-style legal codes, courts, and institutions. This humiliation had a profound effect. The mission members realized that Japan would have to <strong>remake its entire society</strong> before it could be treated as an equal.</p>
+
+            <h2>The Learning Mission</h2>
+            <p>What the mission learned proved far more valuable than any treaty revision. Over 22 months, the delegates visited factories, shipyards, banks, schools, parliaments, and military installations. They took meticulous notes—later compiled into a <strong>five-volume, 2,000-page report</strong> called the <em>Beiō Kairan Jikki</em> (A True Account of the Tour of America and Europe).</p>
+
+            <p>The mission didn't simply catalog what they saw. They asked: <strong>What can Japan actually use?</strong> They were selective, pragmatic, and often critical. They admired British industry but found British society too class-bound. They respected American democracy but doubted it would work in Japan. They found the answer in an unexpected place: Germany.</p>
+
+            <h2>The German Model</h2>
+            <p>Newly unified Germany made the deepest impression. Here was a country that had achieved rapid industrialization and military power <strong>while maintaining authoritarian rule</strong>. The Prussian constitution gave the emperor (Kaiser) real power, unlike the British monarch. The education system produced loyal, disciplined citizens. The military was the best in Europe.</p>
+
+            <p>Most importantly, Germany had done all this recently. Britain's industrial revolution took a century; Germany modernized in decades. <strong>Japan could follow the same path.</strong></p>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">The 43 Female Students</div>
+                <div class="sidebar-card-body">
+                    <p>Among the 59 students were <strong>five young women</strong>—the first Japanese women sent abroad for education. The youngest, Tsuda Umeko, was just 6 years old.</p>
+                    <p>Tsuda spent 11 years in America, returned to Japan, and became a pioneering educator. She founded what is now <strong>Tsuda University</strong>, one of Japan's leading women's colleges.</p>
+                    <p>The mission recognized that Japan's modernization required educating women, not just men.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">The Beiō Kairan Jikki</div>
+                <div class="sidebar-card-body">
+                    <p>The mission's official record, compiled by Kume Kunitake, ran to <strong>100 volumes in manuscript</strong> before being edited down to 5 published volumes (2,000+ pages).</p>
+                    <p>It documented everything: factory layouts, school curricula, parliamentary procedures, railroad gauges, military drills, banking systems, even Western dinner etiquette.</p>
+                    <p>The report became a blueprint for Meiji reforms. Ministers referenced it for decades.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">China's Parallel Missions</div>
+                <div class="sidebar-card-body">
+                    <p>The Qing sent missions too. The <strong>Chinese Educational Mission (1872-1881)</strong> dispatched 120 students to America—at the exact same time as Iwakura.</p>
+                    <p>These students thrived: entering Yale, MIT, learning English, playing baseball. But the program was <strong>cancelled in 1881</strong> by conservative opposition and all students recalled.</p>
+                    <p>The question isn't "Why didn't China try?" but "What structural factors made implementation harder?" Scale (400M vs 30M), the Taiping's 20-30M dead, provincial vs central power dynamics.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">Discussion Questions</div>
+                <div class="sidebar-card-body">
+                    <p><strong>1.</strong> Both Japan and China sent study missions abroad in the 1870s. What structural differences might explain different outcomes? (Consider: scale, recent crises, elite composition, central vs provincial power.)</p>
+                    <p><strong>2.</strong> The mission chose the German model over British parliamentarism. What does this reveal about Meiji priorities?</p>
+                    <p><strong>3.</strong> Was the Iwakura Mission's approach "modernization" or "Westernization"? What's the difference?</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- COUNTRY CARDS -->
+    <section class="countries-section">
+        <div class="countries-inner">
+            <div class="countries-header">
+                <h2>What Japan Learned From Each Country</h2>
+                <p>The mission was selective: they sought models to adapt, not templates to copy</p>
+            </div>
+            <div class="country-grid">
+                <div class="country-card">
+                    <div class="country-card-head usa">
+                        <span class="card-flag">🇺🇸</span>
+                        <div class="card-info">
+                            <h3>United States</h3>
+                            <div class="card-duration">Jan–Aug 1872 · 7 months</div>
+                        </div>
+                    </div>
+                    <div class="country-card-body">
+                        <div class="learned-label">Key Observations</div>
+                        <ul>
+                            <li>Public education system reaching all citizens</li>
+                            <li>Railroad networks connecting the continent</li>
+                            <li>Factory production methods in Massachusetts</li>
+                            <li>Democratic institutions and Congress</li>
+                            <li>Women's education (impressed by)</li>
+                        </ul>
+                        <div class="impact"><strong>Adopted:</strong> Universal education model, railroad technology, agricultural methods</div>
+                    </div>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-card-head uk">
+                        <span class="card-flag">🇬🇧</span>
+                        <div class="card-info">
+                            <h3>Great Britain</h3>
+                            <div class="card-duration">Aug–Dec 1872 · 4 months</div>
+                        </div>
+                    </div>
+                    <div class="country-card-body">
+                        <div class="learned-label">Key Observations</div>
+                        <ul>
+                            <li>Industrial factories—the original model</li>
+                            <li>Royal Navy—world's dominant fleet</li>
+                            <li>Bank of England and financial systems</li>
+                            <li>Constitutional monarchy in practice</li>
+                            <li>Colonial administration techniques</li>
+                        </ul>
+                        <div class="impact"><strong>Adopted:</strong> Naval organization, banking systems, textile industry methods</div>
+                    </div>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-card-head france">
+                        <span class="card-flag">🇫🇷</span>
+                        <div class="card-info">
+                            <h3>France</h3>
+                            <div class="card-duration">Dec 1872–Feb 1873 · 2 months</div>
+                        </div>
+                    </div>
+                    <div class="country-card-body">
+                        <div class="learned-label">Key Observations</div>
+                        <ul>
+                            <li>Recovering from Franco-Prussian War defeat</li>
+                            <li>Napoleonic Code legal system</li>
+                            <li>Centralized prefectural administration</li>
+                            <li>Military conscription reforms</li>
+                            <li>Public works and urban planning</li>
+                        </ul>
+                        <div class="impact"><strong>Adopted:</strong> Legal codes (modified), prefectural system, early military advisors</div>
+                    </div>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-card-head germany">
+                        <span class="card-flag">🇩🇪</span>
+                        <div class="card-info">
+                            <h3>Germany</h3>
+                            <div class="card-duration">Mar–Apr 1873 · 1 month</div>
+                        </div>
+                    </div>
+                    <div class="country-card-body">
+                        <div class="learned-label">Key Observations</div>
+                        <ul>
+                            <li>Bismarck's "blood and iron" realpolitik</li>
+                            <li>Prussian constitution: strong monarchy</li>
+                            <li>Military discipline and organization</li>
+                            <li>Education system producing loyal citizens</li>
+                            <li>Recent unification—a model for rapid change</li>
+                        </ul>
+                        <div class="impact"><strong>Most influential:</strong> Constitution, army, education, medical science</div>
+                    </div>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-card-head russia">
+                        <span class="card-flag">🇷🇺</span>
+                        <div class="card-info">
+                            <h3>Russia</h3>
+                            <div class="card-duration">Apr 1873 · 2 weeks</div>
+                        </div>
+                    </div>
+                    <div class="country-card-body">
+                        <div class="learned-label">Key Observations</div>
+                        <ul>
+                            <li>Military threat to Japan's north</li>
+                            <li>Trans-Siberian expansion plans</li>
+                            <li>Autocratic power concentration</li>
+                            <li>Vast territory, difficult to govern</li>
+                        </ul>
+                        <div class="impact"><strong>Strategic insight:</strong> Russia identified as primary future rival—correct prediction for 1904-05 war</div>
+                    </div>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-card-head other">
+                        <span class="card-flag">🌍</span>
+                        <div class="card-info">
+                            <h3>Other Nations</h3>
+                            <div class="card-duration">Various stops</div>
+                        </div>
+                    </div>
+                    <div class="country-card-body">
+                        <div class="learned-label">Key Observations</div>
+                        <ul>
+                            <li><strong>Belgium:</strong> Small nation, big industry</li>
+                            <li><strong>Netherlands:</strong> Water management, trade</li>
+                            <li><strong>Switzerland:</strong> Neutrality and precision</li>
+                            <li><strong>Italy:</strong> Recent unification struggles</li>
+                            <li><strong>Austria:</strong> Multi-ethnic empire challenges</li>
+                        </ul>
+                        <div class="impact"><strong>Lesson:</strong> Small nations can succeed through specialization and efficiency</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEADERS SECTION -->
+    <section class="leaders-section">
+        <div class="leaders-inner">
+            <div class="leaders-header">
+                <h2>The Mission Leaders</h2>
+                <div class="jp">主要使節</div>
+            </div>
+            <div class="leader-grid">
+                <div class="leader-card">
+                    <div class="leader-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Iwakura_Tomomi_3.jpg/440px-Iwakura_Tomomi_3.jpg');"></div>
+                    <h4>Iwakura Tomomi</h4>
+                    <div class="jp-name">岩倉具視</div>
+                    <div class="role">Ambassador Plenipotentiary</div>
+                    <p>Court noble who orchestrated the 1868 coup. Led the mission as its highest-ranking member.</p>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Okubo_Toshimichi_4.jpg/440px-Okubo_Toshimichi_4.jpg');"></div>
+                    <h4>Ōkubo Toshimichi</h4>
+                    <div class="jp-name">大久保利通</div>
+                    <div class="role">Vice Ambassador (Satsuma)</div>
+                    <p>Most powerful man in the government. Returned convinced Japan needed strong central authority.</p>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Kido_Takayoshi.jpg/440px-Kido_Takayoshi.jpg');"></div>
+                    <h4>Kido Takayoshi</h4>
+                    <div class="jp-name">木戸孝允</div>
+                    <div class="role">Vice Ambassador (Chōshū)</div>
+                    <p>Constitutional reformer. Advocated for education and gradual political liberalization.</p>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/It%C5%8D_Hirobumi.jpg/440px-It%C5%8D_Hirobumi.jpg');"></div>
+                    <h4>Itō Hirobumi</h4>
+                    <div class="jp-name">伊藤博文</div>
+                    <div class="role">Vice Ambassador (Chōshū)</div>
+                    <p>Future prime minister. Would later draft Japan's constitution based on mission observations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+        <div class="timeline-inner">
+            <div class="timeline-header">
+                <h2>The Journey</h2>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="month">Dec 23</div>
+                    <div class="year">1871</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Departure from Yokohama</h4>
+                    <p>107 members board the SS America. Many have never left Japan. The youngest student, Tsuda Umeko, is 6 years old.</p>
+                    <span class="location">Yokohama → San Francisco</span>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="month">Jan 15</div>
+                    <div class="year">1872</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Arrival in San Francisco</h4>
+                    <p>First encounter with American railroads. The transcontinental railroad, completed just 3 years earlier, amazes the delegates.</p>
+                    <span class="location">San Francisco, California</span>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="month">Feb–Mar</div>
+                    <div class="year">1872</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Washington D.C.</h4>
+                    <p>Meet President Grant. Treaty renegotiation fails—the delegation lacks proper credentials. Humiliating delay as documents are fetched from Japan.</p>
+                    <span class="location">Washington D.C.</span>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="month">Apr–Jul</div>
+                    <div class="year">1872</div>
+                </div>
+                <div class="tl-content">
+                    <h4>American Industry</h4>
+                    <p>Visit factories in Massachusetts, shipyards in New York, coal mines in Pennsylvania. Detailed notes on production methods.</p>
+                    <span class="location">Boston, New York, Philadelphia</span>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="month">Aug–Dec</div>
+                    <div class="year">1872</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Great Britain</h4>
+                    <p>Four months studying the world's industrial leader. Visit Manchester factories, the Bank of England, Royal Navy dockyards. Meet Queen Victoria.</p>
+                    <span class="location">London, Manchester, Edinburgh</span>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="month">Mar 15</div>
+                    <div class="year">1873</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Bismarck's Germany</h4>
+                    <p>Chancellor Bismarck hosts a dinner and delivers a famous speech: "International law exists only for the strong." The Japanese take notes.</p>
+                    <span class="location">Berlin, Prussia</span>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="month">Sep 13</div>
+                    <div class="year">1873</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Return to Japan</h4>
+                    <p>After 631 days abroad, the mission returns via Suez Canal. They find the caretaker government planning a war with Korea—which they immediately cancel.</p>
+                    <span class="location">Yokohama</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEGACY -->
+    <section class="legacy-section">
+        <div class="legacy-inner">
+            <h2>The Mission's Legacy</h2>
+            <div class="legacy-grid">
+                <div class="legacy-item">
+                    <h4>The 1889 Constitution</h4>
+                    <p>Itō Hirobumi drafted Japan's constitution based on the German model—a strong emperor, limited parliament, and centralized power. It lasted until 1947.</p>
+                </div>
+                <div class="legacy-item">
+                    <h4>Universal Education</h4>
+                    <p>By 1900, Japan had near-universal literacy. The American-inspired education system became a tool for creating loyal, productive citizens.</p>
+                </div>
+                <div class="legacy-item">
+                    <h4>Industrial Takeoff</h4>
+                    <p>The mission identified key industries for state investment. By 1905, Japan was an industrial power capable of defeating Russia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="sources-section">
+        <h2>Sources & Further Reading</h2>
+        <div class="sources-grid">
+            <div class="source-group">
+                <h4>Primary Sources</h4>
+                <ul>
+                    <li><a href="https://www.cambridge.org/core/books/japan-rising/E68EF0897D0D56B5F3BC9B71E0752C89" target="_blank">Kume Kunitake, <em>A True Account of the Ambassador Extraordinary & Plenipotentiary's Journey of Observation Through the United States of America and Europe</em></a></li>
+                    <li><a href="https://www.ndl.go.jp/modern/e/index.html" target="_blank">National Diet Library: Modern Japan in Archives</a></li>
+                </ul>
+            </div>
+            <div class="source-group">
+                <h4>Scholarly Works</h4>
+                <ul>
+                    <li><a href="https://www.hup.harvard.edu/books/9780674009912" target="_blank">Marius Jansen, <em>The Making of Modern Japan</em> (Harvard, 2000)</a></li>
+                    <li><a href="https://press.princeton.edu/books/paperback/9780691102436/from-the-country-of-eight-islands" target="_blank">Ian Nish, <em>The Iwakura Mission in America and Europe</em> (Curzon, 1998)</a></li>
+                </ul>
+            </div>
+            <div class="source-group">
+                <h4>Course Readings</h4>
+                <ul>
+                    <li>Ebrey & Walthall, <em>Modern East Asia</em>, Chapter 9-10</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="../index.html">&larr; Back to Dashboard</a> |
+        HIST/EAST 213: Modern East Asia | Winter 2026 |
+        <a href="#">Back to top</a>
+    </footer>
+
+    <script>
+        // Country data with coordinates and information
+        const countries = [
+            {
+                id: 'japan-start',
+                name: 'Japan (Departure)',
+                flag: '🇯🇵',
+                lat: 35.4437,
+                lng: 139.6380,
+                dates: 'Dec 23, 1871',
+                duration: 'Departure',
+                description: '107 members of the mission depart from Yokohama on the SS America, beginning their 631-day journey around the world.',
+                keyLearning: null
+            },
+            {
+                id: 'usa',
+                name: 'United States',
+                flag: '🇺🇸',
+                lat: 38.9072,
+                lng: -77.0369,
+                dates: 'Jan–Aug 1872',
+                duration: '7 months',
+                description: 'The first and longest stop. The mission toured factories in Massachusetts, met President Grant in Washington, and were amazed by the transcontinental railroad completed just 3 years earlier.',
+                keyLearning: 'Public education model, railroad technology, factory production methods'
+            },
+            {
+                id: 'uk',
+                name: 'Great Britain',
+                flag: '🇬🇧',
+                lat: 51.5074,
+                lng: -0.1278,
+                dates: 'Aug–Dec 1872',
+                duration: '4 months',
+                description: 'The world\'s industrial leader. The delegates visited Manchester\'s cotton mills, the Bank of England, and Royal Navy dockyards. They met Queen Victoria at Windsor Castle.',
+                keyLearning: 'Naval organization, banking systems, industrial factory methods'
+            },
+            {
+                id: 'france',
+                name: 'France',
+                flag: '🇫🇷',
+                lat: 48.8566,
+                lng: 2.3522,
+                dates: 'Dec 1872–Feb 1873',
+                duration: '2 months',
+                description: 'Still recovering from defeat in the Franco-Prussian War (1870-71). The mission studied French legal codes, military reforms, and the centralized prefectural administration system.',
+                keyLearning: 'Legal codes, centralized government structure, military advisors'
+            },
+            {
+                id: 'belgium',
+                name: 'Belgium',
+                flag: '🇧🇪',
+                lat: 50.8503,
+                lng: 4.3517,
+                dates: 'Feb 1873',
+                duration: '2 weeks',
+                description: 'A small nation that had achieved impressive industrialization. The mission was interested in how a country with limited territory could become an economic power.',
+                keyLearning: 'Small nation industrial efficiency model'
+            },
+            {
+                id: 'netherlands',
+                name: 'Netherlands',
+                flag: '🇳🇱',
+                lat: 52.3676,
+                lng: 4.9041,
+                dates: 'Feb–Mar 1873',
+                duration: '2 weeks',
+                description: 'Japan\'s oldest Western trading partner (since the 1600s). The mission studied Dutch water management, canal systems, and colonial administration methods.',
+                keyLearning: 'Water management, trade infrastructure, colonial governance'
+            },
+            {
+                id: 'germany',
+                name: 'Germany',
+                flag: '🇩🇪',
+                lat: 52.5200,
+                lng: 13.4050,
+                dates: 'Mar–Apr 1873',
+                duration: '1 month',
+                description: 'The mission\'s most influential stop. Chancellor Bismarck hosted a dinner and advised: "International law exists only for the strong." Germany\'s rapid rise after unification (1871) offered a model for authoritarian modernization.',
+                keyLearning: 'Constitutional model, military organization, education system, realpolitik'
+            },
+            {
+                id: 'russia',
+                name: 'Russia',
+                flag: '🇷🇺',
+                lat: 59.9311,
+                lng: 30.3609,
+                dates: 'Apr 1873',
+                duration: '2 weeks',
+                description: 'A brief but significant visit. The mission assessed Russia as Japan\'s primary future threat in Northeast Asia—a prediction proven correct in the Russo-Japanese War (1904-05).',
+                keyLearning: 'Strategic threat assessment, Trans-Siberian expansion plans'
+            },
+            {
+                id: 'switzerland',
+                name: 'Switzerland',
+                flag: '🇨🇭',
+                lat: 46.9480,
+                lng: 7.4474,
+                dates: 'May 1873',
+                duration: '2 weeks',
+                description: 'Studied Swiss neutrality, precision manufacturing, and how a small mountainous nation maintained independence among great powers.',
+                keyLearning: 'Neutrality strategy, precision industry'
+            },
+            {
+                id: 'italy',
+                name: 'Italy',
+                flag: '🇮🇹',
+                lat: 41.9028,
+                lng: 12.4964,
+                dates: 'May 1873',
+                duration: '2 weeks',
+                description: 'A recently unified nation (1861) like Japan. The mission studied Italy\'s experience combining multiple kingdoms into a single state.',
+                keyLearning: 'National unification challenges, cultural consolidation'
+            },
+            {
+                id: 'japan-return',
+                name: 'Japan (Return)',
+                flag: '🇯🇵',
+                lat: 35.4437,
+                lng: 139.6380,
+                dates: 'Sep 13, 1873',
+                duration: 'Return',
+                description: 'After 631 days abroad, the mission returned via the Suez Canal. They immediately cancelled the caretaker government\'s plans to invade Korea, triggering a political crisis.',
+                keyLearning: null
+            }
+        ];
+
+        // Route coordinates (simplified great circle approximations)
+        const outboundRoute = [
+            [35.44, 139.64],  // Yokohama
+            [37.78, -122.42], // San Francisco (Pacific crossing)
+            [38.91, -77.04],  // Washington DC
+            [42.36, -71.06],  // Boston
+            [51.51, -0.13],   // London
+            [48.86, 2.35],    // Paris
+            [50.85, 4.35],    // Brussels
+            [52.37, 4.90],    // Amsterdam
+            [52.52, 13.41],   // Berlin
+            [59.93, 30.36],   // St. Petersburg
+        ];
+
+        const returnRoute = [
+            [59.93, 30.36],   // St. Petersburg
+            [46.95, 7.45],    // Switzerland
+            [41.90, 12.50],   // Rome
+            [30.04, 31.24],   // Cairo/Suez
+            [22.28, 114.16],  // Hong Kong
+            [35.44, 139.64],  // Yokohama
+        ];
+
+        // Initialize map
+        const map = L.map('map', {
+            zoomControl: true,
+            minZoom: 2,
+            maxZoom: 8,
+            worldCopyJump: true
+        }).setView([35, 20], 2);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 12
+        }).addTo(map);
+
+        // Draw outbound route
+        L.polyline(outboundRoute, {
+            color: '#bc002d',
+            weight: 3,
+            opacity: 0.8
+        }).addTo(map);
+
+        // Draw return route
+        L.polyline(returnRoute, {
+            color: '#a67c00',
+            weight: 3,
+            opacity: 0.7,
+            dashArray: '8, 6'
+        }).addTo(map);
+
+        // Create custom icon
+        function createIcon(flag, isEndpoint) {
+            const size = isEndpoint ? 36 : 32;
+            return L.divIcon({
+                className: 'custom-div-icon',
+                html: `<div style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: ${size}px;
+                    height: ${size}px;
+                    border-radius: 50%;
+                    background: #fff;
+                    font-size: ${isEndpoint ? '18px' : '16px'};
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+                    border: 3px solid ${isEndpoint ? '#bc002d' : '#666'};
+                ">${flag}</div>`,
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2],
+                popupAnchor: [0, -size / 2]
+            });
+        }
+
+        // Create popup content
+        function createPopupContent(country) {
+            const keyTakeaway = country.keyLearning
+                ? `<div class="key-takeaway">
+                    <strong>Key Takeaway</strong>
+                    ${country.keyLearning}
+                   </div>`
+                : '';
+
+            return `
+                <div class="popup-content">
+                    <div class="popup-header">
+                        <span class="popup-flag">${country.flag}</span>
+                        <div class="popup-names">
+                            <div class="popup-country">${country.name}</div>
+                            <div class="popup-dates">${country.dates} · ${country.duration}</div>
+                        </div>
+                    </div>
+                    <div class="popup-body">
+                        <p>${country.description}</p>
+                        ${keyTakeaway}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add markers
+        const markers = {};
+        countries.forEach(country => {
+            const isEndpoint = country.id === 'japan-start' || country.id === 'japan-return';
+            const marker = L.marker([country.lat, country.lng], {
+                icon: createIcon(country.flag, isEndpoint)
+            }).addTo(map);
+
+            marker.bindPopup(createPopupContent(country), {
+                maxWidth: 320,
+                className: 'custom-popup'
+            });
+
+            markers[country.id] = marker;
+        });
+
+        // Sidebar click handlers
+        document.querySelectorAll('.location-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const id = this.dataset.id;
+
+                document.querySelectorAll('.location-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+
+                const country = countries.find(c => c.id === id);
+                if (country && markers[id]) {
+                    map.setView([country.lat, country.lng], 4, { animate: true });
+                    markers[id].openPopup();
+                } else if (id === 'other') {
+                    // Zoom to show Europe
+                    map.setView([48, 10], 4, { animate: true });
+                }
+            });
+        });
+
+        // Set initial view to show the route
+        setTimeout(() => {
+            map.fitBounds([
+                [60, -130],
+                [20, 145]
+            ], { padding: [20, 20] });
+        }, 100);
+    </script>
+</body>
+</html>

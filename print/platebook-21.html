@@ -323,20 +323,42 @@
   </div>
 
   <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #pacific-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
+    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
+  </style>
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Nanjing</strong> (南京) — Site of 1937 massacre; 200,000+ killed</div>
-        <div class="map-loc"><strong>Manchuria (Manchukuo)</strong> (滿洲國) — Japanese puppet state 1932-1945</div>
-        <div class="map-loc"><strong>Seoul (Keijō)</strong> (京城) — Colonial capital; comfort women recruited here</div>
-        <div class="map-loc"><strong>Manila</strong> — Philippines under Japanese occupation</div>
-        <div class="map-loc"><strong>Hiroshima</strong> (廣島) — Atomic bomb, August 6, 1945</div>
-        <div class="map-loc"><strong>Nagasaki</strong> (長崎) — Atomic bomb, August 9, 1945</div>
-      </div>
-    </div>
-    <div class="map-quote">"I was taken from my village at age sixteen. I didn't know what awaited me. We were told we would work in a factory." — Comfort woman testimony</div>
+    <span class="label">Map: Pacific War & Japanese Occupation</span>
+    <div id="pacific-map"></div>
   </div>
+  <script>
+    (function() {
+      const map = L.map('pacific-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '大東亞戰爭 Pacific War 1941-45'; return div; };
+      titleControl.addTo(map);
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Atrocities</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#f4a261;"></span> Occupation</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> Atomic Bombs</div>'; return div; };
+      legendControl.addTo(map);
+      const locs = [
+        { name: "Nanjing", cn: "南京", desc: "1937 massacre; 200,000+ killed", lat: 32.05, lng: 118.767, color: "#e63946", r: 9 },
+        { name: "Manchukuo", cn: "滿洲國", desc: "Puppet state 1932-1945", lat: 45, lng: 125, color: "#f4a261", r: 8 },
+        { name: "Seoul (Keijō)", cn: "京城", desc: "Colonial capital; comfort women", lat: 37.533, lng: 127.025, color: "#f4a261", r: 8 },
+        { name: "Manila", cn: "馬尼拉", desc: "Philippines occupied", lat: 14.60, lng: 120.98, color: "#f4a261", r: 7 },
+        { name: "Hiroshima", cn: "廣島", desc: "Atomic bomb Aug 6, 1945", lat: 34.383, lng: 132.450, color: "#457b9d", r: 9 },
+        { name: "Nagasaki", cn: "長崎", desc: "Atomic bomb Aug 9, 1945", lat: 32.764, lng: 129.873, color: "#457b9d", r: 9 }
+      ];
+      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.cn} ${l.name}</b><br>${l.desc}`));
+      map.fitBounds([[12, 115], [47, 145]]);
+    })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

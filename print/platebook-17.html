@@ -323,19 +323,43 @@
   </div>
 
   <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #empire-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
+    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
+  </style>
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Tokyo</strong> (東京) — Center of Japanese empire</div>
-        <div class="map-loc"><strong>Taiwan</strong> (臺灣) — First colony, seized from China (1895)</div>
-        <div class="map-loc"><strong>Korea</strong> — Protectorate 1905, annexed 1910</div>
-        <div class="map-loc"><strong>Liaodong Peninsula</strong> (遼東半島) — Won from China, returned after Triple Intervention</div>
-        <div class="map-loc"><strong>Port Arthur</strong> (旅順) — Key prize in Sino-Japanese and Russo-Japanese Wars</div>
-      </div>
-    </div>
-    <div class="map-quote">"In this world of struggle for survival, the strong eat the weak. Japan must become strong or perish." — Tokutomi Sohō</div>
+    <span class="label">Map: Japanese Empire Expansion</span>
+    <div id="empire-map"></div>
   </div>
+  <script>
+    (function() {
+      const map = L.map('empire-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '大日本帝國 Japanese Empire'; return div; };
+      titleControl.addTo(map);
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Imperial Center</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#f4a261;"></span> Colonies</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> Contested</div>'; return div; };
+      legendControl.addTo(map);
+      const locs = [
+        { name: "Tokyo", jp: "東京", desc: "Center of Japanese empire", lat: 35.69, lng: 139.69, color: "#e63946", r: 10 },
+        { name: "Taiwan", jp: "臺灣", desc: "First colony, seized 1895", lat: 25.11, lng: 121.60, color: "#f4a261", r: 8 },
+        { name: "Korea (Seoul)", jp: "朝鮮", desc: "Protectorate 1905, annexed 1910", lat: 37.53, lng: 127.03, color: "#f4a261", r: 8 },
+        { name: "Port Arthur", jp: "旅順", desc: "Key prize in wars with China & Russia", lat: 38.80, lng: 121.25, color: "#457b9d", r: 7 },
+        { name: "Liaodong", jp: "遼東", desc: "Won 1895, returned after Triple Intervention", lat: 40.00, lng: 122.50, color: "#457b9d", r: 6 }
+      ];
+      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.jp} ${l.name}</b><br>${l.desc}`));
+      L.polyline([[35.69, 139.69], [37.53, 127.03]], { weight: 2, opacity: 0.5, dashArray: '6 4', color: '#f4a261' }).addTo(map);
+      L.polyline([[35.69, 139.69], [25.11, 121.60]], { weight: 2, opacity: 0.5, dashArray: '6 4', color: '#f4a261' }).addTo(map);
+      map.fitBounds([[22, 118], [42, 145]]);
+    })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

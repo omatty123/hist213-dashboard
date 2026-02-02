@@ -344,7 +344,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const map = L.map('map', { zoomControl: false, attributionControl: false }).setView([36.5, 137], 5);
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         subdomains: 'abcd', maxZoom: 10
       }).addTo(map);
 

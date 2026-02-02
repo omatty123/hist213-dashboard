@@ -325,18 +325,40 @@
   </div>
 
   <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #mao-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
+    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
+  </style>
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Beijing</strong> (北京) — PRC capital; Tiananmen Square center of power</div>
-        <div class="map-loc"><strong>Shanghai</strong> (上海) — Industrial center; Cultural Revolution battleground</div>
-        <div class="map-loc"><strong>Shenzhen</strong> (深圳) — First Special Economic Zone (1980); symbol of reform</div>
-        <div class="map-loc"><strong>Sichuan</strong> (四川) — Worst-hit province in Great Leap famine</div>
-      </div>
-    </div>
-    <div class="map-quote">"Let a hundred flowers bloom, let a hundred schools of thought contend." — Mao Zedong</div>
+    <span class="label">Map: Mao's China & Reform Era</span>
+    <div id="mao-map"></div>
   </div>
+  <script>
+    (function() {
+      const map = L.map('mao-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '中華人民共和國 PRC 1949-present'; return div; };
+      titleControl.addTo(map);
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Political Center</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#2e8b57;"></span> Reform</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#f4a261;"></span> Famine</div>'; return div; };
+      legendControl.addTo(map);
+      const locs = [
+        { name: "Beijing", cn: "北京", desc: "PRC capital; Tiananmen Square", lat: 39.917, lng: 116.383, color: "#e63946", r: 10 },
+        { name: "Shanghai", cn: "上海", desc: "Cultural Revolution battleground", lat: 31.224, lng: 121.469, color: "#e63946", r: 8 },
+        { name: "Shenzhen", cn: "深圳", desc: "First SEZ 1980; reform symbol", lat: 22.546, lng: 114.068, color: "#2e8b57", r: 8 },
+        { name: "Sichuan", cn: "四川", desc: "Worst-hit in Great Leap famine", lat: 30.6, lng: 104.1, color: "#f4a261", r: 7 }
+      ];
+      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.cn} ${l.name}</b><br>${l.desc}`));
+      map.fitBounds([[20, 100], [42, 125]]);
+    })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

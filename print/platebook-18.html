@@ -325,19 +325,41 @@
   </div>
 
   <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #korean-nat-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
+    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
+  </style>
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Pagoda Park (Seoul)</strong> (塔洞公園) — Where Declaration of Independence was read, March 1, 1919</div>
-        <div class="map-loc"><strong>Seodaemun Prison</strong> (西大門刑務所) — Where Korean nationalists were imprisoned and tortured</div>
-        <div class="map-loc"><strong>Harbin</strong> (哈爾濱) — Where An Jung-geun assassinated Itō Hirobumi (1909)</div>
-        <div class="map-loc"><strong>Shanghai</strong> (上海) — Site of Korean Provisional Government in exile</div>
-        <div class="map-loc"><strong>Cheonan</strong> (天安) — Home of Yu Gwan-sun; memorial site</div>
-      </div>
-    </div>
-    <div class="map-quote">"We hereby declare that Korea is an independent state and that Koreans are a self-governing people." — Declaration of Independence</div>
+    <span class="label">Map: Korean Independence Movement</span>
+    <div id="korean-nat-map"></div>
   </div>
+  <script>
+    (function() {
+      const map = L.map('korean-nat-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '三一運動 March First Movement'; return div; };
+      titleControl.addTo(map);
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Resistance Sites</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> Exile Gov't</div>'; return div; };
+      legendControl.addTo(map);
+      const locs = [
+        { name: "Seoul (Pagoda Park)", kr: "塔洞公園", desc: "Declaration read Mar 1, 1919", lat: 37.573, lng: 126.988, color: "#e63946", r: 9 },
+        { name: "Seodaemun Prison", kr: "西大門", desc: "Nationalists imprisoned", lat: 37.57, lng: 126.96, color: "#e63946", r: 7 },
+        { name: "Cheonan", kr: "天安", desc: "Yu Gwan-sun's home", lat: 36.807, lng: 127.152, color: "#e63946", r: 6 },
+        { name: "Harbin", kr: "哈爾濱", desc: "An Jung-geun killed Itō 1909", lat: 45.75, lng: 126.65, color: "#f4a261", r: 8 },
+        { name: "Shanghai", kr: "上海", desc: "Provisional Government in exile", lat: 31.224, lng: 121.469, color: "#457b9d", r: 8 }
+      ];
+      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.kr} ${l.name}</b><br>${l.desc}`));
+      map.fitBounds([[28, 118], [47, 130]]);
+    })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

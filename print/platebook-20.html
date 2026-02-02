@@ -325,19 +325,42 @@
   </div>
 
   <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #civilwar-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
+    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
+  </style>
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Shanghai</strong> (上海) — CCP founded here (1921); 1927 massacre</div>
-        <div class="map-loc"><strong>Yan'an</strong> (延安) — Communist base 1936-1947; Mao's headquarters</div>
-        <div class="map-loc"><strong>Nanjing</strong> (南京) — Nationalist capital; fell to Japan 1937</div>
-        <div class="map-loc"><strong>Jiangxi Soviet</strong> (江西蘇區) — Communist base before Long March</div>
-        <div class="map-loc"><strong>Beijing</strong> (北京) — Captured by Communists January 1949</div>
-      </div>
-    </div>
-    <div class="map-quote">"Women are the slaves of slaves. The liberation of women requires the destruction of the family, private property, and the state." — He Zhen</div>
+    <span class="label">Map: Chinese Civil War</span>
+    <div id="civilwar-map"></div>
   </div>
+  <script>
+    (function() {
+      const map = L.map('civilwar-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '國共內戰 Nationalist vs Communist'; return div; };
+      titleControl.addTo(map);
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Communist</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> Nationalist</div>'; return div; };
+      legendControl.addTo(map);
+      const locs = [
+        { name: "Yan'an", cn: "延安", desc: "Communist base 1936-47; Mao HQ", lat: 36.585, lng: 109.490, color: "#e63946", r: 9 },
+        { name: "Jiangxi Soviet", cn: "江西蘇區", desc: "Communist base before Long March", lat: 27.6, lng: 115.9, color: "#e63946", r: 7 },
+        { name: "Beijing", cn: "北京", desc: "Fell to Communists Jan 1949", lat: 39.917, lng: 116.383, color: "#e63946", r: 9 },
+        { name: "Shanghai", cn: "上海", desc: "CCP founded 1921; massacre 1927", lat: 31.224, lng: 121.469, color: "#457b9d", r: 8 },
+        { name: "Nanjing", cn: "南京", desc: "Nationalist capital; fell 1937", lat: 32.05, lng: 118.767, color: "#457b9d", r: 8 }
+      ];
+      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.cn} ${l.name}</b><br>${l.desc}`));
+      L.polyline([[27.6, 115.9], [36.585, 109.490]], { weight: 2, opacity: 0.6, dashArray: '6 4', color: '#e63946' }).addTo(map).bindPopup('Long March<br>1934-1935');
+      map.fitBounds([[25, 107], [42, 123]]);
+    })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

@@ -325,19 +325,41 @@
   </div>
 
   <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #joseon-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
+    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
+  </style>
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Hanyang (Seoul)</strong> (漢陽) — Center of court politics and intellectual debate</div>
-        <div class="map-loc"><strong>Ganghwa Island</strong> (江華島) — Site of forced opening by Japan (1876)</div>
-        <div class="map-loc"><strong>Pyongyang</strong> (平壤) — Site of General Sherman incident (1866)</div>
-        <div class="map-loc"><strong>Busan</strong> (釜山) — Treaty port opened to Japan</div>
-        <div class="map-loc"><strong>Incheon</strong> (仁川) — Treaty port; gateway to Seoul</div>
-      </div>
-    </div>
-    <div class="map-quote">"If we adopt their techniques without their moral foundation, we will have weapons without the wisdom to use them justly." — Defense of Orthodoxy writings</div>
+    <span class="label">Map: Late Joseon & Foreign Pressure</span>
+    <div id="joseon-map"></div>
   </div>
+  <script>
+    (function() {
+      const map = L.map('joseon-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '朝鮮開港 Joseon Opening'; return div; };
+      titleControl.addTo(map);
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Incidents</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> Treaty Ports</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#8d99ae;"></span> Capital</div>'; return div; };
+      legendControl.addTo(map);
+      const locs = [
+        { name: "Seoul (Hanyang)", kr: "漢陽", desc: "Center of court politics", lat: 37.533, lng: 127.025, color: "#8d99ae", r: 9 },
+        { name: "Ganghwa Island", kr: "江華島", desc: "Forced opening 1876", lat: 37.747, lng: 126.486, color: "#e63946", r: 8 },
+        { name: "Pyongyang", kr: "平壤", desc: "General Sherman incident 1866", lat: 39.019, lng: 125.738, color: "#e63946", r: 7 },
+        { name: "Busan", kr: "釜山", desc: "Treaty port opened to Japan", lat: 35.167, lng: 129.067, color: "#457b9d", r: 7 },
+        { name: "Incheon", kr: "仁川", desc: "Treaty port; gateway to Seoul", lat: 37.456, lng: 126.705, color: "#457b9d", r: 7 }
+      ];
+      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.kr} ${l.name}</b><br>${l.desc}`));
+      map.fitBounds([[34, 124], [40, 130]]);
+    })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

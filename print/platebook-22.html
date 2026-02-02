@@ -325,18 +325,40 @@
   </div>
 
   <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #postwar-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
+    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
+  </style>
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      <div class="map-locations">
-        <div class="map-loc"><strong>Tokyo</strong> (東京) — Occupied capital; GHQ headquarters</div>
-        <div class="map-loc"><strong>Hiroshima</strong> (廣島) — Symbol of atomic devastation and peace</div>
-        <div class="map-loc"><strong>Okinawa</strong> (沖縄) — Remained under US control until 1972; major US bases still</div>
-        <div class="map-loc"><strong>Osaka</strong> (大阪) — Industrial center of postwar recovery</div>
-      </div>
-    </div>
-    <div class="map-quote">"Aspiring sincerely to an international peace based on justice and order, the Japanese people forever renounce war as a sovereign right of the nation." — Constitution of Japan, Article 9</div>
+    <span class="label">Map: Occupied & Rebuilding Japan</span>
+    <div id="postwar-map"></div>
   </div>
+  <script>
+    (function() {
+      const map = L.map('postwar-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '戦後日本 Postwar Japan'; return div; };
+      titleControl.addTo(map);
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> US Occupation</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#2e8b57;"></span> Recovery</div>'; return div; };
+      legendControl.addTo(map);
+      const locs = [
+        { name: "Tokyo", jp: "東京", desc: "GHQ headquarters; occupied capital", lat: 35.69, lng: 139.69, color: "#457b9d", r: 10 },
+        { name: "Hiroshima", jp: "廣島", desc: "Peace memorial; recovery symbol", lat: 34.383, lng: 132.450, color: "#2e8b57", r: 8 },
+        { name: "Okinawa", jp: "沖縄", desc: "US control until 1972; bases remain", lat: 26.336, lng: 127.801, color: "#457b9d", r: 8 },
+        { name: "Osaka", jp: "大阪", desc: "Industrial recovery center", lat: 34.67, lng: 135.48, color: "#2e8b57", r: 8 }
+      ];
+      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.jp} ${l.name}</b><br>${l.desc}`));
+      map.fitBounds([[24, 125], [37, 142]]);
+    })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

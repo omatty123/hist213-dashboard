@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Charter Oath vs Meiji Constitution</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #1a1a2e; color: #eee; padding: 20px; max-width: 900px; margin: 0 auto; }
+    h1 { text-align: center; font-size: 24px; margin-bottom: 8px; color: #f4a261; }
+    .subtitle { text-align: center; font-size: 13px; color: #888; margin-bottom: 24px; }
+
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .card { background: #16213e; border-radius: 12px; padding: 20px; }
+    .card h2 { font-size: 16px; margin-bottom: 4px; }
+    .card .jp { font-size: 12px; color: #888; margin-bottom: 12px; }
+    .card .year { display: inline-block; background: #f4a261; color: #1a1a2e; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 12px; }
+
+    .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 16px 0 8px; }
+
+    .has-list, .lacks-list { list-style: none; font-size: 13px; line-height: 1.6; }
+    .has-list li { padding-left: 20px; position: relative; margin-bottom: 6px; }
+    .has-list li::before { content: "✓"; position: absolute; left: 0; color: #2ecc71; font-weight: bold; }
+    .lacks-list li { padding-left: 20px; position: relative; margin-bottom: 6px; color: #e74c3c; }
+    .lacks-list li::before { content: "✗"; position: absolute; left: 0; }
+
+    .key-quote { background: #0f3460; border-left: 3px solid #f4a261; padding: 12px 16px; margin-top: 16px; font-style: italic; font-size: 12px; border-radius: 0 8px 8px 0; }
+    .key-quote .source { font-style: normal; color: #888; display: block; margin-top: 6px; font-size: 11px; }
+
+    .bottom-line { background: #16213e; border-radius: 12px; padding: 20px; text-align: center; }
+    .bottom-line h3 { color: #f4a261; font-size: 14px; margin-bottom: 12px; }
+    .timeline { display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 12px; }
+    .timeline .year-box { background: #0f3460; padding: 8px 16px; border-radius: 8px; }
+    .timeline .arrow { color: #f4a261; font-size: 18px; }
+    .timeline .gap { color: #e74c3c; font-weight: bold; }
+
+    .tldr { margin-top: 20px; padding: 16px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid #f4a261; border-radius: 12px; }
+    .tldr h4 { color: #f4a261; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .tldr p { font-size: 13px; line-height: 1.5; }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .card { background: #f5f5f5; border: 1px solid #ddd; }
+      .has-list li::before { color: #27ae60; }
+      .lacks-list li { color: #c0392b; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Charter Oath vs Meiji Constitution</h1>
+  <p class="subtitle">Promise vs. Reality — What Meiji Japan actually delivered</p>
+
+  <div class="compare">
+    <div class="card">
+      <span class="year">1868</span>
+      <h2>Charter Oath</h2>
+      <p class="jp">五箇条の御誓文 (Gokajō no Goseimon)</p>
+
+      <div class="section-label">What it promised</div>
+      <ul class="has-list">
+        <li>"Deliberative assemblies" established</li>
+        <li>"All matters decided by public discussion"</li>
+        <li>"All classes united" in national effort</li>
+        <li>"Evil customs of the past" abandoned</li>
+        <li>"Knowledge sought throughout the world"</li>
+      </ul>
+
+      <div class="section-label">What it lacked</div>
+      <ul class="lacks-list">
+        <li>Who gets to participate in assemblies?</li>
+        <li>What counts as "public"?</li>
+        <li>Any enforcement mechanism</li>
+        <li>Timeline for implementation</li>
+        <li>Definition of rights</li>
+      </ul>
+
+      <div class="key-quote">
+        "Deliberately vague — could mean democracy or oligarchy depending on who's reading."
+        <span class="source">— The strategic ambiguity was the point</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="year">1889</span>
+      <h2>Meiji Constitution</h2>
+      <p class="jp">大日本帝国憲法 (Dai-Nippon Teikoku Kenpō)</p>
+
+      <div class="section-label">What it delivered</div>
+      <ul class="has-list">
+        <li>Diet (parliament) with two houses</li>
+        <li>Limited voting rights (1% of population)</li>
+        <li>Some civil liberties "within the law"</li>
+        <li>Cabinet and ministries</li>
+        <li>Written legal framework</li>
+      </ul>
+
+      <div class="section-label">What it kept from the people</div>
+      <ul class="lacks-list">
+        <li>Emperor remained sovereign (not the people)</li>
+        <li>Emperor could dissolve Diet at will</li>
+        <li>Military answered to emperor, not Diet</li>
+        <li>No universal suffrage (until 1925)</li>
+        <li>Rights could be suspended "by law"</li>
+      </ul>
+
+      <div class="key-quote">
+        "The Emperor is sacred and inviolable."
+        <span class="source">— Article 3, Meiji Constitution</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-line">
+    <h3>The Gap Between Promise and Delivery</h3>
+    <div class="timeline">
+      <div class="year-box">1868<br><small>Charter Oath</small></div>
+      <span class="arrow">→</span>
+      <span class="gap">21 YEARS</span>
+      <span class="arrow">→</span>
+      <div class="year-box">1889<br><small>Constitution</small></div>
+      <span class="arrow">→</span>
+      <span class="gap">36 MORE</span>
+      <span class="arrow">→</span>
+      <div class="year-box">1925<br><small>Universal Male Suffrage</small></div>
+    </div>
+  </div>
+
+  <div class="tldr">
+    <h4>TL;DR for discussion</h4>
+    <p><strong>Charter Oath:</strong> Revolutionary-sounding rhetoric, zero specifics. Compare to "all men are created equal" — founding documents often promise more than they deliver.<br><br>
+    <strong>Constitution:</strong> Created a parliament but kept real power with the emperor and oligarchs. The same men who wrote the Charter Oath decided what it "really meant" 21 years later — and surprise, it meant they stayed in charge.</p>
+  </div>
+</body>
+</html>

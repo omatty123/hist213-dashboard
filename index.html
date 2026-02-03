@@ -621,6 +621,14 @@ function renderSidebar(p, i) {
     h += '<div class="source">Cultural destruction and the zodiac heads controversy</div>';
     h += '</a>';
   }
+  if (p.plate === 14) {
+    h += '<div class="section-title">📚 Deep Dive</div>';
+    h += '<a href="print/jeon-bongjun-deep-dive.html" target="_blank" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<div class="title">Jeon Bong-jun: The Green Bean General</div>';
+    h += '<div class="author">전봉준 · 1855-1895</div>';
+    h += '<div class="source">Leader of the Tonghak Peasant Army — "We seek no personal profit, only the peace of the nation"</div>';
+    h += '</a>';
+  }
 
   var ni = i + 1;
   while (ni < plates.length && plates[ni].noClass) ni++;

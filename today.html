@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Today's Prep</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f5f7;
+      --surface: #fff;
+      --border: #e5e5e5;
+      --text: #1d1d1f;
+      --text-muted: #86868b;
+      --accent: #0071e3;
+      --gold: #b8860b;
+      --gold-light: #daa520;
+      --teal: #2d5a5a;
+    }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: white;
+      padding: 24px 32px;
+      text-align: center;
+    }
+    header .date-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    header h1 {
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    header .subtitle {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 6px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 900px) {
+      .container { grid-template-columns: 1fr; }
+    }
+    .course-card {
+      background: var(--surface);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .course-header {
+      padding: 20px 24px;
+      color: white;
+    }
+    .course-header.hist213 {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+    .course-header.east370 {
+      background: linear-gradient(135deg, #1a3a3a 0%, #2d4a4a 100%);
+    }
+    .course-header .course-code {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.8;
+      margin-bottom: 4px;
+    }
+    .course-header .course-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+    .course-header .class-date {
+      font-size: 12px;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+    .course-header .class-topic {
+      font-size: 20px;
+      font-weight: 300;
+    }
+    .course-body {
+      padding: 20px 24px;
+    }
+    .section-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .readings-list {
+      margin-bottom: 20px;
+    }
+    .reading-item {
+      display: block;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      background: #fafafa;
+      border-radius: 8px;
+      border-left: 3px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.15s ease;
+    }
+    .reading-item:hover {
+      background: #f0f0f0;
+      border-left-color: var(--accent);
+    }
+    .reading-item.primary { border-left-color: #8b4513; }
+    .reading-item.secondary { border-left-color: #26a69a; }
+    .reading-item.theoretical { border-left-color: #5c6bc0; }
+    .reading-item.linked { cursor: pointer; }
+    .reading-item.linked:hover { border-left-color: var(--accent); }
+    .reading-item .title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    .reading-item .meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .reading-item .type-badge {
+      display: inline-block;
+      font-size: 9px;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-right: 6px;
+      font-weight: 600;
+    }
+    .reading-item .type-badge.primary { background: #8b4513; color: white; }
+    .reading-item .type-badge.secondary { background: #26a69a; color: white; }
+    .reading-item .type-badge.theoretical { background: #5c6bc0; color: white; }
+    .links-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+    .link-btn.primary {
+      background: var(--accent);
+      color: white;
+    }
+    .link-btn.primary:hover {
+      background: #005bb5;
+    }
+    .link-btn.secondary {
+      background: #f0f0f0;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .link-btn.secondary:hover {
+      background: #e5e5e5;
+    }
+    .no-class {
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    .no-class .icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .special-note {
+      background: #fff3e0;
+      border: 1px solid #ffcc80;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: #e65100;
+    }
+    .ebrey-ref {
+      display: inline-block;
+      background: #f5f0e6;
+      border: 1px solid #d4c9b5;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: #7a6b5a;
+      margin-bottom: 16px;
+    }
+    .ebrey-ref a {
+      color: #5a4a3a;
+      text-decoration: underline;
+    }
+    .up-next {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 4px;
+    }
+    .up-next-header {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .up-next-date {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .up-next-topic {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .up-next-readings {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .up-next-readings strong {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="date-label" id="dateLabel">Loading...</div>
+    <h1 id="headerTitle">Today's Prep</h1>
+    <div class="subtitle" id="headerSubtitle"></div>
+  </header>
+
+  <div class="container">
+    <div class="course-card" id="hist213Card">
+      <div class="course-header hist213">
+        <div class="course-code">HIST/EAST 213</div>
+        <div class="course-name">East Asia in the Modern World</div>
+        <div class="class-date" id="hist213Date"></div>
+        <div class="class-topic" id="hist213Topic"></div>
+      </div>
+      <div class="course-body" id="hist213Body"></div>
+    </div>
+
+    <div class="course-card" id="east370Card">
+      <div class="course-header east370">
+        <div class="course-code">EAST 370</div>
+        <div class="course-name">Chinese Traditional Literature & Thought</div>
+        <div class="class-date" id="east370Date"></div>
+        <div class="class-topic" id="east370Topic"></div>
+      </div>
+      <div class="course-body" id="east370Body"></div>
+    </div>
+  </div>
+
+<script>
+// HIST 213 schedule (from dashboard)
+const hist213 = [
+  {date:"2026-01-05",day:"Monday",topic:"Introduction to the class, geography of East Asia",readings:[],notes:"First day of class"},
+  {date:"2026-01-07",day:"Wednesday",topic:"East Asian Language, Religion, Culture",readings:[{title:"Basic Identities",author:"Schoppa",source:"East Asia",pages:"2-23",type:"secondary",url:"https://drive.google.com/file/d/1jcWmYXBcgwx7NqnqHV1vRETgVFYTNHNC/view"}]},
+  {date:"2026-01-09",day:"Friday",topic:"What is Modernity?",readings:[{title:"Introduction to Real World History vs. Eurocentric Social Theory",author:"Frank",source:"ReORIENT",pages:"1-51",type:"theoretical",url:"https://drive.google.com/file/d/1PlgdAe9H3K68FktBJ_s02OvKmZeatfKW/view"}],special:"THEORETICAL READING - skim for thesis"},
+  {date:"2026-01-12",day:"Monday",topic:"Joseon Invaded",ebrey:"Ch. 15: 247-254",readings:[{title:"The Korean War (Imjin War)",source:"SJT",pages:"465-472",type:"primary",url:"https://drive.google.com/file/d/1N-yBVjsZABrL9jY5onUV1eMLK9vy0tMK/view"},{title:"Crouching Tigers, Secret Weapons",author:"Swope",type:"theoretical",url:"https://drive.google.com/file/d/1N-yBVjsZABrL9jY5onUV1eMLK9vy0tMK/view"}],special:"THEORETICAL READING"},
+  {date:"2026-01-14",day:"Wednesday",topic:"Rise of Qing, Creation of Manchu Empire",ebrey:"Ch. 16",readings:[{title:"Fall of the Ming",source:"SMC",pages:"4-14",type:"primary",url:"https://drive.google.com/file/d/1UXhtVQLFsqorBWNBIfUNiDNDopryYp2k/view"},{title:"Horrid Beyond Description",author:"Struve",source:"Ming-Qing Cataclysm",type:"primary",url:"https://drive.google.com/file/d/1WMpbuLVx1eBXsAMGE30dKoY1-fvRl4NF/view"}]},
+  {date:"2026-01-16",day:"Friday",topic:"Qing's Encounter with the West",readings:[{title:"Rise of Qing",source:"SMC",pages:"21-39",type:"primary",url:"https://drive.google.com/file/d/1vfrDl5y84ceFKWTcarkCiQOTyLgHAiYc/view"},{title:"Qianlong's Letter to King George III",author:"Emperor Qianlong",type:"primary",url:"https://drive.google.com/file/d/19LWhhqRRFqTJZ1wW38UcYEIBXnUc3NxH/view"}]},
+  {date:"2026-01-19",day:"Monday",topic:"MLK Day",noClass:true},
+  {date:"2026-01-21",day:"Wednesday",topic:"Joseon Reform",ebrey:"Ch. 15: 254-263",readings:[{title:"On Reform",author:"Yu Hyongwon et al.",source:"SKT",pages:"70-116",type:"primary",url:"https://drive.google.com/file/d/13gb4xRSSG_-QwtxZTaTVXIA3ar6GMzVK/view"}]},
+  {date:"2026-01-23",day:"Friday",topic:"Rise of Tokugawa",ebrey:"Ch. 17",readings:[{title:"Military Government / Laws of Military Households",author:"Tokugawa Ieyasu",source:"SJT",type:"primary",url:"https://drive.google.com/file/d/1MD8dyzEC2mn2Hqk6smdQOv3TA9fJe52B/view"}]},
+  {date:"2026-01-26",day:"Monday",topic:"Presentation brainstorm / Current events",readings:[],notes:"Discussion day"},
+  {date:"2026-01-28",day:"Wednesday",topic:"Qing vs. the West",ebrey:"Connections 306-313, Ch. 18",readings:[{title:"Commissioner Lin's Letter to Queen Victoria",author:"Lin Zexu",type:"primary",url:"https://drive.google.com/file/d/1vF0d7BWHCd2i0Hu08LkYbAhnNkepH80Q/view"},{title:"Treaty of Nanjing",type:"primary",url:"https://drive.google.com/file/d/1xJOTI4TbondCXKURtIKOR6LdF4kjaZ-i/view"}]},
+  {date:"2026-01-30",day:"Friday",topic:"Tokugawa vs. the West",ebrey:"Ch. 19",readings:[{title:"Harris Treaty of 1858",type:"primary",url:"https://drive.google.com/file/d/1jVpQfeCZFQs3CXv635k9Sn-DIZlQgrU8/view"},{title:"Daimyo Responses to American Demands",type:"primary",url:"https://drive.google.com/file/d/1H5bRd2kGVHdlD8tXNk9Yfyx0ZV3YPzX0/view"}]},
+  {date:"2026-02-02",day:"Monday",topic:"Meiji Transformation",ebrey:"Ch. 20",readings:[{title:"Meiji Primary Sources",author:"Fukuzawa Yukichi",source:"SJT",pages:"669-764",type:"primary",url:"https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"}]},
+  {date:"2026-02-04",day:"Wednesday",topic:"Taiping and other rebellions",readings:[{title:"The Crisis Within",author:"Spence",source:"Search for Modern China",type:"secondary",url:"https://drive.google.com/file/d/1DQ6QnVtXRuQ6l-txpOrrXt2XctrHlkZt/view"},{title:"Heavenly Kingdom of Taipings",source:"SCT",type:"primary",url:"https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"}]},
+  {date:"2026-02-06",day:"Friday",topic:"Tonghak Rebellion",ebrey:"368-369, 376-377",readings:[{title:"Tonghak Uprisings",source:"SKT",type:"primary",url:"https://drive.google.com/file/d/1iAFLA1nBFcfbgOcfvsaENMy5z4NgRO8_/view"},{title:"Revolutionary Uprising of Tonghak Peasant Army",source:"New History of Korea",type:"secondary",url:"https://drive.google.com/file/d/1I1ObGHD1eoZlci6KmK6s-R9kmp5Q4FND/view"}]},
+  {date:"2026-02-09",day:"Monday",topic:"Joseon's Slow Evolution",ebrey:"Ch. 21",readings:[{title:"Encounters with the West / Defense of Orthodoxy",source:"SKT",pages:"117-142, 235-244",type:"primary",url:"https://drive.google.com/file/d/1hu67P1Xb8GDjhIV0xPbd89oHYpWPYWP4/view"}],notes:"Focus on primary sources first"},
+  {date:"2026-02-11",day:"Wednesday",topic:"Tonghak in Film",readings:[],film:{title:"Run High, Run Far",director:"Im Kwontaek",year:1991}},
+  {date:"2026-02-13",day:"Friday",topic:"Midterm Reading Period",noClass:true},
+  {date:"2026-02-16",day:"Monday",topic:"Japanese Nationalism",ebrey:"Ch. 22",readings:[{title:"Tokutomi Soho: Nationalist's View",author:"Tokutomi Soho",source:"SJT",pages:"798-811",type:"primary",url:"https://drive.google.com/file/d/1x0zJyCZNq5mbGcCALGMnQzokE6tqnDRf/view"}]},
+  {date:"2026-02-18",day:"Wednesday",topic:"Korean Nationalism",ebrey:"Ch. 23",readings:[{title:"Open Letter to Ito / Declaration of Independence",source:"SKT",pages:"294-351",type:"primary",url:"https://drive.google.com/file/d/1ONPlaISIU8ks5gY2SyYnHJVP0R3IFD6X/view"}]},
+  {date:"2026-02-20",day:"Friday",topic:"Chinese Nationalism",ebrey:"Ch. 24",readings:[{title:"The True Story of Ah Q",author:"Lu Xun",type:"primary",url:"https://drive.google.com/file/d/1Oz8ZRT_X-FxsSo7olV-H0baSzgxuWEQj/view"}]},
+  {date:"2026-02-23",day:"Monday",topic:"Civil War and Revolution in China",ebrey:"Ch. 25",readings:[{title:"What Women Should Know About Communism",author:"Zhen He",type:"primary",url:"https://drive.google.com/file/d/1ciGgzadhvPK8NV4k3IZHr3n6ESC0_rhb/view"}]},
+  {date:"2026-02-25",day:"Wednesday",topic:"The Pacific War",ebrey:"Connections 430-438, Ch. 26",readings:[{title:"Japan at War",source:"SMC",pages:"316-333",type:"primary",url:"https://drive.google.com/file/d/1FUV7k2gyZOG2xicHEX96DbmYLB3nS82E/view"},{title:"Oral Histories of the Comfort Women",type:"primary",url:"https://drive.google.com/file/d/1UDrmwTgBEBpVP9tjuBxFnp-qC2XddhEK/view"}]},
+  {date:"2026-02-27",day:"Friday",topic:"Rebuilding Japan",ebrey:"Ch. 26: 461-470",readings:[{title:"Constitution of Japan (1947)",type:"primary",url:"https://drive.google.com/file/d/1R38azeBeaKG_ronaND9fwxpVSkex0uPT/view"},{title:"The American School",type:"primary",url:"https://drive.google.com/file/d/19_wD1Yex9OlA_IR7geifIvVZJi9aXeqL/view"}]},
+  {date:"2026-03-02",day:"Monday",topic:"Mao and Beyond Mao",ebrey:"Ch. 27, 30",readings:[{title:"Let Flowers Bloom / 100 Flowers",type:"primary",url:"https://drive.google.com/file/d/1Jsls0Ii5QR-UfPam-sNpzT3FEmM9RC-3/view"}]},
+  {date:"2026-03-04",day:"Wednesday",topic:"Liberation, Division, Rebuilding Korea",ebrey:"Ch. 28",readings:[{title:"Cranes",source:"Short Fiction",type:"primary",url:"https://drive.google.com/file/d/1CxK408_GdhApyipkHI83ajbZTK2geTfe/view"},{title:"Five Bandits",source:"Short Fiction",type:"primary",url:"https://drive.google.com/file/d/1n-L259kl8tJQOg22FgCLjvvF3VdX219O/view"}]},
+  {date:"2026-03-06",day:"Friday",topic:"Japan rises again",ebrey:"Ch. 29",readings:[{title:"Environmental Activism, Feminism",type:"primary",url:"https://drive.google.com/file/d/1apup-PPgM9q7AcDPIyCDAXcnJixQ8URL/view"}]},
+  {date:"2026-03-09",day:"Monday",topic:"Final presentations",presentations:true},
+  {date:"2026-03-11",day:"Wednesday",topic:"Final presentations",presentations:true},
+  {date:"2026-03-13",day:"Friday",topic:"Final presentations",presentations:true}
+];
+
+// EAST 370 schedule with URLs
+const east370 = [
+  {date:"2026-01-05",day:"Monday",topic:"Introduction to the class",readings:[]},
+  {date:"2026-01-07",day:"Wednesday",topic:"Timeline of the Mythological World; Ivanhoe Introduction",readings:[
+    {title:"Timeline of the Mythological World",author:"Turner",pages:"63-77",url:"https://drive.google.com/file/d/1Nkn-9L4iF0W_ToqxogotwFECx8md1tES/view"},
+    {title:"Introduction",author:"Ivanhoe & Van Norden",source:"Readings in Classical Chinese Philosophy"}
+  ]},
+  {date:"2026-01-09",day:"Friday",topic:"Book of Songs; Kongzi Analects 1-7",readings:[
+    {title:"Guan Ju",source:"Book of Songs",url:"https://docs.google.com/document/d/14zBq2lNosY1tXPEup8yw-8dO-dBbtf85vsd17JJPF2k/edit"},
+    {title:"The Analects Books 1-7",author:"Kongzi",pages:"3-24",url:"https://drive.google.com/file/d/1KS-6zKuOTb3RwEwPnMaJJ4S4XSa8ItE7/view"}
+  ],studyGuide:"lessons/kongzi.html"},
+  {date:"2026-01-12",day:"Monday",topic:"Kongzi Analects 8-20",readings:[
+    {title:"The Analects Books 8-20",author:"Kongzi",pages:"24-53",url:"https://drive.google.com/file/d/1KS-6zKuOTb3RwEwPnMaJJ4S4XSa8ItE7/view"}
+  ],studyGuide:"lessons/kongzi.html"},
+  {date:"2026-01-14",day:"Wednesday",topic:"Anthology Introduction; Mozi",readings:[
+    {title:"Introduction",source:"Anthology of Chinese Literature",url:"https://drive.google.com/file/d/1x_QYjRsnLssVE8k6-2I7ciK8wf1b_aeP/view"},
+    {title:"Zhou Dynasty Book of Songs",pages:"3-15",url:"https://drive.google.com/file/d/1pFcaN4Mj4KywNcSyFUhsEKcc7Ym-yhjM/view"},
+    {title:"Mozi",pages:"57-85",url:"https://drive.google.com/file/d/1TkLMG1-91m1BURHrs9T4ztgcol-jySVK/view"}
+  ],studyGuide:"lessons/mozi.html"},
+  {date:"2026-01-16",day:"Friday",topic:"Book of Songs; Mozi (cont.)",readings:[
+    {title:"Book of Songs",pages:"15-29",url:"https://drive.google.com/file/d/1pFcaN4Mj4KywNcSyFUhsEKcc7Ym-yhjM/view"},
+    {title:"Mozi",pages:"85-108",url:"https://drive.google.com/file/d/1TkLMG1-91m1BURHrs9T4ztgcol-jySVK/view"}
+  ],studyGuide:"lessons/mozi.html",discussant:"Qiaochuhan"},
+  {date:"2026-01-19",day:"Monday",topic:"MLK Day",noClass:true,notes:"Independent reflection on Chinese philosophy"},
+  {date:"2026-01-21",day:"Wednesday",topic:"Early Historical Writings; Mengzi",readings:[
+    {title:"Early Historical Writings",pages:"30-46",url:"https://drive.google.com/file/d/1ZC9m2tc8ejhefgA1GIik_p0C0hG_WqKU/view"},
+    {title:"Mengzi",pages:"119-157",url:"https://drive.google.com/file/d/1pcOfTvGD0b9g8uj8HbclOn7cnL_x_G9y/view"}
+  ],studyGuide:"lessons/mengzi.html"},
+  {date:"2026-01-23",day:"Friday",topic:"Songs of Ch'u; Laozi Book One",readings:[
+    {title:"Songs of Ch'u",pages:"49-66",url:"https://drive.google.com/file/d/1y8DK0uF2iOL9bgECCOrhDrfjQMG7APNh/view"},
+    {title:"Laozi Book One (Dao)",pages:"171-190",url:"https://drive.google.com/file/d/1EnUEfiG8O5elRyVhE00DU_Qfpoxi0iB9/view"}
+  ],studyGuide:"lessons/laozi.html"},
+  {date:"2026-01-26",day:"Monday",topic:"Songs of Ch'u; Laozi Book Two",readings:[
+    {title:"Songs of Ch'u",pages:"67-80",url:"https://drive.google.com/file/d/1y8DK0uF2iOL9bgECCOrhDrfjQMG7APNh/view"},
+    {title:"Laozi Book Two (De)",pages:"190-210",url:"https://drive.google.com/file/d/1EnUEfiG8O5elRyVhE00DU_Qfpoxi0iB9/view"}
+  ],studyGuide:"lessons/songs-of-chu-day2.html"},
+  {date:"2026-01-28",day:"Wednesday",topic:"Zhuangzi and Death; Zhuangzi",readings:[
+    {title:"Zhuangzi and others on Death",pages:"81-90",url:"https://drive.google.com/file/d/1-gSsykgG_HqK-sq2LJUTgb4io1O-IhGk/view"},
+    {title:"Zhuangzi",pages:"223-238",url:"https://drive.google.com/file/d/16188gT85984-tXHIc_BOScTIm4ApyNKC/view"}
+  ],studyGuide:"lessons/zhuangzi.html",discussant:"Anya"},
+  {date:"2026-01-30",day:"Friday",topic:"Han Dynasty Biographies; Zhuangzi (cont.)",readings:[
+    {title:"Biographies by Sima Qian",pages:"93-122",url:"https://drive.google.com/file/d/1hozHnh4AUd4jKD8lKwgjbtwLEHx8AHuF/view"},
+    {title:"Zhuangzi",pages:"239-249",url:"https://drive.google.com/file/d/16188gT85984-tXHIc_BOScTIm4ApyNKC/view"}
+  ],studyGuide:"lessons/zhuangzi.html",discussant:"Cook"},
+  {date:"2026-02-02",day:"Monday",topic:"Han Dynasty Rhyme Prose; Zhuangzi (cont.)",readings:[
+    {title:"Han Dynasty Rhyme Prose",pages:"134-141",url:"https://drive.google.com/file/d/1efC38Xqo00tKYMj8MUFcmUnPugCIT1UD/view"},
+    {title:"Zhuangzi",pages:"249-265",url:"https://drive.google.com/file/d/16188gT85984-tXHIc_BOScTIm4ApyNKC/view"}
+  ],studyGuide:"lessons/fu-background.html",discussant:"Cook"},
+  {date:"2026-02-04",day:"Wednesday",topic:"Rhyme Prose; Xunzi",readings:[
+    {title:"Rhyme Prose",pages:"142-153",url:"https://drive.google.com/file/d/1efC38Xqo00tKYMj8MUFcmUnPugCIT1UD/view"},
+    {title:"Xunzi",pages:"269-297",url:"https://drive.google.com/file/d/1On0rTXRg8cNsX4cTidityKsCavmIX3nI/view"}
+  ],discussant:"Anya"},
+  {date:"2026-02-06",day:"Friday",topic:"Period of Division poetry; Xunzi (cont.)",readings:[
+    {title:"Period of Division",pages:"157-188",url:"https://drive.google.com/file/d/1XWc_Tku9QMQPwf3N1FhQ9OPO5e94qu4A/view"},
+    {title:"Xunzi",pages:"298-319",url:"https://drive.google.com/file/d/1On0rTXRg8cNsX4cTidityKsCavmIX3nI/view"}
+  ]},
+  {date:"2026-02-09",day:"Monday",topic:"Period of Division texts; Han Feizi",readings:[
+    {title:"Xunzi",pages:"298-319",url:"https://drive.google.com/file/d/1On0rTXRg8cNsX4cTidityKsCavmIX3nI/view"},
+    {title:"Han Feizi",pages:"323-353",url:"https://drive.google.com/file/d/1NwU0fNbMHKUqeDtIH-6mwkIETDmEVz2r/view"}
+  ],discussant:"Cook",notes:"Preliminary thesis due"},
+  {date:"2026-02-11",day:"Wednesday",topic:"Faults of the Ch'in; Han Feizi (cont.)",readings:[
+    {title:"Faults of the Ch'in",pages:"46-48",url:"https://drive.google.com/file/d/1Nkn-9L4iF0W_ToqxogotwFECx8md1tES/view"},
+    {title:"Han Feizi",pages:"353-379",url:"https://drive.google.com/file/d/1NwU0fNbMHKUqeDtIH-6mwkIETDmEVz2r/view"}
+  ],discussant:"Anya"},
+  {date:"2026-02-13",day:"Friday",topic:"Midterm Reading Period",noClass:true,notes:"Paper #2 due"},
+  {date:"2026-02-16",day:"Monday",topic:"Tang Dynasty Literature; Huiyuan",readings:[
+    {title:"On Literature",pages:"204-214",url:"https://drive.google.com/file/d/1Nkn-9L4iF0W_ToqxogotwFECx8md1tES/view"},
+    {title:"Poets of a Generation: One",pages:"217-241",url:"https://drive.google.com/file/d/1OYya39etZDA5_CoDRRzyQOID2FlsxsbB/view"},
+    {title:"Huiyuan: Why Monks Do Not Bow",url:"https://drive.google.com/open?id=1DsjHn9snXP3WiOFyfKLQDIdiwGP0tgpd"}
+  ],discussant:"Qiaochuhan"},
+  {date:"2026-02-18",day:"Wednesday",topic:"Prose Essays; Huiyuan",readings:[
+    {title:"Prose Essays",pages:"242-259",url:"https://drive.google.com/file/d/1hJIoxxo4W4nSISYlfT3nBDlAoAt11UC4/view"},
+    {title:"Huiyuan: Why Monks Do Not Bow",url:"https://drive.google.com/open?id=1DsjHn9snXP3WiOFyfKLQDIdiwGP0tgpd"}
+  ],discussant:"Qiaochuhan"},
+  {date:"2026-02-20",day:"Friday",topic:"Poets of a Generation; Avatamsaka Sutra",readings:[
+    {title:"Poets of a Generation: Two",pages:"260-287",url:"https://drive.google.com/file/d/17qCPOj9ldLgNwWNmyMl4Z7o5B3LTkJS4/view"},
+    {title:"Avatamsaka Sutra",url:"https://drive.google.com/open?id=1uh-Jf6cEOGDqz3gbjfTvOHlH_M4F8P2l"}
+  ]},
+  {date:"2026-02-23",day:"Monday",topic:"Tang Short Stories",readings:[
+    {title:"Tang Short Stories",pages:"288-322",url:"https://drive.google.com/file/d/1zguYpsXjf2obneruVLIJV2bwJl9ZVo33/view"}
+  ]},
+  {date:"2026-02-25",day:"Wednesday",topic:"Song Irregular Metre Poems; Fazang",readings:[
+    {title:"Poems in Irregular Metre",pages:"333-363",url:"https://drive.google.com/file/d/1IgHgJLn5-UwiKNc5k5teEBA3UkLnnIhk/view"},
+    {title:"Fazang: Rafter Dialogue & Golden Lion",url:"https://drive.google.com/open?id=1Dlhc1v8ULq__iLv-Q9xVyPQf821yFSlB"}
+  ]},
+  {date:"2026-02-27",day:"Friday",topic:"One-on-one meetings",noClass:true,notes:"Starting 12:30"},
+  {date:"2026-03-02",day:"Monday",topic:"Two Prose Masters; Chan Buddhism",readings:[
+    {title:"Two Prose Masters",pages:"364-384",url:"https://drive.google.com/file/d/1rrqjBxNB6XxeG_LdhMR0yK__-FOyd9be/view"},
+    {title:"Han Shan poems",pages:"194-202",url:"https://drive.google.com/file/d/1R01gCs-XrEyfipfpNm3cSti_gwoc326R/view"},
+    {title:"Platform Sutra (Huineng)",url:"https://drive.google.com/file/d/1ks1135PgFP3icmcHhjFf5vYqjFdLaboK/view"},
+    {title:"Zongmi: On Humanity",url:"https://drive.google.com/file/d/12uHdd8bPg_eqjEADZRIKjaVPPZ3F75pJ/view"}
+  ]},
+  {date:"2026-03-04",day:"Wednesday",topic:"Yuan Dynasty plays; Neo-Confucianism",readings:[
+    {title:"Yuan Dynasty plays",pages:"391-448",url:"https://drive.google.com/file/d/1YBDrOYdNcmQE/view"},
+    {title:"Daxue & Zhongyong",url:"https://scholarworks.iu.edu/iuswrrest/api/core/bitstreams/02ef267d-67b2-417c-bedd-256ff022d3f0/content"}
+  ]},
+  {date:"2026-03-06",day:"Friday",topic:"Yuan Dynasty novel",readings:[
+    {title:"Men of the Marsh",url:"https://drive.google.com/file/d/1RefvJotRX1AsizcpRUiFQaOwJer7oUTe/view"}
+  ],notes:"Paper #3 due"},
+  {date:"2026-03-09",day:"Monday",topic:"Final presentations",presentations:true},
+  {date:"2026-03-11",day:"Wednesday",topic:"Final presentations",presentations:true},
+  {date:"2026-03-13",day:"Friday",topic:"Final presentations",presentations:true}
+];
+
+const HIST213_NOTES_URL = "https://docs.google.com/document/d/1nTPzZXjo5FsaqcNrZxthhhJtND5eoGOESMqBIxTv8D4/edit";
+const EAST370_NOTES_URL = "https://docs.google.com/document/d/10NoIMoM1vxWNxxIJIPYsjhF1QkpYeOI6qBvjbk0CW9k/edit";
+const HIST213_DASHBOARD_URL = "index.html";
+const EAST370_SITE_URL = "https://omatty123.github.io/east370-site/";
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + "T12:00:00");
+  return d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+}
+
+function formatShortDate(dateStr) {
+  const d = new Date(dateStr + "T12:00:00");
+  return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+}
+
+function getNextClassIndex(schedule, now) {
+  const today = now.toISOString().split("T")[0];
+  const hour = now.getHours();
+
+  for (let i = 0; i < schedule.length; i++) {
+    const classDate = schedule[i].date;
+    if (classDate > today) return i;
+    if (classDate === today && hour < 13) return i;
+  }
+  return -1;
+}
+
+function getNextClass(schedule, now) {
+  const idx = getNextClassIndex(schedule, now);
+  return idx >= 0 ? schedule[idx] : null;
+}
+
+function getUpNext(schedule, now) {
+  const idx = getNextClassIndex(schedule, now);
+  if (idx < 0 || idx + 1 >= schedule.length) return null;
+  // Skip no-class days to find next actual class
+  for (let i = idx + 1; i < schedule.length; i++) {
+    if (!schedule[i].noClass) return schedule[i];
+  }
+  return null;
+}
+
+function renderReadings(readings) {
+  if (!readings || readings.length === 0) {
+    return '<p style="color:var(--text-muted);font-size:13px;">No assigned readings</p>';
+  }
+
+  let html = '';
+  for (const r of readings) {
+    const typeClass = r.type || '';
+    const hasUrl = r.url ? true : false;
+    const tag = hasUrl ? 'a' : 'div';
+    const attrs = hasUrl ? `href="${r.url}" target="_blank"` : '';
+    const linkedClass = hasUrl ? 'linked' : '';
+
+    html += `<${tag} class="reading-item ${typeClass} ${linkedClass}" ${attrs}>`;
+
+    if (r.type) {
+      html += `<span class="type-badge ${r.type}">${r.type}</span>`;
+    }
+
+    html += `<div class="title">${r.title}</div>`;
+
+    const meta = [];
+    if (r.author) meta.push(r.author);
+    if (r.source) meta.push(r.source);
+    if (r.pages) meta.push('pp. ' + r.pages);
+
+    if (meta.length > 0) {
+      html += `<div class="meta">${meta.join(' · ')}</div>`;
+    }
+
+    html += `</${tag}>`;
+  }
+  return html;
+}
+
+function renderUpNext(upNextData) {
+  if (!upNextData) return '';
+
+  let html = '<div class="up-next">';
+  html += '<div class="up-next-header">↗ Up Next</div>';
+  html += `<div class="up-next-date">${formatShortDate(upNextData.date)}</div>`;
+  html += `<div class="up-next-topic">${upNextData.topic}</div>`;
+
+  if (upNextData.readings && upNextData.readings.length > 0) {
+    const titles = upNextData.readings.slice(0, 3).map(r => r.title).join(', ');
+    const more = upNextData.readings.length > 3 ? ` +${upNextData.readings.length - 3} more` : '';
+    html += `<div class="up-next-readings"><strong>Readings:</strong> ${titles}${more}</div>`;
+  }
+
+  if (upNextData.presentations) {
+    html += '<div class="up-next-readings">🎤 Student Presentations</div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+
+function renderCourse(courseData, upNextData, bodyEl, dateEl, topicEl, notesUrl, dashboardUrl, dashboardLabel, studyGuideBase) {
+  if (!courseData) {
+    bodyEl.innerHTML = '<div class="no-class"><div class="icon">📚</div>No more classes this term</div>';
+    dateEl.textContent = '';
+    topicEl.textContent = 'Course Complete';
+    return;
+  }
+
+  if (courseData.noClass) {
+    dateEl.textContent = formatDate(courseData.date);
+    topicEl.textContent = courseData.topic;
+    let html = '<div class="no-class"><div class="icon">🚫</div>No Class';
+    if (courseData.notes) html += '<br><small>' + courseData.notes + '</small>';
+    html += '</div>';
+    html += renderUpNext(upNextData);
+    bodyEl.innerHTML = html;
+    return;
+  }
+
+  if (courseData.presentations) {
+    dateEl.textContent = formatDate(courseData.date);
+    topicEl.textContent = courseData.topic;
+    bodyEl.innerHTML = '<div class="no-class"><div class="icon">🎤</div>Student Presentations</div>';
+    return;
+  }
+
+  dateEl.textContent = formatDate(courseData.date);
+  topicEl.textContent = courseData.topic;
+
+  let html = '';
+
+  // Special notes
+  if (courseData.special) {
+    html += `<div class="special-note">⚠️ ${courseData.special}</div>`;
+  }
+
+  // Ebrey reference (for HIST 213)
+  if (courseData.ebrey) {
+    html += `<div class="ebrey-ref">📖 <a href="https://drive.google.com/file/d/1UdX-0vMwX8OrfNpK_DtJuU-e8gL3kROs/view" target="_blank">Ebrey: ${courseData.ebrey}</a></div>`;
+  }
+
+  // Discussant (for EAST 370)
+  if (courseData.discussant) {
+    html += `<div class="special-note" style="background:#e3f2fd;border-color:#90caf9;color:#1565c0;">👤 Discussant: ${courseData.discussant}</div>`;
+  }
+
+  // Notes
+  if (courseData.notes && !courseData.special) {
+    html += `<div class="special-note" style="background:#f3e5f5;border-color:#ce93d8;color:#7b1fa2;">📝 ${courseData.notes}</div>`;
+  }
+
+  // Film
+  if (courseData.film) {
+    html += `<div class="special-note" style="background:#fff3e0;border-color:#ffcc80;color:#e65100;">🎬 Film: <strong>${courseData.film.title}</strong> (${courseData.film.year}) — Dir. ${courseData.film.director}</div>`;
+  }
+
+  // Readings
+  html += '<div class="section-title">Readings</div>';
+  html += '<div class="readings-list">';
+  html += renderReadings(courseData.readings);
+  html += '</div>';
+
+  // Links
+  html += '<div class="links-row">';
+  html += `<a href="${notesUrl}" target="_blank" class="link-btn primary">📝 Class Notes</a>`;
+  html += `<a href="${dashboardUrl}" target="_blank" class="link-btn secondary">${dashboardLabel}</a>`;
+
+  if (courseData.studyGuide) {
+    const guideUrl = studyGuideBase + courseData.studyGuide;
+    html += `<a href="${guideUrl}" target="_blank" class="link-btn secondary">📖 Study Guide</a>`;
+  }
+
+  html += '</div>';
+
+  // Up Next
+  html += renderUpNext(upNextData);
+
+  bodyEl.innerHTML = html;
+}
+
+function init() {
+  const now = new Date();
+
+  // Header
+  const dateLabel = document.getElementById('dateLabel');
+  const headerTitle = document.getElementById('headerTitle');
+  const headerSubtitle = document.getElementById('headerSubtitle');
+
+  dateLabel.textContent = now.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+
+  const hour = now.getHours();
+  if (hour >= 13) {
+    headerTitle.textContent = "Prep for Next Class";
+    headerSubtitle.textContent = "Afternoon — showing upcoming readings";
+  } else {
+    headerTitle.textContent = "Today's Prep";
+    headerSubtitle.textContent = "Morning — today's class materials";
+  }
+
+  // Get next classes and up-next
+  const nextHist213 = getNextClass(hist213, now);
+  const upNextHist213 = getUpNext(hist213, now);
+  const nextEast370 = getNextClass(east370, now);
+  const upNextEast370 = getUpNext(east370, now);
+
+  // Render HIST 213
+  renderCourse(
+    nextHist213,
+    upNextHist213,
+    document.getElementById('hist213Body'),
+    document.getElementById('hist213Date'),
+    document.getElementById('hist213Topic'),
+    HIST213_NOTES_URL,
+    HIST213_DASHBOARD_URL,
+    "📊 Dashboard"
+  );
+
+  // Render EAST 370
+  renderCourse(
+    nextEast370,
+    upNextEast370,
+    document.getElementById('east370Body'),
+    document.getElementById('east370Date'),
+    document.getElementById('east370Topic'),
+    EAST370_NOTES_URL,
+    EAST370_SITE_URL,
+    "🌐 Course Site",
+    EAST370_SITE_URL
+  );
+}
+
+init();
+</script>
+</body>
+</html>

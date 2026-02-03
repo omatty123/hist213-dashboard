@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>China's Crisis Within: Regional Rebellions 1850-1873</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; }
+
+    .header {
+      background: linear-gradient(135deg, #1a0a0a 0%, #2d1515 100%);
+      padding: 32px 40px;
+      border-bottom: 3px solid #8b0000;
+    }
+    .header h1 { font-size: 28px; font-weight: 300; color: #fff; margin-bottom: 8px; }
+    .header .subtitle { font-size: 14px; color: #e63946; font-weight: 600; letter-spacing: 1px; }
+    .header .context { font-size: 13px; color: #999; margin-top: 12px; max-width: 800px; line-height: 1.5; }
+
+    .main { display: grid; grid-template-columns: 1fr 380px; gap: 0; min-height: calc(100vh - 140px); }
+
+    #rebellion-map { height: 100%; min-height: 500px; }
+
+    .sidebar { background: #1a1a1a; padding: 24px; overflow-y: auto; max-height: calc(100vh - 140px); }
+    .sidebar h2 { font-size: 14px; color: #e63946; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+
+    .rebellion-card {
+      background: #252525;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border-left: 4px solid #666;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .rebellion-card:hover { background: #2a2a2a; transform: translateX(4px); }
+    .rebellion-card.taiping { border-left-color: #e63946; }
+    .rebellion-card.nian { border-left-color: #f4a261; }
+    .rebellion-card.yunnan { border-left-color: #2a9d8f; }
+    .rebellion-card.northwest { border-left-color: #a855f7; }
+
+    .rebellion-card .name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .rebellion-card .chinese { font-size: 12px; color: #888; margin-bottom: 8px; }
+    .rebellion-card .dates { font-size: 11px; color: #666; margin-bottom: 8px; }
+    .rebellion-card .deaths { font-size: 12px; color: #e63946; font-weight: 600; margin-bottom: 8px; }
+    .rebellion-card .desc { font-size: 12px; color: #aaa; line-height: 1.5; }
+    .rebellion-card .leader { font-size: 11px; color: #888; margin-top: 8px; }
+    .rebellion-card .leader strong { color: #ccc; }
+
+    .timeline-section {
+      background: #1a1a1a;
+      padding: 24px 40px;
+      border-top: 1px solid #333;
+    }
+    .timeline-section h2 { font-size: 14px; color: #e63946; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+
+    .timeline-container { position: relative; padding: 20px 0; }
+    .timeline-axis {
+      position: absolute;
+      top: 50%;
+      left: 60px;
+      right: 40px;
+      height: 2px;
+      background: #444;
+    }
+    .timeline-years {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 60px 0 60px;
+      margin-bottom: 60px;
+    }
+    .timeline-year { font-size: 11px; color: #666; }
+
+    .rebellion-bar {
+      position: absolute;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .rebellion-bar.taiping { background: #e63946; top: 30px; }
+    .rebellion-bar.nian { background: #f4a261; top: 55px; }
+    .rebellion-bar.yunnan { background: #2a9d8f; top: 80px; }
+    .rebellion-bar.northwest { background: #a855f7; top: 105px; }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 24px 40px;
+      background: #141414;
+      border-top: 1px solid #333;
+    }
+    .stat-card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-card .number { font-size: 28px; font-weight: 700; color: #e63946; }
+    .stat-card .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    .key-insight {
+      background: linear-gradient(135deg, #1a0a0a 0%, #0f0f0f 100%);
+      border: 1px solid #8b0000;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 24px 40px;
+    }
+    .key-insight h3 { font-size: 13px; color: #e63946; margin-bottom: 12px; }
+    .key-insight p { font-size: 13px; color: #ccc; line-height: 1.6; }
+    .key-insight .quote { font-style: italic; color: #999; margin-top: 12px; padding-left: 16px; border-left: 2px solid #e63946; }
+    .key-insight .source { font-size: 11px; color: #666; margin-top: 8px; }
+
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+      background: rgba(14, 16, 20, 0.95);
+      color: #f2f5f7;
+    }
+    .leaflet-popup-content { font-family: system-ui, sans-serif; font-size: 12px; }
+
+    .map-legend {
+      font-family: system-ui, sans-serif;
+      background: rgba(10, 12, 16, 0.92);
+      color: #f2f5f7;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+    .map-legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+    .map-legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .map-legend-line { width: 20px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+
+    .map-title {
+      font-family: system-ui, sans-serif;
+      background: rgba(10, 12, 16, 0.92);
+      color: #f2f5f7;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .header { background: #f5f5f5; border-bottom-color: #c00; }
+      .header h1, .header .subtitle { color: #000; }
+      .sidebar, .stats-row { background: #f9f9f9; }
+      .rebellion-card { background: #fff; border: 1px solid #ddd; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="subtitle">Plate 13 Deep Dive</div>
+    <h1>The Crisis Within: China's Simultaneous Rebellions</h1>
+    <p class="context">Between 1850 and 1873, the Qing dynasty faced not one but four major regional rebellions simultaneously. The Taiping alone killed 20-30 million people—more than World War I. While Japan was transforming under Meiji, China was hemorrhaging.</p>
+  </div>
+
+  <div class="main">
+    <div id="rebellion-map"></div>
+    <div class="sidebar">
+      <h2>The Four Rebellions</h2>
+
+      <div class="rebellion-card taiping" onclick="focusRebellion('taiping')">
+        <div class="name">Taiping Rebellion</div>
+        <div class="chinese">太平天國運動</div>
+        <div class="dates">1850-1864 (14 years)</div>
+        <div class="deaths">20-30 million dead</div>
+        <div class="desc">Christian-inspired movement seeking to establish a "Heavenly Kingdom" with radical land reform and gender equality. Controlled much of central China.</div>
+        <div class="leader"><strong>Leader:</strong> Hong Xiuquan (believed himself Jesus's brother)</div>
+      </div>
+
+      <div class="rebellion-card nian" onclick="focusRebellion('nian')">
+        <div class="name">Nian Rebellion</div>
+        <div class="chinese">捻軍起義</div>
+        <div class="dates">1851-1868 (17 years)</div>
+        <div class="deaths">Millions dead</div>
+        <div class="desc">Roving cavalry bands in north China exploiting Yellow River floods and rural misery. No unified ideology—salt smugglers, bandits, desperate peasants.</div>
+        <div class="leader"><strong>Leader:</strong> Zhang Luoxing ("Great Han Prince with Heavenly Mandate")</div>
+      </div>
+
+      <div class="rebellion-card yunnan" onclick="focusRebellion('yunnan')">
+        <div class="name">Yunnan Muslim Revolt</div>
+        <div class="chinese">雲南回變</div>
+        <div class="dates">1855-1873 (18 years)</div>
+        <div class="deaths">Hundreds of thousands</div>
+        <div class="desc">Muslim uprising in southwest China triggered by mining disputes. Du Wenxiu created a separate state, "Kingdom of the Pacified South."</div>
+        <div class="leader"><strong>Leader:</strong> Du Wenxiu ("Sultan Suleiman")</div>
+      </div>
+
+      <div class="rebellion-card northwest" onclick="focusRebellion('northwest')">
+        <div class="name">Northwest Muslim Revolt</div>
+        <div class="chinese">同治回亂</div>
+        <div class="dates">1862-1873 (11 years)</div>
+        <div class="deaths">Millions dead</div>
+        <div class="desc">Shaanxi-Gansu uprising sparked by a quarrel over bamboo poles. Spread through Sufi "New Teachings" communities. Near-total war.</div>
+        <div class="leader"><strong>Leader:</strong> Ma Hualong (revered as incarnation of Muhammad)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="number">20-30M</div>
+      <div class="label">Taiping Deaths</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">23</div>
+      <div class="label">Years of Rebellion</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">4</div>
+      <div class="label">Simultaneous Uprisings</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">~20,000</div>
+      <div class="label">Opium War Deaths</div>
+    </div>
+  </div>
+
+  <div class="timeline-section">
+    <h2>Overlapping Timelines</h2>
+    <div class="timeline-container">
+      <div class="timeline-years">
+        <span class="timeline-year">1850</span>
+        <span class="timeline-year">1855</span>
+        <span class="timeline-year">1860</span>
+        <span class="timeline-year">1865</span>
+        <span class="timeline-year">1870</span>
+        <span class="timeline-year">1875</span>
+      </div>
+      <div class="timeline-axis"></div>
+      <div class="rebellion-bar taiping" style="left: 60px; width: calc((14/25) * (100% - 100px));">Taiping 1850-1864</div>
+      <div class="rebellion-bar nian" style="left: calc(60px + (1/25) * (100% - 100px)); width: calc((17/25) * (100% - 100px));">Nian 1851-1868</div>
+      <div class="rebellion-bar yunnan" style="left: calc(60px + (5/25) * (100% - 100px)); width: calc((18/25) * (100% - 100px));">Yunnan Muslim 1855-1873</div>
+      <div class="rebellion-bar northwest" style="left: calc(60px + (12/25) * (100% - 100px)); width: calc((11/25) * (100% - 100px));">Northwest Muslim 1862-1873</div>
+    </div>
+  </div>
+
+  <div class="key-insight">
+    <h3>Why This Matters for the Japan-China Comparison</h3>
+    <p><strong>Timeline:</strong> Taiping Rebellion 1850-1864. Meiji Restoration 1868. Japan transformed <em>after</em> China's civil war ended, while China was still recovering from losing 20-30 million people.</p>
+    <p style="margin-top: 12px;">The question isn't "Why did Japan succeed and China fail?" The question is: <strong>Could ANY government reform while losing 20-30 million people?</strong></p>
+    <div class="quote">"The Taiping failed as well to coordinate their uprising with two other upheavals occurring at the same time: the revolt of the Nian to the north and the Red Turbans to the south. Had some kind of concerted action been arranged... the Qing could not have survived."</div>
+    <div class="source">— Jonathan Spence, The Search for Modern China</div>
+  </div>
+
+  <div class="key-insight">
+    <h3>Internal Crisis vs. Foreign Aggression</h3>
+    <p>The Opium War killed perhaps 20,000. The Taiping Rebellion killed <strong>20-30 million</strong>—more than World War I. Internal crisis was far more devastating than imperialism. But they were connected: the Opium War had weakened Qing legitimacy and destabilized the economy.</p>
+    <div class="quote">"It may safely be augured that the Chinese revolution will throw the spark into the overloaded mine of the present industrial system and cause the explosion of the long-prepared general crisis."</div>
+    <div class="source">— Karl Marx, 1853</div>
+  </div>
+
+  <script>
+    const map = L.map('rebellion-map', { zoomControl: true, attributionControl: false }).setView([30, 110], 4);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd', maxZoom: 10, minZoom: 3
+    }).addTo(map);
+
+    // Title
+    const titleControl = L.control({ position: 'topleft' });
+    titleControl.onAdd = function() {
+      const div = L.DomUtil.create('div', 'map-title');
+      div.innerHTML = 'CHINA\'S SIMULTANEOUS REBELLIONS<br><small style="font-weight:400;opacity:0.8;">1850-1873</small>';
+      return div;
+    };
+    titleControl.addTo(map);
+
+    // Legend
+    const legendControl = L.control({ position: 'bottomright' });
+    legendControl.onAdd = function() {
+      const div = L.DomUtil.create('div', 'map-legend');
+      div.innerHTML = `
+        <div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Taiping (1850-64)</div>
+        <div class="map-legend-item"><span class="map-legend-dot" style="background:#f4a261;"></span> Nian (1851-68)</div>
+        <div class="map-legend-item"><span class="map-legend-dot" style="background:#2a9d8f;"></span> Yunnan Muslim (1855-73)</div>
+        <div class="map-legend-item"><span class="map-legend-dot" style="background:#a855f7;"></span> NW Muslim (1862-73)</div>
+        <div class="map-legend-item"><span class="map-legend-dot" style="background:#64748b;"></span> Qing Cities</div>
+      `;
+      return div;
+    };
+    legendControl.addTo(map);
+
+    // Rebellion zones (approximate polygons)
+    const taipingZone = L.polygon([
+      [23.5, 109.5], [25, 110.5], [28, 111], [32, 118], [32, 121], [30, 121], [28, 117], [25, 115], [23, 113]
+    ], { color: '#e63946', fillColor: '#e63946', fillOpacity: 0.15, weight: 2 }).addTo(map)
+      .bindPopup('<b>Taiping Territory</b><br>Controlled much of central China 1853-1864<br>Capital: Nanjing (Tianjing)');
+
+    const nianZone = L.polygon([
+      [32, 114], [35, 113], [36, 117], [35, 120], [33, 119], [32, 116]
+    ], { color: '#f4a261', fillColor: '#f4a261', fillOpacity: 0.15, weight: 2 }).addTo(map)
+      .bindPopup('<b>Nian Territory</b><br>North of Huai River<br>Roving cavalry bands, fortified villages');
+
+    const yunnanZone = L.polygon([
+      [23, 100], [27, 100], [28, 104], [26, 106], [23, 104]
+    ], { color: '#2a9d8f', fillColor: '#2a9d8f', fillOpacity: 0.15, weight: 2 }).addTo(map)
+      .bindPopup('<b>Yunnan Muslim Territory</b><br>Du Wenxiu\'s "Kingdom of the Pacified South"<br>Capital: Dali');
+
+    const nwMuslimZone = L.polygon([
+      [34, 104], [37, 104], [38, 108], [36, 112], [34, 110]
+    ], { color: '#a855f7', fillColor: '#a855f7', fillOpacity: 0.15, weight: 2 }).addTo(map)
+      .bindPopup('<b>Northwest Muslim Territory</b><br>Shaanxi-Gansu uprising<br>Sufi "New Teachings"');
+
+    // Key cities
+    const cities = [
+      // Taiping
+      { name: "Nanjing", cn: "南京", lat: 32.05, lng: 118.77, type: "taiping", desc: "Taiping capital 1853-64" },
+      { name: "Thistle Mountain", cn: "紫荊山", lat: 23.45, lng: 109.95, type: "taiping", desc: "God Worshippers base" },
+      { name: "Jintian", cn: "金田", lat: 23.60, lng: 110.11, type: "taiping", desc: "Uprising began 1851" },
+      { name: "Changsha", cn: "長沙", lat: 28.23, lng: 112.94, type: "taiping", desc: "Besieged 1852" },
+      // Nian
+      { name: "Jinjibao", cn: "金積堡", lat: 37.5, lng: 106.2, type: "nian", desc: "Zhang Luoxing's base" },
+      { name: "Kaifeng", cn: "開封", lat: 34.8, lng: 114.3, type: "nian", desc: "Near Yellow River breach 1855" },
+      // Yunnan Muslim
+      { name: "Dali", cn: "大理", lat: 25.6, lng: 100.2, type: "yunnan", desc: "Du Wenxiu's capital" },
+      { name: "Kunming", cn: "昆明", lat: 25.0, lng: 102.7, type: "yunnan", desc: "Briefly held 1863" },
+      // Northwest Muslim
+      { name: "Xi'an", cn: "西安", lat: 34.27, lng: 108.95, type: "northwest", desc: "Besieged 1862" },
+      { name: "Lanzhou", cn: "蘭州", lat: 36.06, lng: 103.83, type: "northwest", desc: "Zuo Zongtang's base" },
+      { name: "Suzhou (Gansu)", cn: "肅州", lat: 39.75, lng: 98.5, type: "northwest", desc: "Fell 1873" },
+      // Qing
+      { name: "Beijing", cn: "北京", lat: 39.92, lng: 116.38, type: "qing", desc: "Qing capital" },
+      { name: "Shanghai", cn: "上海", lat: 31.22, lng: 121.47, type: "qing", desc: "Treaty port, foreign defense" }
+    ];
+
+    const colors = {
+      taiping: '#e63946',
+      nian: '#f4a261',
+      yunnan: '#2a9d8f',
+      northwest: '#a855f7',
+      qing: '#64748b'
+    };
+
+    cities.forEach(function(c) {
+      const marker = L.circleMarker([c.lat, c.lng], {
+        radius: 6,
+        fillColor: colors[c.type],
+        color: '#fff',
+        weight: 1.5,
+        fillOpacity: 0.9
+      }).addTo(map);
+      marker.bindPopup(`<b>${c.cn} ${c.name}</b><br>${c.desc}`);
+      marker.bindTooltip(c.name, { permanent: false, direction: 'right', offset: [8, 0] });
+    });
+
+    // Taiping route
+    L.polyline([
+      [23.45, 109.95], [23.60, 110.11], [25.28, 110.30], [28.23, 112.94], [30.55, 114.35], [32.05, 118.77]
+    ], { weight: 3, opacity: 0.8, color: '#e63946' }).addTo(map)
+      .bindPopup('Taiping march to Nanjing<br>1850-1853');
+
+    // Focus functions
+    window.focusRebellion = function(type) {
+      if (type === 'taiping') map.fitBounds([[22, 108], [34, 122]]);
+      else if (type === 'nian') map.fitBounds([[31, 112], [37, 121]]);
+      else if (type === 'yunnan') map.fitBounds([[22, 98], [29, 108]]);
+      else if (type === 'northwest') map.fitBounds([[33, 100], [40, 115]]);
+    };
+  </script>
+</body>
+</html>

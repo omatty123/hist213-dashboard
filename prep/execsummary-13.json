@@ -135,9 +135,9 @@
       "Li Hongzhang - Zeng's protégé, led Self-Strengthening"
     ],
     "places": [
-      "Nanjing - Taiping capital (Tianjing)",
-      "Jintian - where the uprising began",
-      "Hunan - base of Zeng Guofan's army"
+      "Thistle Mountain (紫荊山) - God Worshippers base 1844-50",
+      "Jintian - where the uprising began Jan 1851",
+      "Nanjing (Tianjing) - Taiping capital 1853-64"
     ],
     "things": [
       "Taiping Christianity - heterodox mix with Chinese elements",
@@ -173,16 +173,28 @@
   ],
   "timeline": [
     {
+      "date": "1839-42",
+      "event": "First Opium War — Qing defeated, Treaty of Nanjing"
+    },
+    {
       "date": "1843",
       "event": "Hong Xiuquan has visions after reading Christian pamphlet"
     },
     {
+      "date": "1844-50",
+      "event": "God Worshippers gather at Thistle Mountain (紫荊山)"
+    },
+    {
       "date": "1851",
-      "event": "Taiping uprising begins in Guangxi"
+      "event": "Taiping uprising begins at Jintian, Guangxi"
     },
     {
       "date": "1853",
       "event": "Taiping capture Nanjing, make it capital (Tianjing)"
+    },
+    {
+      "date": "1856-60",
+      "event": "Second Opium War — more treaty ports, legalized opium"
     },
     {
       "date": "1856",
@@ -222,57 +234,112 @@
     "  - Frame for discussion: 'China didn't fail to modernize; China was fighting for survival while Japan was modernizing.'"
   ],
   "map": {
-    "center": [28, 115],
+    "center": [28, 114],
     "zoom": 5,
     "locations": [
       {
+        "name": "Thistle Mountain",
+        "nameChinese": "紫荊山",
+        "lat": 23.45,
+        "lng": 109.95,
+        "type": "origin",
+        "description": "God Worshippers base 1844-1850; where Hong gathered followers"
+      },
+      {
         "name": "Jintian",
         "nameChinese": "金田",
-        "lat": 23.1214,
-        "lng": 109.7733,
+        "lat": 23.60,
+        "lng": 110.11,
         "type": "battle",
         "description": "Where Taiping uprising began, January 1851"
       },
       {
+        "name": "Yongan",
+        "nameChinese": "永安",
+        "lat": 24.20,
+        "lng": 110.52,
+        "type": "battle",
+        "description": "First Taiping capital 1851-52; Hong proclaimed Heavenly King"
+      },
+      {
+        "name": "Guilin",
+        "nameChinese": "桂林",
+        "lat": 25.28,
+        "lng": 110.30,
+        "type": "battle",
+        "description": "Taiping passed through 1852 heading north"
+      },
+      {
+        "name": "Changsha",
+        "nameChinese": "長沙",
+        "lat": 28.23,
+        "lng": 112.94,
+        "type": "city",
+        "description": "Besieged but not taken; Zeng Guofan's Hunan Army base"
+      },
+      {
+        "name": "Yuezhou",
+        "nameChinese": "岳州",
+        "lat": 29.37,
+        "lng": 113.09,
+        "type": "battle",
+        "description": "Captured 1852 on Dongting Lake"
+      },
+      {
+        "name": "Wuchang",
+        "nameChinese": "武昌",
+        "lat": 30.55,
+        "lng": 114.35,
+        "type": "battle",
+        "description": "Captured February 1853; gateway to the Yangzi"
+      },
+      {
+        "name": "Anqing",
+        "nameChinese": "安慶",
+        "lat": 30.51,
+        "lng": 117.05,
+        "type": "battle",
+        "description": "Major Taiping stronghold on the Yangzi"
+      },
+      {
         "name": "Nanjing (Tianjing)",
         "nameChinese": "南京/天京",
-        "lat": 32.0603,
-        "lng": 118.7969,
+        "lat": 32.05,
+        "lng": 118.77,
         "type": "capital",
         "description": "Taiping capital 1853-1864; 'Heavenly Capital'"
       },
       {
         "name": "Shanghai",
         "nameChinese": "上海",
-        "lat": 31.2304,
-        "lng": 121.4737,
+        "lat": 31.22,
+        "lng": 121.47,
         "type": "city",
         "description": "Treaty port defended by foreign forces and Qing"
       },
       {
-        "name": "Changsha",
-        "nameChinese": "長沙",
-        "lat": 28.2282,
-        "lng": 112.9388,
-        "type": "city",
-        "description": "Hunan capital; base of Zeng Guofan's army"
-      },
-      {
-        "name": "Wuhan",
-        "nameChinese": "武漢",
-        "lat": 30.5928,
-        "lng": 114.3055,
-        "type": "city",
-        "description": "Major city fought over multiple times"
-      },
-      {
         "name": "Beijing",
         "nameChinese": "北京",
-        "lat": 39.9042,
-        "lng": 116.4074,
+        "lat": 39.92,
+        "lng": 116.38,
         "type": "capital",
-        "description": "Qing capital; never directly threatened but terrified"
+        "description": "Qing capital; never reached by Taiping"
       }
-    ]
+    ],
+    "route": {
+      "name": "Taiping Forces 1850-1853",
+      "color": "#e63946",
+      "points": [
+        [23.45, 109.95],
+        [23.60, 110.11],
+        [24.20, 110.52],
+        [25.28, 110.30],
+        [28.23, 112.94],
+        [29.37, 113.09],
+        [30.55, 114.35],
+        [30.51, 117.05],
+        [32.05, 118.77]
+      ]
+    }
   }
 }

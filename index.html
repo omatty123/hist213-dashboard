@@ -660,7 +660,7 @@ function renderMap(mapData) {
   var h = '<div class="prep-section"><h3>Map</h3>';
   h += '<div class="map-container"><div id="prep-map"></div></div>';
 
-  var colors = {'capital': '#e63946', 'city': '#457b9d', 'region': '#2a9d8f', 'battle': '#f4a261', 'other': '#6c757d'};
+  var colors = {'capital': '#e63946', 'city': '#457b9d', 'region': '#2a9d8f', 'battle': '#f4a261', 'origin': '#a855f7', 'other': '#6c757d'};
 
   // Location key - list all places with their colors
   h += '<div class="map-location-key">';
@@ -668,10 +668,20 @@ function renderMap(mapData) {
     var loc = mapData.locations[i];
     var color = colors[loc.type] || colors.other;
     var displayName = loc.name + (loc.nameChinese ? ' (' + loc.nameChinese + ')' : '');
-    h += '<div class="map-key-item"><div class="map-key-dot" style="background:' + color + '"></div>';
+    // Use star symbol for origin type
+    if (loc.type === 'origin') {
+      h += '<div class="map-key-item"><span style="color:#fbbf24;font-size:14px;margin-right:6px;">★</span>';
+    } else {
+      h += '<div class="map-key-item"><div class="map-key-dot" style="background:' + color + '"></div>';
+    }
     h += '<span class="map-key-name">' + displayName + '</span>';
     if (loc.description) h += '<span class="map-key-desc"> — ' + loc.description + '</span>';
     h += '</div>';
+  }
+  // Add route to legend if present
+  if (mapData.route && mapData.route.name) {
+    h += '<div class="map-key-item"><div style="width:20px;height:3px;background:' + (mapData.route.color || '#e63946') + ';margin-right:6px;border-radius:2px;"></div>';
+    h += '<span class="map-key-name">' + mapData.route.name + '</span></div>';
   }
   h += '</div></div>';
 
@@ -699,20 +709,42 @@ function initMap(mapData) {
       attribution: '© OpenStreetMap'
     }).addTo(currentMap);
 
-    var colors = {'capital': '#e63946', 'city': '#457b9d', 'region': '#2a9d8f', 'battle': '#f4a261', 'other': '#6c757d'};
+    var colors = {'capital': '#e63946', 'city': '#457b9d', 'region': '#2a9d8f', 'battle': '#f4a261', 'origin': '#a855f7', 'other': '#6c757d'};
+
+    // Draw route first (so it's under markers)
+    if (mapData.route && mapData.route.points && mapData.route.points.length > 1) {
+      var routeColor = mapData.route.color || '#e63946';
+      L.polyline(mapData.route.points, {
+        color: routeColor,
+        weight: 3,
+        opacity: 0.85
+      }).addTo(currentMap).bindPopup('<b>' + (mapData.route.name || 'Route') + '</b>');
+    }
 
     for (var i = 0; i < mapData.locations.length; i++) {
       var loc = mapData.locations[i];
       var color = colors[loc.type] || colors.other;
 
-      var marker = L.circleMarker([loc.lat, loc.lng], {
-        radius: loc.type === 'capital' ? 10 : 7,
-        fillColor: color,
-        color: '#fff',
-        weight: 2,
-        opacity: 1,
-        fillOpacity: 0.8
-      }).addTo(currentMap);
+      // Special star marker for origin type (Thistle Mountain)
+      var marker;
+      if (loc.type === 'origin') {
+        var starIcon = L.divIcon({
+          className: '',
+          html: '<div style="color:#fbbf24;font-size:16px;text-shadow:0 0 4px rgba(0,0,0,0.8);">★</div>',
+          iconSize: [16, 16],
+          iconAnchor: [8, 8]
+        });
+        marker = L.marker([loc.lat, loc.lng], { icon: starIcon }).addTo(currentMap);
+      } else {
+        marker = L.circleMarker([loc.lat, loc.lng], {
+          radius: loc.type === 'capital' ? 10 : 7,
+          fillColor: color,
+          color: '#fff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.8
+        }).addTo(currentMap);
+      }
 
       // Add permanent label next to marker
       marker.bindTooltip(loc.name, {

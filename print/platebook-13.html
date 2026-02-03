@@ -328,24 +328,35 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
-    #taiping-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    #taiping-map { height: 220px; border-radius: 6px; border: 1px solid #333; }
     .taiping-legend {
       font-family: system-ui, -apple-system, sans-serif;
-      color: #f2f5f7; background: rgba(10, 12, 16, 0.9);
-      padding: 8px 10px; border-radius: 6px; font-size: 9px; line-height: 1.5;
+      color: #f2f5f7; background: rgba(10, 12, 16, 0.92);
+      padding: 6px 8px; border-radius: 6px; font-size: 8px; line-height: 1.4;
     }
-    .taiping-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
-    .taiping-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .taiping-legend-item { display: flex; align-items: center; gap: 5px; margin: 2px 0; }
+    .taiping-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .taiping-legend-line { width: 16px; height: 2px; flex-shrink: 0; }
     .taiping-title {
       font-family: system-ui, -apple-system, sans-serif;
-      color: #f2f5f7; background: rgba(10, 12, 16, 0.9);
-      padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+      color: #f2f5f7; background: rgba(10, 12, 16, 0.92);
+      padding: 5px 8px; border-radius: 6px; font-size: 10px; font-weight: 600;
     }
+    .taiping-title small { font-weight: 400; opacity: 0.8; }
     .leaflet-popup-content-wrapper, .leaflet-popup-tip {
       background: rgba(14, 16, 20, 0.95); color: #f2f5f7;
-      font-family: system-ui, sans-serif; font-size: 10px;
+      font-family: system-ui, sans-serif; font-size: 9px;
     }
-    .leaflet-popup-content { margin: 8px 10px; }
+    .leaflet-popup-content { margin: 6px 8px; }
+    .province-label {
+      font-family: system-ui, sans-serif;
+      font-size: 9px; font-weight: 600; letter-spacing: 1px;
+      color: rgba(255,255,255,0.4); text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .star-marker {
+      color: #fbbf24; font-size: 14px; text-shadow: 0 0 4px rgba(0,0,0,0.8);
+    }
   </style>
   <div class="map-section">
     <span class="label">Map: Taiping Rebellion 1850-1864</span>
@@ -362,7 +373,7 @@
       const titleControl = L.control({ position: 'topleft' });
       titleControl.onAdd = function() {
         const div = L.DomUtil.create('div', 'taiping-title');
-        div.innerHTML = '太平天國 Taiping Heavenly Kingdom';
+        div.innerHTML = 'THE TAIPING REBELLION<br><small>1850–1864</small>';
         return div;
       };
       titleControl.addTo(map);
@@ -372,40 +383,194 @@
       legendControl.onAdd = function() {
         const div = L.DomUtil.create('div', 'taiping-legend');
         div.innerHTML = `
-          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#a855f7;"></span> God Worshippers Base</div>
-          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#e63946;"></span> Taiping Origin</div>
-          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#f4a261;"></span> Taiping Capital</div>
-          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#457b9d;"></span> Contested Cities</div>
-          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#8d99ae;"></span> Qing Strongholds</div>
+          <div class="taiping-legend-item"><span style="color:#fbbf24;font-size:12px;">★</span> Thistle Mountain</div>
+          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#f4a261;border:2px solid #fff;"></span> Taiping Capital</div>
+          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#e63946;"></span> Taiping Route</div>
+          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#64748b;"></span> Other Cities</div>
+          <div class="taiping-legend-item"><span class="taiping-legend-line" style="background:#e63946;"></span> Taiping Forces 1850-53</div>
         `;
         return div;
       };
       legendControl.addTo(map);
 
-      // Locations with verified coordinates
-      const locations = [
-        { name: "Thistle Mountain", cn: "紫荊山", desc: "God Worshippers base 1844-1850", lat: 23.45, lng: 109.95, color: "#a855f7", radius: 8 },
-        { name: "Jintian", cn: "金田", desc: "Uprising began Jan 1851", lat: 23.5983, lng: 110.113, color: "#e63946", radius: 8 },
-        { name: "Nanjing (Tianjing)", cn: "南京/天京", desc: "Taiping capital 1853-1864", lat: 32.05, lng: 118.767, color: "#f4a261", radius: 9 },
-        { name: "Shanghai", cn: "上海", desc: "Treaty port; defended by foreigners", lat: 31.224, lng: 121.469, color: "#457b9d", radius: 7 },
-        { name: "Changsha", cn: "長沙", desc: "Zeng Guofan's Hunan Army base", lat: 28.228, lng: 112.939, color: "#8d99ae", radius: 7 },
-        { name: "Wuhan", cn: "武漢", desc: "Fought over repeatedly", lat: 30.583, lng: 114.283, color: "#457b9d", radius: 7 },
-        { name: "Beijing", cn: "北京", desc: "Qing capital; never reached", lat: 39.917, lng: 116.383, color: "#8d99ae", radius: 8 }
+      // All cities from the reference map
+      const cities = [
+        // Taiping route cities (red)
+        { name: "Jintian", cn: "金田", lat: 23.60, lng: 110.11, color: "#e63946", r: 5, desc: "Uprising began Jan 1851" },
+        { name: "Yongan", cn: "永安", lat: 24.20, lng: 110.52, color: "#e63946", r: 5, desc: "First Taiping capital 1851-52" },
+        { name: "Guilin", cn: "桂林", lat: 25.28, lng: 110.30, color: "#e63946", r: 5, desc: "Passed through 1852" },
+        { name: "Changsha", cn: "長沙", lat: 28.23, lng: 112.94, color: "#e63946", r: 5, desc: "Besieged but not taken" },
+        { name: "Yuezhou", cn: "岳州", lat: 29.37, lng: 113.09, color: "#e63946", r: 5, desc: "Captured 1852" },
+        { name: "Wuchang", cn: "武昌", lat: 30.55, lng: 114.35, color: "#e63946", r: 5, desc: "Captured Feb 1853" },
+        { name: "Hankou", cn: "漢口", lat: 30.62, lng: 114.26, color: "#e63946", r: 4, desc: "Captured 1853" },
+        { name: "Anqing", cn: "安慶", lat: 30.51, lng: 117.05, color: "#e63946", r: 5, desc: "Major Taiping stronghold" },
+        { name: "Yangzhou", cn: "揚州", lat: 32.39, lng: 119.41, color: "#e63946", r: 5, desc: "Captured 1853" },
+        { name: "Nanchang", cn: "南昌", lat: 28.68, lng: 115.85, color: "#e63946", r: 5, desc: "Fought over 1853" },
+        // Nanjing (Taiping capital - special)
+        { name: "Nanjing", cn: "南京", lat: 32.05, lng: 118.77, color: "#f4a261", r: 7, desc: "Tianjing 天京 - Taiping capital 1853-64", capital: true },
+        // Other cities (gray)
+        { name: "Shanghai", cn: "上海", lat: 31.22, lng: 121.47, color: "#64748b", r: 4, desc: "Treaty port" },
+        { name: "Suzhou", cn: "蘇州", lat: 31.30, lng: 120.60, color: "#64748b", r: 4, desc: "Captured 1860" },
+        { name: "Hangzhou", cn: "杭州", lat: 30.29, lng: 120.16, color: "#64748b", r: 4, desc: "Captured 1861" },
+        { name: "Fuzhou", cn: "福州", lat: 26.07, lng: 119.30, color: "#64748b", r: 4, desc: "Treaty port" },
+        { name: "Amoy", cn: "廈門", lat: 24.48, lng: 118.09, color: "#64748b", r: 4, desc: "Xiamen - Treaty port" },
+        { name: "Canton", cn: "廣州", lat: 23.13, lng: 113.26, color: "#64748b", r: 4, desc: "Guangzhou" },
+        { name: "Hong Kong", cn: "香港", lat: 22.32, lng: 114.17, color: "#64748b", r: 3, desc: "British colony" },
+        { name: "Macao", cn: "澳門", lat: 22.20, lng: 113.55, color: "#64748b", r: 3, desc: "Portuguese colony" },
+        { name: "Nanning", cn: "南寧", lat: 22.82, lng: 108.32, color: "#64748b", r: 4, desc: "Guangxi" },
+        { name: "Guiyang", cn: "貴陽", lat: 26.65, lng: 106.63, color: "#64748b", r: 4, desc: "Guizhou" },
+        { name: "Chongqing", cn: "重慶", lat: 29.56, lng: 106.55, color: "#64748b", r: 4, desc: "Sichuan" },
+        { name: "Chengdu", cn: "成都", lat: 30.66, lng: 104.07, color: "#64748b", r: 4, desc: "Sichuan" },
+        { name: "Xi'an", cn: "西安", lat: 34.27, lng: 108.95, color: "#64748b", r: 4, desc: "Shaanxi" },
+        { name: "Zhengzhou", cn: "鄭州", lat: 34.75, lng: 113.65, color: "#64748b", r: 4, desc: "Henan" }
       ];
 
-      locations.forEach(function(loc) {
-        L.circleMarker([loc.lat, loc.lng], {
-          radius: loc.radius, fillColor: loc.color, color: '#fff', weight: 1.5, fillOpacity: 0.9
-        }).addTo(map).bindPopup(`<b>${loc.cn} ${loc.name}</b><br>${loc.desc}`);
+      // Add city markers
+      cities.forEach(function(c) {
+        const marker = L.circleMarker([c.lat, c.lng], {
+          radius: c.r, fillColor: c.color, color: c.capital ? '#fff' : c.color,
+          weight: c.capital ? 2 : 1, fillOpacity: 0.9
+        }).addTo(map);
+        marker.bindPopup(`<b>${c.cn} ${c.name}</b><br>${c.desc}`);
       });
 
-      // Taiping march route (Thistle Mountain → Jintian → Nanjing)
-      L.polyline([
-        [23.45, 109.95], [23.5983, 110.113], [28.228, 112.939], [30.583, 114.283], [32.05, 118.767]
-      ], { weight: 2, opacity: 0.7, dashArray: '6 4', color: '#e63946' }).addTo(map)
-        .bindPopup('Taiping Movement<br><small>God Worshippers → Uprising → Northern Expedition</small>');
+      // Thistle Mountain - special star marker
+      const starIcon = L.divIcon({
+        className: 'star-marker',
+        html: '★',
+        iconSize: [14, 14],
+        iconAnchor: [7, 7]
+      });
+      L.marker([23.45, 109.95], { icon: starIcon }).addTo(map)
+        .bindPopup('<b>紫荊山 Thistle Mountain</b><br>God Worshippers base 1844-1850<br>Where Hong Xiuquan gathered followers');
 
-      map.fitBounds([[22, 108], [41, 123]]);
+      // Province labels
+      const provinces = [
+        { name: "GUANGXI", lat: 23.8, lng: 108.5 },
+        { name: "GUANGDONG", lat: 23.5, lng: 114.5 },
+        { name: "HUNAN", lat: 27.5, lng: 111.5 },
+        { name: "HUBEI", lat: 31.2, lng: 112.5 },
+        { name: "JIANGXI", lat: 27.5, lng: 116.0 },
+        { name: "ANHUI", lat: 32.0, lng: 116.5 },
+        { name: "JIANGSU", lat: 33.0, lng: 119.5 },
+        { name: "ZHEJIANG", lat: 29.0, lng: 120.5 },
+        { name: "FUJIAN", lat: 25.5, lng: 118.0 },
+        { name: "GUIZHOU", lat: 26.5, lng: 107.5 },
+        { name: "SICHUAN", lat: 30.0, lng: 105.0 },
+        { name: "SHAANXI", lat: 34.5, lng: 108.0 },
+        { name: "HENAN", lat: 34.0, lng: 113.0 }
+      ];
+      provinces.forEach(function(p) {
+        L.marker([p.lat, p.lng], {
+          icon: L.divIcon({ className: 'province-label', html: p.name, iconSize: [60, 12] })
+        }).addTo(map);
+      });
+
+      // Taiping Forces route 1850-1853 (curved to follow terrain/rivers)
+      // Phase 1: Thistle Mountain → Jintian → Yongan (initial uprising)
+      const route1 = [
+        [23.45, 109.95],   // Thistle Mountain
+        [23.55, 110.05],   // curve point
+        [23.60, 110.11],   // Jintian
+        [23.75, 110.25],   // curve NE
+        [24.00, 110.40],   // curve
+        [24.20, 110.52]    // Yongan
+      ];
+
+      // Phase 2: Yongan → Guilin → around toward Hunan
+      const route2 = [
+        [24.20, 110.52],   // Yongan
+        [24.50, 110.45],   // curve north
+        [24.85, 110.38],   // curve
+        [25.28, 110.30],   // Guilin
+        [25.60, 110.50],   // curve NE out of Guilin
+        [26.00, 111.00],   // heading toward Hunan
+        [26.50, 111.50],   // curve
+        [27.20, 112.20],   // approaching Changsha
+        [27.80, 112.70],   // curve around
+        [28.23, 112.94]    // Changsha (besieged)
+      ];
+
+      // Phase 3: Loop around Changsha → Yuezhou → down Yangzi
+      const route3 = [
+        [28.23, 112.94],   // Changsha
+        [28.50, 112.80],   // curve around (they didn't take it)
+        [28.80, 112.70],   // heading north
+        [29.10, 112.90],   // curve toward Dongting Lake
+        [29.37, 113.09],   // Yuezhou (on Dongting Lake)
+        [29.60, 113.40],   // following rivers
+        [29.90, 113.80],   // curve east
+        [30.30, 114.10],   // approaching Wuhan
+        [30.55, 114.35]    // Wuchang
+      ];
+
+      // Phase 4: Down the Yangzi to Nanjing
+      const route4 = [
+        [30.55, 114.35],   // Wuchang
+        [30.60, 115.00],   // following Yangzi
+        [30.55, 115.60],   // curve
+        [30.51, 117.05],   // Anqing
+        [30.80, 117.60],   // curve toward Nanjing
+        [31.20, 118.00],   // approaching
+        [31.60, 118.40],   // curve
+        [32.05, 118.77]    // Nanjing!
+      ];
+
+      // Side route: Nanchang expedition
+      const routeNanchang = [
+        [29.37, 113.09],   // from Yuezhou
+        [29.20, 113.80],   // curve SE
+        [29.00, 114.50],   // heading to Nanchang
+        [28.80, 115.20],   // approaching
+        [28.68, 115.85]    // Nanchang
+      ];
+
+      // Side route: to Yangzhou
+      const routeYangzhou = [
+        [32.05, 118.77],   // from Nanjing
+        [32.15, 119.00],   // crossing river
+        [32.30, 119.20],   // heading NE
+        [32.39, 119.41]    // Yangzhou
+      ];
+
+      // Draw all routes
+      [route1, route2, route3, route4].forEach(function(r) {
+        L.polyline(r, { weight: 3, opacity: 0.9, color: '#e63946' }).addTo(map);
+      });
+      // Secondary routes (dashed)
+      [routeNanchang, routeYangzhou].forEach(function(r) {
+        L.polyline(r, { weight: 2, opacity: 0.7, color: '#e63946', dashArray: '5 5' }).addTo(map);
+      });
+
+      // Add arrowheads along the route
+      function addArrow(lat, lng, angle) {
+        L.marker([lat, lng], {
+          icon: L.divIcon({
+            className: '',
+            html: `<div style="color:#e63946;font-size:12px;transform:rotate(${angle}deg);text-shadow:0 0 2px #000;">▶</div>`,
+            iconSize: [12, 12], iconAnchor: [6, 6]
+          })
+        }).addTo(map);
+      }
+      // Arrows showing direction of march
+      addArrow(23.55, 110.05, 45);    // toward Jintian
+      addArrow(24.50, 110.45, 0);     // toward Guilin
+      addArrow(26.50, 111.50, 30);    // toward Changsha
+      addArrow(29.10, 112.90, 20);    // toward Yuezhou
+      addArrow(30.30, 114.10, 70);    // toward Wuchang
+      addArrow(30.55, 115.60, 90);    // along Yangzi
+      addArrow(31.60, 118.40, 45);    // toward Nanjing
+
+      // Label for the route
+      L.marker([26.80, 110.20], {
+        icon: L.divIcon({
+          className: '',
+          html: '<div style="color:#e63946;font-size:8px;font-weight:600;white-space:nowrap;text-shadow:0 0 3px #000,0 0 3px #000;">Taiping Forces<br>1850–1853</div>',
+          iconSize: [70, 20]
+        })
+      }).addTo(map);
+
+      map.fitBounds([[21, 103], [36, 122]]);
     })();
   </script>
 

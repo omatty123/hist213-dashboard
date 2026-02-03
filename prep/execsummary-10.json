@@ -1,8 +1,8 @@
 {
   "plate": 10,
   "topic": "Qing vs. the West",
-  "date": "2026-01-28",
-  "generatedAt": "2026-01-04T16:30:00.000Z",
+  "date": "2026-01-29",
+  "generatedAt": "2026-01-27T21:00:00.000Z",
   "readings": [
     "Commissioner Lin's Letter to Queen Victoria",
     "Treaty of Nanjing"
@@ -11,176 +11,181 @@
     {
       "title": "Commissioner Lin's Letter to Queen Victoria",
       "author": "Lin Zexu (林則徐)",
-      "source": "Primary Source Reader Part 3",
-      "pages": "1839",
+      "source": "The Chinese Repository, vol. VIII, no. 10 (February 1840)",
+      "pages": "pp. 497-503",
       "type": "primary",
-      "summary": "Lin Zexu's letter to Queen Victoria stands as one of the most remarkable diplomatic documents of the 19th century—remarkable both for its moral clarity and its ultimate futility. The Qing commissioner, charged with ending the opium trade, appeals to universal principles of justice, reciprocity, and humane governance. He notes that Britain itself forbids opium domestically, asking pointedly: 'Where is your conscience?' if you sell abroad what you prohibit at home.\n\nLin's argument is sophisticated: he acknowledges the mutual benefits of legal trade, offers to continue commercial relations, and appeals to Victoria's reputation as an enlightened monarch. The letter reveals that Qing officials understood international commerce and could frame arguments in terms Westerners might appreciate. This wasn't a 'backward' empire failing to comprehend the modern world—it was a principled stance against drug trafficking dressed in free trade rhetoric.\n\nYet the letter never reached Victoria. British merchants and officials intercepted it, dismissed it, and chose war instead. The contrast between Lin's measured appeal to reason and Britain's gunboat response reveals the brutal reality of 19th-century international relations: moral arguments meant nothing without the power to enforce them.",
+      "summary": "Lin Zexu's 1839 letter to Queen Victoria is a masterpiece of moral argumentation wrapped in the rhetoric of the Chinese world order. As Imperial Commissioner sent to Canton to suppress the opium trade, Lin appeals to universal principles of justice and reciprocity: 'We have heard that in your own country opium is prohibited with the utmost strictness and severity—this is a strong proof that you know full well how hurtful it is to mankind.' He argues that Britain, having benefited enormously from trade with China for 200 years, should not repay this generosity with poison. The letter reveals both Qing confidence ('Our celestial empire rules over ten thousand kingdoms!') and genuine bewilderment that a nation claiming to be civilized would traffic in drugs.",
       "keyQuotes": [
-        {"quote": "Let us ask, where is your conscience? I have heard that the smoking of opium is very strictly forbidden by your country; that is because the harm caused by opium is clearly understood.", "page": "letter"},
-        {"quote": "Since it is not permitted to do harm to your own country, then even less should you let it be passed on to the harm of other countries.", "page": "letter"},
-        {"quote": "Our celestial dynasty rules over and supervises the myriad states... There is no country that does not desire to come to China to trade.", "page": "letter"},
-        {"quote": "We have heard that in your honorable barbarian country the weights and measures are fair, that trade is equitable, and that a good reputation is valued.", "page": "letter"}
+        {"quote": "We have heard that in your own country opium is prohibited with the utmost strictness and severity:—this is a strong proof that you know full well how hurtful it is to mankind. Since then you do not permit it to injure your own country, you ought not to have the injurious drug transferred to another country.", "page": "p. 3"},
+        {"quote": "By what principle of reason then, should these foreigners send in return a poisonous drug, which involves in destruction those very natives of China? Without meaning to say that the foreigners harbor such destructive intentions in their hearts, we yet positively assert that from their inordinate thirst after gain, they are perfectly careless about the injuries they inflict upon us!", "page": "p. 2"},
+        {"quote": "Let us suppose that foreigners came from another country, and brought opium into England, and seduced the people of your country to smoke it, would not you, the sovereign of the said country, look upon such a procedure with anger, and in your just indignation endeavor to get rid of it?", "page": "p. 3"},
+        {"quote": "Our celestial empire rules over ten thousand kingdoms! Most surely do we possess a measure of godlike majesty which ye cannot fathom!", "page": "p. 5"}
       ],
       "thematicExamples": [
-        "Lin's appeal to universal moral principles - arguing that drug trafficking violates basic ethics regardless of cultural differences",
-        "The distinction between legal trade (which Lin supports) and illegal drug trafficking (which he opposes)",
-        "Lin's acknowledgment of British commercial interests while insisting on Chinese sovereignty",
-        "The use of Confucian 'all under heaven' rhetoric combined with practical trade proposals"
+        "The Golden Rule argument: Lin explicitly invokes reciprocity—'you are incapable of doing or causing to be done unto another, that which you should not wish another to do unto you'",
+        "The tributary system worldview: Lin treats Britain as a respectful tributary that has benefited from Chinese benevolence, not as an equal power",
+        "Economic interdependence argument: Lin points out that Chinese goods (tea, silk, rhubarb) are necessities for Britain, while Western goods are 'only calculated to make presents of, or serve for mere amusement'",
+        "Legal sovereignty claim: 'Suppose the subject of another country were to come to England to trade, he would certainly be required to comply with the laws of England, then how much more does this apply to us of the celestial empire!'"
       ],
       "realLifeConnections": [
-        "Contemporary debates about fentanyl trafficking from China to the US - the shoes are now on the other feet",
-        "International drug policy negotiations still grapple with balancing trade, sovereignty, and public health",
-        "The gap between moral arguments and political power remains relevant in international relations",
-        "Corporate responsibility debates - should companies be held accountable for harm their products cause abroad?"
+        "Contemporary fentanyl crisis: The roles are now reversed—China is accused of allowing precursor chemicals to flow to North America. How would Americans respond to a Chinese official's letter telling us to just stop using drugs?",
+        "Corporate responsibility: Lin argues that even if merchants don't intend harm, their 'inordinate thirst after gain' makes them 'perfectly careless about the injuries they inflict.' This echoes debates about tobacco, opioid manufacturers, social media companies.",
+        "The letter was never delivered to Victoria—British officials intercepted it. What does it mean when one side's communication is simply ignored?",
+        "Diplomatic asymmetry: Lin writes in the language of universal morality; Britain responds with gunboats. This pattern repeats throughout modern history."
       ]
     },
     {
       "title": "Treaty of Nanjing",
-      "author": "British and Qing negotiators",
-      "source": "Primary Source Reader Part 3",
-      "pages": "1842",
+      "author": "British and Qing Plenipotentiaries",
+      "source": "Encyclopedia of Historical Treaties and Alliances",
+      "pages": "pp. 299-301",
       "type": "primary",
-      "summary": "The Treaty of Nanjing (1842) established the template for 'unequal treaties' that would define China's international relations for a century. Its provisions were devastating: Hong Kong ceded 'in perpetuity,' five ports opened to British trade and residence, $21 million in indemnities (including compensation for destroyed opium!), extraterritoriality for British subjects, and 'most favored nation' status ensuring Britain would receive any concessions China made to others.\n\nThe treaty's language reveals the power asymmetry: China 'agrees' and 'cedes' while Britain 'receives' and 'enjoys.' Yet the document also shows Qing officials trying to preserve face—referring to the payments as 'necessary expenses' rather than reparations, maintaining formal equality in diplomatic language even as substance was humiliating.\n\nCrucially, the treaty said nothing about opium. Britain achieved its commercial goals without formally legalizing the drug trade that caused the war. This allowed British officials to claim they fought for 'free trade' rather than narcotics—a moral laundering that shaped how the West would remember the conflict.",
+      "summary": "The Treaty of Nanjing (August 29, 1842) ended the First Opium War and became the template for all subsequent 'unequal treaties' imposed on China. Its 13 articles forced China to: (1) cede Hong Kong 'in perpetuity,' (2) open five 'treaty ports' to British residence and trade, (3) pay $21 million in indemnities—including $6 million compensation for the opium Lin Zexu had destroyed, (4) abolish the Canton trade monopoly (Co-hong), and (5) establish extraterritoriality (British subjects tried only in British consular courts). Crucially, the treaty never legalized opium—Britain achieved all its goals while maintaining the fiction that the war was about 'free trade,' not narcotics.",
       "keyQuotes": [
-        {"quote": "His Majesty the Emperor of China cedes to Her Majesty the Queen of Great Britain, etc., the Island of Hongkong, to be possessed in perpetuity.", "page": "Article III"},
-        {"quote": "The Emperor of China agrees to pay the sum of Six Millions of Dollars as the value of Opium which was delivered up at Canton.", "page": "Article IV"},
-        {"quote": "The Cities and Towns of Canton, Amoy, Foochowfoo, Ningpo, and Shanghai shall be thrown open to British Subjects.", "page": "Article II"},
-        {"quote": "British subjects... shall be allowed to reside for the purpose of carrying on their Mercantile pursuits, without molestation or restraint.", "page": "Article II"}
+        {"quote": "His Majesty the Emperor of China cedes to Her Majesty the Queen of Great Britain, &c., the Island of Hong-Kong, to be possessed in perpetuity by Her Britannic Majesty, her heirs and successors.", "page": "Article III"},
+        {"quote": "The Emperor of China agrees to pay the sum of 6,000,000 of dollars, as the value of the opium which was delivered up at Canton in the month of March, 1839, as a ransom for the lives of Her Britannic Majesty's Superintendent and subjects, who had been imprisoned and threatened with death by the Chinese High Officers.", "page": "Article IV"},
+        {"quote": "British subjects, with their families and establishments, shall be allowed to reside, for the purposes of carrying on their mercantile pursuits, without molestation or restraint, at the cities and towns of Canton, Amoy, Foochowfoo, Ningpo, and Shanghai.", "page": "Article II"},
+        {"quote": "The Government of Her Britannic Majesty having been obliged to send out an expedition to demand and obtain redress for the violent and unjust proceedings of the Chinese High Authorities towards Her Britannic Majesty's officer and subjects, the Emperor of China agrees to pay the sum of 12,000,000 of dollars, on account of the expences incurred.", "page": "Article VI"}
       ],
       "thematicExamples": [
-        "Indemnity for destroyed opium - China forced to pay compensation for drugs it confiscated",
-        "Hong Kong cession - territorial loss that would last 155 years",
-        "Extraterritoriality - British subjects beyond Chinese law, implying Chinese legal system was inferior",
-        "Most favored nation clause - ensuring Britain automatically received any concessions China made to others"
+        "Indemnity for confiscated drugs: Article IV makes China pay for the opium Lin destroyed—as if the victim must compensate the drug dealer",
+        "War costs charged to the loser: Article VI requires China to pay Britain's military expenses—the costs of being invaded",
+        "Extraterritoriality implied but not spelled out here—formalized in supplementary Treaty of the Bogue (1843)",
+        "The treaty was signed aboard HMS Cornwallis at Nanjing—the location itself (where the Grand Canal meets the Yangzi) showed British ability to strike at China's economic heart"
       ],
       "realLifeConnections": [
-        "Hong Kong's 1997 return was explicitly framed as ending 'national humiliation' that began with this treaty",
-        "Contemporary Chinese suspicion of Western 'rules-based order' rooted in memory of imposed treaties",
-        "Debates about extraterritoriality continue - military base agreements, diplomatic immunity, corporate legal jurisdiction",
-        "Trade agreements today still use 'most favored nation' language, though with different implications"
+        "Hong Kong's 1997 return: The 'in perpetuity' cession was ended when the 99-year lease on the New Territories expired. China explicitly framed the return as healing the wound of national humiliation.",
+        "Extraterritoriality today: US military bases abroad often have 'Status of Forces Agreements' granting legal immunity. Is this different?",
+        "Trade agreements and power: 'Most favored nation' clauses now appear in WTO agreements, but with different implications when power is more equal.",
+        "The treaty said nothing about opium—Britain got everything it wanted while maintaining moral deniability. How do modern powers achieve controversial goals through neutral-sounding legal language?"
       ]
     }
   ],
-  "overallSynthesis": "These two documents—Lin's unanswered letter and the Treaty of Nanjing—crystallize the tragedy of 19th-century imperialism. Lin made a compelling moral argument that was simply ignored; Britain made war and imposed terms that served its interests. The contrast reveals that international relations in this era operated on power, not principle.\n\nYet the readings also complicate simple narratives. Lin's letter shows Qing China was not 'closed' to the world or incapable of diplomatic engagement—it was making sophisticated arguments within a framework it understood but couldn't enforce. The Treaty of Nanjing shows how 'free trade' rhetoric disguised what was essentially a drug cartel operating with state military backing.\n\nFor the course's larger framework, these readings mark the moment when Frank's 'Asian-centered' world economy definitively shifted. Qianlong could dismiss Macartney in 1793 because Qing power was real; fifty years later, that power had eroded enough that Britain could impose its will by force. The question isn't whether this was morally wrong (it clearly was) but what combination of factors—internal and external—had changed the balance of power so dramatically.",
-  "executiveSummary": "The First Opium War (1839-1842) marks a turning point in Chinese and world history. Commissioner Lin Zexu's letter to Queen Victoria—earnest, logical, appealing to morality and mutual benefit—received no response. Instead, Britain sent gunboats. The resulting Treaty of Nanjing forced China to cede Hong Kong, open five 'treaty ports,' pay indemnities, and grant extraterritoriality (legal immunity) to British subjects.\n\nThis began what Chinese call the 'century of humiliation' (百年國恥)—a series of defeats and unequal treaties that shaped Chinese nationalism for generations. But the readings invite critical analysis: Lin's letter reveals sophisticated Qing understanding of international trade; the Treaty of Nanjing shows how 'free trade' was imposed at gunpoint. The moral clarity of 'China was right, Britain was wrong' coexists with harder questions about why China was militarily vulnerable and how it might have responded differently.",
+  "overallSynthesis": "These two documents form a devastating pair: Lin Zexu's eloquent moral appeal followed by the brutal legal machinery of imposed defeat. Read together, they explode any simple narrative of East-West encounter.\n\nLin's letter shows that Qing China was neither isolated nor incapable of sophisticated diplomacy. His arguments—reciprocity, universal ethics, mutual benefit—are exactly what we'd expect from a rational actor in international relations. He even anticipates counterarguments, noting that Britain's own laws prove opium's danger. This wasn't a 'backward' empire failing to understand the modern world; it was a principled stance that happened to lack the military power to enforce it.\n\nThe Treaty of Nanjing reveals how 'free trade' ideology served imperial interests. Notice what the treaty doesn't contain: any mention of opium. Britain achieved all its commercial and territorial goals while pretending the war was about trade restrictions and diplomatic insults, not drug trafficking. The legalistic language—'peace and friendship,' 'full security and protection'—masks what is essentially a protection racket: pay us, open your markets, cede territory, or we'll burn more cities.\n\nFor the course narrative, these readings mark the moment when the East Asian world order definitively cracked. Qianlong could dismiss Macartney in 1793 because Qing power was real; fifty years later, that power proved hollow against British naval technology. The question isn't whether this was morally wrong (it clearly was) but what combination of factors—economic, technological, institutional—had shifted the balance so dramatically.",
+  "executiveSummary": "Plate 10 examines the First Opium War (1839-1842) through two primary sources that expose the moral asymmetry of Western imperialism. Lin Zexu's letter to Queen Victoria makes a compelling case against the opium trade using universal principles: if Britain bans opium at home, how can it sell poison abroad? 'Let us suppose that foreigners came from another country, and brought opium into England... would not you, the sovereign of the said country, look upon such a procedure with anger?'\n\nThe letter never reached Victoria. Instead, Britain sent gunboats, and the resulting Treaty of Nanjing forced China to cede Hong Kong, open five treaty ports, pay $21 million (including compensation for destroyed opium!), and submit to extraterritoriality. The treaty's neutral legal language conceals its nature as an imposed settlement—China paying for the privilege of being invaded.\n\nThese readings begin China's 'century of humiliation' and establish patterns that would define East Asian history: unequal treaties, treaty ports, foreign enclaves, and the burning question of how to respond to Western power.",
   "keywords": [
     {
       "term": "Opium Trade",
-      "definition": "British sale of Indian opium to China, creating mass addiction and draining silver",
-      "relevance": "The immediate cause of war; also symptom of trade imbalance Britain sought to correct"
+      "definition": "British sale of Indian-grown opium to China, reversing silver flow and creating mass addiction",
+      "relevance": "Immediate cause of war; revealed limits of Qing sovereignty over its own territory"
     },
     {
-      "term": "Unequal Treaties",
-      "definition": "Treaties imposed on China (and later Japan, Korea) granting Western powers special privileges",
-      "relevance": "Defined China's international position for a century; ending them was nationalist goal"
-    },
-    {
-      "term": "Extraterritoriality",
-      "definition": "Legal immunity for foreign nationals—they could only be tried in their own consular courts",
-      "relevance": "Symbol of humiliation; implied Chinese law was inadequate"
+      "term": "Unequal Treaties (不平等條約)",
+      "definition": "Treaties imposed on China (and later Japan, Korea) granting Western powers special privileges without reciprocity",
+      "relevance": "Defined China's international status for a century; abolishing them became central nationalist goal"
     },
     {
       "term": "Treaty Ports",
-      "definition": "Cities opened to foreign trade and residence: Shanghai, Guangzhou, Xiamen, Fuzhou, Ningbo",
-      "relevance": "Became semi-colonial spaces; also sites of modernization and exchange"
+      "definition": "Cities opened to foreign trade and residence: Shanghai, Guangzhou (Canton), Xiamen (Amoy), Fuzhou, Ningbo",
+      "relevance": "Became semi-colonial spaces with foreign concessions; also sites of modernization"
+    },
+    {
+      "term": "Extraterritoriality",
+      "definition": "Foreign nationals subject only to their own consular courts, not local law",
+      "relevance": "Symbol of humiliation—implied Chinese legal system was inferior; not fully abolished until 1943"
     },
     {
       "term": "Century of Humiliation (百年國恥)",
-      "definition": "Chinese term for period from Opium War to 1949 Communist victory",
-      "relevance": "Central to Chinese nationalist narrative; still shapes Chinese foreign policy"
+      "definition": "Chinese term for period from Opium War (1839/42) to Communist victory (1949)",
+      "relevance": "Central to Chinese nationalist narrative; explicitly invoked when Hong Kong returned in 1997"
     }
   ],
   "keyPassages": [
     {
-      "quote": "Let us ask, where is your conscience? I have heard that the smoking of opium is very strictly forbidden by your country; that is because the harm caused by opium is clearly understood. Since it is not permitted to do harm to your own country, then even less should you let it be passed on to the harm of other countries.",
-      "source": "Commissioner Lin Zexu, Letter to Queen Victoria",
+      "quote": "We have heard that in your own country opium is prohibited with the utmost strictness and severity:—this is a strong proof that you know full well how hurtful it is to mankind. Since then you do not permit it to injure your own country, you ought not to have the injurious drug transferred to another country.",
+      "source": "Lin Zexu, Letter to Queen Victoria",
       "page": "1839"
     },
     {
-      "quote": "His Majesty the Emperor of China cedes to Her Majesty the Queen of Great Britain, etc., the Island of Hongkong, to be possessed in perpetuity.",
+      "quote": "Let us suppose that foreigners came from another country, and brought opium into England, and seduced the people of your country to smoke it, would not you, the sovereign of the said country, look upon such a procedure with anger, and in your just indignation endeavor to get rid of it?",
+      "source": "Lin Zexu, Letter to Queen Victoria",
+      "page": "1839"
+    },
+    {
+      "quote": "His Majesty the Emperor of China cedes to Her Majesty the Queen of Great Britain, &c., the Island of Hong-Kong, to be possessed in perpetuity.",
       "source": "Treaty of Nanjing, Article III",
       "page": "1842"
     },
     {
-      "quote": "The Emperor of China agrees to pay the sum of Six Millions of Dollars as the value of Opium which was delivered up at Canton.",
+      "quote": "The Emperor of China agrees to pay the sum of 6,000,000 of dollars, as the value of the opium which was delivered up at Canton.",
       "source": "Treaty of Nanjing, Article IV",
       "page": "1842"
     }
   ],
   "peopleplacesthings": {
     "people": [
-      "Lin Zexu - Qing commissioner who destroyed opium",
-      "Queen Victoria - British monarch (letter never delivered)",
-      "Daoguang Emperor - Qing ruler during the war"
+      "Lin Zexu (林則徐) — Imperial Commissioner; destroyed 20,283 chests of opium; wrote letter to Victoria",
+      "Queen Victoria — British monarch (letter never delivered to her)",
+      "Daoguang Emperor (道光帝) — Qing ruler who 'quivered with indignation' upon hearing of opium crisis"
     ],
     "places": [
-      "Canton (Guangzhou) - center of opium trade conflict",
-      "Hong Kong - ceded to Britain",
-      "Treaty Ports - Shanghai, Xiamen, Fuzhou, Ningbo"
+      "Canton (Guangzhou 廣州) — Center of opium trade; Lin destroyed opium here in June 1839",
+      "Hong Kong (香港) — 'Barren rock' ceded to Britain 'in perpetuity'; returned 1997",
+      "Nanjing (南京) — Where treaty was signed aboard HMS Cornwallis, August 1842"
     ],
     "things": [
-      "Opium - drug that caused the crisis",
-      "Treaty of Nanjing - first 'unequal treaty'",
-      "Extraterritoriality - legal privilege for foreigners"
+      "Opium (鴉片) — Drug grown in British India, smuggled to China, creating millions of addicts",
+      "Treaty of Nanjing — First 'unequal treaty'; template for subsequent concessions",
+      "Co-hong (公行) — Canton merchant monopoly abolished by treaty; opened trade to competition"
     ]
   },
   "keyQuestions": [
     {
-      "question": "Was the Opium War about 'free trade' or drug trafficking?",
-      "talkingPoints": "Britain framed it as opening trade; China saw it as defending against poison. Consider: Would we accept 'free trade' arguments for drug cartels today? But also: What alternatives did Britain have for solving trade deficit?"
+      "question": "'Let us suppose that foreigners came from another country and brought opium into England...' — Why didn't Lin's moral argument work?",
+      "talkingPoints": "Lin's argument was logically sound but power trumped logic. The letter was never delivered. Britain framed the war as about 'free trade' and 'diplomatic insults.' Having the better argument means nothing without power to enforce it. Discuss: when do moral arguments actually change policy?"
     },
     {
-      "question": "Why did China lose, and what does this tell us about comparative military strength?",
-      "talkingPoints": "British naval and artillery superiority was decisive. But why was Qing military so weak? Internal focus, financial constraints, technological gap. Connect to Frank's argument: Was this the moment the 'Great Divergence' became visible?"
+      "question": "The Treaty of Nanjing made China pay $6 million for the opium Lin destroyed. What does this reveal about 'international law' in the 19th century?",
+      "talkingPoints": "International law was what powerful states said it was. The payment frames Lin's action as theft rather than law enforcement. Notice the treaty never legalizes opium—Britain got everything without admitting what the war was really about. How does legal language obscure power relations today?"
     },
     {
-      "question": "How does the 'century of humiliation' narrative shape Chinese foreign policy today?",
-      "talkingPoints": "Hong Kong's return in 1997 was explicitly framed as ending humiliation. Taiwan, South China Sea, resistance to 'interference'—all connect to this historical memory. Is this narrative productive or problematic?"
+      "question": "Why is this called the start of China's 'century of humiliation'? Why does it still matter in 2026?",
+      "talkingPoints": "Hong Kong's 1997 return was explicitly framed as ending this humiliation. Taiwan, South China Sea, resistance to 'interference'—all invoke this memory. Chinese leaders reference it to justify assertive foreign policy. Is the narrative productive (preserving historical memory) or problematic (perpetuating grievance)?"
     }
   ],
   "timeline": [
     {
       "date": "1793",
-      "event": "Macartney Mission rejected—but no war"
+      "event": "Macartney Mission—Qianlong rejects British requests, but no war follows"
     },
     {
       "date": "1839",
-      "event": "Lin Zexu destroys opium at Canton; writes letter to Victoria"
+      "event": "Lin Zexu destroys 20,283 chests of opium at Canton; writes letter to Victoria"
     },
     {
-      "date": "1840-1842",
-      "event": "First Opium War—British naval victories"
+      "date": "1840-42",
+      "event": "First Opium War—British naval superiority crushes Qing resistance"
     },
     {
       "date": "1842",
-      "event": "Treaty of Nanjing—first 'unequal treaty'"
+      "event": "Treaty of Nanjing signed aboard HMS Cornwallis (August 29)"
     },
     {
-      "date": "1856-1860",
-      "event": "Second Opium War—more concessions extracted"
+      "date": "1856-60",
+      "event": "Second Opium War—more concessions; Summer Palace burned"
     },
     {
       "date": "1997",
-      "event": "Hong Kong returned to China—'humiliation' officially ended"
+      "event": "Hong Kong returned to China—'perpetuity' ended at 155 years"
     }
   ],
   "connections": {
-    "fromPrevious": "Plate 6 showed Qianlong confidently rejecting British demands. Just 50 years later, China was forced to accept worse terms at gunpoint. What changed?",
-    "toNext": "Plate 11 examines Japan's similar encounter with Western pressure—but with very different outcomes. Why did Japan avoid 'unequal treaties' longer?",
-    "broaderThemes": "The Opium War initiated a fundamental reordering of East Asia's relationship with the West. Every subsequent reform movement—Self-Strengthening, Meiji, etc.—responded to this shock."
+    "fromPrevious": "Plate 9 was brainstorming. But Plates 6-8 showed Qing confidence (Qianlong's letter) and Tokugawa stability. Now we see that confidence shattered—what changed in 50 years?",
+    "toNext": "Plate 11 examines Japan's similar encounter: Commodore Perry's 'Black Ships' (1853) demanded the same 'opening.' Why did Japan avoid the worst features of unequal treaties longer than China?",
+    "broaderThemes": "The Opium War initiated a fundamental reordering of East Asia's relationship with the West. Every subsequent reform movement—Self-Strengthening, Hundred Days, revolutionary nationalism—responded to this shock."
   },
   "nextPreview": {
     "plate": 11,
     "topic": "Tokugawa vs. the West",
-    "preview": "Commodore Perry's 'Black Ships' arrived in Japan in 1853, demanding the same 'opening' that Britain had forced on China. How did Japan respond differently?",
+    "preview": "Perry's Black Ships arrive in 1853. Japan faces the same Western pressure that humiliated China—but responds with the Harris Treaty (1858) and daimyo debates about how to handle the 'barbarians.'",
     "readings": ["Harris Treaty of 1858", "Daimyo Responses to American Demands"]
   },
   "teachingNotes": [
-    "Read Lin Zexu's letter aloud—it's eloquent and makes a compelling moral argument. Then discuss why it 'failed.'",
-    "The Treaty of Nanjing is short—have students identify specific provisions and discuss their implications.",
-    "Avoid simplistic 'China victim, West villain' framing while acknowledging real moral asymmetry.",
-    "Connect to contemporary drug policy debates—how do nations respond to drug crises?",
-    "Show a map of treaty ports and areas of foreign control—visualize what 'unequal treaties' meant spatially."
+    "Read Lin Zexu's 'suppose foreigners brought opium into England' passage aloud—it's the most powerful moment in the letter. Then ask: why didn't this argument work?",
+    "The Treaty of Nanjing is short enough to read key articles in class. Have students identify: what does China give up? What does it get? (Nothing.)",
+    "Connect to fentanyl crisis: China is now accused of enabling drug flows to the West. How would Americans respond to a Chinese official's lecture about morality?",
+    "Show map of treaty ports—help students visualize what 'unequal treaties' meant spatially. These weren't abstract concepts but foreign enclaves on Chinese soil.",
+    "Avoid simplistic framing but don't 'both-sides' a drug war. Lin was right; Britain was a state-backed drug cartel. Complexity lies in why Qing was vulnerable, not in moral equivalence."
   ],
   "map": {
     "center": [28, 118],

@@ -427,6 +427,70 @@
     <p><strong>Notable absence:</strong> The United States is not a member.</p>
     <p class="source">Source: <a href="https://en.wikipedia.org/wiki/Regional_Comprehensive_Economic_Partnership" target="_blank">Wikipedia: RCEP</a></p>
 
+    <!-- GLOBAL TRADE MAP -->
+    <div class="map-section" style="margin: 2rem 0;">
+      <h3 style="margin-bottom: 1rem;">China's Global Trade Relationships</h3>
+      <div id="trade-map" style="height: 450px; border-radius: 8px; border: 1px solid #ddd;"></div>
+      <div class="map-legend-inline" style="margin-top: 0.75rem; font-size: 0.8rem; color: #666;">
+        <span style="display: inline-flex; align-items: center; margin-right: 1rem;"><span style="display: inline-block; width: 12px; height: 12px; background: #e07a5f; border-radius: 50%; margin-right: 4px;"></span> Trade Conflict</span>
+        <span style="display: inline-flex; align-items: center; margin-right: 1rem;"><span style="display: inline-block; width: 12px; height: 12px; background: #588157; border-radius: 50%; margin-right: 4px;"></span> FTA/Partnership</span>
+        <span style="display: inline-flex; align-items: center;"><span style="display: inline-block; width: 12px; height: 12px; background: #457b9d; border-radius: 50%; margin-right: 4px;"></span> RCEP Member</span>
+      </div>
+    </div>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const tradeMap = L.map('trade-map').setView([20, 50], 2);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; OpenStreetMap &copy; CARTO',
+          subdomains: 'abcd', maxZoom: 8
+        }).addTo(tradeMap);
+
+        const tradePartners = [
+          // Conflict Zone (Red)
+          { name: 'United States 美国', lat: 38.9, lng: -77.0, type: 'conflict', trade: '$582B', status: '47.5% tariffs' },
+          { name: 'European Union 欧盟', lat: 50.8, lng: 4.4, type: 'conflict', trade: '~$780B', status: 'Up to 37.6% on EVs' },
+          { name: 'Canada 加拿大', lat: 45.4, lng: -75.7, type: 'conflict', trade: '~$100B', status: '100% tariffs (targeted)' },
+          // Partnership Zone (Green)
+          { name: 'Russia 俄罗斯', lat: 55.8, lng: 37.6, type: 'partner', trade: '$245B', status: 'No tariffs' },
+          { name: 'Brazil 巴西', lat: -15.8, lng: -47.9, type: 'partner', trade: 'Part of $518B LAm', status: '28% exports to China' },
+          { name: 'Saudi Arabia 沙特', lat: 24.7, lng: 46.7, type: 'partner', trade: 'BRI $39B', status: 'Top energy partner' },
+          { name: 'South Africa 南非', lat: -25.7, lng: 28.2, type: 'partner', trade: 'Zero tariffs', status: '53 African countries' },
+          { name: 'Pakistan 巴基斯坦', lat: 33.7, lng: 73.1, type: 'partner', trade: 'FTA since 2007', status: 'CPEC corridor' },
+          // RCEP Members (Blue)
+          { name: 'Japan 日本', lat: 35.7, lng: 139.7, type: 'rcep', trade: '~$300B', status: 'RCEP member' },
+          { name: 'South Korea 韩国', lat: 37.6, lng: 127.0, type: 'rcep', trade: '~$280B', status: 'RCEP + bilateral FTA' },
+          { name: 'Australia 澳大利亚', lat: -35.3, lng: 149.1, type: 'rcep', trade: '~$220B', status: 'Tariffs removed 2024' },
+          { name: 'Indonesia 印尼', lat: -6.2, lng: 106.8, type: 'rcep', trade: 'Part of $982B ASEAN', status: 'CAFTA 3.0' },
+          { name: 'Vietnam 越南', lat: 21.0, lng: 105.9, type: 'rcep', trade: 'Part of $982B ASEAN', status: 'CAFTA 3.0' },
+          { name: 'Thailand 泰国', lat: 13.8, lng: 100.5, type: 'rcep', trade: 'Part of $982B ASEAN', status: 'CAFTA 3.0' },
+          { name: 'Singapore 新加坡', lat: 1.3, lng: 103.8, type: 'rcep', trade: 'FTA upgraded Dec 2024', status: 'CAFTA 3.0' },
+          // China
+          { name: 'China 中国', lat: 39.9, lng: 116.4, type: 'china', trade: '', status: '' }
+        ];
+
+        const colors = { conflict: '#e07a5f', partner: '#588157', rcep: '#457b9d', china: '#d4a373' };
+
+        tradePartners.forEach(p => {
+          if (p.type === 'china') {
+            L.circleMarker([p.lat, p.lng], { radius: 12, fillColor: colors[p.type], color: '#fff', weight: 2, fillOpacity: 0.9 }).addTo(tradeMap)
+              .bindPopup('<b>' + p.name + '</b><br>Center of global trade network');
+          } else {
+            L.circleMarker([p.lat, p.lng], { radius: 8, fillColor: colors[p.type], color: '#fff', weight: 1.5, fillOpacity: 0.8 }).addTo(tradeMap)
+              .bindPopup('<b>' + p.name + '</b><br>Trade: ' + p.trade + '<br>Status: ' + p.status);
+          }
+        });
+
+        // Draw lines from China to partners
+        tradePartners.filter(p => p.type !== 'china').forEach(p => {
+          L.polyline([[39.9, 116.4], [p.lat, p.lng]], {
+            color: colors[p.type], weight: 1.5, opacity: 0.4, dashArray: p.type === 'conflict' ? '5,5' : null
+          }).addTo(tradeMap);
+        });
+      });
+    </script>
+
     <h3>China's Free Trade Agreements (23 Total)</h3>
     <table>
       <thead>

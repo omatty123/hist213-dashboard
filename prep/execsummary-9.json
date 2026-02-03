@@ -1,109 +1,189 @@
 {
   "plate": 9,
-  "topic": "Presentation brainstorm / Current events",
-  "date": "2026-01-26",
-  "generatedAt": "2026-01-04T16:30:00.000Z",
+  "topic": "Presentation Brainstorm / Current Events",
+  "date": "2026-01-27",
+  "generatedAt": "2026-01-25T21:00:00.000Z",
   "readings": [],
-  "executiveSummary": "This discussion day bridges our historical study with contemporary East Asia. Students will brainstorm presentation topics while we examine current events through the lens of historical patterns. How do today's headlines—US-China tensions, North Korea's nuclear program, Japan-Korea disputes, Taiwan's status—connect to the structures and dynamics we've studied?\n\nThe goal is twofold: help students identify compelling presentation topics that connect past and present, and demonstrate that historical knowledge illuminates contemporary affairs. We'll discuss what makes a good presentation topic, how to frame historical questions, and how to connect primary sources to broader arguments.",
+  "executiveSummary": "This discussion day bridges our historical study with contemporary East Asia. Students will brainstorm presentation topics while we examine current events through the lens of historical patterns we've studied in Plates 1-8.\n\nThe past week has provided remarkable material: South Korean President Lee Jae-myung's state visit to Beijing (Jan 4-7)—the first by a Korean president since 2019—demonstrates how Seoul navigates between great powers. Meanwhile, Japan-China relations have plunged into crisis over PM Takaichi's Taiwan statements, with Beijing imposing export controls on rare earths and dual-use goods. North Korea fired ballistic missiles hours before Lee arrived in Beijing, and experts warn Taiwan Strait tensions are at their highest point in decades.\n\nThese events directly connect to our course themes: tributary relationships and their modern echoes, the persistence of the 'Korea question,' Japan's evolving security identity, and Taiwan's contested status rooted in 19th-century Qing collapse.",
+  "currentEvents": [
+    {
+      "headline": "Lee Jae-myung's China Visit: Korea Between Great Powers",
+      "date": "January 4-7, 2026",
+      "summary": "First Korean presidential state visit to Beijing since 2017. Lee asked Xi to mediate on North Korea, brought 200 business leaders including Samsung, Hyundai, SK, LG chiefs. Visited Korean Provisional Government site in Shanghai.",
+      "historicalConnection": "Echoes the tributary dilemma: how does a middle power maintain sovereignty between larger neighbors? Compare to late Joseon's position between Qing China and Meiji Japan.",
+      "discussionPrompt": "Lee visited the Korean Provisional Government site in Shanghai (1926-1932). Why is this symbolically significant? How does Korea's colonial past shape its current diplomacy?"
+    },
+    {
+      "headline": "Takaichi's Taiwan Statement Triggers China-Japan Crisis",
+      "date": "November 2025 - Present",
+      "summary": "PM Takaichi said a Chinese attack on Taiwan could constitute an 'existential crisis for Japan' allowing military action. China responded with export controls on rare earths and dual-use goods, boycotts, and even recalled pandas.",
+      "historicalConnection": "Japan's security posture is transforming—deploying offensive weapons for first time since 1945. Compare to Meiji transformation we'll study: how does Japan reinvent itself in response to external pressure?",
+      "discussionPrompt": "China recalled pandas from Japan as diplomatic punishment. What does this tell us about 'soft power' and how it can be weaponized?"
+    },
+    {
+      "headline": "Taiwan Strait: Experts Warn of Rising Conflict Risk",
+      "date": "January 2026",
+      "summary": "US urged China to halt military pressure on Taiwan after large-scale exercises. 41% of experts in CSIS survey say US-China military conflict risk over Taiwan is higher than one year ago. Japan planning to revise security documents one year ahead of schedule.",
+      "historicalConnection": "Taiwan's contested status traces to the Qing collapse and Japanese colonization (1895-1945). The 'unfinished Chinese Civil War' connects directly to our upcoming material on revolution and Cold War division.",
+      "discussionPrompt": "Why is Taiwan the most dangerous flashpoint in East Asia? What historical factors created this situation?"
+    },
+    {
+      "headline": "North Korea Fires Missiles During Lee's China Visit",
+      "date": "January 4, 2026",
+      "summary": "North Korea launched 'supersonic' ballistic missiles hours before Lee arrived in Beijing. Speculation of possible Trump-Kim summit in 2026 after both US and China quietly removed denuclearization language from security documents.",
+      "historicalConnection": "Korean division is the unresolved legacy of WWII and Cold War. The North-South dynamic echoes historical patterns of external powers determining Korea's fate.",
+      "discussionPrompt": "Why did North Korea time its missile launch for the exact moment of Lee's China visit? What does this tell us about inter-Korean dynamics?"
+    }
+  ],
   "keywords": [
     {
-      "term": "Historical Continuity",
-      "definition": "Patterns, structures, or dynamics that persist across time periods",
-      "relevance": "Good presentation topics often identify how historical patterns inform contemporary events"
+      "term": "Survival-Threatening Situation (存立危機事態)",
+      "definition": "Japanese legal term allowing collective self-defense when an ally is attacked and Japan's existence is threatened",
+      "relevance": "Takaichi's invocation of this term regarding Taiwan marks Japan's most explicit statement on Taiwan since 1972 normalization"
     },
     {
-      "term": "Primary Sources",
-      "definition": "Documents, artifacts, or other materials created during the period being studied",
-      "relevance": "Strong presentations anchor arguments in primary source evidence"
+      "term": "Dual-Use Export Controls",
+      "definition": "Restrictions on goods that can be used for both civilian and military purposes",
+      "relevance": "China's weapon against Japan; semiconductor chemicals, rare earths. Modern version of trade as warfare"
     },
     {
-      "term": "Historiography",
-      "definition": "The study of how history has been written; competing interpretations of the past",
-      "relevance": "Presentations should engage with scholarly debates, not just report facts"
+      "term": "Korean Provisional Government (大韓民國臨時政府)",
+      "definition": "Korean independence government-in-exile, based in Shanghai 1919-1940, then Chongqing until 1945",
+      "relevance": "Lee's visit to the Shanghai site signals Korean nationalism and independence from both Japan and China"
     },
     {
-      "term": "Contemporary Relevance",
-      "definition": "Connections between historical events and present-day issues",
-      "relevance": "The best presentations show why historical understanding matters today"
+      "term": "Middle Power Diplomacy",
+      "definition": "Foreign policy strategy of states that are neither great powers nor small states, balancing between larger powers",
+      "relevance": "South Korea's current challenge: maintain US alliance while engaging China economically"
+    },
+    {
+      "term": "Panda Diplomacy",
+      "definition": "China's practice of loaning giant pandas as diplomatic gestures; withdrawal signals displeasure",
+      "relevance": "China recalled pandas from Japan—soft power can be both carrot and stick"
     }
   ],
   "keyPassages": [],
+  "readingAnalyses": [],
+  "overallSynthesis": "Today's headlines are tomorrow's history. The events of January 2026 demonstrate that the historical dynamics we've studied in Plates 1-8 remain active forces shaping East Asia.\n\nKorea's position between China and Japan echoes the late Joseon dilemma—how does a middle power maintain sovereignty when surrounded by larger neighbors making incompatible demands? President Lee's careful diplomacy (visiting Beijing while maintaining the US alliance, visiting the colonial-era Provisional Government site while signing business deals) shows how historical memory shapes contemporary statecraft.\n\nJapan's security transformation under Takaichi represents the most significant shift since 1945. Her Taiwan statement and China's furious response reveal how the 'postwar' order is ending. Japan is becoming a 'normal' military power—a process we can only understand through the lens of Meiji transformation and postwar pacifism.\n\nTaiwan's status as potential flashpoint connects directly to the unfinished business of the Qing collapse and Chinese Civil War. And North Korea's provocations remind us that the Korean War never officially ended—it's the longest-running 'frozen conflict' in the modern world.",
   "peopleplacesthings": {
     "people": [
-      "Student presenters",
-      "Contemporary leaders (Xi Jinping, etc.)",
-      "Historical figures students might focus on"
+      "Lee Jae-myung (이재명) — SK President; first China visit since 2019; asks Xi for mediation",
+      "Xi Jinping (習近平) — Chinese leader; hosting Lee while pressuring Japan",
+      "Sanae Takaichi (高市早苗) — Japan PM; most Taiwan-friendly leader since Abe; triggered crisis"
     ],
     "places": [
-      "Taiwan - contested status, historical roots",
-      "Korean Peninsula - division, historical context",
-      "South China Sea - territorial disputes"
+      "Shanghai (上海) — Korean Provisional Government site 1919-1932; Lee visited",
+      "Taiwan Strait (台灣海峽) — Flashpoint; 41% of experts see higher conflict risk",
+      "Nara (奈良) — Takaichi's home; hosted Lee for Japan-Korea summit"
     ],
     "things": [
-      "US-China relations - historical precedents",
-      "Japan-Korea disputes - historical memory",
-      "Economic development models - East Asian miracle"
+      "Dual-Use Export Controls — China's economic weapon against Japan",
+      "Panda Diplomacy — Soft power as coercion; China recalled pandas from Japan",
+      "Korean Provisional Government — Symbol of independence; Lee's Shanghai visit"
     ]
   },
   "keyQuestions": [
     {
-      "question": "What contemporary East Asian issue interests you most, and what historical background would illuminate it?",
-      "talkingPoints": "Encourage students to start with what interests them now, then dig into historical roots. China's rise → Frank's argument about Asian-centered world economy. Japan-Korea tensions → Imjin War, colonial period."
+      "question": "President Lee visited the Korean Provisional Government site in Shanghai during his China trip. Why does this colonial-era history matter for Korean diplomacy in 2026?",
+      "talkingPoints": "The KPG (1919-1945) represents Korean resistance to Japan AND independence from China. By visiting, Lee signals: Korea is not China's vassal, we have our own national identity forged in struggle. Compare to how Joseon reformers (Plate 7) debated learning from vs. submitting to foreign powers."
     },
     {
-      "question": "What makes a historical argument compelling?",
-      "talkingPoints": "Evidence from primary sources, engagement with counter-arguments, clear thesis, connection to broader themes. Avoid mere chronology—make an argument about significance or causation."
+      "question": "PM Takaichi said Taiwan could be an 'existential crisis' for Japan. China responded with export controls and recalled pandas. What do these responses tell us about modern great-power competition?",
+      "talkingPoints": "Economic interdependence as vulnerability. Rare earths, semiconductors—modern equivalents of gunboat diplomacy? Soft power (pandas) can be weaponized. Compare to Qing's confidence in Plate 6 (Qianlong's letter) vs. vulnerability after Opium War (Plate 10)."
     },
     {
-      "question": "How do historical narratives shape contemporary politics?",
-      "talkingPoints": "Comfort women debates, Yasukuni Shrine, Taiwan independence movement all involve competing historical narratives. Understanding these debates requires knowing what happened AND how it's been remembered."
+      "question": "North Korea fired missiles the exact moment Lee arrived in Beijing. Why? What does this tell us about how historical divisions shape current politics?",
+      "talkingPoints": "Pyongyang signaling it won't be ignored or managed by China-SK cooperation. Korean division as unfinished Cold War business. Compare to the original division (1945) and why it persists. Good presentation topic: Why is the Korean War 'frozen' not finished?"
     }
   ],
-  "timeline": [],
+  "timeline": [
+    {"date": "Nov 2025", "event": "Takaichi: Taiwan attack = 'existential crisis' for Japan"},
+    {"date": "Dec 2025", "event": "China imposes export controls on Japan (rare earths, dual-use)"},
+    {"date": "Jan 2, 2026", "event": "Takaichi-Trump phone call; plans spring US visit"},
+    {"date": "Jan 4, 2026", "event": "NK missile launch; Lee arrives Beijing"},
+    {"date": "Jan 5, 2026", "event": "Xi-Lee summit at Great Hall of the People"},
+    {"date": "Jan 7, 2026", "event": "Lee visits Korean Provisional Government site in Shanghai"}
+  ],
   "connections": {
-    "fromPrevious": "Plates 1-8 established foundations: East Asian cultural sphere, theoretical frameworks, early modern inter-state relations. Now we connect this to the present.",
-    "toNext": "Plates 10-11 examine the 'opening' of China and Japan to the West—a turning point that still shapes East Asian identities and politics.",
-    "broaderThemes": "This day emphasizes skills: how to frame historical questions, how to connect past and present, how to construct arguments from evidence."
+    "fromPrevious": "Plates 1-8 established foundations: East Asian cultural sphere (Plate 1-2), theoretical frameworks for modernity (Plate 3), regional warfare and its legacy (Plates 4-6), reform debates (Plate 7), and Tokugawa stability (Plate 8). Today's events show these historical patterns remain active.",
+    "toNext": "Plate 10 (Qing vs. the West) examines how the Opium War shattered Qing confidence—creating the 'century of humiliation' narrative that still shapes Chinese nationalism. The Taiwan issue traces directly to this period.",
+    "broaderThemes": "Today emphasizes historical continuity: how patterns established centuries ago (tributary relationships, Korean vulnerability, Japanese security anxieties, Taiwan's ambiguous status) continue shaping contemporary events. Good presentations identify these connections."
   },
   "nextPreview": {
     "plate": 10,
     "topic": "Qing vs. the West",
-    "preview": "The Opium War (1839-1842) forced China into 'unequal treaties' and began what Chinese call the 'century of humiliation.' How did we get from Qianlong's confident rejection to this?",
+    "preview": "From Qianlong's confident letter to George III (1793) to the humiliation of the Opium War (1839-1842). How did China go from refusing British goods to signing 'unequal treaties'? The origins of modern Chinese nationalism.",
     "readings": ["Commissioner Lin's Letter to Queen Victoria", "Treaty of Nanjing"]
   },
+  "presentationGuidance": {
+    "goodTopicQualities": [
+      "Connects past and present (historical roots of contemporary issues)",
+      "Uses primary sources as evidence, not just secondary summaries",
+      "Makes an argument about significance or causation, not just chronology",
+      "Engages with counter-arguments or alternative interpretations",
+      "Has personal interest—you'll spend weeks on this"
+    ],
+    "sampleTopicIdeas": [
+      "Why is the Korean War still 'frozen'? (connects to upcoming Plate 24)",
+      "Comfort women and historical memory in Japan-Korea relations",
+      "Taiwan's identity: Chinese, Japanese, or Taiwanese?",
+      "The 'East Asian miracle': why did Japan/Korea/China develop so fast?",
+      "K-pop and soft power: modern cultural diplomacy",
+      "Why hasn't North Korea collapsed?",
+      "China's 'century of humiliation' narrative and contemporary nationalism"
+    ],
+    "requirements": "Check syllabus for specific requirements on length, sources, format"
+  },
   "teachingNotes": [
-    "Bring recent news articles about East Asia to spark discussion.",
-    "Have students write down 2-3 possible presentation topics before discussion.",
-    "Create small groups based on regional focus (China, Japan, Korea) or thematic interest.",
-    "Discuss presentation logistics: length, format, sources required, grading criteria.",
-    "This is a good day to take the temperature—what are students confused about? What interests them most?",
-    "Consider showing a short news clip about a current East Asian issue as discussion starter."
+    "CURRENT EVENTS: Start with recent headlines (Lee's China visit, Takaichi-Taiwan, NK missiles). Ask students what they've seen in the news.",
+    "CONNECTIONS: For each current event, ask: 'What from Plates 1-8 helps us understand this?'",
+    "BRAINSTORM FORMAT: Have students write 2-3 possible topics before discussion. Share in small groups by region (China/Japan/Korea) or theme.",
+    "HISTORICAL MEMORY: Lee visiting Korean Provisional Government site is perfect example of how the past shapes present diplomacy.",
+    "SOFT POWER: Panda diplomacy is accessible example—students know about pandas. 'What does it mean when you recall a panda?'",
+    "LOGISTICS: Review presentation requirements (length, sources, format, due date). Answer practical questions.",
+    "TEMPERATURE CHECK: Good day to ask what's confusing, what interests students most. Adjust upcoming emphasis accordingly."
   ],
   "map": {
     "center": [35, 125],
     "zoom": 3,
     "locations": [
       {
+        "name": "Beijing",
+        "nameChinese": "北京",
+        "lat": 39.9042,
+        "lng": 116.4074,
+        "type": "capital",
+        "description": "Xi-Lee summit Jan 5, 2026; Great Hall of the People"
+      },
+      {
+        "name": "Shanghai",
+        "nameChinese": "上海",
+        "lat": 31.2304,
+        "lng": 121.4737,
+        "type": "city",
+        "description": "Korean Provisional Government 1919-1932; Lee visited Jan 7"
+      },
+      {
+        "name": "Nara",
+        "lat": 34.6851,
+        "lng": 135.8049,
+        "type": "city",
+        "description": "Takaichi's home prefecture; Japan-Korea summit site"
+      },
+      {
         "name": "Taiwan",
         "nameChinese": "臺灣",
         "lat": 23.6978,
         "lng": 120.9605,
         "type": "region",
-        "description": "Contested status; historical roots in Qing, Japanese colonial, and Cold War periods"
+        "description": "Flashpoint; Takaichi's 'existential crisis' statement"
       },
       {
         "name": "Korean DMZ",
         "lat": 38.0,
         "lng": 127.0,
         "type": "other",
-        "description": "Division rooted in WWII and Cold War; historical context essential"
-      },
-      {
-        "name": "South China Sea",
-        "lat": 15.0,
-        "lng": 115.0,
-        "type": "region",
-        "description": "Territorial disputes involve historical claims going back centuries"
+        "description": "Divided peninsula; NK missiles Jan 4"
       },
       {
         "name": "Pyongyang",
@@ -111,15 +191,7 @@
         "lat": 39.0392,
         "lng": 125.7625,
         "type": "capital",
-        "description": "North Korea's nuclear program has historical roots"
-      },
-      {
-        "name": "Hong Kong",
-        "nameChinese": "香港",
-        "lat": 22.3193,
-        "lng": 114.1694,
-        "type": "city",
-        "description": "2020s unrest connected to colonial history and 1997 handover"
+        "description": "North Korea; missile launch timed for Lee's China arrival"
       }
     ]
   }

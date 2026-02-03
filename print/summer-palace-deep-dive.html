@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Burning of the Summer Palace | HIST/EAST 213</title>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Burning of the Summer Palace">
+    <meta property="og:description" content="In October 1860, British troops spent two days burning one of the world's greatest architectural treasures. Why? And what was lost?">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #fff;
+            --paper-warm: #faf8f5;
+            --paper-dark: #f0ede8;
+            --imperial-red: #8b0000;
+            --qing-gold: #c9a227;
+            --fire: #e25822;
+            --ash: #4a4a4a;
+            --british-blue: #012169;
+            --french-blue: #002654;
+            --border: #ddd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 75vh;
+            min-height: 550px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)),
+                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Yuanmingyuan_Dashuifa_20120715.jpg/1280px-Yuanmingyuan_Dashuifa_20120715.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 4rem;
+        }
+
+        .hero-content { max-width: 750px; }
+
+        .hero-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--qing-gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .zh-title {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1rem;
+        }
+
+        .hero .deck {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+        }
+
+        .hero-caption {
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .hero-caption a { color: rgba(255,255,255,0.6); }
+
+        /* NAV */
+        nav {
+            background: var(--ink);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav a {
+            color: var(--qing-gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+        nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+        /* STATS BAR */
+        .stats-bar {
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d1515 100%);
+            padding: 1.5rem 2rem;
+            border-bottom: 3px solid var(--fire);
+        }
+        .stats-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        .stat-item {
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--fire);
+            font-weight: 600;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.25rem;
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ink);
+        }
+        .main-content h2:first-child { margin-top: 0; }
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--ink-light);
+        }
+        .main-content strong { color: var(--ink); }
+
+        /* SIDEBAR */
+        .sidebar { align-self: start; }
+        .sidebar-card {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-card-head {
+            background: var(--ink);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        .sidebar-card-body { padding: 1rem; }
+        .sidebar-card-body p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+        .sidebar-card-body p:last-child { margin-bottom: 0; }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 4px solid var(--fire);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--paper-warm);
+        }
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        .pull-quote .attrib {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            font-style: normal;
+        }
+
+        /* FIGURE */
+        figure {
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+        }
+        figure img {
+            width: 100%;
+            display: block;
+        }
+        figcaption {
+            padding: 0.75rem 1rem;
+            background: var(--paper-warm);
+            font-size: 0.8rem;
+            color: var(--ink-light);
+        }
+        figcaption a { color: var(--imperial-red); }
+
+        /* MAP SECTION */
+        .map-section {
+            background: var(--paper-dark);
+            padding: 3rem 2rem;
+        }
+        .map-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .map-header {
+            margin-bottom: 1.5rem;
+        }
+        .map-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .map-header p {
+            color: var(--ink-light);
+            font-size: 0.9rem;
+        }
+        #palace-map {
+            height: 500px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        /* FULL WIDTH DARK SECTION */
+        .dark-section {
+            background: linear-gradient(135deg, var(--ink) 0%, #2a2a2a 100%);
+            padding: 4rem 2rem;
+        }
+        .dark-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .dark-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .dark-section .hugo-letter {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        .dark-section .hugo-letter p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .dark-section .hugo-letter .signature {
+            font-style: normal;
+            color: var(--qing-gold);
+            text-align: right;
+            margin-top: 1.5rem;
+        }
+
+        /* ZODIAC HEADS SECTION */
+        .zodiac-section {
+            background: var(--paper-warm);
+            padding: 4rem 2rem;
+        }
+        .zodiac-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .zodiac-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .zodiac-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .zodiac-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .zodiac-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .zodiac-card-body {
+            padding: 1rem;
+        }
+        .zodiac-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .zodiac-card .status {
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+        .zodiac-card .status.returned { color: #166534; }
+        .zodiac-card .status.missing { color: var(--imperial-red); }
+
+        /* TIMELINE */
+        .timeline-section {
+            background: var(--paper);
+            padding: 4rem 2rem;
+        }
+        .timeline-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .timeline-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+        .tl-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .tl-item:last-child { border-bottom: none; }
+        .tl-date {
+            text-align: right;
+        }
+        .tl-date .day {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--fire);
+        }
+        .tl-date .month {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-faint);
+        }
+        .tl-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .tl-content p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        /* SOURCES */
+        .sources-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .sources-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ink);
+        }
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .source-group h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-faint);
+            margin-bottom: 0.75rem;
+        }
+        .source-group ul { list-style: none; }
+        .source-group li {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+        .source-group a {
+            color: var(--ink-light);
+            text-decoration: none;
+        }
+        .source-group a:hover {
+            color: var(--imperial-red);
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+        }
+        footer a { color: var(--qing-gold); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .two-col { grid-template-columns: 1fr; }
+            .sidebar { order: -1; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .zodiac-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 400px;
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 { font-size: 2rem; }
+            .hero .zh-title { font-size: 1.1rem; }
+            .hero .deck { font-size: 1rem; }
+            .tl-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            .tl-date { text-align: left; }
+            #palace-map { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="../index.html">
+            <span style="font-size: 1.2rem;">&larr;</span> Back to Dashboard
+        </a>
+        <span class="sep">|</span>
+        <span class="context">Plate 10: Qing vs. the West — The Second Opium War</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
+            <h1>The Burning of the Summer Palace</h1>
+            <div class="zh-title">火烧圆明园</div>
+            <p class="deck">In October 1860, 3,500 British soldiers spent two days burning one of the world's greatest architectural treasures. The smoke was visible for three days. What was lost—and why?</p>
+        </div>
+        <div class="hero-caption">
+            Ruins of the Western Palaces (Xiyang Lou) today. <a href="https://commons.wikimedia.org/wiki/File:Yuanmingyuan_Dashuifa_20120715.jpg" target="_blank">Wikimedia Commons</a>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <div class="stat-number">2 Days</div>
+                <div class="stat-label">To Burn It Down</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3,500</div>
+                <div class="stat-label">British Troops</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1.5M+</div>
+                <div class="stat-label">Artifacts Looted</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">860 acres</div>
+                <div class="stat-label">Gardens Destroyed</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TWO COLUMN CONTENT -->
+    <div class="two-col">
+        <main class="main-content">
+            <h2>The Garden of Perfect Brightness</h2>
+            <p>The <strong>Yuanmingyuan</strong> (圆明园) — the "Old Summer Palace" — was not a single building but an immense complex of gardens, lakes, and palaces northwest of Beijing. Built over 150 years by Qing emperors, it covered <strong>860 acres</strong> (five times the size of the Forbidden City) and contained some of the finest art collections in the world.</p>
+
+            <p>The gardens combined Chinese landscape architecture with European-style palaces designed by Jesuit missionaries. It was where emperors conducted state business during summer, where the imperial library was housed, and where priceless treasures accumulated over centuries were stored.</p>
+
+            <p>Western visitors who saw it before its destruction were stunned. One called it <strong>"the Versailles of China."</strong></p>
+
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Yuanmingyuan_40_Jinghua.jpg/1024px-Yuanmingyuan_40_Jinghua.jpg" alt="Historical depiction of the Summer Palace">
+                <figcaption><strong>The Garden Before Destruction</strong> — Qing-era painting showing one of the 40 famous views of the Yuanmingyuan. The complex contained hundreds of buildings, artificial lakes, and mountains. <a href="https://commons.wikimedia.org/wiki/File:Yuanmingyuan_40_Jinghua.jpg" target="_blank">Wikimedia Commons</a></figcaption>
+            </figure>
+
+            <h2>Why Burn It?</h2>
+            <p>The burning was ordered by <strong>Lord Elgin</strong> — James Bruce, 8th Earl of Elgin — as deliberate retaliation. During negotiations to end the Second Opium War, a group of British and French envoys under a flag of truce had been seized by Qing officials. Of 39 prisoners, <strong>21 died in captivity</strong>, some from torture.</p>
+
+            <p>Elgin wanted to punish the emperor personally without harming Beijing's civilian population. The Summer Palace was the emperor's private retreat, filled with his treasures. Burning it would be a blow to imperial prestige that would, in Elgin's words, <strong>"mark by a solemn act of retribution the crimes which had been committed."</strong></p>
+
+            <div class="pull-quote">
+                <p>"The destruction of the Summer Palace was an act of deliberate vandalism, meant to humble the emperor and demonstrate that no Chinese property was safe from Western power."</p>
+                <div class="attrib">— James L. Hevia, <em>English Lessons: The Pedagogy of Imperialism in Nineteenth-Century China</em></div>
+            </div>
+
+            <h2>The Looting</h2>
+            <p>Before the burning, British and French troops spent days looting the palace. Officers and enlisted men alike grabbed whatever they could carry: jade, silk, porcelain, gold, jewels, imperial robes, ancient scrolls. <strong>Auction houses were set up in the camp</strong> to sell the loot.</p>
+
+            <p>Captain Charles Gordon (later "Gordon of Khartoum") wrote: <em>"We went out, and, after pillaging it, burned the whole place, destroying in a vandal-like manner most valuable property."</em></p>
+
+            <p>A British officer described watching soldiers smash what they couldn't carry: <em>"Quantities of fine carved woodwork, beautifully lacquered furniture, and rich silks were ruthlessly cut to pieces or destroyed."</em></p>
+
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Looting_of_the_Summer_Palace.jpg/1024px-Looting_of_the_Summer_Palace.jpg" alt="French illustration of the looting">
+                <figcaption><strong>The Looting</strong> — French illustration showing troops carrying off treasures from the Summer Palace. Soldiers used carts, horses, and their own backs to haul away centuries of imperial collection. <a href="https://commons.wikimedia.org/wiki/File:Looting_of_the_Summer_Palace.jpg" target="_blank">Wikimedia Commons</a></figcaption>
+            </figure>
+
+            <h2>The Burning: October 18–19, 1860</h2>
+            <p>On October 18, Elgin ordered the destruction. <strong>3,500 troops</strong> from the 1st Division fanned out across the complex with torches. The fire burned for two days. The smoke was visible from Beijing, 8 miles away, for three days.</p>
+
+            <p>The French commander, General Montauban, had opposed the burning. The French had wanted to spare the palaces (and keep looting them). But Elgin insisted. The destruction became a <strong>British operation</strong>.</p>
+
+            <p>Only a handful of European-style stone buildings survived — their ruins still stand today as the most photographed remnant of the complex.</p>
+
+            <h2>What Was Lost</h2>
+            <p>The destruction was incalculable:</p>
+            <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--ink-light);">
+                <li><strong>The Siku Quanshu</strong> — one of seven hand-copied sets of the largest book collection in Chinese history</li>
+                <li>Centuries of imperial archives and state documents</li>
+                <li>Buddhist scriptures, paintings, and religious artifacts</li>
+                <li>The famous <strong>Zodiac Fountain</strong> bronze heads</li>
+                <li>European clocks, musical instruments, and scientific instruments given as diplomatic gifts</li>
+                <li>Untold jade carvings, porcelains, silk robes, gold vessels</li>
+            </ul>
+            <p>Estimates suggest <strong>1.5 million objects</strong> were looted or destroyed. Many now sit in British and French museums. Others are in private collections worldwide.</p>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">Lord Elgin: A Family Business</div>
+                <div class="sidebar-card-body">
+                    <p>James Bruce, 8th Earl of Elgin, was the son of Thomas Bruce, 7th Earl — <strong>the man who removed the Parthenon marbles</strong> from Greece.</p>
+                    <p>Father and son: one took Greece's treasures, the other burned China's. The British Museum holds both families' loot today.</p>
+                    <p>Elgin later served as Viceroy of India and Governor General of Canada. He died in India in 1863.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">The Prisoners</div>
+                <div class="sidebar-card-body">
+                    <p>In September 1860, a diplomatic party including journalist <strong>Thomas Bowlby</strong> of <em>The Times</em> was seized under a flag of truce.</p>
+                    <p>Of 39 prisoners, 21 died — some from mistreatment, some executed. Bowlby's body showed signs of having been tied so tightly his hands fell off.</p>
+                    <p>This became Elgin's justification. But critics noted: <strong>burning the palace didn't bring back the dead.</strong></p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">The Second Opium War</div>
+                <div class="sidebar-card-body">
+                    <p><strong>1856-1860:</strong> Britain and France fought to force further treaty concessions from the Qing.</p>
+                    <p><strong>Causes:</strong> The Arrow Incident (disputed ship seizure), desire to legalize opium trade, access to interior China.</p>
+                    <p><strong>Result:</strong> Convention of Peking (1860) — more treaty ports, legalized opium, Kowloon ceded to Britain, indemnities.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-card-head">Discussion Questions</div>
+                <div class="sidebar-card-body">
+                    <p><strong>1.</strong> Elgin claimed burning the palace was more humane than attacking Beijing. Do you find this reasoning persuasive?</p>
+                    <p><strong>2.</strong> Should looted artifacts be returned to China? What about objects in private collections?</p>
+                    <p><strong>3.</strong> Why do the ruins remain unrestored? What does the site mean to Chinese national memory?</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- MAP SECTION -->
+    <section class="map-section">
+        <div class="map-inner">
+            <div class="map-header">
+                <h2>Geography of Destruction</h2>
+                <p>The Anglo-French route to Beijing and the Summer Palace complex</p>
+            </div>
+            <div id="palace-map"></div>
+        </div>
+    </section>
+
+    <!-- VICTOR HUGO SECTION -->
+    <section class="dark-section">
+        <div class="dark-inner">
+            <h2>Victor Hugo's Response</h2>
+            <div class="hugo-letter">
+                <p>"One day, two bandits entered the Summer Palace. One plundered, the other burned... We call ourselves civilized and them barbarians. Here is what civilization has done to barbarism.</p>
+                <p>Before history, one of the two bandits will be called France; the other will be called England...</p>
+                <p>I hope that a day will come when France, delivered and cleansed, will return this booty to despoiled China."</p>
+                <div class="signature">— Victor Hugo, letter to Captain Butler, November 25, 1861</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZODIAC HEADS -->
+    <section class="zodiac-section">
+        <div class="zodiac-inner">
+            <div class="zodiac-header">
+                <h2>The Zodiac Fountain Heads</h2>
+                <p>12 bronze animal heads from the famous water clock — looted in 1860, now symbols of cultural repatriation</p>
+            </div>
+            <div class="zodiac-grid">
+                <div class="zodiac-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Rat_Head_from_Old_Summer_Palace_on_display_at_National_Museum_of_China.jpg/440px-Rat_Head_from_Old_Summer_Palace_on_display_at_National_Museum_of_China.jpg" alt="Rat head">
+                    <div class="zodiac-card-body">
+                        <h4>Rat 鼠</h4>
+                        <p class="status returned">Returned 2013 — Donated by François Pinault</p>
+                    </div>
+                </div>
+                <div class="zodiac-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Bronze_Ox_Head.jpg/440px-Bronze_Ox_Head.jpg" alt="Ox head">
+                    <div class="zodiac-card-body">
+                        <h4>Ox 牛</h4>
+                        <p class="status returned">Returned 2000 — Poly Art Museum, Beijing</p>
+                    </div>
+                </div>
+                <div class="zodiac-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bronze_Tiger_Head.jpg/440px-Bronze_Tiger_Head.jpg" alt="Tiger head">
+                    <div class="zodiac-card-body">
+                        <h4>Tiger 虎</h4>
+                        <p class="status returned">Returned 2000 — Poly Art Museum, Beijing</p>
+                    </div>
+                </div>
+                <div class="zodiac-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rabbit_Head_from_Old_Summer_Palace_on_display_at_National_Museum_of_China.jpg/440px-Rabbit_Head_from_Old_Summer_Palace_on_display_at_National_Museum_of_China.jpg" alt="Rabbit head">
+                    <div class="zodiac-card-body">
+                        <h4>Rabbit 兔</h4>
+                        <p class="status returned">Returned 2013 — Donated by François Pinault</p>
+                    </div>
+                </div>
+                <div class="zodiac-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Bronze_Horse_Head.jpg/440px-Bronze_Horse_Head.jpg" alt="Horse head">
+                    <div class="zodiac-card-body">
+                        <h4>Horse 马</h4>
+                        <p class="status returned">Returned 2019 — Donated by He Hongshen</p>
+                    </div>
+                </div>
+                <div class="zodiac-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Bronze_Pig_Head.jpg/440px-Bronze_Pig_Head.jpg" alt="Pig head">
+                    <div class="zodiac-card-body">
+                        <h4>Pig 猪</h4>
+                        <p class="status returned">Returned 2019 — He Hongshen donation</p>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--ink-faint);">
+                <strong>Still Missing:</strong> Dragon 龙, Snake 蛇, Goat 羊, Rooster 鸡 — locations unknown. Monkey 猴 and Dog 狗 returned to China.
+            </p>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+        <div class="timeline-inner">
+            <div class="timeline-header">
+                <h2>Timeline: The Second Opium War &amp; Destruction</h2>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="day">Oct 1856</div>
+                    <div class="month">Arrow Incident</div>
+                </div>
+                <div class="tl-content">
+                    <h4>The War Begins</h4>
+                    <p>Qing officials board the <em>Arrow</em>, a Chinese-owned ship with British registration. Britain uses this as pretext for war.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="day">Jun 1858</div>
+                    <div class="month">Treaty of Tientsin</div>
+                </div>
+                <div class="tl-content">
+                    <h4>First Peace Attempt</h4>
+                    <p>Treaties signed opening more ports, allowing foreign residence in Beijing. But the Qing court resists ratification.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="day">Sep 1860</div>
+                    <div class="month">Hostage Crisis</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Diplomatic Party Seized</h4>
+                    <p>39 British and French envoys, including journalist Thomas Bowlby, captured under flag of truce. 21 will die in captivity.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="day">Oct 6</div>
+                    <div class="month">1860</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Looting Begins</h4>
+                    <p>Anglo-French forces reach the Summer Palace. Emperor Xianfeng has fled to Rehe. Systematic looting begins immediately.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="day">Oct 18-19</div>
+                    <div class="month">1860</div>
+                </div>
+                <div class="tl-content">
+                    <h4>The Burning</h4>
+                    <p>Lord Elgin orders destruction. 3,500 British troops set fire to the complex. It burns for two days. Smoke visible from Beijing.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="day">Oct 24</div>
+                    <div class="month">1860</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Convention of Peking</h4>
+                    <p>Qing signs treaty: Kowloon ceded to Britain, Tianjin opened, indemnities paid, opium trade legalized.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">
+                    <div class="day">Aug 1861</div>
+                    <div class="month">Emperor Dies</div>
+                </div>
+                <div class="tl-content">
+                    <h4>Xianfeng Never Returns</h4>
+                    <p>Emperor Xianfeng dies in exile at Rehe, never having returned to Beijing. His concubine Cixi will dominate the next era.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="sources-section">
+        <h2>Sources & Further Reading</h2>
+        <div class="sources-grid">
+            <div class="source-group">
+                <h4>Scholarly Works</h4>
+                <ul>
+                    <li><a href="https://www.dukeupress.edu/english-lessons" target="_blank">James L. Hevia, <em>English Lessons: The Pedagogy of Imperialism in Nineteenth-Century China</em> (Duke, 2003)</a></li>
+                    <li><a href="https://www.hup.harvard.edu/books/9780674030183" target="_blank">Greg M. Thomas, <em>Yuanmingyuan: Art, Politics, and Cultural Memory</em></a></li>
+                    <li>Jonathan Spence, <em>The Search for Modern China</em>, Chapter 7</li>
+                </ul>
+            </div>
+            <div class="source-group">
+                <h4>Primary Sources</h4>
+                <ul>
+                    <li><a href="https://en.wikisource.org/wiki/Letter_to_Captain_Butler" target="_blank">Victor Hugo, Letter to Captain Butler (1861)</a></li>
+                    <li>Robert Swinhoe, <em>Narrative of the North China Campaign of 1860</em></li>
+                    <li>Garnet Wolseley, <em>Narrative of the War with China in 1860</em></li>
+                </ul>
+            </div>
+            <div class="source-group">
+                <h4>On the Zodiac Heads</h4>
+                <ul>
+                    <li><a href="https://www.bbc.com/news/world-asia-china-22269127" target="_blank">BBC: Looted China relics returned by Pinault</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Old_Summer_Palace_Zodiac_heads" target="_blank">Wikipedia: Old Summer Palace Zodiac heads</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="../index.html">&larr; Back to Dashboard</a> |
+        HIST/EAST 213: Modern East Asia | Winter 2026 |
+        <a href="#">Back to top</a>
+    </footer>
+
+    <script>
+        // Initialize map
+        const map = L.map('palace-map').setView([39.5, 116.5], 6);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 12
+        }).addTo(map);
+
+        const locations = [
+            // Key sites
+            { name: 'Yuanmingyuan 圆明园', lat: 40.0086, lng: 116.2983, type: 'palace', desc: 'The Old Summer Palace<br>Destroyed October 18-19, 1860' },
+            { name: 'Forbidden City 紫禁城', lat: 39.9163, lng: 116.3972, type: 'qing', desc: 'Imperial Palace<br>Spared from destruction' },
+            { name: 'Beijing 北京', lat: 39.9042, lng: 116.4074, type: 'qing', desc: 'Qing capital<br>Convention signed Oct 24' },
+            // Anglo-French route
+            { name: 'Tianjin 天津', lat: 39.0842, lng: 117.2009, type: 'battle', desc: 'Dagu Forts captured<br>August 1860' },
+            { name: 'Dagu Forts 大沽炮台', lat: 38.9667, lng: 117.7167, type: 'battle', desc: 'Coastal defenses<br>Decisive battle Aug 21' },
+            { name: 'Baliqiao 八里桥', lat: 39.9000, lng: 116.6500, type: 'battle', desc: 'Battle of Palikao<br>Sept 21, 1860' },
+            // Treaty ports
+            { name: 'Shanghai 上海', lat: 31.2304, lng: 121.4737, type: 'port', desc: 'Major treaty port<br>British/French staging' },
+            { name: 'Hong Kong 香港', lat: 22.3193, lng: 114.1694, type: 'port', desc: 'British colony since 1842<br>Fleet base' },
+            // Emperor's flight
+            { name: 'Rehe 热河', lat: 40.9833, lng: 117.9333, type: 'flight', desc: 'Emperor Xianfeng fled here<br>Died in exile 1861' }
+        ];
+
+        const colors = {
+            palace: '#e25822',
+            qing: '#c9a227',
+            battle: '#8b0000',
+            port: '#012169',
+            flight: '#4a4a4a'
+        };
+
+        const icons = {
+            palace: '🔥',
+            qing: '🏯',
+            battle: '⚔️',
+            port: '⚓',
+            flight: '👤'
+        };
+
+        locations.forEach(loc => {
+            const marker = L.circleMarker([loc.lat, loc.lng], {
+                radius: loc.type === 'palace' ? 12 : 8,
+                fillColor: colors[loc.type],
+                color: '#fff',
+                weight: 2,
+                fillOpacity: 0.85
+            }).addTo(map);
+
+            marker.bindPopup('<b>' + loc.name + '</b><br>' + loc.desc);
+            marker.bindTooltip(loc.name.split(' ')[0], { permanent: false, direction: 'right' });
+        });
+
+        // Anglo-French advance route
+        L.polyline([
+            [22.32, 114.17],  // Hong Kong
+            [31.23, 121.47],  // Shanghai
+            [38.97, 117.72],  // Dagu
+            [39.08, 117.20],  // Tianjin
+            [39.90, 116.65],  // Baliqiao
+            [39.92, 116.40],  // Beijing
+            [40.01, 116.30]   // Yuanmingyuan
+        ], {
+            color: '#012169',
+            weight: 3,
+            opacity: 0.7,
+            dashArray: '8, 4'
+        }).addTo(map).bindPopup('<b>Anglo-French Expedition Route</b><br>1860');
+
+        // Emperor's flight
+        L.polyline([
+            [39.92, 116.40],  // Beijing
+            [40.98, 117.93]   // Rehe
+        ], {
+            color: '#c9a227',
+            weight: 2,
+            opacity: 0.6,
+            dashArray: '4, 6'
+        }).addTo(map).bindPopup('<b>Emperor Xianfeng\'s Flight</b><br>September 1860');
+
+        // Legend
+        const legend = L.control({ position: 'bottomright' });
+        legend.onAdd = function() {
+            const div = L.DomUtil.create('div');
+            div.style.cssText = 'background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; font-size: 11px; line-height: 1.8; box-shadow: 0 2px 8px rgba(0,0,0,0.15);';
+            div.innerHTML = '<b style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Legend</b><br>' +
+                '<span style="color:#e25822;">●</span> Summer Palace<br>' +
+                '<span style="color:#c9a227;">●</span> Qing Sites<br>' +
+                '<span style="color:#8b0000;">●</span> Battles<br>' +
+                '<span style="color:#012169;">●</span> Treaty Ports<br>' +
+                '<span style="color:#012169;">━</span> Anglo-French Route';
+            return div;
+        };
+        legend.addTo(map);
+
+        // Fit bounds to show relevant area
+        map.fitBounds([[22, 114], [41.5, 118.5]]);
+    </script>
+</body>
+</html>

@@ -1,185 +1,280 @@
 {
   "plate": 12,
   "topic": "Meiji Transformation",
-  "date": "2026-02-02",
-  "generatedAt": "2026-01-04T17:00:00.000Z",
+  "date": "2026-02-03",
+  "generatedAt": "2026-02-01T22:00:00.000Z",
   "readings": [
-    "Meiji Primary Sources (Fukuzawa Yukichi), Sources of Japanese Tradition, pp. 669-764"
+    "Meiji Primary Sources (Sources of Japanese Tradition, Ch. 37-38), pp. 669-707"
   ],
   "readingAnalyses": [
     {
-      "title": "Fukuzawa Yukichi: An Encouragement of Learning and 'Leaving Asia'",
-      "author": "Fukuzawa Yukichi (福澤諭吉)",
-      "source": "Sources of Japanese Tradition, Vol. 2",
-      "pages": "pp. 669-764",
+      "title": "The Meiji Restoration: Edicts, Oaths, and the Abolition of Feudalism",
+      "author": "Various (Tokugawa Yoshinobu, Emperor Meiji, Meiji leaders)",
+      "source": "Sources of Japanese Tradition, Ch. 37",
+      "pages": "pp. 669-681",
       "type": "primary",
-      "summary": "Fukuzawa Yukichi was Meiji Japan's most influential intellectual—a former samurai who became the leading advocate for Western learning and 'civilization.' His 'An Encouragement of Learning' (1872-76), which sold millions of copies, opened with the revolutionary claim that 'Heaven did not create men above men, nor set men below men'—a direct challenge to the hereditary status system that had defined Tokugawa Japan.\n\nYet Fukuzawa's egalitarianism had limits. His infamous 1885 essay 'Leaving Asia' (Datsu-A Ron) argued that Japan should abandon 'backward' Asian neighbors and align with the 'civilized' West. China and Korea, he wrote, were holding Japan back; Japan must treat them as Westerners did—with force if necessary. This text reveals how Meiji reformers internalized Western racial hierarchies while ostensibly embracing Western 'universal' values.\n\nThe tension in Fukuzawa's thought—equality among Japanese, hierarchy among nations—captures the contradictions of Meiji modernization. Japan adopted Western institutions while developing its own imperial ambitions. The path from 'civilization and enlightenment' to Asian empire was shorter than Fukuzawa's admirers acknowledge.",
+      "summary": "This collection of founding documents reveals the Meiji Restoration as both a political coup and a genuine transformation. The Charter Oath (1868) proclaimed revolutionary principles—public assemblies, unity of all classes, freedom of occupation, abolition of 'evil customs,' and seeking knowledge worldwide—while the Constitution of 1868 attempted to implement separation of powers. Yet the documents also reveal ambiguity: promises of popular participation sat alongside oligarchic control, and 'restoration' of imperial rule masked radical innovation.",
       "keyQuotes": [
         {
-          "quote": "Heaven did not create men above men, nor set men below men.",
-          "page": "p. 670",
-          "verificationPath": "Course PDF (SJT pp. 669-764): https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
+          "quote": "Deliberative assemblies shall be widely established and all matters decided by public discussion.",
+          "page": "p. 672"
         },
         {
-          "quote": "We must not wait for our neighbors to become enlightened... We must leave the ranks of Asian nations and cast our lot with the civilized nations of the West.",
-          "page": "p. 755",
-          "verificationPath": "Course PDF (SJT pp. 669-764): https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
+          "quote": "Evil customs of the past shall be broken off and everything based upon the just laws of Nature.",
+          "page": "p. 672"
         },
         {
-          "quote": "We should deal with China and Korea in the same way the Western nations do.",
-          "page": "p. 756",
-          "verificationPath": "Course PDF (SJT pp. 669-764): https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
+          "quote": "Knowledge shall be sought throughout the world so as to strengthen the foundations of imperial rule.",
+          "page": "p. 672"
+        },
+        {
+          "quote": "Now that foreign intercourse becomes daily more extensive, unless the government is directed from one central authority, the foundations of the state will fall to pieces.",
+          "page": "p. 671 (Yoshinobu's resignation)"
         }
       ],
       "thematicExamples": [
-        "Fukuzawa's attack on hereditary status - the 'encouragement of learning' meant ability should replace birth",
-        "The 'civilization' discourse - ranking nations on a scale from barbarism to civilization with the West at top",
-        "'Leaving Asia' as justification for imperialism - if neighbors won't reform, Japan may have to 'civilize' them by force",
-        "Keio University (which Fukuzawa founded) as model of new education - practical learning over classical scholarship"
+        "The last shogun Yoshinobu voluntarily resigned, recognizing Japan needed centralization to face the Western threat—showing even the defeated understood the crisis",
+        "The Charter Oath's vagueness was deliberate: it could be interpreted as democratic promise OR authoritarian consolidation",
+        "The 1868 Constitution's term limits and public balloting for officials were never fully implemented—showing gap between rhetoric and reality",
+        "Four leading domains (Satsuma, Chōshū, Hizen, Tosa) returned their lands to the emperor in 1869—revolutionary act by the victors themselves"
       ],
       "realLifeConnections": [
-        "Fukuzawa's face on the ¥10,000 note - debates continue about whether this honors a racist imperialist or a modernizing hero",
-        "Contemporary Japanese debates about Asian relations still echo the 'Asian solidarity' vs. 'Western alignment' tension",
-        "The idea that some nations are 'developed' and others 'developing' descends from Fukuzawa's civilizational hierarchy",
-        "Educational meritocracy promises (learn hard, succeed) and limits (structural barriers remain) continue today"
+        "The Charter Oath was invoked by Emperor Hirohito in 1946 to justify postwar democratization—showing how foundational documents can be reinterpreted",
+        "Debates about whether Japan's modernization was 'top-down' or included 'bottom-up' participation echo current discussions about democratic transitions",
+        "The tension between seeking knowledge worldwide AND strengthening imperial rule captures ongoing debates about globalization vs. nationalism"
+      ]
+    },
+    {
+      "title": "The Iwakura Mission: Discovering the West",
+      "author": "Kido Takayoshi, Kume Kunitake",
+      "source": "Sources of Japanese Tradition, Ch. 37",
+      "pages": "pp. 677-681",
+      "type": "primary",
+      "summary": "The Iwakura Mission (1871-1873) took half of Japan's new leadership—including Ōkubo, Kido, and Itō—plus fifty students on a two-year tour of the United States and Europe. Initially meant to renegotiate unequal treaties, it became transformative: leaders who had been anti-foreign xenophobes returned convinced Japan needed radical Westernization. Kido's letters reveal particular passion for education as the foundation of national strength, while Kume's observations noted that European prosperity was recent—only 40 years old—suggesting Japan could catch up.",
+      "keyQuotes": [
+        {
+          "quote": "The civilization we have in our country today is not a true civilization, and our enlightenment is not true enlightenment.",
+          "page": "p. 678 (Kido)"
+        },
+        {
+          "quote": "Our people are no different from Americans or Europeans of today: it is all a matter of education or the lack of education.",
+          "page": "p. 678 (Kido)"
+        },
+        {
+          "quote": "The wealth and prosperity one sees now in Europe dates to an appreciable degree from the period after 1800. It has taken scarcely forty years to produce such conditions.",
+          "page": "p. 679 (Kume)"
+        },
+        {
+          "quote": "In enlightened countries, though there may be a sovereign, still he does not hold sway in an arbitrary fashion.",
+          "page": "p. 680 (Kido)"
+        }
+      ],
+      "thematicExamples": [
+        "Kido visited American schools and concluded that universal education was the key to national strength—not military power alone",
+        "Kume observed that European industrialization was only 40 years old, implying Japan could catch up in a similar timeframe",
+        "Kido advocated constitutional government after seeing Western systems—former xenophobes became reformers through direct observation",
+        "The mission's failure to renegotiate treaties taught leaders that Japan needed internal transformation before gaining Western respect"
+      ],
+      "realLifeConnections": [
+        "Study abroad programs and international exchanges continue to transform perspectives—the Iwakura Mission was an early example",
+        "The idea that 'development' can happen quickly (40 years) influenced later modernization theory and development economics",
+        "Kido's emphasis on education as the foundation of national strength anticipated modern human capital theory"
+      ]
+    },
+    {
+      "title": "Fukuzawa Yukichi and the Civilization and Enlightenment Movement",
+      "author": "Fukuzawa Yukichi (福澤諭吉)",
+      "source": "Sources of Japanese Tradition, Ch. 38",
+      "pages": "pp. 694-707",
+      "type": "primary",
+      "summary": "Fukuzawa Yukichi was Meiji Japan's most influential intellectual—a former samurai who became the leading advocate for Western learning. His works sold millions of copies. In 'An Outline of a Theory of Civilization' (1875), he presented a three-stage model of human progress: primitive, semi-developed, and civilized. Japan, he argued, was 'semi-developed' and must learn from the 'civilized' West. But he insisted this was not about individuals—civilizations are judged by the 'spirit' of the entire nation. Even Western civilization was imperfect and evolving. His goal was not worship of the West but Japanese national independence through selective learning.",
+      "keyQuotes": [
+        {
+          "quote": "Heaven did not create men above men, nor set men below men.",
+          "page": "p. 670 (from An Encouragement of Learning)"
+        },
+        {
+          "quote": "The unorthodox theories of the past become the commonly accepted ideas of the present; yesterday's eccentric notions become today's common knowledge.",
+          "page": "p. 699"
+        },
+        {
+          "quote": "Civilization is not a matter of the knowledge or ignorance of individuals but of the spirit of entire nations.",
+          "page": "p. 703"
+        },
+        {
+          "quote": "If we compare the levels of intelligence of Japanese and Westerners, in literature, the arts, commerce, or industry... there is not a single area in which the other side is not superior to us.",
+          "page": "p. 706"
+        },
+        {
+          "quote": "The superiority of Western over Japanese civilization is certainly very great, but Western civilization is hardly perfect. I could never begin to enumerate all its defects.",
+          "page": "p. 707"
+        }
+      ],
+      "thematicExamples": [
+        "Fukuzawa's 'cow and cat' metaphor: Japan vs. West in technology is like cat vs. cow—no argument possible. But in morality, it's evenly matched—like two wrestlers",
+        "His defense of Japanese moral traditions while criticizing Japanese 'intelligence' shows selective, strategic Westernization",
+        "His attack on 'masters of enlightenment' who praise every Western custom shows awareness of blind imitation's dangers",
+        "His emphasis on 'the spirit of the whole nation' rather than individual leaders anticipates nationalist mobilization"
+      ],
+      "realLifeConnections": [
+        "Fukuzawa's face is on the ¥10,000 note—debates continue about honoring him given his later 'Leaving Asia' essay",
+        "The 'semi-developed' vs. 'civilized' framework anticipated modernization theory and 'developing country' language",
+        "His selective approach to Westernization—technology yes, blind imitation no—remains relevant for countries navigating globalization",
+        "Keio University, which Fukuzawa founded, remains one of Japan's most prestigious private universities"
       ]
     }
   ],
-  "overallSynthesis": "Fukuzawa Yukichi embodies both the achievements and contradictions of Meiji Japan. His advocacy for education, equality (among Japanese), and institutional reform helped transform Japan into a modern nation-state. His 'Encouragement of Learning' was genuinely revolutionary in attacking hereditary privilege and promoting merit.\n\nYet 'Leaving Asia' reveals the dark side of 'civilization' discourse. By accepting Western categories—some nations civilized, others barbaric—Fukuzawa provided intellectual justification for Japanese imperialism. If China and Korea wouldn't 'modernize,' Japan could treat them as Westerners treated 'backward' peoples. The path from Meiji enlightenment to Asian empire ran through this logic.\n\nFor students, Fukuzawa poses the question: Can you separate progressive domestic reforms from racist foreign policy? Meiji Japan built schools, railroads, and constitutional government while also preparing to colonize its neighbors. Fukuzawa supported both projects. Understanding how these fit together—rather than treating them as contradictions—is essential for grasping modern Japanese history.\n\nThe comparison with Korean Sirhak reformers (Plate 7) is instructive. Yu Hyŏngwŏn proposed practical reforms while remaining within Confucian tradition; Fukuzawa proposed practical reforms while explicitly rejecting Asian tradition in favor of Western 'civilization.' Both sought to strengthen their nations, but their frameworks—and their legacies—differed profoundly.",
-  "executiveSummary": "The Meiji Restoration of 1868 initiated one of history's most dramatic national transformations. Young samurai from 'outer' domains (Satsuma, Chōshū) overthrew the Tokugawa shogunate, 'restored' the emperor to symbolic power, and launched comprehensive reforms: abolishing the samurai class, creating a conscript army, building railroads and telegraph lines, establishing universal education, and eventually drafting Asia's first constitution.\n\nFukuzawa Yukichi's writings capture the intellectual ferment of the era. His famous essay 'Leaving Asia' (Datsu-A Ron) argued Japan should abandon Asian backwardness and join the 'civilized' West. This raises uncomfortable questions: Was Meiji modernization also Westernization? Did Japan internalize Western racism toward other Asians? The reforms were remarkably successful in building state power, but they also created an authoritarian system that would lead to militarism and empire.",
+  "overallSynthesis": "These primary sources reveal the Meiji Restoration as a complex event that defies simple characterization. It was simultaneously a coup d'état (Satsuma and Chōshū seizing power) and a genuine revolution (abolishing feudalism, proclaiming new principles). The Charter Oath's promises of deliberative assemblies and public discussion coexisted with oligarchic control. The Restoration leaders themselves were transformed: men who began as xenophobic samurai became, through the Iwakura Mission, advocates of radical Westernization.\n\nFukuzawa Yukichi's writings show the intellectual ferment of the era. His three-stage model of civilization placed Japan below the West—a humiliating assessment he used to motivate change. Yet he was no blind Westernizer: he defended Japanese moral traditions while calling for the adoption of Western 'intelligence' (science, technology, institutions). His emphasis on the 'spirit of the whole nation' pointed toward both mass education and nationalist mobilization.\n\nThe key tension running through all these documents is between promise and reality, rhetoric and implementation. The Charter Oath proclaimed equality; Meiji Japan remained hierarchical. It promised popular participation; power stayed with the oligarchy. It sought knowledge worldwide; the goal was imperial strength. Understanding these contradictions—rather than choosing one side—is essential for grasping modern Japanese history.\n\nFor students, the central question is: Was the Meiji Restoration a success? The documents suggest success in creating a centralized state, but they also reveal the authoritarian tendencies that would lead to militarism. The path from 'civilization and enlightenment' to Asian empire was shorter than reformers imagined.",
+  "executiveSummary": "The Meiji Restoration of 1868 initiated one of history's most dramatic national transformations. These primary sources reveal the event's complexity: the Charter Oath's revolutionary promises, the Iwakura Mission's eye-opening encounter with Western power, and Fukuzawa Yukichi's influential theory of civilization as stages of human progress. The documents show leaders grappling with how to 'civilize' Japan while preserving national identity—a tension never fully resolved. Fukuzawa's 'Heaven did not create men above men' challenged hereditary hierarchy, while his civilizational ranking placed Japan below the West, creating pressure to modernize. The Meiji leaders' transformation from xenophobic samurai to advocates of Western learning shows how direct observation of Western wealth and power changed minds.",
   "keywords": [
     {
       "term": "Meiji Restoration (明治維新)",
       "definition": "1868 overthrow of Tokugawa shogunate and 'restoration' of imperial rule",
-      "relevance": "Launched Japan's transformation into modern industrial power"
+      "relevance": "Launched Japan's transformation into modern industrial power; the founding moment"
     },
     {
-      "term": "Fukuzawa Yukichi",
-      "definition": "Leading Meiji intellectual who promoted Western learning and 'civilization'",
-      "relevance": "His face is on the ¥10,000 note; represents Meiji's intellectual revolution"
+      "term": "Charter Oath (五箇条の御誓文)",
+      "definition": "April 1868 proclamation of five principles for the new government",
+      "relevance": "Foundation document invoked repeatedly—including by Hirohito in 1946"
     },
     {
       "term": "Bunmei Kaika (文明開化)",
       "definition": "'Civilization and Enlightenment'—slogan promoting Western ways",
-      "relevance": "Captures Meiji era's embrace of Western 'civilization' as model"
+      "relevance": "Fukuzawa's term for highest stage of human development; defined the era's aspiration"
     },
     {
-      "term": "Datsu-A Ron (脱亜論)",
-      "definition": "Fukuzawa's essay 'Leaving Asia'—Japan should align with West, not backward Asia",
-      "relevance": "Controversial text showing how Meiji leaders internalized Western hierarchies"
+      "term": "Iwakura Mission (岩倉使節団)",
+      "definition": "1871-1873 diplomatic mission to US and Europe led by Iwakura Tomomi",
+      "relevance": "Transformed leaders' worldview; convinced them of need for radical reform"
     },
     {
-      "term": "Conscription",
-      "definition": "1873 law requiring all males to serve in the military, ending samurai monopoly on arms",
-      "relevance": "Created modern mass army; transformed who could be a warrior"
+      "term": "Fukuzawa Yukichi (福澤諭吉)",
+      "definition": "Leading Meiji intellectual, founder of Keio University, advocate of Western learning",
+      "relevance": "His face is on ¥10,000 note; his ideas shaped Japanese modernization discourse"
+    },
+    {
+      "term": "Hanseki Hōkan (版籍奉還)",
+      "definition": "1869 'return of domain registers'—daimyo surrendering lands to emperor",
+      "relevance": "Key step in abolishing feudalism; revolutionary act by the victors themselves"
     }
   ],
   "keyPassages": [
     {
-      "quote": "We must not wait for our neighbors to become enlightened... We must leave the ranks of Asian nations and cast our lot with the civilized nations of the West.",
-      "source": "Fukuzawa Yukichi, 'Leaving Asia' (Datsu-A Ron)",
-      "page": "p. 755",
-      "verificationPath": "Course PDF: https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
+      "quote": "Deliberative assemblies shall be widely established and all matters decided by public discussion.",
+      "source": "Charter Oath, Article 1 (1868)",
+      "page": "p. 672"
+    },
+    {
+      "quote": "Knowledge shall be sought throughout the world so as to strengthen the foundations of imperial rule.",
+      "source": "Charter Oath, Article 5 (1868)",
+      "page": "p. 672"
+    },
+    {
+      "quote": "Our people are no different from Americans or Europeans of today: it is all a matter of education or the lack of education.",
+      "source": "Kido Takayoshi, letter from America (1872)",
+      "page": "p. 678"
     },
     {
       "quote": "Heaven did not create men above men, nor set men below men.",
       "source": "Fukuzawa Yukichi, An Encouragement of Learning (1872)",
-      "page": "p. 670",
-      "verificationPath": "Course PDF: https://drive.google.com/file/d/1t8iJmmg3JQVjZPI5AFiPBQ4FYPw4hu0r/view"
+      "page": "p. 670"
     }
   ],
   "peopleplacesthings": {
     "people": [
-      "Fukuzawa Yukichi - leading Meiji intellectual",
-      "Emperor Meiji - symbolic leader of restoration",
-      "Itō Hirobumi - architect of Meiji constitution"
+      "Fukuzawa Yukichi — leading Meiji intellectual, advocate of Western learning, on ¥10,000 note",
+      "Kido Takayoshi — Chōshū leader, Charter Oath drafter, Iwakura Mission member",
+      "Iwakura Tomomi — court noble who led the transformative 1871-1873 mission to the West"
     ],
     "places": [
-      "Tokyo (formerly Edo) - renamed capital",
-      "Satsuma and Chōshū - domains that led restoration",
-      "Yokohama - window to Western world"
+      "Tokyo (formerly Edo) — renamed capital, symbol of the new era",
+      "Satsuma and Chōshū — 'outer domains' that overthrew Tokugawa and led reforms",
+      "Washington, London, Paris — destinations of Iwakura Mission that transformed leaders' views"
     ],
     "things": [
-      "Charter Oath (1868) - principles of new government",
-      "Conscription (1873) - universal military service",
-      "Meiji Constitution (1889) - Asia's first constitution"
+      "Charter Oath (1868) — five-article founding document of the new government",
+      "Iwakura Mission (1871-73) — two-year journey that convinced leaders to Westernize",
+      "An Encouragement of Learning — Fukuzawa's bestseller promoting equality and education"
     ]
   },
   "keyQuestions": [
     {
-      "question": "Was Meiji 'modernization' the same as 'Westernization'?",
-      "basicAnswer": "Selective borrowing: German constitution, British navy, French law — but kept 'Japanese spirit.'",
-      "midAnswer": "'Western' and 'Japanese' were being invented simultaneously. The categories weren't stable.",
-      "advancedAnswer": "What they called 'tradition' was often newly invented (State Shinto, emperor cult). Who decides what's 'Japanese'?"
+      "question": "'Heaven did not create men above men'—but the Meiji system kept the emperor above all. How do we reconcile Fukuzawa's egalitarianism with imperial ideology?",
+      "basicAnswer": "Fukuzawa meant equality among commoners, not challenging the emperor. The emperor was the exception that proved the rule.",
+      "midAnswer": "His egalitarianism attacked the samurai-commoner distinction, not the emperor system. Different targets, different arguments.",
+      "advancedAnswer": "The emperor was being INVENTED as sacred precisely BECAUSE old hierarchies were collapsing. New equality needed new sacredness above it.",
+      "talkingPoints": "Fukuzawa personally stayed out of government, keeping critical distance. But his students staffed Meiji bureaucracy."
     },
     {
-      "question": "How should we evaluate Fukuzawa's 'Leaving Asia' today?",
-      "basicAnswer": "Pro-Western modernizer who also promoted racist hierarchy toward other Asians.",
-      "midAnswer": "He's on the ¥10,000 note. What does that say about how Japan remembers?",
-      "advancedAnswer": "Did Enlightenment values enable or restrain imperialism? Fukuzawa suggests: ENABLE."
+      "question": "The Charter Oath promised 'deliberative assemblies' and 'public discussion'—but Japan didn't get a parliament until 1890. Was the Oath a lie?",
+      "basicAnswer": "The Oath was vague enough to be interpreted many ways. 'Deliberative assemblies' didn't necessarily mean elected parliament.",
+      "midAnswer": "The Oath was a rallying cry, not a blueprint. It promised direction without specifying timeline or form.",
+      "advancedAnswer": "The Oath's very vagueness was strategic. It could mean democracy OR oligarchy depending on who was interpreting.",
+      "talkingPoints": "Compare to American founding documents—'all men created equal' took centuries to implement. Founding rhetoric vs. founding reality."
     },
     {
-      "question": "Why could Japan IMPLEMENT reforms that China couldn't during this period?",
-      "basicAnswer": "Smaller, unified, watched China's mistakes first.",
-      "midAnswer": "China was fighting Taiping (20-30M dead) during Japan's reform window. Not 'failure' — survival mode.",
-      "advancedAnswer": "The question blames China. Could ANY government reform while losing 10% of its population?"
+      "question": "Fukuzawa said Japan was 'semi-developed' compared to the 'civilized' West. Was he being realistic or self-hating?",
+      "basicAnswer": "He was being strategically harsh to motivate reform. Shock therapy for national pride.",
+      "midAnswer": "He acknowledged Japan's moral equality while insisting on technological and institutional inferiority. Targeted critique, not total rejection.",
+      "advancedAnswer": "He internalized Western civilizational hierarchy to USE it against complacency. The categories were weapons, not just descriptions.",
+      "talkingPoints": "Note his 'cow and cat' metaphor—no argument possible in technology, but morality is evenly matched. Selective humility."
     },
     {
-      "question": "Did Japan actually 'succeed'? What does success even mean here?",
-      "basicAnswer": "Industrialized fast, became world power — but path led to 1945 catastrophe.",
-      "midAnswer": "Japan's 'success' → empire → nukes. China's 'failure' → revolution → #2 economy. Which won?",
-      "advancedAnswer": "Why do we need to call one 'success'? What ideological work does that comparison perform?"
+      "question": "The Iwakura Mission transformed xenophobic samurai into Westernizers. What does this tell us about how minds change?",
+      "basicAnswer": "Direct observation of Western power convinced them Japan must change or be colonized.",
+      "midAnswer": "They went expecting to renegotiate treaties, failed, and learned Japan wasn't ready. Failure was the teacher.",
+      "advancedAnswer": "They didn't just SEE the West—they saw it through Japanese crisis. Perception depends on what you're worried about.",
+      "talkingPoints": "Kume noted European prosperity was only 40 years old—suggesting Japan could catch up. Crucial optimism."
     }
   ],
   "timeline": [
     {
-      "date": "1868",
-      "event": "Meiji Restoration; Charter Oath issued"
+      "date": "1867",
+      "event": "Last shogun Yoshinobu resigns, recognizing need for centralization"
     },
     {
-      "date": "1871",
-      "event": "Domains abolished, prefectures created"
+      "date": "1868 Jan",
+      "event": "Meiji Restoration—Satsuma/Chōshū troops seize imperial palace"
     },
     {
-      "date": "1872",
-      "event": "First railroad (Tokyo-Yokohama)"
+      "date": "1868 Apr",
+      "event": "Charter Oath proclaimed—five principles for new government"
     },
     {
-      "date": "1873",
-      "event": "Conscription law—all males must serve"
+      "date": "1869",
+      "event": "Four major domains return lands to emperor (hanseki hōkan)"
     },
     {
-      "date": "1885",
-      "event": "Fukuzawa's 'Leaving Asia' published"
+      "date": "1871-73",
+      "event": "Iwakura Mission to US and Europe transforms leaders' views"
     },
     {
-      "date": "1889",
-      "event": "Meiji Constitution promulgated"
+      "date": "1872-76",
+      "event": "Fukuzawa publishes An Encouragement of Learning (bestseller)"
     }
   ],
   "connections": {
-    "fromPrevious": "Plate 11 showed Japan's crisis upon Western arrival. Meiji Restoration was ONE possible response — but remember China couldn't pursue this path because it was simultaneously fighting the deadliest civil war in human history.",
-    "toNext": "Plate 13 examines China during the SAME period — while Japan was transforming, China was losing 20-30 million people to the Taiping Rebellion. This isn't 'China failed to reform' — it's 'China was fighting for survival.'",
-    "broaderThemes": "Meiji Japan becomes the model for later Asian modernizers. But its 'success' also led to imperialism that devastated neighbors. 'Modernization' isn't always benign. And the Japan/China comparison requires examining OBSTACLES TO IMPLEMENTATION, not national character."
+    "fromPrevious": "Plate 11 showed Tokugawa Japan's encounter with the West—unequal treaties, forced opening. The Meiji Restoration was ONE response to that crisis. But remember: the men who led it began as xenophobes ('revere the emperor, expel the barbarian') and became Westernizers through the Iwakura Mission.",
+    "toNext": "Plate 13 examines China during the SAME period—while Japan was transforming, China faced the Taiping Rebellion (20-30 million dead). Japan's 'success' and China's 'failure' look different when you consider that China was fighting for survival during Japan's reform window.",
+    "broaderThemes": "The Meiji case raises questions about modernization itself. The Charter Oath promised democracy but delivered oligarchy. Fukuzawa preached equality but accepted imperial sacredness. 'Civilization and enlightenment' led to Asian empire. The path from reform to imperialism was shorter than reformers imagined."
   },
   "nextPreview": {
     "plate": 13,
     "topic": "Taiping and other rebellions",
-    "preview": "While Japan was transforming, China faced the Taiping Rebellion—the deadliest civil war in history. How did internal crisis shape China's very different path?",
-    "readings": ["The Crisis Within (Spence)", "Heavenly Kingdom of Taipings"]
+    "preview": "While Japan was transforming, China faced the deadliest civil war in human history—the Taiping Rebellion (1850-1864). Hong Xiuquan's Christian-inspired 'Heavenly Kingdom' killed 20-30 million people. This wasn't 'failure to reform'—it was survival mode.",
+    "readings": ["The Heavenly Kingdom of the Taiping (Sources of Chinese Tradition)"]
   },
   "teachingNotes": [
-    "Fukuzawa's 'Leaving Asia' is short—have students read it and react. Expect strong opinions.",
-    "The Pacific Century documentary (linked in dashboard) has good footage on Meiji transformation.",
-    "Show before/after images: samurai vs. conscript soldiers, Edo vs. gas-lit Tokyo.",
-    "ALTERNATIVE FRAMES FOR JAPAN/CHINA COMPARISON (reject 'Japan succeeded, China failed'):",
-    "  (1) ELITE CONVERTIBILITY: Samurai could be redirected (stipends → bonds → investment). China had no equivalent convertible elite.",
-    "  (2) POLITICAL TASK: Japan overthrew a military govt with imperial restoration precedent. China would've required overthrowing 250-year dynasty with no clear alternative.",
-    "  (3) DOMAIN COMPETITION: Japan's decentralized system meant Satsuma/Chōshū RACED to modernize. China's centralization meant reforms had to come from weakest point (center).",
-    "  (4) CONQUEST DYNASTY: Qing were Manchu ruling Han. Reforms empowering Han could undermine Manchu rule. Japan had no equivalent ethnic division.",
-    "  (5) WHAT COUNTS AS SUCCESS?: Japan's 'success' → imperialism → 1945 catastrophe. China's 'failure' → revolution → world's 2nd largest economy. 150-year view differs from 50-year view.",
-    "  (6) BOTH FAILED FRAME: Both signed unequal treaties, both experienced foreign domination, both rebuilt after catastrophe. Difference is WHEN, not WHETHER.",
-    "Contemporary connection: Japan's post-WWII recovery echoed Meiji patterns of state-led development."
+    "START with the Charter Oath—have students read all five articles. Which seems most revolutionary? Which most vague?",
+    "The 'Heaven did not create men above men' quote is Fukuzawa's most famous. Ask: Does this sound like Jefferson? It's actually a translation of the Declaration's opening.",
+    "Kido's letter from America (p. 678) is gold: 'Our people are no different from Americans... it is all a matter of education.' Direct, passionate, accessible.",
+    "Fukuzawa's 'cow and cat' metaphor (p. 705-706) is memorable: Japan vs. West in technology is like cat vs. cow (no contest). But in morality, they're evenly matched.",
+    "PUSH BACK on simple 'Japan succeeded, China failed' narrative:",
+    "  - Japan's window: 1868-1912 (peaceful)",
+    "  - China's window: 1850-1864 Taiping killed 20-30 MILLION",
+    "  - It's not 'reform vs. no reform'—it's 'reform vs. survival'",
+    "Contemporary connection: Fukuzawa on the ¥10,000 note is controversial given his later 'Leaving Asia' essay (Plate 12's dark side).",
+    "The Iwakura Mission is a great story: xenophobes went abroad and came back Westernizers. Direct experience changed minds."
   ],
   "map": {
     "center": [36, 138],

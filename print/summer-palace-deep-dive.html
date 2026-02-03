@@ -42,15 +42,21 @@
         /* HERO */
         .hero {
             position: relative;
-            height: 75vh;
-            min-height: 550px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)),
-                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Yuanmingyuan_Dashuifa_20120715.jpg/1280px-Yuanmingyuan_Dashuifa_20120715.jpg');
-            background-size: cover;
-            background-position: center;
+            height: 50vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, #1a0a0a 0%, #3d1515 30%, #5a2020 60%, #e25822 100%);
             display: flex;
             align-items: flex-end;
             padding: 4rem;
+        }
+        .hero::before {
+            content: '🔥';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            opacity: 0.15;
         }
 
         .hero-content { max-width: 750px; }
@@ -490,9 +496,6 @@
             <div class="zh-title">火烧圆明园</div>
             <p class="deck">In October 1860, 3,500 British soldiers spent two days burning one of the world's greatest architectural treasures. The smoke was visible for three days. What was lost—and why?</p>
         </div>
-        <div class="hero-caption">
-            Ruins of the Western Palaces (Xiyang Lou) today. <a href="https://commons.wikimedia.org/wiki/File:Yuanmingyuan_Dashuifa_20120715.jpg" target="_blank">Wikimedia Commons</a>
-        </div>
     </section>
 
     <!-- STATS BAR -->
@@ -517,6 +520,37 @@
         </div>
     </div>
 
+    <!-- LOCATION MAP - WHERE WAS IT? -->
+    <section style="background: #f5f5f0; padding: 2rem;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; text-align: center;">Where Was the Summer Palace?</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 1rem; font-size: 0.9rem;">8 miles northwest of Beijing's Forbidden City — the emperor's private retreat</p>
+            <div id="location-map" style="height: 300px; border-radius: 8px; border: 1px solid #ccc;"></div>
+        </div>
+    </section>
+    <script>
+        // Simple location map
+        const locMap = L.map('location-map').setView([39.96, 116.35], 11);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            subdomains: 'abcd', maxZoom: 15
+        }).addTo(locMap);
+
+        // Yuanmingyuan
+        L.circleMarker([40.0086, 116.2983], {
+            radius: 15, fillColor: '#e25822', color: '#fff', weight: 3, fillOpacity: 0.9
+        }).addTo(locMap).bindPopup('<b>圆明园 Yuanmingyuan</b><br>Old Summer Palace<br><em>Burned October 18-19, 1860</em>').openPopup();
+
+        // Forbidden City for reference
+        L.circleMarker([39.9163, 116.3972], {
+            radius: 10, fillColor: '#c9a227', color: '#fff', weight: 2, fillOpacity: 0.8
+        }).addTo(locMap).bindPopup('<b>紫禁城 Forbidden City</b><br>Imperial Palace in Beijing<br><em>~8 miles to the south</em>');
+
+        // Distance line
+        L.polyline([[40.0086, 116.2983], [39.9163, 116.3972]], {
+            color: '#333', weight: 2, dashArray: '5,5', opacity: 0.5
+        }).addTo(locMap);
+    </script>
+
     <!-- TWO COLUMN CONTENT -->
     <div class="two-col">
         <main class="main-content">
@@ -527,10 +561,10 @@
 
             <p>Western visitors who saw it before its destruction were stunned. One called it <strong>"the Versailles of China."</strong></p>
 
-            <figure>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Yuanmingyuan_40_Jinghua.jpg/1024px-Yuanmingyuan_40_Jinghua.jpg" alt="Historical depiction of the Summer Palace">
-                <figcaption><strong>The Garden Before Destruction</strong> — Qing-era painting showing one of the 40 famous views of the Yuanmingyuan. The complex contained hundreds of buildings, artificial lakes, and mountains. <a href="https://commons.wikimedia.org/wiki/File:Yuanmingyuan_40_Jinghua.jpg" target="_blank">Wikimedia Commons</a></figcaption>
-            </figure>
+            <div style="background: linear-gradient(135deg, #f5f0e8 0%, #e8e0d0 100%); border: 1px solid #ccc; border-radius: 8px; padding: 2rem; margin: 2rem 0; text-align: center;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🏯</div>
+                <p style="font-style: italic; color: #666;"><strong>The Garden Before Destruction</strong> — The Yuanmingyuan contained hundreds of buildings, artificial lakes, mountains, and the finest imperial art collections. Western visitors called it "the Versailles of China."</p>
+            </div>
 
             <h2>Why Burn It?</h2>
             <p>The burning was ordered by <strong>Lord Elgin</strong> — James Bruce, 8th Earl of Elgin — as deliberate retaliation. During negotiations to end the Second Opium War, a group of British and French envoys under a flag of truce had been seized by Qing officials. Of 39 prisoners, <strong>21 died in captivity</strong>, some from torture.</p>
@@ -549,10 +583,10 @@
 
             <p>A British officer described watching soldiers smash what they couldn't carry: <em>"Quantities of fine carved woodwork, beautifully lacquered furniture, and rich silks were ruthlessly cut to pieces or destroyed."</em></p>
 
-            <figure>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Looting_of_the_Summer_Palace.jpg/1024px-Looting_of_the_Summer_Palace.jpg" alt="French illustration of the looting">
-                <figcaption><strong>The Looting</strong> — French illustration showing troops carrying off treasures from the Summer Palace. Soldiers used carts, horses, and their own backs to haul away centuries of imperial collection. <a href="https://commons.wikimedia.org/wiki/File:Looting_of_the_Summer_Palace.jpg" target="_blank">Wikimedia Commons</a></figcaption>
-            </figure>
+            <div style="background: linear-gradient(135deg, #2d1515 0%, #1a0a0a 100%); border-radius: 8px; padding: 2rem; margin: 2rem 0; text-align: center; color: #fff;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">📦💎🏺</div>
+                <p style="font-style: italic; color: rgba(255,255,255,0.9);"><strong>The Looting</strong> — Before the burning, British and French troops spent days looting. Officers and enlisted men grabbed jade, silk, porcelain, gold, jewels, imperial robes, ancient scrolls. <em>Auction houses were set up in camp to sell the loot.</em></p>
+            </div>
 
             <h2>The Burning: October 18–19, 1860</h2>
             <p>On October 18, Elgin ordered the destruction. <strong>3,500 troops</strong> from the 1st Division fanned out across the complex with torches. The fire burned for two days. The smoke was visible from Beijing, 8 miles away, for three days.</p>
@@ -646,45 +680,45 @@
             </div>
             <div class="zodiac-grid">
                 <div class="zodiac-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Rat_Head_from_Old_Summer_Palace_on_display_at_National_Museum_of_China.jpg/440px-Rat_Head_from_Old_Summer_Palace_on_display_at_National_Museum_of_China.jpg" alt="Rat head">
+                    <div style="height: 120px; background: linear-gradient(135deg, #c9a227, #8b6914); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🐀</div>
                     <div class="zodiac-card-body">
                         <h4>Rat 鼠</h4>
-                        <p class="status returned">Returned 2013 — Donated by François Pinault</p>
+                        <p class="status returned">✓ Returned 2013 — Donated by François Pinault</p>
                     </div>
                 </div>
                 <div class="zodiac-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Bronze_Ox_Head.jpg/440px-Bronze_Ox_Head.jpg" alt="Ox head">
+                    <div style="height: 120px; background: linear-gradient(135deg, #c9a227, #8b6914); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🐂</div>
                     <div class="zodiac-card-body">
                         <h4>Ox 牛</h4>
-                        <p class="status returned">Returned 2000 — Poly Art Museum, Beijing</p>
+                        <p class="status returned">✓ Returned 2000 — Poly Art Museum, Beijing</p>
                     </div>
                 </div>
                 <div class="zodiac-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bronze_Tiger_Head.jpg/440px-Bronze_Tiger_Head.jpg" alt="Tiger head">
+                    <div style="height: 120px; background: linear-gradient(135deg, #c9a227, #8b6914); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🐅</div>
                     <div class="zodiac-card-body">
                         <h4>Tiger 虎</h4>
-                        <p class="status returned">Returned 2000 — Poly Art Museum, Beijing</p>
+                        <p class="status returned">✓ Returned 2000 — Poly Art Museum, Beijing</p>
                     </div>
                 </div>
                 <div class="zodiac-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rabbit_Head_from_Old_Summer_Palace_on_display_at_National_Museum_of_China.jpg/440px-Rabbit_Head_from_Old_Summer_Palace_on_display_at_National_Museum_of_China.jpg" alt="Rabbit head">
+                    <div style="height: 120px; background: linear-gradient(135deg, #c9a227, #8b6914); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🐇</div>
                     <div class="zodiac-card-body">
                         <h4>Rabbit 兔</h4>
-                        <p class="status returned">Returned 2013 — Donated by François Pinault</p>
+                        <p class="status returned">✓ Returned 2013 — Donated by François Pinault</p>
                     </div>
                 </div>
                 <div class="zodiac-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Bronze_Horse_Head.jpg/440px-Bronze_Horse_Head.jpg" alt="Horse head">
+                    <div style="height: 120px; background: linear-gradient(135deg, #c9a227, #8b6914); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🐴</div>
                     <div class="zodiac-card-body">
                         <h4>Horse 马</h4>
-                        <p class="status returned">Returned 2019 — Donated by He Hongshen</p>
+                        <p class="status returned">✓ Returned 2019 — Donated by He Hongshen</p>
                     </div>
                 </div>
                 <div class="zodiac-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Bronze_Pig_Head.jpg/440px-Bronze_Pig_Head.jpg" alt="Pig head">
+                    <div style="height: 120px; background: linear-gradient(135deg, #c9a227, #8b6914); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🐷</div>
                     <div class="zodiac-card-body">
                         <h4>Pig 猪</h4>
-                        <p class="status returned">Returned 2019 — He Hongshen donation</p>
+                        <p class="status returned">✓ Returned 2019 — He Hongshen donation</p>
                     </div>
                 </div>
             </div>

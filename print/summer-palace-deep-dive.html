@@ -44,19 +44,13 @@
             position: relative;
             height: 50vh;
             min-height: 400px;
-            background: linear-gradient(135deg, #1a0a0a 0%, #3d1515 30%, #5a2020 60%, #e25822 100%);
+            background: linear-gradient(rgba(10,10,15,0.5), rgba(10,10,15,0.75)),
+                        url('images/summer-palace/01_before_burning_pagoda_1860.jpg');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: flex-end;
             padding: 4rem;
-        }
-        .hero::before {
-            content: '🔥';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 8rem;
-            opacity: 0.15;
         }
 
         .hero-content { max-width: 750px; }
@@ -99,6 +93,34 @@
             color: rgba(255,255,255,0.5);
         }
         .hero-caption a { color: rgba(255,255,255,0.6); }
+
+        /* BEFORE/AFTER GALLERY */
+        .compare-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .compare-item {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .compare-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .compare-item .caption {
+            padding: 0.75rem 1rem;
+            background: var(--paper-warm);
+            font-size: 0.8rem;
+        }
+        .compare-item .caption strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--imperial-red);
+        }
 
         /* NAV */
         nav {
@@ -561,10 +583,10 @@
 
             <p>Western visitors who saw it before its destruction were stunned. One called it <strong>"the Versailles of China."</strong></p>
 
-            <div style="background: linear-gradient(135deg, #f5f0e8 0%, #e8e0d0 100%); border: 1px solid #ccc; border-radius: 8px; padding: 2rem; margin: 2rem 0; text-align: center;">
-                <div style="font-size: 4rem; margin-bottom: 1rem;">🏯</div>
-                <p style="font-style: italic; color: #666;"><strong>The Garden Before Destruction</strong> — The Yuanmingyuan contained hundreds of buildings, artificial lakes, mountains, and the finest imperial art collections. Western visitors called it "the Versailles of China."</p>
-            </div>
+            <figure>
+                <img src="images/summer-palace/09_before_Zhengda_painting.jpg" alt="Imperial court painting of Yuanmingyuan before destruction">
+                <figcaption><strong>The Garden Before Destruction</strong> — Imperial court painting showing the Zhengda Guangming (正大光明) hall. The Yuanmingyuan contained hundreds of buildings, artificial lakes, and mountains. Western visitors called it "the Versailles of China."</figcaption>
+            </figure>
 
             <h2>Why Burn It?</h2>
             <p>The burning was ordered by <strong>Lord Elgin</strong> — James Bruce, 8th Earl of Elgin — as deliberate retaliation. During negotiations to end the Second Opium War, a group of British and French envoys under a flag of truce had been seized by Qing officials. Of 39 prisoners, <strong>21 died in captivity</strong>, some from torture.</p>
@@ -583,10 +605,10 @@
 
             <p>A British officer described watching soldiers smash what they couldn't carry: <em>"Quantities of fine carved woodwork, beautifully lacquered furniture, and rich silks were ruthlessly cut to pieces or destroyed."</em></p>
 
-            <div style="background: linear-gradient(135deg, #2d1515 0%, #1a0a0a 100%); border-radius: 8px; padding: 2rem; margin: 2rem 0; text-align: center; color: #fff;">
-                <div style="font-size: 4rem; margin-bottom: 1rem;">📦💎🏺</div>
-                <p style="font-style: italic; color: rgba(255,255,255,0.9);"><strong>The Looting</strong> — Before the burning, British and French troops spent days looting. Officers and enlisted men grabbed jade, silk, porcelain, gold, jewels, imperial robes, ancient scrolls. <em>Auction houses were set up in camp to sell the loot.</em></p>
-            </div>
+            <figure>
+                <img src="images/summer-palace/05_ruins_Xieqiqu_1873_Ohlmer.jpg" alt="Ruins of Xieqiqu at Yuanmingyuan, 1873">
+                <figcaption><strong>The Ruins, 1873</strong> — Ernst Ohlmer photograph of the Xieqiqu (諧奇趣) European palace ruins, 13 years after the burning. Before destruction, this was one of the ornate European-style buildings designed by Jesuit missionaries.</figcaption>
+            </figure>
 
             <h2>The Burning: October 18–19, 1860</h2>
             <p>On October 18, Elgin ordered the destruction. <strong>3,500 troops</strong> from the 1st Division fanned out across the complex with torches. The fire burned for two days. The smoke was visible from Beijing, 8 miles away, for three days.</p>
@@ -594,6 +616,26 @@
             <p>The French commander, General Montauban, had opposed the burning. The French had wanted to spare the palaces (and keep looting them). But Elgin insisted. The destruction became a <strong>British operation</strong>.</p>
 
             <p>Only a handful of European-style stone buildings survived — their ruins still stand today as the most photographed remnant of the complex.</p>
+
+            <h2>Before and After</h2>
+            <div class="compare-gallery">
+                <div class="compare-item">
+                    <img src="images/summer-palace/10_before_Qinzheng_painting.jpg" alt="Imperial painting of Qinzheng Qinxian hall">
+                    <div class="caption"><strong>Before: Qinzheng Qinxian 勤政親賢</strong>Imperial court painting showing the elaborate palace grounds</div>
+                </div>
+                <div class="compare-item">
+                    <img src="images/summer-palace/06_ruins_Xieqiqu_panorama_1873.jpg" alt="Ruins panorama 1873">
+                    <div class="caption"><strong>After: The Ruins, 1873</strong>Ernst Ohlmer photograph, 13 years after destruction</div>
+                </div>
+                <div class="compare-item">
+                    <img src="images/summer-palace/03_buddhist_temple_1860.jpg" alt="Buddhist temple photograph 1860">
+                    <div class="caption"><strong>Before: Buddhist Temple, 1860</strong>One of the few photographs taken before the burning</div>
+                </div>
+                <div class="compare-item">
+                    <img src="images/summer-palace/08_ruins_eastern_side_1873.jpg" alt="Eastern ruins 1873">
+                    <div class="caption"><strong>After: Eastern Ruins, 1873</strong>The stone European palaces were all that survived</div>
+                </div>
+            </div>
 
             <h2>What Was Lost</h2>
             <p>The destruction was incalculable:</p>

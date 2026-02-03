@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deep Dive: Jeon Bong-jun - The Green Bean General</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #f8f6f3;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 70vh;
+      min-height: 500px;
+      background: linear-gradient(135deg, #1a2a3a 0%, #2d4a5e 50%, #3d5a6e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/><circle cx="50" cy="50" r="20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></svg>');
+      background-size: 200px;
+      opacity: 0.5;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 2rem;
+    }
+
+    .hero-korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      font-style: italic;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .hero-dates {
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      opacity: 0.8;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      background: #2d4a5e;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+      color: #fff;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #8fb8d4;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.8;
+    }
+
+    /* Main Content */
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+    }
+
+    .main-column h2 {
+      font-size: 1.8rem;
+      color: #2d4a5e;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #8fb8d4;
+    }
+
+    .main-column h2:first-child {
+      margin-top: 0;
+    }
+
+    .main-column p {
+      margin-bottom: 1.2rem;
+      text-align: justify;
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      background: linear-gradient(135deg, #f0f4f8 0%, #e8eef3 100%);
+      border-left: 4px solid #2d4a5e;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-size: 1.15rem;
+      font-style: italic;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-style: normal;
+      color: #666;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 2rem;
+      align-self: start;
+    }
+
+    .sidebar-box {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .sidebar-box h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #2d4a5e;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .sidebar-box ul {
+      list-style: none;
+      font-size: 0.95rem;
+    }
+
+    .sidebar-box li {
+      padding: 0.4rem 0;
+      border-bottom: 1px dotted #eee;
+    }
+
+    .sidebar-box li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-box li strong {
+      color: #2d4a5e;
+    }
+
+    /* Profile Box */
+    .profile-box {
+      background: linear-gradient(135deg, #2d4a5e 0%, #3d5a6e 100%);
+      color: #fff;
+      border: none;
+    }
+
+    .profile-box h3 {
+      color: #8fb8d4;
+      border-bottom-color: rgba(255,255,255,0.2);
+    }
+
+    .profile-box li {
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+
+    .profile-box li strong {
+      color: #8fb8d4;
+    }
+
+    /* Image placeholder */
+    .image-frame {
+      background: #e8eef3;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .image-frame img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
+
+    .image-caption {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.75rem;
+      font-style: italic;
+    }
+
+    /* Nickname Section */
+    .nickname-section {
+      background: linear-gradient(135deg, #f5f0e8 0%, #ebe5d8 100%);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .nickname-korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2d4a5e;
+      margin-bottom: 0.5rem;
+    }
+
+    .nickname-english {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #5a7a8a;
+      margin-bottom: 1rem;
+    }
+
+    .nickname-explain {
+      font-size: 1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Trial Quote */
+    .trial-section {
+      background: #1a1a1a;
+      color: #f0f0f0;
+      padding: 3rem;
+      margin: 3rem -2rem;
+      position: relative;
+    }
+
+    .trial-section::before {
+      content: '"';
+      font-size: 8rem;
+      position: absolute;
+      top: -1rem;
+      left: 2rem;
+      color: rgba(255,255,255,0.1);
+      font-family: Georgia, serif;
+    }
+
+    .trial-quote {
+      font-size: 1.4rem;
+      font-style: italic;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trial-source {
+      text-align: right;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    /* Map Section */
+    .map-section {
+      margin: 3rem 0;
+    }
+
+    .map-title {
+      font-size: 1.5rem;
+      color: #2d4a5e;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    #rebellion-map {
+      height: 450px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #2d4a5e, #8fb8d4);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.3rem;
+      width: 12px;
+      height: 12px;
+      background: #2d4a5e;
+      border-radius: 50%;
+      border: 3px solid #f8f6f3;
+    }
+
+    .timeline-date {
+      font-weight: 600;
+      color: #2d4a5e;
+      font-size: 0.95rem;
+    }
+
+    .timeline-event {
+      color: #444;
+    }
+
+    /* Legacy Section */
+    .legacy-section {
+      background: linear-gradient(135deg, #2d4a5e 0%, #1a2a3a 100%);
+      color: #fff;
+      padding: 3rem;
+      margin: 3rem -2rem;
+      text-align: center;
+    }
+
+    .legacy-section h2 {
+      color: #8fb8d4;
+      border-bottom-color: rgba(255,255,255,0.3);
+      display: inline-block;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .legacy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .legacy-item h4 {
+      color: #8fb8d4;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .legacy-item p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* Sources */
+    .sources {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .sources h3 {
+      font-size: 1.2rem;
+      color: #2d4a5e;
+      margin-bottom: 1rem;
+    }
+
+    .sources ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .sources li {
+      padding: 0.3rem 0;
+      padding-left: 1rem;
+      border-left: 2px solid #ddd;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #2d4a5e;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 2rem;
+      transition: background 0.2s;
+    }
+
+    .back-link:hover {
+      background: #3d5a6e;
+    }
+
+    @media (max-width: 900px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+      }
+      .hero-korean {
+        font-size: 2.5rem;
+      }
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .legacy-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      .hero { height: auto; min-height: auto; padding: 2rem; }
+      .trial-section, .legacy-section { margin: 2rem 0; }
+      .sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-korean">전봉준</div>
+      <h1 class="hero-title">JEON BONG-JUN</h1>
+      <p class="hero-subtitle">"General Green Bean" — Leader of the Tonghak Peasant Army</p>
+      <p class="hero-dates">1855 - 1895</p>
+    </div>
+  </div>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value">152 cm</div>
+      <div class="stat-label">His Height (~5 feet)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">300,000+</div>
+      <div class="stat-label">Peasant Army at Peak</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">39</div>
+      <div class="stat-label">Age at Execution</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">1894</div>
+      <div class="stat-label">Year of Uprising</div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="two-column">
+      <div class="main-column">
+
+        <h2>The Unlikely General</h2>
+        <p>He stood barely five feet tall, small even by 19th-century Korean standards. His neighbors in the farming villages of Jeolla Province called him <em>nokdu</em> - "green bean" - for his diminutive stature. Yet in 1894, this unprepossessing rural teacher would command the largest peasant army in Korean history, shake the Joseon dynasty to its foundations, and inadvertently trigger a war between empires.</p>
+
+        <p>Jeon Bong-jun was born in 1855 to a family of modest means in Gobu county, Jeolla Province - Korea's agricultural heartland and a region that had suffered generations of exploitation by corrupt officials. His father, Jeon Chang-hyeok, was executed in 1892 for leading local protests against official corruption. The son would finish what the father began.</p>
+
+        <!-- Nickname Box -->
+        <div class="nickname-section">
+          <div class="nickname-korean">녹두장군</div>
+          <div class="nickname-english">Nokdu Janggun - "General Green Bean"</div>
+          <p class="nickname-explain">His soldiers gave him this affectionate nickname for his small stature. Far from being an insult, it became a symbol of how ordinary people could rise to lead extraordinary movements. Today, "Nokdu" mung bean pancakes are a famous dish in Jeonju, the city Jeon captured.</p>
+        </div>
+
+        <h2>From Teacher to Revolutionary</h2>
+        <p>Before he became a general, Jeon was a village teacher and practitioner of traditional medicine. He joined Tonghak - the "Eastern Learning" movement - in the late 1880s, drawn to its message that "human beings are heaven" and all people are equal before God. For a man who had watched his father die fighting injustice, Tonghak's combination of spiritual meaning and social critique was irresistible.</p>
+
+        <p>The spark came in January 1894. The magistrate of Gobu, Jo Byeong-gap, had forced peasants to build an unnecessary reservoir, then taxed them for the water from their own labor. When Jeon led a petition against this abuse, Jo had the petitioners beaten. On January 10, Jeon and a thousand farmers stormed the county office, freed prisoners, distributed hoarded grain, and demolished the hated reservoir.</p>
+
+        <div class="pull-quote">
+          "We are not rebels against the king. We rise to punish corrupt officials who suck the blood of the people, and to drive out the foreign barbarians who violate our land."
+          <cite>— Jeon Bong-jun, Proclamation of the Peasant Army, March 1894</cite>
+        </div>
+
+        <h2>The Green Bean's Campaign</h2>
+        <p>What began as a local protest exploded into a regional revolution. By April 1894, Jeon commanded tens of thousands of peasant soldiers, armed with bamboo spears, farming tools, and captured government weapons. Despite their primitive armament, they defeated the government's professional soldiers at the Battle of Hwangnyongchon on April 7.</p>
+
+        <p>On April 27, the Tonghak forces captured Jeonju, the provincial capital. It was a stunning victory - peasants had taken a major city. Jeon established a headquarters in the governor's office and began implementing reforms: freeing slaves, burning debt records, redistributing grain to the poor.</p>
+
+        <p>But Jeon was no naive revolutionary. When the desperate Joseon government signed a truce (the Jeonju Peace Agreement of June 11), he accepted. The Tonghak forces withdrew, establishing "Jibgang-so" - peasant self-governance bureaus - throughout Jeolla Province. For a brief moment, it seemed that reform might come peacefully.</p>
+
+        <!-- Map Section -->
+        <div class="map-section">
+          <h3 class="map-title">The Tonghak Rebellion: January - November 1894</h3>
+          <div id="rebellion-map"></div>
+        </div>
+
+        <h2>Foreign Intervention and Final Stand</h2>
+        <p>The peace was shattered by foreign intervention. The Joseon king had requested Chinese military help against the rebels. Japan, determined not to let China dominate Korea, sent its own troops. By July, foreign armies occupied Korean soil, and the war Jeon feared most - not a peasant uprising, but foreign domination - had begun.</p>
+
+        <p>In October 1894, Jeon re-mobilized the peasant army, this time explicitly to resist Japanese forces. It was a hopeless cause. At the Battle of Gongju in November, the peasant army - still armed largely with spears and clubs - faced Japanese troops with modern rifles and artillery. The slaughter was total. Jeon escaped, but most of his army was destroyed.</p>
+
+        <p>For two months, Jeon evaded capture, hiding in the mountains of his home province. He was finally betrayed by an informer in late December and arrested on December 28, 1894.</p>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-box profile-box">
+          <h3>Profile</h3>
+          <ul>
+            <li><strong>Born:</strong> 1855, Gobu County, Jeolla Province</li>
+            <li><strong>Died:</strong> March 29, 1895 (executed, Seoul)</li>
+            <li><strong>Father:</strong> Jeon Chang-hyeok (executed 1892 for protest)</li>
+            <li><strong>Religion:</strong> Tonghak (Eastern Learning)</li>
+            <li><strong>Occupation:</strong> Teacher, traditional healer</li>
+            <li><strong>Nickname:</strong> Nokdu Janggun (Green Bean General)</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>Key Battles</h3>
+          <ul>
+            <li><strong>Gobu (Jan 10):</strong> Initial uprising against corrupt magistrate</li>
+            <li><strong>Hwangnyongchon (Apr 7):</strong> Decisive defeat of government forces</li>
+            <li><strong>Jeonju (Apr 27):</strong> Capture of provincial capital</li>
+            <li><strong>Gongju (Nov 1894):</strong> Final defeat against Japanese-backed forces</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>Tonghak Demands</h3>
+          <ul>
+            <li>Punish corrupt officials</li>
+            <li>Cancel unjust debts</li>
+            <li>Redistribute land to tillers</li>
+            <li>Free slaves</li>
+            <li>Expel foreign influence</li>
+            <li>End class discrimination</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>The Irony</h3>
+          <ul>
+            <li>Jeon wanted to <em>protect</em> Korea from foreign domination</li>
+            <li>His rebellion triggered the foreign intervention he feared</li>
+            <li>The Sino-Japanese War (1894-95) put Japan in control of Korea</li>
+            <li>By 1910, Korea was a Japanese colony</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trial Section - Full Width -->
+    <div class="trial-section">
+      <div class="trial-quote">
+        When questioned at his trial why he had led the rebellion, Jeon replied:<br><br>
+        "I wanted to save the people from misery, to punish the corrupt officials who squeeze them like oil from sesame, and to expel the foreign barbarians who treat our land like their playground. If this is treason, then I am proud to be a traitor."
+      </div>
+      <p class="trial-source">— From the trial records, February 1895</p>
+    </div>
+
+    <!-- Timeline -->
+    <h2 style="font-size: 1.8rem; color: #2d4a5e; margin: 2.5rem 0 1.5rem; text-align: center;">Timeline: The Rise and Fall of the Green Bean General</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-date">1855</span>
+        <p class="timeline-event">Born in Gobu County, Jeolla Province, to a farming family</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1880s</span>
+        <p class="timeline-event">Becomes a village teacher; joins Tonghak movement</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1892</span>
+        <p class="timeline-event">Father executed for leading anti-corruption protests</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">January 10, 1894</span>
+        <p class="timeline-event">Leads Gobu Uprising - storms county office, frees prisoners, destroys reservoir</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">March 1894</span>
+        <p class="timeline-event">Organizes formal Peasant Army; issues proclamations against corruption</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">April 7, 1894</span>
+        <p class="timeline-event">Victory at Battle of Hwangnyongchon - defeats government army</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">April 27, 1894</span>
+        <p class="timeline-event">Captures Jeonju, provincial capital of Jeolla</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">June 11, 1894</span>
+        <p class="timeline-event">Signs Jeonju Peace Agreement; establishes peasant self-governance bureaus</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">June-July 1894</span>
+        <p class="timeline-event">Chinese and Japanese troops land in Korea; foreign intervention begins</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">October 1894</span>
+        <p class="timeline-event">Re-mobilizes peasant army to resist Japanese presence</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">November 1894</span>
+        <p class="timeline-event">Catastrophic defeat at Battle of Gongju; peasant army destroyed</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">December 28, 1894</span>
+        <p class="timeline-event">Captured after two months in hiding; betrayed by informer</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">March 29, 1895</span>
+        <p class="timeline-event">Executed in Seoul alongside other Tonghak leaders</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Legacy Section -->
+  <div class="legacy-section">
+    <h2>Legacy: From Traitor to National Hero</h2>
+    <div class="legacy-grid">
+      <div class="legacy-item">
+        <h4>South Korea</h4>
+        <p>Jeon is celebrated as a proto-democratic hero. The 1980s democracy movement adopted him as a symbol. Statues stand in Jeonju and his hometown. The mung bean pancake (nokdujeon) is named for him.</p>
+      </div>
+      <div class="legacy-item">
+        <h4>North Korea</h4>
+        <p>The DPRK honors Jeon as a leader of peasant class struggle against feudalism and imperialism. His rebellion is taught as a precursor to the socialist revolution.</p>
+      </div>
+      <div class="legacy-item">
+        <h4>Historical Debate</h4>
+        <p>Was he a revolutionary or a reformer? The Jeonju Peace Agreement suggests he wanted reform within the system. Foreign intervention, not rebel intransigence, prevented peaceful resolution.</p>
+      </div>
+      <div class="legacy-item">
+        <h4>The Tragic Irony</h4>
+        <p>Jeon rose up to protect Korea from foreign domination. His rebellion triggered the very intervention he feared. Within 15 years, Korea was a Japanese colony.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- Sources -->
+    <div class="sources">
+      <h3>Sources & Further Reading</h3>
+      <ul>
+        <li>Young, Carl F. <em>Eastern Learning and the Heavenly Way: The Tonghak and Chondogyo Movements</em>. University of Hawai'i Press, 2014.</li>
+        <li>Shin, Yong-ha. "The Revolutionary Movement of the Tonghak Peasant Army of 1894." <em>Korea Journal</em>, 1989.</li>
+        <li>Sources of Korean Tradition, Vol. II, Chapter on Tonghak Uprisings (Course Reading)</li>
+        <li>Cumings, Bruce. <em>Korea's Place in the Sun</em>. W.W. Norton, 2005. Chapter on the late Joseon crisis.</li>
+      </ul>
+    </div>
+
+    <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+    <a href="platebook-14.html" class="back-link" style="margin-left: 1rem;">&larr; Back to Plate 14 Worksheet</a>
+  </div>
+
+  <!-- Leaflet Map Script -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const map = L.map('rebellion-map', { zoomControl: true, attributionControl: false }).setView([35.5, 127], 7);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
+        maxZoom: 12
+      }).addTo(map);
+
+      // Colors
+      const colors = {
+        uprising: '#c0392b',
+        victory: '#27ae60',
+        defeat: '#8e44ad',
+        city: '#2980b9',
+        capital: '#f39c12'
+      };
+
+      // Locations
+      const locations = [
+        { name: "Gobu 고부", lat: 35.45, lng: 126.88, type: "uprising", desc: "Jan 1894: Initial uprising against corrupt magistrate" },
+        { name: "Hwangnyongchon", lat: 35.55, lng: 126.95, type: "victory", desc: "Apr 7: Decisive victory over government forces" },
+        { name: "Jeonju 전주", lat: 35.82, lng: 127.15, type: "victory", desc: "Apr 27: Capture of provincial capital" },
+        { name: "Gongju 공주", lat: 36.45, lng: 127.12, type: "defeat", desc: "Nov 1894: Final defeat against Japanese-backed forces" },
+        { name: "Seoul 서울", lat: 37.57, lng: 126.98, type: "capital", desc: "Capital where Jeon was tried and executed" },
+        { name: "Incheon 인천", lat: 37.46, lng: 126.71, type: "city", desc: "Port where Japanese and Chinese forces landed" }
+      ];
+
+      // Add markers
+      locations.forEach(loc => {
+        const color = colors[loc.type];
+        const radius = loc.type === 'capital' ? 10 : 7;
+
+        L.circleMarker([loc.lat, loc.lng], {
+          radius: radius,
+          fillColor: color,
+          color: '#fff',
+          weight: 2,
+          fillOpacity: 0.9
+        }).addTo(map)
+          .bindPopup(`<b>${loc.name}</b><br>${loc.desc}`);
+      });
+
+      // Route of the rebellion
+      const rebellionRoute = [
+        [35.45, 126.88],  // Gobu
+        [35.55, 126.95],  // Hwangnyongchon
+        [35.82, 127.15],  // Jeonju
+      ];
+
+      const retreatRoute = [
+        [35.82, 127.15],  // Jeonju
+        [36.1, 127.1],    // northward
+        [36.45, 127.12],  // Gongju
+      ];
+
+      L.polyline(rebellionRoute, { color: '#27ae60', weight: 3, dashArray: '10 5' }).addTo(map);
+      L.polyline(retreatRoute, { color: '#c0392b', weight: 3, dashArray: '5 10' }).addTo(map);
+
+      // Legend
+      const legend = L.control({ position: 'bottomright' });
+      legend.onAdd = function() {
+        const div = L.DomUtil.create('div');
+        div.style.cssText = 'background: rgba(255,255,255,0.95); padding: 10px 14px; border-radius: 6px; font-size: 11px; font-family: Inter, sans-serif; box-shadow: 0 2px 6px rgba(0,0,0,0.15);';
+        div.innerHTML = `
+          <div style="font-weight: 600; margin-bottom: 6px;">Legend</div>
+          <div style="display: flex; align-items: center; gap: 6px; margin: 3px 0;"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${colors.uprising};"></span> Initial Uprising</div>
+          <div style="display: flex; align-items: center; gap: 6px; margin: 3px 0;"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${colors.victory};"></span> Peasant Victory</div>
+          <div style="display: flex; align-items: center; gap: 6px; margin: 3px 0;"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${colors.defeat};"></span> Final Defeat</div>
+          <div style="display: flex; align-items: center; gap: 6px; margin: 3px 0;"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${colors.capital};"></span> Capital (Seoul)</div>
+        `;
+        return div;
+      };
+      legend.addTo(map);
+    });
+  </script>
+
+</body>
+</html>

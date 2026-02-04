@@ -330,7 +330,10 @@ var plates = [
 
 var currentPlateIndex = 0;
 var availableWorksheets = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]; // All plates have worksheets
-var availableEnrichment = [7, 8]; // Plates with enrichment data (expand as you generate more)
+// Plates with enrichment - can be static HTML or data-driven JSON
+var enrichmentStatic = {8: 'print/plate-8-enrichment.html'}; // Static HTML files
+var enrichmentDataDriven = [7]; // Plates with enrichment/*.json data
+var availableEnrichment = Object.keys(enrichmentStatic).map(Number).concat(enrichmentDataDriven);
 var postClassNotes = {9: 'print/post-class-notes-9.html', 10: 'print/post-class-notes-10.html'}; // Plates with post-class notes
 
 function openPrintWorksheet() {
@@ -343,7 +346,12 @@ function openPrintWorksheet() {
 function openEnrichment() {
   var p = plates[currentPlateIndex];
   if (p && p.plate) {
-    window.open('print/plate-' + p.plate + '-enrichment.html', '_blank');
+    // Check for static HTML first, then fall back to data-driven
+    if (enrichmentStatic[p.plate]) {
+      window.open(enrichmentStatic[p.plate], '_blank', 'noopener,noreferrer');
+    } else {
+      window.open('enrichment.html?plate=' + p.plate, '_blank', 'noopener,noreferrer');
+    }
   }
 }
 

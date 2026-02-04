@@ -1,249 +1,207 @@
 {
   "plate": 13,
   "topic": "Taiping and other rebellions",
-  "date": "2026-02-04",
-  "generatedAt": "2026-01-04T17:00:00.000Z",
+  "date": "2026-02-05",
+  "generatedAt": "2026-02-03T20:00:00.000Z",
   "readings": [
-    "The Crisis Within (Spence, Search for Modern China)",
-    "Heavenly Kingdom of Taipings (Sources of Chinese Tradition)"
+    "The Heavenly Kingdom of the Taipings (Sources of Chinese Tradition)"
   ],
   "readingAnalyses": [
     {
-      "title": "The Crisis Within",
-      "author": "Jonathan Spence",
-      "source": "The Search for Modern China",
-      "pages": "chapter",
-      "type": "secondary",
-      "summary": "Spence contextualizes the Taiping Rebellion within Qing China's compound crisis: the aftermath of Opium War defeat, population pressure, administrative decay, and ethnic tension between Manchu rulers and Han majority. The rebellion wasn't an isolated event but the largest of numerous uprisings that shook China from the 1850s through the 1870s—Nian in the north, Muslim rebellions in Yunnan and the northwest.\n\nCrucially, Spence shows that the Qing survived not through imperial military strength but through provincial initiative. Zeng Guofan's Hunan Army and Li Hongzhang's Anhui Army—raised, funded, and commanded by Chinese (Han) officials—defeated the Taiping. This decentralization saved the dynasty short-term but created long-term problems: regional armies, provincial power, and ultimately the warlordism that would plague China into the 20th century.\n\nThe comparison with Meiji Japan is implicit but devastating: while Japan was unifying under central reform leadership, China was fragmenting under provincial strongmen. Same decade, opposite trajectories.",
-      "keyQuotes": [
-        {
-          "quote": "For a generation the bones of the innocent have lain unburied on the plains.",
-          "page": "VERIFY from course PDF",
-          "verificationPath": "Course PDF (Spence): https://drive.google.com/file/d/1DQ6QnVtXRuQ6l-txpOrrXt2XctrHlkZt/view"
-        },
-        {
-          "quote": "The Qing dynasty survived, but the world that emerged from the rebellions was fundamentally different.",
-          "page": "VERIFY from course PDF",
-          "verificationPath": "Course PDF (Spence): https://drive.google.com/file/d/1DQ6QnVtXRuQ6l-txpOrrXt2XctrHlkZt/view"
-        },
-        {
-          "quote": "Regional armies, initially raised to suppress rebellion, became permanent features of Chinese politics.",
-          "page": "VERIFY from course PDF",
-          "verificationPath": "Course PDF (Spence): https://drive.google.com/file/d/1DQ6QnVtXRuQ6l-txpOrrXt2XctrHlkZt/view"
-        }
-      ],
-      "thematicExamples": [
-        "Zeng Guofan as Confucian hero/regional warlord - his army saved the dynasty but also weakened central authority",
-        "Multiple simultaneous rebellions (Taiping, Nian, Muslim) revealing systemic rather than isolated crisis",
-        "Self-Strengthening Movement as inadequate response - reforms too limited to address underlying problems"
-      ],
-      "realLifeConnections": [
-        "Contemporary concerns about central vs. regional authority in China echo 19th-century patterns",
-        "The 'century of humiliation' narrative often emphasizes foreign aggression while downplaying internal rebellion",
-        "State capacity questions - can a government reform itself while fighting civil war?"
-      ]
-    },
-    {
-      "title": "Heavenly Kingdom of Taipings",
-      "author": "Hong Xiuquan, Yang Xiuqing, et al.",
-      "source": "Sources of Chinese Tradition, Vol. 2",
-      "pages": "SCT",
+      "title": "The Heavenly Kingdom of the Taipings",
+      "author": "Hong Xiuquan et al.",
+      "source": "Sources of Chinese Tradition, Vol. 2, Chapter 29",
+      "pages": "pp. 213-230",
       "type": "primary",
-      "summary": "The Taiping primary sources reveal a movement far more radical than the Qing it challenged. Hong Xiuquan's religious visions—he believed himself the younger brother of Jesus Christ, sent to establish God's kingdom on earth—combined heterodox Christianity with Chinese apocalyptic traditions. The Taiping land system promised equal distribution of all property: 'There shall be no inequality, and no person shall be without food or clothing.'\n\nThe movement's radical gender policies—women could serve in the army, foot-binding was banned, separate quarters for men and women enforced—challenged Confucian patriarchy more fundamentally than anything until the 20th century. Yet these ideals were often contradicted by practice: Hong maintained a harem; discipline collapsed; the 'Heavenly Kingdom' became as brutal as the empire it opposed.\n\nThe Taiping challenge frightens precisely because it shows that alternatives to the existing order could be imagined—and nearly succeeded. Twenty to thirty million dead testify to how seriously the Qing took this threat.",
+      "summary": "This collection of Taiping primary documents reveals a revolutionary movement that fused heterodox Christianity with radical Chinese egalitarianism. Hong Xiuquan, a failed examination candidate from the Hakka minority, believed himself Jesus Christ's younger brother, commissioned by God to establish Heaven on Earth. The documents include the Book of Heavenly Commandments (basic religious creed), A Primer in Verse (moral teaching), The Land System of the Heavenly Kingdom (radical economic program), and The Principles of the Heavenly Nature (1854 restatement of creed after morale declined).",
       "keyQuotes": [
         {
-          "quote": "The Heavenly Father, the Supreme Lord and Great God, is the true god, the one God.",
-          "page": "VERIFY from course PDF",
-          "verificationPath": "Course PDF (SCT): https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
+          "quote": "The Lord God is the universal Father of all in the mortal world. Monarchs are his able children, the good his filial children, the commoners his ignorant children, and the violent and oppressive his disobedient children.",
+          "page": "p. 219"
         },
         {
-          "quote": "All the land in the empire shall be farmed jointly by the people of the empire... There shall be no inequality.",
-          "page": "VERIFY from course PDF",
-          "verificationPath": "Course PDF (SCT): https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
+          "quote": "The land is for all to till, the food for all to eat, the clothes for all to wear, and money for all to spend. Inequality shall exist nowhere; none shall suffer from hunger or cold.",
+          "page": "p. 225"
         },
         {
-          "quote": "The customs of the demons (Manchus) must be completely eliminated.",
-          "page": "VERIFY from course PDF",
-          "verificationPath": "Course PDF (SCT): https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
+          "quote": "All are brothers within the four seas.",
+          "page": "p. 229"
         }
       ],
       "thematicExamples": [
-        "Hong Xiuquan's visions - failed examination candidate becomes messianic leader, showing how blocked mobility could radicalize",
-        "Land system documents - most radical redistribution proposal until Communist land reform",
-        "Anti-Manchu nationalism - Taiping explicitly framed Qing as foreign 'demon' occupation"
+        "Hong Xiuquan's visions after failing the civil service examinations: 'a fatherly old man appeared to him and complained that men, instead of worshiping him, were serving demons' — shows how blocked social mobility could radicalize individuals",
+        "The Taiping Land System: 'The distribution of all land is to be based on the number of persons in each family, regardless of sex' — most radical redistribution proposal until Communist land reform",
+        "Gender separation enforced: 'men must have male quarters and women must have female quarters; only thus can we be dignified' — revealing tension between radical equality rhetoric and strict social control",
+        "The 'Sacred Treasury' system: 'Personal property had to be turned over to a communal treasury... religious observances were strictly enforced' — totalitarian communism avant la lettre"
       ],
       "realLifeConnections": [
-        "Later Chinese revolutionaries (Sun Yat-sen, Mao) would claim Taiping as precursor - debates continue about this lineage",
-        "Religious movements with radical social programs continue globally - utopian promise and violent reality",
-        "The question of whether Christianity is 'foreign' to China remains contested today"
+        "Hong Xiuquan studied briefly with Reverend Issachar J. Roberts, an American Southern Baptist missionary — shows early American evangelical influence in China, with unexpected revolutionary consequences",
+        "The Taiping's blend of Christianity and social revolution anticipates 20th-century liberation theology movements",
+        "Mao Zedong would later praise the Taiping as proto-revolutionaries — the CCP claims this lineage while editing out the Christianity",
+        "Contemporary debates about whether Christianity is 'foreign' to China echo Taiping-era controversies"
       ]
     }
   ],
-  "overallSynthesis": "The Taiping Rebellion and its suppression reveal China's compound crisis at mid-century. The movement itself combined heterodox Christianity, radical egalitarianism, anti-Manchu nationalism, and millenarian fervor—a volatile mixture that appealed to millions of desperate Chinese. The Taiping land system promised what no dynasty had delivered: genuine economic equality.\n\nYet the rebellion's failure is equally instructive. The Taiping couldn't govern effectively; their 'Heavenly Kingdom' descended into factionalism, indiscipline, and atrocity. The Qing survived not through strength but through the initiative of provincial officials like Zeng Guofan, who built new armies, adopted some Western weapons, and defended Confucian civilization against Christian heterodoxy.\n\nThe contrast with Japan is stark. While Japan was centralizing power under Meiji reformers, China was decentralizing—regional armies, provincial strongmen, weakened central authority. Both countries faced existential crises in the 1850s-60s; their different responses shaped the next century. Japan would revise its unequal treaties, defeat China in war (1895), and become an imperial power. China would stagger from crisis to crisis until the 1911 revolution finally ended the dynasty.\n\nThe Taiping also raises uncomfortable questions about Christianity, imperialism, and 'modernity.' Western missionaries preached a gospel that Hong Xiuquan transformed into revolutionary ideology. Was Christianity a liberating force or another form of cultural imperialism? The Taiping's radical gender policies and land reform anticipated later revolutionary programs—but so did their violence and authoritarianism.",
-  "executiveSummary": "The Taiping Rebellion (1850-1864) was the deadliest civil war in human history, with estimates of 20-30 million deaths. Hong Xiuquan, a failed examination candidate who believed himself Jesus Christ's younger brother, led a massive uprising that nearly toppled the Qing Dynasty. The Taiping movement combined heterodox Christianity, radical social reform (land redistribution, gender equality, end of foot-binding), and millenarian fervor.\n\nThe Qing ultimately suppressed the rebellion not through imperial armies but through provincial forces led by Chinese (Han) officials like Zeng Guofan. This had lasting consequences: provincial power increased, Manchu control weakened, and regional armies became the real military force. The same period saw numerous other uprisings—the Nian, Muslim rebellions in the northwest and southwest—revealing deep systemic crisis. While Japan was transforming under Meiji, China was hemorrhaging.",
+  "overallSynthesis": "The Taiping Rebellion (1850-1864) was history's deadliest civil war, with 20-30 million dead—more than World War I. The primary sources reveal a movement far more complex than simple 'rebellion': it was a syncretic religious revolution combining heterodox Christianity with Chinese millenarian traditions, wrapped in a radical social program that promised genuine equality.\n\nHong Xiuquan's story is the story of blocked ambition turned apocalyptic. A Hakka minority member who repeatedly failed the civil service examinations, Hong reinterpreted Christian missionary tracts through the lens of Chinese cosmology and his own feverish visions. The result: he believed himself the younger brother of Jesus Christ, sent to establish God's kingdom on earth and destroy 'demon' worship (including Confucianism and Buddhism).\n\nThe Taiping documents show both inspiring idealism and chilling totalitarianism. 'The land is for all to till, the food for all to eat' sounds revolutionary. But so does: 'Nobody should keep private property. All things should be presented to the Supreme Ruler.' The movement promised gender equality while rigidly separating men and women. It condemned the Qing as foreign 'demons' while establishing an equally authoritarian theocracy.\n\nThe Qing ultimately survived not through imperial military strength but through provincial initiative. Zeng Guofan's Hunan Army—raised, funded, and commanded by Han Chinese officials—defeated the Taiping. This saved the dynasty but fragmented central authority: regional armies, provincial power, and eventually warlordism. While Japan centralized under Meiji reformers, China decentralized under regional strongmen.",
+  "executiveSummary": "The Taiping Rebellion (1850-1864) killed 20-30 million people—more than WWI. Hong Xiuquan, a failed exam candidate who believed himself Jesus's younger brother, led a radical movement combining heterodox Christianity with utopian socialism. The Taiping Land System promised: 'The land is for all to till, the food for all to eat... Inequality shall exist nowhere.' But the 'Heavenly Kingdom' became authoritarian: all property surrendered to the Sacred Treasury, strict gender segregation, fanatical discipline. The Qing survived through provincial armies led by Zeng Guofan—which saved the dynasty but fragmented central power. Compare to Japan: same decade, opposite trajectories. Japan centralized; China fragmented.",
   "keywords": [
     {
       "term": "Taiping Tianguo (太平天國)",
-      "definition": "'Heavenly Kingdom of Great Peace'—Hong Xiuquan's rebel state",
-      "relevance": "Controlled much of central China for over a decade"
+      "definition": "'Heavenly Kingdom of Great Peace'—Hong Xiuquan's rebel state, meant to fulfill 'the highest ideals of the Chinese political tradition' plus Christian Kingdom of Heaven",
+      "relevance": "Name itself reveals syncretic fusion: Chinese concept of 'Great Peace' (taiping) plus Christian theocracy"
     },
     {
       "term": "Hong Xiuquan (洪秀全)",
-      "definition": "Taiping leader who believed himself Jesus's younger brother",
-      "relevance": "His visions launched the rebellion; shows Christianity's complex role in China"
+      "definition": "Hakka peasant, failed examination candidate, who became convinced he was Jesus Christ's younger brother after reading Christian tracts",
+      "relevance": "His story shows how blocked social mobility + foreign ideas could produce revolutionary ideology"
+    },
+    {
+      "term": "God Worshipers (拜上帝會)",
+      "definition": "Hong's early religious movement in Guangxi, the organizational base that became the Taiping army",
+      "relevance": "Shows how religious community became military force under pressure"
+    },
+    {
+      "term": "Sacred Treasury (聖庫)",
+      "definition": "Communal treasury where all personal property was surrendered; 'Nobody should keep private property'",
+      "relevance": "Proto-communist economic organization; Zeng Guofan noted farmers couldn't keep their own produce"
     },
     {
       "term": "Zeng Guofan (曾國藩)",
-      "definition": "Confucian scholar-official who organized the Hunan Army to suppress Taiping",
-      "relevance": "Model of 'self-strengthening'; regional armies he built weakened central authority"
-    },
-    {
-      "term": "Nian Rebellion",
-      "definition": "Northern uprising (1851-1868) concurrent with Taiping",
-      "relevance": "Shows Taiping wasn't isolated; multiple crises overwhelmed Qing"
-    },
-    {
-      "term": "Self-Strengthening Movement",
-      "definition": "Post-Taiping effort to modernize military and industry while preserving Confucian essence",
-      "relevance": "China's response to crisis; 'Chinese learning for essence, Western learning for use'"
+      "definition": "Confucian scholar-official who raised the Hunan Army to defeat the Taiping; reported 'not one surrendered' at Nanjing's fall",
+      "relevance": "His regional army saved Qing but created pattern of provincial military power that weakened center"
     }
   ],
   "keyPassages": [
     {
-      "quote": "The Heavenly Father, the Supreme Lord and Great God, is the true god, the one God. There is no other beside him.",
-      "source": "Taiping religious text, Sources of Chinese Tradition",
-      "page": "VERIFY from course PDF",
-      "verificationPath": "https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
+      "quote": "Hong Xiuquan (1813-1864), the leader of this rebellion that swept up like a whirlwind from the southernmost regions of China, was the son of a peasant family belonging to the Hakka minority group... Though repeatedly unsuccessful [at examinations], on one of these visits to Guangzhou (1836) Hong heard a Christian missionary preach and picked up some religious tracts.",
+      "source": "Sources of Chinese Tradition",
+      "page": "p. 213"
     },
     {
-      "quote": "All the land in the empire shall be farmed jointly by the people of the empire... There shall be no inequality.",
-      "source": "Taiping Land System, Sources of Chinese Tradition",
-      "page": "VERIFY from course PDF",
-      "verificationPath": "https://drive.google.com/file/d/1xX84GfwsR1uXWx12DhztJRKmZRiuQOdC/view"
+      "quote": "The land is for all to till, the food for all to eat, the clothes for all to wear, and money for all to spend. Inequality shall exist nowhere; none shall suffer from hunger or cold.",
+      "source": "The Land System of the Heavenly Kingdom",
+      "page": "p. 225"
     },
     {
-      "quote": "For a generation the bones of the innocent have lain unburied on the plains.",
-      "source": "Spence, The Search for Modern China",
-      "page": "VERIFY from course PDF",
-      "verificationPath": "https://drive.google.com/file/d/1DQ6QnVtXRuQ6l-txpOrrXt2XctrHlkZt/view"
+      "quote": "When finally overwhelmed by the Manchu forces, [the Taipings] gave up their lives in a great slaughter rather than submit. Zeng Guofan, leader of the victorious armies, is the authority for the statement that not one surrendered.",
+      "source": "Sources of Chinese Tradition",
+      "page": "p. 217"
+    },
+    {
+      "quote": "The farmer cannot till his own land and [simply] pay taxes on it; the land is all considered to be the land of the Heavenly King. The merchant cannot engage in trade for himself and profit thereby; all goods are considered to be the goods of the Heavenly King.",
+      "source": "Zeng Guofan, quoted in Sources of Chinese Tradition",
+      "page": "p. 224"
     }
   ],
   "peopleplacesthings": {
     "people": [
-      "Hong Xiuquan - Taiping leader",
-      "Zeng Guofan - Confucian general who suppressed rebellion",
-      "Li Hongzhang - Zeng's protégé, led Self-Strengthening"
+      "Hong Xiuquan — Hakka peasant, failed exams, believed himself Jesus's younger brother, Taiping 'Heavenly King'",
+      "Yang Xiuqing — Eastern King, chief military commander, claimed direct revelation from God, later assassinated",
+      "Zeng Guofan — Confucian scholar who raised Hunan Army; model of 'self-strengthening'; his success fragmented Qing power"
     ],
     "places": [
-      "Thistle Mountain (紫荊山) - God Worshippers base 1844-50",
-      "Jintian - where the uprising began Jan 1851",
-      "Nanjing (Tianjing) - Taiping capital 1853-64"
+      "Guangxi — remote southwestern province where God Worshipers organized; rebellion began at Jintian (January 1851)",
+      "Nanjing (Tianjing) — Taiping 'Heavenly Capital' 1853-1864; fell after Hong's suicide and mass slaughter",
+      "Wuchang — captured February 1853; gateway to Yangzi valley conquest"
     ],
     "things": [
-      "Taiping Christianity - heterodox mix with Chinese elements",
-      "Hunan Army - regional force that defeated Taiping",
-      "Self-Strengthening - modernization effort after rebellion"
+      "Book of Heavenly Commandments — basic creed; Ten Commandments + bans on opium, gambling, foot-binding",
+      "Land System of the Heavenly Kingdom — radical redistribution: 'Inequality shall exist nowhere'",
+      "Hunan Army — Zeng Guofan's regional force; saved dynasty but created provincial military power"
     ]
   },
   "keyQuestions": [
     {
-      "question": "Was the Taiping Rebellion a 'proto-revolutionary' movement or a religious cult?",
-      "basicAnswer": "Both. Radical land reform + gender equality + Jesus's brother claiming heaven's mandate.",
-      "midAnswer": "Why did MILLIONS join? That's the real question. They weren't crazy — they were desperate.",
-      "advancedAnswer": "Mao claimed Taiping as proto-communist but edited out the Christianity. Which Taiping is 'real'?"
+      "question": "Hong Xiuquan: religious visionary or dangerous madman? The text says 'To some Hong might have appeared to be the victim of his own fevered imaginings, but others were impressed by his quiet earnestness.' What made millions follow him?",
+      "basicAnswer": "Failed exams + Christian tracts + visions = revolutionary ideology. But he wasn't alone: famine, defeat in Opium War, taxation, lawlessness made millions desperate.",
+      "midAnswer": "The God Worshipers succeeded because they 'proved better organized and possessed of a greater sense of purpose than most' in a collapsing society. Hong's visions provided meaning.",
+      "advancedAnswer": "The text notes Hong's 'ability to persuade members of his own family of the rightness of the cause' was 'most significant from the Chinese point of view.' Family loyalty validated belief."
     },
     {
-      "question": "Why did internal rebellion do more damage to China than foreign aggression?",
-      "basicAnswer": "Opium War: ~20,000 dead. Taiping: 20-30 MILLION. But they're connected.",
-      "midAnswer": "Japan reformed 1868-90 while China fought Taiping + Nian + Muslim rebellions simultaneously.",
-      "advancedAnswer": "'Internal vs. external' is false. Opium War CREATED conditions for Taiping. Can't separate them."
+      "question": "'The land is for all to till... Inequality shall exist nowhere.' But also: 'Nobody should keep private property.' Is this liberation or totalitarianism?",
+      "basicAnswer": "Both. Radical equality in theory, total state control in practice. Zeng Guofan: farmers couldn't keep produce, merchants couldn't profit.",
+      "midAnswer": "The Land System promised everything: equal land, communal support, no inequality. But 'all things should be presented to the Supreme Ruler.' Liberation requires submission.",
+      "advancedAnswer": "The text notes this 'foreshadows aspects of the Chinese Communist movement' while 'echoing reformers and rebels of the past.' Same pattern: utopian promise, authoritarian reality."
     },
     {
-      "question": "How did the Taiping suppression change China's political structure?",
-      "basicAnswer": "Provincial armies replaced imperial forces. Han generals gained power. Center weakened.",
-      "midAnswer": "Suppression SAVED the dynasty but DESTROYED centralized power. Zeng's army loyal to HIM, not emperor.",
-      "advancedAnswer": "Japan's domains concentrated power. China's fragmented it. Same structure, opposite outcomes. Why?"
+      "question": "Why did internal rebellion kill more Chinese than foreign aggression? Opium War: ~20,000 dead. Taiping: 20-30 MILLION.",
+      "basicAnswer": "Foreign powers wanted trade access, not conquest. Internal rebellion threatened the entire social order—fight to the death.",
+      "midAnswer": "The Taiping weren't just rebels—they were religious revolutionaries who 'insisted upon' their teachings with 'intensity and sectarian fanaticism.' And 'not one surrendered.'",
+      "advancedAnswer": "But they're connected: 'Famine and economic depression... burdensome taxation, the decline in dynastic prestige as a result of the defeat at the hands of the British' all contributed to Taiping rise."
     },
     {
-      "question": "How does Taiping change how we compare Japan and China?",
-      "basicAnswer": "Timeline: Taiping 1850-64, Meiji 1868. Japan reformed AFTER China's civil war ended.",
-      "midAnswer": "Could ANY government reform while losing 20-30 million people? That's not 'failure' — that's survival.",
-      "advancedAnswer": "'Japan succeeded, China failed' ignores that China was fighting history's deadliest civil war during Japan's reform window."
+      "question": "The Qing survived but 'the world that emerged from the rebellions was fundamentally different.' How?",
+      "basicAnswer": "Provincial armies replaced imperial forces. Han generals like Zeng Guofan gained power. Central authority weakened.",
+      "midAnswer": "The text lists 'Zeng Guofan, Zuo Zongtang, and Li Hongzhang, who were to play a dominant role in the subsequent history of the dynasty.' Regional strongmen, not emperors.",
+      "advancedAnswer": "Compare Japan: domains concentrated power in restoration coalition. China: suppression 'saved' dynasty but 'destroyed' centralized power. Same crisis, opposite outcomes."
     }
   ],
   "timeline": [
     {
-      "date": "1839-42",
-      "event": "First Opium War — Qing defeated, Treaty of Nanjing"
+      "date": "1836",
+      "event": "Hong Xiuquan hears Christian missionary preach in Guangzhou, picks up religious tracts"
     },
     {
       "date": "1843",
-      "event": "Hong Xiuquan has visions after reading Christian pamphlet"
+      "event": "Hong reads tracts carefully after another exam failure; understands his visions as divine commission"
     },
     {
-      "date": "1844-50",
-      "event": "God Worshippers gather at Thistle Mountain (紫荊山)"
+      "date": "Late 1840s",
+      "event": "God Worshipers gather in Guangxi; 'famine and economic depression' fuel recruitment"
     },
     {
-      "date": "1851",
-      "event": "Taiping uprising begins at Jintian, Guangxi"
+      "date": "Jan 1851",
+      "event": "Taiping uprising begins at Jintian; Hong proclaims Heavenly Kingdom of Great Peace"
     },
     {
-      "date": "1853",
-      "event": "Taiping capture Nanjing, make it capital (Tianjing)"
-    },
-    {
-      "date": "1856-60",
-      "event": "Second Opium War — more treaty ports, legalized opium"
+      "date": "March 1853",
+      "event": "Taiping capture Nanjing, rename it 'Heavenly Capital' (Tianjing)"
     },
     {
       "date": "1856",
-      "event": "Internal purges weaken Taiping leadership"
+      "event": "Internal purges: Yang Xiuqing assassinated, Northern King murdered — leadership decimated"
     },
     {
-      "date": "1860",
-      "event": "Zeng Guofan's Hunan Army surrounds Nanjing"
+      "date": "June 1864",
+      "event": "Hong Xiuquan dies (likely suicide); body found 'draped in imperial yellow, in a sewer under the palace'"
     },
     {
-      "date": "1864",
-      "event": "Nanjing falls; Hong Xiuquan dies; rebellion ends"
+      "date": "July 1864",
+      "event": "Nanjing falls to Zeng Guofan's forces; 'not one surrendered' — mass slaughter"
     }
   ],
   "connections": {
-    "fromPrevious": "Plate 12 showed Japan's Meiji transformation. But look at the TIMELINE: Taiping Rebellion 1850-1864, Meiji Restoration 1868. Japan transformed AFTER China's civil war ended, while China was still recovering from losing 20-30 million people. This isn't about 'Japan succeeded, China failed' — it's about WHEN and UNDER WHAT CONDITIONS reform was attempted.",
-    "toNext": "Plate 14 examines the Tonghak Rebellion in Korea — another millenarian uprising against a weakening dynasty, but with very different international consequences.",
-    "broaderThemes": "Taiping shows: (1) Internal crisis can be more destructive than imperialism (Opium War killed ~20,000; Taiping killed 20-30 million). (2) 'Western' ideas (Christianity) were transformed in Chinese contexts. (3) The Japan/China comparison must account for the fact that China was fighting for survival during Japan's reform window."
+    "fromPrevious": "Plate 12 covered the Meiji Transformation (1868+). But note the TIMELINE: Taiping Rebellion 1850-1864, Meiji Restoration 1868. Japan transformed AFTER China's civil war ended. China was losing 20-30 million people during what would have been its 'reform window.' The comparison isn't about capability—it's about circumstance.",
+    "toNext": "Plate 14 examines the Tonghak Rebellion in Korea (1894)—another millenarian uprising combining local religion ('Eastern Learning') with social reform demands. But Tonghak triggered Japanese intervention, leading to the Sino-Japanese War. Different scale, but same pattern: religious movement + social crisis + foreign pressure.",
+    "broaderThemes": "The Taiping complicates every simple narrative: (1) Christianity as 'Western imperialism'? Hong made it revolutionary Chinese ideology. (2) 'China failed to modernize'? Hard to reform while fighting history's deadliest civil war. (3) 'Confucian civilization was stagnant'? It took a Confucian general (Zeng Guofan) to save it—while fragmenting the state he served."
   },
   "nextPreview": {
     "plate": 14,
     "topic": "Tonghak Rebellion",
-    "preview": "Korea's Tonghak ('Eastern Learning') movement paralleled Taiping: millenarian religion, social reform demands, violent suppression. But Tonghak would trigger Japanese intervention.",
-    "readings": ["Tonghak Uprisings (SKT)", "Revolutionary Uprising of Tonghak Peasant Army"]
+    "preview": "Korea's Tonghak ('Eastern Learning') movement paralleled Taiping in some ways: syncretic religion, social reform demands, peasant base. But the consequences were different—Tonghak triggered Japanese intervention and the Sino-Japanese War of 1894-95.",
+    "readings": ["The Tonghak Rebellion (Sources of Korean Tradition)"]
   },
   "teachingNotes": [
-    "The death toll is almost incomprehensible—more than WWI. Spend time making this real.",
-    "Hong Xiuquan's Christianity is strange but important: shows how Western ideas were transformed in Chinese contexts.",
-    "Taiping gender reforms (end of foot-binding, women soldiers) were radical—discuss why Confucian elites found this threatening.",
-    "Connect to Chinese Communist narratives: Mao praised Taiping as proto-revolutionary. Why?",
-    "Map the rebellion's geographic spread—helps visualize the scale of destruction.",
-    "THIS IS THE KEY PLATE FOR JAPAN/CHINA COMPARISON:",
-    "  - Taiping: 1850-1864. Meiji Restoration: 1868. Japan transformed AFTER China's civil war ended.",
-    "  - Ask students: Could ANY government reform while losing 20-30 million people?",
-    "  - The 'Self-Strengthening Movement' happened while fighting multiple rebellions. That's not 'failure to learn' — that's triage.",
-    "  - Zeng Guofan's regional armies saved Qing but FRAGMENTED authority. Japan's domain system CONCENTRATED power in restoration coalition. Same structural feature (regional power), opposite effects.",
-    "  - Frame for discussion: 'China didn't fail to modernize; China was fighting for survival while Japan was modernizing.'"
+    "THE DEATH TOLL IS INCOMPREHENSIBLE: 20-30 million dead. More than WWI. Spend time making this real — maps, comparisons, contemporary accounts.",
+    "HONG XIUQUAN'S BACKSTORY: Failed exams → read Christian tracts → feverish visions → believes he's Jesus's brother. This is a STORY. Tell it.",
+    "THE QUOTES ARE POWERFUL: 'The land is for all to till... Inequality shall exist nowhere' vs. 'Nobody should keep private property.' Let students wrestle with this tension.",
+    "ZENG GUOFAN'S TESTIMONY: 'Not one surrendered.' What does this tell us about Taiping commitment? About the nature of the conflict?",
+    "THE JAPAN COMPARISON IS KEY: Taiping 1850-1864, Meiji 1868. Japan reformed AFTER China's civil war. Ask: 'Could ANY government reform while losing 20-30 million people?'",
+    "CHRISTIAN MISSIONARIES' REACTION: The text notes early Western sympathy turned to disillusionment. 'The fanaticism, ignorance, and arrogant pretensions of the revolutionaries... quickly dispelled any illusions.'",
+    "MAO'S APPROPRIATION: Later CCP claimed Taiping as proto-communist. But edited out the Christianity. Which Taiping is 'real'?",
+    "VISUAL: Show map of Taiping territory at maximum extent — they controlled the richest regions of China for over a decade."
   ],
   "map": {
     "center": [28, 114],
     "zoom": 5,
     "locations": [
       {
-        "name": "Thistle Mountain",
-        "nameChinese": "紫荊山",
-        "lat": 23.45,
-        "lng": 109.95,
+        "name": "Guangzhou",
+        "nameChinese": "廣州",
+        "lat": 23.13,
+        "lng": 113.26,
         "type": "origin",
-        "description": "God Worshippers base 1844-1850; where Hong gathered followers"
+        "description": "Where Hong heard missionaries preach (1836) and later studied with Rev. Roberts"
       },
       {
         "name": "Jintian",
@@ -254,38 +212,6 @@
         "description": "Where Taiping uprising began, January 1851"
       },
       {
-        "name": "Yongan",
-        "nameChinese": "永安",
-        "lat": 24.20,
-        "lng": 110.52,
-        "type": "battle",
-        "description": "First Taiping capital 1851-52; Hong proclaimed Heavenly King"
-      },
-      {
-        "name": "Guilin",
-        "nameChinese": "桂林",
-        "lat": 25.28,
-        "lng": 110.30,
-        "type": "battle",
-        "description": "Taiping passed through 1852 heading north"
-      },
-      {
-        "name": "Changsha",
-        "nameChinese": "長沙",
-        "lat": 28.23,
-        "lng": 112.94,
-        "type": "city",
-        "description": "Besieged but not taken; Zeng Guofan's Hunan Army base"
-      },
-      {
-        "name": "Yuezhou",
-        "nameChinese": "岳州",
-        "lat": 29.37,
-        "lng": 113.09,
-        "type": "battle",
-        "description": "Captured 1852 on Dongting Lake"
-      },
-      {
         "name": "Wuchang",
         "nameChinese": "武昌",
         "lat": 30.55,
@@ -294,20 +220,12 @@
         "description": "Captured February 1853; gateway to the Yangzi"
       },
       {
-        "name": "Anqing",
-        "nameChinese": "安慶",
-        "lat": 30.51,
-        "lng": 117.05,
-        "type": "battle",
-        "description": "Major Taiping stronghold on the Yangzi"
-      },
-      {
         "name": "Nanjing (Tianjing)",
         "nameChinese": "南京/天京",
         "lat": 32.05,
         "lng": 118.77,
         "type": "capital",
-        "description": "Taiping capital 1853-1864; 'Heavenly Capital'"
+        "description": "Taiping 'Heavenly Capital' 1853-1864; 'captured with our hands hanging at our sides'"
       },
       {
         "name": "Shanghai",
@@ -315,7 +233,7 @@
         "lat": 31.22,
         "lng": 121.47,
         "type": "city",
-        "description": "Treaty port defended by foreign forces and Qing"
+        "description": "Treaty port; Taiping threat brought 'active intervention of the West against them'"
       },
       {
         "name": "Beijing",
@@ -323,21 +241,16 @@
         "lat": 39.92,
         "lng": 116.38,
         "type": "capital",
-        "description": "Qing capital; never reached by Taiping"
+        "description": "Qing capital; Taiping expedition 'made striking gains initially but was eventually... defeated'"
       }
     ],
     "route": {
-      "name": "Taiping Forces 1850-1853",
+      "name": "Taiping Advance 1850-1853",
       "color": "#e63946",
       "points": [
-        [23.45, 109.95],
         [23.60, 110.11],
-        [24.20, 110.52],
-        [25.28, 110.30],
         [28.23, 112.94],
-        [29.37, 113.09],
         [30.55, 114.35],
-        [30.51, 117.05],
         [32.05, 118.77]
       ]
     }

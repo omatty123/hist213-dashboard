@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Platebook - Plate 13: Taiping and other rebellions</title>
+  <title>Platebook - Plate 13: Taiping and Other Rebellions</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     @page { size: A4; margin: 8mm; }
@@ -43,6 +43,21 @@
       font-weight: 700;
       font-size: 12px;
     }
+
+    /* Readings row */
+    .readings-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+      font-size: 9px;
+    }
+    .reading-item {
+      flex: 1;
+      border: 1px solid #aaa;
+      padding: 3px 6px;
+      background: #f9f9f9;
+    }
+    .reading-item strong { font-size: 9px; }
 
     /* Section labels */
     .label {
@@ -93,7 +108,7 @@
     }
     .timeline-box {
       border: 1px solid #aaa;
-      padding: 6px 16px;
+      padding: 6px 12px;
       height: 78px;
       position: relative;
       background-color: #fefdfb;
@@ -101,16 +116,16 @@
     .timeline-line {
       position: absolute;
       bottom: 24px;
-      left: 16px;
-      right: 16px;
+      left: 12px;
+      right: 12px;
       height: 2px;
       background: #333;
     }
     .timeline-ticks {
       position: absolute;
       bottom: 24px;
-      left: 16px;
-      right: 16px;
+      left: 12px;
+      right: 12px;
       display: flex;
       justify-content: space-between;
     }
@@ -122,42 +137,58 @@
     .timeline-labels {
       position: absolute;
       bottom: 32px;
-      left: 16px;
-      right: 16px;
+      left: 12px;
+      right: 12px;
       display: flex;
       justify-content: space-between;
-      font-size: 9px;
+      font-size: 8px;
       text-align: center;
     }
     .timeline-labels span {
-      max-width: 90px;
-      line-height: 1.3;
+      max-width: 70px;
+      line-height: 1.2;
     }
 
     /* Map */
     .map-section {
       margin-bottom: 4px;
     }
-    .map-subtitle {
-      font-size: 9px;
-      font-style: italic;
-      color: #555;
-      margin-left: 8px;
+    .map-container {
+      display: flex;
+      gap: 8px;
+      margin-top: 3px;
     }
     .map-box {
+      position: relative;
       border: 1px solid #aaa;
       background: #f5f5f5;
-      margin-top: 3px;
-      padding: 10px;
-      min-height: 100px;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
     }
-    .map-locations {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+    .map-box iframe {
+      width: 100%;
+      height: 120px;
+      border: none;
+    }
+    .map-legend {
+      width: 180px;
       font-size: 9px;
+      padding: 6px;
+      border: 1px solid #aaa;
+      background: #fefdfb;
     }
-    .map-loc strong { font-weight: 600; }
+    .legend-item {
+      margin-bottom: 3px;
+      line-height: 1.2;
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
     .map-quote {
       font-style: italic;
       font-size: 9px;
@@ -206,10 +237,10 @@
       background: none;
     }
     .question-cell {
-      min-height: 32px;
+      min-height: 28px;
     }
     .answer-cell {
-      min-height: 32px;
+      min-height: 28px;
     }
 
     /* Bottom section */
@@ -238,7 +269,7 @@
       padding: 4px 6px;
       font-size: 9px;
       vertical-align: top;
-      height: 70px;
+      height: 65px;
       background-color: #fefdfb;
       background-image:
         linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
@@ -267,8 +298,13 @@
   <!-- Header -->
   <div class="header">
     <div class="plate-num">Plate # 13</div>
-    <div class="topic">Taiping and other rebellions</div>
-    <div class="date">Feb 4</div>
+    <div class="topic">Taiping and Other Rebellions: 20-30 Million Dead</div>
+    <div class="date">Feb 5</div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings-row">
+    <div class="reading-item"><strong>SCT Ch. 29:</strong> The Heavenly Kingdom of the Taipings — Hong Xiuquan's visions, Land System, Book of Heavenly Commandments</div>
   </div>
 
   <!-- Person / Place / Thing -->
@@ -282,35 +318,34 @@
     </thead>
     <tbody>
       <tr>
-        <td class="filled"><strong>Hong Xiuquan</strong> — Taiping leader</td>
-        <td class="filled"><strong>Nanjing</strong> — Taiping capital (Tianjing)</td>
-        <td class="filled"><strong>Taiping Christianity</strong> — heterodox mix with Chinese elements</td>
+        <td class="filled"><strong>Hong Xiuquan</strong> (1813-1864) — Hakka peasant, failed exams, believed himself Jesus's younger brother</td>
+        <td class="filled"><strong>Guangxi</strong> — Remote province where God Worshipers organized; uprising began at Jintian (Jan 1851)</td>
+        <td class="filled"><strong>Taiping Tianguo</strong> — "Heavenly Kingdom of Great Peace"; syncretic Christianity + Chinese millenarianism</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Zeng Guofan</strong> — Confucian general who suppressed rebellion</td>
-        <td class="filled"><strong>Jintian</strong> — where the uprising began</td>
-        <td class="filled"><strong>Hunan Army</strong> — regional force that defeated Taiping</td>
+        <td class="filled"><strong>Yang Xiuqing</strong> — Eastern King, chief military commander; claimed direct revelation from God; assassinated 1856</td>
+        <td class="filled"><strong>Nanjing (Tianjing)</strong> — "Heavenly Capital" 1853-1864; Hong's body found "in a sewer under the palace"</td>
+        <td class="filled"><strong>Sacred Treasury</strong> — Communal system: "Nobody should keep private property"; all surrendered to state</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Li Hongzhang</strong> — Zeng's protégé, led Self-Strengthening</td>
-        <td class="filled"><strong>Thistle Mountain</strong> — 紫荊山, God Worshippers base</td>
-        <td class="filled"><strong>Self</strong> — Strengthening - modernization effort after rebellion</td>
+        <td class="filled"><strong>Zeng Guofan</strong> — Confucian scholar who raised Hunan Army; reported "not one surrendered" at Nanjing</td>
+        <td class="filled"><strong>Wuchang</strong> — Captured Feb 1853; gateway to Yangzi; "devastatingly swift" advance</td>
+        <td class="filled"><strong>Hunan Army</strong> — Regional force that saved Qing but fragmented central authority</td>
       </tr>
-
     </tbody>
   </table>
 
   <!-- Timeline -->
   <div class="timeline-section">
-    <span class="label">Timeline: Taiping and other rebellions</span>
+    <span class="label">Timeline: Qing Under Siege — Foreign Wars + Civil War</span>
     <div class="timeline-box">
       <div class="timeline-labels">
-        <span>1843<br><em>Hong Xiuquan has visions after reading Christian pamphlet</em></span>
-        <span>1851<br><em>Taiping uprising begins in Guangxi</em></span>
-        <span>1853<br><em>Taiping capture Nanjing, make it capital (Tianjing)</em></span>
-        <span>1856<br><em>Internal purges weaken Taiping leadership</em></span>
-        <span>1860<br><em>Zeng Guofan's Hunan Army surrounds Nanjing</em></span>
-        <span>1864<br><em>Nanjing falls; Hong Xiuquan dies; rebellion ends</em></span>
+        <span>1839-42<br><em style="color:#8b0000">Opium War</em></span>
+        <span>1851<br><em>Taiping uprising</em></span>
+        <span>1853<br><em>Nanjing falls</em></span>
+        <span>1856-60<br><em style="color:#8b0000">Arrow War</em></span>
+        <span>1860<br><em style="color:#8b0000">Summer Palace burned</em></span>
+        <span>1864<br><em>"Not one surrendered"</em></span>
       </div>
       <div class="timeline-line"></div>
       <div class="timeline-ticks">
@@ -325,254 +360,16 @@
   </div>
 
   <!-- Map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-    #taiping-map { height: 220px; border-radius: 6px; border: 1px solid #333; }
-    .taiping-legend {
-      font-family: system-ui, -apple-system, sans-serif;
-      color: #f2f5f7; background: rgba(10, 12, 16, 0.92);
-      padding: 6px 8px; border-radius: 6px; font-size: 8px; line-height: 1.4;
-    }
-    .taiping-legend-item { display: flex; align-items: center; gap: 5px; margin: 2px 0; }
-    .taiping-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .taiping-legend-line { width: 16px; height: 2px; flex-shrink: 0; }
-    .taiping-title {
-      font-family: system-ui, -apple-system, sans-serif;
-      color: #f2f5f7; background: rgba(10, 12, 16, 0.92);
-      padding: 5px 8px; border-radius: 6px; font-size: 10px; font-weight: 600;
-    }
-    .taiping-title small { font-weight: 400; opacity: 0.8; }
-    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-      background: rgba(14, 16, 20, 0.95); color: #f2f5f7;
-      font-family: system-ui, sans-serif; font-size: 9px;
-    }
-    .leaflet-popup-content { margin: 6px 8px; }
-    .province-label {
-      font-family: system-ui, sans-serif;
-      font-size: 9px; font-weight: 600; letter-spacing: 1px;
-      color: rgba(255,255,255,0.4); text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .star-marker {
-      color: #fbbf24; font-size: 14px; text-shadow: 0 0 4px rgba(0,0,0,0.8);
-    }
-  </style>
   <div class="map-section">
-    <span class="label">Map: Taiping Rebellion 1850-1864</span>
-    <div id="taiping-map"></div>
+    <span class="label">Map: Taiping Advance (Guangxi to Nanjing, 1850-1853)</span>
+    <div class="map-container">
+      <div class="map-box" style="flex:1; max-width:100%; display: flex; align-items: center; justify-content: center; font-style: italic; color: #666; flex-direction: column; padding: 10px;">
+        <div style="font-weight: bold; margin-bottom: 6px;">Taiping route: Jintian (Guangxi) → Hunan → Wuchang → Nanjing</div>
+        <div>"In not more than one month's time... without the least resistance" (p. 228)</div>
+        <div style="margin-top: 6px; font-size: 9px;">Nanjing "captured with our hands hanging at our sides"</div>
+      </div>
+    </div>
   </div>
-  <script>
-    (function() {
-      const map = L.map('taiping-map', { zoomControl: false, attributionControl: false });
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd', maxZoom: 10, minZoom: 4
-      }).addTo(map);
-
-      // Title
-      const titleControl = L.control({ position: 'topleft' });
-      titleControl.onAdd = function() {
-        const div = L.DomUtil.create('div', 'taiping-title');
-        div.innerHTML = 'THE TAIPING REBELLION<br><small>1850–1864</small>';
-        return div;
-      };
-      titleControl.addTo(map);
-
-      // Legend
-      const legendControl = L.control({ position: 'bottomright' });
-      legendControl.onAdd = function() {
-        const div = L.DomUtil.create('div', 'taiping-legend');
-        div.innerHTML = `
-          <div class="taiping-legend-item"><span style="color:#fbbf24;font-size:12px;">★</span> Thistle Mountain</div>
-          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#f4a261;border:2px solid #fff;"></span> Taiping Capital</div>
-          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#e63946;"></span> Taiping Route</div>
-          <div class="taiping-legend-item"><span class="taiping-legend-dot" style="background:#64748b;"></span> Other Cities</div>
-          <div class="taiping-legend-item"><span class="taiping-legend-line" style="background:#e63946;"></span> Taiping Forces 1850-53</div>
-        `;
-        return div;
-      };
-      legendControl.addTo(map);
-
-      // All cities from the reference map
-      const cities = [
-        // Taiping route cities (red)
-        { name: "Jintian", cn: "金田", lat: 23.60, lng: 110.11, color: "#e63946", r: 5, desc: "Uprising began Jan 1851" },
-        { name: "Yongan", cn: "永安", lat: 24.20, lng: 110.52, color: "#e63946", r: 5, desc: "First Taiping capital 1851-52" },
-        { name: "Guilin", cn: "桂林", lat: 25.28, lng: 110.30, color: "#e63946", r: 5, desc: "Passed through 1852" },
-        { name: "Changsha", cn: "長沙", lat: 28.23, lng: 112.94, color: "#e63946", r: 5, desc: "Besieged but not taken" },
-        { name: "Yuezhou", cn: "岳州", lat: 29.37, lng: 113.09, color: "#e63946", r: 5, desc: "Captured 1852" },
-        { name: "Wuchang", cn: "武昌", lat: 30.55, lng: 114.35, color: "#e63946", r: 5, desc: "Captured Feb 1853" },
-        { name: "Hankou", cn: "漢口", lat: 30.62, lng: 114.26, color: "#e63946", r: 4, desc: "Captured 1853" },
-        { name: "Anqing", cn: "安慶", lat: 30.51, lng: 117.05, color: "#e63946", r: 5, desc: "Major Taiping stronghold" },
-        { name: "Yangzhou", cn: "揚州", lat: 32.39, lng: 119.41, color: "#e63946", r: 5, desc: "Captured 1853" },
-        { name: "Nanchang", cn: "南昌", lat: 28.68, lng: 115.85, color: "#e63946", r: 5, desc: "Fought over 1853" },
-        // Nanjing (Taiping capital - special)
-        { name: "Nanjing", cn: "南京", lat: 32.05, lng: 118.77, color: "#f4a261", r: 7, desc: "Tianjing 天京 - Taiping capital 1853-64", capital: true },
-        // Other cities (gray)
-        { name: "Shanghai", cn: "上海", lat: 31.22, lng: 121.47, color: "#64748b", r: 4, desc: "Treaty port" },
-        { name: "Suzhou", cn: "蘇州", lat: 31.30, lng: 120.60, color: "#64748b", r: 4, desc: "Captured 1860" },
-        { name: "Hangzhou", cn: "杭州", lat: 30.29, lng: 120.16, color: "#64748b", r: 4, desc: "Captured 1861" },
-        { name: "Fuzhou", cn: "福州", lat: 26.07, lng: 119.30, color: "#64748b", r: 4, desc: "Treaty port" },
-        { name: "Amoy", cn: "廈門", lat: 24.48, lng: 118.09, color: "#64748b", r: 4, desc: "Xiamen - Treaty port" },
-        { name: "Canton", cn: "廣州", lat: 23.13, lng: 113.26, color: "#64748b", r: 4, desc: "Guangzhou" },
-        { name: "Hong Kong", cn: "香港", lat: 22.32, lng: 114.17, color: "#64748b", r: 3, desc: "British colony" },
-        { name: "Macao", cn: "澳門", lat: 22.20, lng: 113.55, color: "#64748b", r: 3, desc: "Portuguese colony" },
-        { name: "Nanning", cn: "南寧", lat: 22.82, lng: 108.32, color: "#64748b", r: 4, desc: "Guangxi" },
-        { name: "Guiyang", cn: "貴陽", lat: 26.65, lng: 106.63, color: "#64748b", r: 4, desc: "Guizhou" },
-        { name: "Chongqing", cn: "重慶", lat: 29.56, lng: 106.55, color: "#64748b", r: 4, desc: "Sichuan" },
-        { name: "Chengdu", cn: "成都", lat: 30.66, lng: 104.07, color: "#64748b", r: 4, desc: "Sichuan" },
-        { name: "Xi'an", cn: "西安", lat: 34.27, lng: 108.95, color: "#64748b", r: 4, desc: "Shaanxi" },
-        { name: "Zhengzhou", cn: "鄭州", lat: 34.75, lng: 113.65, color: "#64748b", r: 4, desc: "Henan" }
-      ];
-
-      // Add city markers
-      cities.forEach(function(c) {
-        const marker = L.circleMarker([c.lat, c.lng], {
-          radius: c.r, fillColor: c.color, color: c.capital ? '#fff' : c.color,
-          weight: c.capital ? 2 : 1, fillOpacity: 0.9
-        }).addTo(map);
-        marker.bindPopup(`<b>${c.cn} ${c.name}</b><br>${c.desc}`);
-      });
-
-      // Thistle Mountain - special star marker
-      const starIcon = L.divIcon({
-        className: 'star-marker',
-        html: '★',
-        iconSize: [14, 14],
-        iconAnchor: [7, 7]
-      });
-      L.marker([23.45, 109.95], { icon: starIcon }).addTo(map)
-        .bindPopup('<b>紫荊山 Thistle Mountain</b><br>God Worshippers base 1844-1850<br>Where Hong Xiuquan gathered followers');
-
-      // Province labels
-      const provinces = [
-        { name: "GUANGXI", lat: 23.8, lng: 108.5 },
-        { name: "GUANGDONG", lat: 23.5, lng: 114.5 },
-        { name: "HUNAN", lat: 27.5, lng: 111.5 },
-        { name: "HUBEI", lat: 31.2, lng: 112.5 },
-        { name: "JIANGXI", lat: 27.5, lng: 116.0 },
-        { name: "ANHUI", lat: 32.0, lng: 116.5 },
-        { name: "JIANGSU", lat: 33.0, lng: 119.5 },
-        { name: "ZHEJIANG", lat: 29.0, lng: 120.5 },
-        { name: "FUJIAN", lat: 25.5, lng: 118.0 },
-        { name: "GUIZHOU", lat: 26.5, lng: 107.5 },
-        { name: "SICHUAN", lat: 30.0, lng: 105.0 },
-        { name: "SHAANXI", lat: 34.5, lng: 108.0 },
-        { name: "HENAN", lat: 34.0, lng: 113.0 }
-      ];
-      provinces.forEach(function(p) {
-        L.marker([p.lat, p.lng], {
-          icon: L.divIcon({ className: 'province-label', html: p.name, iconSize: [60, 12] })
-        }).addTo(map);
-      });
-
-      // Taiping Forces route 1850-1853 (curved to follow terrain/rivers)
-      // Phase 1: Thistle Mountain → Jintian → Yongan (initial uprising)
-      const route1 = [
-        [23.45, 109.95],   // Thistle Mountain
-        [23.55, 110.05],   // curve point
-        [23.60, 110.11],   // Jintian
-        [23.75, 110.25],   // curve NE
-        [24.00, 110.40],   // curve
-        [24.20, 110.52]    // Yongan
-      ];
-
-      // Phase 2: Yongan → Guilin → around toward Hunan
-      const route2 = [
-        [24.20, 110.52],   // Yongan
-        [24.50, 110.45],   // curve north
-        [24.85, 110.38],   // curve
-        [25.28, 110.30],   // Guilin
-        [25.60, 110.50],   // curve NE out of Guilin
-        [26.00, 111.00],   // heading toward Hunan
-        [26.50, 111.50],   // curve
-        [27.20, 112.20],   // approaching Changsha
-        [27.80, 112.70],   // curve around
-        [28.23, 112.94]    // Changsha (besieged)
-      ];
-
-      // Phase 3: Loop around Changsha → Yuezhou → down Yangzi
-      const route3 = [
-        [28.23, 112.94],   // Changsha
-        [28.50, 112.80],   // curve around (they didn't take it)
-        [28.80, 112.70],   // heading north
-        [29.10, 112.90],   // curve toward Dongting Lake
-        [29.37, 113.09],   // Yuezhou (on Dongting Lake)
-        [29.60, 113.40],   // following rivers
-        [29.90, 113.80],   // curve east
-        [30.30, 114.10],   // approaching Wuhan
-        [30.55, 114.35]    // Wuchang
-      ];
-
-      // Phase 4: Down the Yangzi to Nanjing
-      const route4 = [
-        [30.55, 114.35],   // Wuchang
-        [30.60, 115.00],   // following Yangzi
-        [30.55, 115.60],   // curve
-        [30.51, 117.05],   // Anqing
-        [30.80, 117.60],   // curve toward Nanjing
-        [31.20, 118.00],   // approaching
-        [31.60, 118.40],   // curve
-        [32.05, 118.77]    // Nanjing!
-      ];
-
-      // Side route: Nanchang expedition
-      const routeNanchang = [
-        [29.37, 113.09],   // from Yuezhou
-        [29.20, 113.80],   // curve SE
-        [29.00, 114.50],   // heading to Nanchang
-        [28.80, 115.20],   // approaching
-        [28.68, 115.85]    // Nanchang
-      ];
-
-      // Side route: to Yangzhou
-      const routeYangzhou = [
-        [32.05, 118.77],   // from Nanjing
-        [32.15, 119.00],   // crossing river
-        [32.30, 119.20],   // heading NE
-        [32.39, 119.41]    // Yangzhou
-      ];
-
-      // Draw all routes
-      [route1, route2, route3, route4].forEach(function(r) {
-        L.polyline(r, { weight: 3, opacity: 0.9, color: '#e63946' }).addTo(map);
-      });
-      // Secondary routes (dashed)
-      [routeNanchang, routeYangzhou].forEach(function(r) {
-        L.polyline(r, { weight: 2, opacity: 0.7, color: '#e63946', dashArray: '5 5' }).addTo(map);
-      });
-
-      // Add arrowheads along the route
-      function addArrow(lat, lng, angle) {
-        L.marker([lat, lng], {
-          icon: L.divIcon({
-            className: '',
-            html: `<div style="color:#e63946;font-size:12px;transform:rotate(${angle}deg);text-shadow:0 0 2px #000;">▶</div>`,
-            iconSize: [12, 12], iconAnchor: [6, 6]
-          })
-        }).addTo(map);
-      }
-      // Arrows showing direction of march
-      addArrow(23.55, 110.05, 45);    // toward Jintian
-      addArrow(24.50, 110.45, 0);     // toward Guilin
-      addArrow(26.50, 111.50, 30);    // toward Changsha
-      addArrow(29.10, 112.90, 20);    // toward Yuezhou
-      addArrow(30.30, 114.10, 70);    // toward Wuchang
-      addArrow(30.55, 115.60, 90);    // along Yangzi
-      addArrow(31.60, 118.40, 45);    // toward Nanjing
-
-      // Label for the route
-      L.marker([26.80, 110.20], {
-        icon: L.divIcon({
-          className: '',
-          html: '<div style="color:#e63946;font-size:8px;font-weight:600;white-space:nowrap;text-shadow:0 0 3px #000,0 0 3px #000;">Taiping Forces<br>1850–1853</div>',
-          iconSize: [70, 20]
-        })
-      }).addTo(map);
-
-      map.fitBounds([[21, 103], [36, 122]]);
-    })();
-  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">
@@ -580,19 +377,24 @@
       <thead>
         <tr>
           <th colspan="2"><span class="label">Penetrating Questions</span></th>
-          <th><span class="label">Very short answers</span></th>
+          <th><span class="label">Key Points</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="q-num">1</td>
-          <td class="question-cell filled">Was the Taiping Rebellion a 'proto-revolutionary' movement or a religious cult?</td>
-          <td class="answer-cell filled">Taiping proposed radical reforms: land redistribution, gender equality, end of opium. Chinese Communists later claimed them as precursors. But the movement was also deeply religious and violent. How do we evaluate such complex movements?</td>
+          <td class="question-cell filled">"The land is for all to till... Inequality shall exist nowhere." But also: "Nobody should keep private property." Liberation or totalitarianism?</td>
+          <td class="answer-cell filled">Both. Zeng Guofan: "The farmer cannot till his own land... the merchant cannot engage in trade for himself." Utopian promise, authoritarian reality.</td>
         </tr>
         <tr>
           <td class="q-num">2</td>
-          <td class="question-cell filled">Why did internal rebellion do more damage to China than foreign aggression?</td>
-          <td class="answer-cell filled">The Opium War killed perhaps 20,000; Taiping killed 20-30 million. Internal crisis was more devastating than imperialism. But they were connected: Opium War had weakened Qing legitimacy.</td>
+          <td class="question-cell filled">Opium War: ~20,000 dead. Taiping: 20-30 MILLION. Why did internal rebellion kill more Chinese than foreign aggression?</td>
+          <td class="answer-cell filled">Foreign powers wanted trade, not conquest. Taiping threatened entire social order. "Not one surrendered" — religious war, fight to the death.</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">Hong believed himself Jesus's brother. "Fevered imaginings" or genuine faith? What made MILLIONS follow him?</td>
+          <td class="answer-cell filled">"Famine and economic depression... decline in dynastic prestige" after Opium War defeat. God Worshipers "proved better organized" in chaos. Desperation + meaning.</td>
         </tr>
       </tbody>
     </table>
@@ -603,14 +405,14 @@
     <div class="causes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+          <tr><th><span class="label">Connections</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              <strong>From Plate 12:</strong> Plate 12 showed Japan's successful transformation under Meiji. China during the same period faced devastating internal rebellion.<br>
-<strong>Context:</strong> Taiping shows how 'Western' ideas (Christianity) could be transformed in Chinese contexts. Also shows how internal crisis can be more destructive than imperialism.<br>
-<strong>To Plate 14:</strong> Plate 14 examines the Tonghak Rebellion in Korea—another millenarian uprising against a weakening dynasty.
+              <strong>From Plate 12:</strong> Meiji Transformation (1868+). But TIMELINE: Taiping 1850-1864, Meiji 1868. Japan reformed AFTER China's civil war ended. Could ANY government reform while losing 20-30 million people?<br>
+              <strong>Broader theme:</strong> Qing survived through provincial armies (Zeng Guofan). This SAVED dynasty but FRAGMENTED central power. Japan centralized; China decentralized.<br>
+              <strong>To Plate 14:</strong> Tonghak Rebellion in Korea — another millenarian uprising with social reform demands. But Tonghak triggered Japanese intervention.
             </td>
           </tr>
         </tbody>
@@ -619,18 +421,16 @@
     <div class="notes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Notes</span></th></tr>
+          <tr><th><span class="label">Teaching Notes</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              • The death toll is almost incomprehensible—more than WWI. Spend time making this real.<br>
-              • Hong Xiuquan's Christianity is strange but important: shows how Western ideas were transformed in Chinese contexts.<br>
-              • Taiping gender reforms (end of foot-binding, women soldiers) were radical—discuss why Confucian elites found this threatening.<br>
-              • Connect to Chinese Communist narratives: Mao praised Taiping as proto-revolutionary. Why?<br>
-              • Map the rebellion's geographic spread—helps visualize the scale of destruction.<br>
-              • 📚 <strong>Deep Dive:</strong> <a href="china-rebellions-deep-dive.html">China's Century of Rebellion</a> — Taiping, Nian, Dungan, and the scale of internal catastrophe<br>
-              • 📚 <strong>Deep Dive:</strong> <a href="summer-palace-deep-dive.html">Sacking of the Summer Palace (1860)</a> — Lord Elgin, Victor Hugo, and cultural destruction during the Taiping era
+              &bull; DEATH TOLL: 20-30 million = more than WWI. Make this real.<br>
+              &bull; HONG'S STORY: Failed exams &rarr; Christian tracts &rarr; visions &rarr; Jesus's brother. Narrative power!<br>
+              &bull; KEY QUOTE: "The land is for all to till" vs. "Nobody should keep private property"<br>
+              &bull; WESTERN REACTION: Early sympathy &rarr; disillusionment. "Fanaticism, ignorance, arrogant pretensions"<br>
+              &bull; MAO later claimed Taiping as proto-communist. But edited out Christianity. Which Taiping is "real"?
             </td>
           </tr>
         </tbody>

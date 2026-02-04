@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correlation of Forces and Means | HIST/EAST 213</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a2e;
+            --ink-light: #4a4a5a;
+            --ink-faint: #8a8a9a;
+            --paper: #f8f7f4;
+            --paper-dark: #eae8e3;
+            --vermilion: #c73e1d;
+            --indigo: #264653;
+            --green: #2d6a4f;
+            --gold: #b8860b;
+            --blue: #1d3557;
+            --purple: #6b2d5c;
+            --teal: #0d7377;
+            --orange: #e76f51;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 50%, #1a1a2e 100%);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(199, 62, 29, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(38, 70, 83, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .header-content { position: relative; z-index: 1; }
+
+        .header-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        header .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            font-style: italic;
+        }
+
+        header .cjk {
+            font-family: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
+            font-size: 1rem;
+            color: var(--gold);
+            margin-top: 0.5rem;
+            letter-spacing: 0.2em;
+        }
+
+        /* Sections */
+        .intro-section {
+            padding: 2.5rem 3rem;
+        }
+
+        .intro-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .intro-section h2::before {
+            content: '';
+            width: 4px;
+            height: 1.5rem;
+            background: var(--vermilion);
+            border-radius: 2px;
+        }
+
+        .intro-section p {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .key-insight {
+            background: linear-gradient(135deg, #fef9e7 0%, #fdf6e3 100%);
+            border-left: 4px solid var(--gold);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .key-insight strong { color: var(--gold); }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%);
+            border-left: 4px solid var(--vermilion);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .warning-box strong { color: var(--vermilion); }
+
+        /* Framework Section */
+        .framework-section {
+            background: #fff;
+            padding: 2.5rem 3rem;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .framework-container { }
+
+        .framework-header {
+            margin-bottom: 2rem;
+        }
+
+        .framework-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .framework-header p { color: var(--ink-light); font-style: italic; }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .factors-grid { grid-template-columns: 1fr; }
+        }
+
+        .factors-column {
+            background: var(--paper);
+            border-radius: 6px;
+            padding: 1.5rem;
+        }
+
+        .factors-column.quantitative { border-top: 4px solid var(--indigo); }
+        .factors-column.qualitative { border-top: 4px solid var(--vermilion); }
+
+        .factors-column h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .factors-column.quantitative h3 { color: var(--indigo); }
+        .factors-column.qualitative h3 { color: var(--vermilion); }
+
+        .factors-column .subtitle {
+            font-size: 0.85rem;
+            color: var(--ink-faint);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .factor-list { list-style: none; }
+
+        .factor-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .factor-list li:last-child { border-bottom: none; }
+
+        .factor-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .quantitative .factor-icon { background: rgba(38, 70, 83, 0.1); color: var(--indigo); }
+        .qualitative .factor-icon { background: rgba(199, 62, 29, 0.1); color: var(--vermilion); }
+
+        .factor-text strong { display: block; font-size: 0.95rem; margin-bottom: 0.15rem; }
+        .factor-text span { font-size: 0.85rem; color: var(--ink-light); }
+
+        /* Conflicts Section */
+        .conflicts-section {
+            padding: 2.5rem 3rem;
+            background: var(--paper-dark);
+        }
+
+        .conflicts-container {
+        }
+
+        .section-title {
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p { color: var(--ink-light); font-style: italic; }
+
+        /* Two-column grid for conflicts */
+        .conflicts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .conflicts-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Conflict Cards */
+        .conflict-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .conflict-header {
+            padding: 1.25rem 1.5rem;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .conflict-header .title-block {}
+        .conflict-header .date {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .conflict-header h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0.25rem 0;
+        }
+
+        .conflict-header .cjk {
+            font-family: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .conflict-header .verdict {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .conflict-header .verdict-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.8;
+        }
+
+        .conflict-header .verdict-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Color coding */
+        .conflict-card[data-region="china"] .conflict-header { background: linear-gradient(135deg, #c73e1d 0%, #a52714 100%); }
+        .conflict-card[data-region="japan"] .conflict-header { background: linear-gradient(135deg, #264653 0%, #1a3340 100%); }
+        .conflict-card[data-region="korea"] .conflict-header { background: linear-gradient(135deg, #2d6a4f 0%, #1e4d38 100%); }
+        .conflict-card[data-region="multi"] .conflict-header { background: linear-gradient(135deg, #6b2d5c 0%, #4a1e40 100%); }
+        .conflict-card[data-region="global"] .conflict-header { background: linear-gradient(135deg, #1d3557 0%, #0d1b2a 100%); }
+
+        .conflict-body { padding: 1.5rem; }
+
+        .belligerents {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .side { text-align: center; }
+
+        .side-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-faint);
+            margin-bottom: 0.25rem;
+        }
+
+        .side-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .vs {
+            font-size: 1rem;
+            color: var(--ink-faint);
+            font-weight: 600;
+        }
+
+        /* Two-column analysis */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .analysis-grid { grid-template-columns: 1fr; }
+        }
+
+        .analysis-column {
+            background: var(--paper);
+            border-radius: 6px;
+            padding: 1.25rem;
+        }
+
+        .analysis-column.naive { border-top: 3px solid var(--ink-faint); }
+        .analysis-column.full { border-top: 3px solid var(--green); }
+
+        .analysis-column h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .analysis-column.naive h4 { color: var(--ink-faint); }
+        .analysis-column.full h4 { color: var(--green); }
+
+        .analysis-column h4 .icon {
+            font-size: 1.1rem;
+        }
+
+        .analysis-column table {
+            width: 100%;
+            font-size: 0.85rem;
+            border-collapse: collapse;
+        }
+
+        .analysis-column th {
+            text-align: left;
+            font-weight: normal;
+            color: var(--ink-faint);
+            padding: 0.3rem 0;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .analysis-column td {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        .analysis-column td:nth-child(2),
+        .analysis-column td:nth-child(3) {
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .analysis-column tr:last-child td { border-bottom: none; }
+
+        .prediction-box {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .analysis-column.naive .prediction-box {
+            background: rgba(0,0,0,0.05);
+        }
+
+        .analysis-column.full .prediction-box {
+            background: rgba(45, 106, 79, 0.1);
+        }
+
+        .prediction-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-faint);
+            margin-bottom: 0.25rem;
+        }
+
+        .prediction-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .analysis-column.naive .prediction-value { color: var(--ink-light); }
+        .analysis-column.full .prediction-value { color: var(--green); }
+
+        .prediction-value.wrong { color: var(--vermilion); text-decoration: line-through; }
+        .prediction-value.correct { color: var(--green); }
+
+        /* Why section */
+        .why-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-left: 4px solid var(--green);
+            padding: 1.25rem;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .why-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--green);
+            margin-bottom: 0.75rem;
+        }
+
+        .why-section p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-section p:last-child { margin-bottom: 0; }
+
+        .why-section strong { color: var(--ink); }
+
+        /* Application Section (RUS-UKR) */
+        .application-section {
+            background: #fff;
+            padding: 3rem;
+            border-top: 4px solid var(--vermilion);
+        }
+
+        .application-container {
+        }
+
+        .application-content {
+            margin-top: 2rem;
+        }
+
+        .application-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .application-grid { grid-template-columns: 1fr; }
+        }
+
+        .analysis-note {
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            font-style: italic;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #eee;
+        }
+
+        .trajectory-section {
+            background: var(--paper);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--vermilion);
+        }
+
+        .trajectory-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--vermilion);
+            margin-bottom: 1.25rem;
+        }
+
+        .trajectory-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1000px) {
+            .trajectory-grid { grid-template-columns: 1fr; }
+        }
+
+        .trajectory-box {
+            background: #fff;
+            padding: 1.25rem;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .trajectory-box h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .trajectory-box p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .trajectory-box ul {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-left: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .trajectory-box ul li {
+            margin-bottom: 0.25rem;
+        }
+
+        .small-table {
+            width: 100%;
+            font-size: 0.8rem;
+            border-collapse: collapse;
+        }
+
+        .small-table th, .small-table td {
+            padding: 0.4rem 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .small-table th {
+            font-weight: normal;
+            color: var(--ink-faint);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        /* Lessons Section */
+        .lessons-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            padding: 3rem;
+            color: #fff;
+        }
+
+        .lessons-container { }
+
+        .lessons-header {
+            margin-bottom: 2rem;
+        }
+
+        .lessons-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .lessons-header p { color: rgba(255,255,255,0.7); font-style: italic; }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1000px) {
+            .lessons-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .lessons-grid { grid-template-columns: 1fr; }
+        }
+
+        .lesson-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            padding: 1.5rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .lesson-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .lesson-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+
+        /* Discussion */
+        .discussion-section {
+            padding: 2.5rem 3rem;
+        }
+
+        .discussion-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+        }
+
+        .question-list {
+            list-style: none;
+            counter-reset: question;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .question-list { grid-template-columns: 1fr; }
+        }
+
+        .question-list li {
+            counter-increment: question;
+            padding: 1rem 1.25rem 1rem 3.5rem;
+            background: #fff;
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .question-list li::before {
+            content: counter(question);
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            width: 1.75rem;
+            height: 1.75rem;
+            background: var(--indigo);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .question-list li strong {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .question-list li p { font-size: 0.9rem; color: var(--ink-light); }
+
+        /* Footer */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        footer .course {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        footer p { font-size: 0.85rem; }
+
+        @media print {
+            .conflict-card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <span class="header-badge">Meta Deep Dive</span>
+        <h1>Correlation of Forces and Means</h1>
+        <p class="subtitle">Predicting Victory in Modern East Asian Conflicts</p>
+        <p class="cjk">兵力相关 · 戦力の相関 · 전력 상관관계</p>
+    </div>
+</header>
+
+<section class="intro-section">
+    <h2>What is COFM?</h2>
+    <p>
+        <strong>Correlation of Forces and Means</strong> (COFM) is a framework for predicting conflict outcomes by systematically comparing both sides' <em>quantitative</em> factors (troops, weapons, GDP) and <em>qualitative</em> factors (training, morale, leadership, logistics, political cohesion).
+    </p>
+    <p>
+        The key insight: <strong>raw numbers alone tell you almost nothing.</strong> A proper COFM analysis weighs all factors. When done correctly, it should predict actual outcomes—not because it's magic, but because it forces you to look at what actually matters.
+    </p>
+
+    <div class="warning-box">
+        <strong>The Most Common Error:</strong> Confusing "bean-counting" with analysis. Counting troops and tanks is not COFM—it's laziness. Real COFM asks: How many of those troops are combat-effective? Can they be supplied? Will they fight? Does their command structure allow adaptation? Lazy analysts skip these questions and then act surprised when their predictions fail.
+    </div>
+
+    <div class="key-insight">
+        <strong>This Exercise:</strong> For each conflict, we show two analyses side-by-side. <strong>Naive Count</strong> (just numbers) vs <strong>Full COFM</strong> (all factors). You'll see that Full COFM correctly predicts most outcomes—and when it doesn't, examining why teaches us something important.
+    </div>
+</section>
+
+<section class="framework-section">
+    <div class="framework-container">
+        <div class="framework-header">
+            <h2>The COFM Framework</h2>
+            <p>Both categories matter. Ignoring either produces garbage predictions.</p>
+        </div>
+        <div class="factors-grid">
+            <div class="factors-column quantitative">
+                <h3>Quantitative Factors</h3>
+                <p class="subtitle">Measurable inputs — necessary but not sufficient</p>
+                <ul class="factor-list">
+                    <li>
+                        <span class="factor-icon">👥</span>
+                        <div class="factor-text">
+                            <strong>Troop Strength</strong>
+                            <span>But: How many are combat-effective? Deployed vs total?</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="factor-icon">🔫</span>
+                        <div class="factor-text">
+                            <strong>Weapons & Equipment</strong>
+                            <span>But: Operational readiness? Ammunition stocks? Maintenance?</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="factor-icon">💰</span>
+                        <div class="factor-text">
+                            <strong>Economic Output</strong>
+                            <span>But: War economy vs peacetime? Industrial mobilization capacity?</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="factor-icon">👤</span>
+                        <div class="factor-text">
+                            <strong>Population</strong>
+                            <span>But: Military-age males? Political will to mobilize?</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="factor-icon">🗺️</span>
+                        <div class="factor-text">
+                            <strong>Territory</strong>
+                            <span>But: Strategic depth can be liability (supply lines) or asset (defense)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="factors-column qualitative">
+                <h3>Qualitative Factors</h3>
+                <p class="subtitle">Force multipliers — often decisive</p>
+                <ul class="factor-list">
+                    <li>
+                        <span class="factor-icon">🎖️</span>
+                        <div class="factor-text">
+                            <strong>Training & Cohesion</strong>
+                            <span>Professional vs conscript. Unit cohesion. Combat experience.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="factor-icon">⚡</span>
+                        <div class="factor-text">
+                            <strong>Technology & Adaptation</strong>
+                            <span>Not just having tech—using it effectively. Doctrinal innovation.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="factor-icon">🧠</span>
+                        <div class="factor-text">
+                            <strong>Command & Control</strong>
+                            <span>Unified vs fragmented. Can adapt? Honest feedback loops?</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="factor-icon">📦</span>
+                        <div class="factor-text">
+                            <strong>Logistics</strong>
+                            <span>Amateurs talk tactics, professionals talk logistics. Can you sustain?</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="factor-icon">🏛️</span>
+                        <div class="factor-text">
+                            <strong>Political Sustainability</strong>
+                            <span>Can the regime survive a long war? Internal stability? War fatigue?</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="factor-icon">🔥</span>
+                        <div class="factor-text">
+                            <strong>Stakes & Will</strong>
+                            <span>Existential vs optional. Who needs this more? Who'll quit first?</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="conflicts-section">
+    <div class="conflicts-container">
+    <div class="section-title">
+        <h2>The Conflicts: Naive Count vs Full COFM</h2>
+        <p>See which approach correctly predicts outcomes</p>
+    </div>
+
+    <div class="conflicts-grid">
+    <!-- 1. Imjin War -->
+    <div class="conflict-card" data-region="multi">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1592–1598</span>
+                <h3>Imjin War</h3>
+                <span class="cjk">壬辰倭乱 · 文禄・慶長の役</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">Joseon/Ming Victory</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">Invader</div>
+                    <div class="side-name">Toyotomi Japan</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">Defenders</div>
+                    <div class="side-name">Joseon Korea + Ming China</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Japan</th><th>Korea</th></tr>
+                        <tr><td>Initial Troops</td><td>158,000</td><td>~80,000</td></tr>
+                        <tr><td>Firearms</td><td>Extensive</td><td>Limited</td></tr>
+                        <tr><td>Combat Experience</td><td>High</td><td>Low</td></tr>
+                        <tr><td>Early Battles</td><td>Won</td><td>Lost</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction</div>
+                        <div class="prediction-value wrong">Japan wins</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Japan</th><th>Korea/Ming</th></tr>
+                        <tr><td>Naval Control</td><td>Weak</td><td>Yi Sun-sin</td></tr>
+                        <tr><td>Supply Lines</td><td>Sea-dependent</td><td>Interior</td></tr>
+                        <tr><td>Reinforcement</td><td>Difficult</td><td>Ming (100k+)</td></tr>
+                        <tr><td>Sustainability</td><td>Cannot hold</td><td>Home ground</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">Korea/Ming wins attrition</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>Naval supremacy was the war.</strong> Admiral Yi's fleet cut Japanese supply lines. An army of 158,000 means nothing if you can't feed it. Japan won every land battle initially—and still lost the war because logistics.</p>
+                <p><strong>Ming intervention changed the math.</strong> Once China committed 100,000+ troops, Japanese numerical advantage evaporated. Japan couldn't reinforce faster than Ming could.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Manchu Conquest -->
+    <div class="conflict-card" data-region="china">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1618–1644</span>
+                <h3>Manchu Conquest of Ming</h3>
+                <span class="cjk">明清战争</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">Qing Victory</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">Challenger</div>
+                    <div class="side-name">Qing (Manchu)</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">Incumbent</div>
+                    <div class="side-name">Ming Dynasty</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Qing</th><th>Ming</th></tr>
+                        <tr><td>Population</td><td>~1M</td><td>~150M</td></tr>
+                        <tr><td>Territory</td><td>Manchuria</td><td>All China</td></tr>
+                        <tr><td>Army Size</td><td>~120,000</td><td>~1,000,000</td></tr>
+                        <tr><td>Resources</td><td>Limited</td><td>Vast</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction</div>
+                        <div class="prediction-value wrong">Ming wins (150:1 ratio)</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Qing</th><th>Ming</th></tr>
+                        <tr><td>Military Quality</td><td>Elite Banners</td><td>Decayed</td></tr>
+                        <tr><td>Command</td><td>Centralized</td><td>Fragmented</td></tr>
+                        <tr><td>Treasury</td><td>Functional</td><td>Bankrupt</td></tr>
+                        <tr><td>Internal Stability</td><td>Unified</td><td>Civil war</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">Qing wins (Ming collapsing)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>The Ming was already dead.</strong> Li Zicheng's rebellion took Beijing before the Qing arrived. The Manchus didn't conquer Ming—they absorbed its corpse. General Wu Sangui invited them in.</p>
+                <p><strong>150 million people don't fight if the state has collapsed.</strong> Bankrupt treasury, no pay for soldiers, peasant rebellions everywhere. Ming's "million-man army" existed on paper only.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. First Opium War -->
+    <div class="conflict-card" data-region="china">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1839–1842</span>
+                <h3>First Opium War</h3>
+                <span class="cjk">第一次鸦片战争</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">British Victory</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">Aggressor</div>
+                    <div class="side-name">British Empire</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">Defender</div>
+                    <div class="side-name">Qing China</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Britain</th><th>Qing</th></tr>
+                        <tr><td>Expedition Force</td><td>~20,000</td><td>200,000+ regional</td></tr>
+                        <tr><td>Population</td><td>27M</td><td>400M</td></tr>
+                        <tr><td>Distance from Home</td><td>10,000 miles</td><td>0</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction</div>
+                        <div class="prediction-value wrong">Qing wins (10:1 locally)</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Britain</th><th>Qing</th></tr>
+                        <tr><td>Naval Tech</td><td>Steam warships</td><td>Sail junks</td></tr>
+                        <tr><td>Artillery</td><td>Modern, mobile</td><td>Fixed, 200yr old</td></tr>
+                        <tr><td>Mobility</td><td>Dictate battle</td><td>React only</td></tr>
+                        <tr><td>Command</td><td>Professional</td><td>Regional, no coord</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">Britain wins (tech multiplier)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>Steam ships broke the rules.</strong> Nemesis could sail upriver against the current, appear where no one expected, and outrun anything Qing had. This isn't a 10:1 troop advantage—it's asymmetric warfare.</p>
+                <p><strong>Qing couldn't concentrate forces.</strong> British naval mobility meant they chose where to fight. By the time Qing reinforcements arrived, the British had moved. 200,000 regional troops are useless if only 5,000 can be at any given battle.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Taiping Rebellion -->
+    <div class="conflict-card" data-region="china">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1850–1864</span>
+                <h3>Taiping Rebellion</h3>
+                <span class="cjk">太平天国运动</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">Qing Victory</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">Rebels</div>
+                    <div class="side-name">Taiping Heavenly Kingdom</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">Government</div>
+                    <div class="side-name">Qing Dynasty</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count (1856)</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Taiping</th><th>Qing</th></tr>
+                        <tr><td>Peak Forces</td><td>~500,000</td><td>~400,000</td></tr>
+                        <tr><td>Territory</td><td>Nanjing + South</td><td>North</td></tr>
+                        <tr><td>Morale</td><td>Zealous</td><td>Demoralized</td></tr>
+                        <tr><td>Momentum</td><td>Expanding</td><td>Retreating</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction (1856)</div>
+                        <div class="prediction-value wrong">Taiping wins</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Taiping</th><th>Qing</th></tr>
+                        <tr><td>Leadership Stability</td><td>Fratricide 1856</td><td>Adapting</td></tr>
+                        <tr><td>New Armies</td><td>—</td><td>Xiang Army</td></tr>
+                        <tr><td>Foreign Support</td><td>None</td><td>Western (post-1860)</td></tr>
+                        <tr><td>Sustainability</td><td>Ideology fracturing</td><td>Gentry mobilizing</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">Qing wins long attrition</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>The Taiping leadership destroyed itself.</strong> The 1856 Eastern King massacre killed 20,000 of their own people. Internal purges gutted the movement's command structure. Zealotry without stable institutions collapses.</p>
+                <p><strong>Zeng Guofan's Xiang Army was a new model.</strong> Regionally recruited, loyal to commanders, modernizing. The Qing adapted; the Taiping fractured. 20-30 million died—the deadliest civil war in human history.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Tonghak Rebellion -->
+    <div class="conflict-card" data-region="korea">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1894</span>
+                <h3>Tonghak Rebellion</h3>
+                <span class="cjk">동학 농민 운동</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">Government Victory</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">Rebels</div>
+                    <div class="side-name">Tonghak Peasant Army</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">Government + Foreign</div>
+                    <div class="side-name">Joseon + Qing + Japan</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Tonghak</th><th>Government</th></tr>
+                        <tr><td>Peak Numbers</td><td>~200,000</td><td>~30,000</td></tr>
+                        <tr><td>Popular Support</td><td>High</td><td>Low</td></tr>
+                        <tr><td>Morale</td><td>Zealous</td><td>Mixed</td></tr>
+                        <tr><td>Early Victories</td><td>Yes</td><td>No</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction</div>
+                        <div class="prediction-value wrong">Tonghak wins (6:1 ratio)</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Tonghak</th><th>Government</th></tr>
+                        <tr><td>Weapons</td><td>Bamboo spears</td><td>Murata rifles</td></tr>
+                        <tr><td>Training</td><td>None</td><td>Professional</td></tr>
+                        <tr><td>Foreign Intervention</td><td>—</td><td>Qing + Japan</td></tr>
+                        <tr><td>Tech Multiplier</td><td>1x</td><td>~50x per soldier</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">Government wins (tech asymmetry)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>Bamboo spears vs rifles is not a battle—it's a massacre.</strong> At Ugeumchi, ~4,000 Japanese troops slaughtered waves of Tonghak peasants. Numbers are meaningless against magazine rifles when you're charging with farming tools.</p>
+                <p><strong>This is what technology asymmetry looks like.</strong> One trained soldier with a rifle can kill dozens before they close distance. The Tonghak had courage. Courage doesn't stop bullets.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. First Sino-Japanese War -->
+    <div class="conflict-card" data-region="multi">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1894–1895</span>
+                <h3>First Sino-Japanese War</h3>
+                <span class="cjk">甲午战争 · 日清戦争</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">Decisive Japanese Victory</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">Challenger</div>
+                    <div class="side-name">Meiji Japan</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">Regional Power</div>
+                    <div class="side-name">Qing China</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Japan</th><th>Qing</th></tr>
+                        <tr><td>Army Size</td><td>240,000</td><td>630,000</td></tr>
+                        <tr><td>Navy (tonnage)</td><td>59,000</td><td>82,000</td></tr>
+                        <tr><td>Population</td><td>42M</td><td>400M</td></tr>
+                        <tr><td>GDP</td><td>Lower</td><td>Higher</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction</div>
+                        <div class="prediction-value wrong">Qing wins or stalemate</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Japan</th><th>Qing</th></tr>
+                        <tr><td>Command Unity</td><td>Centralized nation</td><td>Regional fiefs</td></tr>
+                        <tr><td>Reform Depth</td><td>Systemic</td><td>Equipment only</td></tr>
+                        <tr><td>Officer Corps</td><td>Professional</td><td>Purchased ranks</td></tr>
+                        <tr><td>National vs Personal</td><td>Imperial navy</td><td>Li's navy</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">Japan wins (institutional gap)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>Japan reformed institutions. China bought equipment.</strong> The Beiyang Fleet had modern ships—but it was Li Hongzhang's personal property, not a national navy. Other provinces wouldn't reinforce "Li's war." Japan had a nation; China had a collection of regional satrapies.</p>
+                <p><strong>This is the "Self-Strengthening" failure in one war.</strong> You can't modernize by purchasing technology. You need institutions, training, logistics, unified command. Japan did the hard work; China took shortcuts.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Russo-Japanese War -->
+    <div class="conflict-card" data-region="japan">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1904–1905</span>
+                <h3>Russo-Japanese War</h3>
+                <span class="cjk">日露戦争</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">Japanese Victory</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">Challenger</div>
+                    <div class="side-name">Japan</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">European Great Power</div>
+                    <div class="side-name">Russian Empire</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Japan</th><th>Russia</th></tr>
+                        <tr><td>Active Army</td><td>180,000</td><td>1,100,000</td></tr>
+                        <tr><td>Population</td><td>46M</td><td>141M</td></tr>
+                        <tr><td>Industrial Base</td><td>Emerging</td><td>European power</td></tr>
+                        <tr><td>Great Power Status</td><td>No</td><td>Yes</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction</div>
+                        <div class="prediction-value wrong">Russia wins</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Japan</th><th>Russia</th></tr>
+                        <tr><td>Theater Logistics</td><td>Home waters</td><td>Single-track rail, 6000mi</td></tr>
+                        <tr><td>Fleet Position</td><td>Concentrated</td><td>Split (Baltic/Pacific)</td></tr>
+                        <tr><td>Internal Stability</td><td>Unified</td><td>1905 Revolution brewing</td></tr>
+                        <tr><td>Local Superiority</td><td>Achievable</td><td>Cannot concentrate</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">Japan wins limited war</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>Russia couldn't get its army there.</strong> The Trans-Siberian Railway was single-track, 6,000 miles long. Russia's million-man army was in Europe; only ~100,000 could reach Manchuria. Japan achieved local superiority at every battle.</p>
+                <p><strong>Tsushima ended it.</strong> Russia's Baltic Fleet sailed 18,000 miles—and was annihilated in an afternoon. The 1905 Revolution forced peace. First Asian power to defeat a European great power in modern war. Shockwaves across every colonized nation.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Pacific War -->
+    <div class="conflict-card" data-region="global">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1941–1945</span>
+                <h3>Pacific War</h3>
+                <span class="cjk">太平洋戦争</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">Allied Victory</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">Axis</div>
+                    <div class="side-name">Imperial Japan</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">Allies</div>
+                    <div class="side-name">USA + Britain + China + etc.</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count (Dec 1941)</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Japan</th><th>USA</th></tr>
+                        <tr><td>Carriers (Pacific)</td><td>10</td><td>3</td></tr>
+                        <tr><td>Combat Experience</td><td>10 years</td><td>None</td></tr>
+                        <tr><td>Position</td><td>Interior lines</td><td>Scattered</td></tr>
+                        <tr><td>Readiness</td><td>War footing</td><td>Peacetime</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction (Short War)</div>
+                        <div class="prediction-value">Japan wins early</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Japan</th><th>USA</th></tr>
+                        <tr><td>Steel Production</td><td>7M tons/yr</td><td>67M tons/yr</td></tr>
+                        <tr><td>Oil Production</td><td>Near zero</td><td>World's largest</td></tr>
+                        <tr><td>Industrial Depth</td><td>7% of US</td><td>Baseline</td></tr>
+                        <tr><td>Replacement Capacity</td><td>Cannot match</td><td>24 carriers 42-45</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">US wins long war (10:1 industry)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>Yamamoto knew.</strong> "I can run wild for six months to a year. After that, I have no expectation of success." He understood COFM. Japan's gamble required knocking America out fast—psychologically, not militarily. It failed.</p>
+                <p><strong>Industrial war favors industrial powers.</strong> US built 24 fleet carriers 1942-45. Japan built 3. By 1944, US out-produced Japan 10:1 in aircraft. Japan lost a war of attrition that its leadership knew it couldn't win—but started anyway.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. Chinese Civil War -->
+    <div class="conflict-card" data-region="china">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1946–1949</span>
+                <h3>Chinese Civil War (Final Phase)</h3>
+                <span class="cjk">国共内战</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">Communist Victory</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">Government</div>
+                    <div class="side-name">Nationalists (GMD)</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">Insurgent</div>
+                    <div class="side-name">Communists (CCP)</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count (1946)</h4>
+                    <table>
+                        <tr><th>Factor</th><th>GMD</th><th>CCP</th></tr>
+                        <tr><td>Troops</td><td>4.3 million</td><td>1.2 million</td></tr>
+                        <tr><td>Territory</td><td>Major cities</td><td>Rural north</td></tr>
+                        <tr><td>Foreign Aid</td><td>US ($3B)</td><td>Limited Soviet</td></tr>
+                        <tr><td>Air/Navy</td><td>Yes</td><td>None</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction</div>
+                        <div class="prediction-value wrong">Nationalist victory</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>GMD</th><th>CCP</th></tr>
+                        <tr><td>Legitimacy</td><td>Collapsed (corruption)</td><td>Land reform</td></tr>
+                        <tr><td>Morale</td><td>Mass defections</td><td>Ideological</td></tr>
+                        <tr><td>Economy</td><td>Hyperinflation</td><td>Rural base stable</td></tr>
+                        <tr><td>Trend</td><td>Armies defecting</td><td>Growing</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">CCP wins (legitimacy gap)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>Entire armies defected with their US equipment.</strong> When your soldiers switch sides, their equipment goes with them. By 1948, the CCP had more troops than the GMD—because GMD troops kept joining the CCP. US aid funded the Communist victory.</p>
+                <p><strong>Legitimacy is a force multiplier.</strong> CCP land reform won peasant loyalty. GMD corruption alienated everyone. Hyperinflation destroyed the urban middle class. The side with fewer resources in 1946 controlled all of mainland China by 1949.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. Korean War -->
+    <div class="conflict-card" data-region="korea">
+        <div class="conflict-header">
+            <div class="title-block">
+                <span class="date">1950–1953</span>
+                <h3>Korean War</h3>
+                <span class="cjk">한국 전쟁 · 朝鲜战争</span>
+            </div>
+            <div class="verdict">
+                <div class="verdict-label">Actual Outcome</div>
+                <div class="verdict-value">Stalemate (38th Parallel)</div>
+            </div>
+        </div>
+        <div class="conflict-body">
+            <div class="belligerents">
+                <div class="side">
+                    <div class="side-label">North + China</div>
+                    <div class="side-name">DPRK / PRC</div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="side">
+                    <div class="side-label">South + UN</div>
+                    <div class="side-name">ROK / USA / UN</div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Naive Count (Post-Inchon)</h4>
+                    <table>
+                        <tr><th>Factor</th><th>UN/US</th><th>DPRK</th></tr>
+                        <tr><td>Air Power</td><td>Dominant</td><td>None</td></tr>
+                        <tr><td>Naval Power</td><td>Dominant</td><td>None</td></tr>
+                        <tr><td>Industrial Base</td><td>Massive</td><td>Destroyed</td></tr>
+                        <tr><td>Momentum</td><td>Advancing</td><td>Collapsing</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Naive Prediction</div>
+                        <div class="prediction-value wrong">UN total victory</div>
+                    </div>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Full COFM</h4>
+                    <table>
+                        <tr><th>Factor</th><th>UN/US</th><th>China/DPRK</th></tr>
+                        <tr><td>Chinese Intervention</td><td>Unexpected</td><td>300,000+ PVA</td></tr>
+                        <tr><td>Escalation Ceiling</td><td>Fear WWIII</td><td>Unlimited manpower</td></tr>
+                        <tr><td>Casualty Tolerance</td><td>Democratic limits</td><td>Authoritarian</td></tr>
+                        <tr><td>Political Will</td><td>Limited war only</td><td>Existential for DPRK</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Full COFM Prediction</div>
+                        <div class="prediction-value correct">Stalemate (political constraints)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section">
+                <h4>Why Full COFM Got It Right</h4>
+                <p><strong>US couldn't use its full power without starting WWIII.</strong> MacArthur wanted to bomb China. Truman fired him. US air/naval dominance couldn't be converted into victory because the war had to stay limited. Political constraints are part of COFM.</p>
+                <p><strong>China absorbed punishment through mass.</strong> PVA tactics accepted horrific casualties to negate US firepower. Democratic societies have casualty limits; the PRC in 1950 did not. Both sides achieved minimum objectives (preventing the other's total victory).</p>
+            </div>
+        </div>
+    </div>
+
+    </div><!-- end conflicts-grid -->
+    </div><!-- end conflicts-container -->
+</section>
+
+<!-- Real-World Application -->
+<section class="application-section">
+    <div class="application-container">
+        <div class="section-title">
+            <h2>Real-World Application: Russia vs Ukraine (2022–)</h2>
+            <p>What COFM actually predicted from day one</p>
+        </div>
+
+        <div class="application-content">
+            <div class="application-grid">
+                <div class="analysis-column naive">
+                    <h4><span class="icon">📊</span> Western Media Framing</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Russia</th><th>Ukraine</th></tr>
+                        <tr><td>Active Military</td><td>900,000</td><td>200,000</td></tr>
+                        <tr><td>Tanks</td><td>12,000+</td><td>2,500</td></tr>
+                        <tr><td>GDP</td><td>$1.8T</td><td>$200B</td></tr>
+                        <tr><td>Narrative</td><td>"Paper tiger"</td><td>"Plucky underdog"</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">Western Narrative</div>
+                        <div class="prediction-value wrong">"Russia expected quick victory, failed"</div>
+                    </div>
+                    <p class="analysis-note">This framing is propaganda. It sets up a false expectation ("weeks") so the current Russian grinding advance can be portrayed as failure. Nobody serious expected this to end quickly.</p>
+                </div>
+
+                <div class="analysis-column full">
+                    <h4><span class="icon">🎯</span> Actual COFM (Feb 2022)</h4>
+                    <table>
+                        <tr><th>Factor</th><th>Russia (SMO)</th><th>Ukraine + NATO</th></tr>
+                        <tr><td>Ukraine prep</td><td>—</td><td>8 years NATO training since 2014</td></tr>
+                        <tr><td>ISR</td><td>Russian</td><td>Full US/NATO satellite, AWACS, signals</td></tr>
+                        <tr><td>Weapons</td><td>Russian</td><td>$billions pre-positioned + pipeline</td></tr>
+                        <tr><td>Reality</td><td>Limited operation</td><td>THE proxy confrontation with NATO</td></tr>
+                    </table>
+                    <div class="prediction-box">
+                        <div class="prediction-label">COFM Prediction (From Day One)</div>
+                        <div class="prediction-value correct">Prolonged war. Russia wins attrition.</div>
+                    </div>
+                    <p class="analysis-note">This was always going to be long. Ukraine was armed to the teeth. Russia committed limited forces. COFM predicted exactly what's happening: grinding attritional Russian victory.</p>
+                </div>
+            </div>
+
+            <div class="trajectory-section">
+                <h4>Why COFM Predicted Russian Victory in Attrition War</h4>
+
+                <div class="trajectory-grid">
+                    <div class="trajectory-box">
+                        <h5>Industrial Depth</h5>
+                        <table class="small-table">
+                            <tr><th></th><th>Russia</th><th>NATO/West</th></tr>
+                            <tr><td>Shell production</td><td>250,000+/mo</td><td>~40,000/mo (struggling)</td></tr>
+                            <tr><td>Drone production</td><td>Scaled massively</td><td>Import dependent</td></tr>
+                            <tr><td>Tank reserves</td><td>10,000+ in storage</td><td>NATO stockpiles depleted</td></tr>
+                            <tr><td>War economy</td><td>Mobilized</td><td>Peacetime production</td></tr>
+                        </table>
+                        <p style="margin-top: 0.75rem;"><strong>Russia outproduces NATO in key war materiel.</strong> This is the decisive factor in attrition warfare.</p>
+                    </div>
+
+                    <div class="trajectory-box">
+                        <h5>Political Sustainability</h5>
+                        <table class="small-table">
+                            <tr><th></th><th>Russia</th><th>Ukraine/West</th></tr>
+                            <tr><td>Elections</td><td>Controlled</td><td>US 2024, EU fatigue</td></tr>
+                            <tr><td>War support</td><td>Stable</td><td>Declining polls</td></tr>
+                            <tr><td>Manpower</td><td>144M, rotating</td><td>Mobilization crisis, emigration</td></tr>
+                            <tr><td>Economy</td><td>Adapted to sanctions</td><td>Dependent on aid</td></tr>
+                        </table>
+                        <p style="margin-top: 0.75rem;"><strong>Authoritarian sustainability vs democratic fatigue.</strong> Russia can outlast Western political cycles.</p>
+                    </div>
+
+                    <div class="trajectory-box">
+                        <h5>2023 Counteroffensive: The Test</h5>
+                        <p><strong>Western theory:</strong> NATO-trained brigades with Western equipment break Russian lines.</p>
+                        <p><strong>COFM prediction:</strong> Combined arms requires air superiority. Ukraine has none. Russian defense-in-depth negates tech advantage.</p>
+                        <p><strong>Result:</strong> Catastrophic failure. Two armies of NATO equipment destroyed. ~17km in 4 months. Theory died at Robotyne.</p>
+                        <p style="margin-top: 0.5rem;"><strong>COFM was right. Western analysts were wrong.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-section" style="margin-top: 1.5rem;">
+                <h4>The Lesson</h4>
+                <p><strong>"Russia failed to win quickly" is a cope narrative.</strong> It frames the inevitable attritional phase as Russian failure rather than Russian strategy. Russia probed, withdrew from overextension (Kyiv), and settled into the war it was always going to fight—and win.</p>
+                <p><strong>COFM predicted this from day one:</strong> NATO-armed Ukraine would resist initially. Russia would absorb that phase. Long-term attrition would favor the side with industrial depth, manpower reserves, and political sustainability. That's Russia.</p>
+                <p><strong>Western analysts didn't get it wrong because COFM failed.</strong> They got it wrong because they weren't doing COFM—they were doing wishful thinking dressed up as analysis. The framework works. They refused to use it honestly.</p>
+            </div>
+
+            <div class="why-section" style="margin-top: 1rem; border-left-color: var(--ink);">
+                <h4>Who Bears the Cost?</h4>
+                <p><strong>The cruelest COFM factor:</strong> The decision-makers who engineered this confrontation bear none of its costs.</p>
+                <p><strong>Ukrainian population:</strong> Hundreds of thousands dead. Millions displaced. Demographic collapse. Infrastructure destroyed. A generation lost. Worst-case outcome.</p>
+                <p><strong>European population:</strong> Energy crisis. Deindustrialization (Germany). Inflation. Reduced living standards. Tens of billions in aid while domestic services cut.</p>
+                <p><strong>Western elites:</strong> Unharmed. Careers intact. Think tank positions secure. Defense contractor stocks up. No accountability for catastrophic miscalculation. They'll write books about "lessons learned" and get paid speaking fees.</p>
+                <p><strong>This asymmetry matters for COFM:</strong> When decision-makers don't bear costs, they sustain unwinnable wars longer than rational actors would. Ukrainian and European populations pay the price for elite miscalculation—while those elites face zero consequences.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lessons-section">
+    <div class="lessons-container">
+        <div class="lessons-header">
+            <h2>What COFM Actually Teaches</h2>
+            <p>When done honestly, the model works. Here's why it fails when analysts get lazy or biased.</p>
+        </div>
+        <div class="lessons-grid">
+            <div class="lesson-card">
+                <h3>1. Bean-Counting Is Not Analysis</h3>
+                <p>Every failed prediction in history came from someone counting troops and stopping there. COFM requires assessing combat effectiveness, logistics, command unity, morale, political sustainability. Skipping the hard parts produces garbage.</p>
+            </div>
+            <div class="lesson-card">
+                <h3>2. Institutions Beat Equipment</h3>
+                <p>Japan vs Qing (1894): Both had modern ships. Japan had a modern navy. China had a collection of regional warlords with boats. Buying technology without building institutions is Self-Strengthening—it doesn't work.</p>
+            </div>
+            <div class="lesson-card">
+                <h3>3. Logistics Decide Wars</h3>
+                <p>Russia couldn't supply Manchuria (1905). Japan couldn't supply Korea (1592). Britain could appear anywhere with steam ships (1840). "Amateurs talk tactics, professionals talk logistics." The side that can sustain operations wins.</p>
+            </div>
+            <div class="lesson-card">
+                <h3>4. Legitimacy Multiplies Force</h3>
+                <p>CCP won with fewer troops by winning loyalty. Taiping lost with more troops when leadership collapsed. GMD armies defected en masse. Popular support determines who fights, who surrenders, and who switches sides.</p>
+            </div>
+            <div class="lesson-card">
+                <h3>5. Technology Has Limits</h3>
+                <p>US air supremacy couldn't win Korea. Japanese carriers couldn't prevent industrial defeat. Tonghak rifles couldn't save the regime from modernization pressures. Technology creates options; it doesn't guarantee victory.</p>
+            </div>
+            <div class="lesson-card">
+                <h3>6. Political Constraints Are Real</h3>
+                <p>US couldn't escalate in Korea without WWIII. Democratic societies have casualty limits. Authoritarian states can absorb losses democracies can't. Political sustainability is a COFM factor—ignore it and your predictions fail.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="discussion-section">
+    <h2>Discussion Questions</h2>
+    <ol class="question-list">
+        <li>
+            <strong>Why do analysts keep making the same mistakes?</strong>
+            <p>Lazy bean-counting predicted Russian victory in weeks (2022), Qing victory over Japan (1894), GMD victory over CCP (1946). What institutional or psychological factors make analysts repeat the same errors?</p>
+        </li>
+        <li>
+            <strong>When does technology actually decide outcomes?</strong>
+            <p>Opium War (decisive), Tonghak (decisive), but not Pacific War (industrial depth mattered more) or Korea (political limits). What conditions make technological superiority decisive vs. merely advantageous?</p>
+        </li>
+        <li>
+            <strong>How do you assess "political will" before a war starts?</strong>
+            <p>COFM includes sustainability and will, but these are hard to measure pre-conflict. How would you have assessed Chinese willingness to intervene in Korea? Japanese willingness to accept kamikaze tactics? CCP peasant loyalty?</p>
+        </li>
+        <li>
+            <strong>Apply COFM to a current scenario.</strong>
+            <p>Pick one: Taiwan Strait, Korean Peninsula, South China Sea. What does naive counting predict? What does full COFM predict? What factors are hardest to assess?</p>
+        </li>
+        <li>
+            <strong>Is COFM value-neutral?</strong>
+            <p>Factors like "casualty tolerance" and "authoritarian sustainability" can favor regimes that treat soldiers as expendable. Does COFM implicitly reward brutality? How should analysts handle this?</p>
+        </li>
+    </ol>
+</section>
+
+<footer>
+    <div class="course">HIST/EAST 213 · Modern East Asia</div>
+    <p>Correlation of Forces and Means: Honest Analysis for Modern Conflicts</p>
+</footer>
+
+</body>
+</html>

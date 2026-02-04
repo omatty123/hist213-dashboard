@@ -292,16 +292,8 @@
     </div>
   </main>
 <script>
-var students = [
-  {id:"1",lastName:"Good",firstName:"Susanna",pronouns:"",photo:"photos/good_susanna.png"},
-  {id:"2",lastName:"Jeong",firstName:"Jessy",preferredName:"Yunji",pronouns:"",photo:"photos/jeong_jessy.png"},
-  {id:"3",lastName:"Kypriotis",firstName:"Nik",pronouns:"He/Him/His",photo:"photos/kypriotis_nik.png"},
-  {id:"4",lastName:"Pick",firstName:"Isabelle",pronouns:"She/Her/Hers",photo:"photos/pick_isabelle.png"},
-  {id:"5",lastName:"Sweeney",firstName:"Em",pronouns:"They/Them/Theirs",photo:"photos/sweeney_em.png"},
-  {id:"6",lastName:"Valdez",firstName:"Eliel",pronouns:"He/Him/His",photo:"photos/valdez_eliel.png"},
-  {id:"7",lastName:"Williams",firstName:"Sam",pronouns:"",photo:"photos/williams_sam.png"},
-  {id:"8",lastName:"Yang",firstName:"Juchan",pronouns:"",photo:"photos/yang_juchan.png"}
-];
+// Students loaded from students.json (source of truth) - this is a fallback
+var students = [];
 
 var plates = [
   {plate:1,date:"2026-01-05",day:"Monday",week:1,topic:"Introduction to the class, geography of East Asia",theme:"East Asia - who, what, where?",ebrey:null,readings:[],notes:"First day of class"},
@@ -864,9 +856,22 @@ function renderPrepContent(data, p) {
 }
 
 window.onload = function() {
-  renderRoster();
-  initDropdown();
-  loadPlate(findToday());
+  // Load students from JSON (single source of truth)
+  fetch('students.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      students = data.students;
+      renderRoster();
+      initDropdown();
+      loadPlate(findToday());
+    })
+    .catch(function(e) {
+      console.error('Failed to load students.json:', e);
+      // Fallback: render with existing data
+      renderRoster();
+      initDropdown();
+      loadPlate(findToday());
+    });
 };
 </script>
 </body>

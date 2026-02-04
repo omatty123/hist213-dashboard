@@ -462,7 +462,11 @@
       }
     }
 
+        .breadcrumb { font-size: 11px; margin-bottom: 8px; }
+    .breadcrumb a { color: #0066cc; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
     @media print {
+      .breadcrumb { display: none; }
       .hero { height: auto; min-height: auto; padding: 2rem; }
       .trial-section, .legacy-section { margin: 2rem 0; }
       .sidebar { position: static; }
@@ -470,6 +474,7 @@
   </style>
 </head>
 <body>
+  <div class="breadcrumb"><a href="../index.html">← Dashboard</a></div>
 
   <!-- Breadcrumb Nav -->
   <nav style="background: #1a2a3a; padding: 0.75rem 2rem; display: flex; align-items: center; gap: 0.5rem;">
@@ -722,8 +727,8 @@
     <div class="sources">
       <h3>Sources & Further Reading</h3>
       <ul>
-        <li><a href="https://uhpress.hawaii.edu/title/eastern-learning-and-the-heavenly-way-the-tonghak-and-chondogyo-movements-and-the-twilight-of-korean-independence/" target="_blank">Young, Carl F. <em>Eastern Learning and the Heavenly Way: The Tonghak and Chondogyo Movements</em>. University of Hawai'i Press, 2014.</a></li>
-        <li><a href="https://wwnorton.com/books/9780393327021" target="_blank">Cumings, Bruce. <em>Korea's Place in the Sun: A Modern History</em>. W.W. Norton, 2005.</a></li>
+        <li><a href="https://uhpress.hawaii.edu/title/eastern-learning-and-the-heavenly-way-the-tonghak-and-chondogyo-movements-and-the-twilight-of-korean-independence/" target="_blank" rel="noopener noreferrer">Young, Carl F. <em>Eastern Learning and the Heavenly Way: The Tonghak and Chondogyo Movements</em>. University of Hawai'i Press, 2014.</a></li>
+        <li><a href="https://wwnorton.com/books/9780393327021" target="_blank" rel="noopener noreferrer">Cumings, Bruce. <em>Korea's Place in the Sun: A Modern History</em>. W.W. Norton, 2005.</a></li>
         <li>Sources of Korean Tradition, Vol. II, Chapter on Tonghak Uprisings (Course Reading)</li>
       </ul>
     </div>

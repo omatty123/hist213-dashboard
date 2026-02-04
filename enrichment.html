@@ -592,7 +592,7 @@ function renderEnrichment(data) {
         h += `
           <div class="film-card">
             <div class="title-row">
-              <div class="title">${film.url ? `<a href="${film.url}" target="_blank">${film.title}</a>` : film.title}</div>
+              <div class="title">${film.url ? `<a href="${film.url}" target="_blank" rel="noopener noreferrer">${film.title}</a>` : film.title}</div>
               <div class="year">${film.year}</div>
             </div>
             <div class="director">Dir: ${film.director}${film.runtime ? ` · ${film.runtime}` : ''}</div>
@@ -616,7 +616,7 @@ function renderEnrichment(data) {
         h += `
           <div class="film-card">
             <div class="title-row">
-              <div class="title">${doc.url ? `<a href="${doc.url}" target="_blank">${doc.title}</a>` : doc.title}</div>
+              <div class="title">${doc.url ? `<a href="${doc.url}" target="_blank" rel="noopener noreferrer">${doc.title}</a>` : doc.title}</div>
               <div class="year">${doc.year}</div>
             </div>
             <div class="notes">${doc.notes}</div>
@@ -662,7 +662,7 @@ function renderEnrichment(data) {
       h += `
         <tr>
           <td class="title-cell">
-            ${item.url ? `<a href="${item.url}" target="_blank">${item.title}</a>` : item.title}
+            ${item.url ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}
             <div class="finding" style="font-style:italic">${item.author}${item.publication ? ` · ${item.publication}` : ''}</div>
           </td>
           <td>${item.year}</td>
@@ -687,8 +687,8 @@ function renderEnrichment(data) {
         <div class="news-card">
           <div class="news-date">${item.date}</div>
           <div class="news-content">
-            <div class="news-headline">${item.url ? `<a href="${item.url}" target="_blank">${item.headline}</a>` : item.headline}</div>
-            <div class="news-source">${item.source}${item.url ? ` · <a href="${item.url}" target="_blank">Read →</a>` : ''}</div>
+            <div class="news-headline">${item.url ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.headline}</a>` : item.headline}</div>
+            <div class="news-source">${item.source}${item.url ? ` · <a href="${item.url}" target="_blank" rel="noopener noreferrer">Read →</a>` : ''}</div>
             <div class="news-connection">${item.connection}</div>
           </div>
         </div>
@@ -710,7 +710,7 @@ function renderEnrichment(data) {
     for (const res of data.resources) {
       h += `
         <div class="resource-card">
-          <a href="${res.url}" target="_blank">${res.title}</a>
+          <a href="${res.url}" target="_blank" rel="noopener noreferrer">${res.title}</a>
           <div class="desc">${res.description}</div>
         </div>
       `;
@@ -762,7 +762,7 @@ function renderEnrichment(data) {
     if (data.literature.sources) {
       h += '<div class="literature-sources"><strong>Sources:</strong> ';
       h += data.literature.sources.map(s =>
-        s.url ? `<a href="${s.url}" target="_blank">${s.title}</a> (${s.year})` : `${s.title} (${s.year})`
+        s.url ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.title}</a> (${s.year})` : `${s.title} (${s.year})`
       ).join(', ');
       h += '</div>';
     }

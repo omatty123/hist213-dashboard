@@ -730,12 +730,17 @@
 
         footer p { font-size: 0.85rem; }
 
-        @media print {
+            .breadcrumb { font-size: 11px; margin-bottom: 8px; }
+    .breadcrumb a { color: #0066cc; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    @media print {
+      .breadcrumb { display: none; }
             .conflict-card { break-inside: avoid; }
         }
     </style>
 </head>
 <body>
+  <div class="breadcrumb"><a href="../index.html">← Dashboard</a></div>
 
 <header>
     <div class="header-content">

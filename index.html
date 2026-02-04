@@ -448,7 +448,7 @@ async function loadPlate(i) {
 
   var eb = document.getElementById("ebreyRef");
   if (p.ebrey) {
-    eb.innerHTML = '📖 <a href="https://drive.google.com/file/d/1UdX-0vMwX8OrfNpK_DtJuU-e8gL3kROs/view?usp=sharing" target="_blank" style="color:#f0e6d0;text-decoration:underline;">Ebrey: ' + p.ebrey + '</a>';
+    eb.innerHTML = '📖 <a href="https://drive.google.com/file/d/1UdX-0vMwX8OrfNpK_DtJuU-e8gL3kROs/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="color:#f0e6d0;text-decoration:underline;">Ebrey: ' + p.ebrey + '</a>';
     eb.style.display = "inline-block";
   } else {
     eb.style.display = "none";
@@ -493,7 +493,7 @@ function renderMainWithPrep(p, prepData) {
       var r = p.readings[i];
       var tc = r.type || "primary";
       var tl = r.type === "theoretical" ? "Theoretical" : (r.type === "secondary" ? "Secondary" : "Primary");
-      h += '<a class="reading-card ' + tc + '" href="' + r.url + '" target="_blank">';
+      h += '<a class="reading-card ' + tc + '" href="' + r.url + '" target="_blank" rel="noopener noreferrer">';
       h += '<div class="type-badge">' + tl + '</div>';
       h += '<div class="title">' + r.title + '</div>';
       if (r.author) h += '<div class="author">' + r.author + '</div>';
@@ -509,7 +509,7 @@ function renderMainWithPrep(p, prepData) {
     h += '<div class="web-links">';
     for (var j = 0; j < p.webLinks.length; j++) {
       var l = p.webLinks[j];
-      h += '<a class="web-link" href="' + l.url + '" target="_blank">🔗 ' + l.title + '</a>';
+      h += '<a class="web-link" href="' + l.url + '" target="_blank" rel="noopener noreferrer">🔗 ' + l.title + '</a>';
     }
     h += '</div>';
   }
@@ -530,7 +530,7 @@ function renderMainWithPrep(p, prepData) {
     h += '<div class="section-title">Today\'s Film</div>';
     h += '<div class="film-box"><strong>🎬 ' + p.film.title + '</strong> (' + p.film.year + ')<br>';
     h += 'Director: ' + p.film.director + '<br>';
-    h += '<a href="' + p.film.url + '" target="_blank">▶ Watch Film →</a></div>';
+    h += '<a href="' + p.film.url + '" target="_blank" rel="noopener noreferrer">▶ Watch Film →</a></div>';
   }
 
   // 5. REST OF PREP CONTENT
@@ -576,7 +576,7 @@ function renderSidebar(p, i) {
   // Deep Dives for specific plates
   if (p.plate === 10) {
     h += '<div class="section-title">📚 Deep Dive</div>';
-    h += '<a href="print/us-opium-deep-dive.html" target="_blank" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<a href="print/us-opium-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:16px">';
     h += '<div class="title">US Gains from the Opium Trade</div>';
     h += '<div class="author">Russell & Co., the Delanos, Forbes family</div>';
     h += '<div class="source">How New England merchants built fortunes on drug money</div>';
@@ -584,12 +584,12 @@ function renderSidebar(p, i) {
   }
   if (p.plate === 11) {
     h += '<div class="section-title">📚 Deep Dives</div>';
-    h += '<a href="print/gold-drain-1859.html" target="_blank" class="reading-card secondary" style="margin-bottom:8px">';
+    h += '<a href="print/gold-drain-1859.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:8px">';
     h += '<div class="title">The Great Gold Drain of 1859</div>';
     h += '<div class="author">Silver/Gold Arbitrage After Harris Treaty</div>';
     h += '<div class="source">How traders turned $4 into $12 and destabilized the Tokugawa economy</div>';
     h += '</a>';
-    h += '<a href="print/meiji-restoration-deep-dive.html" target="_blank" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<a href="print/meiji-restoration-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:16px">';
     h += '<div class="title">The Domains That Toppled the Shogun</div>';
     h += '<div class="author">Satsuma, Chōshū, Tosa, Hizen</div>';
     h += '<div class="source">Interactive map of the Satchō alliance</div>';
@@ -597,12 +597,12 @@ function renderSidebar(p, i) {
   }
   if (p.plate === 12) {
     h += '<div class="section-title">📚 Deep Dive</div>';
-    h += '<a href="print/meiji-restoration-deep-dive.html" target="_blank" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<a href="print/meiji-restoration-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:16px">';
     h += '<div class="title">The Domains That Toppled the Shogun</div>';
     h += '<div class="author">Satsuma, Chōshū, Tosa, Hizen</div>';
     h += '<div class="source">Interactive map of the tozama alliance</div>';
     h += '</a>';
-    h += '<a href="print/iwakura-mission-deep-dive.html" target="_blank" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<a href="print/iwakura-mission-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:16px">';
     h += '<div class="title">The Iwakura Mission: Japan Learns the West</div>';
     h += '<div class="author">1871-1873 · 12 countries · 631 days</div>';
     h += '<div class="source">Interactive map + what Japan learned from each country</div>';
@@ -610,12 +610,12 @@ function renderSidebar(p, i) {
   }
   if (p.plate === 13) {
     h += '<div class="section-title">📚 Deep Dive</div>';
-    h += '<a href="print/china-rebellions-deep-dive.html" target="_blank" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<a href="print/china-rebellions-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:16px">';
     h += '<div class="title">China\'s Century of Rebellion</div>';
     h += '<div class="author">Taiping · Nian · Dungan · Panthay</div>';
     h += '<div class="source">20-30 million dead — internal crisis dwarfed foreign aggression</div>';
     h += '</a>';
-    h += '<a href="print/summer-palace-deep-dive.html" target="_blank" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<a href="print/summer-palace-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:16px">';
     h += '<div class="title">Sacking of the Summer Palace</div>';
     h += '<div class="author">1860 · Lord Elgin · Victor Hugo</div>';
     h += '<div class="source">Cultural destruction and the zodiac heads controversy</div>';
@@ -623,7 +623,7 @@ function renderSidebar(p, i) {
   }
   if (p.plate === 14) {
     h += '<div class="section-title">📚 Deep Dive</div>';
-    h += '<a href="print/jeon-bongjun-deep-dive.html" target="_blank" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<a href="print/jeon-bongjun-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:16px">';
     h += '<div class="title">Jeon Bong-jun: The Green Bean General</div>';
     h += '<div class="author">전봉준 · 1855-1895</div>';
     h += '<div class="source">Leader of the Tonghak Peasant Army — "We seek no personal profit, only the peace of the nation"</div>';
@@ -657,7 +657,8 @@ function togglePlateDropdown() {
 }
 
 function findToday() {
-  var t = new Date().toISOString().split("T")[0];
+  var now = new Date();
+  var t = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
   // Find today's class or the next upcoming class
   for (var i = 0; i < plates.length; i++) {
     if (plates[i].date === t) return i;

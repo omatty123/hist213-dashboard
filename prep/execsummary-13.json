@@ -138,16 +138,13 @@
   ],
   "timeline": [
     {
-      "date": "1836",
-      "event": "Hong Xiuquan hears Christian missionary preach in Guangzhou, picks up religious tracts"
+      "date": "1839-42",
+      "event": "FIRST OPIUM WAR — Britain defeats Qing; Treaty of Nanjing cedes Hong Kong, opens ports",
+      "highlight": true
     },
     {
       "date": "1843",
-      "event": "Hong reads tracts carefully after another exam failure; understands his visions as divine commission"
-    },
-    {
-      "date": "Late 1840s",
-      "event": "God Worshipers gather in Guangxi; 'famine and economic depression' fuel recruitment"
+      "event": "Hong Xiuquan reads Christian tracts after exam failure; understands his visions as divine commission"
     },
     {
       "date": "Jan 1851",
@@ -158,16 +155,18 @@
       "event": "Taiping capture Nanjing, rename it 'Heavenly Capital' (Tianjing)"
     },
     {
-      "date": "1856",
-      "event": "Internal purges: Yang Xiuqing assassinated, Northern King murdered — leadership decimated"
+      "date": "1856-60",
+      "event": "ARROW WAR (Second Opium War) — Britain & France vs. Qing, WHILE Taiping rages",
+      "highlight": true
     },
     {
-      "date": "June 1864",
-      "event": "Hong Xiuquan dies (likely suicide); body found 'draped in imperial yellow, in a sewer under the palace'"
+      "date": "Oct 1860",
+      "event": "SUMMER PALACE BURNED — Anglo-French forces loot and destroy Yuanmingyuan",
+      "highlight": true
     },
     {
       "date": "July 1864",
-      "event": "Nanjing falls to Zeng Guofan's forces; 'not one surrendered' — mass slaughter"
+      "event": "Nanjing falls to Zeng Guofan's forces; 'not one surrendered' — Taiping crushed"
     }
   ],
   "connections": {

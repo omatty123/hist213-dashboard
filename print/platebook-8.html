@@ -280,7 +280,20 @@
       border: none !important;
     }
 
+        .breadcrumb {
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+    .breadcrumb a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
     @media print {
+      .breadcrumb { display: none; }
       body { padding: 0; }
       #tokugawa-map {
         -webkit-print-color-adjust: exact;
@@ -290,6 +303,7 @@
   </style>
 </head>
 <body>
+  <div class="breadcrumb"><a href="../index.html">← Dashboard</a></div>
   <!-- Header -->
   <div class="header">
     <div class="plate-num">Plate # 8</div>

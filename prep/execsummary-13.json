@@ -195,11 +195,19 @@
     "zoom": 5,
     "locations": [
       {
+        "name": "Thistle Mountain",
+        "nameChinese": "紫荊山",
+        "lat": 23.45,
+        "lng": 109.95,
+        "type": "origin",
+        "description": "God Worshippers' base 1844-1850; where Hong Xiuquan gathered followers before the uprising"
+      },
+      {
         "name": "Guangzhou",
         "nameChinese": "廣州",
         "lat": 23.13,
         "lng": 113.26,
-        "type": "origin",
+        "type": "city",
         "description": "Where Hong heard missionaries preach (1836) and later studied with Rev. Roberts"
       },
       {
@@ -247,6 +255,7 @@
       "name": "Taiping Advance 1850-1853",
       "color": "#e63946",
       "points": [
+        [23.45, 109.95],
         [23.60, 110.11],
         [28.23, 112.94],
         [30.55, 114.35],

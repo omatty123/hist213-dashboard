@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>東學農民運動 | The Tonghak Rebellion 1894</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; background: #0a0c10; font-family: 'Inter', system-ui, sans-serif; }
+    #map { height: 100%; width: 100%; }
+
+    /* Title overlay */
+    .map-title {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #f2f5f7;
+      background: linear-gradient(135deg, rgba(10, 12, 16, 0.95) 0%, rgba(26, 54, 93, 0.9) 100%);
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      max-width: 320px;
+    }
+    .map-title .korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #c9a227;
+      letter-spacing: 0.05em;
+    }
+    .map-title .english {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+    .map-title .subtitle {
+      font-size: 11px;
+      opacity: 0.8;
+      margin-top: 8px;
+      line-height: 1.5;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 8px;
+    }
+
+    /* Legend */
+    .map-legend {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #f2f5f7;
+      background: rgba(10, 12, 16, 0.95);
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 11px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      min-width: 180px;
+    }
+    .legend-title {
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #c9a227;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .legend-section {
+      margin-bottom: 10px;
+    }
+    .legend-section-title {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 5px 0;
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      flex-shrink: 0;
+    }
+    .legend-line {
+      width: 24px;
+      height: 3px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .legend-line.dashed {
+      background: repeating-linear-gradient(90deg, currentColor 0, currentColor 6px, transparent 6px, transparent 10px);
+      height: 3px;
+    }
+
+    /* Timeline panel */
+    .timeline-panel {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #f2f5f7;
+      background: rgba(10, 12, 16, 0.95);
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      max-width: 220px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .timeline-panel-title {
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #c9a227;
+      margin-bottom: 12px;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .timeline-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .timeline-date {
+      font-weight: 700;
+      color: #c9a227;
+      min-width: 50px;
+      font-size: 9px;
+    }
+    .timeline-date.battle { color: #e63946; }
+    .timeline-date.foreign { color: #457b9d; }
+    .timeline-event {
+      color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+    }
+
+    /* Popup styling */
+    .leaflet-popup-content-wrapper {
+      background: rgba(10, 12, 16, 0.98);
+      color: #f2f5f7;
+      border-radius: 10px;
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .leaflet-popup-tip {
+      background: rgba(10, 12, 16, 0.98);
+    }
+    .leaflet-popup-content {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      margin: 12px 14px;
+      line-height: 1.5;
+    }
+    .popup-korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #c9a227;
+    }
+    .popup-english {
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .popup-date {
+      font-size: 10px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+    .popup-desc {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 11px;
+      color: rgba(255,255,255,0.85);
+    }
+    .popup-tag {
+      display: inline-block;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-top: 6px;
+    }
+    .popup-tag.uprising { background: rgba(201, 162, 39, 0.3); color: #c9a227; }
+    .popup-tag.victory { background: rgba(39, 174, 96, 0.3); color: #27ae60; }
+    .popup-tag.defeat { background: rgba(230, 57, 70, 0.3); color: #e63946; }
+    .popup-tag.foreign { background: rgba(69, 123, 157, 0.3); color: #457b9d; }
+    .popup-tag.capital { background: rgba(168, 85, 247, 0.3); color: #a855f7; }
+
+    /* Custom markers */
+    .custom-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 10px;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Pulsing animation for key locations */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(230, 57, 70, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+    }
+    .pulse-marker {
+      animation: pulse 2s infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Initialize map centered on Korea
+    const map = L.map('map', {
+      zoomControl: true,
+      attributionControl: false,
+      preferCanvas: true
+    }).setView([36.5, 127], 7);
+
+    // Dark dramatic basemap
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 12,
+      minZoom: 5
+    }).addTo(map);
+
+    // Colors
+    const colors = {
+      uprising: '#c9a227',
+      victory: '#27ae60',
+      defeat: '#e63946',
+      foreign: '#457b9d',
+      capital: '#a855f7',
+      japanese: '#e63946',
+      chinese: '#f4a261'
+    };
+
+    // ========== LOCATIONS ==========
+    // All coordinates verified via web search
+
+    const locations = [
+      // Tonghak Rebellion sites
+      {
+        name: "Gobu",
+        korean: "고부",
+        lat: 35.619,
+        lng: 126.744,
+        type: "uprising",
+        date: "January 10, 1894",
+        desc: "Where it all began. Peasants led by Jeon Bong-jun stormed the county office, freed prisoners, and demolished the corrupt magistrate's reservoir.",
+        radius: 10
+      },
+      {
+        name: "Hwangnyongchon",
+        korean: "황룡촌",
+        lat: 35.55,
+        lng: 126.95,
+        type: "victory",
+        date: "April 7, 1894",
+        desc: "First major battle. Peasant army with bamboo spears defeated government forces, opening the road to Jeonju.",
+        radius: 8
+      },
+      {
+        name: "Jeonju",
+        korean: "전주",
+        lat: 35.822,
+        lng: 127.149,
+        type: "victory",
+        date: "April 27, 1894",
+        desc: "Provincial capital captured. Jeon Bong-jun set up headquarters and began reforms: freeing slaves, burning debt records. Peace Agreement signed June 11.",
+        radius: 12
+      },
+      {
+        name: "Ugeumchi / Gongju",
+        korean: "우금치 / 공주",
+        lat: 36.456,
+        lng: 127.125,
+        type: "defeat",
+        date: "November 8-9, 1894",
+        desc: "The massacre. Peasants with bamboo spears faced Japanese rifles. Perhaps 30,000 dead. The rebellion ended here.",
+        radius: 12,
+        pulse: true
+      },
+
+      // Political centers
+      {
+        name: "Seoul (Hanyang)",
+        korean: "한양",
+        lat: 37.57,
+        lng: 126.98,
+        type: "capital",
+        date: "1894-1895",
+        desc: "Royal capital. Japan seized the palace July 23, 1894. Jeon Bong-jun was executed here March 29, 1895.",
+        radius: 14
+      },
+
+      // Foreign intervention
+      {
+        name: "Incheon",
+        korean: "인천",
+        lat: 37.46,
+        lng: 126.71,
+        type: "foreign",
+        date: "June 1894",
+        desc: "Where the whales arrived. Chinese troops landed June 8, Japanese troops June 10. The rebellion was over—but they didn't leave.",
+        radius: 10
+      },
+      {
+        name: "Asan",
+        korean: "아산",
+        lat: 36.79,
+        lng: 127.00,
+        type: "foreign",
+        date: "July 29, 1894",
+        desc: "First battle of the Sino-Japanese War. Japanese forces surprised and routed Chinese troops at Seonghwan.",
+        radius: 8
+      },
+      {
+        name: "Pyongyang",
+        korean: "평양",
+        lat: 39.033,
+        lng: 125.75,
+        type: "foreign",
+        date: "September 15, 1894",
+        desc: "Decisive Japanese victory. The Qing army was shattered. Japan now controlled all of Korea.",
+        radius: 10
+      },
+
+      // Origin
+      {
+        name: "Gyeongju",
+        korean: "경주",
+        lat: 35.84,
+        lng: 129.26,
+        type: "uprising",
+        date: "1860",
+        desc: "Birthplace of Ch'oe Cheu, founder of Tonghak. Here he received his mystical revelation: 'Human beings are heaven.'",
+        radius: 7
+      }
+    ];
+
+    // ========== ADD MARKERS ==========
+
+    locations.forEach(loc => {
+      const color = colors[loc.type];
+
+      // Create marker
+      const marker = L.circleMarker([loc.lat, loc.lng], {
+        radius: loc.radius,
+        fillColor: color,
+        color: '#fff',
+        weight: 2,
+        fillOpacity: 0.9,
+        className: loc.pulse ? 'pulse-marker' : ''
+      }).addTo(map);
+
+      // Popup content
+      const tagClass = loc.type;
+      const tagText = loc.type === 'uprising' ? 'Tonghak' :
+                      loc.type === 'victory' ? 'Victory' :
+                      loc.type === 'defeat' ? 'Defeat' :
+                      loc.type === 'foreign' ? 'Foreign War' : 'Capital';
+
+      marker.bindPopup(`
+        <div class="popup-korean">${loc.korean}</div>
+        <div class="popup-english">${loc.name}</div>
+        <div class="popup-date">${loc.date}</div>
+        <div class="popup-desc">${loc.desc}</div>
+        <span class="popup-tag ${tagClass}">${tagText}</span>
+      `);
+
+      // Add permanent label for key locations
+      if (['Gobu', 'Jeonju', 'Ugeumchi / Gongju', 'Seoul (Hanyang)', 'Incheon', 'Pyongyang'].includes(loc.name)) {
+        marker.bindTooltip(loc.korean, {
+          permanent: true,
+          direction: loc.name === 'Incheon' ? 'left' : 'right',
+          offset: [loc.name === 'Incheon' ? -12 : 12, 0],
+          className: 'map-label'
+        });
+      }
+    });
+
+    // ========== ROUTES ==========
+
+    // Phase 1: Tonghak Advance (January - April 1894)
+    const advanceRoute = [
+      [35.619, 126.744],   // Gobu
+      [35.55, 126.95],     // Hwangnyongchon
+      [35.822, 127.149]    // Jeonju
+    ];
+    L.polyline(advanceRoute, {
+      color: colors.victory,
+      weight: 4,
+      opacity: 0.85,
+      dashArray: '12 6'
+    }).addTo(map).bindPopup('<b>Tonghak Advance</b><br>January - April 1894<br><small>From local uprising to capturing a provincial capital</small>');
+
+    // Phase 2: Second Rising & Defeat (October - November 1894)
+    const defeatRoute = [
+      [35.822, 127.149],   // Jeonju
+      [36.1, 127.13],      // Northward march
+      [36.456, 127.125]    // Gongju/Ugeumchi
+    ];
+    L.polyline(defeatRoute, {
+      color: colors.defeat,
+      weight: 4,
+      opacity: 0.85,
+      dashArray: '6 10'
+    }).addTo(map).bindPopup('<b>March to Destruction</b><br>October - November 1894<br><small>Peasants vs. modern rifles. 30,000 dead.</small>');
+
+    // Phase 3: Japanese Military Operations
+    const japaneseRoute = [
+      [37.46, 126.71],     // Incheon
+      [37.57, 126.98],     // Seoul
+      [36.79, 127.00],     // Asan
+      [39.033, 125.75]     // Pyongyang
+    ];
+    L.polyline(japaneseRoute, {
+      color: colors.foreign,
+      weight: 3,
+      opacity: 0.7
+    }).addTo(map).bindPopup('<b>Japanese Campaign</b><br>June 1894 - April 1895<br><small>From "protecting" Korea to conquering it</small>');
+
+    // ========== REGIONAL SHADING ==========
+
+    // Jeolla Province (Tonghak heartland)
+    const jeollaRegion = [
+      [34.8, 126.3],
+      [35.0, 125.8],
+      [35.5, 125.9],
+      [36.0, 126.5],
+      [36.2, 127.5],
+      [35.8, 128.0],
+      [35.2, 127.8],
+      [34.5, 127.2],
+      [34.3, 126.8]
+    ];
+    L.polygon(jeollaRegion, {
+      color: colors.uprising,
+      fillColor: colors.uprising,
+      fillOpacity: 0.08,
+      weight: 1,
+      dashArray: '4 4'
+    }).addTo(map).bindPopup('<b>Jeolla Province</b><br>전라도<br><small>Agricultural heartland. Tonghak stronghold. Most exploited by corrupt officials.</small>');
+
+    // ========== CONTROLS ==========
+
+    // Title
+    const titleControl = L.control({ position: 'topleft' });
+    titleControl.onAdd = function() {
+      const div = L.DomUtil.create('div', 'map-title');
+      div.innerHTML = `
+        <div class="korean">東學農民運動</div>
+        <div class="english">THE TONGHAK REBELLION</div>
+        <div class="subtitle">How a peasant uprising over a reservoir tax triggered the First Sino-Japanese War and ended 500 years of Chinese dominance in East Asia.</div>
+      `;
+      return div;
+    };
+    titleControl.addTo(map);
+
+    // Legend
+    const legendControl = L.control({ position: 'bottomright' });
+    legendControl.onAdd = function() {
+      const div = L.DomUtil.create('div', 'map-legend');
+      div.innerHTML = `
+        <div class="legend-title">Legend</div>
+        <div class="legend-section">
+          <div class="legend-section-title">Locations</div>
+          <div class="legend-item"><span class="legend-dot" style="background:${colors.uprising}"></span> Tonghak Sites</div>
+          <div class="legend-item"><span class="legend-dot" style="background:${colors.victory}"></span> Peasant Victories</div>
+          <div class="legend-item"><span class="legend-dot" style="background:${colors.defeat}"></span> Final Defeat</div>
+          <div class="legend-item"><span class="legend-dot" style="background:${colors.foreign}"></span> Sino-Japanese War</div>
+          <div class="legend-item"><span class="legend-dot" style="background:${colors.capital}"></span> Capital</div>
+        </div>
+        <div class="legend-section">
+          <div class="legend-section-title">Routes</div>
+          <div class="legend-item"><span class="legend-line" style="background:${colors.victory}"></span> Tonghak Advance</div>
+          <div class="legend-item"><span class="legend-line" style="background:${colors.defeat}"></span> Defeat Route</div>
+          <div class="legend-item"><span class="legend-line" style="background:${colors.foreign}"></span> Japanese Campaign</div>
+        </div>
+      `;
+      return div;
+    };
+    legendControl.addTo(map);
+
+    // Timeline panel
+    const timelineControl = L.control({ position: 'bottomleft' });
+    timelineControl.onAdd = function() {
+      const div = L.DomUtil.create('div', 'timeline-panel');
+      div.innerHTML = `
+        <div class="timeline-panel-title">Timeline 1894</div>
+        <div class="timeline-item">
+          <span class="timeline-date">Jan 10</span>
+          <span class="timeline-event"><b>Gobu Uprising</b> — Peasants storm county office</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date battle">Apr 7</span>
+          <span class="timeline-event"><b>Hwangnyongchon</b> — First victory over government</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date battle">Apr 27</span>
+          <span class="timeline-event"><b>Jeonju captured</b> — Provincial capital falls</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date foreign">Jun 8-10</span>
+          <span class="timeline-event"><b>Foreign troops land</b> — China, then Japan</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">Jun 11</span>
+          <span class="timeline-event"><b>Jeonju Peace</b> — Rebellion ends peacefully</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date foreign">Jul 23</span>
+          <span class="timeline-event"><b>Palace seized</b> — Japan takes Seoul</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date foreign">Aug 1</span>
+          <span class="timeline-event"><b>War declared</b> — Sino-Japanese War begins</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date foreign">Sep 15</span>
+          <span class="timeline-event"><b>Pyongyang</b> — Japan destroys Qing army</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date battle">Nov 8-9</span>
+          <span class="timeline-event"><b>Ugeumchi</b> — Peasant army massacred</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date battle">Mar 1895</span>
+          <span class="timeline-event"><b>Jeon executed</b> — "Green Bean" dies</span>
+        </div>
+      `;
+      return div;
+    };
+    timelineControl.addTo(map);
+
+    // Style for permanent labels
+    const style = document.createElement('style');
+    style.textContent = `
+      .map-label {
+        background: rgba(10, 12, 16, 0.85) !important;
+        border: 1px solid rgba(201, 162, 39, 0.5) !important;
+        border-radius: 4px !important;
+        padding: 3px 8px !important;
+        font-family: 'Noto Sans KR', sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: #f2f5f7 !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+      }
+      .map-label::before {
+        display: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Fit to show all of Korea
+    map.fitBounds([[34, 125], [40, 130]]);
+  </script>
+</body>
+</html>

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deep Dive: The Tonghak Rebellion 1894 | HIST/EAST 213</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #f0f0f0;
+      background: #0a0a0f;
+    }
+
+    /* Navigation */
+    nav {
+      background: #000;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #c9a227;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+    }
+    nav a:hover { text-decoration: underline; }
+    nav span { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+    nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      background: linear-gradient(135deg, rgba(10,10,20,0.5) 0%, rgba(20,10,10,0.7) 100%),
+                  url('images/tonghak/01_tonghak_army_painting.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to top, #0a0a0f 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c9a227;
+      margin-bottom: 1rem;
+    }
+
+    .hero-korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 4px 30px rgba(0,0,0,0.6);
+      line-height: 1.1;
+    }
+
+    .hero-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      font-style: italic;
+      max-width: 650px;
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      background: linear-gradient(90deg, #1a0505 0%, #0a0a1a 50%, #050a1a 100%);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-around;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(201,162,39,0.3);
+      border-bottom: 1px solid rgba(201,162,39,0.3);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #c9a227;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.5rem;
+    }
+
+    /* Full-width Map Section */
+    .map-section {
+      height: 650px;
+      position: relative;
+    }
+
+    #rebellion-map {
+      height: 100%;
+      width: 100%;
+    }
+
+    /* Content */
+    .content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
+    }
+
+    .main-column h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #c9a227;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(201,162,39,0.3);
+    }
+
+    .main-column h2:first-child {
+      margin-top: 0;
+    }
+
+    .main-column p {
+      margin-bottom: 1.5rem;
+      text-align: justify;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      background: linear-gradient(135deg, rgba(201,162,39,0.1) 0%, rgba(201,162,39,0.05) 100%);
+      border-left: 4px solid #c9a227;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      font-size: 1.15rem;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-style: normal;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+    }
+
+    .sidebar-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-box h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #c9a227;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .sidebar-box ul {
+      list-style: none;
+      font-size: 0.95rem;
+    }
+
+    .sidebar-box li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .sidebar-box li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-box li strong {
+      color: #c9a227;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      background: linear-gradient(135deg, rgba(201,162,39,0.1) 0%, rgba(201,162,39,0.05) 100%);
+      border: 1px solid rgba(201,162,39,0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .profile-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .profile-card h4 {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #c9a227;
+      margin-bottom: 0.25rem;
+    }
+
+    .profile-card .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1rem;
+    }
+
+    .profile-card .nickname {
+      background: rgba(201,162,39,0.2);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .profile-card .nickname-korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #c9a227;
+    }
+
+    .profile-card .nickname-english {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      font-style: italic;
+    }
+
+    .profile-card .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .profile-card .stat-item {
+      background: rgba(255,255,255,0.05);
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+
+    .profile-card .stat-item .value {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .profile-card .stat-item .label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+    }
+
+    /* Image Frame */
+    .image-frame {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 2rem 0;
+    }
+
+    .image-frame img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .image-caption {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 1rem;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Chess Game Section */
+    .chess-section {
+      background: linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 100%);
+      padding: 4rem;
+      margin: 4rem 0;
+    }
+
+    .chess-section h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .chess-subtitle {
+      font-size: 1.1rem;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+
+    .chess-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .chess-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .chess-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,162,39,0.5);
+    }
+
+    .chess-flag {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .chess-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .chess-role {
+      font-size: 0.85rem;
+      color: #c9a227;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .chess-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    /* Irony Section */
+    .irony-section {
+      background: linear-gradient(135deg, #1a0505 0%, #0a0a0f 100%);
+      border: 1px solid rgba(230,57,70,0.3);
+      border-radius: 16px;
+      padding: 3rem;
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .irony-section h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #e63946;
+      margin-bottom: 2rem;
+    }
+
+    .irony-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 2rem;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .irony-box {
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+
+    .irony-box.wanted {
+      background: rgba(39,174,96,0.1);
+      border: 1px solid rgba(39,174,96,0.3);
+    }
+
+    .irony-box.got {
+      background: rgba(230,57,70,0.1);
+      border: 1px solid rgba(230,57,70,0.3);
+    }
+
+    .irony-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+
+    .irony-box.wanted .irony-label { color: #27ae60; }
+    .irony-box.got .irony-label { color: #e63946; }
+
+    .irony-text {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .irony-arrow {
+      font-size: 2rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .irony-footer {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Legacy Section */
+    .legacy-section {
+      background: linear-gradient(180deg, #0a0a0f 0%, #0a1010 100%);
+      padding: 4rem;
+      border-top: 1px solid rgba(201,162,39,0.3);
+    }
+
+    .legacy-section h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .legacy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .legacy-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .legacy-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #c9a227;
+      margin-bottom: 1rem;
+    }
+
+    .legacy-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+
+    /* Sources */
+    .sources {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .sources h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1rem;
+    }
+
+    .sources ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .sources li {
+      padding: 0.3rem 0;
+      padding-left: 1rem;
+      border-left: 2px solid rgba(255,255,255,0.1);
+      margin-bottom: 0.5rem;
+    }
+
+    .sources a { color: #c9a227; }
+
+    /* Links */
+    .action-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .action-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #c9a227;
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .action-link:hover {
+      background: #dbb530;
+    }
+
+    .action-link.secondary {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+
+    .action-link.secondary:hover {
+      border-color: #c9a227;
+      color: #c9a227;
+    }
+
+    /* Leaflet customizations */
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+      background: rgba(10, 12, 16, 0.95);
+      color: #f2f5f7;
+      border: 1px solid rgba(201, 162, 39, 0.3);
+    }
+    .leaflet-popup-content {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      margin: 10px 12px;
+    }
+    .map-title-overlay {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #f2f5f7;
+      background: linear-gradient(135deg, rgba(10, 12, 16, 0.95) 0%, rgba(26, 54, 93, 0.9) 100%);
+      padding: 14px 18px;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+    }
+    .map-title-overlay .korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #c9a227;
+    }
+    .map-title-overlay .english {
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .map-legend-overlay {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #f2f5f7;
+      background: rgba(10, 12, 16, 0.95);
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .map-legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .map-legend-line { width: 20px; height: 3px; border-radius: 2px; }
+    .map-label {
+      background: rgba(10, 12, 16, 0.85) !important;
+      border: 1px solid rgba(201, 162, 39, 0.5) !important;
+      border-radius: 4px !important;
+      padding: 2px 6px !important;
+      font-family: 'Noto Sans KR', sans-serif !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      color: #f2f5f7 !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+    .map-label::before { display: none !important; }
+
+    @media (max-width: 1000px) {
+      .two-column { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .chess-grid { grid-template-columns: 1fr; }
+      .irony-grid { grid-template-columns: 1fr; }
+      .irony-arrow { transform: rotate(90deg); }
+      .hero-korean { font-size: 3rem; }
+      .content, .chess-section, .legacy-section { padding: 2rem; }
+    }
+
+    @media print {
+      nav { display: none; }
+      body { background: #fff; color: #000; }
+      .hero { min-height: auto; padding: 2rem; }
+      .map-section { height: 400px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">&larr; Back to Dashboard</a>
+    <span>|</span>
+    <span class="context">Plate 14: The Tonghak Rebellion</span>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Plate 14 Deep Dive</div>
+      <div class="hero-korean">東學農民運動</div>
+      <h1 class="hero-title">THE TONGHAK REBELLION</h1>
+      <p class="hero-subtitle">"Shrimp among whales" — How a peasant uprising over a reservoir tax triggered the First Sino-Japanese War and ended 500 years of Chinese dominance in East Asia.</p>
+    </div>
+  </div>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value">1894</div>
+      <div class="stat-label">Year of Rebellion</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">300K+</div>
+      <div class="stat-label">Peasant Army at Peak</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">~30K</div>
+      <div class="stat-label">Dead at Ugeumchi</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2</div>
+      <div class="stat-label">Empires Went to War</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">152cm</div>
+      <div class="stat-label">"Green Bean's" Height</div>
+    </div>
+  </div>
+
+  <!-- Map Section -->
+  <div class="map-section">
+    <div id="rebellion-map"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="two-column">
+      <div class="main-column">
+
+        <h2>The Spark: A Corrupt Magistrate</h2>
+        <p>In January 1894, the magistrate of Gobu county, Jo Byeong-gap, forced peasants to build a reservoir with their own labor—then taxed them for using the water. When farmers petitioned against this blatant extortion, Jo had them beaten. On January 10, a thousand peasants stormed the county office, freed prisoners, distributed hoarded grain, and demolished the hated reservoir.</p>
+
+        <p>Their leader was a village teacher so short his neighbors called him <em>nokdu</em>—"green bean." Jeon Bong-jun stood barely five feet tall, but within months he would command the largest peasant army in Korean history.</p>
+
+        <div class="pull-quote">
+          "We do not rise to overthrow the king. We rise to punish corrupt officials who suck the blood of the people, and to drive out the foreign barbarians who violate our land."
+          <cite>— Jeon Bong-jun, Proclamation of the Peasant Army, March 1894</cite>
+        </div>
+
+        <h2>What Was Tonghak?</h2>
+        <p><strong>Tonghak</strong> (東學, "Eastern Learning") was Korea's indigenous answer to Western encroachment. Founded in 1860 by Ch'oe Cheu, a fallen yangban who experienced a mystical revelation, it combined Confucianism, Buddhism, Daoism, and shamanism into something revolutionary: a faith teaching that <em>"in nae ch'on"</em>—human beings are heaven.</p>
+
+        <p>In a society where birth determined everything, Tonghak declared that every person, from the lowest slave to the highest aristocrat, carried heaven within them. The entire social hierarchy that had governed Korea for centuries was, in Tonghak theology, a human corruption of divine truth.</p>
+
+        <p>Ch'oe Cheu was executed in 1864 for heterodoxy. His successor, Ch'oe Sihyong, took the movement underground, where it spread through Korea's southern provinces—the agricultural heartland, the region most exploited by corrupt officials, and the perfect kindling for revolution.</p>
+
+        <div class="image-frame">
+          <img src="images/tonghak/03_sabal_tongmun.jpg" alt="Sabal Tongmun - The Bowl Proclamation">
+          <p class="image-caption"><strong>사발통문 (Sabal Tongmun) — "Bowl Proclamation"</strong><br>Names written in a circle so no single leader could be identified as the instigator. This ingenious format protected organizers from execution.</p>
+        </div>
+
+        <h2>From Protest to Revolution</h2>
+        <p>What began in Gobu exploded outward. By March, Jeon Bong-jun had organized tens of thousands of peasants into a disciplined army. Armed mostly with bamboo spears and farming tools, they defeated government forces at Hwangnyongchon on April 7. Three weeks later, they captured <strong>Jeonju</strong>, the provincial capital.</p>
+
+        <p>Peasants had taken a major city. Jeon set up headquarters in the governor's office and began implementing the Tonghak program: freeing slaves, burning debt records, redistributing grain to the poor. For a brief moment, a different Korea seemed possible.</p>
+
+        <p>Then came the truce. On June 11, the government signed the <strong>Jeonju Peace Agreement</strong>. The rebels would disperse; in exchange, peasant self-governance bureaus (<em>jibgang-so</em>) would be established throughout Jeolla Province. Reform would come peacefully.</p>
+
+        <p>It might have worked. But by the time the ink was dry, foreign armies were already on Korean soil.</p>
+
+        <h2>The War No One Wanted—Except Japan</h2>
+        <p>King Gojong, panicking at peasant armies, had invoked an 1882 treaty and requested Chinese military assistance. China sent 2,500 troops—and, per the 1885 Tianjin Convention, notified Japan. Tokyo's response was to send 8,000 soldiers, three times China's force.</p>
+
+        <p>By June, the rebellion was over. The Jeonju Peace Agreement had worked. But Japan refused to withdraw. On July 23, Japanese forces seized the Korean royal palace and installed a puppet government. On August 1, Japan declared war on China.</p>
+
+        <p>The First Sino-Japanese War was a catastrophe for the Qing. In nine months, Japan destroyed the Chinese navy, occupied Manchuria, and forced China to sign the Treaty of Shimonoseki (April 1895), recognizing Korean "independence" and ceding Taiwan to Japan.</p>
+
+        <h2>The Second Rising—and the End</h2>
+        <p>In October 1894, seeing Japanese troops occupying his country, Jeon Bong-jun remobilized the peasant army. This time they fought not for reform, but for national survival.</p>
+
+        <p>It was hopeless. At the <strong>Battle of Ugeumchi</strong> (November 8-9), peasants armed with bamboo spears faced Japanese troops with modern rifles and artillery. The slaughter was total—perhaps 30,000 dead in two days. Jeon escaped, was betrayed by an informer, captured on December 28, and executed in Seoul on March 29, 1895.</p>
+
+        <div class="image-frame">
+          <img src="images/tonghak/02_jeon_bongjun_capture.jpg" alt="Jeon Bong-jun after capture">
+          <p class="image-caption"><strong>Jeon Bong-jun after his capture, December 1894.</strong> Seated center in white, flanked by Japanese and Korean guards. One of the few photographs of the man whose uprising changed East Asian history.</p>
+        </div>
+
+        <div class="pull-quote">
+          "I wanted to save the people from misery, to punish the corrupt officials who squeeze them like oil from sesame, and to expel the foreign barbarians who treat our land like their playground. If this is treason, then I am proud to be a traitor."
+          <cite>— Jeon Bong-jun, at his trial, February 1895</cite>
+        </div>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Jeon Bong-jun Profile -->
+        <div class="profile-card">
+          <img src="images/tonghak/02_jeon_bongjun_capture.jpg" alt="Jeon Bong-jun">
+          <h4>전봉준</h4>
+          <div class="subtitle">Jeon Bong-jun · 1855-1895</div>
+          <div class="nickname">
+            <div class="nickname-korean">녹두장군</div>
+            <div class="nickname-english">"General Green Bean"</div>
+          </div>
+          <div class="stats">
+            <div class="stat-item">
+              <div class="value">152cm</div>
+              <div class="label">Height</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">300K+</div>
+              <div class="label">Army</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">39</div>
+              <div class="label">Age at Death</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">1895</div>
+              <div class="label">Executed</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>The Twelve Demands</h3>
+          <ul>
+            <li>Punish corrupt officials</li>
+            <li>Cancel unjust debts</li>
+            <li>Redistribute land to tillers</li>
+            <li>Free all slaves</li>
+            <li>Abolish status discrimination</li>
+            <li>Allow widow remarriage</li>
+            <li>End unauthorized taxation</li>
+            <li>Hire based on merit, not birth</li>
+            <li>Punish collaborators with Japan</li>
+            <li>Cancel unpaid grain loans</li>
+            <li>Eliminate regional discrimination</li>
+            <li>Expel foreign barbarians</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>Korean Proverb</h3>
+          <p style="font-family: 'Noto Sans KR'; font-style: italic; color: rgba(255,255,255,0.7); line-height: 1.6; text-align: center; font-size: 1.1rem;">"새우등이 고래 싸움에 터진다"</p>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem; text-align: center;">"When whales fight, the shrimp's back is broken."</p>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>Key Figures</h3>
+          <ul>
+            <li><strong>Ch'oe Cheu</strong> (1824-1864)<br>Tonghak founder; executed</li>
+            <li><strong>Ch'oe Sihyong</strong> (1827-1898)<br>Second leader; executed</li>
+            <li><strong>Jo Byeong-gap</strong><br>Corrupt magistrate who sparked it all</li>
+            <li><strong>King Gojong</strong> (r. 1864-1907)<br>Called for Chinese aid</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chess Game Section -->
+  <div class="chess-section">
+    <h2>The International Chess Game</h2>
+    <p class="chess-subtitle">How a peasant revolt became a great power war</p>
+
+    <div class="chess-grid">
+      <div class="chess-card">
+        <div class="chess-flag">🇰🇷</div>
+        <div class="chess-name">JOSEON KOREA</div>
+        <div class="chess-role">"The Shrimp"</div>
+        <div class="chess-desc">King Gojong, panicking at peasant armies, invoked the 1882 treaty with Qing China and requested military assistance. He did not anticipate what would follow.</div>
+      </div>
+
+      <div class="chess-card">
+        <div class="chess-flag">🇨🇳</div>
+        <div class="chess-name">QING CHINA</div>
+        <div class="chess-role">"The Old Whale"</div>
+        <div class="chess-desc">China sent 2,500 troops—and notified Japan per the 1885 Tianjin Convention. They expected to restore order and reaffirm tributary supremacy. They had not faced Japan's new army.</div>
+      </div>
+
+      <div class="chess-card">
+        <div class="chess-flag">🇯🇵</div>
+        <div class="chess-name">MEIJI JAPAN</div>
+        <div class="chess-role">"The Rising Whale"</div>
+        <div class="chess-desc">Japan sent 8,000 troops—three times China's force. When the Jeonju Peace made them unnecessary, they refused to leave. They had come for something bigger.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Irony Section -->
+  <div class="content">
+    <div class="irony-section">
+      <h2>The Tragic Irony</h2>
+      <div class="irony-grid">
+        <div class="irony-box wanted">
+          <div class="irony-label">What Tonghak Wanted</div>
+          <div class="irony-text">"Drive out the foreign barbarians who violate our land"</div>
+        </div>
+        <div class="irony-arrow">&rarr;</div>
+        <div class="irony-box got">
+          <div class="irony-label">What Tonghak Got</div>
+          <div class="irony-text">Triggered the war that put Japan in control of Korea</div>
+        </div>
+      </div>
+      <p class="irony-footer">By 1910, Korea was a Japanese colony. The "independence" recognized at Shimonoseki was independence from China—so Japan could take Korea for itself.</p>
+    </div>
+  </div>
+
+  <!-- Legacy Section -->
+  <div class="legacy-section">
+    <h2>Legacy: Different Koreas, Same Hero</h2>
+
+    <div class="legacy-grid">
+      <div class="legacy-card">
+        <h4>South Korea</h4>
+        <p>Jeon Bong-jun is celebrated as a proto-democratic hero. The 1980s democracy movement adopted him as a symbol. Statues stand in Jeonju and his hometown. The mung bean pancake (<em>nokdujeon</em>) is named for "General Green Bean."</p>
+      </div>
+      <div class="legacy-card">
+        <h4>North Korea</h4>
+        <p>The DPRK honors Tonghak as peasant class struggle against feudalism and imperialism—a precursor to socialist revolution. The rebellion proves the revolutionary spirit of the Korean masses.</p>
+      </div>
+      <div class="legacy-card">
+        <h4>Cheondogyo</h4>
+        <p>Tonghak survives today as <strong>Cheondogyo</strong> (Religion of the Heavenly Way), renamed in 1905. It was central to the March First Movement of 1919 and remains active in both Koreas.</p>
+      </div>
+      <div class="legacy-card">
+        <h4>The Big Question</h4>
+        <p>Did the Tonghak rebels doom their cause by triggering foreign intervention? Or did foreign powers doom Korea regardless? The Jeonju Peace suggests reform was possible—until the whales started fighting.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- Sources -->
+    <div class="sources">
+      <h3>Sources & Further Reading</h3>
+      <ul>
+        <li><a href="https://uhpress.hawaii.edu/title/eastern-learning-and-the-heavenly-way-the-tonghak-and-chondogyo-movements-and-the-twilight-of-korean-independence/" target="_blank">Carl F. Young, <em>Eastern Learning and the Heavenly Way</em> (University of Hawai'i Press, 2014)</a></li>
+        <li>Sources of Korean Tradition, Vol. II — "Tonghak Uprisings" (Course Reading)</li>
+        <li>New History of Korea — "Revolutionary Uprising of Tonghak Peasant Army" (Course Reading)</li>
+        <li><a href="https://wwnorton.com/books/9780393327021" target="_blank">Bruce Cumings, <em>Korea's Place in the Sun</em> (W.W. Norton, 2005)</a></li>
+      </ul>
+    </div>
+
+    <div class="action-links">
+      <a href="../index.html" class="action-link secondary">&larr; Back to Dashboard</a>
+      <a href="platebook-14.html" class="action-link">Plate 14 Worksheet</a>
+      <a href="tonghak-comprehensive-map.html" class="action-link secondary">Full-Screen Map</a>
+    </div>
+  </div>
+
+  <!-- Leaflet Map Script -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const map = L.map('rebellion-map', {
+        zoomControl: true,
+        attributionControl: false,
+        scrollWheelZoom: false
+      }).setView([36.5, 127], 7);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
+        maxZoom: 12,
+        minZoom: 5
+      }).addTo(map);
+
+      const colors = {
+        uprising: '#c9a227',
+        victory: '#27ae60',
+        defeat: '#e63946',
+        foreign: '#457b9d',
+        capital: '#a855f7'
+      };
+
+      const locations = [
+        { name: "Gobu", kr: "고부", lat: 35.619, lng: 126.744, type: "uprising", desc: "Uprising began Jan 1894", r: 9 },
+        { name: "Hwangnyongchon", kr: "황룡촌", lat: 35.55, lng: 126.95, type: "victory", desc: "First victory Apr 7", r: 7 },
+        { name: "Jeonju", kr: "전주", lat: 35.822, lng: 127.149, type: "victory", desc: "Captured Apr 27; Peace Jun 11", r: 10 },
+        { name: "Ugeumchi/Gongju", kr: "우금치", lat: 36.456, lng: 127.125, type: "defeat", desc: "Massacre Nov 8-9, ~30K dead", r: 11 },
+        { name: "Seoul", kr: "한양", lat: 37.57, lng: 126.98, type: "capital", desc: "Jeon executed Mar 1895", r: 12 },
+        { name: "Incheon", kr: "인천", lat: 37.46, lng: 126.71, type: "foreign", desc: "Foreign troops land Jun 1894", r: 9 },
+        { name: "Asan", kr: "아산", lat: 36.79, lng: 127.00, type: "foreign", desc: "First Sino-Japanese battle Jul 29", r: 7 },
+        { name: "Pyongyang", kr: "평양", lat: 39.033, lng: 125.75, type: "foreign", desc: "Decisive Japanese victory Sep 15", r: 9 }
+      ];
+
+      locations.forEach(loc => {
+        const marker = L.circleMarker([loc.lat, loc.lng], {
+          radius: loc.r,
+          fillColor: colors[loc.type],
+          color: '#fff',
+          weight: 2,
+          fillOpacity: 0.9
+        }).addTo(map);
+        marker.bindPopup(`<b>${loc.kr} ${loc.name}</b><br>${loc.desc}`);
+        if (['Gobu', 'Jeonju', 'Ugeumchi/Gongju', 'Seoul', 'Incheon', 'Pyongyang'].includes(loc.name)) {
+          marker.bindTooltip(loc.kr, {
+            permanent: true,
+            direction: loc.name === 'Incheon' ? 'left' : 'right',
+            offset: [loc.name === 'Incheon' ? -10 : 10, 0],
+            className: 'map-label'
+          });
+        }
+      });
+
+      // Routes
+      L.polyline([[35.619, 126.744], [35.55, 126.95], [35.822, 127.149]], {
+        color: colors.victory, weight: 4, opacity: 0.85, dashArray: '10 5'
+      }).addTo(map);
+
+      L.polyline([[35.822, 127.149], [36.1, 127.13], [36.456, 127.125]], {
+        color: colors.defeat, weight: 4, opacity: 0.85, dashArray: '5 10'
+      }).addTo(map);
+
+      L.polyline([[37.46, 126.71], [37.57, 126.98], [36.79, 127.00], [39.033, 125.75]], {
+        color: colors.foreign, weight: 3, opacity: 0.7
+      }).addTo(map);
+
+      // Title
+      const titleControl = L.control({ position: 'topleft' });
+      titleControl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'map-title-overlay');
+        div.innerHTML = '<div class="korean">東學農民運動</div><div class="english">The Tonghak Rebellion 1894</div>';
+        return div;
+      };
+      titleControl.addTo(map);
+
+      // Legend
+      const legendControl = L.control({ position: 'bottomright' });
+      legendControl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'map-legend-overlay');
+        div.innerHTML = `
+          <div class="map-legend-item"><span class="map-legend-dot" style="background:${colors.uprising}"></span> Tonghak</div>
+          <div class="map-legend-item"><span class="map-legend-dot" style="background:${colors.victory}"></span> Victory</div>
+          <div class="map-legend-item"><span class="map-legend-dot" style="background:${colors.defeat}"></span> Defeat</div>
+          <div class="map-legend-item"><span class="map-legend-dot" style="background:${colors.foreign}"></span> Sino-Japanese War</div>
+          <div class="map-legend-item"><span class="map-legend-dot" style="background:${colors.capital}"></span> Capital</div>
+        `;
+        return div;
+      };
+      legendControl.addTo(map);
+
+      map.fitBounds([[34, 125], [40, 130]]);
+    });
+  </script>
+
+</body>
+</html>

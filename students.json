@@ -21,7 +21,7 @@
       "id": "3",
       "lastName": "Pick",
       "firstName": "Isabelle",
-      "preferredName": "",
+      "preferredName": "Izzy",
       "pronouns": "She/Her/Hers",
       "photo": "photos/pick_isabelle.png"
     },
@@ -35,27 +35,19 @@
     },
     {
       "id": "5",
-      "lastName": "Valdez",
-      "firstName": "Eliel",
+      "lastName": "Jeong",
+      "firstName": "Jessy",
       "preferredName": "",
-      "pronouns": "He/Him/His",
-      "photo": "photos/valdez_eliel.png"
+      "pronouns": "",
+      "photo": "photos/jeong_jessy.png"
     },
     {
       "id": "6",
-      "lastName": "Williams",
-      "firstName": "Sam",
+      "lastName": "Yang",
+      "firstName": "Juchan",
       "preferredName": "",
       "pronouns": "",
-      "photo": "photos/williams_sam.png"
-    },
-    {
-      "id": "7",
-      "lastName": "Witucki",
-      "firstName": "Cole",
-      "preferredName": "",
-      "pronouns": "",
-      "photo": "photos/witucki_cole.png"
+      "photo": "photos/yang_juchan.png"
     }
   ]
 }

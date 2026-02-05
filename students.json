@@ -48,6 +48,22 @@
       "preferredName": "",
       "pronouns": "",
       "photo": "photos/yang_juchan.png"
+    },
+    {
+      "id": "7",
+      "lastName": "Williams",
+      "firstName": "Sam",
+      "preferredName": "",
+      "pronouns": "",
+      "photo": "photos/williams_sam.png"
+    },
+    {
+      "id": "8",
+      "lastName": "Valdez",
+      "firstName": "Eliel",
+      "preferredName": "",
+      "pronouns": "He/Him/His",
+      "photo": "photos/valdez_eliel.png"
     }
   ]
 }

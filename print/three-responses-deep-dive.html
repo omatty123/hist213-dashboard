@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Dive: Three Responses to Western Imperialism</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --japan: #B71C1C;
+            --japan-light: #FFEBEE;
+            --japan-mid: #E57373;
+            --china: #E65100;
+            --china-light: #FFF3E0;
+            --china-mid: #FFB74D;
+            --korea: #1565C0;
+            --korea-light: #E3F2FD;
+            --korea-mid: #64B5F6;
+            --bg: #FAFAF7;
+            --text: #1a1a1a;
+            --text-secondary: #555;
+            --border: #e0ddd5;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ── HEADER ── */
+        .page-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 3rem 2.5rem 2.5rem;
+        }
+        .page-header .breadcrumb {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+        .page-header .breadcrumb a { color: white; text-decoration: none; }
+        .page-header .breadcrumb a:hover { opacity: 1; text-decoration: underline; }
+        .page-header h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 800px;
+        }
+        .page-header .subtitle {
+            font-size: 1.05rem;
+            opacity: 0.75;
+            margin-top: 0.75rem;
+            max-width: 700px;
+            line-height: 1.5;
+        }
+        .page-header .date-badge {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* ── FRAMING QUESTION ── */
+        .framing {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2.5rem 2.5rem 0;
+        }
+        .framing-box {
+            background: #f5f0e8;
+            border-left: 4px solid #8B7355;
+            padding: 1.5rem 2rem;
+            border-radius: 0 8px 8px 0;
+            max-width: 900px;
+        }
+        .framing-box .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #8B7355;
+            margin-bottom: 0.5rem;
+        }
+        .framing-box p {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.15rem;
+            color: #3a3020;
+            line-height: 1.6;
+        }
+
+        /* ── THREE PORTRAIT CARDS ── */
+        .portraits {
+            max-width: 1400px;
+            margin: 2.5rem auto 0;
+            padding: 0 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .portrait-card {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .portrait-card .img-wrap {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .portrait-card .img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .portrait-card .img-wrap .country-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: white;
+        }
+        .portrait-card .img-wrap .img-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.4rem 0.75rem;
+            background: rgba(0,0,0,0.6);
+            color: rgba(255,255,255,0.8);
+            font-size: 0.7rem;
+        }
+        .portrait-card .card-body {
+            padding: 1.25rem 1.5rem;
+        }
+        .portrait-card .card-body h2 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.15rem;
+        }
+        .portrait-card .card-body .dates {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+        .portrait-card .card-body .one-liner {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .card-japan .country-tag { background: var(--japan); }
+        .card-china .country-tag { background: var(--china); }
+        .card-korea .country-tag { background: var(--korea); }
+        .card-japan h2 { color: var(--japan); }
+        .card-china h2 { color: var(--china); }
+        .card-korea h2 { color: var(--korea); }
+
+        /* ── COMPARISON TABLE ── */
+        .comparison-section {
+            max-width: 1400px;
+            margin: 2.5rem auto 0;
+            padding: 0 2.5rem;
+        }
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .comp-table th,
+        .comp-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            vertical-align: top;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            border-bottom: 1px solid #f0ede6;
+        }
+        .comp-table thead th {
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: white;
+            padding: 0.75rem 1.25rem;
+        }
+        .comp-table thead th:nth-child(1) { background: #444; width: 16%; }
+        .comp-table thead th:nth-child(2) { background: var(--japan); width: 28%; }
+        .comp-table thead th:nth-child(3) { background: var(--china); width: 28%; }
+        .comp-table thead th:nth-child(4) { background: var(--korea); width: 28%; }
+
+        .comp-table tbody tr:last-child td { border-bottom: none; }
+        .comp-table tbody tr:nth-child(even) { background: #fdfcf9; }
+
+        .comp-table td:first-child {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #666;
+            background: #f9f7f2;
+            border-right: 1px solid #ebe8e0;
+        }
+        .comp-table td:nth-child(2) { border-right: 1px solid #f5f0ea; }
+        .comp-table td:nth-child(3) { border-right: 1px solid #f5f0ea; }
+
+        .comp-table td strong { color: #1a1a1a; }
+        .comp-table td em { color: #777; font-style: italic; }
+
+        .tag {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+        .tag-success { background: #E8F5E9; color: #2E7D32; }
+        .tag-failure { background: #FFEBEE; color: #C62828; }
+        .tag-mixed { background: #FFF8E1; color: #F57F17; }
+
+        /* ── ANALYSIS BLOCKS ── */
+        .analysis {
+            max-width: 1400px;
+            margin: 2.5rem auto 0;
+            padding: 0 2.5rem 3rem;
+        }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .analysis-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem 1.75rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .analysis-card.full-width {
+            grid-column: 1 / -1;
+        }
+        .analysis-card h3 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #1a1a2e;
+        }
+        .analysis-card p, .analysis-card li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #444;
+        }
+        .analysis-card ul {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+        .analysis-card li { margin-bottom: 0.4rem; }
+        .analysis-card .highlight {
+            background: #FFF9C4;
+            padding: 0.1rem 0.3rem;
+            border-radius: 2px;
+        }
+
+        .spectrum {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin: 1.25rem 0 0.75rem;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 48px;
+        }
+        .spectrum-segment {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.03em;
+        }
+        .spectrum-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ── FOOTER ── */
+        .page-footer {
+            background: #f5f0e8;
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .page-footer p {
+            font-size: 0.8rem;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .portraits { grid-template-columns: 1fr; }
+            .analysis-grid { grid-template-columns: 1fr; }
+            .comp-table { font-size: 0.8rem; }
+            .comp-table th, .comp-table td { padding: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="page-header">
+    <div class="breadcrumb"><a href="index.html">&larr; Back to Dashboard</a></div>
+    <h1>Three Responses to Western Imperialism</h1>
+    <p class="subtitle">Meiji Restoration &middot; Taiping Rebellion &middot; Tonghak Rebellion &mdash; Same crisis, radically different answers. One succeeded. Two were crushed. Why?</p>
+    <span class="date-badge">HIST / EAST 213 &mdash; Deep Dive</span>
+</header>
+
+<!-- ── FRAMING QUESTION ── -->
+<div class="framing">
+    <div class="framing-box">
+        <div class="label">The question that haunted East Asia after 1860</div>
+        <p>&ldquo;The Westerners cultivated high ethics, and there is nothing they cannot do. There is no one who can stand before their attacking military power, and <strong>even China is being destroyed</strong>.&rdquo; &mdash; Ch&rsquo;oe Cheu, <em>On Learning Truth</em> (1861)</p>
+        <p style="margin-top:0.75rem;">By 1860, the old order was finished. Anglo-French troops had <strong>burned the Summer Palace in Beijing</strong>. The Qing were signing away sovereignty in unequal treaties. Perry&rsquo;s Black Ships had already forced open Japan. Korea watched from the sidelines, terrified it was next. Every society in East Asia faced the same existential question: <strong>What do we do about the West?</strong></p>
+    </div>
+</div>
+
+<!-- ── THREE PORTRAIT CARDS ── -->
+<div class="portraits">
+    <div class="portrait-card card-japan">
+        <div class="img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Surrender_of_Edo_Castle_%28Meiji_Memorial_Picture_Gallery%29.jpg" alt="Surrender of Edo Castle">
+            <span class="country-tag">Japan</span>
+            <span class="img-caption">Surrender of Edo Castle, 1868 &mdash; Yuki Somei (Meiji Memorial Gallery)</span>
+        </div>
+        <div class="card-body">
+            <h2>Meiji Restoration</h2>
+            <div class="dates">1868 &mdash; Japan</div>
+            <p class="one-liner">Elite samurai overthrew the shogunate and <strong>adopted Western methods</strong> to beat the West at its own game. &ldquo;Rich country, strong army.&rdquo;</p>
+        </div>
+    </div>
+    <div class="portrait-card card-china">
+        <div class="img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Regaining_Jinling.jpg" alt="Regaining Jinling - Taiping Rebellion">
+            <span class="country-tag">China</span>
+            <span class="img-caption">Regaining Jinling (Nanjing) &mdash; Wu Youru, 1886</span>
+        </div>
+        <div class="card-body">
+            <h2>Taiping Rebellion</h2>
+            <div class="dates">1850&ndash;1864 &mdash; China</div>
+            <p class="one-liner">A failed exam-taker claimed to be <strong>Jesus&rsquo;s brother</strong>, raised a peasant army of millions, and nearly toppled the Qing. 20&ndash;30 million dead.</p>
+        </div>
+    </div>
+    <div class="portrait-card card-korea">
+        <div class="img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/JeonBongJun.jpg" alt="Jeon Bong-jun, Donghak leader">
+            <span class="country-tag">Korea</span>
+            <span class="img-caption">Ch&#x14F;n Pongjun after capture, 1894 &mdash; &ldquo;Green Bean General&rdquo;</span>
+        </div>
+        <div class="card-body">
+            <h2>Tonghak Rebellion</h2>
+            <div class="dates">1894 &mdash; Korea</div>
+            <p class="one-liner"><strong>Rejected</strong> Western civilization entirely. Created an indigenous religion to protect Korea&rsquo;s soul &mdash; then peasants took it to war against corrupt officials and foreign powers.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ── MAIN COMPARISON TABLE ── -->
+<div class="comparison-section">
+    <div class="section-label">Side-by-Side Comparison</div>
+    <table class="comp-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>&#x1F1EF;&#x1F1F5; Meiji Restoration</th>
+                <th>&#x1F1E8;&#x1F1F3; Taiping Rebellion</th>
+                <th>&#x1F1F0;&#x1F1F7; Tonghak Rebellion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dates</td>
+                <td><strong>1868</strong> (restoration)<br>Reform era: 1868&ndash;1912</td>
+                <td><strong>1850&ndash;1864</strong><br>14 years of civil war</td>
+                <td>Religion founded <strong>1860</strong><br>Uprising: <strong>1894</strong></td>
+            </tr>
+            <tr>
+                <td>Key Figures</td>
+                <td><strong>Saig&#x14D; Takamori</strong>, &#x14C;kubo Toshimichi, Kido Takayoshi<br><em>Later: It&#x14D; Hirobumi</em></td>
+                <td><strong>Hong Xiuquan</strong><br><em>Self-proclaimed brother of Jesus Christ</em></td>
+                <td><strong>Ch&rsquo;oe Cheu</strong> (founder, executed 1864)<br><strong>Ch&rsquo;oe Sihy&#x14F;ng</strong> (2nd leader)<br><strong>Ch&#x14F;n Pongjun</strong> (1894 military leader)</td>
+            </tr>
+            <tr>
+                <td>The Trigger</td>
+                <td>Perry&rsquo;s Black Ships (1853) exposed Tokugawa weakness. Unequal treaties humiliated Japan. Peripheral domains (Satsuma, Ch&#x14D;sh&#x16B;) saw their chance.</td>
+                <td>Qing humiliation in First Opium War (1842). Economic devastation, ethnic tensions (Hakka marginalization), Hong Xiuquan&rsquo;s failed civil exams &rarr; psychotic break &rarr; visions of God.</td>
+                <td>1860: news that <strong>even China was falling</strong> to the West. Domestic corruption, oppressive yangban class system, Western missionaries spreading Catholicism (S&#x14F;hak).</td>
+            </tr>
+            <tr>
+                <td>Ideology</td>
+                <td><strong>Pragmatic nationalism.</strong> Started as <em>sonn&#x14D; j&#x14D;i</em> (&ldquo;Revere Emperor, Expel Barbarians&rdquo;) &rarr; pivoted to <em>fukoku ky&#x14D;hei</em> (&ldquo;Rich Country, Strong Army&rdquo;). No religious dimension.</td>
+                <td><strong>Syncretic Christianity.</strong> Hong reinterpreted the Bible through Chinese folk religion. Taiping &ldquo;Heavenly Kingdom&rdquo; demanded land redistribution, gender equality, anti-Manchu ethnic revolution.</td>
+                <td><strong>Tonghak = &ldquo;Eastern Learning.&rdquo;</strong> Explicitly anti-S&#x14F;hak (&ldquo;Western Learning&rdquo; = Catholicism). Fused Confucian ethics + Buddhist/Daoist metaphysics + Korean shamanism into an indigenous counter-religion.</td>
+            </tr>
+            <tr>
+                <td>Stance Toward<br>the West</td>
+                <td style="background: var(--japan-light);">
+                    <strong>ADOPT &amp; ADAPT</strong><br>
+                    &ldquo;Japanese spirit, Western technology&rdquo; (<em>wakon y&#x14D;sai</em>). Sent missions to study Western governments (Iwakura Mission, 1871). Copied Prussian constitution, British navy, French legal codes.
+                </td>
+                <td style="background: var(--china-light);">
+                    <strong>ABSORB &amp; REINTERPRET</strong><br>
+                    Took the West&rsquo;s own religion and made it Chinese. Hong claimed God sent <em>him</em>, not the Western missionaries. Initially hoped Westerners would see them as fellow Christians. They didn&rsquo;t.
+                </td>
+                <td style="background: var(--korea-light);">
+                    <strong>REJECT &amp; REPLACE</strong><br>
+                    Created a homegrown alternative to Western civilization. Ch&rsquo;oe Cheu: &ldquo;The Western religion is similar to our religion but also different. They worship a &lsquo;God&rsquo; who is not real.&rdquo; Eastern Learning would outcompete Western Learning.
+                </td>
+            </tr>
+            <tr>
+                <td>Social Base</td>
+                <td><strong>Elite-driven.</strong> Lower samurai from peripheral domains. Court nobles. <em>Not</em> a popular movement &mdash; peasants were drafted into the new conscript army later.</td>
+                <td><strong>Peasant mass movement.</strong> Hakka minority, landless poor, disaffected communities in South China. At peak: controlled ~30 million people across 600 cities.</td>
+                <td><strong>Peasant mass movement.</strong> Commoners, farmers, the socially marginalized. Ch&rsquo;oe Sihy&#x14F;ng preached: &ldquo;Human beings are heaven... there are no distinctions of high and low.&rdquo;</td>
+            </tr>
+            <tr>
+                <td>Goals</td>
+                <td>
+                    &bull; Overthrow Tokugawa shogunate<br>
+                    &bull; &ldquo;Restore&rdquo; imperial authority<br>
+                    &bull; Centralize government<br>
+                    &bull; Industrialize &amp; militarize<br>
+                    &bull; Renegotiate unequal treaties
+                </td>
+                <td>
+                    &bull; Overthrow the Qing dynasty<br>
+                    &bull; Expel the Manchus<br>
+                    &bull; Establish Heavenly Kingdom<br>
+                    &bull; Redistribute land equally<br>
+                    &bull; Ban opium, foot-binding, slavery
+                </td>
+                <td>
+                    &bull; &ldquo;Exterminate the greedy and cruel officials&rdquo;<br>
+                    &bull; &ldquo;Expel arrogant enemies from abroad&rdquo;<br>
+                    &bull; Burn slave registries<br>
+                    &bull; Redistribute farmland<br>
+                    &bull; Allow widows to remarry
+                </td>
+            </tr>
+            <tr>
+                <td>Methods</td>
+                <td><strong>Military coup + top-down reform.</strong> Boshin War (1868&ndash;69) defeated Tokugawa loyalists. Then: abolished feudal domains, created prefectures, built railroads, established compulsory education, conscript army.</td>
+                <td><strong>Full-scale civil war.</strong> Conquered Nanjing (1853), made it capital of Taiping state. Vast military campaigns across southern China. Attempted total social transformation from above (within their territory).</td>
+                <td><strong>Armed peasant uprising.</strong> Defeated government troops, occupied Ch&#x14F;nju (provincial capital). Issued reform demands. Created local governance through &ldquo;Overseer&rsquo;s Offices&rdquo; (<em>Chipkangso</em>) &mdash; proto-democratic local administration.</td>
+            </tr>
+            <tr>
+                <td>Who Crushed Them<br>(or didn&rsquo;t)</td>
+                <td><strong>Nobody.</strong> They <em>were</em> the new government. Defeated Tokugawa loyalists in 18 months. The West actually preferred dealing with a modernizing Japan.</td>
+                <td><strong>Qing + the West.</strong> The &ldquo;Ever Victorious Army&rdquo; (Western-led) helped crush them. Irony: the West sided with the &ldquo;pagan&rdquo; Qing against the &ldquo;Christian&rdquo; Taiping because stability served trade interests.</td>
+                <td><strong>Korean government + Japan.</strong> Korea requested Chinese help &rarr; Japan also sent troops &rarr; both powers crushed the rebels, then fought <em>each other</em> (Sino-Japanese War, 1894&ndash;95). Tonghak&rsquo;s uprising handed Japan the pretext to dominate Korea.</td>
+            </tr>
+            <tr>
+                <td>Death Toll</td>
+                <td>~8,200 (Boshin War)<br><em>Remarkably low</em></td>
+                <td><strong>20&ndash;30 million</strong><br><em>One of the deadliest conflicts in human history</em></td>
+                <td>~300,000+ killed<br><em>Japanese troops massacred retreating rebels</em></td>
+            </tr>
+            <tr>
+                <td>Outcome</td>
+                <td>
+                    <span class="tag tag-success">SUCCESS</span><br>
+                    Japan became the <strong>first non-Western industrial power</strong>. Defeated China (1895), defeated Russia (1905). Renegotiated unequal treaties by 1899.
+                </td>
+                <td>
+                    <span class="tag tag-failure">CRUSHED</span><br>
+                    Nanjing fell 1864. Hong Xiuquan died (suicide or illness). Qing survived but <strong>fatally weakened</strong>. The dynasty limped on until 1911.
+                </td>
+                <td>
+                    <span class="tag tag-failure">CRUSHED</span><br>
+                    Ch&#x14F;n Pongjun captured Dec 1894, executed April 1895. Ch&rsquo;oe Sihy&#x14F;ng executed 1898. But Tonghak <strong>survived as a religion</strong> (renamed Ch&rsquo;&#x14F;ndogyo).
+                </td>
+            </tr>
+            <tr>
+                <td>Lasting Legacy</td>
+                <td>
+                    Created modern Japan. But also created <strong>Japanese imperialism</strong> &mdash; the very force that colonized Korea (1910) and invaded China (1937). The &ldquo;success story&rdquo; became everyone else&rsquo;s nightmare.
+                </td>
+                <td>
+                    Proved the Qing was hollow. Inspired later revolutionaries (Sun Yat-sen admired Hong). Showed that <strong>Christianity could be a revolutionary weapon</strong>, not just a Western import. Mao called Hong a class hero.
+                </td>
+                <td>
+                    Son Py&#x14F;ngh&#x016D;i (3rd leader) helped organize the <strong>March First Movement (1919)</strong> against Japanese colonial rule. Tonghak&rsquo;s egalitarianism fed directly into Korean nationalism and democratic thought.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ── ANALYSIS SECTION ── -->
+<div class="analysis">
+    <div class="section-label" style="margin-top:1rem;">Analysis</div>
+    <div class="analysis-grid">
+
+        <div class="analysis-card full-width">
+            <h3>The Spectrum: What Do We Do About the West?</h3>
+            <div class="spectrum-labels">
+                <span>&larr; Full Adoption</span>
+                <span>Full Rejection &rarr;</span>
+            </div>
+            <div class="spectrum">
+                <div class="spectrum-segment" style="background: var(--japan);">MEIJI<br><small>Adopt &amp; Adapt</small></div>
+                <div class="spectrum-segment" style="background: var(--china);">TAIPING<br><small>Absorb &amp; Reinterpret</small></div>
+                <div class="spectrum-segment" style="background: var(--korea);">TONGHAK<br><small>Reject &amp; Replace</small></div>
+            </div>
+            <p>Each movement occupied a different position on the spectrum of engagement with Western civilization. Japan said <strong>&ldquo;copy their weapons, keep our soul.&rdquo;</strong> The Taiping said <strong>&ldquo;take their God, make Him ours.&rdquo;</strong> Tonghak said <strong>&ldquo;we have our own God, thank you.&rdquo;</strong></p>
+        </div>
+
+        <div class="analysis-card">
+            <h3>Why Did Japan Succeed?</h3>
+            <p>The uncomfortable answer: <strong>it was an elite revolution, not a popular one.</strong></p>
+            <ul>
+                <li>Samurai leaders already had military training, administrative experience, and domain-level governing capacity.</li>
+                <li>Japan&rsquo;s smaller size and relative homogeneity made centralization easier than in vast, diverse China or faction-ridden Korea.</li>
+                <li>The Tokugawa system had already produced a literate, urbanized society with proto-industrial infrastructure.</li>
+                <li>No religious vision to compromise with &mdash; pure pragmatism. They didn&rsquo;t need to be <em>right</em> about God, they just needed to win.</li>
+            </ul>
+        </div>
+
+        <div class="analysis-card">
+            <h3>The Cruel Irony</h3>
+            <p>Japan&rsquo;s &ldquo;success&rdquo; became Korea and China&rsquo;s catastrophe.</p>
+            <ul>
+                <li>A modernized Japan <strong>crushed the Tonghak rebels</strong> in 1894 with the same Western weapons Japan had adopted.</li>
+                <li>Japan used the Tonghak uprising as a <strong>pretext to send troops</strong> to Korea &rarr; Sino-Japanese War &rarr; Japanese domination of the peninsula.</li>
+                <li>The Taiping Rebellion&rsquo;s devastation left China too weak to resist Japan&rsquo;s rise.</li>
+                <li>Meiji Japan proved you could modernize &mdash; but it also proved that <span class="highlight">a modernized Asian power could be just as predatory as any Western empire</span>.</li>
+            </ul>
+        </div>
+
+        <div class="analysis-card">
+            <h3>The Class Divide</h3>
+            <p>The most fundamental difference may be <strong>who led the movement</strong>:</p>
+            <ul>
+                <li><strong>Meiji:</strong> Led by samurai elites (existing military-bureaucratic class). They had the skills to <em>run</em> a state, not just overthrow one.</li>
+                <li><strong>Taiping:</strong> Led by a failed exam candidate and joined by millions of desperate peasants. Massive military power but fragile governance.</li>
+                <li><strong>Tonghak:</strong> Led by a marginalized intellectual (Ch&rsquo;oe Cheu) and organized by peasant communities. Social reform agenda was genuine but no state-building capacity.</li>
+            </ul>
+            <p style="margin-top:0.75rem;">Revolutions from below can break things. Revolutions from above can rebuild them.</p>
+        </div>
+
+        <div class="analysis-card">
+            <h3>Religion as Revolution</h3>
+            <p>Two of these three movements were <strong>fundamentally religious</strong> &mdash; but with opposite orientations:</p>
+            <ul>
+                <li><strong>Taiping:</strong> Hong took the <em>foreign</em> religion and weaponized it against the Chinese state. Christianity became a vehicle for anti-Manchu ethnic revolution and land reform.</li>
+                <li><strong>Tonghak:</strong> Ch&rsquo;oe Cheu created an <em>indigenous</em> religion specifically to counter the foreign one. &ldquo;Eastern Learning&rdquo; was the antibody to &ldquo;Western Learning.&rdquo;</li>
+                <li><strong>Meiji:</strong> No religious content whatsoever. State Shinto came later as a tool of the government, not as a cause of the revolution. This may be a feature, not a bug.</li>
+            </ul>
+        </div>
+
+        <div class="analysis-card full-width">
+            <h3>The Question for Class</h3>
+            <p>All three movements were <strong>rational responses</strong> to the same crisis &mdash; Western imperialism shattering the East Asian order. None of them were crazy. The Taiping saw that Western religion carried transformative power and tried to harness it. Tonghak saw that Western religion was the <em>threat</em> and built a spiritual firewall. Japan decided religion was irrelevant and focused on guns and railroads.</p>
+            <p style="margin-top:0.75rem;">The question isn&rsquo;t &ldquo;who was right?&rdquo; &mdash; it&rsquo;s <strong>&ldquo;what does &lsquo;success&rsquo; even mean here?&rdquo;</strong> Japan &ldquo;succeeded&rdquo; &mdash; and then colonized Korea for 35 years. The Tonghak &ldquo;failed&rdquo; &mdash; and their egalitarian ideals fed directly into Korean democracy. Hong Xiuquan &ldquo;failed&rdquo; &mdash; and Mao called him a forerunner of the revolution. History doesn&rsquo;t grade on a simple pass/fail curve.</p>
+        </div>
+
+    </div>
+</div>
+
+<footer class="page-footer">
+    <p>HIST / EAST 213: Modern East Asia &mdash; Deep Dive Comparison<br>
+    Sources: <em>Sources of Korean Tradition</em>, Vol. II (de Bary &amp; Kim); course readings Week 5, plate 17.</p>
+</footer>
+
+</body>
+</html>

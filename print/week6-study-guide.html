@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 Study Guide: Chosŏn Korea's Encounter with the West</title>
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Week 6 Study Guide: Chosŏn Korea Encounters the West">
+    <meta property="og:description" content="Primary source study guide covering 10 texts from the Encounter with the West and the Defense of Confucian Orthodoxy.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #fff;
+            --paper-warm: #faf8f5;
+            --paper-dark: #f0ede8;
+            --accent: #0071e3;
+            --gold: #a67c00;
+            --gold-light: #c9a962;
+            --brown: #8b4513;
+            --brown-light: #d4c9b5;
+            --teal: #26a69a;
+            --indigo: #5c6bc0;
+            --imperial: #8b0000;
+            --border: #ddd;
+            --bg-warm: #faf6f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* NAV */
+        nav {
+            background: var(--ink);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav a:hover { color: var(--gold-light); }
+        nav .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+        nav .current { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(165deg, #2c3e50 0%, #34495e 40%, #4a5568 70%, #5a6673 100%);
+            color: white;
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path fill="rgba(255,255,255,0.03)" d="M0,60 C150,90 350,30 500,60 C650,90 850,30 1000,60 C1150,90 1200,60 1200,60 L1200,120 L0,120 Z"/></svg>');
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: cover;
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 900px;
+            position: relative;
+        }
+        .hero-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold-light);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.4rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .hero .deck {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 650px;
+            font-weight: 300;
+        }
+        .hero .source-tag {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.7rem;
+            background: rgba(201,169,98,0.2);
+            border: 1px solid rgba(201,169,98,0.3);
+            padding: 4px 10px;
+            border-radius: 4px;
+            color: var(--gold-light);
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* TOC */
+        .toc-section {
+            background: var(--paper-warm);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 0;
+        }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .toc-col h3 {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ink-faint);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        .toc-col ol {
+            list-style: none;
+            counter-reset: toc;
+        }
+        .toc-col ol li {
+            counter-increment: toc;
+            margin-bottom: 0.4rem;
+        }
+        .toc-col ol li a {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            transition: color 0.15s;
+        }
+        .toc-col ol li a:hover { color: var(--accent); }
+        .toc-col ol li a::before {
+            content: counter(toc) ".";
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+            font-weight: 600;
+            min-width: 1.2rem;
+        }
+        .toc-col .toc-author {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+        }
+
+        /* SECTION HEADERS */
+        .part-header {
+            padding: 2.5rem 0 1rem;
+            border-bottom: 2px solid var(--ink);
+            margin-bottom: 2rem;
+        }
+        .part-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .part-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+        .part-period {
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            margin-top: 0.25rem;
+        }
+
+        /* READING CARDS */
+        .reading-card {
+            margin-bottom: 2.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Primary Source Card */
+        .reading-card.primary {
+            background: linear-gradient(135deg, #faf6f0, #f5efe6, #f0ead8);
+            border: 1px solid var(--brown-light);
+            box-shadow: 0 2px 8px rgba(139,69,19,0.08);
+        }
+        .reading-card.primary .card-header {
+            background: linear-gradient(135deg, rgba(139,69,19,0.08), rgba(139,69,19,0.03));
+            padding: 1.25rem 1.5rem 1rem;
+            border-bottom: 1px solid rgba(139,69,19,0.12);
+        }
+        .reading-card.primary .badge {
+            background: var(--brown);
+            color: white;
+        }
+        .reading-card.primary .card-title {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* Editorial Card */
+        .reading-card.editorial {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--ink-faint);
+        }
+        .reading-card.editorial .card-header {
+            background: #f8f8f8;
+            padding: 1.25rem 1.5rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .reading-card.editorial .badge {
+            background: #666;
+            color: white;
+        }
+
+        .card-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .badge {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        .card-author {
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+            font-weight: 500;
+        }
+        .card-source {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            font-style: italic;
+        }
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+        .card-body {
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+        .card-body h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-faint);
+            margin: 1.25rem 0 0.5rem;
+            font-weight: 600;
+        }
+        .card-body h4:first-child { margin-top: 0; }
+        .card-body p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+        .card-body ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card-body ul li {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            position: relative;
+        }
+        .card-body ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--brown-light);
+        }
+        .reading-card.editorial .card-body ul li::before {
+            background: #bbb;
+        }
+
+        .quote-block {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--ink);
+            border-left: 3px solid var(--gold);
+            padding: 0.75rem 1rem;
+            margin: 0.75rem 0;
+            background: rgba(166,124,0,0.04);
+            line-height: 1.6;
+        }
+
+        .notice-box {
+            background: #fffde7;
+            border: 1px solid #fff59d;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--ink-light);
+        }
+        .notice-box strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* GLOSSARY */
+        .glossary-section {
+            background: var(--paper-dark);
+            padding: 2.5rem 0;
+            margin-bottom: 0;
+        }
+        .glossary-section .container > h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        .glossary-section .container > p {
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            margin-bottom: 1.5rem;
+        }
+        .glossary-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .glossary-tab {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
+            color: var(--ink-light);
+        }
+        .glossary-tab:hover { border-color: var(--gold); color: var(--ink); }
+        .glossary-tab.active {
+            background: var(--ink);
+            color: white;
+            border-color: var(--ink);
+        }
+        .glossary-panel { display: none; }
+        .glossary-panel.active { display: block; }
+
+        .gloss-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .gloss-item {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+        }
+        .gloss-item h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.1rem;
+        }
+        .gloss-item .dates {
+            font-size: 0.7rem;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .gloss-item p {
+            font-size: 0.78rem;
+            color: var(--ink-light);
+            line-height: 1.6;
+        }
+
+        /* ANALYSIS */
+        .analysis-section {
+            background: linear-gradient(165deg, #2c3e50 0%, #34495e 50%, #3d4f5f 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+        .analysis-section h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .analysis-card {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+        .analysis-card h3 {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .analysis-card p {
+            font-size: 0.82rem;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.8);
+        }
+        .analysis-full {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .analysis-full h3 {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold-light);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        .analysis-full ul {
+            list-style: none;
+            padding: 0;
+        }
+        .analysis-full ul li {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.8);
+            padding: 0.4rem 0 0.4rem 1.2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        .analysis-full ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--gold-light);
+        }
+        .analysis-full ul li strong {
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.4);
+            padding: 1.5rem 2rem;
+            font-size: 0.7rem;
+            text-align: left;
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero { padding: 2.5rem 1.5rem 2rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .container { padding: 0 1.5rem; }
+            .toc-grid { grid-template-columns: 1fr; }
+            .gloss-grid { grid-template-columns: 1fr; }
+            .analysis-grid { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            nav { display: none; }
+            .hero { padding: 1.5rem; min-height: auto; }
+            .glossary-section { break-inside: avoid; }
+            .reading-card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <a href="../index.html">&#8592; Dashboard</a>
+    <span class="sep">/</span>
+    <span class="current">Week 6 Study Guide</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-inner">
+        <div class="hero-label">Week 6 &middot; Study Guide</div>
+        <h1>Chosŏn Korea's Encounter with the West</h1>
+        <p class="deck">10 primary sources spanning 80 years &mdash; from Silhak curiosity about Western geography to total rejection of everything Western. The arc of an entire civilization deciding what to do with foreign knowledge.</p>
+        <span class="source-tag">Sources of Korean Tradition, Vol. II &mdash; pp. 121&ndash;133, 235&ndash;244</span>
+    </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc-section">
+    <div class="container">
+        <div class="toc-grid">
+            <div class="toc-col">
+                <h3>Part I &mdash; The Encounter with the West (18th c.)</h3>
+                <ol>
+                    <li><a href="#text1">On Giulio Aleni's World Geography <span class="toc-author">Yi Ik</span></a></li>
+                    <li><a href="#text2">Matteo Ricci's Catechism <span class="toc-author">Yi Ik</span></a></li>
+                    <li><a href="#text3">European Values and European Education <span class="toc-author">Sin Hudam</span></a></li>
+                    <li><a href="#text4">A Conversation on Catholicism <span class="toc-author">An Ch&#335;ngbok</span></a></li>
+                    <li><a href="#text5">The Persecution of Catholicism <span class="toc-author">editorial</span></a></li>
+                </ol>
+            </div>
+            <div class="toc-col">
+                <h3>Part II &mdash; Negative Responses (19th c.)</h3>
+                <ol start="6">
+                    <li><a href="#text6">The Defense of Confucian Orthodoxy <span class="toc-author">editorial</span></a></li>
+                    <li><a href="#text7">Memorial to Express Private Thoughts <span class="toc-author">Yi Hangno</span></a></li>
+                    <li><a href="#text8">Three Memorials <span class="toc-author">Yi Hangno</span></a></li>
+                    <li><a href="#text9">Memorial Against Peace <span class="toc-author">Ch'oe Ikhy&#335;n</span></a></li>
+                    <li><a href="#text10">Memorial by Ten Thousand Men <span class="toc-author">Yi Manson et al.</span></a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- REFERENCE GLOSSARY -->
+<div class="glossary-section" id="glossary">
+    <div class="container">
+        <h2>Reference Glossary</h2>
+        <p>People, texts, events, and concepts the reading assumes you know.</p>
+
+        <div class="glossary-tabs">
+            <button class="glossary-tab active" onclick="showPanel('people')">People</button>
+            <button class="glossary-tab" onclick="showPanel('texts')">Key Texts</button>
+            <button class="glossary-tab" onclick="showPanel('events')">Events</button>
+            <button class="glossary-tab" onclick="showPanel('concepts')">Concepts</button>
+        </div>
+
+        <!-- PEOPLE -->
+        <div class="glossary-panel active" id="panel-people">
+            <div class="gloss-grid">
+                <div class="gloss-item">
+                    <h4>Yi Ik (&#51060;&#51061;)</h4>
+                    <div class="dates">Pen name S&#335;ngho &middot; 1681&ndash;1763</div>
+                    <p>Leading Silhak ("Practical Learning") scholar. Never held office after his brother was beaten to death in a political purge. His encyclopedic <em>S&#335;ngho sas&#335;l</em> covered everything from government reform to Western science. Curious about Western knowledge but NOT a convert &mdash; he absorbed useful information while keeping the Confucian framework. His school of disciples split: some followed his curiosity all the way to Catholicism, others drew a hard line against it.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Matteo Ricci</h4>
+                    <div class="dates">1552&ndash;1610</div>
+                    <p>Italian Jesuit who pioneered the "accommodation strategy" in China: dress like a Confucian scholar, learn Chinese, and argue that original Confucianism and Catholicism are compatible. His key move was claiming Neo-Confucianism had <em>betrayed</em> the original Confucian belief in a personal deity. Catholicism = a return to what Confucius meant. Brilliant and infuriating in equal measure.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Giulio Aleni</h4>
+                    <div class="dates">1582&ndash;1649 &middot; "Confucius of the West"</div>
+                    <p>Italian Jesuit who founded the mission in Fujian. His <em>Chih-fang wai-chi</em> (World Geography) was the first detailed description of the globe written in Chinese. For Korean readers, it was the first time they encountered the world beyond the Sinocentric framework.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Sin Hudam</h4>
+                    <div class="dates">1702&ndash;1761 &middot; disciple of Yi Ik</div>
+                    <p>More conservative than his teacher. Wrote the <em>S&#335;hak p'y&#335;n</em> ("Critique of Western Learning") at age 23 &mdash; the most systematic Korean refutation of Catholicism before the 19th century. Treated Catholicism as equivalent to Buddhism: a foreign heresy undermining the Confucian moral order.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>An Ch&#335;ngbok</h4>
+                    <div class="dates">1712&ndash;1791 &middot; disciple of Yi Ik</div>
+                    <p>Opposed Catholicism on both intellectual and personal grounds: <strong>his own son-in-law, Kw&#335;n Ilsin, converted to Catholicism.</strong> His "Conversation on Catholicism" is not academic &mdash; it's a man watching the new religion consume his family. Valued Western science, rejected Western theology.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Kw&#335;n Ilsin</h4>
+                    <div class="dates">1736&ndash;1791 &middot; baptized Francis Xavier</div>
+                    <p>An Ch&#335;ngbok's son-in-law and one of the earliest Korean Catholic converts. Counted among the "founding apostles" of the Korean Catholic Church. Died during the 1791 persecution. His conversion made the Catholic threat viscerally real to the Confucian establishment.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Yi S&#365;nghun</h4>
+                    <div class="dates">1756&ndash;1801 &middot; baptized Peter</div>
+                    <p>First Korean to be baptized (Peking, 1784). Returned and began converting friends. By 1790, over 1,000 Koreans had converted &mdash; <em>without any missionaries present</em>. Korea is the only country where Catholicism was self-introduced through reading. Executed in the 1801 Sinyu Persecution.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Yun Chich'ung</h4>
+                    <div class="dates">1759&ndash;1791 &middot; baptized Paul</div>
+                    <p>When his mother died in 1791, Yun followed papal instructions: he held a Catholic funeral and <strong>burned the ancestral tablets</strong>. This struck at the core of the Confucian order. Executed December 8, 1791 &mdash; the trigger for the first anti-Catholic persecution.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>King Ch&#335;ngjo</h4>
+                    <div class="dates">r. 1776&ndash;1800</div>
+                    <p>Last great Chos&#335;n king. Believed education, not force, should combat Catholicism. His death in 1800 was a turning point: the 1801 Sinyu Persecution killed 300+ Catholics. His reign = the last moment coexistence seemed possible.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Yi Hangno</h4>
+                    <div class="dates">1792&ndash;1868</div>
+                    <p>Leader of the <em>wij&#335;ng ch'&#335;ksa</em> ("Defend Orthodoxy, Reject Heterodoxy") movement. Dragged his sick, 75-year-old body to the palace to submit memorials urging total resistance after France invaded Kanghwa Island (1866). Peace with the West = moral degeneration. No compromise.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Ch'oe Ikhy&#335;n</h4>
+                    <div class="dates">1833&ndash;1906 &middot; Yi Hangno's disciple</div>
+                    <p>Submitted the "Memorial Against Peace" opposing the 1876 Treaty of Kanghwa. Spent decades being exiled for speaking truth to power. At 73, led an anti-Japanese armed uprising. Captured, deported to Tsushima, died of self-imposed starvation in Japanese custody.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>The Taew&#335;ngun</h4>
+                    <div class="dates">Yi Ha-&#365;ng &middot; 1820&ndash;1898 &middot; regent 1864&ndash;1873</div>
+                    <p>Regent of Korea during his son King Kojong's minority. Foreign policy: no treaties, no trade, no Catholics, no West, no Japan. Launched the 1866 persecution (~8,000 killed). Erected stone monuments: "Western barbarians invade. To not fight is to make peace. To advocate peace is to sell out the nation."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- KEY TEXTS -->
+        <div class="glossary-panel" id="panel-texts">
+            <div class="gloss-grid">
+                <div class="gloss-item">
+                    <h4><em>Chih-fang wai-chi</em> (&#32887;&#26041;&#22806;&#32000;)</h4>
+                    <div class="dates">Aleni, 1623 &middot; "World Geography"</div>
+                    <p>First comprehensive world geography in Chinese. Described five continents, Columbus, Magellan, the earth's circumference. For Korean scholars raised on the Sinocentric worldview, this was a paradigm shock. Yi Ik's response &mdash; fitting it INTO the Confucian framework rather than rejecting it &mdash; shows how intellectually nimble the Silhak scholars were.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4><em>Ch'&#335;nju sir&#365;i</em> (&#22825;&#20027;&#23526;&#32681;)</h4>
+                    <div class="dates">Ricci, 1603 &middot; "True Meaning of the Lord of Heaven"</div>
+                    <p>Ricci's catechism in Chinese. Most influential single text in East Asian Catholic history. The argument: ancient Chinese believed in a personal God; Neo-Confucians replaced this with impersonal "Principle." Catholicism = a return to original Confucianism. This is the book that converted Koreans &mdash; with no missionary present.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4><em>S&#335;hak p'y&#335;n</em> (&#35199;&#23416;&#36783;)</h4>
+                    <div class="dates">Sin Hudam, 1720s &middot; "Critique of Western Learning"</div>
+                    <p>Most important Korean anti-Catholic intellectual document of the 18th century. Sin argued Catholic ideas about the immortal soul, heaven/hell, and a personal God were Buddhist heresies in Western clothing.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4><em>Ch'ao-hsien ts'e-l&uuml;eh</em></h4>
+                    <div class="dates">Huang Tsun-hsien, 1880 &middot; "A Policy for Korea"</div>
+                    <p>Chinese diplomat's essay arguing Korea should ally with China, Japan, and the US to counter Russia. Brought back from Japan by Kim Hongjip. Triggered a massive conservative backlash and the "Ten Thousand Men" petition.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- EVENTS -->
+        <div class="glossary-panel" id="panel-events">
+            <div class="gloss-grid">
+                <div class="gloss-item">
+                    <h4>Treaty of Kanghwa</h4>
+                    <div class="dates">1876</div>
+                    <p>Japan forced Korea open after the Uny&#333; Incident. Korea opened ports, granted Japan extraterritorial rights &mdash; the same "unequal treaty" pattern imposed on China and Japan by Western powers. Japan learned from Perry and did the same to Korea.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Uny&#333; Incident</h4>
+                    <div class="dates">1875</div>
+                    <p>Japanese gunboat deliberately provoked Korean shore batteries near Kanghwa Island. Japan then demanded a treaty at gunpoint &mdash; exactly Perry's playbook against Japan in 1853. Japan had learned from its own forced opening.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>French Invasion of Kanghwa Island</h4>
+                    <div class="dates">1866</div>
+                    <p>After France's missionaries were killed in the 1866 persecution, Rear Admiral Roze attacked Kanghwa Island. Korea repelled the French &mdash; confirming the isolationist case: "if warships can be beaten, why compromise?" Yi Hangno's first memorial is a direct response.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Treaty of Chemulp'o</h4>
+                    <div class="dates">1882</div>
+                    <p>Korea's first treaty with a Western nation (the United States). Followed by treaties with Germany, Russia, Italy, France. Ended the "Hermit Kingdom" era completely.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>The Samp'o Incident</h4>
+                    <div class="dates">1510</div>
+                    <p>Japanese residents in three Korean ports revolted when regulations tightened. Backed by the lord of Tsushima, they killed 270 civilians and destroyed 800 homes. Ch'oe Ikhy&#335;n cites this as proof that Japanese in Korean ports become a security threat.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>The Imjin War</h4>
+                    <div class="dates">1592&ndash;1598</div>
+                    <p>Hideyoshi's massive invasion of Korea (158,000+ troops). Korea was devastated. The foundational national trauma: proof that Japan is an existential threat. Every 19th-century anti-treaty memorial invokes it.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONCEPTS -->
+        <div class="glossary-panel" id="panel-concepts">
+            <div class="gloss-grid">
+                <div class="gloss-item">
+                    <h4>Silhak (&#23526;&#23416;)</h4>
+                    <div class="dates">"Practical Learning" &middot; 17th&ndash;18th c.</div>
+                    <p>Reform movement criticizing the ruling class's fixation on abstract Neo-Confucian debates while real problems went unsolved. Open to Western science but NOT pro-Western &mdash; they wanted to use foreign knowledge to strengthen the Confucian state. Yi Ik's school produced both the founders of Korean Catholicism and its most sophisticated critics.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Wij&#335;ng ch'&#335;ksa (&#34907;&#27491;&#26021;&#37034;)</h4>
+                    <div class="dates">"Defend Orthodoxy, Reject Heterodoxy" &middot; 19th c.</div>
+                    <p>Conservative Confucian movement rejecting ALL Western influence &mdash; religion, technology, trade, and diplomacy. Treating any accommodation as moral treason. Evolved from intellectual critique (Sin Hudam's era) to political petitioning (Yi Hangno) to armed resistance (Ch'oe Ikhy&#335;n).</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>The <em>ri</em> measurement</h4>
+                    <div class="dates">Korean distance unit</div>
+                    <p>Roughly 0.4 km (~1/4 mile). When Yi Ik says Europe is 80,000 <em>ri</em> from China, he means ~32,000 km. When Ch'oe Ikhy&#335;n calls Korea "this eastern land of several thousand <em>ri</em>," he's emphasizing how small and vulnerable it is.</p>
+                </div>
+                <div class="gloss-item">
+                    <h4>Accommodation Strategy</h4>
+                    <div class="dates">Jesuit method &middot; Ricci &amp; Aleni</div>
+                    <p>The Jesuit approach: portray Catholicism as complementing, not challenging, Confucianism. Name your teachings "Heavenly Learning" to link theology with astronomy. Cite Confucian classics to support Catholic claims. This worked &mdash; and that's what terrified the Korean establishment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PART I -->
+<div class="container">
+    <div class="part-header" id="part1">
+        <div class="part-label">Part I</div>
+        <h2>The Encounter with the West</h2>
+        <div class="part-period">Middle and Late Chos&#335;n &middot; 18th Century &middot; pp. 121&ndash;133</div>
+    </div>
+
+    <!-- TEXT 1 -->
+    <div class="reading-card primary" id="text1">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Primary Source</span>
+                <span class="card-author">Yi Ik (&#51060;&#51061;, 1681&ndash;1763)</span>
+            </div>
+            <div class="card-title">On Giulio Aleni's World Geography</div>
+            <div class="card-source">S&#335;ngho sas&#335;l 55:24a&ndash;26b</div>
+        </div>
+        <div class="card-body">
+            <h4>What It Is</h4>
+            <p>Yi Ik's response to Aleni's <em>Chih-fang wai-chi</em> &mdash; the first detailed world geography to reach Korea. He tries to absorb Western geographical knowledge into a Confucian cosmological framework that keeps China at the center.</p>
+
+            <h4>Key Arguments</h4>
+            <ul>
+                <li>Opens with <strong>Tzu Ssu</strong> (Confucius's grandson): the ancients already understood the earth's geography. Westerners just confirmed what Confucians said all along.</li>
+                <li>Accepts the earth is a sphere. Describes a spinning-bowl experiment as proof. Accepts Columbus and Magellan as historical.</li>
+                <li>Notes that the Canary Islands and China are equidistant from both sides of the globe &mdash; "so it really does not matter whether you travel eastward or westward." Yet "we say Europe is in the West and China is in the center. Why is that?"</li>
+                <li>His answer: China is "the largest continent, the birthplace of humanity." The <em>Classic of Changes</em> says "the changes take place in the middle." All rivers east of China flow east &mdash; proof China IS the center.</li>
+            </ul>
+
+            <div class="quote-block">
+                "That foreigners should be so impressive &mdash; is that not embarrassing?"
+            </div>
+
+            <div class="notice-box">
+                <strong>What to notice:</strong> This is NOT anti-Western obscurantism. Yi Ik genuinely engages with the evidence. But he does what scholars always do with paradigm-threatening information: fits new data into existing theory rather than abandoning the theory.
+            </div>
+        </div>
+    </div>
+
+    <!-- TEXT 2 -->
+    <div class="reading-card primary" id="text2">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Primary Source</span>
+                <span class="card-author">Yi Ik (&#51060;&#51061;, 1681&ndash;1763)</span>
+            </div>
+            <div class="card-title">Matteo Ricci's Catechism</div>
+            <div class="card-source">"Pal Ch'&#335;nju sir&#365;i," in S&#335;ngho sas&#335;l 55:27a&ndash;b</div>
+        </div>
+        <div class="card-body">
+            <h4>What It Is</h4>
+            <p>Yi Ik's critique of Ricci's <em>Ch'&#335;nju sir&#365;i</em>. Within a section headed "Criticism of Catholicism" (pp. 124&ndash;127) that explains how the Jesuit accommodation strategy worked &mdash; and why Yi Ik rejected it.</p>
+
+            <h4>Key Arguments</h4>
+            <ul>
+                <li>Identifies the Jesuits' "Lord of Heaven" as equivalent to <em>Sangje</em> in Confucianism. But finds their theology equivalent to Buddhism in key ways.</li>
+                <li><strong>Attacks heaven &amp; hell:</strong> "Their stories of heaven and hell are no different from the reports of memories of previous lives that appeared in China after the arrival of Buddhism."</li>
+                <li><strong>Attacks incarnation:</strong> If the Lord of Heaven had compassion for mankind, why descend as just one person in one place? Millions of places, infinite deserving people.</li>
+                <li><strong>Attacks reincarnation arguments:</strong> Chinese people "came back to life" before Buddhism arrived. None reported heaven or hell.</li>
+            </ul>
+
+            <div class="quote-block">
+                "There is no subject these Westerners have not exhaustively explored and nothing too profound for them to understand, so it is really a pity that they have become mixed up with such nonsense."
+            </div>
+
+            <div class="notice-box">
+                <strong>What to notice:</strong> Yi Ik respects Western intellectual achievement while completely dismissing their theology. This is the Silhak position in a nutshell: take the science, leave the religion.
+            </div>
+        </div>
+    </div>
+
+    <!-- TEXT 3 -->
+    <div class="reading-card primary" id="text3">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Primary Source</span>
+                <span class="card-author">Sin Hudam (1702&ndash;1761)</span>
+            </div>
+            <div class="card-title">European Values and European Education</div>
+            <div class="card-source">S&#335;hak p'y&#335;n in Yi Manch'ae, ed., Py&#335;gwi p'y&#335;n 1:40b&ndash;45b</div>
+        </div>
+        <div class="card-body">
+            <h4>What It Is</h4>
+            <p>Sin Hudam's devastating comparison of European and Confucian educational systems. The most intellectually aggressive text in Part I. Written at age 23.</p>
+
+            <h4>Key Arguments</h4>
+            <ul>
+                <li><strong>On motivation:</strong> A true gentleman cultivates virtue because virtue is its own reward, not from fear of divine punishment. "How could we even conceive of the possibility that the sagely and the virtuous might have been motivated by fear of heavenly retribution?"</li>
+                <li><strong>Elementary schools:</strong> Europeans teach children literature, rhetoric, poetry first. This reverses the Confucian order (moral cultivation first) and teaches students "how to disguise nonsense with fine literary flourishes" &mdash; inflicting "permanent damage on their young minds."</li>
+                <li><strong>Middle schools:</strong> Logic and physics push beyond the limits of human reasoning. Result: "an unbalanced and unstable mind."</li>
+                <li><strong>Universities:</strong> Four separate fields (theology, law, government, medicine) when in Confucianism these are all manifestations of the same moral principles. Separating them means "they do not know how to separate the wheat from the chaff."</li>
+            </ul>
+
+            <div class="quote-block">
+                "The European educational system is as different from ours as fire is from water. Our Confucian educational system is based on the decrees of Heaven and the moral rules that hold society together."
+            </div>
+
+            <div class="notice-box">
+                <strong>What to notice:</strong> Sin isn't just saying "Confucianism is better." He's making a structural argument: European education fragments knowledge into disconnected specialties, while Confucian education integrates moral, political, and intellectual cultivation into a unified whole. This critique resonates with modern debates about liberal arts vs. vocational education.
+            </div>
+        </div>
+    </div>
+
+    <!-- TEXT 4 -->
+    <div class="reading-card primary" id="text4">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Primary Source</span>
+                <span class="card-author">An Ch&#335;ngbok (1712&ndash;1791)</span>
+            </div>
+            <div class="card-title">A Conversation on Catholicism</div>
+            <div class="card-source">Sunam chip 17:8a&ndash;26a</div>
+        </div>
+        <div class="card-body">
+            <h4>What It Is</h4>
+            <p>A dialogue (probably reconstructed from real conversations) between An Ch&#335;ngbok and a Catholic sympathizer &mdash; likely based on exchanges with his son-in-law Kw&#335;n Ilsin. Written 1790, after the first Korean conversions.</p>
+
+            <h4>Key Arguments</h4>
+            <ul>
+                <li><strong>The interlocutor's case:</strong> European priests live celibate lives, have extraordinary knowledge, can map heavens, calculate calendars. "They truly are sagelike men. Since they are sagely, how can you not trust them?"</li>
+                <li><strong>An's geography-as-metaphysics:</strong> China produces sages because of its cosmological position. "China is like the heart in man's chest, which is the site of intelligence." Europe produces clever technicians.</li>
+                <li><strong>On heaven &amp; hell:</strong> If doing good leads to heaven anyway, the <em>threat</em> is unnecessary. "People should simply continue to do what is right."</li>
+                <li><strong>On the body as enemy:</strong> Catholics say the body is our enemy. An: "We get our bodies from our parents. So if our bodies are our enemies, then our parents must be our enemies as well!"</li>
+                <li><strong>On "love your enemies":</strong> An distinguishes personal enemies from enemies of your ruler/parents. Loving the latter "would be a grave violation of your moral obligations."</li>
+            </ul>
+
+            <div class="quote-block">
+                "The Catholic approach is really different from our Confucian approach. Their ideas all have their roots in individual selfishness."
+            </div>
+
+            <div class="notice-box">
+                <strong>What to notice:</strong> An argues Catholicism is fundamentally selfish &mdash; oriented toward individual salvation. Confucianism is oriented toward collective moral cultivation: doing the right thing because it IS right, not for a reward. This is a genuine philosophical disagreement, not xenophobia.
+            </div>
+        </div>
+    </div>
+
+    <!-- TEXT 5 -->
+    <div class="reading-card editorial" id="text5">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Editorial Context</span>
+            </div>
+            <div class="card-title">The Persecution of Catholicism</div>
+            <div class="card-source">pp. 133&ndash;134</div>
+        </div>
+        <div class="card-body">
+            <h4>Key Facts</h4>
+            <ul>
+                <li><strong>Yi S&#365;nghun</strong> baptized in Peking (1784). By 1790, 1,000+ Koreans had converted through peer-to-peer evangelism, <em>with no missionaries in Korea</em>.</li>
+                <li>1790: Letter from Peking &mdash; the Pope forbids Catholic participation in Confucian mourning rituals. A bombshell.</li>
+                <li><strong>Yun Chich'ung</strong> obeys: holds a Catholic funeral for his mother, refuses Confucian ancestor rites. Executed December 8, 1791.</li>
+                <li><strong>King Ch&#335;ngjo</strong> preferred education over force. Hoped Yun's execution would suffice. Four years later, launched broader suppression. After his death in 1800, the devastating Sinyu Persecution (1801) killed 300+ Catholics.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PART II -->
+    <div class="part-header" id="part2">
+        <div class="part-label">Part II</div>
+        <h2>Negative Responses to Western Civilization</h2>
+        <div class="part-period">The Modern Period &middot; 19th Century &middot; pp. 235&ndash;244</div>
+    </div>
+
+    <!-- TEXT 6 -->
+    <div class="reading-card editorial" id="text6">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Editorial Context</span>
+            </div>
+            <div class="card-title">The Defense of Confucian Orthodoxy</div>
+            <div class="card-source">pp. 235&ndash;236</div>
+        </div>
+        <div class="card-body">
+            <h4>The Bridge Between Part I and Part II</h4>
+            <ul>
+                <li><strong>1876:</strong> Treaty of Kanghwa with Japan ends centuries of isolation. Forced by the 1875 Uny&#333; Incident.</li>
+                <li><strong>1882:</strong> Treaty of Chemulp'o with the US. More treaties follow.</li>
+                <li>The <em>wij&#335;ng ch'&#335;ksa</em> movement hardens: Yi Hangno, Ki Ch&#335;ngjin, Ch'oe Ikhy&#335;n, Kim P'y&#335;ngmuk, Yu Ins&#335;k.</li>
+                <li>The 1882 mutiny briefly overthrew the ruling Min faction &mdash; populist backlash against forced opening.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TEXT 7 -->
+    <div class="reading-card primary" id="text7">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Primary Source</span>
+                <span class="card-author">Yi Hangno (1792&ndash;1868)</span>
+            </div>
+            <div class="card-title">Memorial to Express Private Thoughts</div>
+            <div class="card-source">Hwas&#335; chip 3, in Munhwa sa, pp. 406&ndash;409</div>
+        </div>
+        <div class="card-body">
+            <h4>What It Is</h4>
+            <p>A memorial to the throne submitted in 1866 after the French invasion of Kanghwa Island. Yi Hangno is 75 years old, sick, and has just been appointed royal secretary &mdash; which he immediately tries to decline so he can deliver an urgent warning instead.</p>
+
+            <h4>Key Arguments</h4>
+            <ul>
+                <li><strong>The rhetorical posture:</strong> "I am only a worthless man in private life." Classical Confucian self-deprecation &mdash; by diminishing himself, he INCREASES the gravity of what he's about to say.</li>
+                <li><strong>The binary:</strong> "The country is today divided into two: peace or war." War preserves moral principle. Peace leads mankind "to degenerate to the level of beasts."</li>
+                <li><strong>Sun Ch'&uuml;an reference:</strong> Invokes the Wu Kingdom ruler (182&ndash;252) who smashed a conference table when advisors urged surrender. A ruler must be decisive against existential threats.</li>
+                <li><strong>Reform proposals:</strong> Create militia, appoint popular commanders, issue an emotional royal proclamation. The militia fights the enemy AND inculcates moral principles.</li>
+                <li><strong>The people as defense:</strong> "The water that keeps a boat afloat can also overthrow it. Similarly, the people who defend the state can also overthrow it."</li>
+            </ul>
+
+            <div class="notice-box">
+                <strong>What to notice:</strong> Yi Hangno is not just anti-Western &mdash; he proposes comprehensive domestic reform. His argument: Korea can only resist external threats by first becoming internally righteous. Classical Confucian statecraft: moral strength produces military strength.
+            </div>
+        </div>
+    </div>
+
+    <!-- TEXT 8 -->
+    <div class="reading-card primary" id="text8">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Primary Source</span>
+                <span class="card-author">Yi Hangno (1792&ndash;1868)</span>
+            </div>
+            <div class="card-title">Three Memorials</div>
+            <div class="card-source">Hwas&#335; chip 3, in Munhwa sa, pp. 415&ndash;416</div>
+        </div>
+        <div class="card-body">
+            <h4>What It Is</h4>
+            <p>Follow-up memorials demanding the king reject Western goods and set a personal example of austerity.</p>
+
+            <h4>Key Arguments</h4>
+            <ul>
+                <li>"I beg Your Majesty to make a firm decision and <strong>burn any Western goods</strong> that may be found among your clothes, food, and items of daily use."</li>
+                <li><strong>The logic of desire:</strong> Western goods create desire &rarr; desire creates trade &rarr; trade creates dependency &rarr; dependency becomes domination.</li>
+                <li>"Without trade, their novelty and wonder will be unrecognized. If unrecognized, the Westerners will surely stop coming."</li>
+                <li>The king's example cascades: "Once the court is in order, even in remote villages, will be in order."</li>
+            </ul>
+
+            <div class="notice-box">
+                <strong>What to notice:</strong> This is the demand-side argument: don't fight Western goods with tariffs &mdash; fight them with virtue. If the king doesn't want Western things, nobody will. Naive, but follows perfectly from Confucian political theory.
+            </div>
+        </div>
+    </div>
+
+    <!-- TEXT 9 -->
+    <div class="reading-card primary" id="text9">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Primary Source</span>
+                <span class="card-author">Ch'oe Ikhy&#335;n (1833&ndash;1906)</span>
+            </div>
+            <div class="card-title">Memorial Against Peace</div>
+            <div class="card-source">My&#335;nam chip 3, in Munhwa sa, pp. 417&ndash;420</div>
+        </div>
+        <div class="card-body">
+            <h4>What It Is</h4>
+            <p>Submitted 1876, opposing the Treaty of Kanghwa with Japan. Five reasons why peace will lead to ruin. The most analytically rigorous text in the entire reading.</p>
+
+            <h4>The Five Reasons Peace Will Produce Ruin</h4>
+            <ul>
+                <li><strong>1. The appetite problem:</strong> Peace from weakness invites escalating demands. "Their desires will grow limitless."</li>
+                <li><strong>2. Trade will drain the country:</strong> Trading necessities for luxury goods = "this eastern land of several thousand <em>ri</em> will then become barren."</li>
+                <li><strong>3. Christianity will spread:</strong> "Books of their wicked religion and images of their God will be mixed in with other trading goods."</li>
+                <li><strong>4. Social order collapses:</strong> Converts "will not treat their fathers as fathers, nor their king as the king."</li>
+                <li><strong>5. The Manchu comparison is false:</strong> Manchus "adopted the principles of humaneness and righteousness." Japan and the West have not. "The present-day bandits know only greed and lust and have not a morsel of human principles; they are nothing but wild animals."</li>
+            </ul>
+
+            <div class="quote-block">
+                "Although they call themselves Japanese, they are really Western bandits."
+            </div>
+
+            <div class="notice-box">
+                <strong>What to notice:</strong> Reasons #1 and #2 are solid realpolitik &mdash; they describe exactly what DID happen after 1876. Reasons #3&ndash;5 are Confucian moral arguments. The combination of strategic and moral reasoning makes this the strongest document in the reading. Also: Ch'oe sees Japan not as a fellow Asian nation but as a Western proxy.
+            </div>
+        </div>
+    </div>
+
+    <!-- TEXT 10 -->
+    <div class="reading-card primary" id="text10">
+        <div class="card-header">
+            <div class="card-meta">
+                <span class="badge">Primary Source</span>
+                <span class="card-author">Yi Manson and others (Ky&#335;ngsang province)</span>
+            </div>
+            <div class="card-title">Memorial Submitted by Ten Thousand Men</div>
+            <div class="card-source">Ils&#335;ngnok, Kojong p'y&#335;n 18:48&ndash;50</div>
+        </div>
+        <div class="card-body">
+            <h4>What It Is</h4>
+            <p>A collective petition from "ten thousand men" responding to Huang Tsun-hsien's <em>A Policy for Korea</em>, brought from Japan by Kim Hongjip (1881). Yi Manson carried an ax to the palace gate, signaling his willingness to lose his head if his petition was rejected.</p>
+
+            <h4>Key Arguments</h4>
+            <ul>
+                <li><strong>Invokes U T'ak &amp; Cho H&#335;n</strong> &mdash; the man who planted Neo-Confucianism in Korea and the man who died fighting the Japanese. Message: the tradition I defend goes back to its founding, and I'm willing to die for it.</li>
+                <li><strong>"We are a tributary state":</strong> The China relationship is the foundation. Any deal with Japan that uses "emperor" language undermines it.</li>
+                <li><strong>Japan is untrustworthy:</strong> The Samp'o Incident (1510), the Imjin War (1592). "They have captured key strategic locations. They have aggressive designs."</li>
+                <li><strong>America is unknown:</strong> "We do not know America well." Involving them "may corrupt our people or exhaust our treasure."</li>
+                <li><strong>Russia is dangerous but not an excuse</strong> for alliances that create new dependencies.</li>
+                <li><strong>Eight examples of "obvious damage":</strong> Methodically shows every proposed alliance creates more problems than it solves.</li>
+            </ul>
+
+            <div class="notice-box">
+                <strong>What to notice:</strong> Yi Manson isn't arguing from ignorance &mdash; he analyzes each alliance partner and finds each wanting. This is isolationism as risk management: every external relationship carries costs with no guaranteed benefits.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ANALYSIS -->
+<div class="analysis-section" id="analysis">
+    <div class="container">
+        <h2>Analysis: The Arc of the Reading</h2>
+
+        <div class="analysis-grid">
+            <div class="analysis-card">
+                <h3>Phase 1: Selective Engagement (1720s&ndash;1760s)</h3>
+                <p>Yi Ik represents the high point of Silhak openness. He accepts Western science, acknowledges achievement &mdash; but keeps the Confucian framework. Western knowledge is data to be absorbed, not a paradigm to adopt. <em>We can learn from them without becoming them.</em></p>
+            </div>
+            <div class="analysis-card">
+                <h3>Phase 2: The Theological Crisis (1750s&ndash;1790s)</h3>
+                <p>Sin Hudam and An Ch&#335;ngbok confront the nightmare: opening the door to Western science produced actual converts. Sin responds intellectually (systematic refutation). An responds personally (arguing with his own son-in-law). Both fail.</p>
+            </div>
+            <div class="analysis-card">
+                <h3>Phase 3: Total Rejection (1866&ndash;1881)</h3>
+                <p>Yi Hangno and Ch'oe Ikhy&#335;n have abandoned selective engagement. ANY contact with the West is contamination. The question is no longer "what can we learn?" but "how do we survive?" Their memorials read like wartime dispatches.</p>
+            </div>
+            <div class="analysis-card">
+                <h3>The 80-Year Transformation</h3>
+                <p>Curiosity &rarr; theological crisis &rarr; fortress. From a scholar marveling at the spinning-bowl proof of a round earth, to a 75-year-old man demanding the king burn every Western object in the palace. The same intellectual tradition, pushed to its breaking point.</p>
+            </div>
+        </div>
+
+        <div class="analysis-full" style="margin-bottom: 1.5rem;">
+            <h3>Three Recurring Arguments to Track</h3>
+            <ul>
+                <li><strong>"They are no different from Buddhists."</strong> Yi Ik, Sin Hudam, and An Ch&#335;ngbok all classify Catholicism as a variant of Buddhism. This activates centuries of anti-Buddhist argumentation and frames the new threat as a familiar one.</li>
+                <li><strong>"This world vs. the next world."</strong> Confucian critics argue that heaven-and-hell theology distracts from moral cultivation in THIS life. An: "People should simply continue to do what is right." This is a genuine philosophical difference, not a misunderstanding.</li>
+                <li><strong>"The appetite that grows by what it feeds on."</strong> Western goods create desire &rarr; desire creates trade &rarr; trade creates dependency &rarr; dependency becomes domination. Ch'oe Ikhy&#335;n's version of this argument turned out to be exactly right.</li>
+            </ul>
+        </div>
+
+        <div class="analysis-full">
+            <h3>What the Reading Doesn't Say (But You Should Think About)</h3>
+            <ul>
+                <li><strong>Selective engagement was unstable.</strong> You can't import Western astronomy and reject Western theology forever. Once the information channel opens, you can't control what flows through it.</li>
+                <li><strong>The <em>wij&#335;ng ch'&#335;ksa</em> scholars were right about consequences and wrong about alternatives.</strong> Ch'oe's five reasons were analytically correct predictions. But total resistance was militarily impossible.</li>
+                <li><strong>Nobody here considers Japan's path.</strong> The Meiji Restoration (1868) &mdash; adopt Western technology to preserve sovereignty &mdash; is the option conspicuously absent. Why Korea produced no Meiji-style reformers in this period is one of the most important questions in Korean history.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <a href="../index.html">&larr; Back to HIST 213 Dashboard</a> &nbsp;&middot;&nbsp;
+        Week 6 Study Guide &nbsp;&middot;&nbsp;
+        <em>Sources of Korean Tradition</em>, Vol. II
+    </div>
+</footer>
+
+<script>
+function showPanel(id) {
+    document.querySelectorAll('.glossary-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.glossary-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>

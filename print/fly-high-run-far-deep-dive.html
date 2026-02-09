@@ -37,89 +37,60 @@
     nav span { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
     nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
 
-    /* Hero Section */
-    .hero {
-      position: relative;
-      min-height: 75vh;
-      background: linear-gradient(135deg, rgba(10,10,20,0.85) 0%, rgba(30,15,10,0.9) 50%, rgba(10,10,20,0.95) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 4rem;
-      overflow: hidden;
+    /* Page Header */
+    .page-header {
+      padding: 3rem 4rem 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2.5rem;
+      align-items: end;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background:
-        radial-gradient(ellipse at 70% 30%, rgba(201,162,39,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 20% 70%, rgba(139,69,19,0.1) 0%, transparent 50%);
-      pointer-events: none;
+    .header-korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 5.5rem;
+      font-weight: 700;
+      color: #c9a227;
+      line-height: 1;
     }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(to top, #0a0a0f 0%, transparent 100%);
-      pointer-events: none;
+    .header-info {
+      padding-bottom: 0.3rem;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-    }
-
-    .hero-eyebrow {
+    .header-eyebrow {
       font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      color: #c9a227;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    .header-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .header-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
       margin-bottom: 1rem;
     }
 
-    .hero-korean {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 5rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-      text-shadow: 2px 4px 30px rgba(0,0,0,0.6);
-      line-height: 1.1;
+    .header-meta a {
+      color: #c9a227;
+      text-decoration: none;
     }
-
-    .hero-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.5rem;
-      opacity: 0.9;
-    }
-
-    .hero-director {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.2rem;
-      font-style: italic;
-      max-width: 650px;
-      opacity: 0.85;
-      line-height: 1.6;
-    }
+    .header-meta a:hover { text-decoration: underline; }
 
     /* Content */
     .content {
@@ -447,37 +418,6 @@
       margin-bottom: 1rem;
     }
 
-    /* Watch Button */
-    .watch-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: linear-gradient(135deg, #c9a227, #a07c1b);
-      color: #000;
-      text-decoration: none;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      margin-top: 1rem;
-    }
-
-    .watch-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(201,162,39,0.4);
-    }
-
-    .watch-btn .play-icon {
-      width: 0;
-      height: 0;
-      border-left: 12px solid #000;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-    }
-
     /* Footer */
     footer {
       background: #000;
@@ -504,22 +444,15 @@
   <span class="context">Day 16 · Tonghak in Film · Wed Feb 11</span>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-eyebrow">Film Study Guide · Day 16</div>
-    <div class="hero-korean">개벽</div>
-    <div class="hero-title">FLY HIGH, RUN FAR</div>
-    <div class="hero-director">Directed by Im Kwon-taek (임권택) · 1991</div>
-    <div class="hero-subtitle">
-      "A beautiful and powerful spiritual epic&hellip; charting the growth and eventual stamping out of a radically humanist and egalitarian religious sect founded on the belief that God is everyone and everything."
-    </div>
-    <a href="https://youtu.be/bVjQcRlXo3Q" target="_blank" rel="noopener noreferrer" class="watch-btn">
-      <span class="play-icon"></span>
-      Watch the Film
-    </a>
+<!-- Page Header -->
+<div class="page-header">
+  <div class="header-korean">개벽</div>
+  <div class="header-info">
+    <div class="header-eyebrow">Film Study Guide · Day 16</div>
+    <div class="header-title">Fly High, Run Far</div>
+    <div class="header-meta">Im Kwon-taek (임권택) · 1991 · 146 min · <a href="https://youtu.be/bVjQcRlXo3Q" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
   </div>
-</section>
+</div>
 
 <!-- Main Content -->
 <div class="content">

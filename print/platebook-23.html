@@ -93,45 +93,50 @@
     }
     .timeline-box {
       border: 1px solid #aaa;
-      padding: 6px 16px;
-      height: 78px;
+      padding: 10px 12px 8px;
       position: relative;
       background-color: #fefdfb;
     }
-    .timeline-line {
+    .tl-row {
+      display: flex;
+      width: 100%;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .tl-line {
       position: absolute;
-      bottom: 24px;
-      left: 16px;
-      right: 16px;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 2px;
       background: #333;
     }
-    .timeline-ticks {
-      position: absolute;
-      bottom: 24px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .tick {
-      width: 2px;
-      height: 12px;
-      background: #333;
-    }
-    .timeline-labels {
-      position: absolute;
-      bottom: 32px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 9px;
+    .tl-event {
+      flex: 1;
       text-align: center;
-    }
-    .timeline-labels span {
-      max-width: 90px;
+      font-size: 8.5px;
       line-height: 1.3;
+      padding: 0 2px 10px;
+      position: relative;
+    }
+    .tl-event::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      height: 8px;
+      background: #333;
+      transform: translateX(-50%);
+    }
+    .tl-year {
+      font-weight: 700;
+      font-size: 9.5px;
+      display: block;
+    }
+    .tl-event em {
+      font-style: italic;
+      color: #555;
     }
 
     /* Map */
@@ -318,22 +323,15 @@
   <div class="timeline-section">
     <span class="label">Timeline: Mao and Beyond Mao</span>
     <div class="timeline-box">
-      <div class="timeline-labels">
-        <span>1949<br><em>People's Republic founded</em></span>
-        <span>1956-57<br><em>Hundred Flowers / Anti-Rightist Campaign</em></span>
-        <span>1958-62<br><em>Great Leap Forward; famine kills 30-45 million</em></span>
-        <span>1966-76<br><em>Cultural Revolution</em></span>
-        <span>1976<br><em>Mao dies</em></span>
-        <span>1978<br><em>Deng launches 'Reform and Opening'</em></span>
-      </div>
-      <div class="timeline-line"></div>
-      <div class="timeline-ticks">
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
+        <div class="tl-row">
+          <div class="tl-event"><span class="tl-year">1949</span><em>People's Republic founded</em></div>
+          <div class="tl-event"><span class="tl-year">1956-57</span><em>Hundred Flowers / Anti-Rightist Campaign</em></div>
+          <div class="tl-event"><span class="tl-year">1958-62</span><em>Great Leap Forward; famine kills 30-45 million</em></div>
+          <div class="tl-event"><span class="tl-year">1966-76</span><em>Cultural Revolution</em></div>
+          <div class="tl-event"><span class="tl-year">1976</span><em>Mao dies</em></div>
+          <div class="tl-event"><span class="tl-year">1978</span><em>Deng launches 'Reform and Opening'</em></div>
+        </div>
+        <div class="tl-line"></div>
       </div>
     </div>
   </div>

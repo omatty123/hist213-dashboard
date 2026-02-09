@@ -93,45 +93,50 @@
     }
     .timeline-box {
       border: 1px solid #aaa;
-      padding: 6px 16px;
-      height: 78px;
+      padding: 10px 12px 8px;
       position: relative;
       background-color: #fefdfb;
     }
-    .timeline-line {
+    .tl-row {
+      display: flex;
+      width: 100%;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .tl-line {
       position: absolute;
-      bottom: 24px;
-      left: 16px;
-      right: 16px;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 2px;
       background: #333;
     }
-    .timeline-ticks {
-      position: absolute;
-      bottom: 24px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .tick {
-      width: 2px;
-      height: 12px;
-      background: #333;
-    }
-    .timeline-labels {
-      position: absolute;
-      bottom: 32px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 9px;
+    .tl-event {
+      flex: 1;
       text-align: center;
-    }
-    .timeline-labels span {
-      max-width: 90px;
+      font-size: 8.5px;
       line-height: 1.3;
+      padding: 0 2px 10px;
+      position: relative;
+    }
+    .tl-event::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      height: 8px;
+      background: #333;
+      transform: translateX(-50%);
+    }
+    .tl-year {
+      font-weight: 700;
+      font-size: 9.5px;
+      display: block;
+    }
+    .tl-event em {
+      font-style: italic;
+      color: #555;
     }
 
     /* Map */
@@ -318,30 +323,19 @@
   <div class="timeline-section">
     <span class="label">Timeline: Introduction to the class, geography of East Asia</span>
     <div class="timeline-box">
-      <div class="timeline-labels">
-        <span>c. 1600 BCE<br><em>Shang Dynasty — earliest Chinese writing</em></span>
-        <span>221 BCE<br><em>Qin unifies China — first empire, standardized script</em></span>
-        <span>57 BCE<br><em>Traditional founding of Korean kingdom of Silla</em></span>
-        <span>c. 300 CE<br><em>Chinese script adopted in Japan</em></span>
-        <span>618–907<br><em>Tang Dynasty — height of Chinese cultural influence; Korea and Japan send students</em></span>
-        <span>1392<br><em>Joseon Dynasty founded in Korea (lasts until 1897)</em></span>
-        <span>1368–1644<br><em>Ming Dynasty in China</em></span>
-        <span>1603<br><em>Tokugawa Shogunate established in Japan (lasts until 1868)</em></span>
-        <span>1644<br><em>Qing Dynasty begins in China (lasts until 1912)</em></span>
-        <span>c. 1600<br><em>Our course begins: three established East Asian regimes</em></span>
-      </div>
-      <div class="timeline-line"></div>
-      <div class="timeline-ticks">
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
-        <div class="tick"></div>
+        <div class="tl-row">
+          <div class="tl-event"><span class="tl-year">c. 1600 BCE</span><em>Shang Dynasty — earliest Chinese writing</em></div>
+          <div class="tl-event"><span class="tl-year">221 BCE</span><em>Qin unifies China — first empire, standardized script</em></div>
+          <div class="tl-event"><span class="tl-year">57 BCE</span><em>Traditional founding of Korean kingdom of Silla</em></div>
+          <div class="tl-event"><span class="tl-year">c. 300 CE</span><em>Chinese script adopted in Japan</em></div>
+          <div class="tl-event"><span class="tl-year">618–907</span><em>Tang Dynasty — height of Chinese cultural influence; Korea and Japan send students</em></div>
+          <div class="tl-event"><span class="tl-year">1392</span><em>Joseon Dynasty founded in Korea (lasts until 1897)</em></div>
+          <div class="tl-event"><span class="tl-year">1368–1644</span><em>Ming Dynasty in China</em></div>
+          <div class="tl-event"><span class="tl-year">1603</span><em>Tokugawa Shogunate established in Japan (lasts until 1868)</em></div>
+          <div class="tl-event"><span class="tl-year">1644</span><em>Qing Dynasty begins in China (lasts until 1912)</em></div>
+          <div class="tl-event"><span class="tl-year">c. 1600</span><em>Our course begins: three established East Asian regimes</em></div>
+        </div>
+        <div class="tl-line"></div>
       </div>
     </div>
   </div>

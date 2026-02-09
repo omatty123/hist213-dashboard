@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Film Study: Fly High, Run Far (개벽) | HIST/EAST 213</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #f0f0f0;
+      background: #0a0a0f;
+    }
+
+    /* Navigation */
+    nav {
+      background: #000;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #c9a227;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+    }
+    nav a:hover { text-decoration: underline; }
+    nav span { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+    nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 75vh;
+      background: linear-gradient(135deg, rgba(10,10,20,0.85) 0%, rgba(30,15,10,0.9) 50%, rgba(10,10,20,0.95) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(201,162,39,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 70%, rgba(139,69,19,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, #0a0a0f 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c9a227;
+      margin-bottom: 1rem;
+    }
+
+    .hero-korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 4px 30px rgba(0,0,0,0.6);
+      line-height: 1.1;
+    }
+
+    .hero-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+
+    .hero-director {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      font-style: italic;
+      max-width: 650px;
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      background: linear-gradient(90deg, #1a0505 0%, #0a0a1a 50%, #050a1a 100%);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-around;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(201,162,39,0.3);
+      border-bottom: 1px solid rgba(201,162,39,0.3);
+    }
+
+    .stat { text-align: center; }
+
+    .stat-value {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #c9a227;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.5rem;
+    }
+
+    /* Content */
+    .content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 4rem;
+    }
+
+    .main-column h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #c9a227;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(201,162,39,0.3);
+    }
+
+    .main-column h2:first-child { margin-top: 0; }
+
+    .main-column h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.95);
+      margin: 2rem 0 1rem;
+    }
+
+    .main-column p {
+      margin-bottom: 1.5rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      background: linear-gradient(135deg, rgba(201,162,39,0.1) 0%, rgba(201,162,39,0.05) 100%);
+      border-left: 4px solid #c9a227;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      font-size: 1.15rem;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-style: normal;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+    }
+
+    .sidebar-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-box h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #c9a227;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .sidebar-box ul {
+      list-style: none;
+      font-size: 0.95rem;
+    }
+
+    .sidebar-box li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .sidebar-box li:last-child { border-bottom: none; }
+    .sidebar-box li strong { color: #c9a227; }
+
+    .sidebar-box a {
+      color: #c9a227;
+      text-decoration: none;
+    }
+    .sidebar-box a:hover { text-decoration: underline; }
+
+    /* Key Term */
+    .key-term {
+      background: rgba(201,162,39,0.08);
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .key-term .term-korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #c9a227;
+    }
+
+    .key-term .term-roman {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.5rem;
+    }
+
+    .key-term .term-def {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+    }
+
+    /* Theology Cards */
+    .theology-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .theology-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .theology-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,162,39,0.5);
+    }
+
+    .theology-card .hanja {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #c9a227;
+      margin-bottom: 0.5rem;
+    }
+
+    .theology-card .concept {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.5rem;
+    }
+
+    .theology-card .meaning {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* Discussion Questions */
+    .discussion-section {
+      background: linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 100%);
+      padding: 4rem;
+      margin-top: 2rem;
+    }
+
+    .discussion-section h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .discussion-subtitle {
+      font-size: 1.1rem;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+
+    .discussion-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .discussion-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .discussion-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,162,39,0.5);
+    }
+
+    .discussion-card .q-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #c9a227;
+      margin-bottom: 0.75rem;
+    }
+
+    .discussion-card .q-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .discussion-card .q-hint {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* Filmography Timeline */
+    .filmography-timeline {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 2rem;
+      border-left: 2px solid rgba(201,162,39,0.3);
+    }
+
+    .film-entry {
+      position: relative;
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .film-entry::before {
+      content: '';
+      position: absolute;
+      left: -2.35rem;
+      top: 0.6rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(201,162,39,0.4);
+      border: 2px solid #0a0a0f;
+    }
+
+    .film-entry.highlight::before {
+      background: #c9a227;
+      width: 12px;
+      height: 12px;
+      left: -2.45rem;
+      box-shadow: 0 0 10px rgba(201,162,39,0.5);
+    }
+
+    .film-entry .film-year {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #c9a227;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .film-entry .film-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .film-entry .film-note {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      font-style: italic;
+    }
+
+    /* Map */
+    .map-section {
+      height: 500px;
+      position: relative;
+      margin: 2rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    #donghak-map { height: 100%; width: 100%; }
+
+    .map-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #c9a227;
+      margin-bottom: 1rem;
+    }
+
+    /* Watch Button */
+    .watch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, #c9a227, #a07c1b);
+      color: #000;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 1rem;
+    }
+
+    .watch-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(201,162,39,0.4);
+    }
+
+    .watch-btn .play-icon {
+      width: 0;
+      height: 0;
+      border-left: 12px solid #000;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      padding: 2rem 4rem;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer a { color: #c9a227; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <a href="../index.html">← Dashboard</a>
+  <span>/</span>
+  <a href="tonghak-deep-dive.html">Tonghak Deep Dive</a>
+  <span>/</span>
+  <span class="context">Day 16 · Tonghak in Film · Wed Feb 11</span>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Film Study Guide · Day 16</div>
+    <div class="hero-korean">개벽</div>
+    <div class="hero-title">FLY HIGH, RUN FAR</div>
+    <div class="hero-director">Directed by Im Kwon-taek (임권택) · 1991</div>
+    <div class="hero-subtitle">
+      "A beautiful and powerful spiritual epic&hellip; charting the growth and eventual stamping out of a radically humanist and egalitarian religious sect founded on the belief that God is everyone and everything."
+    </div>
+    <a href="https://youtu.be/bVjQcRlXo3Q" target="_blank" rel="noopener noreferrer" class="watch-btn">
+      <span class="play-icon"></span>
+      Watch the Film
+    </a>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-value">1991</div>
+    <div class="stat-label">Year</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">146</div>
+    <div class="stat-label">Minutes</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">102+</div>
+    <div class="stat-label">Films by Im Kwon-taek</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">4</div>
+    <div class="stat-label">Major Awards</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">1894</div>
+    <div class="stat-label">Donghak Uprising</div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+  <div class="two-column">
+
+    <!-- Main Column -->
+    <div class="main-column">
+
+      <h2>About the Film</h2>
+
+      <p><em>Fly High, Run Far</em> (Korean title: 개벽, <em>Gaebyeok</em>) is Im Kwon-taek's dramatization of the Donghak movement as seen through the life of its second patriarch, Ch'oe Si-hyŏng (1827&ndash;1898). The film follows Ch'oe from his impoverished origins as a farmhand to his rise as leader of the movement after its founder Ch'oe Che-u was executed by the Chosŏn government in 1864. Across nearly two and a half hours, the film charts the spread of Donghak through underground networks, the mobilization of tens of thousands of followers, the 1894 peasant uprising, and Ch'oe Si-hyŏng's eventual arrest and execution in 1898.</p>
+
+      <p>The screenplay by Kim Yong-ok treats Ch'oe Si-hyŏng's story with the sweep of a historical epic, but as critic Jonathan Rosenbaum noted, "the film is anything but slow or ponderous." It interweaves political crisis with intimate domestic drama, focusing especially on Ch'oe's relationships with his three wives and the personal sacrifices demanded by his role as leader of a persecuted religious movement.</p>
+
+      <p>In the film, Ch'oe Si-hyŏng is called by his religious name, Hae-wol (海月, "Sea-Moon"), played by Lee Duk-hwa in a performance that won the Chunsa Film Festival's Best Actor prize.</p>
+
+      <h2>The Korean Title: 개벽</h2>
+
+      <p><em>Gaebyeok</em> (開闢) is not just the title of this film. It is one of the central theological concepts in Donghak thought, a word that carries enormous weight. Derived from the classical Chinese expression <em>ch'ŏn'gae chibyŏk</em> (天開地闢, "heaven opens, earth opens"), it refers to a cosmic renewal: the Great Opening of a new era.</p>
+
+      <p>For Donghak, this was not abstract metaphysics. Ch'oe Che-u prophesied the <em>huch'ŏn gaebyeok</em> (後天開闢), the "Great Opening of the Later Heaven," a coming transformation in which the corrupt hierarchies of the current world would be swept away and replaced by a society grounded in radical equality. Title the film <em>Gaebyeok</em> and you are announcing: this is a story about the attempt to remake the world from the ground up.</p>
+
+      <div class="pull-quote">
+        "A radically humanist and egalitarian religious sect founded on the belief that God is everyone and everything."
+        <cite>Jonathan Rosenbaum, <em>Chicago Reader</em></cite>
+      </div>
+
+      <h2>Donghak Theology: Three Core Concepts</h2>
+
+      <p>The film operates within a theological framework that would have been deeply familiar to Korean audiences but may require some unpacking. Three interlocking concepts drive the action.</p>
+
+      <div class="theology-grid">
+        <div class="theology-card">
+          <div class="hanja">侍天主</div>
+          <div class="concept">Sich'ŏnju</div>
+          <div class="meaning">"Serving Heaven as Master." The divine is not distant; it dwells within every person. This was Ch'oe Che-u's original revelation in 1860.</div>
+        </div>
+        <div class="theology-card">
+          <div class="hanja">人乃天</div>
+          <div class="concept">Innaech'ŏn</div>
+          <div class="meaning">"Humans are Heaven." Ch'oe Si-hyŏng's extension of the founder's teaching into a principle of radical equality.</div>
+        </div>
+        <div class="theology-card">
+          <div class="hanja">開闢</div>
+          <div class="concept">Gaebyeok</div>
+          <div class="meaning">"The Great Opening." The prophecy of cosmic renewal and a new social order.</div>
+        </div>
+      </div>
+
+      <p>The political implications were explosive. If heaven dwells in every person, then the rigid hierarchies of Chosŏn society (yangban over commoner, man over woman, old over young) have no divine sanction. Ch'oe Si-hyŏng translated this theology into social practice by teaching that people should "serve man as they serve heaven" (<em>sain yŏch'ŏn</em>, 事人如天). Beating a child or mistreating a servant was an offense against the divine.</p>
+
+      <p>The Chosŏn court understood perfectly well what this meant. A religion that declared farmhands equal to aristocrats was a political threat regardless of whether its followers carried weapons.</p>
+
+      <h2>Ch'oe Si-hyŏng: The Historical Figure</h2>
+
+      <h3>Origins</h3>
+      <p>Ch'oe Si-hyŏng was born in 1827 in Kyŏngju, Kyŏngsang Province. His mother died when he was six; his father when he was fifteen. He worked as a farmhand and papermaker. He encountered Ch'oe Che-u and the Donghak movement in 1861 and became an ardent participant in ritual chanting, fasting, and penance.</p>
+
+      <h3>Building the Underground</h3>
+      <p>After Ch'oe Che-u's execution in 1864, Ch'oe Si-hyŏng spent the next three decades building Donghak from a persecuted sect into a mass movement. He published the first two Donghak scriptures in 1880&ndash;1881, giving the religion an intellectual foundation. He organized the movement into a network of local cells (<em>p'o</em>) that could survive government suppression.</p>
+
+      <h3>Mass Mobilization</h3>
+      <p>In 1892, he mobilized tens of thousands of followers for a peaceful demonstration at Kongju and then at the Kwanghwamun gate in Seoul, demanding rehabilitation of the founder's name, religious freedom, and administrative reform. The banner read: "Expel the West, Expel the Japanese, and Inculcate Righteousness."</p>
+
+      <h3>The Uprising and Its Aftermath</h3>
+      <p>The 1894 Donghak Peasant Revolution was a complex event. Chŏn Pong-jun led the armed uprising in Chŏlla Province, while Ch'oe Si-hyŏng initially hesitated before committing the northern Donghak forces. The uprising was crushed with the help of Japanese and Qing troops. Ch'oe Si-hyŏng evaded capture for four more years before his arrest and execution in Seoul in 1898. By then, Donghak had embedded itself throughout Korea. It later became Ch'ŏndogyo ("Religion of the Heavenly Way") and played a central role in the March 1, 1919 independence movement.</p>
+
+      <h2>Im Kwon-taek and Korean Cinema</h2>
+
+      <p>Understanding this film means understanding its director. Im Kwon-taek (born 1936 in Changsŏng, South Chŏlla Province) is the most prolific and arguably the most important filmmaker in Korean cinema history. He has directed over 102 films since his debut with <em>Farewell to the Duman River</em> in 1962.</p>
+
+      <p>His early career was commercial genre work: action films, melodramas, quick productions. The turn came in the mid-1970s when he began making films that explored Korean cultural identity, historical trauma, and traditional arts with the seriousness and ambition of an auteur.</p>
+
+      <h3>Key Films in Context</h3>
+
+      <div class="filmography-timeline">
+        <div class="film-entry">
+          <div class="film-year">1981</div>
+          <div class="film-title">Mandala (만다라)</div>
+          <div class="film-note">Two Buddhist monks, two paths to enlightenment. Im's first major exploration of Buddhism in cinema.</div>
+        </div>
+        <div class="film-entry">
+          <div class="film-year">1986</div>
+          <div class="film-title">Gilsodom (길소뜸)</div>
+          <div class="film-note">A woman returns to her village after the Korean War. Memory, loss, national division.</div>
+        </div>
+        <div class="film-entry">
+          <div class="film-year">1989</div>
+          <div class="film-title">Come, Come, Come Upward (아제 아제 바라아제)</div>
+          <div class="film-note">Buddhist nuns struggling between spiritual devotion and earthly desire.</div>
+        </div>
+        <div class="film-entry highlight">
+          <div class="film-year">1991</div>
+          <div class="film-title">Fly High, Run Far (개벽)</div>
+          <div class="film-note">Donghak movement through the life of Ch'oe Si-hyŏng. Grand Bell Award, Best Film.</div>
+        </div>
+        <div class="film-entry">
+          <div class="film-year">1993</div>
+          <div class="film-title">Sŏp'yŏnje (서편제)</div>
+          <div class="film-note">Pansori tradition. The most honored Korean film ever made (27 domestic prizes). A cultural event.</div>
+        </div>
+        <div class="film-entry">
+          <div class="film-year">1994</div>
+          <div class="film-title">T'aebaek Mountains (태백산맥)</div>
+          <div class="film-note">Korean War epic. Ideological conflict in a southern village.</div>
+        </div>
+        <div class="film-entry">
+          <div class="film-year">2000</div>
+          <div class="film-title">Ch'unhyang (춘향)</div>
+          <div class="film-note">Classic Korean love story performed as pansori. Cannes competition selection.</div>
+        </div>
+        <div class="film-entry">
+          <div class="film-year">2002</div>
+          <div class="film-title">Ch'wihwasŏn (취화선)</div>
+          <div class="film-note">Life of the painter Chang Sŭng-ŏp. Cannes Best Director award, Korea's first.</div>
+        </div>
+      </div>
+
+      <p><em>Fly High, Run Far</em> sits at the hinge point of Im's career, between the Buddhist films of the 1980s and the cultural masterpieces of the 1990s. The Donghak movement gave Im material that combined his interests in Korean spirituality, social justice, and historical trauma into a single narrative.</p>
+
+      <h2>What to Watch For</h2>
+
+      <h3>The Domestic Sphere</h3>
+      <p>Pay attention to Ch'oe Si-hyŏng's three wives. Im Kwon-taek does not simply tell a story about a religious leader; he shows what religious leadership costs the people closest to the leader. The private dimension of revolutionary commitment is one of the film's most distinctive features.</p>
+
+      <h3>Printed Titles</h3>
+      <p>The film uses on-screen text to provide historical context at key moments. This is a deliberate formal choice, treating the film almost like a historical pageant or illustrated chronicle. It keeps the audience oriented in a complex political timeline.</p>
+
+      <h3>Class and the Body</h3>
+      <p>Donghak's theology of radical equality means that bodies matter. Watch how the film frames physical labor, physical suffering, and physical punishment. The doctrine of <em>innaech'ŏn</em> says that violence against any human body is violence against heaven itself.</p>
+
+      <h3>Landscape</h3>
+      <p>Im's cinematographer Chŏng Il-sŏng shoots the Korean countryside as a space where the sacred and political are inseparable. Mountains, fields, and rural villages are not backdrop. They are the terrain of the movement itself.</p>
+
+      <!-- Map -->
+      <div class="map-title">Key Locations in the Donghak Movement</div>
+      <div class="map-section">
+        <div id="donghak-map"></div>
+      </div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-box">
+        <h3>Film Details</h3>
+        <ul>
+          <li><strong>Korean Title:</strong> 개벽 (Gaebyeok)</li>
+          <li><strong>Director:</strong> Im Kwon-taek (임권택)</li>
+          <li><strong>Screenplay:</strong> Kim Yong-ok</li>
+          <li><strong>Cinematography:</strong> Chŏng Il-sŏng</li>
+          <li><strong>Year:</strong> 1991</li>
+          <li><strong>Runtime:</strong> 146 minutes</li>
+          <li><strong>Released:</strong> September 21, 1991</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Cast</h3>
+        <ul>
+          <li><strong>Lee Duk-hwa</strong> as Ch'oe Si-hyŏng (Hae-wol)</li>
+          <li><strong>Lee Hye-young</strong></li>
+          <li><strong>Kim Myung-gon</strong></li>
+          <li><strong>Lee Gi-yeol</strong></li>
+          <li><strong>Lee Ch'ŏl-min</strong></li>
+          <li><strong>Song Yong-t'ae</strong></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Awards</h3>
+        <ul>
+          <li>Grand Bell Award, Best Film</li>
+          <li>Chunsa Film Festival, Best Director</li>
+          <li>Chunsa Film Festival, Best Actor</li>
+          <li>Blue Dragon Award, Best Director</li>
+          <li>BIFF 2013, Korean Cinema Retrospective</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Key Terms</h3>
+        <div class="key-term">
+          <div class="term-korean">동학</div>
+          <div class="term-roman">Tonghak · "Eastern Learning"</div>
+          <div class="term-def">Indigenous Korean religion founded by Ch'oe Che-u in 1860. Syncretized elements of Confucianism, Buddhism, Taoism, and Korean shamanism.</div>
+        </div>
+        <div class="key-term">
+          <div class="term-korean">해월</div>
+          <div class="term-roman">Hae-wol · "Sea-Moon"</div>
+          <div class="term-def">Ch'oe Si-hyŏng's religious name. The character at the center of the film.</div>
+        </div>
+        <div class="key-term">
+          <div class="term-korean">천도교</div>
+          <div class="term-roman">Ch'ŏndogyo</div>
+          <div class="term-def">"Religion of the Heavenly Way." What Donghak became under the third patriarch, Son Pyŏng-hŭi. Still active today.</div>
+        </div>
+        <div class="key-term">
+          <div class="term-korean">포</div>
+          <div class="term-roman">P'o</div>
+          <div class="term-def">Local Donghak cells or community units. The organizational structure that allowed the movement to survive underground for decades.</div>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="https://youtu.be/bVjQcRlXo3Q" target="_blank">Watch the Film (YouTube)</a></li>
+          <li><a href="https://jonathanrosenbaum.net/2020/06/fly-high-run-far-2/" target="_blank">Rosenbaum Review</a></li>
+          <li><a href="https://www.imdb.com/title/tt0104586/" target="_blank">IMDB Page</a></li>
+          <li><a href="https://letterboxd.com/film/fly-high-run-far/" target="_blank">Letterboxd</a></li>
+          <li><a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19910051" target="_blank">Korean Film Council</a></li>
+          <li><a href="https://online.ucpress.edu/fq/article/54/3/14/41568/Im-Kwon-Taek-Korean-National-Cinema-and-Buddhism" target="_blank">Film Quarterly: Im Kwon-taek & Buddhism</a></li>
+          <li><a href="https://www.britannica.com/biography/Choe-Si-hyeong" target="_blank">Britannica: Ch'oe Si-hyŏng</a></li>
+          <li><a href="https://www.jungtosociety.org/pomnyun_241126/" target="_blank">Donghak's Spirit of Equality</a></li>
+          <li><a href="tonghak-deep-dive.html">Tonghak Rebellion Deep Dive</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Discussion Questions -->
+<section class="discussion-section">
+  <h2>Discussion Questions</h2>
+  <div class="discussion-subtitle">For class on Wednesday, February 11</div>
+
+  <div class="discussion-grid">
+    <div class="discussion-card">
+      <div class="q-number">History vs. Film</div>
+      <div class="q-text">How does Im Kwon-taek's portrayal of Donghak compare to the primary sources we read for Day 14? What does the film emphasize that documents cannot? What do documents capture that the film cannot?</div>
+      <div class="q-hint">Think about emotion, scale, and the difference between reading a petition and watching a movement.</div>
+    </div>
+    <div class="discussion-card">
+      <div class="q-number">Theology as Politics</div>
+      <div class="q-text">Donghak taught that every person contains the divine (<em>innaech'ŏn</em>). Why was this theological claim so politically threatening to the Chosŏn court? How does the film dramatize the connection between religious belief and political danger?</div>
+      <div class="q-hint">Consider how Ch'oe Si-hyŏng's followers are portrayed. Are they rebels? Believers? Both?</div>
+    </div>
+    <div class="discussion-card">
+      <div class="q-number">Women and Revolution</div>
+      <div class="q-text">The film gives significant screen time to Ch'oe Si-hyŏng's three wives. What does their story tell us about the cost of revolutionary commitment? How does this relate to Donghak's promise of equality?</div>
+      <div class="q-hint">Does the movement practice what it preaches when it comes to gender?</div>
+    </div>
+    <div class="discussion-card">
+      <div class="q-number">The Filmmaker's Korea</div>
+      <div class="q-text">Im Kwon-taek made this film in 1991, just four years after South Korea's democratic transition. Why might a filmmaker choose to tell the story of a 19th-century peasant uprising at that particular moment?</div>
+      <div class="q-hint">Think about 1987 (democratization), 1980 (Kwangju), and the long history of Korean popular movements.</div>
+    </div>
+    <div class="discussion-card">
+      <div class="q-number">Gaebyeok: Then and Now</div>
+      <div class="q-text">The title 개벽 means "Great Opening," a new cosmic era. Where else in our course have we seen movements that promised a total transformation of society? How does Donghak's vision compare to, say, the Taiping Heavenly Kingdom?</div>
+      <div class="q-hint">Cross-regional comparison: millenarian movements in China, Korea, Japan.</div>
+    </div>
+    <div class="discussion-card">
+      <div class="q-number">Cinema and National Identity</div>
+      <div class="q-text">Film critic David James called Im Kwon-taek "Korean National Cinema" itself. What does it mean for a single filmmaker to carry that weight? How does this film argue for what Korean identity is?</div>
+      <div class="q-hint">Consider Im's other films: Mandala (Buddhism), Sŏp'yŏnje (pansori), Ch'wihwasŏn (painting).</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>HIST/EAST 213 · Modern East Asia · Day 16 Study Guide</p>
+  <p style="margin-top:0.5rem;">
+    <a href="../index.html">← Back to Dashboard</a>
+  </p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// Donghak Movement Map
+var map = L.map('donghak-map', {
+  center: [36.0, 127.5],
+  zoom: 7,
+  scrollWheelZoom: false
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  maxZoom: 19
+}).addTo(map);
+
+var locations = [
+  {lat: 35.8562, lng: 129.2247, name: "Kyŏngju (경주)", desc: "Ch'oe Si-hyŏng's birthplace, 1827. Also where Ch'oe Che-u founded Donghak in 1860.", color: "#c9a227"},
+  {lat: 35.8242, lng: 128.6811, name: "Taegu (대구)", desc: "Where Ch'oe Che-u was arrested and executed, 1864.", color: "#e63946"},
+  {lat: 36.4712, lng: 127.1191, name: "Kongju (공주)", desc: "Mass Donghak demonstration, 1892. Later site of the decisive Battle of Ugŭmch'i, 1894.", color: "#e63946"},
+  {lat: 35.8215, lng: 127.1480, name: "Chŏnju (전주)", desc: "Center of the 1894 uprising. Chŏn Pong-jun's forces occupied the city.", color: "#e63946"},
+  {lat: 35.4690, lng: 126.9091, name: "Kobu (고부)", desc: "Where the Donghak Peasant Revolution began, January 1894.", color: "#e63946"},
+  {lat: 37.5665, lng: 126.9780, name: "Seoul (서울)", desc: "Kwanghwamun demonstration, 1893. Ch'oe Si-hyŏng executed here, 1898.", color: "#c9a227"},
+  {lat: 35.1796, lng: 129.0756, name: "Pusan (부산)", desc: "Treaty port. Japanese military forces landed here during the 1894 intervention.", color: "#457b9d"},
+  {lat: 36.9910, lng: 127.0919, name: "Ch'ŏnan (천안)", desc: "Region where Donghak underground networks were strongest in the 1870s-80s.", color: "#c9a227"},
+];
+
+locations.forEach(function(loc) {
+  L.circleMarker([loc.lat, loc.lng], {
+    radius: 8,
+    fillColor: loc.color,
+    color: '#fff',
+    weight: 1,
+    opacity: 0.8,
+    fillOpacity: 0.7
+  }).addTo(map).bindPopup(
+    '<strong style="color:' + loc.color + '">' + loc.name + '</strong><br>' +
+    '<span style="font-size:0.85rem">' + loc.desc + '</span>'
+  );
+});
+
+// Add legend
+var legend = L.control({position: 'bottomright'});
+legend.onAdd = function() {
+  var div = L.DomUtil.create('div');
+  div.style.cssText = 'background:rgba(10,10,15,0.9);padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);font-family:Inter,sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.8);';
+  div.innerHTML =
+    '<div style="margin-bottom:6px;font-weight:600;color:#c9a227;">Legend</div>' +
+    '<div style="margin-bottom:4px;"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#c9a227;margin-right:6px;"></span>Key Donghak sites</div>' +
+    '<div style="margin-bottom:4px;"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e63946;margin-right:6px;"></span>Conflict / Execution</div>' +
+    '<div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#457b9d;margin-right:6px;"></span>Foreign intervention</div>';
+  return div;
+};
+legend.addTo(map);
+</script>
+
+</body>
+</html>

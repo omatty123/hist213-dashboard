@@ -39,26 +39,25 @@
 
     /* Page Header */
     .page-header {
-      padding: 3rem 4rem 2.5rem;
-      max-width: 1400px;
-      margin: 0 auto;
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 2.5rem;
-      align-items: end;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      grid-template-columns: 1fr 1fr;
+      min-height: 360px;
+    }
+
+    .header-text {
+      padding: 3rem 3rem 3rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .header-korean {
       font-family: 'Noto Sans KR', sans-serif;
-      font-size: 5.5rem;
+      font-size: 4.5rem;
       font-weight: 700;
       color: #c9a227;
       line-height: 1;
-    }
-
-    .header-info {
-      padding-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
     }
 
     .header-eyebrow {
@@ -68,7 +67,7 @@
       text-transform: uppercase;
       letter-spacing: 0.2em;
       color: rgba(255,255,255,0.4);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
     .header-title {
@@ -83,7 +82,6 @@
       font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
       color: rgba(255,255,255,0.5);
-      margin-bottom: 1rem;
     }
 
     .header-meta a {
@@ -91,6 +89,10 @@
       text-decoration: none;
     }
     .header-meta a:hover { text-decoration: underline; }
+
+    .header-image {
+      background: url('images/fly-high-run-far/still-01.jpg') center center / cover no-repeat;
+    }
 
     /* Content */
     .content {
@@ -446,12 +448,13 @@
 
 <!-- Page Header -->
 <div class="page-header">
-  <div class="header-korean">개벽</div>
-  <div class="header-info">
+  <div class="header-text">
     <div class="header-eyebrow">Film Study Guide · Day 16</div>
+    <div class="header-korean">개벽</div>
     <div class="header-title">Fly High, Run Far</div>
     <div class="header-meta">Im Kwon-taek (임권택) · 1991 · 146 min · <a href="https://youtu.be/bVjQcRlXo3Q" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
   </div>
+  <div class="header-image"></div>
 </div>
 
 <!-- Main Content -->

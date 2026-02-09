@@ -504,15 +504,7 @@ function renderMainWithPrep(p, prepData) {
     }
   }
 
-  // Web links
-  if (p.webLinks && p.webLinks.length > 0) {
-    h += '<div class="web-links">';
-    for (var j = 0; j < p.webLinks.length; j++) {
-      var l = p.webLinks[j];
-      h += '<a class="web-link" href="' + l.url + '" target="_blank" rel="noopener noreferrer">🔗 ' + l.title + '</a>';
-    }
-    h += '</div>';
-  }
+  // Web links moved to sidebar (renderSidebar handles p.webLinks)
 
   // 3. EXECUTIVE SUMMARY (right after readings)
   var summaryText = prepData && (prepData.executiveSummary || prepData.overallSynthesis);
@@ -573,6 +565,19 @@ function renderSidebar(p, i) {
     h += '</div>';
   }
   
+  // Web links from plate config → sidebar cards
+  if (p.webLinks && p.webLinks.length > 0) {
+    h += '<div class="section-title">📚 Resources</div>';
+    for (var w = 0; w < p.webLinks.length; w++) {
+      var wl = p.webLinks[w];
+      h += '<a href="' + wl.url + '" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:8px">';
+      h += '<div class="title">' + wl.title + '</div>';
+      if (wl.author) h += '<div class="author">' + wl.author + '</div>';
+      if (wl.source) h += '<div class="source">' + wl.source + '</div>';
+      h += '</a>';
+    }
+  }
+
   // 19th Century data chart — show for plates 10-14
   if (p.plate >= 10 && p.plate <= 14) {
     h += '<div class="section-title">📊 Data</div>';

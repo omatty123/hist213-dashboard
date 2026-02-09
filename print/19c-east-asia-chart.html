@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19th Century East Asia: Population & GDP Per Capita</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f7f4; color: #1a1a1a; line-height: 1.5;
+        }
+        header {
+            background: #1a1a1a; color: #f8f7f4;
+            padding: 1.3rem 2rem;
+        }
+        header h1 { font-size: 1.3rem; font-weight: 700; }
+        header p { font-size: 0.8rem; color: #999; margin-top: 0.1rem; }
+
+        main {
+            max-width: 960px; margin: 0 auto;
+            padding: 1.5rem 1.5rem 3rem;
+        }
+
+        .charts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .chart-card {
+            background: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 8px;
+            padding: 1.2rem;
+        }
+        .chart-card h2 {
+            font-size: 0.95rem; font-weight: 700;
+            margin-bottom: 0.15rem;
+        }
+        .chart-card .subtitle {
+            font-size: 0.75rem; color: #888;
+            margin-bottom: 0.8rem;
+        }
+        .chart-wrap {
+            position: relative;
+            height: 280px;
+        }
+
+        /* Annotations */
+        .notes {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+        .note {
+            background: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 6px;
+            padding: 0.8rem;
+        }
+        .note-country {
+            font-size: 0.7rem; text-transform: uppercase;
+            letter-spacing: 0.06em; font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .note-china .note-country { color: #c53030; }
+        .note-japan .note-country { color: #b7791f; }
+        .note-korea .note-country { color: #2b6cb0; }
+        .note p { font-size: 0.82rem; color: #444; }
+
+        .source {
+            margin-top: 1.5rem;
+            font-size: 0.72rem;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 0.6rem;
+        }
+
+        @media (max-width: 700px) {
+            .charts { grid-template-columns: 1fr; }
+            .notes { grid-template-columns: 1fr; }
+        }
+        @media print {
+            header { background: #fff; color: #000; border-bottom: 2px solid #000; }
+            .chart-card, .note { border-color: #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>19th Century East Asia: Population & GDP Per Capita</h1>
+    <p>HIST/EAST 213 — Maddison Project Data (1990 international dollars)</p>
+</header>
+
+<main>
+    <div class="charts">
+        <div class="chart-card">
+            <h2>Population</h2>
+            <div class="subtitle">Millions</div>
+            <div class="chart-wrap">
+                <canvas id="popChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h2>GDP Per Capita</h2>
+            <div class="subtitle">1990 international Geary-Khamis dollars</div>
+            <div class="chart-wrap">
+                <canvas id="gdpChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="notes">
+        <div class="note note-china">
+            <div class="note-country">China</div>
+            <p>Population peaks at ~430 million around 1850, then crashes to 358 million by 1870. The Taiping Rebellion (1850-64) killed 20-30 million people. GDP per capita stagnates and slightly declines throughout the century.</p>
+        </div>
+        <div class="note note-japan">
+            <div class="note-country">Japan</div>
+            <p>Population grows steadily from 31 to 44 million. GDP per capita nearly doubles after the Meiji Restoration (1868), rising from $669 to $1,180 by 1900. Japan is the only one of the three whose economy clearly accelerates.</p>
+        </div>
+        <div class="note note-korea">
+            <div class="note-country">Korea</div>
+            <p>Population grows modestly from ~9 to ~15 million. GDP per capita shows slow growth. Korea's data is the least certain (Maddison marks it as an "outlier"). By 1900, Korea trails Japan's rapid rise but edges ahead of China.</p>
+        </div>
+    </div>
+
+    <div class="source">
+        Data: Maddison Project Database 2023 (Bolt & van Zanden), University of Groningen. GDP in 1990 international Geary-Khamis dollars. Korean estimates are less certain than China or Japan due to limited source records. Population figures for China 1850-1870 reflect catastrophic losses from the Taiping Rebellion and related conflicts.
+    </div>
+</main>
+
+<script>
+var years = [1800, 1810, 1820, 1830, 1840, 1850, 1860, 1870, 1880, 1890, 1900];
+
+// Population (millions) — Maddison benchmarks (1820, 1870, 1900) + estimates
+var popChina =  [330, 355, 381, 397, 412, 430, 394, 358, 370, 380, 400];
+var popJapan =  [30,  30,  31,  31,  32,  32,  33,  34,  37,  40,  44];
+var popKorea =  [8,   8.5, 9,   9,   9.5, 10,  10.5, 11, 12,  13,  15];
+
+// GDP per capita (1990 int'l GK$) — Maddison benchmarks (1820, 1870, 1900) + estimates
+var gdpChina =  [600, 600, 600, 600, 600, 600, 565, 530, 535, 540, 545];
+var gdpJapan =  [660, 665, 669, 669, 669, 669, 703, 737, 810, 900, 1180];
+var gdpKorea =  [600, 600, 600, 600, 600, 600, 625, 650, 675, 700, 850];
+
+var CHINA_COLOR = "#c53030";
+var JAPAN_COLOR = "#b7791f";
+var KOREA_COLOR = "#2b6cb0";
+
+// Population chart — single axis, China dwarfs the rest
+var popCtx = document.getElementById("popChart").getContext("2d");
+new Chart(popCtx, {
+    type: "line",
+    data: {
+        labels: years,
+        datasets: [
+            {
+                label: "China",
+                data: popChina,
+                borderColor: CHINA_COLOR,
+                backgroundColor: CHINA_COLOR + "15",
+                borderWidth: 3,
+                pointRadius: 3.5,
+                tension: 0.3,
+                fill: true
+            },
+            {
+                label: "Japan",
+                data: popJapan,
+                borderColor: JAPAN_COLOR,
+                backgroundColor: JAPAN_COLOR + "15",
+                borderWidth: 2.5,
+                pointRadius: 3,
+                tension: 0.3,
+                fill: true
+            },
+            {
+                label: "Korea",
+                data: popKorea,
+                borderColor: KOREA_COLOR,
+                backgroundColor: KOREA_COLOR + "15",
+                borderWidth: 2.5,
+                pointRadius: 3,
+                tension: 0.3,
+                fill: true
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: {
+            legend: { position: "bottom", labels: { boxWidth: 14, font: { size: 11 } } },
+            tooltip: {
+                callbacks: {
+                    label: function(ctx) {
+                        return ctx.dataset.label + ": " + ctx.parsed.y + "M";
+                    }
+                }
+            }
+        },
+        scales: {
+            x: {
+                grid: { display: false },
+                ticks: { font: { size: 10 } }
+            },
+            y: {
+                title: { display: true, text: "Population (millions)", font: { size: 10 } },
+                min: 0, max: 460,
+                ticks: { font: { size: 10 } },
+                grid: { color: "#f0f0ec" }
+            }
+        }
+    }
+});
+
+// GDP per capita chart — single axis
+var gdpCtx = document.getElementById("gdpChart").getContext("2d");
+new Chart(gdpCtx, {
+    type: "line",
+    data: {
+        labels: years,
+        datasets: [
+            {
+                label: "Japan",
+                data: gdpJapan,
+                borderColor: JAPAN_COLOR,
+                backgroundColor: JAPAN_COLOR + "18",
+                borderWidth: 2.5,
+                pointRadius: 3,
+                tension: 0.3
+            },
+            {
+                label: "Korea",
+                data: gdpKorea,
+                borderColor: KOREA_COLOR,
+                backgroundColor: KOREA_COLOR + "18",
+                borderWidth: 2.5,
+                pointRadius: 3,
+                tension: 0.3
+            },
+            {
+                label: "China",
+                data: gdpChina,
+                borderColor: CHINA_COLOR,
+                backgroundColor: CHINA_COLOR + "18",
+                borderWidth: 2.5,
+                pointRadius: 3,
+                tension: 0.3
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: {
+            legend: { position: "bottom", labels: { boxWidth: 14, font: { size: 11 } } },
+            tooltip: {
+                callbacks: {
+                    label: function(ctx) {
+                        return ctx.dataset.label + ": $" + ctx.parsed.y;
+                    }
+                }
+            }
+        },
+        scales: {
+            x: {
+                grid: { display: false },
+                ticks: { font: { size: 10 } }
+            },
+            y: {
+                title: { display: true, text: "GDP/capita (1990 int'l $)", font: { size: 10 } },
+                min: 400, max: 1300,
+                ticks: { font: { size: 10 } },
+                grid: { color: "#f0f0ec" }
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

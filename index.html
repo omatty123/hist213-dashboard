@@ -573,6 +573,16 @@ function renderSidebar(p, i) {
     h += '</div>';
   }
   
+  // 19th Century data chart — show for plates 10-14
+  if (p.plate >= 10 && p.plate <= 14) {
+    h += '<div class="section-title">📊 Data</div>';
+    h += '<a href="print/19c-east-asia-chart.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:16px">';
+    h += '<div class="title">19th Century East Asia: Population & GDP</div>';
+    h += '<div class="author">China · Japan · Korea, 1800-1900</div>';
+    h += '<div class="source">Maddison Project data — the Taiping crash, Japan\'s divergence</div>';
+    h += '</a>';
+  }
+
   // Deep Dives for specific plates
   if (p.plate === 10) {
     h += '<div class="section-title">📚 Deep Dive</div>';

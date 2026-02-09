@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Platebook - Plate 4: Joseon Invaded</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     @page { size: A4; margin: 8mm; }
@@ -339,12 +341,113 @@
 
   <!-- Map -->
   <div class="map-section">
-    <span class="label">Map</span>
-    <div class="map-box">
-      
+    <span class="label">Map: The Imjin War 임진왜란 (1592-1598)</span>
+    <div class="map-box" style="padding:0; overflow:hidden; height:260px;">
+      <div id="imjin-map" style="width:100%; height:100%;"></div>
     </div>
     <div class="map-quote">"Hideyoshi dreamed not merely of conquering Korea but of subjugating China itself, and even India, establishing Japanese hegemony over all of Asia." — Sources of Japanese Tradition</div>
   </div>
+
+  <script>
+  (function(){
+    var map = L.map("imjin-map", {
+      zoomControl: false,
+      attributionControl: false,
+      dragging: false,
+      scrollWheelZoom: false
+    });
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
+      subdomains: "abcd", maxZoom: 10
+    }).addTo(map);
+
+    map.fitBounds([[33.0, 123.0], [41.5, 131.0]]);
+
+    var RED = "#c53030";
+    var BLUE = "#2b6cb0";
+    var GOLD = "#b7791f";
+    var GREEN = "#2f855a";
+
+    function city(lat, lng, name, han, desc, color, r) {
+      L.circleMarker([lat, lng], {
+        radius: r || 5, color: color, weight: 1.5,
+        fillColor: color, fillOpacity: 0.85
+      }).addTo(map).bindPopup("<b>" + han + "</b> " + name + "<br><small>" + desc + "</small>");
+      L.marker([lat, lng], {
+        icon: L.divIcon({
+          className: "map-label",
+          html: "<span style='font-size:8px;font-weight:700;color:" + color + ";text-shadow:1px 1px 2px #fff,-1px -1px 2px #fff,1px -1px 2px #fff,-1px 1px 2px #fff;white-space:nowrap'>" + name + "</span>",
+          iconAnchor: [-5, 4]
+        })
+      }).addTo(map);
+    }
+
+    // Capitals & cities
+    city(33.530, 129.869, "Nagoya", "名護屋城", "Hideyoshi's staging base in Hizen", RED, 7);
+    city(35.167, 129.067, "Busan", "부산", "Japanese landing, Apr 1592", RED, 6);
+    city(36.981, 127.936, "Chungju", "충주", "Sin Rip defeated by arquebus fire", RED, 4);
+    city(37.567, 126.978, "Hanyang", "한양", "Joseon capital, fell in 18 days", GOLD, 7);
+    city(37.598, 126.832, "Haengju", "행주산성", "Gwon Yul repulses 30,000 Japanese", BLUE, 5);
+    city(35.189, 128.079, "Jinju", "진주성", "Two sieges: 1592 victory, 1593 fall", BLUE, 4);
+    city(39.034, 125.754, "Pyongyang", "평양", "Captured 1592, retaken by Ming 1593", GOLD, 6);
+    city(40.199, 124.532, "Uiju", "의주", "King Seonjo flees to Yalu border", GOLD, 5);
+    city(41.272, 123.173, "Liaoyang", "遼陽", "Ming staging area for intervention", GREEN, 6);
+
+    // Naval battles (star-shaped: larger radius, lower fill)
+    function naval(lat, lng, name, han, desc) {
+      L.circleMarker([lat, lng], {
+        radius: 7, color: BLUE, weight: 2,
+        fillColor: BLUE, fillOpacity: 0.3
+      }).addTo(map).bindPopup("<b>" + han + "</b> " + name + "<br><small>" + desc + "</small>");
+      L.marker([lat, lng], {
+        icon: L.divIcon({
+          className: "map-label",
+          html: "<span style='font-size:7.5px;font-weight:700;color:" + BLUE + ";text-shadow:1px 1px 2px #fff,-1px -1px 2px #fff;white-space:nowrap'>⚓ " + name + "</span>",
+          iconAnchor: [-5, 4]
+        })
+      }).addTo(map);
+    }
+
+    naval(34.782, 128.485, "Hansando", "한산도", "Yi Sun-sin's crane wing formation, Aug 1592");
+    naval(34.568, 126.308, "Myeongnyang", "명량", "13 ships defeat 130+, Oct 1597");
+    naval(34.941, 127.873, "Noryang", "노량", "Final battle; Yi Sun-sin killed, Dec 1598");
+
+    // Japanese invasion route (red dashed): Nagoya → Busan → Chungju → Seoul → Pyongyang
+    L.polyline([
+      [33.530, 129.869], [34.3, 129.5], [35.167, 129.067],
+      [36.981, 127.936], [37.567, 126.978], [39.034, 125.754]
+    ], { color: RED, weight: 2.5, opacity: 0.7, dashArray: "6 4" }).addTo(map);
+
+    // King Seonjo's flight (gold dashed): Seoul → Uiju
+    L.polyline([
+      [37.567, 126.978], [38.5, 125.8], [40.199, 124.532]
+    ], { color: GOLD, weight: 2, opacity: 0.6, dashArray: "4 4" }).addTo(map);
+
+    // Ming intervention route (green): Liaoyang → Pyongyang
+    L.polyline([
+      [41.272, 123.173], [40.5, 124.0], [39.034, 125.754]
+    ], { color: GREEN, weight: 2.5, opacity: 0.7, dashArray: "6 4" }).addTo(map);
+
+    // Yi Sun-sin's patrol arc (blue): Hansando → Noryang → Myeongnyang
+    L.polyline([
+      [34.782, 128.485], [34.941, 127.873], [34.7, 127.0], [34.568, 126.308]
+    ], { color: BLUE, weight: 2, opacity: 0.5, dashArray: "3 3" }).addTo(map);
+
+    // Legend
+    var legend = L.control({ position: "bottomright" });
+    legend.onAdd = function() {
+      var d = L.DomUtil.create("div");
+      d.style.cssText = "background:rgba(255,255,255,0.92);padding:6px 8px;border-radius:4px;font-size:7.5px;line-height:1.6;border:1px solid #ccc";
+      d.innerHTML =
+        "<span style='color:" + RED + "'>━ ━</span> Japanese invasion<br>" +
+        "<span style='color:" + GOLD + "'>━ ━</span> King Seonjo's flight<br>" +
+        "<span style='color:" + GREEN + "'>━ ━</span> Ming intervention<br>" +
+        "<span style='color:" + BLUE + "'>⚓</span> Yi Sun-sin naval victories";
+      return d;
+    };
+    legend.addTo(map);
+  })();
+  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">

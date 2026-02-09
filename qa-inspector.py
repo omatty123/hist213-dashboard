@@ -174,6 +174,40 @@ def check_broken_links_in_plates():
             issue("CRITICAL", idx, f"Broken sidebar link: {ref} (file does not exist).")
 
 
+def check_orphaned_pages():
+    """Find HTML files in print/ not linked from index.html."""
+    idx = os.path.join(REPO, "index.html")
+    if not os.path.exists(idx):
+        return
+
+    with open(idx, "r") as f:
+        index_content = f.read()
+
+    # Collect all references to print/ files (url:, href=, enrichmentStatic, etc.)
+    all_refs = set()
+    for m in re.finditer(r'print/[A-Za-z0-9._-]+\.html', index_content):
+        all_refs.add(m.group(0))
+
+    # Known intentional non-linked files (drafts, interactive-form variants of linked print versions)
+    KNOWN_SKIPS = {
+        "joseon-maritime-trade-minimal.html",   # Draft of joseon-maritime-trade.html
+        "final-project-brainstorm-form.html",   # Interactive form; print version linked
+        "primary-source-analysis-form.html",    # Interactive form; print version linked
+    }
+
+    for f in sorted(glob.glob(os.path.join(PRINT_DIR, "*.html"))):
+        name = os.path.basename(f)
+        if name.startswith("platebook-"):
+            continue
+        if name.startswith("map-marker"):
+            continue
+        if name in KNOWN_SKIPS:
+            continue
+        ref = "print/" + name
+        if ref not in all_refs:
+            issue("WARNING", f, f"Orphaned page: not linked from index.html.")
+
+
 def report():
     """Print the report."""
     if not ISSUES:
@@ -208,6 +242,7 @@ def main():
     check_dashboard()
     check_missing_platebooks()
     check_broken_links_in_plates()
+    check_orphaned_pages()
 
     exit_code = report()
     sys.exit(exit_code)

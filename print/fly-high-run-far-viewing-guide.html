@@ -13,13 +13,13 @@
       font-family: 'Crimson Pro', Georgia, serif;
       font-size: 17px;
       line-height: 1.7;
-      color: #f0f0f0;
-      background: #0a0a0f;
+      color: #2a2a28;
+      background: #f5f2ec;
     }
 
     /* Navigation */
     nav {
-      background: #000;
+      background: #2d4a38;
       padding: 0.75rem 2rem;
       display: flex;
       align-items: center;
@@ -29,19 +29,19 @@
       z-index: 1000;
     }
     nav a {
-      color: #c9a227;
+      color: #c8dece;
       text-decoration: none;
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
     }
     nav a:hover { text-decoration: underline; }
     nav span.sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
-    nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+    nav .context { color: rgba(255,255,255,0.7); font-size: 0.75rem; }
 
     /* Page Header */
     .page-header {
       padding: 3rem 4rem 2rem;
-      border-bottom: 1px solid rgba(201,162,39,0.2);
+      border-bottom: 1px solid rgba(58,107,74,0.15);
     }
 
     .header-eyebrow {
@@ -50,7 +50,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.4);
+      color: rgba(42,42,40,0.4);
       margin-bottom: 0.75rem;
     }
 
@@ -64,7 +64,7 @@
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 3rem;
       font-weight: 700;
-      color: #c9a227;
+      color: #3a6b4a;
       line-height: 1;
     }
 
@@ -78,12 +78,12 @@
     .header-meta {
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(42,42,40,0.5);
       margin-top: 0.5rem;
     }
 
     .header-meta a {
-      color: #c9a227;
+      color: #3a6b4a;
       text-decoration: none;
     }
     .header-meta a:hover { text-decoration: underline; }
@@ -91,7 +91,7 @@
     .header-note {
       font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.4);
+      color: rgba(42,42,40,0.45);
       margin-top: 1rem;
       font-style: italic;
       max-width: 700px;
@@ -109,15 +109,16 @@
       grid-template-columns: 1fr 1fr;
       gap: 0;
       margin-bottom: 3rem;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(0,0,0,0.07);
       border-radius: 12px;
       overflow: hidden;
-      background: rgba(255,255,255,0.02);
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
       transition: border-color 0.3s ease;
     }
 
     .scene-card:hover {
-      border-color: rgba(201,162,39,0.3);
+      border-color: rgba(58,107,74,0.3);
     }
 
     .scene-card:nth-child(even) {
@@ -149,8 +150,8 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: #c9a227;
-      background: rgba(0,0,0,0.7);
+      color: #fff;
+      background: rgba(45,74,56,0.85);
       padding: 0.3rem 0.6rem;
       border-radius: 4px;
       backdrop-filter: blur(4px);
@@ -166,7 +167,7 @@
     .scene-label {
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(42,42,40,0.5);
       margin-bottom: 0.25rem;
     }
 
@@ -174,41 +175,41 @@
       font-family: 'Inter', sans-serif;
       font-size: 1.15rem;
       font-weight: 600;
-      color: #fff;
+      color: #2a2a28;
       margin-bottom: 0.75rem;
     }
 
     .scene-dialogue {
-      background: rgba(201,162,39,0.08);
-      border-left: 3px solid #c9a227;
+      background: rgba(58,107,74,0.05);
+      border-left: 3px solid #3a6b4a;
       padding: 0.75rem 1rem;
       margin-bottom: 1rem;
       font-style: italic;
       font-size: 1rem;
-      color: rgba(255,255,255,0.9);
+      color: rgba(42,42,40,0.85);
       line-height: 1.5;
     }
 
     .scene-context {
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
+      color: rgba(42,42,40,0.7);
       line-height: 1.6;
     }
 
     .scene-context strong {
-      color: #c9a227;
+      color: #3a6b4a;
       font-weight: 600;
     }
 
     /* Term links */
     .term-link {
-      color: #c9a227;
+      color: #3a6b4a;
       text-decoration: none;
-      border-bottom: 1px dotted rgba(201,162,39,0.5);
+      border-bottom: 1px dotted rgba(58,107,74,0.5);
       transition: border-color 0.2s ease;
     }
     .term-link:hover {
-      border-bottom-color: #c9a227;
+      border-bottom-color: #3a6b4a;
       border-bottom-style: solid;
     }
 
@@ -225,9 +226,9 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      color: #c9a227;
+      color: #3a6b4a;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(201,162,39,0.2);
+      border-bottom: 1px solid rgba(58,107,74,0.2);
       margin-bottom: 1.5rem;
     }
 
@@ -238,48 +239,48 @@
     }
 
     .gloss-item {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
       border-radius: 8px;
       padding: 1rem 1.25rem;
     }
 
     .gloss-item:hover {
-      border-color: rgba(201,162,39,0.2);
+      border-color: rgba(58,107,74,0.2);
     }
 
     .gloss-hangul {
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 1.1rem;
       font-weight: 700;
-      color: #c9a227;
+      color: #3a6b4a;
     }
 
     .gloss-hanja {
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(42,42,40,0.5);
       margin-left: 0.5rem;
     }
 
     .gloss-roman {
       font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.6);
+      color: rgba(42,42,40,0.55);
       margin-top: 0.15rem;
     }
 
     .gloss-def {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.75);
+      color: rgba(42,42,40,0.7);
       margin-top: 0.4rem;
       line-height: 1.5;
     }
 
     .gloss-def a {
-      color: #c9a227;
+      color: #3a6b4a;
       text-decoration: none;
-      border-bottom: 1px dotted rgba(201,162,39,0.4);
+      border-bottom: 1px dotted rgba(58,107,74,0.4);
     }
     .gloss-def a:hover { border-bottom-style: solid; }
 
@@ -287,7 +288,7 @@
     .timeline-connector {
       text-align: center;
       padding: 0.5rem 0;
-      color: rgba(201,162,39,0.3);
+      color: rgba(58,107,74,0.25);
       font-size: 1.5rem;
       letter-spacing: 0.5em;
     }
@@ -308,12 +309,12 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      color: #c9a227;
+      color: #3a6b4a;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(201,162,39,0.2);
+      border-bottom: 1px solid rgba(58,107,74,0.2);
     }
 
-    /* "More Scenes Coming" footer */
+    /* Guide footer */
     .guide-footer {
       max-width: 1200px;
       margin: 0 auto;
@@ -322,8 +323,8 @@
     }
 
     .coming-soon {
-      background: rgba(201,162,39,0.05);
-      border: 1px dashed rgba(201,162,39,0.3);
+      background: rgba(58,107,74,0.04);
+      border: 1px solid rgba(58,107,74,0.2);
       border-radius: 12px;
       padding: 2rem 2.5rem;
       font-family: 'Inter', sans-serif;
@@ -332,27 +333,27 @@
     .coming-soon h3 {
       font-size: 0.85rem;
       font-weight: 600;
-      color: #c9a227;
+      color: #3a6b4a;
       margin-bottom: 0.5rem;
     }
 
     .coming-soon p {
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(42,42,40,0.5);
       line-height: 1.5;
     }
 
     /* Footer */
     footer {
-      background: #000;
+      background: #eae6de;
       padding: 2rem 4rem;
       font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
-      color: rgba(255,255,255,0.4);
-      border-top: 1px solid rgba(255,255,255,0.05);
+      color: rgba(42,42,40,0.45);
+      border-top: 1px solid rgba(0,0,0,0.06);
     }
 
-    footer a { color: #c9a227; text-decoration: none; }
+    footer a { color: #3a6b4a; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
     /* Reference Sections */
@@ -367,15 +368,15 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      color: #c9a227;
+      color: #3a6b4a;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(201,162,39,0.2);
+      border-bottom: 1px solid rgba(58,107,74,0.2);
       margin-bottom: 1.5rem;
     }
     .ref-section p.section-intro {
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(42,42,40,0.5);
       margin-bottom: 1.5rem;
       line-height: 1.5;
     }
@@ -385,35 +386,35 @@
       width: 100%;
       height: 500px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(0,0,0,0.08);
     }
     .leaflet-popup-content-wrapper {
-      background: #1a1a2e !important;
-      color: #f0f0f0 !important;
-      border: 1px solid rgba(201,162,39,0.3);
+      background: #fff !important;
+      color: #2a2a28 !important;
+      border: 1px solid rgba(58,107,74,0.2) !important;
       border-radius: 8px !important;
     }
-    .leaflet-popup-tip { background: #1a1a2e !important; }
+    .leaflet-popup-tip { background: #fff !important; }
     .leaflet-popup-content {
       font-family: 'Inter', sans-serif !important;
       font-size: 0.8rem !important;
       line-height: 1.5 !important;
     }
-    .leaflet-popup-content strong { color: #c9a227; }
-    .leaflet-popup-content em { color: rgba(255,255,255,0.5); }
+    .leaflet-popup-content strong { color: #3a6b4a; }
+    .leaflet-popup-content em { color: rgba(42,42,40,0.5); }
     .map-note {
       font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
-      color: rgba(255,255,255,0.35);
+      color: rgba(42,42,40,0.35);
       margin-top: 0.75rem;
     }
 
     /* Timeline */
     .film-tl-box {
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(0,0,0,0.07);
       border-radius: 12px;
       padding: 1.5rem 1.5rem 1rem;
-      background: rgba(255,255,255,0.02);
+      background: #fff;
       margin-bottom: 1rem;
     }
     .film-tl-box h3 {
@@ -422,7 +423,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.4);
+      color: rgba(42,42,40,0.4);
       margin-bottom: 1rem;
     }
     .film-tl-row {
@@ -437,7 +438,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: rgba(201,162,39,0.4);
+      background: rgba(58,107,74,0.3);
     }
     .film-tl-event {
       flex: 1;
@@ -447,7 +448,7 @@
       line-height: 1.3;
       padding: 0 4px 14px;
       position: relative;
-      color: rgba(255,255,255,0.6);
+      color: rgba(42,42,40,0.6);
     }
     .film-tl-event::after {
       content: '';
@@ -456,13 +457,13 @@
       left: 50%;
       width: 2px;
       height: 8px;
-      background: #c9a227;
+      background: #3a6b4a;
       transform: translateX(-50%);
     }
     .film-tl-year {
       font-weight: 700;
       font-size: 0.8rem;
-      color: #c9a227;
+      color: #3a6b4a;
       display: block;
     }
 
@@ -473,37 +474,37 @@
       gap: 1rem;
     }
     .cast-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
       border-radius: 8px;
       padding: 1.25rem;
       transition: border-color 0.3s;
     }
-    .cast-card:hover { border-color: rgba(201,162,39,0.2); }
+    .cast-card:hover { border-color: rgba(58,107,74,0.2); }
     .cast-card .cast-kr {
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 1rem;
       font-weight: 700;
-      color: #c9a227;
+      color: #3a6b4a;
     }
     .cast-card .cast-en {
       font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
       font-weight: 600;
-      color: #fff;
+      color: #2a2a28;
       margin-top: 0.1rem;
     }
     .cast-card .cast-role {
       font-family: 'Inter', sans-serif;
       font-size: 0.7rem;
-      color: rgba(255,255,255,0.4);
+      color: rgba(42,42,40,0.4);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-top: 0.2rem;
     }
     .cast-card .cast-bio {
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.65);
+      color: rgba(42,42,40,0.65);
       margin-top: 0.5rem;
       line-height: 1.5;
     }
@@ -514,7 +515,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.3);
+      color: rgba(42,42,40,0.3);
       padding-top: 0.5rem;
     }
 
@@ -526,8 +527,8 @@
       margin-bottom: 2rem;
     }
     .arc-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
       border-left: 3px solid;
       border-radius: 0 8px 8px 0;
       padding: 1.25rem;
@@ -536,18 +537,18 @@
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
       font-weight: 600;
-      color: #fff;
+      color: #2a2a28;
       margin-bottom: 0.25rem;
     }
     .arc-card .arc-scenes-list {
       font-family: 'Inter', sans-serif;
       font-size: 0.7rem;
-      color: rgba(255,255,255,0.4);
+      color: rgba(42,42,40,0.4);
       margin-bottom: 0.5rem;
     }
     .arc-card .arc-desc {
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.65);
+      color: rgba(42,42,40,0.65);
       line-height: 1.5;
     }
     .scene-map-label {
@@ -556,7 +557,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.4);
+      color: rgba(42,42,40,0.4);
       margin-bottom: 0.75rem;
     }
     .scene-map {
@@ -574,7 +575,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 0.6rem;
       font-weight: 700;
-      color: rgba(0,0,0,0.7);
+      color: #fff;
     }
     .scene-map-legend {
       display: flex;
@@ -583,7 +584,7 @@
       margin-top: 0.75rem;
       font-family: 'Inter', sans-serif;
       font-size: 0.7rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(42,42,40,0.5);
     }
     .scene-map-legend span::before {
       content: '';
@@ -1959,14 +1960,14 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollWheelZoom: false
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
     maxZoom: 19
   }).addTo(map);
 
   var goldIcon = L.divIcon({
     className: '',
-    html: '<div style="width:14px;height:14px;border-radius:50%;background:#c9a227;border:2px solid rgba(255,255,255,0.8);box-shadow:0 0 10px rgba(201,162,39,0.6);"></div>',
+    html: '<div style="width:14px;height:14px;border-radius:50%;background:#3a6b4a;border:2px solid #fff;box-shadow:0 0 8px rgba(58,107,74,0.5);"></div>',
     iconSize: [14, 14],
     iconAnchor: [7, 7],
     popupAnchor: [0, -10]

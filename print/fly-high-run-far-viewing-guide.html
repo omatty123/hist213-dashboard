@@ -198,6 +198,89 @@
       font-weight: 600;
     }
 
+    /* Term links */
+    .term-link {
+      color: #c9a227;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(201,162,39,0.5);
+      transition: border-color 0.2s ease;
+    }
+    .term-link:hover {
+      border-bottom-color: #c9a227;
+      border-bottom-style: solid;
+    }
+
+    /* Glossary */
+    .glossary {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 4rem 3rem;
+    }
+
+    .glossary h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c9a227;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+      margin-bottom: 1.5rem;
+    }
+
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .gloss-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+
+    .gloss-item:hover {
+      border-color: rgba(201,162,39,0.2);
+    }
+
+    .gloss-hangul {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #c9a227;
+    }
+
+    .gloss-hanja {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-left: 0.5rem;
+    }
+
+    .gloss-roman {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.15rem;
+    }
+
+    .gloss-def {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      margin-top: 0.4rem;
+      line-height: 1.5;
+    }
+
+    .gloss-def a {
+      color: #c9a227;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(201,162,39,0.4);
+    }
+    .gloss-def a:hover { border-bottom-style: solid; }
+
     /* Timeline connector */
     .timeline-connector {
       text-align: center;
@@ -283,6 +366,8 @@
       .header-korean { font-size: 2.5rem; }
       .act-break { padding-left: 1.5rem; padding-right: 1.5rem; }
       .guide-footer { padding: 2rem 1.5rem; }
+      .glossary { padding: 2rem 1.5rem; }
+      .glossary-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -326,7 +411,8 @@
       <div class="scene-title">Ch'oe Che-u Defends His Teaching</div>
       <div class="scene-dialogue">"No! I taught Self and Nature are the same."</div>
       <div class="scene-context">
-        The founder of Donghak, Suun Ch'oe Che-u, under interrogation. His core revelation (1860): humans and heaven are not separate. The concept of <strong>sich'onju</strong> (侍天主, "serving the Lord of Heaven") meant that the divine dwells within every person. The state heard this as sedition: if heaven is in the peasant, the yangban order has no divine mandate.
+        <strong>On-screen text:</strong> 동학 1세 교조 = "<a class="term-link" href="https://en.wikipedia.org/wiki/Donghak" target="_blank">Donghak</a> 1st Patriarch." 수운 (水雲, "Water-Cloud") is his religious name.<br><br>
+        The founder of Donghak, <a class="term-link" href="https://en.wikipedia.org/wiki/Choe_Je-u" target="_blank">Suun Ch'oe Che-u</a>, under interrogation. His core revelation (1860): humans and heaven are not separate. The concept of <strong>sich'ŏnju</strong> (侍天主, "serving the Lord of Heaven") meant that the divine dwells within every person. The state heard this as sedition: if heaven is in the peasant, the <a class="term-link" href="https://en.wikipedia.org/wiki/Yangban" target="_blank">yangban</a> order has no divine mandate.
       </div>
     </div>
   </div>
@@ -344,7 +430,8 @@
       <div class="scene-title">Lanterns on Water: A Philosophical Exchange</div>
       <div class="scene-dialogue">"Lights lit brightly on water / leave no more space."</div>
       <div class="scene-context">
-        A scene of classical literary culture. The vertical text on the right (燈明水上無嫌隙) is classical Chinese poetry. Im Kwon-taek regularly grounds the Donghak narrative in the Confucian intellectual world it emerged from. These scholars inhabit a world of literary refinement that Donghak threatened to democratize: Ch'oe Che-u taught that <strong>any person</strong>, not just the literate elite, could access the Way.
+        <strong>On-screen text:</strong> 燈明水上無嫌隙. Character by character: 燈明 (lanterns shine) 水上 (on the water) 無嫌隙 (leaving no gap, no shadow of suspicion). A line of classical Chinese (<a class="term-link" href="https://en.wikipedia.org/wiki/Classical_Chinese" target="_blank">hanmun</a>) poetry.<br><br>
+        <a class="term-link" href="https://en.wikipedia.org/wiki/Im_Kwon-taek" target="_blank">Im Kwon-taek</a> regularly grounds the Donghak narrative in the <a class="term-link" href="https://en.wikipedia.org/wiki/Korean_Confucianism" target="_blank">Confucian</a> intellectual world it emerged from. These scholars inhabit a world of literary refinement that Donghak threatened to democratize: Ch'oe Che-u taught that <strong>any person</strong>, not just the literate elite, could access the Way.
       </div>
     </div>
   </div>
@@ -362,7 +449,8 @@
       <div class="scene-title">Trial at the Taegu Provincial Office</div>
       <div class="scene-dialogue">"You created heresy called Dong-Hak and deluded the public."</div>
       <div class="scene-context">
-        January 1864. Ch'oe Che-u is brought to the Taegu Provincial Office (감영) for trial. The charge: creating a heterodox teaching (이단) and misleading the people. The film captures the architectural grandeur of the provincial yamen, officials assembled on the upper gallery, soldiers below. The formal charge uses the language of Confucian orthodoxy: <strong>"heresy"</strong> (사학, literally "wrong learning"), the same term used against Catholicism decades earlier.
+        <strong>On-screen text:</strong> 1864년 1월 = "January 1864." 대구감영 (大邱監營) = "<a class="term-link" href="https://en.wikipedia.org/wiki/Daegu" target="_blank">Taegu</a> <a class="term-link" href="https://en.wikipedia.org/wiki/Gyeongsang-gamyeong_Park" target="_blank">Provincial Governor's Office</a>." The 감영 (<em>kamyŏng</em>) was the seat of provincial government in Chosŏn.<br><br>
+        Ch'oe Che-u is brought before the court. The charge: creating a heterodox teaching (이단, <em>idan</em>, "deviating from the orthodox Way") and misleading the people. The formal accusation uses the label <a class="term-link" href="https://en.wikipedia.org/wiki/Seohak" target="_blank"><strong>sahak</strong></a> (邪學, "evil learning"), the same term the Chosŏn court had applied to Catholicism decades earlier. Officials assembled on the upper gallery, soldiers below.
       </div>
     </div>
   </div>
@@ -380,7 +468,8 @@
       <div class="scene-title">The Governor's Accusation</div>
       <div class="scene-dialogue">"They're said to be evil. Didn't you intend to instigate a treason?"</div>
       <div class="scene-context">
-        Kyongsang Provincial Governor <strong>So Hon-sun</strong> presides over the interrogation. Note the costuming: full official regalia with the amber court beads marking his rank. The question cuts to the core of the state's fear. Donghak was not just religiously heterodox; the government suspected it was a vehicle for political rebellion. In a neo-Confucian state, religious dissent and treason were the same category of threat.
+        <strong>On-screen text:</strong> 경상감사 (慶尙監司) = "<a class="term-link" href="https://en.wikipedia.org/wiki/Gyeongsang_Province" target="_blank">Kyŏngsang</a> Provincial Governor." 감사 (<em>kamsa</em>, 監司) was the title for the governor of a province in <a class="term-link" href="https://en.wikipedia.org/wiki/Politics_of_the_Joseon_dynasty" target="_blank">Chosŏn administration</a>. 서헌순 (徐憲淳) = Sŏ Hŏn-sun, the official presiding.<br><br>
+        Note the costuming: full official regalia with amber court beads marking his rank. The question cuts to the core of the state's fear. Donghak was not just religiously heterodox; the government suspected it was a vehicle for political rebellion. In a <a class="term-link" href="https://en.wikipedia.org/wiki/Korean_Confucianism" target="_blank">neo-Confucian</a> state, religious dissent and treason were the same category of threat.
       </div>
     </div>
   </div>
@@ -398,7 +487,8 @@
       <div class="scene-title">Execution of the Founder</div>
       <div class="scene-dialogue">"He should have kept his head with magic!"</div>
       <div class="scene-context">
-        March 10, 1864. Ch'oe Che-u is publicly executed in Taegu. The crowd's taunt is telling: they mock him for failing to use the supernatural powers the government accused him of possessing. Im films the crowd from behind, white-clad commoners walking toward the execution ground. The state's logic: destroy the leader, destroy the movement. It was spectacularly wrong. Ch'oe Che-u's martyrdom became the movement's most powerful recruiting tool.
+        <strong>On-screen text:</strong> 1864년 3월 10일 = "March 10, 1864." 수운 최제우 처형 = "Execution of Suun Ch'oe Che-u." 처형 (<em>ch'ohyŏng</em>, 處刑) means execution by legal sentence.<br><br>
+        Ch'oe Che-u is publicly executed in Taegu. The crowd's taunt is telling: they mock him for failing to use the supernatural powers the government accused him of possessing. Im films the crowd from behind, white-clad commoners walking toward the execution ground. The state's logic: destroy the leader, destroy the movement. It was spectacularly wrong. Ch'oe Che-u's martyrdom became the <a class="term-link" href="https://en.wikipedia.org/wiki/Donghak" target="_blank">Donghak movement's</a> most powerful recruiting tool.
       </div>
     </div>
   </div>
@@ -416,7 +506,8 @@
       <div class="scene-title">Wanted: The Donghak Ringleader</div>
       <div class="scene-dialogue"></div>
       <div class="scene-context">
-        A government wanted poster (방고, 榜告) issued by the Kyongsang Provincial Governor. The text reads: <strong>"The ringleader of this Donghak group ... whoever captures and binds this person shall receive a generous reward."</strong> Signed by Provincial Governor Kim Il-jae (金一載). The hand-drawn portrait and brush calligraphy are period-accurate. After Ch'oe Che-u's execution, the government launched a decades-long manhunt for the remaining Donghak leadership, driving the movement underground.
+        <strong>On-screen text:</strong> 방고 (榜告, <em>panggo</em>) = "Public Proclamation," a formal government notice posted for public viewing. 경상도관찰사 = "<a class="term-link" href="https://en.wikipedia.org/wiki/Gyeongsang_Province" target="_blank">Kyŏngsang Province</a> Governor." The poster text (in classical Chinese): 此東學魁首 ... 捕縛此人者 以厚賞報之 = <strong>"The ringleader of this Donghak group ... whoever captures and binds this person shall receive a generous reward."</strong> Signed: 경상도관찰사 金一載 (Provincial Governor Kim Il-jae).<br><br>
+        The hand-drawn portrait and brush calligraphy are period-accurate. After Ch'oe Che-u's execution, the government launched a decades-long manhunt for the remaining Donghak leadership, driving the movement underground. <a class="term-link" href="https://en.wikipedia.org/wiki/Choe_Si-hyeong" target="_blank">Ch'oe Si-hyŏng</a> evaded capture for 34 years.
       </div>
     </div>
   </div>
@@ -441,11 +532,104 @@
       <div class="scene-title">Haewol: The Sea-Moon Rises</div>
       <div class="scene-dialogue"></div>
       <div class="scene-context">
-        Ch'oe Si-hyong, religious name <strong>Haewol</strong> (海月, "Sea-Moon"), takes the title of 2nd Donghak Patriarch. Played by Lee Duk-hwa. Where Ch'oe Che-u was a visionary, Ch'oe Si-hyong was an organizer. He spent 34 years (1864-1898) building Donghak from a crushed sect into a mass movement with hundreds of thousands of followers. He published the movement's scriptures, organized cell networks (<em>p'o</em>), and extended the theology: his doctrine of <strong>innaech'on</strong> (人乃天, "humans are heaven") radicalized the founder's teaching into a principle of absolute human equality.
+        <strong>On-screen text:</strong> 동학 2세 교조 = "Donghak 2nd Patriarch." 해월 (海月) = "Sea-Moon," his religious name. 최시형 (崔時亨) = <a class="term-link" href="https://en.wikipedia.org/wiki/Choe_Si-hyeong" target="_blank">Ch'oe Si-hyŏng</a>.<br><br>
+        Played by <a class="term-link" href="https://en.wikipedia.org/wiki/Lee_Deok-hwa" target="_blank">Lee Duk-hwa</a>. Where Ch'oe Che-u was a visionary, Ch'oe Si-hyŏng was an organizer. He spent 34 years (1864-1898) building Donghak from a crushed sect into a mass movement with hundreds of thousands of followers. He published the movement's scriptures (the <em>Tonggyŏng taejŏn</em>, 동경대전), organized cell networks (<em>p'o</em>, 包), and extended the theology: his doctrine of <strong>innaech'ŏn</strong> (人乃天, "humans are heaven") radicalized the founder's teaching into a principle of absolute equality. Donghak later became <a class="term-link" href="https://en.wikipedia.org/wiki/Cheondoism" target="_blank">Ch'ŏndogyo</a> (천도교, "Religion of the Heavenly Way") and played a central role in the <a class="term-link" href="https://en.wikipedia.org/wiki/March_First_Movement" target="_blank">March 1, 1919 independence movement</a>.
       </div>
     </div>
   </div>
 
+</div>
+
+<!-- Glossary -->
+<div class="glossary">
+  <h2>Key Terms Glossary</h2>
+  <div class="glossary-grid">
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">동학</span> <span class="gloss-hanja">東學</span></div>
+      <div class="gloss-roman">Tonghak / Donghak</div>
+      <div class="gloss-def">"Eastern Learning." Korean religious and social movement founded by Ch'oe Che-u in 1860. Positioned as a native alternative to <em>sŏhak</em> (Western Learning / Catholicism). <a href="https://en.wikipedia.org/wiki/Donghak" target="_blank">Wikipedia</a></div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">교조</span> <span class="gloss-hanja">教祖</span></div>
+      <div class="gloss-roman">kyojo</div>
+      <div class="gloss-def">"Patriarch" or "Founder of a teaching." Used in the film's on-screen text: 1세 교조 (1st Patriarch), 2세 교조 (2nd Patriarch).</div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">수운</span> <span class="gloss-hanja">水雲</span></div>
+      <div class="gloss-roman">Suun</div>
+      <div class="gloss-def">"Water-Cloud." Religious name of <a href="https://en.wikipedia.org/wiki/Choe_Je-u" target="_blank">Ch'oe Che-u</a> (최제우, 崔濟愚), founder of Donghak. Executed 1864.</div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">해월</span> <span class="gloss-hanja">海月</span></div>
+      <div class="gloss-roman">Haewŏl</div>
+      <div class="gloss-def">"Sea-Moon." Religious name of <a href="https://en.wikipedia.org/wiki/Choe_Si-hyeong" target="_blank">Ch'oe Si-hyŏng</a> (최시형, 崔時亨), 2nd Donghak Patriarch. Executed 1898.</div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">시천주</span> <span class="gloss-hanja">侍天主</span></div>
+      <div class="gloss-roman">sich'ŏnju</div>
+      <div class="gloss-def">"Serving the Lord of Heaven." Ch'oe Che-u's original revelation: the divine is not distant but dwells within every person. The theological foundation of Donghak. <a href="https://en.wikipedia.org/wiki/Donghak" target="_blank">Wikipedia</a></div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">인내천</span> <span class="gloss-hanja">人乃天</span></div>
+      <div class="gloss-roman">innaech'ŏn</div>
+      <div class="gloss-def">"Humans are Heaven." Ch'oe Si-hyŏng's extension of Donghak theology into a doctrine of radical equality. If every person carries heaven, then social hierarchy has no sacred basis. <a href="https://en.wikipedia.org/wiki/Cheondoism" target="_blank">Wikipedia</a></div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">개벽</span> <span class="gloss-hanja">開闢</span></div>
+      <div class="gloss-roman">kaebyŏk</div>
+      <div class="gloss-def">"The Great Opening." Cosmic renewal; the prophesied transformation of the social order. Also the Korean title of this film. <a href="https://en.wikipedia.org/wiki/Fly_High_Run_Far" target="_blank">Film on Wikipedia</a></div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">감영</span> <span class="gloss-hanja">監營</span></div>
+      <div class="gloss-roman">kamyŏng</div>
+      <div class="gloss-def">"Provincial Governor's Office." The administrative seat of a Chosŏn province. The Taegu kamyŏng, where Ch'oe Che-u was tried, still survives as a <a href="https://en.wikipedia.org/wiki/Gyeongsang-gamyeong_Park" target="_blank">historical park</a>.</div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">감사</span> <span class="gloss-hanja">監司</span></div>
+      <div class="gloss-roman">kamsa</div>
+      <div class="gloss-def">"Provincial Governor." A high-ranking official (junior 2nd rank) who administered an entire province on behalf of the king. <a href="https://en.wikipedia.org/wiki/Politics_of_the_Joseon_dynasty" target="_blank">Chosŏn administration</a></div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">방고</span> <span class="gloss-hanja">榜告</span></div>
+      <div class="gloss-roman">panggo</div>
+      <div class="gloss-def">"Public Proclamation." A government notice posted in public spaces. Used for wanted posters, new laws, and official decrees. The one in the film offers a reward for capturing Donghak leaders.</div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">사학</span> <span class="gloss-hanja">邪學</span></div>
+      <div class="gloss-roman">sahak</div>
+      <div class="gloss-def">"Evil Learning." Label applied by the Chosŏn court to any teaching deemed heterodox. First used against <a href="https://en.wikipedia.org/wiki/Seohak" target="_blank">Catholicism (sŏhak)</a>, then against Donghak.</div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">양반</span> <span class="gloss-hanja">兩班</span></div>
+      <div class="gloss-roman">yangban</div>
+      <div class="gloss-def">"Two orders." The hereditary aristocratic class of Chosŏn Korea, comprising civil and military officials. The social hierarchy Donghak theology fundamentally challenged. <a href="https://en.wikipedia.org/wiki/Yangban" target="_blank">Wikipedia</a></div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">처형</span> <span class="gloss-hanja">處刑</span></div>
+      <div class="gloss-roman">ch'ŏhyŏng</div>
+      <div class="gloss-def">"Execution by legal sentence." Used in the film's on-screen text for Ch'oe Che-u's death: 수운 최제우 처형 (Execution of Suun Ch'oe Che-u).</div>
+    </div>
+
+    <div class="gloss-item">
+      <div><span class="gloss-hangul">천도교</span> <span class="gloss-hanja">天道教</span></div>
+      <div class="gloss-roman">Ch'ŏndogyo</div>
+      <div class="gloss-def">"Religion of the Heavenly Way." The later institutional form of Donghak, reorganized in 1905. Central to the <a href="https://en.wikipedia.org/wiki/March_First_Movement" target="_blank">March 1, 1919 independence movement</a>. <a href="https://en.wikipedia.org/wiki/Cheondoism" target="_blank">Wikipedia</a></div>
+    </div>
+
+  </div>
 </div>
 
 <!-- More Scenes Coming -->

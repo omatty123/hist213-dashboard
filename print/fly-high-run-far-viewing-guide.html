@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Viewing Guide: Fly High, Run Far (개벽) | HIST/EAST 213</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #f0f0f0;
+      background: #0a0a0f;
+    }
+
+    /* Navigation */
+    nav {
+      background: #000;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #c9a227;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+    }
+    nav a:hover { text-decoration: underline; }
+    nav span.sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+    nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+    /* Page Header */
+    .page-header {
+      padding: 3rem 4rem 2rem;
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+    }
+
+    .header-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.75rem;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+    }
+
+    .header-korean {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #c9a227;
+      line-height: 1;
+    }
+
+    .header-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .header-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.5rem;
+    }
+
+    .header-meta a {
+      color: #c9a227;
+      text-decoration: none;
+    }
+    .header-meta a:hover { text-decoration: underline; }
+
+    .header-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 1rem;
+      font-style: italic;
+      max-width: 700px;
+    }
+
+    /* Scene Grid */
+    .scenes {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 4rem;
+    }
+
+    .scene-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.3s ease;
+    }
+
+    .scene-card:hover {
+      border-color: rgba(201,162,39,0.3);
+    }
+
+    .scene-card:nth-child(even) {
+      direction: rtl;
+    }
+    .scene-card:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .scene-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+    }
+
+    .scene-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .scene-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #c9a227;
+      background: rgba(0,0,0,0.7);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .scene-text {
+      padding: 2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .scene-label {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.25rem;
+    }
+
+    .scene-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .scene-dialogue {
+      background: rgba(201,162,39,0.08);
+      border-left: 3px solid #c9a227;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.5;
+    }
+
+    .scene-context {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    .scene-context strong {
+      color: #c9a227;
+      font-weight: 600;
+    }
+
+    /* Timeline connector */
+    .timeline-connector {
+      text-align: center;
+      padding: 0.5rem 0;
+      color: rgba(201,162,39,0.3);
+      font-size: 1.5rem;
+      letter-spacing: 0.5em;
+    }
+
+    /* Section Breaks */
+    .act-break {
+      text-align: left;
+      padding: 2rem 0 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+
+    .act-break h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c9a227;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+    }
+
+    /* "More Scenes Coming" footer */
+    .guide-footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 4rem 4rem;
+      text-align: left;
+    }
+
+    .coming-soon {
+      background: rgba(201,162,39,0.05);
+      border: 1px dashed rgba(201,162,39,0.3);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .coming-soon h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c9a227;
+      margin-bottom: 0.5rem;
+    }
+
+    .coming-soon p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      padding: 2rem 4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer a { color: #c9a227; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 800px) {
+      .scene-card,
+      .scene-card:nth-child(even) {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+      .scene-image { min-height: 200px; }
+      .scenes { padding: 2rem 1.5rem; }
+      .page-header { padding: 2rem 1.5rem; }
+      .header-row { flex-direction: column; gap: 0.5rem; }
+      .header-korean { font-size: 2.5rem; }
+      .act-break { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .guide-footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <a href="../index.html">&larr; Dashboard</a>
+  <span class="sep">/</span>
+  <a href="fly-high-run-far-deep-dive.html">Film Deep Dive</a>
+  <span class="sep">/</span>
+  <span class="context">Scene-by-Scene Viewing Guide</span>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="header-eyebrow">Viewing Guide &middot; Day 16 &middot; Tonghak in Film</div>
+  <div class="header-row">
+    <div class="header-korean">개벽</div>
+    <div class="header-title">Fly High, Run Far &mdash; Scene Guide</div>
+  </div>
+  <div class="header-meta">Im Kwon-taek (임권택) &middot; 1991 &middot; 146 min &middot; <a href="fly-high-run-far-deep-dive.html">Read the Deep Dive &rarr;</a></div>
+  <div class="header-note">A scene-by-scene companion for watching the film. Each card captures a key moment with the original Korean text, English subtitles, and historical context connecting it to course material. Guide grows as viewing continues.</div>
+</div>
+
+<!-- Act I: The Founder -->
+<div class="act-break">
+  <h2>Act I &mdash; The Founder: Ch'oe Che-u (최제우)</h2>
+</div>
+
+<div class="scenes">
+
+  <!-- Scene 1: Ch'oe Che-u's Teaching -->
+  <div class="scene-card">
+    <div class="scene-image">
+      <img src="images/fly-high-run-far/scene-01-choe-cheu-teaching.png" alt="Ch'oe Che-u declares his teaching">
+      <div class="scene-number">Scene 1</div>
+    </div>
+    <div class="scene-text">
+      <div class="scene-label">동학 1세 교조 &middot; 수운 최제우 (水雲 崔濟愚)</div>
+      <div class="scene-title">Ch'oe Che-u Defends His Teaching</div>
+      <div class="scene-dialogue">"No! I taught Self and Nature are the same."</div>
+      <div class="scene-context">
+        The founder of Donghak, Suun Ch'oe Che-u, under interrogation. His core revelation (1860): humans and heaven are not separate. The concept of <strong>sich'onju</strong> (侍天主, "serving the Lord of Heaven") meant that the divine dwells within every person. The state heard this as sedition: if heaven is in the peasant, the yangban order has no divine mandate.
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-connector">&#9679;</div>
+
+  <!-- Scene 2: Poetry / Lanterns on Water -->
+  <div class="scene-card">
+    <div class="scene-image">
+      <img src="images/fly-high-run-far/scene-02-poetry-lanterns.png" alt="Scholars discuss by lantern light">
+      <div class="scene-number">Scene 2</div>
+    </div>
+    <div class="scene-text">
+      <div class="scene-label">燈明水上無嫌隙</div>
+      <div class="scene-title">Lanterns on Water: A Philosophical Exchange</div>
+      <div class="scene-dialogue">"Lights lit brightly on water / leave no more space."</div>
+      <div class="scene-context">
+        A scene of classical literary culture. The vertical text on the right (燈明水上無嫌隙) is classical Chinese poetry. Im Kwon-taek regularly grounds the Donghak narrative in the Confucian intellectual world it emerged from. These scholars inhabit a world of literary refinement that Donghak threatened to democratize: Ch'oe Che-u taught that <strong>any person</strong>, not just the literate elite, could access the Way.
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-connector">&#9679;</div>
+
+  <!-- Scene 3: Trial at Taegu -->
+  <div class="scene-card">
+    <div class="scene-image">
+      <img src="images/fly-high-run-far/scene-03-taegu-trial.png" alt="Trial at Taegu Provincial Office, 1864">
+      <div class="scene-number">Scene 3</div>
+    </div>
+    <div class="scene-text">
+      <div class="scene-label">1864년 1월 &middot; 대구감영 (大邱監營)</div>
+      <div class="scene-title">Trial at the Taegu Provincial Office</div>
+      <div class="scene-dialogue">"You created heresy called Dong-Hak and deluded the public."</div>
+      <div class="scene-context">
+        January 1864. Ch'oe Che-u is brought to the Taegu Provincial Office (감영) for trial. The charge: creating a heterodox teaching (이단) and misleading the people. The film captures the architectural grandeur of the provincial yamen, officials assembled on the upper gallery, soldiers below. The formal charge uses the language of Confucian orthodoxy: <strong>"heresy"</strong> (사학, literally "wrong learning"), the same term used against Catholicism decades earlier.
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-connector">&#9679;</div>
+
+  <!-- Scene 4: Governor's Interrogation -->
+  <div class="scene-card">
+    <div class="scene-image">
+      <img src="images/fly-high-run-far/scene-04-governor-interrogation.png" alt="Governor So Hon-sun interrogates Ch'oe Che-u">
+      <div class="scene-number">Scene 4</div>
+    </div>
+    <div class="scene-text">
+      <div class="scene-label">경상감사 서헌순 (慶尙監司 徐憲淳)</div>
+      <div class="scene-title">The Governor's Accusation</div>
+      <div class="scene-dialogue">"They're said to be evil. Didn't you intend to instigate a treason?"</div>
+      <div class="scene-context">
+        Kyongsang Provincial Governor <strong>So Hon-sun</strong> presides over the interrogation. Note the costuming: full official regalia with the amber court beads marking his rank. The question cuts to the core of the state's fear. Donghak was not just religiously heterodox; the government suspected it was a vehicle for political rebellion. In a neo-Confucian state, religious dissent and treason were the same category of threat.
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-connector">&#9679;</div>
+
+  <!-- Scene 5: Execution -->
+  <div class="scene-card">
+    <div class="scene-image">
+      <img src="images/fly-high-run-far/scene-05-execution.png" alt="Execution of Ch'oe Che-u, March 10, 1864">
+      <div class="scene-number">Scene 5</div>
+    </div>
+    <div class="scene-text">
+      <div class="scene-label">1864년 3월 10일 &middot; 수운 최제우 처형</div>
+      <div class="scene-title">Execution of the Founder</div>
+      <div class="scene-dialogue">"He should have kept his head with magic!"</div>
+      <div class="scene-context">
+        March 10, 1864. Ch'oe Che-u is publicly executed in Taegu. The crowd's taunt is telling: they mock him for failing to use the supernatural powers the government accused him of possessing. Im films the crowd from behind, white-clad commoners walking toward the execution ground. The state's logic: destroy the leader, destroy the movement. It was spectacularly wrong. Ch'oe Che-u's martyrdom became the movement's most powerful recruiting tool.
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-connector">&#9679;</div>
+
+  <!-- Scene 6: Wanted Poster -->
+  <div class="scene-card">
+    <div class="scene-image">
+      <img src="images/fly-high-run-far/scene-06-wanted-poster.png" alt="Wanted poster for Donghak leaders">
+      <div class="scene-number">Scene 6</div>
+    </div>
+    <div class="scene-text">
+      <div class="scene-label">방고 (榜告) &middot; 경상도관찰사</div>
+      <div class="scene-title">Wanted: The Donghak Ringleader</div>
+      <div class="scene-dialogue"></div>
+      <div class="scene-context">
+        A government wanted poster (방고, 榜告) issued by the Kyongsang Provincial Governor. The text reads: <strong>"The ringleader of this Donghak group ... whoever captures and binds this person shall receive a generous reward."</strong> Signed by Provincial Governor Kim Il-jae (金一載). The hand-drawn portrait and brush calligraphy are period-accurate. After Ch'oe Che-u's execution, the government launched a decades-long manhunt for the remaining Donghak leadership, driving the movement underground.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Act II: The Second Leader -->
+<div class="act-break">
+  <h2>Act II &mdash; The Second Leader: Ch'oe Si-hyong (최시형)</h2>
+</div>
+
+<div class="scenes">
+
+  <!-- Scene 7: Ch'oe Si-hyong -->
+  <div class="scene-card">
+    <div class="scene-image">
+      <img src="images/fly-high-run-far/scene-07-choe-sihyong.png" alt="Ch'oe Si-hyong, 2nd Donghak leader">
+      <div class="scene-number">Scene 7</div>
+    </div>
+    <div class="scene-text">
+      <div class="scene-label">동학 2세 교조 &middot; 해월 최시형 (海月 崔時亨)</div>
+      <div class="scene-title">Haewol: The Sea-Moon Rises</div>
+      <div class="scene-dialogue"></div>
+      <div class="scene-context">
+        Ch'oe Si-hyong, religious name <strong>Haewol</strong> (海月, "Sea-Moon"), takes the title of 2nd Donghak Patriarch. Played by Lee Duk-hwa. Where Ch'oe Che-u was a visionary, Ch'oe Si-hyong was an organizer. He spent 34 years (1864-1898) building Donghak from a crushed sect into a mass movement with hundreds of thousands of followers. He published the movement's scriptures, organized cell networks (<em>p'o</em>), and extended the theology: his doctrine of <strong>innaech'on</strong> (人乃天, "humans are heaven") radicalized the founder's teaching into a principle of absolute human equality.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- More Scenes Coming -->
+<div class="guide-footer">
+  <div class="coming-soon">
+    <h3>Guide in Progress</h3>
+    <p>This viewing guide grows as the film viewing continues. More scenes covering the Donghak Peasant Revolution, Ch'oe Si-hyong's underground years, and the 1894 uprising are forthcoming.</p>
+  </div>
+</div>
+
+<footer>
+  HIST/EAST 213 &middot; Modern East Asia &middot; Winter 2026 &middot;
+  <a href="fly-high-run-far-deep-dive.html">Film Deep Dive</a> &middot;
+  <a href="../index.html">Dashboard</a>
+</footer>
+
+</body>
+</html>

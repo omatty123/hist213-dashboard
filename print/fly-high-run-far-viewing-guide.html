@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Viewing Guide: Fly High, Run Far (개벽) | HIST/EAST 213</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -353,6 +355,251 @@
     footer a { color: #c9a227; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    /* Reference Sections */
+    .ref-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 4rem 3rem;
+    }
+    .ref-section h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c9a227;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+      margin-bottom: 1.5rem;
+    }
+    .ref-section p.section-intro {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    /* Map */
+    #film-map {
+      width: 100%;
+      height: 500px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .leaflet-popup-content-wrapper {
+      background: #1a1a2e !important;
+      color: #f0f0f0 !important;
+      border: 1px solid rgba(201,162,39,0.3);
+      border-radius: 8px !important;
+    }
+    .leaflet-popup-tip { background: #1a1a2e !important; }
+    .leaflet-popup-content {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.8rem !important;
+      line-height: 1.5 !important;
+    }
+    .leaflet-popup-content strong { color: #c9a227; }
+    .leaflet-popup-content em { color: rgba(255,255,255,0.5); }
+    .map-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.75rem;
+    }
+
+    /* Timeline */
+    .film-tl-box {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem 1.5rem 1rem;
+      background: rgba(255,255,255,0.02);
+      margin-bottom: 1rem;
+    }
+    .film-tl-box h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1rem;
+    }
+    .film-tl-row {
+      display: flex;
+      width: 100%;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .film-tl-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(201,162,39,0.4);
+    }
+    .film-tl-event {
+      flex: 1;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      line-height: 1.3;
+      padding: 0 4px 14px;
+      position: relative;
+      color: rgba(255,255,255,0.6);
+    }
+    .film-tl-event::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      height: 8px;
+      background: #c9a227;
+      transform: translateX(-50%);
+    }
+    .film-tl-year {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #c9a227;
+      display: block;
+    }
+
+    /* Cast */
+    .cast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+    .cast-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 1.25rem;
+      transition: border-color 0.3s;
+    }
+    .cast-card:hover { border-color: rgba(201,162,39,0.2); }
+    .cast-card .cast-kr {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #c9a227;
+    }
+    .cast-card .cast-en {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 0.1rem;
+    }
+    .cast-card .cast-role {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.2rem;
+    }
+    .cast-card .cast-bio {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+    .cast-divider {
+      grid-column: 1 / -1;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.3);
+      padding-top: 0.5rem;
+    }
+
+    /* Narrative Arcs */
+    .arcs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .arc-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 3px solid;
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem;
+    }
+    .arc-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .arc-card .arc-scenes-list {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.5rem;
+    }
+    .arc-card .arc-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+    .scene-map-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.75rem;
+    }
+    .scene-map {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+    .scene-map .sm {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: rgba(0,0,0,0.7);
+    }
+    .scene-map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .scene-map-legend span::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .sml-faith::before { background: #c9a227 !important; }
+    .sml-state::before { background: #e74c3c !important; }
+    .sml-underground::before { background: #6c8ebf !important; }
+    .sml-world::before { background: #2ecc71 !important; }
+    .sml-human::before { background: #e67e22 !important; }
+
     @media (max-width: 800px) {
       .scene-card,
       .scene-card:nth-child(even) {
@@ -368,6 +615,12 @@
       .guide-footer { padding: 2rem 1.5rem; }
       .glossary { padding: 2rem 1.5rem; }
       .glossary-grid { grid-template-columns: 1fr; }
+      .ref-section { padding: 2rem 1.5rem; }
+      #film-map { height: 350px; }
+      .cast-grid { grid-template-columns: 1fr; }
+      .arcs-grid { grid-template-columns: 1fr; }
+      .film-tl-event { font-size: 0.6rem; }
+      .film-tl-year { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -605,11 +858,11 @@
     </div>
     <div class="scene-text">
       <div class="scene-label">죽변 (竹邊)</div>
-      <div class="scene-title">Chukpyŏn: Burying the Movement</div>
+      <div class="scene-title">Chukpyŏn: Planting a Persimmon Tree</div>
       <div class="scene-dialogue"></div>
       <div class="scene-context">
         <strong>On-screen text:</strong> 죽변 (竹邊) = "Chukpyŏn," literally "Beside the Bamboo." A coastal village in present-day Uljin County, Kyŏngsang Province.<br><br>
-        A figure digs in the earth at night. This likely depicts the burial of Donghak texts and ritual objects to protect them from government raids. The physical act of burying and unearthing sacred materials is a recurring motif: the movement literally goes underground.
+        Haewŏl plants a persimmon tree at his house, knowing he will almost certainly never enjoy its fruit. A fugitive who must keep moving, planting a tree that takes years to bear. It is one of the film's quietest and most devastating images: a man building permanence he cannot stay for. The gesture distills Donghak's entire wager, that you act for a future you may not live to see.
       </div>
     </div>
   </div>
@@ -1222,6 +1475,268 @@
 
 </div>
 
+<!-- ===== REFERENCE SECTIONS ===== -->
+
+<!-- Map -->
+<div class="act-break">
+  <h2>Map of Key Locations</h2>
+</div>
+<div class="ref-section">
+  <p class="section-intro">Every location title card in the film corresponds to a real place. Click markers for scene references.</p>
+  <div id="film-map"></div>
+  <p class="map-note">11 locations across the Korean peninsula, 1860-1893. The movement's geographic arc: born in the southeast (Kyŏngju), driven underground across Kyŏngsang, then westward into Ch'ungch'ŏng and Chŏlla, finally reaching Seoul.</p>
+</div>
+
+<!-- Timeline -->
+<div class="act-break">
+  <h2>Timeline</h2>
+</div>
+<div class="ref-section">
+  <div class="film-tl-box">
+    <h3>1860-1871: The Founding and Its Aftermath</h3>
+    <div class="film-tl-row">
+      <div class="film-tl-event">
+        <span class="film-tl-year">1860</span>
+        Revelation at Yongdam-jŏng
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1864</span>
+        Trial &amp; execution of Ch'oe Che-u
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1866</span>
+        Byeongin Persecution (8,000 Catholics killed)
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1871 Mar</span>
+        Yŏnghae Uprising
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1871</span>
+        US naval expedition (Shinmiyangyo)
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1871 Aug</span>
+        Yi P'il-je captured at Mun'gyŏng
+      </div>
+    </div>
+    <div class="film-tl-line"></div>
+  </div>
+
+  <div class="film-tl-box">
+    <h3>1876-1893: Opening and Mobilization</h3>
+    <div class="film-tl-row">
+      <div class="film-tl-event">
+        <span class="film-tl-year">1876</span>
+        Treaty of Ganghwa (Japan forces Korea open)
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1880-81</span>
+        Donghak scriptures published
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1882</span>
+        Imo Mutiny in Seoul
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1883</span>
+        Expansion into Ch'ungch'ŏng
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1891</span>
+        Haewŏl's Honam circuit tour
+      </div>
+      <div class="film-tl-event">
+        <span class="film-tl-year">1893</span>
+        Kwanghwamun petition
+      </div>
+    </div>
+    <div class="film-tl-line"></div>
+  </div>
+</div>
+
+<!-- Cast of Characters -->
+<div class="act-break">
+  <h2>Cast of Characters</h2>
+</div>
+<div class="ref-section">
+  <div class="cast-grid">
+
+    <div class="cast-divider">Donghak Leaders</div>
+
+    <div class="cast-card">
+      <div class="cast-kr">최제우 (崔濟愚)</div>
+      <div class="cast-en">Ch'oe Che-u / Suun (水雲)</div>
+      <div class="cast-role">Donghak Founder &middot; 1st Patriarch</div>
+      <div class="cast-bio">Received his revelation in 1860 at Yongdam-jŏng: heaven dwells within every person (<em>sich'ŏnju</em>). Tried and executed at Taegu, March 10, 1864. His martyrdom became Donghak's most powerful recruiting tool. Scenes 1-5.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-kr">최시형 (崔時亨)</div>
+      <div class="cast-en">Ch'oe Si-hyŏng / Haewŏl (海月)</div>
+      <div class="cast-role">2nd Patriarch &middot; Played by Lee Duk-hwa</div>
+      <div class="cast-bio">The film's central figure. Spent 34 years (1864-1898) as a fugitive, transforming Donghak from a crushed sect into a mass movement. Extended the theology: "humans are heaven" (<em>innaech'ŏn</em>). Published the scriptures, built the cell network. Executed 1898. Scenes 7-41.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-kr">강수 (姜秀)</div>
+      <div class="cast-en">Kang Su</div>
+      <div class="cast-role">Vice Patriarch (차도주)</div>
+      <div class="cast-bio">Haewŏl's intellectual lieutenant. Helped systematize Donghak thought and organize the growing network. Scene 10.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-kr">이필제 (李弼濟)</div>
+      <div class="cast-en">Yi P'il-je</div>
+      <div class="cast-role">Militant Rebel</div>
+      <div class="cast-bio">Pushed Donghak toward armed revolt. Led the Yŏnghae Uprising (1871), then captured raiding a government armory at Mun'gyŏng. His failure taught Haewŏl the cost of premature action. Scenes 17-19, 22.</div>
+    </div>
+
+    <div class="cast-divider">Authority Figures</div>
+
+    <div class="cast-card">
+      <div class="cast-kr">서헌순 (徐憲淳)</div>
+      <div class="cast-en">Sŏ Hŏn-sun</div>
+      <div class="cast-role">Kyŏngsang Provincial Governor</div>
+      <div class="cast-bio">Presides over Ch'oe Che-u's trial in full official regalia. Frames Donghak as both heresy and treason. Scene 4.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-kr">대원군 (大院君)</div>
+      <div class="cast-en">The Taewŏn'gun</div>
+      <div class="cast-role">Regent of Korea, 1864-1873</div>
+      <div class="cast-bio">Referenced in narration. Ordered the Byeongin Persecution (1866), enforced the seclusion policy. His isolationism shaped the environment in which Donghak operated. Scenes 15, 21.</div>
+    </div>
+
+    <div class="cast-divider">The Women</div>
+
+    <div class="cast-card">
+      <div class="cast-kr">큰부인 손씨</div>
+      <div class="cast-en">First Wife (Son clan)</div>
+      <div class="cast-role">Haewŏl's Eldest Wife</div>
+      <div class="cast-bio">Maintained a residence at Poŭn in Ch'ungch'ŏng Province while Haewŏl lived as a fugitive. Scene 34.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-kr">둘째부인 안동 김씨</div>
+      <div class="cast-en">Second Wife (Andong Kim clan)</div>
+      <div class="cast-role">Married when Haewŏl was 48</div>
+      <div class="cast-bio">A woman from one of Korea's most powerful aristocratic lineages, who married a wanted religious fugitive. Died when Haewŏl was 61. Scenes 27, 33.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-kr">셋째부인 손씨</div>
+      <div class="cast-en">Third Wife (Son clan)</div>
+      <div class="cast-role">Married when Haewŏl was 62</div>
+      <div class="cast-bio">The third marriage in a lifetime of fugitive leadership. Im Kwon-taek gives each marriage the same formal title-card treatment as political turning points. Scene 35.</div>
+    </div>
+
+    <div class="cast-divider">Supporters</div>
+
+    <div class="cast-card">
+      <div class="cast-kr">정석현 (鄭碩鉉)</div>
+      <div class="cast-en">Chŏng Sŏk-hyŏn</div>
+      <div class="cast-role">Sympathizer in Tanyang</div>
+      <div class="cast-bio">One node in the underground network of sympathizers who sheltered Haewŏl during his decades on the run. Scene 23.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Narrative Arcs -->
+<div class="act-break">
+  <h2>Narrative Arcs</h2>
+</div>
+<div class="ref-section">
+  <p class="section-intro">Im Kwon-taek weaves five distinct storylines through the film. They overlap, contradict, and reinforce each other.</p>
+
+  <div class="arcs-grid">
+
+    <div class="arc-card" style="border-left-color: #c9a227;">
+      <h3>The Faith</h3>
+      <div class="arc-scenes-list">Scenes 1-2, 7, 13, 14, 25-26, 38-39</div>
+      <div class="arc-desc">The theological arc. From Ch'oe Che-u's revelation (<em>sich'ŏnju</em>, "heaven within every person") through Ch'oe Si-hyŏng's radicalization (<em>innaech'ŏn</em>, "humans are heaven") to the butcher debate, where abstract theology meets concrete social reality. The question: is equality a principle or a practice?</div>
+    </div>
+
+    <div class="arc-card" style="border-left-color: #e74c3c;">
+      <h3>The State</h3>
+      <div class="arc-scenes-list">Scenes 3-6, 15, 17-22, 41</div>
+      <div class="arc-desc">Government persecution and Donghak's political struggle. Trial, execution, wanted posters, the Yŏnghae crackdown. Culminates in the Kwanghwamun petition, where the hunted become the petitioners, transforming from outlaws to a political movement demanding recognition.</div>
+    </div>
+
+    <div class="arc-card" style="border-left-color: #6c8ebf;">
+      <h3>The Underground</h3>
+      <div class="arc-scenes-list">Scenes 8-12, 23, 32, 36-37</div>
+      <div class="arc-desc">Thirty years of fugitive organizing. Location title cards track Haewŏl's movements across Korea's mountainous interior. Texts are buried and recovered, cell networks (<em>chŏp</em>) reactivate in secret, the movement expands westward from Kyŏngsang to Ch'ungch'ŏng to Chŏlla. Revolution as logistics.</div>
+    </div>
+
+    <div class="arc-card" style="border-left-color: #2ecc71;">
+      <h3>The World Arrives</h3>
+      <div class="arc-scenes-list">Scenes 20-21, 24, 30, 40</div>
+      <div class="arc-desc">Foreign incursions punctuate the domestic story. The US expedition (1871), Japan forces Korea open (1876), the Imo Mutiny brings foreign troops to Seoul (1882), Western treaties flood the countryside with foreign goods. Donghak was born in an isolated kingdom; it reaches maturity in one being carved up.</div>
+    </div>
+
+    <div class="arc-card" style="border-left-color: #e67e22;">
+      <h3>The Human Cost</h3>
+      <div class="arc-scenes-list">Scenes 13, 27-29, 31, 33-35</div>
+      <div class="arc-desc">Im Kwon-taek's most distinctive choice: three wives, scattered children, a spirit tablet glowing in the dark. Each marriage and each death gets a formal title card, the same treatment as treaties and rebellions. The film insists that what revolution costs in kitchens and courtyards matters as much as what it wins on battlefields.</div>
+    </div>
+
+  </div>
+
+  <div class="scene-map-label">Scene Map: 41 Scenes by Arc</div>
+  <div class="scene-map">
+    <div class="sm" style="background:#c9a227;" title="Scene 1: Ch'oe Che-u's Teaching (Faith)">1</div>
+    <div class="sm" style="background:#c9a227;" title="Scene 2: Lanterns on Water (Faith)">2</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 3: Trial at Taegu (State)">3</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 4: Governor's Accusation (State)">4</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 5: Execution (State)">5</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 6: Wanted Poster (State)">6</div>
+    <div class="sm" style="background:#c9a227;" title="Scene 7: Haewŏl Introduced (Faith)">7</div>
+    <div class="sm" style="background:#6c8ebf;" title="Scene 8: Yongdam-jŏng (Underground)">8</div>
+    <div class="sm" style="background:#6c8ebf;" title="Scene 9: Yŏngdŏk (Underground)">9</div>
+    <div class="sm" style="background:#6c8ebf;" title="Scene 10: Kang Su (Underground)">10</div>
+    <div class="sm" style="background:#6c8ebf;" title="Scene 11: Chukpyŏn (Underground)">11</div>
+    <div class="sm" style="background:#6c8ebf;" title="Scene 12: Cells Reactivate (Underground)">12</div>
+    <div class="sm" style="background:#e67e22;" title="Scene 13: I'd Rather Be Human (Human Cost)">13</div>
+    <div class="sm" style="background:#c9a227;" title="Scene 14: Transcribing Scriptures (Faith)">14</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 15: Byeongin Persecution (State)">15</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 16: Road to Yŏnghae (State)">16</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 17: Yi P'il-je (State)">17</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 18: Yŏnghae Attack (State)">18</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 19: Scale of Uprising (State)">19</div>
+    <div class="sm" style="background:#2ecc71;" title="Scene 20: American Fleet (World)">20</div>
+    <div class="sm" style="background:#2ecc71;" title="Scene 21: Seclusion Policy (World)">21</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 22: Yi P'il-je Captured (State)">22</div>
+    <div class="sm" style="background:#6c8ebf;" title="Scene 23: Tanyang Shelter (Underground)">23</div>
+    <div class="sm" style="background:#2ecc71;" title="Scene 24: Treaty of Ganghwa (World)">24</div>
+    <div class="sm" style="background:#c9a227;" title="Scene 25: Scriptures Published (Faith)">25</div>
+    <div class="sm" style="background:#c9a227;" title="Scene 26: Harmony Vision (Faith)">26</div>
+    <div class="sm" style="background:#e67e22;" title="Scene 27: Second Wife (Human Cost)">27</div>
+    <div class="sm" style="background:#e67e22;" title="Scene 28: Children Scattered (Human Cost)">28</div>
+    <div class="sm" style="background:#e67e22;" title="Scene 29: Haewŏl Portrait (Human Cost)">29</div>
+    <div class="sm" style="background:#2ecc71;" title="Scene 30: Imo Mutiny (World)">30</div>
+    <div class="sm" style="background:#e67e22;" title="Scene 31: Spirit Tablet (Human Cost)">31</div>
+    <div class="sm" style="background:#6c8ebf;" title="Scene 32: Ch'ungch'ŏng Expansion (Underground)">32</div>
+    <div class="sm" style="background:#e67e22;" title="Scene 33: Second Wife Dies (Human Cost)">33</div>
+    <div class="sm" style="background:#e67e22;" title="Scene 34: Poŭn Shelter (Human Cost)">34</div>
+    <div class="sm" style="background:#e67e22;" title="Scene 35: Third Wife (Human Cost)">35</div>
+    <div class="sm" style="background:#6c8ebf;" title="Scene 36: Honam Tour (Underground)">36</div>
+    <div class="sm" style="background:#6c8ebf;" title="Scene 37: Rally Song (Underground)">37</div>
+    <div class="sm" style="background:#c9a227;" title="Scene 38: Butcher Debate (Faith)">38</div>
+    <div class="sm" style="background:#c9a227;" title="Scene 39: God Does Not Distinguish (Faith)">39</div>
+    <div class="sm" style="background:#2ecc71;" title="Scene 40: Western Treaties (World)">40</div>
+    <div class="sm" style="background:#e74c3c;" title="Scene 41: Kwanghwamun Petition (State)">41</div>
+  </div>
+  <div class="scene-map-legend">
+    <span class="sml-faith">The Faith</span>
+    <span class="sml-state">The State</span>
+    <span class="sml-underground">The Underground</span>
+    <span class="sml-world">The World Arrives</span>
+    <span class="sml-human">The Human Cost</span>
+  </div>
+</div>
+
 <!-- Glossary -->
 <div class="glossary">
   <h2>Key Terms Glossary</h2>
@@ -1422,11 +1937,11 @@
   </div>
 </div>
 
-<!-- More Scenes Coming -->
+<!-- Guide Summary -->
 <div class="guide-footer">
-  <div class="coming-soon">
-    <h3>Guide in Progress</h3>
-    <p>41 scenes covering 1860-1893. Next: the Donghak Peasant Revolution of 1894, Japanese and Chinese intervention, and Ch'oe Si-hyŏng's arrest and execution. More scenes added as viewing continues.</p>
+  <div class="coming-soon" style="border-style: solid;">
+    <h3>Complete Viewing Guide</h3>
+    <p>41 scenes covering 1860-1893. From Ch'oe Che-u's revelation at Yongdam-jŏng through Ch'oe Si-hyŏng's three decades underground to the Kwanghwamun petition on the eve of the 1894 uprising.</p>
   </div>
 </div>
 
@@ -1436,5 +1951,47 @@
   <a href="../index.html">Dashboard</a>
 </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var map = L.map('film-map', {
+    center: [36.3, 128.0],
+    zoom: 7,
+    scrollWheelZoom: false
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(map);
+
+  var goldIcon = L.divIcon({
+    className: '',
+    html: '<div style="width:14px;height:14px;border-radius:50%;background:#c9a227;border:2px solid rgba(255,255,255,0.8);box-shadow:0 0 10px rgba(201,162,39,0.6);"></div>',
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+    popupAnchor: [0, -10]
+  });
+
+  var locations = [
+    [35.856, 129.225, "<strong>Kyŏngju / 경주</strong><br>Yongdam-jŏng (용담정). Birthplace of Donghak, Ch'oe Che-u's 1860 revelation.<br><em>Scene 8</em>"],
+    [35.871, 128.601, "<strong>Taegu / 대구</strong><br>Provincial Governor's Office (감영). Trial and execution of Ch'oe Che-u, 1864.<br><em>Scenes 3-5</em>"],
+    [36.415, 129.366, "<strong>Yŏngdŏk / 영덕</strong><br>East coast hiding place. Ch'oe Si-hyŏng on the run.<br><em>Scene 9</em>"],
+    [36.992, 129.422, "<strong>Chukpyŏn / 죽변</strong><br>Coastal village, Uljin County. Haewŏl plants a persimmon tree he will never enjoy.<br><em>Scene 11</em>"],
+    [36.527, 129.341, "<strong>Yŏnghae / 영해</strong><br>Site of the first armed Donghak action, March 10, 1871.<br><em>Scenes 16-19</em>"],
+    [36.587, 128.187, "<strong>Mun'gyŏng / 문경</strong><br>Ch'ogok armory. Yi P'il-je captured raiding weapons, August 1871.<br><em>Scene 22</em>"],
+    [36.985, 128.366, "<strong>Tanyang / 단양</strong><br>Chŏng Sŏk-hyŏn's house. Shelter after the Yŏnghae debacle.<br><em>Scene 23</em>"],
+    [36.489, 127.729, "<strong>Poŭn / 보은</strong><br>Ch'ungch'ŏng Province base. Eldest wife's refuge. Later: 1893 mass assembly site.<br><em>Scenes 32, 34</em>"],
+    [37.747, 126.488, "<strong>Kanghwa / 강화</strong><br>Treaty of Ganghwa, 1876. Japan forces Korea open.<br><em>Scene 24</em>"],
+    [37.576, 126.977, "<strong>Seoul / 서울</strong><br>Kwanghwamun Gate: Donghak mass petition, Feb 11, 1893. Also: Imo Mutiny, 1882.<br><em>Scenes 30, 41</em>"],
+    [35.160, 126.853, "<strong>Honam / 호남 (Kwangju)</strong><br>Chŏlla Province. Haewŏl's 1891 circuit tour. Epicenter of the 1894 uprising.<br><em>Scene 36</em>"]
+  ];
+
+  locations.forEach(function(loc) {
+    L.marker([loc[0], loc[1]], {icon: goldIcon})
+      .addTo(map)
+      .bindPopup('<div style="min-width:200px;">' + loc[2] + '</div>');
+  });
+});
+</script>
 </body>
 </html>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>帝國主義 | Imperialism in East Asia 1894-1910</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; background: #0a0c10; font-family: 'Inter', system-ui, sans-serif; }
+    #map { height: 100%; width: 100%; }
+
+    /* Title overlay */
+    .map-title {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #f2f5f7;
+      background: linear-gradient(135deg, rgba(10, 12, 16, 0.95) 0%, rgba(80, 20, 20, 0.9) 100%);
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      border: 1px solid rgba(200, 60, 60, 0.3);
+      max-width: 340px;
+    }
+    .map-title .cjk {
+      font-family: 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #c83c3c;
+      letter-spacing: 0.08em;
+    }
+    .map-title .english {
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+    .map-title .subtitle {
+      font-size: 11px;
+      opacity: 0.8;
+      margin-top: 8px;
+      line-height: 1.5;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 8px;
+    }
+
+    /* Legend */
+    .map-legend {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #f2f5f7;
+      background: rgba(10, 12, 16, 0.95);
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 11px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      min-width: 190px;
+    }
+    .legend-title {
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #c83c3c;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .legend-section { margin-bottom: 10px; }
+    .legend-section:last-child { margin-bottom: 0; }
+    .legend-section-title {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; margin: 5px 0; }
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      flex-shrink: 0;
+    }
+    .legend-line { width: 24px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+    .legend-rect {
+      width: 16px; height: 10px; border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.2);
+      flex-shrink: 0;
+    }
+
+    /* Timeline panel */
+    .timeline-panel {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #f2f5f7;
+      background: rgba(10, 12, 16, 0.95);
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      max-width: 240px;
+      max-height: 450px;
+      overflow-y: auto;
+    }
+    .timeline-panel-title {
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #c83c3c;
+      margin-bottom: 12px;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .timeline-date {
+      font-weight: 700;
+      color: #c83c3c;
+      min-width: 42px;
+      font-size: 9px;
+    }
+    .timeline-date.japan { color: #e63946; }
+    .timeline-date.triple { color: #a855f7; }
+    .timeline-date.scramble { color: #f4a261; }
+    .timeline-date.russo { color: #457b9d; }
+    .timeline-event { color: rgba(255,255,255,0.85); line-height: 1.4; }
+
+    /* Context panel (top right) */
+    .context-panel {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #f2f5f7;
+      background: rgba(10, 12, 16, 0.95);
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(200, 60, 60, 0.2);
+      max-width: 260px;
+      line-height: 1.5;
+    }
+    .context-panel-title {
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #a855f7;
+      margin-bottom: 8px;
+    }
+    .context-flags { margin-top: 8px; }
+    .context-flag {
+      display: flex; align-items: center; gap: 6px;
+      margin: 4px 0; font-size: 10px;
+    }
+    .context-flag-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+    /* Popup styling */
+    .leaflet-popup-content-wrapper {
+      background: rgba(10, 12, 16, 0.98);
+      color: #f2f5f7;
+      border-radius: 10px;
+      border: 1px solid rgba(200, 60, 60, 0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .leaflet-popup-tip { background: rgba(10, 12, 16, 0.98); }
+    .leaflet-popup-content {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      margin: 12px 14px;
+      line-height: 1.5;
+    }
+    .popup-cjk {
+      font-family: 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #c83c3c;
+    }
+    .popup-english { font-weight: 600; margin-top: 2px; }
+    .popup-date { font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+    .popup-desc {
+      margin-top: 8px; padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 11px; color: rgba(255,255,255,0.85);
+    }
+    .popup-tag {
+      display: inline-block; font-size: 9px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      padding: 2px 6px; border-radius: 3px; margin-top: 6px;
+    }
+    .popup-tag.japan { background: rgba(230, 57, 70, 0.3); color: #e63946; }
+    .popup-tag.colony { background: rgba(244, 162, 97, 0.3); color: #f4a261; }
+    .popup-tag.russia { background: rgba(106, 76, 147, 0.3); color: #a881d4; }
+    .popup-tag.germany { background: rgba(56, 102, 65, 0.3); color: #6abf69; }
+    .popup-tag.britain { background: rgba(25, 130, 196, 0.3); color: #1982c4; }
+    .popup-tag.france { background: rgba(25, 130, 196, 0.3); color: #1982c4; }
+    .popup-tag.battle { background: rgba(255, 255, 255, 0.15); color: #ccc; }
+    .popup-tag.treaty { background: rgba(168, 85, 247, 0.3); color: #a855f7; }
+
+    /* Permanent labels */
+    .map-label {
+      background: rgba(10, 12, 16, 0.85) !important;
+      border: 1px solid rgba(200, 60, 60, 0.4) !important;
+      border-radius: 4px !important;
+      padding: 3px 8px !important;
+      font-family: 'Noto Sans JP', 'Noto Sans SC', sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      color: #f2f5f7 !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+    .map-label::before { display: none !important; }
+
+    /* Pulsing for key sites */
+    @keyframes pulse-red {
+      0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(230, 57, 70, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+    }
+    .pulse-marker { animation: pulse-red 2.5s infinite; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map', {
+      zoomControl: true,
+      attributionControl: false,
+      preferCanvas: true
+    }).setView([35, 125], 5);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 12,
+      minZoom: 4
+    }).addTo(map);
+
+    // ========== COLORS ==========
+    const C = {
+      japan:   '#e63946',
+      colony:  '#f4a261',
+      russia:  '#6a4c93',
+      germany: '#386641',
+      britain: '#1982c4',
+      france:  '#1982c4',
+      battle:  '#ffffff',
+      treaty:  '#a855f7',
+      qing:    '#d4a574'
+    };
+
+    // ========== LOCATIONS ==========
+
+    const locations = [
+      // === JAPAN ===
+      {
+        name: "Tokyo", cjk: "東京",
+        lat: 35.69, lng: 139.69,
+        type: "japan", date: "Imperial capital",
+        desc: "Center of the Japanese Empire. From here, the Meiji government directed wars against China and Russia, and the colonization of Taiwan and Korea.",
+        radius: 14
+      },
+      {
+        name: "Shimonoseki", cjk: "下関",
+        lat: 33.96, lng: 130.94,
+        type: "treaty", date: "April 17, 1895",
+        desc: "Treaty of Shimonoseki signed here. China ceded Taiwan, recognized Korean independence, ceded Liaodong Peninsula, paid 200 million taels. The treaty that remade East Asia.",
+        radius: 8
+      },
+
+      // === JAPANESE COLONIES ===
+      {
+        name: "Taiwan (Taipei)", cjk: "臺灣",
+        lat: 25.04, lng: 121.56,
+        type: "colony", date: "1895",
+        desc: "Japan's first formal colony, ceded by China in the Treaty of Shimonoseki. Became a showcase for Japanese colonial modernization. Governed for 50 years.",
+        radius: 10
+      },
+      {
+        name: "Korea (Seoul)", cjk: "朝鮮 / 漢城",
+        lat: 37.57, lng: 126.98,
+        type: "colony", date: "Protectorate 1905, Annexed 1910",
+        desc: "Japan eliminated Korean sovereignty in stages. After the Russo-Japanese War, Resident-General Ito Hirobumi controlled the government. Full annexation came in 1910.",
+        radius: 12
+      },
+      {
+        name: "Liaodong Peninsula", cjk: "遼東半島",
+        lat: 40.10, lng: 122.20,
+        type: "colony", date: "Won 1895, returned by Triple Intervention",
+        desc: "Japan won this from China, then Russia, France, and Germany forced Japan to give it back. Russia then leased it for itself. This hypocrisy radicalized Japanese public opinion and fueled nationalism.",
+        radius: 8, dashed: true, pulse: true
+      },
+
+      // === PORT ARTHUR / DALIAN (Russian, then Japanese) ===
+      {
+        name: "Port Arthur (Lushun)", cjk: "旅順",
+        lat: 38.82, lng: 121.26,
+        type: "russia", date: "Russian lease 1898; Japanese siege 1904-05",
+        desc: "The prize everyone wanted. Japan took it from China in 1895, was forced to return it, Russia leased it in 1898, then Japan besieged and captured it in 1904-05. The 5-month siege cost 60,000 Japanese casualties.",
+        radius: 12, pulse: true
+      },
+      {
+        name: "Dalian (Dairen)", cjk: "大連",
+        lat: 38.92, lng: 121.64,
+        type: "russia", date: "Russian lease 1898",
+        desc: "Russia's commercial port, complementing the naval base at Port Arthur. Part of the Kwantung Leased Territory. Transferred to Japan after 1905.",
+        radius: 7
+      },
+
+      // === GERMAN CONCESSION ===
+      {
+        name: "Qingdao (Jiaozhou Bay)", cjk: "膠州灣 / 青島",
+        lat: 36.07, lng: 120.38,
+        type: "germany", date: "German concession 1897",
+        desc: "Germany used the murder of two missionaries as a pretext to seize Jiaozhou Bay in November 1897. Built it into a model colonial city with a brewery (Tsingtao Beer). This land-grab triggered the Scramble for Concessions. Japan seized it in 1914.",
+        radius: 10
+      },
+
+      // === BRITISH ===
+      {
+        name: "Weihaiwei", cjk: "威海衛",
+        lat: 37.50, lng: 122.12,
+        type: "britain", date: "British lease 1898",
+        desc: "Britain leased Weihaiwei to 'balance' the Russian presence at Port Arthur. Located directly across the Bohai Strait. A strategic counter-move in the great power chess game.",
+        radius: 8
+      },
+      {
+        name: "Hong Kong", cjk: "香港",
+        lat: 22.32, lng: 114.17,
+        type: "britain", date: "British colony since 1842/1860",
+        desc: "Britain's crown colony, taken in the Opium Wars. By the 1890s, the model for what European 'concessions' looked like. New Territories leased in 1898 as part of the Scramble.",
+        radius: 9
+      },
+
+      // === FRENCH ===
+      {
+        name: "Kwangchouwan", cjk: "廣州灣",
+        lat: 21.19, lng: 110.39,
+        type: "france", date: "French lease 1898",
+        desc: "France's concession in southern China, leased in 1898. The southern counterpart to the northern concessions. France wanted a foothold near its Indochina colony.",
+        radius: 7
+      },
+
+      // === BATTLE SITES: SINO-JAPANESE WAR ===
+      {
+        name: "Pyongyang", cjk: "平壤",
+        lat: 39.03, lng: 125.75,
+        type: "battle", date: "September 15, 1894",
+        desc: "Decisive Japanese victory in the Sino-Japanese War. The Qing army was routed. Japan now controlled all of Korea. The speed of the victory shocked the world.",
+        radius: 8
+      },
+      {
+        name: "Yalu River (Amnok)", cjk: "鴨綠江",
+        lat: 39.95, lng: 124.40,
+        type: "battle", date: "September 17, 1894",
+        desc: "Naval battle at the mouth of the Yalu. Japan destroyed or crippled most of China's Beiyang Fleet. Proved Japan's modern navy could defeat a major Asian power.",
+        radius: 7
+      },
+      {
+        name: "Weihaiwei (Siege)", cjk: "威海衛",
+        lat: 37.53, lng: 122.18,
+        type: "battle", date: "January-February 1895",
+        desc: "Japan besieged and destroyed the remainder of China's northern fleet at its home base. Admiral Ding Ruchang committed suicide. China had no navy left.",
+        radius: 6
+      },
+
+      // === BATTLE SITES: RUSSO-JAPANESE WAR ===
+      {
+        name: "Mukden (Shenyang)", cjk: "奉天 / 瀋陽",
+        lat: 41.80, lng: 123.43,
+        type: "battle", date: "February-March 1905",
+        desc: "Largest land battle in history up to that point. 600,000 troops engaged. Japan won but at staggering cost. Convinced both sides to seek peace.",
+        radius: 9
+      },
+      {
+        name: "Tsushima Strait", cjk: "対馬海峡",
+        lat: 34.20, lng: 129.30,
+        type: "battle", date: "May 27, 1905",
+        desc: "Russia's Baltic Fleet sailed 18,000 miles around the world, only to be annihilated in two days. Japan sank 21 of 38 ships. The most decisive naval battle since Trafalgar. An Asian nation had defeated a European empire.",
+        radius: 9, pulse: true
+      },
+
+      // === TREATY SITES ===
+      {
+        name: "Portsmouth, NH (off-map)", cjk: "ポーツマス",
+        lat: 43.07, lng: 141.35,
+        type: "treaty", date: "September 5, 1905",
+        desc: "Treaty of Portsmouth (actually in New Hampshire, USA). Teddy Roosevelt mediated. Japan gained southern Sakhalin, Port Arthur lease, and recognition of its interests in Korea. But no indemnity, which angered Japanese public.",
+        radius: 7
+      },
+
+      // === QING CAPITAL ===
+      {
+        name: "Beijing", cjk: "北京",
+        lat: 39.91, lng: 116.39,
+        type: "treaty", date: "Qing capital",
+        desc: "The Qing court watched helplessly as foreign powers carved up coastal China. The 1898 Scramble for Concessions came just three years after the humiliation of losing to Japan. Reformers and revolutionaries both drew lessons.",
+        radius: 10
+      }
+    ];
+
+    // ========== SPHERES OF INFLUENCE ==========
+
+    // Manchuria - Russian sphere
+    L.polygon([
+      [50, 119], [50, 135], [45, 135], [42, 131],
+      [39, 125], [39, 119]
+    ], {
+      color: C.russia, weight: 1.5, opacity: 0.35,
+      fillColor: C.russia, fillOpacity: 0.06,
+      dashArray: '6 4'
+    }).addTo(map).bindPopup('<b>Russian Sphere of Influence</b><br>Manchuria<br><small>Russia dominated Manchuria through the Chinese Eastern Railway and the Kwantung Leased Territory. This sphere was the prize of the Russo-Japanese War.</small>');
+
+    // Korea - Japanese sphere
+    L.polygon([
+      [38.5, 124.5], [38.5, 130.5], [33.5, 130],
+      [33.5, 126], [35, 125]
+    ], {
+      color: C.colony, weight: 1.5, opacity: 0.3,
+      fillColor: C.colony, fillOpacity: 0.06,
+      dashArray: '6 4'
+    }).addTo(map).bindPopup('<b>Japanese Sphere of Influence</b><br>Korea<br><small>Japan treated Korea as its exclusive domain after the Sino-Japanese War. Full annexation came in 1910.</small>');
+
+    // Yangtze Valley - British sphere (subtle)
+    L.polygon([
+      [32.5, 108], [32.5, 122], [28, 122], [28, 108]
+    ], {
+      color: C.britain, weight: 1, opacity: 0.2,
+      fillColor: C.britain, fillOpacity: 0.03,
+      dashArray: '4 4'
+    }).addTo(map).bindPopup('<b>British Sphere of Influence</b><br>Yangtze Valley<br><small>Britain claimed the entire Yangtze River valley as its commercial sphere. The richest part of China.</small>');
+
+    // ========== ADD MARKERS ==========
+
+    locations.forEach(function(loc) {
+      var color = C[loc.type] || '#fff';
+      var opts = {
+        radius: loc.radius,
+        fillColor: color,
+        color: loc.type === 'battle' ? '#999' : '#fff',
+        weight: loc.type === 'battle' ? 1.5 : 2,
+        fillOpacity: loc.type === 'battle' ? 0.6 : 0.9,
+        className: loc.pulse ? 'pulse-marker' : ''
+      };
+      if (loc.dashed) {
+        opts.fillOpacity = 0.4;
+        opts.dashArray = '4 3';
+      }
+
+      var marker = L.circleMarker([loc.lat, loc.lng], opts).addTo(map);
+
+      var tagClass = loc.type;
+      var tagText = {
+        japan: 'Japan', colony: 'Japanese Colony', russia: 'Russian',
+        germany: 'German', britain: 'British', france: 'French',
+        battle: 'Battle', treaty: 'Treaty/Diplomacy'
+      }[loc.type] || loc.type;
+
+      marker.bindPopup(
+        '<div class="popup-cjk">' + loc.cjk + '</div>' +
+        '<div class="popup-english">' + loc.name + '</div>' +
+        '<div class="popup-date">' + loc.date + '</div>' +
+        '<div class="popup-desc">' + loc.desc + '</div>' +
+        '<span class="popup-tag ' + tagClass + '">' + tagText + '</span>'
+      );
+
+      // Permanent labels for key locations
+      var labeled = ['Tokyo', 'Port Arthur (Lushun)', 'Qingdao (Jiaozhou Bay)',
+                     'Korea (Seoul)', 'Taiwan (Taipei)', 'Weihaiwei',
+                     'Beijing', 'Tsushima Strait', 'Mukden (Shenyang)'];
+      if (labeled.indexOf(loc.name) !== -1) {
+        var dir = 'right';
+        var off = [12, 0];
+        if (loc.name === 'Weihaiwei') { dir = 'left'; off = [-12, 0]; }
+        if (loc.name === 'Beijing') { dir = 'left'; off = [-12, 0]; }
+        if (loc.name === 'Dalian (Dairen)') { dir = 'bottom'; off = [0, 8]; }
+        marker.bindTooltip(loc.cjk, {
+          permanent: true, direction: dir, offset: off,
+          className: 'map-label'
+        });
+      }
+    });
+
+    // ========== ROUTES ==========
+
+    // Sino-Japanese War: Japanese advance
+    L.polyline([
+      [37.57, 126.98],  // Seoul
+      [39.03, 125.75],  // Pyongyang
+      [39.95, 124.40],  // Yalu River
+    ], {
+      color: C.japan, weight: 3.5, opacity: 0.7,
+      dashArray: '10 6'
+    }).addTo(map).bindPopup('<b>Japanese Advance, 1894</b><br>Sino-Japanese War<br><small>From Seoul through Pyongyang to the Yalu. Japan drove Qing forces out of Korea in months.</small>');
+
+    // Sino-Japanese War: naval campaign
+    L.polyline([
+      [39.95, 124.40],  // Yalu naval battle
+      [37.53, 122.18],  // Weihaiwei siege
+    ], {
+      color: C.japan, weight: 2.5, opacity: 0.5,
+      dashArray: '6 8'
+    }).addTo(map).bindPopup('<b>Naval Campaign, 1894-95</b><br><small>Japan destroyed the Beiyang Fleet, first at the Yalu, then at Weihaiwei.</small>');
+
+    // Russo-Japanese War: land campaign
+    L.polyline([
+      [38.82, 121.26],  // Port Arthur
+      [41.80, 123.43],  // Mukden
+    ], {
+      color: C.russia, weight: 3, opacity: 0.5,
+      dashArray: '8 6'
+    }).addTo(map).bindPopup('<b>Russo-Japanese War, 1904-05</b><br>Manchurian Front<br><small>Japan besieged Port Arthur (5 months, 60,000 casualties) then defeated Russia at Mukden.</small>');
+
+    // Russian Baltic Fleet route (abbreviated)
+    L.polyline([
+      [34.20, 129.30],  // Tsushima
+      [43.07, 141.35],  // "Portsmouth" marker
+    ], {
+      color: '#999', weight: 1.5, opacity: 0.3,
+      dashArray: '3 5'
+    }).addTo(map);
+
+    // Expansion lines from Tokyo
+    L.polyline([[35.69, 139.69], [37.57, 126.98]], {
+      weight: 1.5, opacity: 0.3, dashArray: '5 5', color: C.colony
+    }).addTo(map);
+    L.polyline([[35.69, 139.69], [25.04, 121.56]], {
+      weight: 1.5, opacity: 0.3, dashArray: '5 5', color: C.colony
+    }).addTo(map);
+
+    // ========== CONTROLS ==========
+
+    // Title
+    var titleControl = L.control({ position: 'topleft' });
+    titleControl.onAdd = function() {
+      var div = L.DomUtil.create('div', 'map-title');
+      div.innerHTML =
+        '<div class="cjk">帝國主義と東亞</div>' +
+        '<div class="english">IMPERIALISM IN EAST ASIA</div>' +
+        '<div class="subtitle">How Japan defeated China and Russia, and how European powers carved up the Chinese coast. The Scramble for Concessions, 1894-1910.</div>';
+      return div;
+    };
+    titleControl.addTo(map);
+
+    // Legend
+    var legendControl = L.control({ position: 'bottomright' });
+    legendControl.onAdd = function() {
+      var div = L.DomUtil.create('div', 'map-legend');
+      div.innerHTML =
+        '<div class="legend-title">Legend</div>' +
+        '<div class="legend-section">' +
+          '<div class="legend-section-title">Powers</div>' +
+          '<div class="legend-item"><span class="legend-dot" style="background:' + C.japan + '"></span> Japan</div>' +
+          '<div class="legend-item"><span class="legend-dot" style="background:' + C.colony + '"></span> Japanese colony</div>' +
+          '<div class="legend-item"><span class="legend-dot" style="background:' + C.russia + '"></span> Russia</div>' +
+          '<div class="legend-item"><span class="legend-dot" style="background:' + C.germany + '"></span> Germany</div>' +
+          '<div class="legend-item"><span class="legend-dot" style="background:' + C.britain + '"></span> Britain / France</div>' +
+        '</div>' +
+        '<div class="legend-section">' +
+          '<div class="legend-section-title">Events</div>' +
+          '<div class="legend-item"><span class="legend-dot" style="background:' + C.battle + '; border-color:#999"></span> Battles</div>' +
+          '<div class="legend-item"><span class="legend-dot" style="background:' + C.treaty + '"></span> Treaties / Diplomacy</div>' +
+        '</div>' +
+        '<div class="legend-section">' +
+          '<div class="legend-section-title">Zones</div>' +
+          '<div class="legend-item"><span class="legend-rect" style="background:rgba(106,76,147,0.15)"></span> Russian sphere</div>' +
+          '<div class="legend-item"><span class="legend-rect" style="background:rgba(244,162,97,0.15)"></span> Japanese sphere</div>' +
+          '<div class="legend-item"><span class="legend-rect" style="background:rgba(25,130,196,0.08)"></span> British sphere</div>' +
+        '</div>';
+      return div;
+    };
+    legendControl.addTo(map);
+
+    // Timeline
+    var timelineControl = L.control({ position: 'bottomleft' });
+    timelineControl.onAdd = function() {
+      var div = L.DomUtil.create('div', 'timeline-panel');
+      div.innerHTML =
+        '<div class="timeline-panel-title">Timeline 1894-1910</div>' +
+
+        '<div class="timeline-item">' +
+          '<span class="timeline-date japan">1894</span>' +
+          '<span class="timeline-event"><b>Sino-Japanese War</b> begins. Japan defeats China at Pyongyang and the Yalu.</span>' +
+        '</div>' +
+
+        '<div class="timeline-item">' +
+          '<span class="timeline-date japan">Apr 1895</span>' +
+          '<span class="timeline-event"><b>Treaty of Shimonoseki.</b> China cedes Taiwan and Liaodong. Pays 200 million taels.</span>' +
+        '</div>' +
+
+        '<div class="timeline-item">' +
+          '<span class="timeline-date triple">Apr 1895</span>' +
+          '<span class="timeline-event"><b>Triple Intervention.</b> Russia, France, Germany force Japan to return Liaodong. National humiliation.</span>' +
+        '</div>' +
+
+        '<div class="timeline-item">' +
+          '<span class="timeline-date scramble">Nov 1897</span>' +
+          '<span class="timeline-event"><b>Germany seizes Jiaozhou.</b> Two dead missionaries as pretext. Triggers the Scramble.</span>' +
+        '</div>' +
+
+        '<div class="timeline-item">' +
+          '<span class="timeline-date scramble">Mar 1898</span>' +
+          '<span class="timeline-event"><b>Russia leases Port Arthur.</b> The same territory Russia forced Japan to return three years earlier.</span>' +
+        '</div>' +
+
+        '<div class="timeline-item">' +
+          '<span class="timeline-date scramble">1898</span>' +
+          '<span class="timeline-event"><b>Britain leases Weihaiwei</b>, France leases Kwangchouwan. Everyone grabs a piece.</span>' +
+        '</div>' +
+
+        '<div class="timeline-item">' +
+          '<span class="timeline-date russo">1904-05</span>' +
+          '<span class="timeline-event"><b>Russo-Japanese War.</b> Japan besieges Port Arthur, wins at Mukden and Tsushima.</span>' +
+        '</div>' +
+
+        '<div class="timeline-item">' +
+          '<span class="timeline-date russo">Sep 1905</span>' +
+          '<span class="timeline-event"><b>Treaty of Portsmouth.</b> Japan gains Port Arthur, southern Sakhalin, dominance in Korea.</span>' +
+        '</div>' +
+
+        '<div class="timeline-item">' +
+          '<span class="timeline-date japan">1910</span>' +
+          '<span class="timeline-event"><b>Japan annexes Korea.</b> The end of Korean sovereignty for 35 years.</span>' +
+        '</div>';
+      return div;
+    };
+    timelineControl.addTo(map);
+
+    // Context panel: Triple Intervention
+    var contextControl = L.control({ position: 'topright' });
+    contextControl.onAdd = function() {
+      var div = L.DomUtil.create('div', 'context-panel');
+      div.innerHTML =
+        '<div class="context-panel-title">The Triple Intervention</div>' +
+        '<div>In 1895, Japan won Liaodong from China. One week later, three European powers forced Japan to give it back, claiming to protect China\'s "territorial integrity." Then they seized Chinese territory for themselves.</div>' +
+        '<div class="context-flags">' +
+          '<div class="context-flag"><span class="context-flag-dot" style="background:' + C.russia + '"></span> <b>Russia</b> leased Port Arthur (1898)</div>' +
+          '<div class="context-flag"><span class="context-flag-dot" style="background:' + C.germany + '"></span> <b>Germany</b> seized Jiaozhou (1897)</div>' +
+          '<div class="context-flag"><span class="context-flag-dot" style="background:' + C.france + '"></span> <b>France</b> leased Kwangchouwan (1898)</div>' +
+        '</div>' +
+        '<div style="margin-top:8px; font-size:9px; opacity:0.7; border-top:1px solid rgba(255,255,255,0.1); padding-top:6px;">This hypocrisy turned Japanese liberals into nationalists. Tokutomi Soho: "International law is merely the law of the strong."</div>';
+      return div;
+    };
+    contextControl.addTo(map);
+
+    // Fit bounds to show full region
+    map.fitBounds([[18, 108], [50, 145]]);
+  </script>
+</body>
+</html>

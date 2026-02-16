@@ -325,10 +325,12 @@
     <span class="label">Timeline: Japanese Nationalism</span>
     <div class="timeline-box">
         <div class="tl-row">
-          <div class="tl-event"><span class="tl-year">1885</span><em>Fukuzawa's 'Leaving Asia'—Japan should align with West</em></div>
-          <div class="tl-event"><span class="tl-year">1894-95</span><em>Sino-Japanese War—Japan defeats China, takes Taiwan</em></div>
-          <div class="tl-event"><span class="tl-year">1895</span><em>Triple Intervention—humiliation turns liberals nationalist</em></div>
-          <div class="tl-event"><span class="tl-year">1904-05</span><em>Russo-Japanese War—Japan defeats Russia</em></div>
+          <div class="tl-event"><span class="tl-year">1885</span><em>Fukuzawa's 'Leaving Asia'</em></div>
+          <div class="tl-event"><span class="tl-year">1894-95</span><em>Sino-Japanese War</em></div>
+          <div class="tl-event"><span class="tl-year">1895</span><em>Triple Intervention</em></div>
+          <div class="tl-event"><span class="tl-year">1897</span><em>Germany seizes Jiaozhou</em></div>
+          <div class="tl-event"><span class="tl-year">1898</span><em>Scramble for Concessions</em></div>
+          <div class="tl-event"><span class="tl-year">1904-05</span><em>Russo-Japanese War</em></div>
           <div class="tl-event"><span class="tl-year">1910</span><em>Japan annexes Korea</em></div>
         </div>
         <div class="tl-line"></div>
@@ -336,44 +338,34 @@
     </div>
   </div>
 
-  <!-- Map -->
+  <!-- Two-column: content left, sidebar map right -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
-    #empire-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
-    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
-    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
-    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
-    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
-    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
+    .sidebar-layout { display: flex; gap: 6px; margin-bottom: 4px; }
+    .sidebar-left { flex: 1; min-width: 0; }
+    .sidebar-right { width: 245px; flex-shrink: 0; }
+    #empire-map { height: 100%; min-height: 340px; border-radius: 4px; border: 1px solid #333; }
+    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.92); padding: 6px 8px; border-radius: 4px; font-size: 8px; line-height: 1.4; }
+    .map-legend-item { display: flex; align-items: center; gap: 5px; margin: 1.5px 0; }
+    .map-legend-dot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); flex-shrink: 0; }
+    .map-legend-rect { width: 10px; height: 6px; border: 1px solid rgba(255,255,255,0.3); flex-shrink: 0; }
+    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.92); padding: 4px 8px; border-radius: 4px; font-size: 9px; font-weight: 600; line-height: 1.3; }
+    .map-title small { font-weight: 400; font-size: 7.5px; display: block; opacity: 0.8; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 9px; }
+    .leaflet-popup-content { margin: 8px 10px; }
+    .leaflet-popup-content b { font-size: 10px; }
+    .triple-callout {
+      margin-top: 4px; padding: 5px 7px; border: 1px solid #aaa;
+      background: #fefdfb; font-size: 8.5px; line-height: 1.4;
+    }
+    .triple-callout strong { font-size: 9px; }
+    .triple-flags { display: flex; gap: 8px; margin-top: 3px; font-size: 8px; }
+    .triple-flag { display: flex; align-items: center; gap: 3px; }
+    .flag-dot { width: 7px; height: 7px; border-radius: 50%; }
   </style>
-  <div class="map-section">
-    <span class="label">Map: Japanese Empire Expansion</span>
-    <div id="empire-map"></div>
-  </div>
-  <script>
-    (function() {
-      const map = L.map('empire-map', { zoomControl: false, attributionControl: false });
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
-      const titleControl = L.control({ position: 'topleft' });
-      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '大日本帝國 Japanese Empire'; return div; };
-      titleControl.addTo(map);
-      const legendControl = L.control({ position: 'bottomright' });
-      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Imperial Center</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#f4a261;"></span> Colonies</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> Contested</div>'; return div; };
-      legendControl.addTo(map);
-      const locs = [
-        { name: "Tokyo", jp: "東京", desc: "Center of Japanese empire", lat: 35.69, lng: 139.69, color: "#e63946", r: 10 },
-        { name: "Taiwan", jp: "臺灣", desc: "First colony, seized 1895", lat: 25.11, lng: 121.60, color: "#f4a261", r: 8 },
-        { name: "Korea (Seoul)", jp: "朝鮮", desc: "Protectorate 1905, annexed 1910", lat: 37.53, lng: 127.03, color: "#f4a261", r: 8 },
-        { name: "Port Arthur", jp: "旅順", desc: "Key prize in wars with China & Russia", lat: 38.80, lng: 121.25, color: "#457b9d", r: 7 },
-        { name: "Liaodong", jp: "遼東", desc: "Won 1895, returned after Triple Intervention", lat: 40.00, lng: 122.50, color: "#457b9d", r: 6 }
-      ];
-      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.jp} ${l.name}</b><br>${l.desc}`));
-      L.polyline([[35.69, 139.69], [37.53, 127.03]], { weight: 2, opacity: 0.5, dashArray: '6 4', color: '#f4a261' }).addTo(map);
-      L.polyline([[35.69, 139.69], [25.11, 121.60]], { weight: 2, opacity: 0.5, dashArray: '6 4', color: '#f4a261' }).addTo(map);
-      map.fitBounds([[22, 118], [42, 145]]);
-    })();
-  </script>
+  <div class="sidebar-layout">
+    <div class="sidebar-left">
 
   <!-- Penetrating Questions -->
   <div class="questions-section">
@@ -388,16 +380,129 @@
         <tr>
           <td class="q-num">1</td>
           <td class="question-cell filled">How did Japanese nationalists adopt and adapt Western imperialist ideologies?</td>
-          <td class="answer-cell filled">Social Darwinism, racial hierarchy, civilizing mission—all borrowed from the West. But Japanese added Asian dimensions: Pan-Asianism, 'liberating' Asia from the West. The student becomes the teacher's rival.</td>
+          <td class="answer-cell filled">Social Darwinism, racial hierarchy, civilizing mission, all borrowed from the West. But Japanese added Asian dimensions: Pan-Asianism, 'liberating' Asia from the West. The student becomes the teacher's rival.</td>
         </tr>
         <tr>
           <td class="q-num">2</td>
           <td class="question-cell filled">Why did liberalism fail in Meiji Japan?</td>
-          <td class="answer-cell filled">Tokutomi started as a liberal. The Triple Intervention (1895) humiliated Japan and convinced many that only power mattered. International system seemed to reward aggression. Democracy seemed weak.</td>
+          <td class="answer-cell filled">Tokutomi started as a liberal. The Triple Intervention (1895) humiliated Japan and convinced many that only power mattered. International system rewarded aggression. Democracy seemed weak.</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">What does the Scramble for Concessions reveal about the international system Japan faced?</td>
+          <td class="answer-cell filled">After Japan returned Liaodong, Russia leased it anyway. Germany grabbed Jiaozhou, Britain took Weihaiwei. The lesson: the West punished Japan for doing exactly what Europeans did. Power, not rules.</td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <!-- Triple Intervention Callout -->
+  <div class="triple-callout">
+    <strong>Triple Intervention (1895)</strong>: Russia, France, and Germany forced Japan to return the Liaodong Peninsula (won from China). Then Russia leased Port Arthur for itself (1898). This hypocrisy radicalized Japanese opinion.
+    <div class="triple-flags">
+      <span class="triple-flag"><span class="flag-dot" style="background:#6a4c93;"></span> Russia (Port Arthur)</span>
+      <span class="triple-flag"><span class="flag-dot" style="background:#1982c4;"></span> France (Kwangchouwan)</span>
+      <span class="triple-flag"><span class="flag-dot" style="background:#386641;"></span> Germany (Jiaozhou/Qingdao)</span>
+    </div>
+  </div>
+
+    </div><!-- /sidebar-left -->
+
+    <div class="sidebar-right">
+      <span class="label">Colonialism in East Asia, 1895-1910</span>
+      <div id="empire-map"></div>
+    </div><!-- /sidebar-right -->
+  </div><!-- /sidebar-layout -->
+  <script>
+    (function() {
+      const map = L.map('empire-map', { zoomControl: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 12 }).addTo(map);
+
+      // Title
+      const titleCtl = L.control({ position: 'topleft' });
+      titleCtl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'map-title');
+        div.innerHTML = '帝國主義 Imperialism in East Asia<small>Scramble for Concessions, 1895-1910</small>';
+        return div;
+      };
+      titleCtl.addTo(map);
+
+      // Legend
+      const legCtl = L.control({ position: 'bottomright' });
+      legCtl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'map-legend');
+        div.innerHTML = [
+          '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Japan</div>',
+          '<div class="map-legend-item"><span class="map-legend-dot" style="background:#f4a261;"></span> Japanese colony</div>',
+          '<div class="map-legend-item"><span class="map-legend-dot" style="background:#6a4c93;"></span> Russian concession</div>',
+          '<div class="map-legend-item"><span class="map-legend-dot" style="background:#386641;"></span> German concession</div>',
+          '<div class="map-legend-item"><span class="map-legend-dot" style="background:#1982c4;"></span> British/French</div>',
+          '<div class="map-legend-item"><span class="map-legend-rect" style="background:rgba(244,162,97,0.25); border-color:#f4a261;"></span> Sphere of influence</div>',
+        ].join('');
+        return div;
+      };
+      legCtl.addTo(map);
+
+      // Japanese locations
+      const japan = [
+        { name: "Tokyo", cjk: "東京", desc: "Imperial capital", lat: 35.69, lng: 139.69, color: "#e63946", r: 9 },
+        { name: "Taiwan", cjk: "臺灣", desc: "Colony seized from Qing, 1895", lat: 23.70, lng: 120.96, color: "#f4a261", r: 7 },
+        { name: "Korea (Seoul)", cjk: "朝鮮", desc: "Protectorate 1905, annexed 1910", lat: 37.53, lng: 127.03, color: "#f4a261", r: 7 },
+        { name: "Liaodong Peninsula", cjk: "遼東半島", desc: "Won from China 1895, returned under Triple Intervention. Russia then leased it.", lat: 39.90, lng: 121.80, color: "#f4a261", r: 5, dash: true },
+      ];
+
+      // European concessions
+      const euro = [
+        { name: "Port Arthur (Lüshun)", cjk: "旅順", desc: "Russian lease 1898. Prize of Russo-Japanese War 1904-05. Japan took it back.", lat: 38.82, lng: 121.26, color: "#6a4c93", r: 7 },
+        { name: "Dalian (Dairen)", cjk: "大連", desc: "Russian commercial port. Part of Kwantung Leased Territory.", lat: 38.91, lng: 121.61, color: "#6a4c93", r: 5 },
+        { name: "Qingdao (Jiaozhou)", cjk: "膠州/青島", desc: "German concession 1897. Naval base and colony. Japan seized it in 1914.", lat: 36.07, lng: 120.38, color: "#386641", r: 7 },
+        { name: "Weihaiwei", cjk: "威海衛", desc: "British lease 1898. 'Balancing' the Russian presence.", lat: 37.50, lng: 122.12, color: "#1982c4", r: 6 },
+        { name: "Kwangchouwan", cjk: "廣州灣", desc: "French lease 1898. Southern counterpart to northern concessions.", lat: 21.19, lng: 110.39, color: "#1982c4", r: 5 },
+      ];
+
+      // Battle sites
+      const battles = [
+        { name: "Tsushima Strait", cjk: "対馬", desc: "Decisive naval battle, 1905. Japan destroyed the Russian fleet.", lat: 34.20, lng: 129.30, color: "#fff", r: 4, battle: true },
+        { name: "Mukden (Shenyang)", cjk: "奉天", desc: "Major land battle, 1905. Japan defeated Russia in Manchuria.", lat: 41.80, lng: 123.43, color: "#fff", r: 4, battle: true },
+      ];
+
+      // Draw spheres of influence (subtle polygons)
+      // Manchuria - Russian sphere
+      L.polygon([
+        [48, 119], [48, 132], [42, 132], [39, 125], [39, 119]
+      ], { color: '#6a4c93', weight: 1, opacity: 0.4, fillColor: '#6a4c93', fillOpacity: 0.06, dashArray: '4 3' }).addTo(map);
+
+      // Korea - Japanese sphere
+      L.polygon([
+        [38.5, 125], [38.5, 130], [34, 130], [34, 126], [35, 125]
+      ], { color: '#f4a261', weight: 1, opacity: 0.3, fillColor: '#f4a261', fillOpacity: 0.06, dashArray: '4 3' }).addTo(map);
+
+      // All markers
+      function addMarkers(arr) {
+        arr.forEach(function(l) {
+          const opts = { radius: l.r, fillColor: l.color, color: l.battle ? '#999' : '#fff', weight: l.battle ? 1 : 1.5, fillOpacity: l.battle ? 0.6 : 0.85 };
+          if (l.dash) { opts.fillOpacity = 0.4; opts.dashArray = '3 2'; }
+          L.circleMarker([l.lat, l.lng], opts)
+            .addTo(map)
+            .bindPopup('<b>' + l.cjk + ' ' + l.name + '</b><br>' + l.desc);
+        });
+      }
+      addMarkers(japan);
+      addMarkers(euro);
+      addMarkers(battles);
+
+      // Expansion lines from Tokyo
+      L.polyline([[35.69, 139.69], [37.53, 127.03]], { weight: 1.5, opacity: 0.4, dashArray: '5 4', color: '#f4a261' }).addTo(map);
+      L.polyline([[35.69, 139.69], [23.70, 120.96]], { weight: 1.5, opacity: 0.4, dashArray: '5 4', color: '#f4a261' }).addTo(map);
+      L.polyline([[35.69, 139.69], [38.82, 121.26]], { weight: 1.5, opacity: 0.3, dashArray: '3 4', color: '#e63946' }).addTo(map);
+
+      // Triple Intervention: arrows from Europe to Liaodong (conceptual)
+      // Small markers for the three intervening powers near Liaodong
+      var triIcon = L.divIcon({ className: '', iconSize: [0, 0] });
+
+      map.fitBounds([[18, 108], [50, 145]]);
+    })();
+  </script>
 
   <!-- Bottom: Causes/Effects + Notes -->
   <div class="bottom-section">

@@ -6,10 +6,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; background: #0a0a0a; color: #ddd; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f5f5f7; color: #1d1d1f; }
 
-    .back-link { display: inline-block; padding: 12px 40px; font-size: 12px; color: #888; text-decoration: none; }
-    .back-link:hover { color: #fff; }
+    .back-link { display: inline-block; padding: 12px 40px; font-size: 12px; color: #86868b; text-decoration: none; }
+    .back-link:hover { color: #1d1d1f; }
 
     .header {
       background: linear-gradient(135deg, #1a0a0a 0%, #2d1010 50%, #1a0808 100%);
@@ -29,7 +29,7 @@
 
     /* Ratchet visual */
     .ratchet-strip {
-      background: #111; border-bottom: 1px solid #222; padding: 28px 40px;
+      background: #fff; border-bottom: 1px solid #e5e5e5; padding: 28px 40px;
     }
     .ratchet-label { font-size: 11px; color: #cc4444; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; font-weight: 600; }
     .ratchet-track {
@@ -37,30 +37,30 @@
     }
     .ratchet-step {
       flex: 1; text-align: center; padding: 16px 8px; position: relative;
-      border-right: 1px solid #222;
+      border-right: 1px solid #e5e5e5;
       transition: background 0.2s;
     }
     .ratchet-step:last-child { border-right: none; }
-    .ratchet-step:hover { background: #1a1a1a; }
+    .ratchet-step:hover { background: #f5f5f5; }
     .ratchet-step .year { font-size: 14px; font-weight: 700; color: #cc4444; display: block; margin-bottom: 4px; }
-    .ratchet-step .treaty { font-size: 11px; color: #fff; font-weight: 600; display: block; margin-bottom: 4px; line-height: 1.3; }
-    .ratchet-step .lost { font-size: 10px; color: #888; line-height: 1.3; }
+    .ratchet-step .treaty { font-size: 11px; color: #1d1d1f; font-weight: 600; display: block; margin-bottom: 4px; line-height: 1.3; }
+    .ratchet-step .lost { font-size: 10px; color: #666; line-height: 1.3; }
     .ratchet-arrow { position: absolute; right: -8px; top: 50%; transform: translateY(-50%); color: #cc4444; font-size: 14px; z-index: 2; }
 
     /* Main grid */
     .main { display: grid; grid-template-columns: 1fr 360px; min-height: calc(100vh - 300px); }
     .content { padding: 32px 40px; }
-    .sidebar { background: #111; padding: 24px; border-left: 1px solid #1a1a1a; overflow-y: auto; }
+    .sidebar { background: #fafafa; padding: 24px; border-left: 1px solid #e5e5e5; overflow-y: auto; }
 
     .section-label { font-size: 11px; color: #cc4444; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; font-weight: 600; }
 
     /* Treaty cards */
     .treaty-card {
-      background: #141414; border-radius: 10px; padding: 22px; margin-bottom: 24px;
-      border: 1px solid #222; position: relative; overflow: hidden;
-      transition: border-color 0.2s;
+      background: #fff; border-radius: 10px; padding: 22px; margin-bottom: 24px;
+      border: 1px solid #e5e5e5; position: relative; overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .treaty-card:hover { border-color: #333; }
+    .treaty-card:hover { border-color: #ccc; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     .treaty-card::before {
       content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
     }
@@ -71,79 +71,91 @@
     .treaty-card.t1910::before { background: #8b0000; }
 
     .treaty-card .treaty-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-    .treaty-card .treaty-name { font-size: 17px; font-weight: 600; color: #fff; line-height: 1.3; }
+    .treaty-card .treaty-name { font-size: 17px; font-weight: 600; color: #1d1d1f; line-height: 1.3; }
     .treaty-card .treaty-date {
-      font-size: 10px; background: #222; color: #cc4444; padding: 3px 10px;
+      font-size: 10px; background: #fdf0f0; color: #cc4444; padding: 3px 10px;
       border-radius: 10px; font-weight: 600; white-space: nowrap; margin-left: 12px; flex-shrink: 0;
     }
-    .treaty-card .signatories { font-size: 11px; color: #666; margin-bottom: 10px; }
-    .treaty-card .signatories strong { color: #999; }
-    .treaty-card .desc { font-size: 13px; color: #bbb; line-height: 1.7; margin-bottom: 14px; }
+    .treaty-card .signatories { font-size: 11px; color: #86868b; margin-bottom: 10px; }
+    .treaty-card .signatories strong { color: #555; }
+    .treaty-card .desc { font-size: 13px; color: #444; line-height: 1.7; margin-bottom: 14px; }
 
     .treaty-card .coercion-box {
-      background: #1a0808; border: 1px solid #331111; border-radius: 6px;
+      background: #fdf0f0; border: 1px solid #e8c0c0; border-radius: 6px;
       padding: 12px 14px; margin-bottom: 14px;
     }
     .treaty-card .coercion-box .coercion-label {
       font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
       color: #cc4444; font-weight: 600; margin-bottom: 6px;
     }
-    .treaty-card .coercion-box .coercion-text { font-size: 12px; color: #999; line-height: 1.5; }
+    .treaty-card .coercion-box .coercion-text { font-size: 12px; color: #666; line-height: 1.5; }
 
     .treaty-card .stripped {
-      background: #111; border-radius: 6px; padding: 10px 14px;
+      background: #f5f5f5; border-radius: 6px; padding: 10px 14px;
     }
     .treaty-card .stripped .stripped-label {
       font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
-      color: #888; font-weight: 600; margin-bottom: 6px;
+      color: #86868b; font-weight: 600; margin-bottom: 6px;
     }
     .treaty-card .stripped-item {
       font-size: 12px; color: #cc4444; font-weight: 500; padding: 2px 0;
     }
 
     .treaty-card .quote-block {
-      background: #0a0a0a; border-left: 2px solid #cc4444; padding: 10px 14px;
-      font-style: italic; font-size: 13px; color: #999; line-height: 1.5;
+      background: #f8f6f0; border-left: 2px solid #cc4444; padding: 10px 14px;
+      font-style: italic; font-size: 13px; color: #555; line-height: 1.5;
       font-family: 'Noto Serif', Georgia, serif; margin: 14px 0 8px; border-radius: 0 4px 4px 0;
     }
-    .treaty-card .quote-src { font-size: 10px; color: #555; }
+    .treaty-card .quote-src { font-size: 10px; color: #86868b; }
 
     /* Sidebar cards */
     .sidebar-card {
-      background: #1a1a1a; border-radius: 8px; padding: 14px; margin-bottom: 14px;
-      border-left: 3px solid #333;
+      background: #fff; border-radius: 8px; padding: 14px; margin-bottom: 14px;
+      border: 1px solid #e5e5e5; border-left: 3px solid #333;
     }
     .sidebar-card.hague { border-left-color: #cc8833; }
     .sidebar-card.traitors { border-left-color: #cc4444; }
     .sidebar-card.legal { border-left-color: #6688cc; }
     .sidebar-card.reading { border-left-color: #c9a962; }
 
-    .sidebar-card .card-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 6px; }
-    .sidebar-card .card-text { font-size: 12px; color: #aaa; line-height: 1.6; }
-    .sidebar-card .card-text strong { color: #ccc; }
+    .sidebar-card .card-title { font-size: 13px; font-weight: 600; color: #1d1d1f; margin-bottom: 6px; }
+    .sidebar-card .card-text { font-size: 12px; color: #555; line-height: 1.6; }
+    .sidebar-card .card-text strong { color: #333; }
 
     .person-tag {
       display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px;
-      margin: 2px 2px; background: #222; color: #cc4444; font-weight: 500;
+      margin: 2px 2px; background: rgba(204,68,68,0.1); color: #cc4444; font-weight: 500;
     }
 
     /* Synthesis */
     .synthesis {
-      background: linear-gradient(135deg, #1a0808, #0a0a0a);
-      border: 1px solid #8b0000; border-radius: 10px;
+      background: linear-gradient(135deg, #fdf0f0, #fff);
+      border: 1px solid #cc4444; border-left: 4px solid #cc4444; border-radius: 10px;
       padding: 24px; margin: 0 40px 40px;
     }
     .synthesis h3 { font-size: 13px; color: #cc4444; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-    .synthesis p { font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 12px; }
+    .synthesis p { font-size: 13px; color: #444; line-height: 1.7; margin-bottom: 12px; }
     .synthesis p:last-child { margin-bottom: 0; }
 
     .phase-divider { display: flex; align-items: center; gap: 12px; margin: 28px 0 20px; }
-    .phase-divider .line { flex: 1; height: 1px; background: #222; }
-    .phase-divider .label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #555; white-space: nowrap; }
+    .phase-divider .line { flex: 1; height: 1px; background: #ddd; }
+    .phase-divider .label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #86868b; white-space: nowrap; }
+
+    /* Sources ledger */
+    .sources {
+      background: #fff; border: 1px solid #e5e5e5; border-radius: 10px;
+      padding: 28px 32px; margin: 24px 40px 40px;
+    }
+    .sources h3 { font-size: 13px; color: #cc4444; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .sources .source-group { margin-bottom: 16px; }
+    .sources .source-group-label { font-size: 11px; font-weight: 600; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .sources .source-item { font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 6px; padding-left: 16px; text-indent: -16px; }
+    .sources .source-item em { color: #555; }
+    .sources .source-note { font-size: 11px; color: #86868b; line-height: 1.5; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e5e5e5; }
 
     @media (max-width: 900px) {
       .main { grid-template-columns: 1fr; }
-      .sidebar { border-left: none; border-top: 1px solid #222; }
+      .sidebar { border-left: none; border-top: 1px solid #e5e5e5; }
       .ratchet-track { flex-wrap: wrap; }
       .ratchet-step { flex: none; width: 50%; }
     }
@@ -311,7 +323,7 @@
           <strong>Japan:</strong> Itō Hirobumi &middot; <strong>Korea:</strong> Yi Wanyong (Prime Minister)
         </div>
         <div class="desc">
-          Triggered by the Hague Secret Emissary Affair. Emperor Kojong sent three envoys (Yi Sangsŏl, Yi Chun, Yi Wijong) to the Second Hague Peace Conference to denounce the Eulsa Treaty. Japan blocked them from being seated. Yi Chun died at The Hague on July 14. Japan used the affair as pretext for the final escalation: forced Kojong to abdicate (July 19), then signed this treaty five days later with the collaborator Yi Wanyong.
+          Triggered by the Hague Secret Emissary Affair. Emperor Kojong sent three envoys (Yi Sangsŏl, Yi Chun, Yi Wijong) to the Second Hague Peace Conference to denounce the Eulsa Treaty. Japan blocked them from being seated. Yi Chun died at The Hague on July 14, 1907 (the cause is debated: Korean nationalist tradition holds it was a protest suicide; other accounts cite illness). Japan used the affair as pretext for the final escalation: forced Kojong to abdicate (July 19), then signed this treaty five days later with the collaborator Yi Wanyong.
         </div>
         <div class="coercion-box">
           <div class="coercion-label">How It Was Coerced</div>
@@ -377,7 +389,7 @@
           <span class="person-tag">Yi Chun (이준)</span>
           <span class="person-tag">Yi Wijong (이위종)</span>
           <br><br>
-          Japan blocked them from being seated. Yi Wijong gave an impassioned speech at a side meeting. No government challenged Japan. <strong>Yi Chun died at The Hague on July 14</strong> (the circumstances became a powerful nationalist symbol).
+          Japan blocked them from being seated. Yi Wijong gave an impassioned speech at a side meeting. No government challenged Japan. <strong>Yi Chun died at The Hague on July 14, 1907</strong> (cause debated: Korean tradition says protest suicide; some scholars cite illness. Either way, it became a powerful nationalist symbol).
           <br><br>
           The affair backfired catastrophically. Japan used it as the pretext to force Kojong's abdication and sign the Third Convention.
         </div>
@@ -389,8 +401,8 @@
         <div class="card-text">
           <span class="person-tag">Pak Chesun (박제순)</span> Foreign Minister. Affixed the ministry seal.<br>
           <span class="person-tag">Yi Wanyong (이완용)</span> Education Minister. Later signed the Annexation Treaty too. The most reviled name in Korean history.<br>
-          <span class="person-tag">Yi Kŭnt'aek (이근택)</span> Interior Minister.<br>
-          <span class="person-tag">Yi Chigyŏng (이지용)</span> Military Minister.<br>
+          <span class="person-tag">Yi Kŭnt'aek (이근택)</span> Army Minister.<br>
+          <span class="person-tag">Yi Chigyŏng (이지용)</span> Interior Minister.<br>
           <span class="person-tag">Kwŏn Chunghyŏn (권중현)</span> Agriculture Minister.
           <br><br>
           Their names became synonymous with treason. Emperor Kojong never signed.
@@ -438,6 +450,72 @@
     <p>The five treaties follow a precise logic, each building on the last. Kanghwa (1876) pried Korea open. Shimonoseki (1895) removed China's protective umbrella. The Eulsa Treaty (1905) took Korea's voice in the world. The Third Convention (1907) took Korea's ability to govern itself. The Annexation Treaty (1910) took Korea's existence. Each step was dressed in the language of bilateral agreement, each signed by Korean officials (under varying degrees of coercion), each presented to the international community as a legitimate legal act.</p>
     <p>This is what makes lawfare insidious. Naked conquest can be condemned. But when conquest comes wrapped in treaties, signed by ministers, and recognized by great powers, the victim loses not only sovereignty but the vocabulary to protest. When Korea sent envoys to The Hague to argue the Eulsa Treaty was void, Japan simply said: your country agreed to this; you have no standing to complain. The law that was supposed to protect Korea became the weapon used to destroy it.</p>
     <p>The Declaration of Independence (1919) and the Declaration of War (1941) are both, at their core, attempts to undo the legal architecture of subjugation. The 1919 Declaration asserts Korean statehood in defiance of the annexation. The 1941 Declaration explicitly voids the treaties. Even the Provisional Constitution, by establishing a democratic republic, implicitly argues that sovereignty resides in the people, not in treaties signed by coerced emperors and collaborating ministers. Every document in today's reading is an answer to lawfare.</p>
+  </div>
+
+  <div class="sources">
+    <h3>Sources</h3>
+
+    <div class="source-group">
+      <div class="source-group-label">Course Reading (Connects to Today's Documents)</div>
+      <div class="source-item">Peter H. Lee and Wm. Theodore de Bary, eds., <em>Sources of Korean Tradition</em>, vol. 2: <em>From the Sixteenth to the Twentieth Centuries</em> (New York: Columbia University Press, 2000), pp. 294-351. All references to "today's reading" and direct document quotes come from this source.</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">Treaty of Kanghwa (1876)</div>
+      <div class="source-item">Kirk W. Larsen, <em>Tradition, Treaties, and Trade: Qing Imperialism and Chosŏn Korea, 1850-1910</em> (Cambridge: Harvard University Asia Center, 2008), pp. 160-179. Primary scholarly treatment of the Kanghwa negotiations, the Un'yō provocation (Sept 1875), and the divergent readings of Article 1 (<em>chaju chi pang</em> / 自主之邦).</div>
+      <div class="source-item">Peter Duus, <em>The Abacus and the Sword: The Japanese Penetration of Korea, 1895-1910</em> (Berkeley: University of California Press, 1995), pp. 47-51 on the Kanghwa opening and its parallels to Perry.</div>
+      <div class="source-item">Ports opened (Pusan 1876, Wŏnsan 1880, Inch'ŏn 1883) and extraterritoriality provisions: Larsen, pp. 170-174; also Hilary Conroy, <em>The Japanese Seizure of Korea, 1868-1910</em> (Philadelphia: University of Pennsylvania Press, 1960), pp. 74-89.</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">Treaty of Shimonoseki (1895)</div>
+      <div class="source-item">S.C.M. Paine, <em>The Sino-Japanese War of 1894-1895: Perceptions, Power, and Primacy</em> (Cambridge: Cambridge University Press, 2003), pp. 278-300 on the treaty negotiations and Article 1.</div>
+      <div class="source-item">Article 1 full text: English translation from the official treaty text reproduced in John V.A. MacMurray, ed., <em>Treaties and Agreements With and Concerning China, 1894-1919</em> (New York: Oxford University Press, 1921), vol. 1, pp. 18-22.</div>
+      <div class="source-item">Signatories (Itō Hirobumi, Mutsu Munemitsu for Japan; Li Hongzhang for China) and the role of the Tonghak Rebellion as trigger: Duus, pp. 68-85; Conroy, pp. 221-248.</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">Eulsa Treaty (1905) &amp; the Five Traitors</div>
+      <div class="source-item">Duus, pp. 186-199 on the coercion of Kojong and the cabinet. The sequence of Itō's individual pressure on each minister, Hasegawa's troop deployment, and Kojong's refusal to sign are documented in detail.</div>
+      <div class="source-item">The five ministers and their positions: Pak Chesun (Foreign Minister), Yi Wanyong (Education Minister), Yi Kŭnt'aek (Army Minister), Yi Chigyŏng (Interior Minister), Kwŏn Chunghyŏn (Agriculture Minister). Confirmed in Conroy, pp. 459-464 and in the Korean National Institute of Korean History (국사편찬위원회) biographical database.</div>
+      <div class="source-item">Kojong's non-ratification and secret protests to foreign governments: Duus, pp. 199-210; also Carter J. Eckert et al., <em>Korea Old and New: A History</em> (Seoul: Ilchokak, 1990), pp. 241-243.</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">Western Complicity: Taft-Katsura, Anglo-Japanese Alliance, Portsmouth</div>
+      <div class="source-item">Taft-Katsura Memorandum (July 29, 1905): Raymond A. Esthus, "The Taft-Katsura Agreement: Reality or Myth?" <em>Journal of Modern History</em> 31, no. 1 (1959): 46-51. Esthus argues the memorandum was a mutual acknowledgment of spheres of influence, not a formal agreement.</div>
+      <div class="source-item">Second Anglo-Japanese Alliance (Aug 12, 1905): Ian Nish, <em>The Anglo-Japanese Alliance: The Diplomacy of Two Island Empires, 1894-1907</em> (London: Athlone Press, 1966), pp. 304-320. Article 3 explicitly recognized Japan's "paramount political, military and economic interests in Korea."</div>
+      <div class="source-item">Treaty of Portsmouth (Sept 5, 1905): J.A. White, <em>The Diplomacy of the Russo-Japanese War</em> (Princeton: Princeton University Press, 1964), pp. 290-310. Russia recognized Japan's "predominant interests" in Korea.</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">Hague Secret Emissary Affair (1907)</div>
+      <div class="source-item">Duus, pp. 210-218 on Kojong's dispatch of envoys and Japan's blocking them from being seated at the Second Hague Peace Conference.</div>
+      <div class="source-item">The three envoys: Yi Sangsŏl, Yi Chun, Yi Wijong. Yi Chun's death at The Hague (commonly dated July 14, 1907): the exact cause is debated. Korean nationalist tradition holds he committed suicide in protest; some scholarly accounts attribute his death to illness or exhaustion. The date of July 14 is given by the Republic of Korea Ministry of Patriots and Veterans Affairs (국가보훈처). See also Eckert et al., pp. 243-244.</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">Third Convention (1907) &amp; Army Disbandment</div>
+      <div class="source-item">Kojong's forced abdication (July 19, 1907), treaty signing (July 24, 1907), and army disbandment (executed Aug 1, 1907): Duus, pp. 218-222; Conroy, pp. 350-360.</div>
+      <div class="source-item">Approximately 7,800 soldiers dismissed, many joining the Righteous Armies: Eckert et al., pp. 244-246; also Lee and de Bary, <em>Sources of Korean Tradition</em>, vol. 2, p. 294.</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">Annexation Treaty (1910)</div>
+      <div class="source-item">Duus, pp. 397-419 on Terauchi's negotiations with Yi Wanyong, the secrecy of the process, signing (Aug 22, 1910), and public announcement (Aug 29, 1910).</div>
+      <div class="source-item">Annexation Treaty Article 1 text: reproduced in MacMurray, <em>Treaties and Agreements</em>, vol. 1, p. 756.</div>
+      <div class="source-item">Security measures during annexation (troop deployments, newspaper suspensions, assembly bans): Conroy, pp. 478-485.</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">1965 Treaty Normalization &amp; Ongoing Dispute</div>
+      <div class="source-item">The "already null and void" (이미 무효) language and divergent interpretations: Alexis Dudden, <em>Japan's Colonization of Korea: Discourse and Power</em> (Honolulu: University of Hawai'i Press, 2005), pp. 7-12 and ch. 5.</div>
+      <div class="source-item">2001 Joint History Commission deadlock: Kimura Kan, "Discovery of Disputes: Collective Memories on Textbooks and Japanese-South Korean Relations," <em>Journal of Korean Studies</em> 17, no. 1 (2012): 97-124.</div>
+    </div>
+
+    <div class="source-note">
+      This page synthesizes scholarship on treaty history not covered in the course reading itself. Direct quotes from treaty texts are cited to published translations. Where historical claims involve debated circumstances (e.g., Yi Chun's death), the debate is noted. Minister positions for the Five Traitors are from Korean National Institute of Korean History records.
+    </div>
   </div>
 </body>
 </html>

@@ -136,6 +136,14 @@
     }
     .photo-still .caption em { color: #666; }
 
+    /* Portrait thumbnails */
+    .portrait {
+      float: right; margin: 0 0 10px 14px; width: 90px;
+      border-radius: 6px; overflow: hidden; border: 1px solid #e5e5e5;
+    }
+    .portrait img { width: 100%; display: block; }
+    .portrait .portrait-caption { font-size: 9px; color: #86868b; padding: 4px 6px; background: #f5f5f5; text-align: center; }
+
     /* Sources ledger */
     .sources {
       background: #fff; border: 1px solid #e5e5e5; border-radius: 10px;
@@ -299,6 +307,7 @@
       <div class="section-label">Who Wrote These Documents</div>
 
       <div class="bio-card">
+        <div class="portrait"><img src="../images/yi-kangnyeon-portrait.png" alt="Portrait of Yi Kangnyŏn"><div class="portrait-caption">Yi Kangnyŏn</div></div>
         <div class="name">Yi Kangnyŏn</div>
         <div class="name-kr">이강년 (李康秊)</div>
         <div class="dates">1858-1908</div>
@@ -315,6 +324,7 @@
       </div>
 
       <div class="bio-card">
+        <div class="portrait"><img src="../images/yun-chiho-portrait.jpg" alt="Photograph of Yun Ch'iho"><div class="portrait-caption">Yun Ch'iho</div></div>
         <div class="name">Yun Ch'iho</div>
         <div class="name-kr">윤치호 (尹致昊)</div>
         <div class="dates">1864-1945</div>

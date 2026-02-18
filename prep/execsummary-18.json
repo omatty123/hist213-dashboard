@@ -1,159 +1,269 @@
 {
   "plate": 18,
-  "topic": "Korean Nationalism",
-  "date": "2026-02-18",
-  "generatedAt": "2026-01-04T17:30:00.000Z",
+  "topic": "Korean Nationalism - Rise of a nation",
+  "date": "2026-02-19",
+  "generatedAt": "2026-02-17T20:00:00.000Z",
   "readings": [
-    "Open Letter to Ito / Declaration of Independence (Sources of Korean Tradition, pp. 294-351)"
+    "Korean Nationalism: Open Letter to Ito Hirobumi, Patriotic Enlightenment Movement, Declaration of Independence, Provisional Constitution (Sources of Korean Tradition, pp. 294-351)"
   ],
   "readingAnalyses": [
     {
-      "title": "Open Letter to Ito / Declaration of Independence",
-      "author": "An Jung-geun, March First Movement leaders",
-      "source": "Sources of Korean Tradition, Vol. 2",
-      "pages": "pp. 294-351",
+      "title": "Yi Kangnyŏn: Open Letter to Itō Hirobumi",
+      "author": "Yi Kangnyŏn (Righteous Army leader)",
+      "source": "Munhwa sa, p. 482",
+      "pages": "pp. 294-295",
       "type": "primary",
-      "summary": "These two documents bookend the first decade of Japanese colonial rule in Korea. The 'Open Letter' associated with An Jung-geun (who assassinated Japanese Resident-General Itō Hirobumi in 1909) frames resistance in terms of Asian solidarity betrayed: Japan claimed to lead Asia against Western imperialism but instead became Asia's oppressor. The 1919 Declaration of Independence, read aloud on March 1, sparked massive nationwide protests that Japan brutally suppressed.\n\nThe Declaration is remarkably sophisticated: it appeals to universal principles of self-determination (echoing Wilsonian idealism), invokes Korean historical identity, and explicitly rejects violent methods in favor of moral suasion. The authors believed international opinion would support Korea's cause—a hope that proved naive but reflected genuine faith in the emerging postwar order.\n\nThe March First Movement failed to achieve independence but succeeded spectacularly as nation-building. The protests, the suppression, the martyrs—all became foundational myths for Korean national identity. Both North and South Korea claim this heritage, though they interpret it differently.",
+      "summary": "A blistering denunciation of Japanese imperialism written by a leader of the Righteous Army resistance. Yi accuses Itō Hirobumi of turning Japan into 'a nation devoid of morality' while violating the Treaty of Shimonoseki which had promised to recognize Korea's 'full and complete independence and autonomy.' The letter frames Korean resistance as morally justified self-defense against a power that has 'disrupted the affairs of the royal court' and seeks 'to end the independence of another state.'",
       "keyQuotes": [
-        {"quote": "We hereby declare that Korea is an independent state and that Koreans are a self-governing people.", "page": "Declaration"},
-        {"quote": "We do not intend to find fault with Japan's lack of fairness in violating all its agreements... We have more urgent matters at hand.", "page": "Declaration"},
-        {"quote": "Our action today represents the demand of our people for justice, humanity, survival, and dignity.", "page": "Declaration"},
-        {"quote": "Japan promised to lead Asia but instead betrayed us. We trusted and were deceived.", "page": "An Jung-geun's writings"}
+        {"quote": "Although you are barbarians, you too have a monarch, subjects, and international agreements that you must observe.", "page": "p. 294"},
+        {"quote": "Have we asked to become a colony of your country, a nation devoid of morality?", "page": "p. 294"},
+        {"quote": "You have violated international commitments vis-à-vis other nations. You have deceived your own sovereign. In our country, you have become an unforgivable enemy.", "page": "p. 294"}
       ],
       "thematicExamples": [
-        "Pan-Asianism betrayed - Korean nationalists had believed Japanese rhetoric about Asian solidarity",
-        "Non-violent resistance strategy - explicit rejection of violence in favor of moral appeal",
-        "Wilsonian moment - hopes that postwar self-determination principles would apply to Korea",
-        "Cultural resistance - when political action was suppressed, language and history became battlegrounds"
+        "Appeals to universal morality: Japan judged not by Asian standards but by international law",
+        "Righteous Army uprising: armed resistance by scholars and farmers across Korea",
+        "Colonial betrayal: Japan promised to protect Korean independence but instead annexed it"
       ],
       "realLifeConnections": [
-        "March 1 remains a national holiday in South Korea - continuing significance of these events",
-        "An Jung-geun honored in Korea, condemned in Japan - contested memories of colonial period",
-        "Korean nationalism's distinctive features - emphasis on victimhood, moral claims, cultural continuity",
-        "Non-violent resistance traditions - Korean March First anticipated Gandhi and later movements"
+        "The Righteous Army tradition continues in Korean historical memory as model of patriotic resistance",
+        "Japan's violation of treaties resonates with contemporary debates about 'rules-based international order'"
+      ]
+    },
+    {
+      "title": "The Patriotic Enlightenment Movement",
+      "author": "Chang Chiyŏn, Yun Ch'iho, and others",
+      "source": "Sources of Korean Tradition",
+      "pages": "pp. 295-296",
+      "type": "secondary/primary",
+      "summary": "After armed resistance proved futile, Korean nationalists shifted to 'patriotic enlightenment'—building national strength through education and economic development. The Korean Association for Self-Strengthening (Taehan Chaganghoe, 1906) exemplified this approach: train the next generation in both 'modern academic subjects' and 'national spirit,' develop the economy to provide 'a material foundation for national power,' and eventually push Japan out through accumulated strength rather than immediate confrontation.",
+      "keyQuotes": [
+        {"quote": "The enlightenment movement aimed at building up Korea as a modern advanced nation with a strong economic base in order to push Japan out eventually.", "page": "p. 295"},
+        {"quote": "Education was to inculcate the national spirit in the younger generation as well as to teach the youth modern academic subjects. Economic development was to provide a material foundation for national power.", "page": "p. 295"}
+      ],
+      "thematicExamples": [
+        "Self-strengthening ideology borrowed from Chinese reformers but adapted to Korean circumstances",
+        "Dual strategy: preserve Korean identity while learning 'modern' skills from the colonizer",
+        "Private associations filled the gap when the state was captured by Japan"
+      ],
+      "realLifeConnections": [
+        "South Korea's emphasis on education as national salvation echoes this movement",
+        "Economic nationalism in postwar Korea (chaebol development) has roots in this period"
+      ]
+    },
+    {
+      "title": "Son Pyŏnghŭi and Others: Declaration of Independence (March 1, 1919)",
+      "author": "Ch'oe Namsŏn (drafted), 33 signatories including Son Pyŏnghŭi (Ch'ŏndogyo), Han Yongun (Buddhist)",
+      "source": "Korean Studies 13:1-4",
+      "pages": "pp. 336-339",
+      "type": "primary",
+      "summary": "The founding document of Korean nationalism, read aloud on March 1, 1919. Drafted by the twenty-nine-year-old scholar Ch'oe Namsŏn in an elevated literary style, the Declaration proclaims Korea's independence based on 'five thousand years of history,' 'twenty million people,' and the 'awakening conscience of mankind.' Remarkably, it explicitly renounces violence and blame: 'We do not intend to accuse Japan of infidelity' but rather 'to build up our own strength.' The Declaration ends with 'Three Open Pledges' committing to non-violent, dignified resistance.",
+      "keyQuotes": [
+        {"quote": "We hereby declare that Korea is an independent state and that Koreans are a self-governing people. We proclaim it to the nations of the world in affirmation of the principle of the equality of all nations.", "page": "p. 337"},
+        {"quote": "For the first time in several thousand years, we have suffered the agony of alien suppression for a decade, becoming a victim of the policies of aggression and coercion, which are relics from a bygone era.", "page": "p. 337"},
+        {"quote": "Behold! A new world is before our eyes. The days of force are gone, and the days of morality are here. The spirit of humanity, nurtured throughout the past century, has begun casting its rays of new civilization upon human history.", "page": "p. 338"},
+        {"quote": "Our task today is to build up our own strength, not to destroy others.", "page": "p. 338"},
+        {"quote": "Our action today represents the demand of our people for justice, humanity, survival, and dignity. It manifests our spirit of freedom and should not engender antiforeign feelings.", "page": "p. 339"}
+      ],
+      "thematicExamples": [
+        "Wilsonian idealism: appeal to 'world reform' and 'awakening conscience of mankind'",
+        "Non-violence as strategy and principle: explicit rejection of vengeful nationalism",
+        "Religious coalition: signatories included Ch'ŏndogyo, Christian, and Buddhist leaders",
+        "Literary nationalism: written in elevated classical Chinese-influenced style"
+      ],
+      "realLifeConnections": [
+        "March 1 (Samiljeol) is a national holiday in South Korea today",
+        "The Declaration's rhetoric influenced later independence movements globally",
+        "Ch'oe Namsŏn's later collaboration with Japan complicates his legacy"
+      ]
+    },
+    {
+      "title": "Provisional Constitution of the Korean Government in Exile",
+      "author": "Korean Provisional Government (Shanghai)",
+      "source": "Hanguk tonghip undong sa 3:326",
+      "pages": "pp. 339-340",
+      "type": "primary",
+      "summary": "Established in Shanghai in April 1919, the Korean Provisional Government created a democratic constitution unprecedented in Korean history. Article 1 declared 'The Korean Republic shall be a democratic republic.' Article 3 established complete equality: 'no class distinctions among the citizens of the Korean Republic, and men and women, noble and common, rich and poor, shall have complete equality.' The government in exile lasted until 1945 and serves as the claimed predecessor of the Republic of Korea.",
+      "keyQuotes": [
+        {"quote": "The Korean Republic shall be a democratic republic.", "page": "p. 339"},
+        {"quote": "There shall be no class distinctions among the citizens of the Korean Republic, and men and women, noble and common, rich and poor, shall have complete equality.", "page": "p. 339"}
+      ],
+      "thematicExamples": [
+        "Republican government: rejection of monarchy even in exile",
+        "Gender equality: radical for 1919, included in founding documents",
+        "International strategy: sought recognition at Versailles Peace Conference"
+      ],
+      "realLifeConnections": [
+        "South Korea's constitution traces legitimacy to this Provisional Government",
+        "North Korea also claims March First heritage, interprets it differently"
+      ]
+    },
+    {
+      "title": "Declaration of War on Japan (December 9, 1941)",
+      "author": "Korean Provisional Government",
+      "source": "Tongnip undong sa 6:260",
+      "pages": "pp. 350-351",
+      "type": "primary",
+      "summary": "When Japan attacked Pearl Harbor, the Korean Provisional Government seized the moment to declare war on the Axis Powers, aligning Korea with the Allied cause. The declaration voided the 1910 annexation treaty and all 'unequal treaties,' refused to recognize Japanese puppet states like Manchukuo, and appealed to the Atlantic Charter's principle of self-determination. Though the U.S. never recognized the exile government, this declaration positioned Korea as an Allied belligerent rather than a Japanese colony.",
+      "keyQuotes": [
+        {"quote": "In the name of thirty million Koreans and their government, we sincerely endorse the declaration of war on Japan by China, the United Kingdom, the United States, the Soviet Union, Canada, Australia, and other nations.", "page": "p. 350"},
+        {"quote": "We reiterate that the 1910 treaty of annexation and all other unequal treaties are null and void.", "page": "p. 350"},
+        {"quote": "The regimes at Chang-ch'un and Nanking created under Japanese sponsorship will never be recognized.", "page": "p. 351"}
+      ],
+      "thematicExamples": [
+        "Wartime diplomacy: attempt to secure Allied recognition",
+        "Legal strategy: declare annexation 'null and void' from the start",
+        "Anti-collaborator stance: refuse to recognize any Japanese-backed regimes"
+      ],
+      "realLifeConnections": [
+        "Korea's status as 'liberated' vs. 'surrendered' nation shaped postwar fate",
+        "U.S. refusal to recognize exile government contributed to division"
       ]
     }
   ],
-  "overallSynthesis": "The March First documents reveal Korean nationalism's distinctive character: moral rather than military, victim rather than aggressor, appealing to universal principles rather than narrow ethnic claims. The Declaration's tone is dignified and restrained—a remarkable achievement given the circumstances. The authors believed that justice, properly articulated, would prevail.\n\nThis contrasts sharply with Japanese nationalism (Plate 17). Where Tokutomi Sohō embraced Social Darwinist competition, Korean nationalists appealed to international law and human dignity. Where Japan sought to dominate, Korea sought recognition. These weren't just different positions but different frameworks: Japanese nationalism was about power; Korean nationalism was about justice.\n\nThe March First Movement's failure reveals the limits of moral appeal in a world of power politics. Korea's case was strong; international support was weak. The 'Wilsonian moment' proved illusory—self-determination applied to European nations, not Asian colonies. Yet the movement succeeded in creating national consciousness and founding myths that sustained resistance through decades of colonial rule and continue to shape Korean identity today.\n\nThe comparison with Chinese nationalism (Plate 19) is instructive. Both Korean and Chinese nationalisms emerged from humiliation and resistance. But Korean nationalism crystallized under direct colonial occupation, creating a sharper victim identity. Chinese nationalism developed in a semi-colonial context with more room for internal debate about how to respond.",
-  "executiveSummary": "Korean nationalism crystallized under Japanese colonial rule (1910-1945). The readings include two remarkable documents: an 'Open Letter' to Itō Hirobumi (Japan's Resident-General, assassinated by Korean nationalist An Jung-geun in 1909), and the 1919 Declaration of Independence. The Declaration, read aloud on March 1, 1919, sparked massive nationwide protests—the March First Movement—that Japan brutally suppressed.\n\nThese texts reveal Korean nationalism's distinctive features: appeals to civilization and justice (not just power), invocation of both Korean tradition and universal principles, and non-violent resistance strategies. The March First Movement failed to achieve independence but succeeded in demonstrating Korean national consciousness to the world. It also created martyrs and a founding myth for both North and South Korean states.",
+  "overallSynthesis": "These documents trace the evolution of Korean nationalism from armed resistance (Righteous Armies) through cultural/educational nationalism (Patriotic Enlightenment) to the transformative March First Movement and its institutional expressions (Provisional Government, Declaration of War). What emerges is a distinctive nationalism: moralistic rather than militaristic, appealing to universal principles rather than ethnic supremacy, victimized rather than victimizing.\n\nThe March First Declaration is the centerpiece. Its rhetoric is remarkable: it explicitly refuses to blame Japan ('we shall not blame Japan') while asserting Korean rights. It appeals not to racial destiny but to 'the awakening conscience of mankind.' It commits to non-violence: 'Our action today... should not engender antiforeign feelings.' This is nationalism with Buddhist and Christian influences—Han Yongun the Buddhist monk and many Christian leaders were among the 33 signatories.\n\nThe Provisional Government in Shanghai institutionalized these ideals. Its constitution proclaimed democracy, equality (including gender equality), and human rights—values not traditional in Korean political thought but embraced as part of the national project. When war came in 1941, the exile government's Declaration of War aligned Korea with the Allies and the Atlantic Charter's promise of self-determination.\n\nYet these documents also reveal the tragedy. Korean nationalists believed that moral appeal and international law would prevail. They didn't. The 'Wilsonian moment' proved illusory—self-determination applied to European nations, not Asian colonies. The U.S. never recognized the exile government. Korea was 'liberated' in 1945 only to be immediately divided. The fire of nationalism, kept alive for thirty-five years, would fuel both North and South Korean states—and their competing claims to March First's legacy.",
+  "executiveSummary": "Korean nationalism crystallized under Japanese colonial rule (1910-1945) through several phases. Early armed resistance by Righteous Armies gave way to 'patriotic enlightenment'—building national strength through education and economic development. The March First Movement of 1919 transformed everything: the Declaration of Independence, read aloud across Korea on March 1, sparked massive nationwide protests that Japan brutally suppressed.\n\nThe readings include primary sources showing nationalism's range: Yi Kangnyŏn's fierce denunciation of Itō Hirobumi, the Patriotic Enlightenment Movement's gradualist strategy, the March First Declaration's remarkable blend of moral appeal and non-violence, the Provisional Government's democratic constitution, and the 1941 Declaration of War against Japan. Korean nationalism was distinctive: it appealed to universal principles (not ethnic destiny), embraced non-violence (not militarism), and claimed victim status (not conqueror glory). Both Koreas today trace their legitimacy to March First—though they interpret it very differently.",
   "keywords": [
     {
-      "term": "March First Movement (3·1 운동)",
-      "definition": "1919 mass protests for Korean independence, triggered by Declaration of Independence",
-      "relevance": "Foundational event for Korean nationalism; national holiday in South Korea"
+      "term": "March First Movement (3.1 운동)",
+      "definition": "Massive 1919 independence protests sparked by the Declaration of Independence; brutally suppressed by Japan",
+      "relevance": "Foundational event for Korean national identity; national holiday in South Korea"
     },
     {
-      "term": "An Jung-geun (安重根)",
-      "definition": "Korean nationalist who assassinated Itō Hirobumi in 1909",
-      "relevance": "Hero in Korea, terrorist in Japan—shows contested memory"
+      "term": "Righteous Army (ŭibyŏng)",
+      "definition": "Armed resistance groups of scholars and farmers who fought Japanese encroachment",
+      "relevance": "Earlier phase of resistance; showed limits of military approach"
     },
     {
       "term": "Declaration of Independence",
-      "definition": "Document read March 1, 1919 proclaiming Korea's right to self-determination",
-      "relevance": "Founding text of Korean nationalism; beautifully written appeal to justice"
+      "definition": "Document read March 1, 1919 proclaiming Korea's independence; drafted by Ch'oe Namsŏn, signed by 33 leaders",
+      "relevance": "Founding text of Korean nationalism; notable for non-violent, moral appeal"
     },
     {
-      "term": "Cultural Nationalism",
-      "definition": "Resistance through preserving Korean language, history, and culture under colonialism",
-      "relevance": "When political resistance was impossible, culture became battleground"
+      "term": "Patriotic Enlightenment Movement",
+      "definition": "Strategy of building national strength through education and economic development rather than armed resistance",
+      "relevance": "Precursor to modern Korean emphasis on education as national salvation"
     },
     {
-      "term": "Wilsonian Moment",
-      "definition": "Post-WWI hopes that US President Wilson's 'self-determination' would apply to colonized peoples",
-      "relevance": "Koreans believed international support would help—it didn't"
+      "term": "Korean Provisional Government",
+      "definition": "Government-in-exile established in Shanghai in April 1919; claimed democratic republic",
+      "relevance": "ROK constitution traces legitimacy to this body; lasted until 1945"
+    },
+    {
+      "term": "Ch'oe Namsŏn (1890-1957)",
+      "definition": "Scholar-publisher who drafted the Declaration of Independence; later collaborated with Japan",
+      "relevance": "Illustrates the complications of colonial-era nationalism"
     }
   ],
   "keyPassages": [
     {
-      "quote": "We hereby declare that Korea is an independent state and that Koreans are a self-governing people.",
+      "quote": "We hereby declare that Korea is an independent state and that Koreans are a self-governing people. We proclaim it to the nations of the world in affirmation of the principle of the equality of all nations.",
       "source": "Declaration of Independence",
-      "page": "1919"
+      "page": "p. 337"
     },
     {
-      "quote": "We do not intend to find fault with Japan's lack of righteousness in forcibly annexing us... We have more urgent tasks: to build our own nation.",
+      "quote": "Our task today is to build up our own strength, not to destroy others. We must chart a new course for ourselves in accord with the solemn dictates of conscience, not to malign and reject others for reasons of past enmity or momentary passions.",
       "source": "Declaration of Independence",
-      "page": "1919"
+      "page": "p. 338"
     },
     {
-      "quote": "Victim of an outmoded aggression, we have suffered for ten years under foreign oppression... Our nation's existence was purchased by 4,000 years of history.",
+      "quote": "Behold! A new world is before our eyes. The days of force are gone, and the days of morality are here.",
       "source": "Declaration of Independence",
-      "page": "1919"
+      "page": "p. 338"
+    },
+    {
+      "quote": "Have we asked to become a colony of your country, a nation devoid of morality?",
+      "source": "Yi Kangnyŏn's Open Letter to Itō Hirobumi",
+      "page": "p. 294"
+    },
+    {
+      "quote": "The Korean Republic shall be a democratic republic... There shall be no class distinctions among the citizens, and men and women, noble and common, rich and poor, shall have complete equality.",
+      "source": "Provisional Constitution",
+      "page": "p. 339"
     }
   ],
   "peopleplacesthings": {
     "people": [
-      "An Jung-geun - assassin of Itō Hirobumi",
-      "Thirty-three Representatives - signers of Declaration",
-      "Yu Gwan-sun - young female martyr of March First"
+      "Yi Kangnyŏn — Righteous Army leader; wrote denunciation of Itō",
+      "Ch'oe Namsŏn — Drafted Declaration; later collaborated with Japan",
+      "Thirty-three Signatories — Religious leaders who signed Declaration"
     ],
     "places": [
-      "Pagoda Park (Tapgol) - where Declaration was read",
-      "Harbin - where An Jung-geun shot Itō",
-      "Seodaemun Prison - where nationalists were held"
+      "Pagoda Park (Tapgol) — Where Declaration was first read in Seoul",
+      "Shanghai — Site of Korean Provisional Government in exile",
+      "Harbin — Where An Chung-gŭn assassinated Itō Hirobumi (1909)"
     ],
     "things": [
-      "Declaration of Independence - founding document",
-      "March First Movement - mass uprising",
-      "Provisional Government - exile government in Shanghai"
+      "Declaration of Independence — Founding document, March 1, 1919",
+      "Provisional Constitution — Democratic republic in exile",
+      "March First Movement — Mass uprising across Korea"
     ]
   },
   "keyQuestions": [
     {
-      "question": "How does Korean nationalism differ from Japanese nationalism?",
-      "talkingPoints": "Japanese nationalism was expansionist, based on power. Korean nationalism was defensive, based on victimhood and justice claims. Japanese cited Social Darwinism; Koreans cited civilization and righteousness. What are the implications of these different foundations?"
+      "question": "The Declaration says 'Our task today is to build up our own strength, not to destroy others.' Why adopt non-violence against a violent colonizer?",
+      "talkingPoints": "Strategic calculation: couldn't win militarily. Moral appeal to international community (Wilsonian moment). Religious influences: Buddhist and Christian signatories. Contrast with Japanese nationalism's Social Darwinism. Did non-violence 'work'? Movement suppressed but created lasting national identity."
     },
     {
-      "question": "Why did the March First Movement fail to achieve independence?",
-      "talkingPoints": "International community didn't support; Wilson's self-determination didn't apply to Japan's colonies. Japan had military power to suppress. But did it 'fail'? It created national consciousness, exile government, martyrs."
+      "question": "Yi Kangnyŏn asks: 'Have we asked to become a colony of your country, a nation devoid of morality?' How does Korean nationalism judge Japan?",
+      "talkingPoints": "Not by Asian traditions but by universal/international standards. Japan violated its own treaties (Shimonoseki). Accused of deceiving its own emperor. Barbarians judged by civilized standards—reversal of usual colonial rhetoric. Korea claims moral high ground."
     },
     {
-      "question": "How is the March First Movement remembered differently in North and South Korea?",
-      "talkingPoints": "Both claim it; interpretations differ. North emphasizes armed resistance, class elements. South emphasizes non-violent aspects, continuity with ROK government. Same event, different national narratives."
+      "question": "The Provisional Constitution declared 'no class distinctions' and equality of 'men and women, noble and common, rich and poor.' How radical was this for 1919 Korea?",
+      "talkingPoints": "Traditional yangban-commoner divide being rejected. Gender equality unprecedented. Influenced by Western democratic ideas AND Korean desire to reimagine nation. Compare: U.S. didn't have women's suffrage until 1920. Nationalism as vehicle for social revolution."
     }
   ],
   "timeline": [
     {
       "date": "1905",
-      "event": "Japan makes Korea a protectorate"
+      "event": "Japan makes Korea a protectorate; Righteous Armies resist"
+    },
+    {
+      "date": "1906",
+      "event": "Korean Association for Self-Strengthening founded"
     },
     {
       "date": "1909",
-      "event": "An Jung-geun assassinates Itō Hirobumi"
+      "event": "An Chung-gŭn assassinates Itō Hirobumi in Harbin"
     },
     {
       "date": "1910",
-      "event": "Japan formally annexes Korea"
+      "event": "Japan formally annexes Korea; independence lost"
     },
     {
       "date": "March 1, 1919",
       "event": "Declaration of Independence read; March First Movement begins"
     },
     {
-      "date": "1919",
+      "date": "April 1919",
       "event": "Provisional Government established in Shanghai"
     },
     {
+      "date": "Dec 9, 1941",
+      "event": "Provisional Government declares war on Japan"
+    },
+    {
       "date": "1945",
-      "event": "Liberation from Japan (but then division)"
+      "event": "Liberation—but immediate division of Korea"
     }
   ],
   "connections": {
-    "fromPrevious": "Plate 17 examined the Japanese nationalism that justified colonizing Korea. Now we see the Korean response.",
-    "toNext": "Plate 19 examines Chinese nationalism—also forged in humiliation and resistance, but with different dynamics.",
-    "broaderThemes": "Colonialism creates nationalism among the colonized. But the content of that nationalism varies. Compare Korean, Indian, Vietnamese nationalisms as responses to colonialism."
+    "fromPrevious": "Plate 17 examined Japanese nationalism—the ideology that justified colonizing Korea. Now we see the Korean response: a nationalism built on victimhood, moral appeal, and non-violence rather than conquest and Social Darwinism.",
+    "toNext": "Plate 19 examines Chinese nationalism through Lu Xun's savage self-critique in 'The True Story of Ah Q.' Chinese nationalism also emerged from humiliation but turned inward in a way Korean nationalism did not.",
+    "broaderThemes": "Colonialism creates nationalism among the colonized—but the content varies. Korean nationalism is distinctive: moralistic, non-violent, appealing to international law. Compare with later anti-colonial movements (India, Vietnam, Algeria)."
   },
   "nextPreview": {
     "plate": 19,
-    "topic": "Chinese Nationalism",
-    "preview": "Chinese nationalism emerged from the 'century of humiliation.' Lu Xun's 'True Story of Ah Q' offers a scathing critique of Chinese national character. How did Chinese intellectuals diagnose their nation's problems?",
-    "readings": ["The True Story of Ah Q (Lu Xun)"]
+    "topic": "Chinese Nationalism - modernity at gunpoint",
+    "preview": "Lu Xun's 'Preface to A Call to Arms' and 'The True Story of Ah Q' offer a devastating critique of Chinese national character. Where Korean nationalists blamed Japan, Lu Xun blamed China itself.",
+    "readings": ["Lu Xun: Preface to A Call to Arms", "Lu Xun: The True Story of Ah Q"]
   },
   "teachingNotes": [
-    "Read the Declaration of Independence aloud—it's eloquent and moving.",
-    "An Jung-geun is hero in Korea, terrorist in Japan. Good example of contested historical memory.",
-    "Yu Gwan-sun, a teenage girl tortured to death, is a major nationalist icon. Her story is powerful.",
-    "March First is a national holiday in South Korea; understanding why helps understand Korean identity.",
-    "Contemporary connection: Japan-Korea disputes often invoke this colonial history."
+    "READ ALOUD the Declaration's opening paragraph—it's eloquent and moving",
+    "Yi Kangnyŏn's 'nation devoid of morality' line is the most quotable attack on Japan",
+    "The Provisional Constitution's gender equality clause is remarkable for 1919—ask students to compare",
+    "Ch'oe Namsŏn drafted the Declaration but later collaborated with Japan—good example of colonial era's moral complexities",
+    "March 1 is still a national holiday—show students how this history remains alive",
+    "Both Koreas claim March First—compare North Korean emphasis on armed struggle vs. South Korean emphasis on non-violence"
   ],
   "map": {
     "center": [37.5, 127],
@@ -181,7 +291,7 @@
         "lat": 45.8038,
         "lng": 126.5350,
         "type": "city",
-        "description": "Where An Jung-geun assassinated Itō Hirobumi (1909)"
+        "description": "Where An Chung-gŭn assassinated Itō Hirobumi (1909)"
       },
       {
         "name": "Shanghai",
@@ -189,7 +299,7 @@
         "lat": 31.2304,
         "lng": 121.4737,
         "type": "city",
-        "description": "Site of Korean Provisional Government in exile"
+        "description": "Site of Korean Provisional Government in exile (1919-1945)"
       },
       {
         "name": "Cheonan",
@@ -197,7 +307,7 @@
         "lat": 36.8151,
         "lng": 127.1139,
         "type": "city",
-        "description": "Home of Yu Gwan-sun; memorial site"
+        "description": "Home of Yu Gwan-sun; Independence Hall of Korea"
       }
     ]
   }

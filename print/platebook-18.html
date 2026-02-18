@@ -45,6 +45,21 @@
       font-size: 12px;
     }
 
+    /* Readings row */
+    .readings-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+      font-size: 9px;
+    }
+    .reading-item {
+      flex: 1;
+      border: 1px solid #aaa;
+      padding: 3px 6px;
+      background: #f9f9f9;
+    }
+    .reading-item strong { font-size: 9px; }
+
     /* Section labels */
     .label {
       border: 1px solid #000;
@@ -94,82 +109,50 @@
     }
     .timeline-box {
       border: 1px solid #aaa;
-      padding: 10px 12px 8px;
+      padding: 6px 16px;
+      height: 78px;
       position: relative;
       background-color: #fefdfb;
     }
-    .tl-row {
-      display: flex;
-      width: 100%;
-      position: relative;
-      margin-bottom: 6px;
-    }
-    .tl-line {
+    .timeline-line {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
       height: 2px;
       background: #333;
     }
-    .tl-event {
-      flex: 1;
-      text-align: center;
-      font-size: 8.5px;
-      line-height: 1.3;
-      padding: 0 2px 10px;
-      position: relative;
-    }
-    .tl-event::after {
-      content: '';
+    .timeline-ticks {
       position: absolute;
-      bottom: 0;
-      left: 50%;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tick {
       width: 2px;
-      height: 8px;
+      height: 12px;
       background: #333;
-      transform: translateX(-50%);
     }
-    .tl-year {
-      font-weight: 700;
-      font-size: 9.5px;
-      display: block;
+    .timeline-labels {
+      position: absolute;
+      bottom: 32px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8px;
+      text-align: center;
     }
-    .tl-event em {
-      font-style: italic;
-      color: #555;
+    .timeline-labels span {
+      max-width: 80px;
+      line-height: 1.2;
     }
 
     /* Map */
     .map-section {
       margin-bottom: 4px;
-    }
-    .map-subtitle {
-      font-size: 9px;
-      font-style: italic;
-      color: #555;
-      margin-left: 8px;
-    }
-    .map-box {
-      border: 1px solid #aaa;
-      background: #f5f5f5;
-      margin-top: 3px;
-      padding: 10px;
-      min-height: 100px;
-    }
-    .map-locations {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      font-size: 9px;
-    }
-    .map-loc strong { font-weight: 600; }
-    .map-quote {
-      font-style: italic;
-      font-size: 9px;
-      text-align: center;
-      color: #444;
-      margin-top: 4px;
     }
 
     /* Questions table */
@@ -264,7 +247,7 @@
       font-weight: 600;
     }
 
-        .breadcrumb {
+    .breadcrumb {
       font-size: 11px;
       margin-bottom: 8px;
     }
@@ -280,15 +263,31 @@
       .breadcrumb { display: none; }
       body { padding: 0; }
     }
+
+    /* Map styles */
+    #korean-nat-map { height: 140px; border-radius: 6px; border: 1px solid #333; }
+    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
+    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
+    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
   </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
-  <div class="breadcrumb"><a href="../index.html">← Dashboard</a></div>
+  <div class="breadcrumb"><a href="../index.html">&larr; Dashboard</a></div>
   <!-- Header -->
   <div class="header">
     <div class="plate-num">Plate # 18</div>
-    <div class="topic">Korean Nationalism</div>
-    <div class="date">Feb 18</div>
+    <div class="topic">Korean Nationalism: Rise of a Nation</div>
+    <div class="date">Feb 19</div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings-row">
+    <div class="reading-item"><strong>SKT:</strong> Open Letter to Ito (Yi Kangnyŏn) &mdash; "nation devoid of morality"</div>
+    <div class="reading-item"><strong>SKT:</strong> Declaration of Independence (1919) &mdash; "days of force are gone"</div>
+    <div class="reading-item"><strong>SKT:</strong> Provisional Constitution &mdash; democratic republic in exile</div>
   </div>
 
   <!-- Person / Place / Thing -->
@@ -302,56 +301,53 @@
     </thead>
     <tbody>
       <tr>
-        <td class="filled"><strong>An Jung</strong>: geun - assassin of Itō Hirobumi</td>
-        <td class="filled"><strong>Pagoda Park (Tapgol)</strong>: where Declaration was read</td>
-        <td class="filled"><strong>Declaration of Independence</strong>: founding document</td>
+        <td class="filled"><strong>Yi Kangnyŏn</strong> &mdash; Righteous Army leader; called Japan "a nation devoid of morality"</td>
+        <td class="filled"><strong>Pagoda Park (탑골)</strong> &mdash; Seoul park where Declaration was first read aloud</td>
+        <td class="filled"><strong>Declaration of Independence</strong> &mdash; "Korea is an independent state"; non-violent moral appeal</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Thirty</strong>: three Representatives - signers of Declaration</td>
-        <td class="filled"><strong>Harbin</strong>: where An Jung-geun shot Itō</td>
-        <td class="filled"><strong>March First Movement</strong>: mass uprising</td>
+        <td class="filled"><strong>Ch'oe Namsŏn</strong> &mdash; 29-year-old who drafted Declaration; later collaborated with Japan</td>
+        <td class="filled"><strong>Shanghai (上海)</strong> &mdash; Site of Korean Provisional Government in exile (1919-1945)</td>
+        <td class="filled"><strong>March First Movement (3.1)</strong> &mdash; Mass uprising; 2 million protested; brutally suppressed</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Yu Gwan</strong>: sun - young female martyr of March First</td>
-        <td class="filled"><strong>Seodaemun Prison</strong>: where nationalists were held</td>
-        <td class="filled"><strong>Provisional Government</strong>: exile government in Shanghai</td>
+        <td class="filled"><strong>33 Signatories</strong> &mdash; Ch'ŏndogyo, Buddhist, Christian leaders who signed Declaration</td>
+        <td class="filled"><strong>Harbin (哈爾濱)</strong> &mdash; Manchurian city where An Chung-gŭn assassinated Itō (1909)</td>
+        <td class="filled"><strong>Provisional Constitution</strong> &mdash; "No class distinctions... men and women shall have equality"</td>
       </tr>
-
     </tbody>
   </table>
 
   <!-- Timeline -->
   <div class="timeline-section">
-    <span class="label">Timeline: Korean Nationalism</span>
+    <span class="label">Timeline: From Protectorate to Liberation</span>
     <div class="timeline-box">
-        <div class="tl-row">
-          <div class="tl-event"><span class="tl-year">1905</span><em>Japan makes Korea a protectorate</em></div>
-          <div class="tl-event"><span class="tl-year">1909</span><em>An Jung-geun assassinates Itō Hirobumi</em></div>
-          <div class="tl-event"><span class="tl-year">1910</span><em>Japan formally annexes Korea</em></div>
-          <div class="tl-event"><span class="tl-year">March 1, 1919</span><em>Declaration of Independence read; March First Movement begins</em></div>
-          <div class="tl-event"><span class="tl-year">1919</span><em>Provisional Government established in Shanghai</em></div>
-          <div class="tl-event"><span class="tl-year">1945</span><em>Liberation from Japan (but then division)</em></div>
-        </div>
-        <div class="tl-line"></div>
+      <div class="timeline-labels">
+        <span>1905<br><em>Protectorate</em></span>
+        <span>1909<br><em>Itō killed</em></span>
+        <span>1910<br><em>Annexation</em></span>
+        <span>Mar 1, 1919<br><em>Declaration</em></span>
+        <span>Apr 1919<br><em>Shanghai govt</em></span>
+        <span>1945<br><em>Liberation</em></span>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-ticks">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
       </div>
     </div>
   </div>
 
   <!-- Map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-    #korean-nat-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
-    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
-    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
-    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
-    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
-    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
-  </style>
   <div class="map-section">
-    <span class="label">Map: Korean Independence Movement</span>
+    <span class="label">Map: Korean Independence Movement (三一運動)</span>
     <div id="korean-nat-map"></div>
   </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     (function() {
       const map = L.map('korean-nat-map', { zoomControl: false, attributionControl: false });
@@ -360,16 +356,16 @@
       titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '三一運動 March First Movement'; return div; };
       titleControl.addTo(map);
       const legendControl = L.control({ position: 'bottomright' });
-      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Resistance Sites</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> Exile Gov't</div>'; return div; };
+      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Resistance Sites</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> Exile Gov\'t</div>'; return div; };
       legendControl.addTo(map);
       const locs = [
         { name: "Seoul (Pagoda Park)", kr: "塔洞公園", desc: "Declaration read Mar 1, 1919", lat: 37.573, lng: 126.988, color: "#e63946", r: 9 },
         { name: "Seodaemun Prison", kr: "西大門", desc: "Nationalists imprisoned", lat: 37.57, lng: 126.96, color: "#e63946", r: 7 },
         { name: "Cheonan", kr: "天安", desc: "Yu Gwan-sun's home", lat: 36.807, lng: 127.152, color: "#e63946", r: 6 },
-        { name: "Harbin", kr: "哈爾濱", desc: "An Jung-geun killed Itō 1909", lat: 45.75, lng: 126.65, color: "#f4a261", r: 8 },
+        { name: "Harbin", kr: "哈爾濱", desc: "An Chung-gŭn killed Itō 1909", lat: 45.75, lng: 126.65, color: "#f4a261", r: 8 },
         { name: "Shanghai", kr: "上海", desc: "Provisional Government in exile", lat: 31.224, lng: 121.469, color: "#457b9d", r: 8 }
       ];
-      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.kr} ${l.name}</b><br>${l.desc}`));
+      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup('<b>' + l.kr + ' ' + l.name + '</b><br>' + l.desc));
       map.fitBounds([[28, 118], [47, 130]]);
     })();
   </script>
@@ -380,37 +376,42 @@
       <thead>
         <tr>
           <th colspan="2"><span class="label">Penetrating Questions</span></th>
-          <th><span class="label">Very short answers</span></th>
+          <th><span class="label">Key Points</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="q-num">1</td>
-          <td class="question-cell filled">How does Korean nationalism differ from Japanese nationalism?</td>
-          <td class="answer-cell filled">Japanese nationalism was expansionist, based on power. Korean nationalism was defensive, based on victimhood and justice claims. Japanese cited Social Darwinism; Koreans cited civilization and righteousness. What are the implications of these different foundations?</td>
+          <td class="question-cell filled">"Our task today is to build up our own strength, not to destroy others." Why adopt non-violence against a violent colonizer?</td>
+          <td class="answer-cell filled">Strategic: couldn't win militarily. Moral: appeal to "awakening conscience of mankind." Religious: Buddhist & Christian signatories. Crushed but created lasting identity.</td>
         </tr>
         <tr>
           <td class="q-num">2</td>
-          <td class="question-cell filled">Why did the March First Movement fail to achieve independence?</td>
-          <td class="answer-cell filled">International community didn't support; Wilson's self-determination didn't apply to Japan's colonies. Japan had military power to suppress. But did it 'fail'? It created national consciousness, exile government, martyrs.</td>
+          <td class="question-cell filled">"Have we asked to become a colony of your country, a nation devoid of morality?" How does Korean nationalism judge Japan?</td>
+          <td class="answer-cell filled">By universal/international standards, not Asian traditions. Japan violated its own treaties (Shimonoseki). Korea claims moral high ground. Reverses "barbarian" rhetoric.</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">The Constitution proclaimed equality of "men and women, noble and common, rich and poor." How radical was this for 1919?</td>
+          <td class="answer-cell filled">Rejected yangban-commoner divide. Gender equality unprecedented (US women voted 1920). Nationalism as vehicle for social revolution.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Bottom: Causes/Effects + Notes -->
+  <!-- Bottom: Connections + Notes -->
   <div class="bottom-section">
     <div class="causes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+          <tr><th><span class="label">Connections</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              <strong>From Plate 17:</strong> Plate 17 examined the Japanese nationalism that justified colonizing Korea. Now we see the Korean response.<br>
-<strong>Context:</strong> Colonialism creates nationalism among the colonized. But the content of that nationalism varies. Compare Korean, Indian, Vietnamese nationalisms as responses to colonialism.<br>
-<strong>To Plate 19:</strong> Plate 19 examines Chinese nationalism—also forged in humiliation and resistance, but with different dynamics.
+              <strong>From Plate 17:</strong> Japanese nationalism justified colonization. Now we see the response&mdash;moralistic, victim-centered, non-violent rather than Social Darwinist.<br>
+              <strong>Broader theme:</strong> Colonialism creates nationalism, but content varies. Korean nationalism appeals to universal principles, not ethnic supremacy.<br>
+              <strong>To Plate 19:</strong> Chinese nationalism (Lu Xun) turns inward&mdash;blaming China itself. Korean nationalism blamed Japan. Both from humiliation; different responses.
             </td>
           </tr>
         </tbody>
@@ -419,16 +420,16 @@
     <div class="notes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Notes</span></th></tr>
+          <tr><th><span class="label">Teaching Notes</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              • Read the Declaration of Independence aloud—it's eloquent and moving.<br>
-              • An Jung-geun is hero in Korea, terrorist in Japan. Good example of contested historical memory.<br>
-              • Yu Gwan-sun, a teenage girl tortured to death, is a major nationalist icon. Her story is powerful.<br>
-              • March First is a national holiday in South Korea; understanding why helps understand Korean identity.<br>
-              • Contemporary connection: Japan-Korea disputes often invoke this colonial history.
+              &bull; READ ALOUD the Declaration's opening&mdash;it's eloquent and moving<br>
+              &bull; "Nation devoid of morality" is most quotable attack on Japan<br>
+              &bull; Ch'oe Namsŏn drafted but later collaborated&mdash;colonial complexity<br>
+              &bull; March 1 still a national holiday&mdash;this history lives today<br>
+              &bull; Both Koreas claim March First: North (armed struggle) vs South (non-violence)
             </td>
           </tr>
         </tbody>

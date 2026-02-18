@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Korean Nationalism: Six Documents, 1895-1941</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; }
+
+    .back-link { display: inline-block; padding: 12px 40px; font-size: 12px; color: #888; text-decoration: none; }
+    .back-link:hover { color: #fff; }
+
+    .header {
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2d 50%, #0d1b2a 100%);
+      padding: 32px 40px 36px;
+      border-bottom: 3px solid #c9a962;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 300px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><text x="100" y="120" text-anchor="middle" font-size="120" fill="rgba(201,169,98,0.04)" font-family="serif">韓</text></svg>') no-repeat center;
+      background-size: contain;
+    }
+    .header .week { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #c9a962; margin-bottom: 8px; }
+    .header h1 { font-size: 28px; font-weight: 300; color: #fff; margin-bottom: 6px; position: relative; }
+    .header .subtitle { font-size: 14px; color: #c9a962; font-weight: 600; letter-spacing: 1px; position: relative; }
+    .header .context { font-size: 13px; color: #999; margin-top: 14px; max-width: 750px; line-height: 1.6; position: relative; }
+
+    .main { display: grid; grid-template-columns: 1fr 380px; min-height: calc(100vh - 200px); }
+
+    .content { padding: 32px 40px; overflow-y: auto; }
+    .sidebar { background: #1a1a1a; padding: 24px; overflow-y: auto; border-left: 1px solid #252525; }
+
+    .section-label { font-size: 11px; color: #c9a962; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; font-weight: 600; }
+
+    /* Document cards */
+    .doc-card {
+      background: #1a1a1a; border-radius: 10px; padding: 20px; margin-bottom: 20px;
+      border-left: 4px solid #555; transition: transform 0.15s ease;
+    }
+    .doc-card:hover { transform: translateX(4px); }
+    .doc-card.righteous { border-left-color: #e63946; }
+    .doc-card.enlightenment { border-left-color: #f4a261; }
+    .doc-card.declaration { border-left-color: #457b9d; }
+    .doc-card.constitution { border-left-color: #2a9d8f; }
+    .doc-card.recognition { border-left-color: #a855f7; }
+    .doc-card.war { border-left-color: #e76f51; }
+
+    .doc-card .doc-num { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600; }
+    .doc-card.righteous .doc-num { color: #e63946; }
+    .doc-card.enlightenment .doc-num { color: #f4a261; }
+    .doc-card.declaration .doc-num { color: #457b9d; }
+    .doc-card.constitution .doc-num { color: #2a9d8f; }
+    .doc-card.recognition .doc-num { color: #a855f7; }
+    .doc-card.war .doc-num { color: #e76f51; }
+
+    .doc-card .title { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .doc-card .meta { font-size: 12px; color: #888; margin-bottom: 10px; }
+    .doc-card .desc { font-size: 13px; color: #bbb; line-height: 1.6; margin-bottom: 12px; }
+    .doc-card .quote-block {
+      background: #111; border-left: 2px solid #555; padding: 10px 14px;
+      font-style: italic; font-size: 13px; color: #999; line-height: 1.5;
+      font-family: 'Noto Serif', Georgia, serif; margin-bottom: 8px; border-radius: 0 4px 4px 0;
+    }
+    .doc-card .quote-src { font-size: 10px; color: #666; text-align: right; }
+
+    /* Author bio cards */
+    .bio-card {
+      background: #252525; border-radius: 8px; padding: 14px; margin-bottom: 12px;
+      border-left: 3px solid #c9a962; transition: background 0.15s;
+    }
+    .bio-card:hover { background: #2a2a2a; }
+    .bio-card .name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+    .bio-card .name-kr { font-size: 12px; color: #c9a962; font-family: 'Noto Sans KR', sans-serif; margin-bottom: 6px; }
+    .bio-card .dates { font-size: 11px; color: #666; margin-bottom: 8px; }
+    .bio-card .role { display: inline-block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 10px; margin-bottom: 8px; font-weight: 600; }
+    .bio-card .role.military { background: rgba(230,57,70,0.2); color: #e63946; }
+    .bio-card .role.intellectual { background: rgba(244,162,97,0.2); color: #f4a261; }
+    .bio-card .role.religious { background: rgba(69,123,157,0.2); color: #6db3d4; }
+    .bio-card .role.literary { background: rgba(42,157,143,0.2); color: #2a9d8f; }
+    .bio-card .role.political { background: rgba(168,85,247,0.2); color: #a855f7; }
+    .bio-card .bio { font-size: 12px; color: #aaa; line-height: 1.5; }
+    .bio-card .notable { font-size: 11px; color: #888; margin-top: 8px; padding-top: 8px; border-top: 1px solid #333; }
+    .bio-card .notable strong { color: #c9a962; }
+
+    /* Timeline */
+    .timeline-strip {
+      background: #141414; border-top: 1px solid #252525; border-bottom: 1px solid #252525;
+      padding: 28px 40px;
+    }
+    .tl-track { display: flex; position: relative; padding-top: 8px; }
+    .tl-track::before {
+      content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #333;
+    }
+    .tl-event {
+      flex: 1; text-align: center; position: relative; padding-top: 20px;
+    }
+    .tl-event::before {
+      content: ''; position: absolute; top: calc(50% - 10px); left: 50%;
+      width: 8px; height: 8px; border-radius: 50%; background: #c9a962;
+      transform: translateX(-50%); border: 2px solid #0f0f0f;
+    }
+    .tl-event .year { font-size: 12px; font-weight: 700; color: #c9a962; display: block; margin-bottom: 2px; }
+    .tl-event .label { font-size: 10px; color: #888; line-height: 1.3; }
+
+    /* Synthesis */
+    .synthesis {
+      background: linear-gradient(135deg, #0d1b2a, #1a1a2d);
+      border: 1px solid #c9a962; border-radius: 10px;
+      padding: 24px; margin: 24px 40px 40px;
+    }
+    .synthesis h3 { font-size: 13px; color: #c9a962; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .synthesis p { font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 12px; }
+    .synthesis p:last-child { margin-bottom: 0; }
+
+    /* Phase labels */
+    .phase-divider {
+      display: flex; align-items: center; gap: 12px; margin: 28px 0 20px;
+    }
+    .phase-divider .line { flex: 1; height: 1px; background: #333; }
+    .phase-divider .label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #666; white-space: nowrap; }
+
+    @media (max-width: 900px) {
+      .main { grid-template-columns: 1fr; }
+      .sidebar { border-left: none; border-top: 1px solid #252525; }
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="header">
+    <div class="week">Week 7 &middot; Plate 18</div>
+    <h1>Korean Nationalism: Six Documents, 1895-1941</h1>
+    <div class="subtitle">From Righteous Armies to Declaration of War</div>
+    <div class="context">
+      This reading traces 46 years of Korean resistance to Japanese imperialism through six primary documents.
+      The arc moves from armed guerrilla resistance (1895-1908) through enlightenment-era nation-building (1906)
+      to the March First Declaration (1919), a provisional government and constitution, and finally a declaration of war
+      against Japan after Pearl Harbor (1941). Each document represents a distinct strategy for national survival.
+    </div>
+  </div>
+
+  <div class="timeline-strip">
+    <div class="section-label">Timeline of Korean Resistance</div>
+    <div class="tl-track">
+      <div class="tl-event"><span class="year">1895</span><span class="label">Queen Min assassinated; first Righteous Armies</span></div>
+      <div class="tl-event"><span class="year">1905</span><span class="label">Eulsa Treaty; Korea becomes protectorate</span></div>
+      <div class="tl-event"><span class="year">1906</span><span class="label">Self-Strengthening Association founded</span></div>
+      <div class="tl-event"><span class="year">1907</span><span class="label">Korean army disbanded; guerrilla war</span></div>
+      <div class="tl-event"><span class="year">1910</span><span class="label">Formal annexation by Japan</span></div>
+      <div class="tl-event"><span class="year">1919</span><span class="label">March First Movement; Provisional Government</span></div>
+      <div class="tl-event"><span class="year">1941</span><span class="label">KPG declares war on Japan</span></div>
+      <div class="tl-event"><span class="year">1945</span><span class="label">Liberation (and division)</span></div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="content">
+      <div class="section-label">The Documents</div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Phase I: Armed Resistance (1895-1908)</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="doc-card righteous">
+        <div class="doc-num">Document 1 &middot; pp. 294-295</div>
+        <div class="title">Yi Kangnyŏn: Open Letter to Itō Hirobumi</div>
+        <div class="meta">From <em>Munhwa sa</em>, p. 482 &middot; Righteous Army commander addresses Japan's Resident-General</div>
+        <div class="desc">
+          A Confucian scholar turned guerrilla commander writes directly to the man running Korea. Yi Kangnyŏn's letter is a point-by-point indictment: you invaded our land, murdered our queen, humiliated our monarch, exploited our finances, changed our customs. He invokes the Treaty of Shimonoseki (which recognized Korean independence) to argue that Japan violated its own agreements. The tone is furious, dignified, and uncompromising.
+        </div>
+        <div class="quote-block">
+          "Have we asked to become a colony of your country, a nation devoid of morality? ... You have violated international commitments vis-a-vis other nations. You have deceived your own sovereign. In our country, you have become an unforgivable enemy."
+        </div>
+        <div class="quote-src">p. 294</div>
+        <div class="desc" style="margin-top:10px;">
+          The letter ends with a military threat: "We have raised our righteous banner, and the entire nation has responded. On land and at sea, there is a chain of our armed camps." This is the voice of armed resistance, of men who chose to fight rather than submit.
+        </div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Phase II: Enlightenment &amp; Self-Strengthening (1905-1910)</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="doc-card enlightenment">
+        <div class="doc-num">Document 2 &middot; pp. 295-296</div>
+        <div class="title">The Patriotic Enlightenment Movement</div>
+        <div class="meta">Korean Association for Self-Strengthening (Taehan Chaganghoe), est. March 1906</div>
+        <div class="desc">
+          While the Righteous Armies fought with guns, the enlightenment movement fought with schools and businesses. Their strategy: build Korea into a modern nation with a strong economic base, educate a new generation, then push Japan out. The Korean Association for Self-Strengthening, led by Yun Ch'iho with Chang Chiyŏn and Yun Hyojŏng, focused on education and economic development as twin pillars of national survival.
+        </div>
+        <div class="quote-block">
+          "The enlightenment movement aimed at building up Korea as a modern advanced nation with a strong economic base in order to push Japan out eventually. Education was to inculcate the national spirit in the younger generation."
+        </div>
+        <div class="quote-src">p. 295</div>
+        <div class="desc" style="margin-top:10px;">
+          This represents a fundamentally different theory of resistance. Not military confrontation, but national capacity-building. The bet: if Korea modernized fast enough, it could eventually reclaim sovereignty through strength rather than force. The bet lost. Japan annexed Korea in 1910 before self-strengthening could bear fruit.
+        </div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Phase III: The March First Movement (1919)</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="doc-card declaration">
+        <div class="doc-num">Document 3 &middot; pp. 336-339</div>
+        <div class="title">Son Pyŏnghŭi and Others: Declaration of Independence</div>
+        <div class="meta">From <em>Korean Studies</em> 13:1-4 &middot; Drafted by Ch'oe Namsŏn &middot; Read March 1, 1919</div>
+        <div class="desc">
+          The centerpiece of the reading. Drafted by the 29-year-old publisher Ch'oe Namsŏn, read at Taehwagwan Restaurant in Seoul, this declaration sparked the largest anti-colonial uprising in Korean history. The tone is extraordinary: dignified, restrained, and deliberately non-violent. The authors frame Korean independence as a matter of universal justice, not ethnic grievance.
+        </div>
+        <div class="quote-block">
+          "We hereby declare that Korea is an independent state and that Koreans are a self-governing people. We proclaim it to the nations of the world in affirmation of the principle of the equality of all nations."
+        </div>
+        <div class="quote-src">p. 337</div>
+        <div class="desc" style="margin-top:10px;">
+          What makes this declaration distinctive is its refusal to demonize Japan: "We do not intend to accuse Japan of infidelity ... we must first blame ourselves before finding fault with others." The Three Open Pledges at the end (attributed to Han Yongun) commit to non-violence, transparency, and honorable conduct. The 33 signers then called the police and waited to be arrested. Of the signers: 15 were Ch'ŏndogyo leaders, 16 Protestant Christians, 2 Buddhists.
+        </div>
+        <div class="quote-block">
+          "Our task today is to build up our own strength, not to destroy others. We must chart a new course for ourselves in accord with the solemn dictates of conscience."
+        </div>
+        <div class="quote-src">p. 338</div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Phase IV: Government in Exile (1919-1945)</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="doc-card constitution">
+        <div class="doc-num">Document 4 &middot; p. 339</div>
+        <div class="title">Provisional Constitution of the Korean Government in Exile</div>
+        <div class="meta">From <em>Hanguk tongnip undong sa</em> 3:326 &middot; Adopted in Shanghai, April 1919</div>
+        <div class="desc">
+          Within weeks of March First, Korean activists established a provisional government in Shanghai's French Concession. Its constitution is strikingly modern and democratic: "The Korean Republic shall be a democratic republic. There shall be no class distinctions among the citizens ... men and women, noble and common, rich and poor, shall have complete equality." Yi Tongnyŏng headed the legislature, Syngman Rhee the executive. The Shanghai government became the rallying point for Korean independence until 1945.
+        </div>
+      </div>
+
+      <div class="doc-card recognition">
+        <div class="doc-num">Document 5 &middot; p. 350</div>
+        <div class="title">Demand for International Recognition</div>
+        <div class="meta">Contextual section on the Provisional Government's diplomatic efforts</div>
+        <div class="desc">
+          The Provisional Government sent emissaries to international gatherings, including the Versailles Peace Conference. It established a military headquarters in Manchuria and created the Korean Volunteers Corps (Chosŏn Ŭiyonggun). But the hard truth: "The United States government refrained from recognizing any Korean exile organization." Diplomatic efforts yielded nothing tangible. Korea did not win freedom through a war of national liberation, nor did it build a unified political structure that could succeed the colonial regime.
+        </div>
+      </div>
+
+      <div class="doc-card war">
+        <div class="doc-num">Document 6 &middot; pp. 350-351</div>
+        <div class="title">Declaration of War on Japan (9 December 1941)</div>
+        <div class="meta">From <em>Tongnip undong sa</em> 6:260 &middot; Issued two days after Pearl Harbor</div>
+        <div class="desc">
+          Two days after Pearl Harbor, the Korean Provisional Government declared war on Japan, aligning with China, the US, UK, and Soviet Union. The declaration voids the 1910 annexation treaty and "all other unequal treaties." It commits to fighting "to the day of final victory in order to expel completely the Japanese aggressors from Korea, China, and the Pacific region." The document also invokes the Roosevelt-Churchill declaration (Atlantic Charter) and its promise of self-government for all peoples.
+        </div>
+        <div class="quote-block">
+          "We firmly uphold the items in the joint Roosevelt-Churchill declaration that must be implemented to bring about the independence of Korea and happily predict ultimate victory for the democratic alliance."
+        </div>
+        <div class="quote-src">p. 351</div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="section-label">Who Wrote These Documents</div>
+
+      <div class="bio-card">
+        <div class="name">Yi Kangnyŏn</div>
+        <div class="name-kr">이강년 (李康秊)</div>
+        <div class="dates">1858-1908</div>
+        <div class="role military">Righteous Army Commander</div>
+        <div class="bio">Confucian scholar from Mungyŏng who first raised volunteer forces in 1895 after the assassination of Queen Min. After Japan disbanded the Korean army in 1907, he mobilized guerrilla forces across Ch'ungch'ŏng and Kyŏngsang provinces, becoming a general in the Thirteen Provinces Alliance.</div>
+        <div class="notable"><strong>End:</strong> Captured in Ch'ŏngp'ung-gun, June 1908. Executed by hanging at Sŏdaemun Prison, October 13, 1908.</div>
+      </div>
+
+      <div class="bio-card">
+        <div class="name">Yun Ch'iho</div>
+        <div class="name-kr">윤치호 (尹致昊)</div>
+        <div class="dates">1864-1945</div>
+        <div class="role intellectual">Enlightenment Leader</div>
+        <div class="bio">One of Korea's earliest Western-educated intellectuals (Vanderbilt, Emory). Led the Independence Club in the 1890s, then headed the Korean Association for Self-Strengthening in 1906. His English-language diaries are a major historical source.</div>
+        <div class="notable"><strong>Controversy:</strong> Declined to support the March First Movement. Increasingly collaborated with Japan during colonial period, earning the label <em>ch'inilp'a</em> (pro-Japanese collaborator).</div>
+      </div>
+
+      <div class="bio-card">
+        <div class="name">Chang Chiyŏn</div>
+        <div class="name-kr">장지연 (張志淵)</div>
+        <div class="dates">1864-1921</div>
+        <div class="role intellectual">Journalist &amp; Patriot</div>
+        <div class="bio">Editor of the <em>Hwangsŏng sinmun</em> (Capital Gazette). Famous for his 1905 editorial "Siilya pangsŏng taegok" ("I Wail Bitterly Today") denouncing the Eulsa Treaty that stripped Korea of sovereignty. Arrested for the editorial, became a symbol of press resistance.</div>
+        <div class="notable"><strong>Legacy:</strong> His editorial is one of the most famous acts of press resistance in Korean history.</div>
+      </div>
+
+      <div class="bio-card">
+        <div class="name">Son Pyŏnghŭi</div>
+        <div class="name-kr">손병희 (孫秉熙)</div>
+        <div class="dates">1861-1922</div>
+        <div class="role religious">Ch'ŏndogyo Leader</div>
+        <div class="bio">Third leader of the Tonghak movement, who reorganized it as Ch'ŏndogyo (Religion of the Heavenly Way) in 1905. Born son of a concubine, joined Tonghak in 1882, fled to Japan in 1901 to study modernization. First name on the list of 33 signers of the Declaration of Independence.</div>
+        <div class="notable"><strong>March First:</strong> Read the Declaration at Taehwagwan Restaurant, then phoned the police to report what they had done and await arrest. Died May 19, 1922 after falling ill in prison.</div>
+      </div>
+
+      <div class="bio-card">
+        <div class="name">Ch'oe Namsŏn</div>
+        <div class="name-kr">최남선 (崔南善)</div>
+        <div class="dates">1890-1957</div>
+        <div class="role literary">Writer &amp; Publisher</div>
+        <div class="bio">Founded Korea's first modern magazine (<em>Sonyŏn</em>, "Youth") at age 18 in 1908. Drafted the 1919 Declaration of Independence at age 29 in a literary form that drew on classical Chinese style. Did not sign it himself, professing "disinclination to become openly involved."</div>
+        <div class="notable"><strong>Controversy:</strong> Imprisoned for nearly 3 years for his role. Later collaborated with Japan during wartime, which severely tainted his legacy in Korean memory.</div>
+      </div>
+
+      <div class="bio-card">
+        <div class="name">Han Yongun</div>
+        <div class="name-kr">한용운 (韓龍雲), pen name Manhae</div>
+        <div class="dates">1879-1944</div>
+        <div class="role religious">Buddhist Monk &amp; Poet</div>
+        <div class="bio">Buddhist reformer who authored <em>Treatise on the Reformation of Korean Buddhism</em>. One of the 33 signers of the Declaration, he allegedly drafted the Three Open Pledges. Later published <em>Nim ŭi ch'immuk</em> (Your Silence, 1926), blending Buddhist spirituality with political longing for independence.</div>
+        <div class="notable"><strong>Defiance:</strong> Built his house in Seoul facing away from the Japanese Government-General building as a deliberate act of resistance. Never collaborated. Died in 1944, one year before liberation.</div>
+      </div>
+
+      <div class="bio-card">
+        <div class="name">Syngman Rhee</div>
+        <div class="name-kr">이승만 (李承晩)</div>
+        <div class="dates">1875-1965</div>
+        <div class="role political">Provisional Government President</div>
+        <div class="bio">First Korean to hold an American doctorate (Princeton, 1910). Elected president of the Korean Provisional Government in Shanghai in 1919. Spent most of his tenure lobbying from the US. Later became first president of the Republic of Korea (1948-1960).</div>
+        <div class="notable"><strong>After:</strong> Authoritarian ruler, overthrown by student revolution in 1960. Died in exile in Honolulu.</div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <div class="section-label">Teaching Angle</div>
+        <div style="background: #252525; border-radius: 8px; padding: 14px; font-size: 12px; color: #aaa; line-height: 1.6;">
+          <p style="margin-bottom:10px;"><strong style="color:#c9a962;">Three strategies, one goal:</strong> Armed resistance (Yi Kangnyŏn), self-strengthening (enlightenment movement), moral appeal (March First). All failed to achieve independence. Japan was too strong, the international community indifferent. Yet each built the scaffolding of Korean national identity.</p>
+          <p style="margin-bottom:10px;"><strong style="color:#c9a962;">Compare with Plate 17:</strong> Japanese nationalism (Tokutomi Sohō) was about power, expansion, Social Darwinism. Korean nationalism was about justice, victimhood, moral claims. Same region, opposite frameworks.</p>
+          <p><strong style="color:#c9a962;">The 33 signers:</strong> 15 Ch'ŏndogyo, 16 Protestant Christian, 2 Buddhist. Religion was the organizational backbone of Korean nationalism. Why? Because Japan controlled all secular institutions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="synthesis">
+    <h3>The Arc of Korean Resistance</h3>
+    <p>Read together, these six documents trace a 46-year evolution in strategy. Yi Kangnyŏn's Open Letter (1895-1908) is the voice of armed resistance: direct, furious, backed by guerrilla armies. The Self-Strengthening movement (1906) represents the bet on modernization: build schools and businesses, and sovereignty will follow. The Declaration of Independence (1919) is the moral appeal: frame Korean independence as universal justice, trust the international community.</p>
+    <p>Each strategy failed on its own terms. The Righteous Armies were outgunned. Self-strengthening was overtaken by annexation. The March First moral appeal fell on deaf ears at Versailles. The Provisional Government spent 26 years in exile without diplomatic recognition. And yet: the fire of Korean nationalism was kept alive throughout thirty-five-year colonial rule. When liberation came in August 1945, it came from external forces (Japan's surrender), not Korean military victory. But the national consciousness forged across these decades made it possible to reconstitute Korea as a nation.</p>
+    <p>The final irony: the Declaration of War (1941) aligns Korea with the Allied democratic alliance. But it was the Soviet entry into the Pacific War, not Korean military action, that actually liberated the peninsula. And liberation brought not unity but division, a wound still unhealed.</p>
+  </div>
+</body>
+</html>

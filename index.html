@@ -650,6 +650,34 @@ function renderSidebar(p, i) {
     h += '<div class="source">Peasant uprising, Jeon Bong-jun, and the war that changed East Asia</div>';
     h += '</a>';
   }
+  if (p.plate === 18) {
+    h += '<div class="section-title">📚 Deep Dive & Author Bios</div>';
+    h += '<a href="print/korean-nationalism-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card primary" style="margin-bottom:12px">';
+    h += '<div class="type-badge">Deep Dive</div>';
+    h += '<div class="title">Korean Nationalism: Six Documents, 1895-1941</div>';
+    h += '<div class="author">Yi Kangnyŏn · Son Pyŏnghŭi · Ch\'oe Namsŏn · Han Yongun</div>';
+    h += '<div class="source">Full document analysis + 7 author bios with dates and context</div>';
+    h += '</a>';
+    h += '<div class="section-title" style="margin-top:16px">📋 Documents at a Glance</div>';
+    h += '<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;font-size:12px;line-height:1.7">';
+    h += '<div style="margin-bottom:6px"><span style="color:#e63946;font-weight:600">1.</span> Yi Kangnyŏn: Open Letter to Itō <span style="color:var(--text-muted)">(pp. 294-295)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#f4a261;font-weight:600">2.</span> Patriotic Enlightenment Movement <span style="color:var(--text-muted)">(pp. 295-296)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#457b9d;font-weight:600">3.</span> Declaration of Independence <span style="color:var(--text-muted)">(pp. 336-339)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#2a9d8f;font-weight:600">4.</span> Provisional Constitution <span style="color:var(--text-muted)">(p. 339)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#a855f7;font-weight:600">5.</span> Demand for International Recognition <span style="color:var(--text-muted)">(p. 350)</span></div>';
+    h += '<div><span style="color:#e76f51;font-weight:600">6.</span> Declaration of War on Japan <span style="color:var(--text-muted)">(pp. 350-351)</span></div>';
+    h += '</div>';
+    h += '<div class="section-title" style="margin-top:16px">🎯 Key Figures</div>';
+    h += '<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;font-size:11px;line-height:1.6">';
+    h += '<div style="margin-bottom:8px"><strong style="color:#e63946">Yi Kangnyŏn</strong> (1858-1908)<br>Righteous Army commander. Wrote the Open Letter. Executed at Sŏdaemun Prison.</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#f4a261">Yun Ch\'iho</strong> (1864-1945)<br>Self-Strengthening leader. Vanderbilt/Emory educated. Later collaborated with Japan.</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#f4a261">Chang Chiyŏn</strong> (1864-1921)<br>Journalist. "I Wail Bitterly Today" editorial. Symbol of press resistance.</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#457b9d">Son Pyŏnghŭi</strong> (1861-1922)<br>Ch\'ŏndogyo leader. First signer of Declaration. Phoned police on himself.</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#457b9d">Ch\'oe Namsŏn</strong> (1890-1957)<br>Drafted Declaration at age 29. Didn\'t sign it. Later collaborated with Japan.</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#457b9d">Han Yongun</strong> (1879-1944)<br>Buddhist monk, poet. Drafted the Three Pledges. Never collaborated. Built his house facing away from Japan\'s HQ.</div>';
+    h += '<div><strong style="color:#a855f7">Syngman Rhee</strong> (1875-1965)<br>Provisional Government president. First Korean with US doctorate (Princeton). Later ROK president.</div>';
+    h += '</div>';
+  }
 
   var ni = i + 1;
   while (ni < plates.length && plates[ni].noClass) ni++;

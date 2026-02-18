@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lawfare: How Treaties Killed a Nation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #0a0a0a; color: #ddd; }
+
+    .back-link { display: inline-block; padding: 12px 40px; font-size: 12px; color: #888; text-decoration: none; }
+    .back-link:hover { color: #fff; }
+
+    .header {
+      background: linear-gradient(135deg, #1a0a0a 0%, #2d1010 50%, #1a0808 100%);
+      padding: 36px 40px 40px;
+      border-bottom: 3px solid #8b0000;
+      position: relative; overflow: hidden;
+    }
+    .header::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 350px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><text x="100" y="130" text-anchor="middle" font-size="100" fill="rgba(139,0,0,0.06)" font-family="serif">約</text></svg>') no-repeat center;
+      background-size: contain;
+    }
+    .header .week { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #cc4444; margin-bottom: 8px; }
+    .header h1 { font-size: 30px; font-weight: 300; color: #fff; margin-bottom: 6px; position: relative; }
+    .header .subtitle { font-size: 14px; color: #cc4444; font-weight: 600; letter-spacing: 1px; position: relative; }
+    .header .context { font-size: 13px; color: #999; margin-top: 14px; max-width: 750px; line-height: 1.6; position: relative; }
+
+    /* Ratchet visual */
+    .ratchet-strip {
+      background: #111; border-bottom: 1px solid #222; padding: 28px 40px;
+    }
+    .ratchet-label { font-size: 11px; color: #cc4444; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; font-weight: 600; }
+    .ratchet-track {
+      display: flex; gap: 0; position: relative;
+    }
+    .ratchet-step {
+      flex: 1; text-align: center; padding: 16px 8px; position: relative;
+      border-right: 1px solid #222;
+      transition: background 0.2s;
+    }
+    .ratchet-step:last-child { border-right: none; }
+    .ratchet-step:hover { background: #1a1a1a; }
+    .ratchet-step .year { font-size: 14px; font-weight: 700; color: #cc4444; display: block; margin-bottom: 4px; }
+    .ratchet-step .treaty { font-size: 11px; color: #fff; font-weight: 600; display: block; margin-bottom: 4px; line-height: 1.3; }
+    .ratchet-step .lost { font-size: 10px; color: #888; line-height: 1.3; }
+    .ratchet-arrow { position: absolute; right: -8px; top: 50%; transform: translateY(-50%); color: #cc4444; font-size: 14px; z-index: 2; }
+
+    /* Main grid */
+    .main { display: grid; grid-template-columns: 1fr 360px; min-height: calc(100vh - 300px); }
+    .content { padding: 32px 40px; }
+    .sidebar { background: #111; padding: 24px; border-left: 1px solid #1a1a1a; overflow-y: auto; }
+
+    .section-label { font-size: 11px; color: #cc4444; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; font-weight: 600; }
+
+    /* Treaty cards */
+    .treaty-card {
+      background: #141414; border-radius: 10px; padding: 22px; margin-bottom: 24px;
+      border: 1px solid #222; position: relative; overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .treaty-card:hover { border-color: #333; }
+    .treaty-card::before {
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
+    }
+    .treaty-card.t1876::before { background: #666; }
+    .treaty-card.t1895::before { background: #cc8833; }
+    .treaty-card.t1905::before { background: #cc4444; }
+    .treaty-card.t1907::before { background: #aa2222; }
+    .treaty-card.t1910::before { background: #8b0000; }
+
+    .treaty-card .treaty-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .treaty-card .treaty-name { font-size: 17px; font-weight: 600; color: #fff; line-height: 1.3; }
+    .treaty-card .treaty-date {
+      font-size: 10px; background: #222; color: #cc4444; padding: 3px 10px;
+      border-radius: 10px; font-weight: 600; white-space: nowrap; margin-left: 12px; flex-shrink: 0;
+    }
+    .treaty-card .signatories { font-size: 11px; color: #666; margin-bottom: 10px; }
+    .treaty-card .signatories strong { color: #999; }
+    .treaty-card .desc { font-size: 13px; color: #bbb; line-height: 1.7; margin-bottom: 14px; }
+
+    .treaty-card .coercion-box {
+      background: #1a0808; border: 1px solid #331111; border-radius: 6px;
+      padding: 12px 14px; margin-bottom: 14px;
+    }
+    .treaty-card .coercion-box .coercion-label {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+      color: #cc4444; font-weight: 600; margin-bottom: 6px;
+    }
+    .treaty-card .coercion-box .coercion-text { font-size: 12px; color: #999; line-height: 1.5; }
+
+    .treaty-card .stripped {
+      background: #111; border-radius: 6px; padding: 10px 14px;
+    }
+    .treaty-card .stripped .stripped-label {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+      color: #888; font-weight: 600; margin-bottom: 6px;
+    }
+    .treaty-card .stripped-item {
+      font-size: 12px; color: #cc4444; font-weight: 500; padding: 2px 0;
+    }
+
+    .treaty-card .quote-block {
+      background: #0a0a0a; border-left: 2px solid #cc4444; padding: 10px 14px;
+      font-style: italic; font-size: 13px; color: #999; line-height: 1.5;
+      font-family: 'Noto Serif', Georgia, serif; margin: 14px 0 8px; border-radius: 0 4px 4px 0;
+    }
+    .treaty-card .quote-src { font-size: 10px; color: #555; }
+
+    /* Sidebar cards */
+    .sidebar-card {
+      background: #1a1a1a; border-radius: 8px; padding: 14px; margin-bottom: 14px;
+      border-left: 3px solid #333;
+    }
+    .sidebar-card.hague { border-left-color: #cc8833; }
+    .sidebar-card.traitors { border-left-color: #cc4444; }
+    .sidebar-card.legal { border-left-color: #6688cc; }
+    .sidebar-card.reading { border-left-color: #c9a962; }
+
+    .sidebar-card .card-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+    .sidebar-card .card-text { font-size: 12px; color: #aaa; line-height: 1.6; }
+    .sidebar-card .card-text strong { color: #ccc; }
+
+    .person-tag {
+      display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px;
+      margin: 2px 2px; background: #222; color: #cc4444; font-weight: 500;
+    }
+
+    /* Synthesis */
+    .synthesis {
+      background: linear-gradient(135deg, #1a0808, #0a0a0a);
+      border: 1px solid #8b0000; border-radius: 10px;
+      padding: 24px; margin: 0 40px 40px;
+    }
+    .synthesis h3 { font-size: 13px; color: #cc4444; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .synthesis p { font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 12px; }
+    .synthesis p:last-child { margin-bottom: 0; }
+
+    .phase-divider { display: flex; align-items: center; gap: 12px; margin: 28px 0 20px; }
+    .phase-divider .line { flex: 1; height: 1px; background: #222; }
+    .phase-divider .label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #555; white-space: nowrap; }
+
+    @media (max-width: 900px) {
+      .main { grid-template-columns: 1fr; }
+      .sidebar { border-left: none; border-top: 1px solid #222; }
+      .ratchet-track { flex-wrap: wrap; }
+      .ratchet-step { flex: none; width: 50%; }
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="header">
+    <div class="week">Week 7 &middot; Plate 18 &middot; Analytical Deep Dive</div>
+    <h1>Lawfare: How Treaties Killed a Nation</h1>
+    <div class="subtitle">The Legal Architecture of Korean Subjugation, 1876-1910</div>
+    <div class="context">
+      Japan did not simply invade Korea. It dismantled Korean sovereignty through a sequence of treaties,
+      each signed under military coercion, each stripping another layer of rights, each dressed in the legal
+      language of consent. This is lawfare: the weaponization of law. Five treaties across 34 years transformed
+      Korea from an independent kingdom into a Japanese colony, all while maintaining the fiction that Korea
+      had agreed to its own destruction.
+    </div>
+  </div>
+
+  <div class="ratchet-strip">
+    <div class="ratchet-label">The Ratchet of Dispossession</div>
+    <div class="ratchet-track">
+      <div class="ratchet-step">
+        <span class="year">1876</span>
+        <span class="treaty">Kanghwa</span>
+        <span class="lost">Ports opened. Extraterritoriality. Tariff autonomy gone.</span>
+        <span class="ratchet-arrow">&rarr;</span>
+      </div>
+      <div class="ratchet-step">
+        <span class="year">1895</span>
+        <span class="treaty">Shimonoseki</span>
+        <span class="lost">Chinese protection removed. Korea "independent" and exposed.</span>
+        <span class="ratchet-arrow">&rarr;</span>
+      </div>
+      <div class="ratchet-step">
+        <span class="year">1905</span>
+        <span class="treaty">Eulsa</span>
+        <span class="lost">Foreign affairs. Diplomatic sovereignty.</span>
+        <span class="ratchet-arrow">&rarr;</span>
+      </div>
+      <div class="ratchet-step">
+        <span class="year">1907</span>
+        <span class="treaty">Third Convention</span>
+        <span class="lost">Internal governance. Army disbanded.</span>
+        <span class="ratchet-arrow">&rarr;</span>
+      </div>
+      <div class="ratchet-step">
+        <span class="year">1910</span>
+        <span class="treaty">Annexation</span>
+        <span class="lost">Statehood itself. Korea ceases to exist.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="content">
+      <div class="section-label">The Treaties</div>
+
+      <div class="treaty-card t1876">
+        <div class="treaty-header">
+          <div class="treaty-name">Treaty of Kanghwa (Japan-Korea Treaty of Amity)</div>
+          <div class="treaty-date">Feb 26, 1876</div>
+        </div>
+        <div class="signatories">
+          <strong>Japan:</strong> Kuroda Kiyotaka (Special Envoy) &middot; <strong>Korea:</strong> Sin Hŏn
+        </div>
+        <div class="desc">
+          Japan's opening of Korea, modeled directly on Perry's opening of Japan. The self-consciousness was explicit: Japanese leaders who experienced Perry's coercion in the 1850s reproduced the same template two decades later. In September 1875, Japan deliberately provoked an incident: the warship <em>Un'yō</em> entered Korean waters near Kanghwa Island, exchanged fire with shore batteries, and Japan demanded a treaty with warships anchored off the coast.
+        </div>
+        <div class="coercion-box">
+          <div class="coercion-label">How It Was Coerced</div>
+          <div class="coercion-text">Japanese naval squadron under Kuroda anchored off Kanghwa Island (mouth of the Han River, the approach to Seoul). Gunboat diplomacy, identical to Perry.</div>
+        </div>
+        <div class="desc">
+          The critical provision: Article 1 declared Korea "an autonomous state (自主之邦) enjoying the same sovereign rights as Japan." Korea read this within the tributary framework (they already had internal autonomy under Chinese suzerainty). Japan read it as severing Korea from China entirely. Same words, opposite meanings. Japan was already laying the legal groundwork to isolate Korea.
+        </div>
+        <div class="stripped">
+          <div class="stripped-label">Rights Stripped</div>
+          <div class="stripped-item">Three ports forced open (Pusan, Wŏnsan, Inch'ŏn)</div>
+          <div class="stripped-item">Extraterritoriality for Japanese nationals (above Korean law)</div>
+          <div class="stripped-item">Tariff autonomy effectively surrendered</div>
+          <div class="stripped-item">Japan's right to survey Korean coastal waters</div>
+        </div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Twenty Years Pass. Japan Defeats China.</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="treaty-card t1895">
+        <div class="treaty-header">
+          <div class="treaty-name">Treaty of Shimonoseki</div>
+          <div class="treaty-date">Apr 17, 1895</div>
+        </div>
+        <div class="signatories">
+          <strong>Japan:</strong> Itō Hirobumi, Mutsu Munemitsu &middot; <strong>China:</strong> Li Hongzhang
+        </div>
+        <div class="desc">
+          This is the treaty Yi Kangnyŏn cites in his Open Letter. It ended the First Sino-Japanese War, triggered by competing interventions in the Tonghak Rebellion. Article 1 is the masterstroke of legal manipulation:
+        </div>
+        <div class="quote-block">
+          "China recognizes definitively the full and complete independence and autonomy of Korea, and, in consequence, the payment of tribute and the performance of ceremonies and formalities by Korea to China, in derogation of such independence and autonomy, shall wholly cease for the future."
+        </div>
+        <div class="quote-src">Treaty of Shimonoseki, Article 1</div>
+        <div class="desc" style="margin-top: 14px;">
+          Japan did not recognize Korean independence out of respect for Korean sovereignty. The entire purpose was to eliminate China's claim to suzerainty. Under the traditional East Asian tributary system, Korea was China's most important tributary state. As long as China could claim suzerainty, Japan could not freely dominate the peninsula. By forcing China to renounce all claims, Japan removed the only power that could legally justify intervention against Japanese expansion. Korea's "independence" was independence <em>from China</em>, which created a power vacuum Japan intended to fill. A legal clearing operation, not an act of liberation.
+        </div>
+        <div class="stripped">
+          <div class="stripped-label">Rights Stripped</div>
+          <div class="stripped-item">Chinese protective suzerainty removed</div>
+          <div class="stripped-item">Korea isolated from its traditional security guarantor</div>
+          <div class="stripped-item">Power vacuum created for Japanese domination</div>
+        </div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Japan Defeats Russia (1905). Western Powers Give Green Light.</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="treaty-card t1905">
+        <div class="treaty-header">
+          <div class="treaty-name">Eulsa Treaty (Japan-Korea Protectorate Treaty)</div>
+          <div class="treaty-date">Nov 17, 1905</div>
+        </div>
+        <div class="signatories">
+          <strong>Japan:</strong> Hayashi Gonsuke &middot; <strong>Korea:</strong> The "Five Traitors" (을사오적)
+        </div>
+        <div class="desc">
+          The turning point. Before this treaty, Japan had cleared the field (removed China in 1895, defeated Russia in 1905). The Taft-Katsura Memorandum (July 1905) gave the US green light; the Anglo-Japanese Alliance gave Britain's. With every major power's acquiescence secured, Japan moved to formalize control. This is the treaty the reading's authors are most angry about.
+        </div>
+        <div class="coercion-box">
+          <div class="coercion-label">How It Was Coerced</div>
+          <div class="coercion-text">Itō Hirobumi personally pressured Emperor Kojong and each cabinet minister individually. Japanese troops under Hasegawa occupied Seoul and surrounded the palace. Military police (kempeitai) stationed inside the palace grounds during deliberations. Emperor Kojong refused to sign. Itō bypassed him and extracted signatures from five ministers.</div>
+        </div>
+        <div class="desc">
+          Emperor Kojong never ratified it. He never affixed his imperial seal (御璽). He spent the next two years sending secret letters to foreign heads of state protesting that the treaty was void. The legal arguments: no imperial ratification, signed under military duress, ministers lacked authority without the sovereign's consent. The world did not care.
+        </div>
+        <div class="stripped">
+          <div class="stripped-label">Rights Stripped</div>
+          <div class="stripped-item">All foreign affairs placed under Japanese control</div>
+          <div class="stripped-item">Korean diplomatic missions abroad recalled</div>
+          <div class="stripped-item">Japanese Resident-General installed (Itō himself)</div>
+          <div class="stripped-item">Korea ceased to exist as a diplomatic entity</div>
+        </div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Kojong's Last Gambit: The Hague (1907). It Backfires.</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="treaty-card t1907">
+        <div class="treaty-header">
+          <div class="treaty-name">Third Japan-Korea Convention</div>
+          <div class="treaty-date">Jul 24, 1907</div>
+        </div>
+        <div class="signatories">
+          <strong>Japan:</strong> Itō Hirobumi &middot; <strong>Korea:</strong> Yi Wanyong (Prime Minister)
+        </div>
+        <div class="desc">
+          Triggered by the Hague Secret Emissary Affair. Emperor Kojong sent three envoys (Yi Sangsŏl, Yi Chun, Yi Wijong) to the Second Hague Peace Conference to denounce the Eulsa Treaty. Japan blocked them from being seated. Yi Chun died at The Hague on July 14. Japan used the affair as pretext for the final escalation: forced Kojong to abdicate (July 19), then signed this treaty five days later with the collaborator Yi Wanyong.
+        </div>
+        <div class="coercion-box">
+          <div class="coercion-label">How It Was Coerced</div>
+          <div class="coercion-text">Itō used the Hague affair as leverage. Kojong was forced to abdicate in favor of his son Sunjong on July 19. Under intense Japanese pressure, the new treaty was signed five days later. A supplementary memorandum (also July 24) ordered the disbandment of the Korean military, executed August 1.</div>
+        </div>
+        <div class="desc">
+          The army disbandment is the critical detail. Roughly 7,800 Korean soldiers were dismissed. Many refused to disarm and joined the Righteous Armies (ŭibyŏng), the guerrilla forces whose voice we hear in Yi Kangnyŏn's Open Letter. This treaty is what turned scholars into soldiers.
+        </div>
+        <div class="stripped">
+          <div class="stripped-label">Rights Stripped</div>
+          <div class="stripped-item">Internal administration under Resident-General's direction</div>
+          <div class="stripped-item">All laws require Resident-General's approval</div>
+          <div class="stripped-item">Japanese nationals appointed to Korean government</div>
+          <div class="stripped-item">Korean military disbanded (Aug 1, 1907)</div>
+          <div class="stripped-item">Emperor forced to abdicate</div>
+        </div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Three Years of Formality. Then the End.</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="treaty-card t1910">
+        <div class="treaty-header">
+          <div class="treaty-name">Japan-Korea Annexation Treaty</div>
+          <div class="treaty-date">Aug 22, 1910</div>
+        </div>
+        <div class="signatories">
+          <strong>Japan:</strong> Terauchi Masatake (Resident-General) &middot; <strong>Korea:</strong> Yi Wanyong (Prime Minister)
+        </div>
+        <div class="desc">
+          By 1910, Korea had no army, no diplomatic service, no control over its own government, and an emperor who was a figurehead installed by Japan. The annexation treaty was the final formality. Terauchi arrived with clear instructions to complete the process. Security was extreme: troops deployed throughout Seoul, public gatherings banned, newspapers suspended, nationalists surveilled.
+        </div>
+        <div class="coercion-box">
+          <div class="coercion-label">How It Was Coerced</div>
+          <div class="coercion-text">Negotiated in secret between Terauchi and Yi Wanyong. Other Korean cabinet ministers not informed until the last moment. Japanese military and police controlled every aspect of the environment. Signed August 22, publicly announced August 29.</div>
+        </div>
+        <div class="quote-block">
+          "The Emperor of Korea cedes completely and permanently all sovereign rights over the entire Korean territory to the Emperor of Japan."
+        </div>
+        <div class="quote-src">Annexation Treaty, Article 1</div>
+        <div class="desc" style="margin-top: 14px;">
+          Korea ceased to exist as a sovereign entity. The Korean imperial family was given "appropriate treatment" (peerages, allowances). Korean law was replaced by a Governor-General with absolute authority. The nation was erased, with a signature.
+        </div>
+        <div class="stripped">
+          <div class="stripped-label">Rights Stripped</div>
+          <div class="stripped-item" style="font-size:14px;font-weight:700;">Everything. Statehood itself.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="section-label">The Hague Gambit (1907)</div>
+      <div class="sidebar-card hague">
+        <div class="card-title">Korea's Last Legal Appeal</div>
+        <div class="card-text">
+          Emperor Kojong secretly sent three envoys to the Second Hague Peace Conference to denounce the Eulsa Treaty as void (signed under duress, without imperial ratification).
+          <br><br>
+          <strong>The Three Envoys:</strong><br>
+          <span class="person-tag">Yi Sangsŏl (이상설)</span>
+          <span class="person-tag">Yi Chun (이준)</span>
+          <span class="person-tag">Yi Wijong (이위종)</span>
+          <br><br>
+          Japan blocked them from being seated. Yi Wijong gave an impassioned speech at a side meeting. No government challenged Japan. <strong>Yi Chun died at The Hague on July 14</strong> (the circumstances became a powerful nationalist symbol).
+          <br><br>
+          The affair backfired catastrophically. Japan used it as the pretext to force Kojong's abdication and sign the Third Convention.
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:20px">The Five Traitors (을사오적)</div>
+      <div class="sidebar-card traitors">
+        <div class="card-title">Ministers Who Signed the Eulsa Treaty</div>
+        <div class="card-text">
+          <span class="person-tag">Pak Chesun (박제순)</span> Foreign Minister. Affixed the ministry seal.<br>
+          <span class="person-tag">Yi Wanyong (이완용)</span> Education Minister. Later signed the Annexation Treaty too. The most reviled name in Korean history.<br>
+          <span class="person-tag">Yi Kŭnt'aek (이근택)</span> Interior Minister.<br>
+          <span class="person-tag">Yi Chigyŏng (이지용)</span> Military Minister.<br>
+          <span class="person-tag">Kwŏn Chunghyŏn (권중현)</span> Agriculture Minister.
+          <br><br>
+          Their names became synonymous with treason. Emperor Kojong never signed.
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:20px">The Western Complicity</div>
+      <div class="sidebar-card legal">
+        <div class="card-title">Who Gave Japan the Green Light</div>
+        <div class="card-text">
+          <strong>Taft-Katsura Memorandum (Jul 1905):</strong> US acknowledges Japan's predominant interest in Korea. In exchange, Japan acknowledges US control of the Philippines.<br><br>
+          <strong>Anglo-Japanese Alliance (Aug 1905):</strong> Britain gives Japan a free hand in Korea.<br><br>
+          <strong>Treaty of Portsmouth (Sep 1905):</strong> Russia concedes Japan's interests in Korea. Roosevelt mediates, wins the Nobel Peace Prize.<br><br>
+          The "rules-based international order" that Korea appealed to did not, in practice, apply to Korea. Every great power traded Korean sovereignty for strategic convenience.
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:20px">In Today's Reading</div>
+      <div class="sidebar-card reading">
+        <div class="card-title">The Documents Engage With Lawfare</div>
+        <div class="card-text">
+          The reading's authors knew exactly what had been done to them through treaties:<br><br>
+          <strong>Yi Kangnyŏn (Open Letter):</strong> Cites the Treaty of Shimonoseki's guarantee of Korean independence as evidence of Japanese hypocrisy. "What the Sixteen Articles of the Treaty of Shimonoseki provide for?"<br><br>
+          <strong>Declaration of Independence:</strong> References "the Treaty of Amity of 1876" and Japan's violation of "solemn treaty obligations."<br><br>
+          <strong>Declaration of War (1941):</strong> "The 1910 treaty of annexation and all other unequal treaties are null and void."<br><br>
+          Each document is a counter-argument to the legal fiction of Korean consent.
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:20px">Still Unresolved</div>
+      <div class="sidebar-card legal">
+        <div class="card-title">The 1965 Treaty Ambiguity</div>
+        <div class="card-text">
+          When Japan and South Korea normalized relations in 1965, the treaty stated the old treaties were "already null and void" (이미 무효). But Japan and Korea interpret this differently:<br><br>
+          <strong>Korea:</strong> Void <em>ab initio</em>. Never legally valid. The annexation was illegal from the start.<br><br>
+          <strong>Japan:</strong> Valid when signed, became void upon Korean independence in 1945.<br><br>
+          A 2001 joint commission could not reach consensus. The disagreement persists and shapes Japan-Korea relations today.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="synthesis">
+    <h3>The Logic of Lawfare</h3>
+    <p>The five treaties follow a precise logic, each building on the last. Kanghwa (1876) pried Korea open. Shimonoseki (1895) removed China's protective umbrella. The Eulsa Treaty (1905) took Korea's voice in the world. The Third Convention (1907) took Korea's ability to govern itself. The Annexation Treaty (1910) took Korea's existence. Each step was dressed in the language of bilateral agreement, each signed by Korean officials (under varying degrees of coercion), each presented to the international community as a legitimate legal act.</p>
+    <p>This is what makes lawfare insidious. Naked conquest can be condemned. But when conquest comes wrapped in treaties, signed by ministers, and recognized by great powers, the victim loses not only sovereignty but the vocabulary to protest. When Korea sent envoys to The Hague to argue the Eulsa Treaty was void, Japan simply said: your country agreed to this; you have no standing to complain. The law that was supposed to protect Korea became the weapon used to destroy it.</p>
+    <p>The Declaration of Independence (1919) and the Declaration of War (1941) are both, at their core, attempts to undo the legal architecture of subjugation. The 1919 Declaration asserts Korean statehood in defiance of the annexation. The 1941 Declaration explicitly voids the treaties. Even the Provisional Constitution, by establishing a democratic republic, implicitly argues that sovereignty resides in the people, not in treaties signed by coerced emperors and collaborating ministers. Every document in today's reading is an answer to lawfare.</p>
+  </div>
+</body>
+</html>

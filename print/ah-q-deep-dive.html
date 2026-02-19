@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The True Story of Ah Q: Lu Xun's Satire of National Character</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f5f5f7; color: #1d1d1f; }
+
+    .back-link { display: inline-block; padding: 12px 40px; font-size: 12px; color: #86868b; text-decoration: none; }
+    .back-link:hover { color: #1d1d1f; }
+
+    .header {
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2d 50%, #0d1b2a 100%);
+      padding: 32px 40px 36px;
+      border-bottom: 3px solid #c9a962;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 300px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><text x="100" y="120" text-anchor="middle" font-size="120" fill="rgba(201,169,98,0.04)" font-family="serif">阿</text></svg>') no-repeat center;
+      background-size: contain;
+    }
+    .header .week { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #c9a962; margin-bottom: 8px; }
+    .header h1 { font-size: 28px; font-weight: 300; color: #fff; margin-bottom: 6px; position: relative; }
+    .header .subtitle { font-size: 14px; color: #c9a962; font-weight: 600; letter-spacing: 1px; position: relative; }
+    .header .context { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 14px; max-width: 750px; line-height: 1.6; position: relative; }
+
+    .main { display: grid; grid-template-columns: 1fr 380px; min-height: calc(100vh - 200px); }
+
+    .content { padding: 32px 40px; overflow-y: auto; }
+    .sidebar { background: #fafafa; padding: 24px; overflow-y: auto; border-left: 1px solid #e5e5e5; }
+
+    .section-label { font-size: 11px; color: #8b6914; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; font-weight: 600; }
+
+    /* Chapter cards */
+    .doc-card {
+      background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px;
+      border-left: 4px solid #ccc; border: 1px solid #e5e5e5; border-left-width: 4px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .doc-card:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .doc-card.metafiction { border-left-color: #e63946; }
+    .doc-card.victory { border-left-color: #f4a261; }
+    .doc-card.love { border-left-color: #457b9d; }
+    .doc-card.decline { border-left-color: #2a9d8f; }
+    .doc-card.revolution { border-left-color: #a855f7; }
+    .doc-card.execution { border-left-color: #e76f51; }
+
+    .doc-card .doc-num { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600; }
+    .doc-card.metafiction .doc-num { color: #e63946; }
+    .doc-card.victory .doc-num { color: #f4a261; }
+    .doc-card.love .doc-num { color: #457b9d; }
+    .doc-card.decline .doc-num { color: #2a9d8f; }
+    .doc-card.revolution .doc-num { color: #a855f7; }
+    .doc-card.execution .doc-num { color: #e76f51; }
+
+    .doc-card .title { font-size: 16px; font-weight: 600; color: #1d1d1f; margin-bottom: 4px; }
+    .doc-card .meta { font-size: 12px; color: #86868b; margin-bottom: 10px; }
+    .doc-card .desc { font-size: 13px; color: #444; line-height: 1.6; margin-bottom: 12px; }
+    .doc-card .quote-block {
+      background: #f8f6f0; border-left: 2px solid #c9a962; padding: 10px 14px;
+      font-style: italic; font-size: 13px; color: #555; line-height: 1.5;
+      font-family: 'Noto Serif', Georgia, serif; margin-bottom: 8px; border-radius: 0 4px 4px 0;
+    }
+    .doc-card .quote-src { font-size: 10px; color: #86868b; text-align: right; }
+
+    /* Bio cards */
+    .bio-card {
+      background: #fff; border-radius: 8px; padding: 14px; margin-bottom: 12px;
+      border-left: 3px solid #c9a962; border: 1px solid #e5e5e5; border-left: 3px solid #c9a962;
+      transition: background 0.15s;
+    }
+    .bio-card:hover { background: #f8f8f8; }
+    .bio-card .name { font-size: 14px; font-weight: 600; color: #1d1d1f; margin-bottom: 2px; }
+    .bio-card .name-cn { font-size: 12px; color: #8b6914; font-family: 'Noto Sans SC', sans-serif; margin-bottom: 6px; }
+    .bio-card .dates { font-size: 11px; color: #86868b; margin-bottom: 8px; }
+    .bio-card .role { display: inline-block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 10px; margin-bottom: 8px; font-weight: 600; }
+    .bio-card .role.literary { background: rgba(42,157,143,0.2); color: #2a9d8f; }
+    .bio-card .role.political { background: rgba(168,85,247,0.2); color: #a855f7; }
+    .bio-card .role.intellectual { background: rgba(244,162,97,0.2); color: #f4a261; }
+    .bio-card .bio { font-size: 12px; color: #555; line-height: 1.5; }
+    .bio-card .notable { font-size: 11px; color: #666; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e5e5e5; }
+    .bio-card .notable strong { color: #8b6914; }
+
+    /* Timeline */
+    .timeline-strip {
+      background: #fff; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;
+      padding: 28px 40px 20px;
+    }
+    .tl-track {
+      position: relative; height: 130px; margin: 8px 20px 0;
+    }
+    .tl-track::before {
+      content: ''; position: absolute; top: 55px; left: 0; right: 0; height: 2px; background: #ddd;
+    }
+    .tl-event {
+      position: absolute; text-align: center; width: 130px;
+      transform: translateX(-50%);
+      top: 66px;
+    }
+    .tl-event::before {
+      content: ''; position: absolute; top: -17px; left: 50%;
+      width: 10px; height: 10px; border-radius: 50%; background: #c9a962;
+      transform: translateX(-50%); border: 2px solid #fff; z-index: 2;
+    }
+    .tl-event.above { top: auto; bottom: 82px; }
+    .tl-event.above::before { top: auto; bottom: -17px; }
+    .tl-event.first { transform: translateX(0); text-align: left; }
+    .tl-event.first::before { left: 0; transform: none; }
+    .tl-event.last { transform: translateX(-100%); text-align: right; }
+    .tl-event.last::before { left: auto; right: 0; transform: none; }
+
+    .tl-event .year { font-size: 12px; font-weight: 700; color: #8b6914; display: block; margin-bottom: 2px; }
+    .tl-event .label { font-size: 10px; color: #666; line-height: 1.3; }
+
+    /* Synthesis */
+    .synthesis {
+      background: linear-gradient(135deg, #f8f6f0, #fff);
+      border: 1px solid #c9a962; border-left: 4px solid #c9a962; border-radius: 10px;
+      padding: 24px; margin: 24px 40px 40px;
+    }
+    .synthesis h3 { font-size: 13px; color: #8b6914; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .synthesis p { font-size: 13px; color: #444; line-height: 1.7; margin-bottom: 12px; }
+    .synthesis p:last-child { margin-bottom: 0; }
+
+    /* Phase labels */
+    .phase-divider {
+      display: flex; align-items: center; gap: 12px; margin: 28px 0 20px;
+    }
+    .phase-divider .line { flex: 1; height: 1px; background: #ddd; }
+    .phase-divider .label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #86868b; white-space: nowrap; }
+
+    /* Reading guide */
+    .reading-guide {
+      background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px; margin-bottom: 12px;
+    }
+    .reading-guide .rg-title { font-size: 12px; font-weight: 600; color: #1d1d1f; margin-bottom: 8px; }
+    .reading-guide .rg-item { font-size: 11px; color: #555; line-height: 1.5; margin-bottom: 6px; padding-left: 14px; position: relative; }
+    .reading-guide .rg-item::before { content: ''; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; border-radius: 50%; }
+    .reading-guide .rg-item.red::before { background: #e63946; }
+    .reading-guide .rg-item.orange::before { background: #f4a261; }
+    .reading-guide .rg-item.blue::before { background: #457b9d; }
+    .reading-guide .rg-item.teal::before { background: #2a9d8f; }
+    .reading-guide .rg-item.purple::before { background: #a855f7; }
+    .reading-guide .rg-item.coral::before { background: #e76f51; }
+
+    /* Concept box */
+    .concept-box {
+      background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px; margin-bottom: 12px;
+    }
+    .concept-box .cb-title { font-size: 11px; font-weight: 700; color: #8b6914; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .concept-box .cb-term { font-size: 13px; font-weight: 600; color: #1d1d1f; margin-bottom: 2px; }
+    .concept-box .cb-cn { font-size: 11px; color: #8b6914; font-family: 'Noto Sans SC', sans-serif; margin-bottom: 6px; }
+    .concept-box .cb-def { font-size: 12px; color: #555; line-height: 1.5; }
+
+    /* Sources */
+    .sources {
+      background: #fff; border: 1px solid #e5e5e5; border-radius: 10px;
+      padding: 28px 32px; margin: 0 40px 40px;
+    }
+    .sources h3 { font-size: 13px; color: #8b6914; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .sources .source-group { margin-bottom: 16px; }
+    .sources .source-group-label { font-size: 11px; font-weight: 600; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .sources .source-item { font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 6px; padding-left: 16px; text-indent: -16px; }
+    .sources .source-item em { color: #555; }
+    .sources .source-note { font-size: 11px; color: #86868b; line-height: 1.5; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e5e5e5; }
+
+    @media (max-width: 900px) {
+      .main { grid-template-columns: 1fr; }
+      .sidebar { border-left: none; border-top: 1px solid #e5e5e5; }
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="header">
+    <div class="week">Week 7 &middot; Plate 19</div>
+    <h1>The True Story of Ah Q</h1>
+    <div class="subtitle">Lu Xun's Satire of Chinese National Character</div>
+    <div class="context">
+      Lu Xun published this novella in serialized form in the <em>Beijing Morning Post</em> supplement from December 1921 to February 1922. Through the pathetic figure of Ah Q, a rural day-laborer who transforms every defeat into a "spiritual victory," Lu Xun diagnosed what he saw as China's deepest sickness: not foreign aggression, but the national habit of self-deception. Where Korean nationalism (Plate 18) blamed Japan, Lu Xun blamed China itself.
+    </div>
+  </div>
+
+  <div class="timeline-strip">
+    <div class="section-label">Lu Xun and His World</div>
+    <div class="tl-track">
+      <div class="tl-event first" style="left:0%"><span class="year">1881</span><span class="label">Lu Xun born in Shaoxing</span></div>
+      <div class="tl-event above" style="left:20%"><span class="year">1902</span><span class="label">Studies medicine in Japan</span></div>
+      <div class="tl-event" style="left:27%"><span class="year">1906</span><span class="label">Lantern slide incident; abandons medicine for literature</span></div>
+      <div class="tl-event above" style="left:36%"><span class="year">1911</span><span class="label">Xinhai Revolution overthrows Qing</span></div>
+      <div class="tl-event" style="left:50%"><span class="year">1918</span><span class="label">"Diary of a Madman" published</span></div>
+      <div class="tl-event above" style="left:62%"><span class="year">1921</span><span class="label">"Ah Q" serialized</span></div>
+      <div class="tl-event" style="left:80%"><span class="year">1930</span><span class="label">League of Left-Wing Writers</span></div>
+      <div class="tl-event last" style="left:100%"><span class="year">1936</span><span class="label">Dies in Shanghai; "Soul of the Nation"</span></div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="content">
+      <div class="section-label">Chapter-by-Chapter Analysis</div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">The Problem of Writing</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="doc-card metafiction">
+        <div class="doc-num">Chapter 1 &middot; pp. 1-6 &middot; Introduction</div>
+        <div class="title">The Impossible Biography</div>
+        <div class="meta">Lu Xun frames the novella as a mock-scholarly exercise in writing about nobody</div>
+        <div class="desc">
+          The narrator spends six pages explaining why he can't write this biography. Ah Q has no verified surname, no proper given name, no hometown anyone can confirm, no ancestry worth recording. Lu Xun is mocking the entire tradition of Chinese biographical writing, which existed to honor great men. Ah Q is the anti-great-man: a nobody whose story exposes everything the tradition hid.
+        </div>
+        <div class="quote-block">
+          "For several years now I have been meaning to write the true story of Ah Q. But while wanting to write I was in some trepidation, too, which goes to show that I am not one of those who achieve glory by writing."
+        </div>
+        <div class="quote-src">p. 1</div>
+        <div class="desc" style="margin-top:10px;">
+          The Confucian injunction "If the name is not correct, the words will not ring true" becomes a running joke. Lu Xun can't even name his subject. This isn't just comedy; it's a statement about who Chinese culture has deemed worth remembering.
+        </div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">The Spiritual Victory Method</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="doc-card victory">
+        <div class="doc-num">Chapters 2-3 &middot; pp. 7-19 &middot; Ah Q's Victories</div>
+        <div class="title">Beaten by My Son</div>
+        <div class="meta">The core mechanism of self-deception, demonstrated in escalating episodes</div>
+        <div class="desc">
+          Ah Q gets mocked for his ringworm scars, beaten by idlers, slapped by the Chao family's bailiff, and robbed of his gambling winnings. Each time, he transforms the humiliation into a psychological triumph. Beaten and head-bumped against the wall? "It is as if I were beaten by my son." Called the "foremost self-belittler"? Subtract the "self-belittler" and what remains is "foremost." This isn't resilience. It's the systematic evasion of reality.
+        </div>
+        <div class="quote-block">
+          "Ah Q would stand there for a second, thinking to himself, 'It is as if I were beaten by my son. What is the world coming to nowadays. . . .' Thereupon he too would walk away, satisfied at having won."
+        </div>
+        <div class="quote-src">p. 10</div>
+        <div class="desc" style="margin-top:10px;">
+          The most devastating moment comes after the gambling scene. Robbed of his silver, even the "beaten by my son" formula fails. So Ah Q slaps his own face until the pain makes it feel like someone else was hit. He falls asleep "satisfied that he had gained the victory."
+        </div>
+        <div class="quote-block">
+          "Raising his right hand he slapped his own face hard twice, so that it tingled with pain. After this slapping his heart felt lighter, for it seemed as if the one who had given the slap was himself, the one slapped some other self, and soon it was just as if he had beaten someone else."
+        </div>
+        <div class="quote-src">p. 13</div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Social Hierarchy &amp; Humiliation</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="doc-card love">
+        <div class="doc-num">Chapter 4 &middot; pp. 20-28 &middot; The Tragedy of Love</div>
+        <div class="title">Ah Q and the Amah</div>
+        <div class="meta">Sexual desire meets class boundary, with disastrous results</div>
+        <div class="desc">
+          Ah Q kneels before Amah Wu, the Chao family's maidservant, and begs her to "sleep with" him. The scene is simultaneously pathetic and horrifying. Ah Q has no concept of courtship, consent, or even basic human interaction. He understands only hierarchy: you take what you can from those below you, and endure what comes from those above. His "proposal" gets him beaten, fined, and permanently expelled from the Chao household's economy. This chapter shows the damage hierarchy inflicts on people at the bottom: they can't even conceive of human relationships outside the master-servant framework.
+        </div>
+      </div>
+
+      <div class="doc-card decline">
+        <div class="doc-num">Chapters 5-6 &middot; pp. 29-43 &middot; Livelihood &amp; Decline</div>
+        <div class="title">The Cycle of Abuse</div>
+        <div class="meta">Ah Q bullies those weaker, submits to those stronger, and calls it natural order</div>
+        <div class="desc">
+          Expelled from Weichuang's economy after the Amah Wu incident, Ah Q becomes a petty thief. He steals from a convent, bullying an old nun. He briefly returns to Weichuang with stolen goods, enjoys a burst of respect, then loses it again when the villagers realize his wares are stolen. Lu Xun's point is structural: in this society, people only respect those who can hurt them. Ah Q is a bully to the weak and a coward to the strong. So is everyone else.
+        </div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">Revolution as Farce</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="doc-card revolution">
+        <div class="doc-num">Chapters 7-8 &middot; pp. 44-59 &middot; The Revolution / Barred from the Revolution</div>
+        <div class="title">"Rebellion! Rebellion!"</div>
+        <div class="meta">The 1911 Revolution arrives in Weichuang. Nothing changes.</div>
+        <div class="desc">
+          News of revolution reaches the village. The gentry panic. Ah Q, who has "always detested and kept away" from revolutionaries, suddenly decides revolution is "not a bad thing." His revolutionary fantasy is pure ego: he imagines men in white armor calling "Ah Q! Come with us!" and himself deciding which villagers to spare, which women to claim, which furniture to steal. The revolution, in Ah Q's mind, is just a chance to become the bully instead of the bullied.
+        </div>
+        <div class="quote-block">
+          "'Revolution is not a bad thing,' thought Ah Q. 'Finish off the whole lot of them . . . curse them! . . . I would like to go over to the revolutionaries myself.'"
+        </div>
+        <div class="quote-src">p. 46</div>
+        <div class="desc" style="margin-top:10px;">
+          But the village elite simply cut their queues, call themselves revolutionaries, and continue running everything. The "Imitation Foreign Devil" bars Ah Q from joining. The revolution is a costume change, not a transformation. Lu Xun's satire of the 1911 Revolution is unsparing: it changed the decorations, not the structure. The old hierarchy survived intact.
+        </div>
+        <div class="quote-block">
+          "'There is a revolution . . . don't you know?' said Ah Q vaguely. 'Revolution, revolution . . . there has already been one,' said the old nun, her eyes red from crying. 'What do you think will become of us with all your revolutions?'"
+        </div>
+        <div class="quote-src">p. 49</div>
+      </div>
+
+      <div class="phase-divider">
+        <div class="line"></div>
+        <div class="label">The Grand Finale</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="doc-card execution">
+        <div class="doc-num">Chapter 9 &middot; pp. 60-67 &middot; The Grand Finale</div>
+        <div class="title">The Circle That Couldn't Close</div>
+        <div class="meta">Ah Q is arrested, tried, and executed for a crime he didn't commit</div>
+        <div class="desc">
+          The Chao family is robbed. The new revolutionary government needs a culprit. Ah Q is arrested, dragged before a court he doesn't understand, and asked to sign a confession. He can't write. They tell him to draw a circle instead. He tries desperately to make it round, fails, and produces "a shape like a melon seed." This is one of the most famous scenes in modern Chinese literature: the illiterate man trying and failing to make a perfect circle as his death warrant.
+        </div>
+        <div class="quote-block">
+          "'I &mdash; I &mdash; can't write,' said Ah Q, shamefaced, nervously holding the brush."
+        </div>
+        <div class="quote-src">p. 62</div>
+        <div class="desc" style="margin-top:10px;">
+          On the way to execution, Ah Q still doesn't fully grasp what's happening. He manages one last attempt at a spiritual victory: "In twenty years I shall be another." The crowd roars approval. The spectators are disappointed because a shooting isn't as entertaining as a beheading, and Ah Q didn't even sing an opera excerpt on the way. Everyone has missed the point of everything.
+        </div>
+        <div class="quote-block">
+          "Most people were dissatisfied, because a shooting was not such a fine spectacle as a decapitation; and what a ridiculous culprit he had been too, to pass through so many streets without singing a single line from an opera. They had followed him for nothing."
+        </div>
+        <div class="quote-src">p. 67</div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="section-label">About the Author</div>
+
+      <div class="bio-card">
+        <div class="name">Lu Xun</div>
+        <div class="name-cn">鲁迅 (birth name: Zhou Shuren 周树人)</div>
+        <div class="dates">1881-1936</div>
+        <div class="role literary">Writer &amp; Cultural Critic</div>
+        <div class="bio">Born into a declining scholar-gentry family in Shaoxing, Zhejiang. His grandfather's imprisonment for examination fraud (1893) and his father's death (1896) exposed him early to social humiliation and the failures of traditional medicine. These experiences shaped his lifelong project: diagnosing China's cultural sickness.</div>
+        <div class="notable"><strong>Legacy:</strong> Mao called him "the commander of China's cultural revolution." When asked what would have happened to Lu Xun after 1949, Mao reportedly said: "He would either have been in prison or he would have kept silent."</div>
+      </div>
+
+      <div class="bio-card">
+        <div class="name">The Lantern Slide Incident (1906)</div>
+        <div class="name-cn">幻灯片事件</div>
+        <div class="dates">Sendai Medical Academy, Japan</div>
+        <div class="role intellectual">Turning Point</div>
+        <div class="bio">While studying medicine in Sendai, Lu Xun saw a wartime lantern slide showing Chinese bystanders watching apathetically as a compatriot was executed by the Japanese during the Russo-Japanese War. He concluded that medicine could heal bodies, but China's sickness was spiritual. He abandoned medicine for literature.</div>
+        <div class="notable"><strong>His logic:</strong> "The people of a weak and backward country, however healthy and strong they might be, could only serve to be made examples of or as witnesses of such futile spectacles." Physical health without spiritual awakening was meaningless.</div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <div class="section-label">Key Concepts</div>
+
+        <div class="concept-box">
+          <div class="cb-term">Spiritual Victory</div>
+          <div class="cb-cn">精神胜利法 (jingshen shengli fa)</div>
+          <div class="cb-def">Ah Q's method of reinterpreting every defeat as a triumph. Beaten? "Beaten by my son." Robbed? Slap yourself until you feel like you slapped someone else. Lu Xun's metaphor for how China responded to the century of humiliation: claiming moral superiority while losing every actual contest.</div>
+        </div>
+
+        <div class="concept-box">
+          <div class="cb-term">The Iron House</div>
+          <div class="cb-cn">铁屋子 (tie wuzi)</div>
+          <div class="cb-def">From Lu Xun's preface to <em>Call to Arms</em>: an airtight room full of sleeping people about to suffocate. Is it crueler to wake them to die in agony, or let them die in sleep? Lu Xun chose to wake them. Literature was his alarm.</div>
+        </div>
+
+        <div class="concept-box">
+          <div class="cb-term">National Character</div>
+          <div class="cb-cn">国民性 (guominxing)</div>
+          <div class="cb-def">The idea that a nation has essential psychological traits that can be diagnosed and treated. Lu Xun believed China's national character was sick: self-deceiving, hierarchical, cowardly. Controversial because it can slide into essentialism, but central to May Fourth thinking.</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <div class="section-label">Reading Guide</div>
+
+        <div class="reading-guide">
+          <div class="rg-title">What to Watch For</div>
+          <div class="rg-item red">The narrator's ironic distance. He never tells you directly what to think. Pay attention to what he describes without commentary.</div>
+          <div class="rg-item orange">Every time Ah Q "wins." Track how the spiritual victory method escalates from mild self-deception to slapping his own face.</div>
+          <div class="rg-item blue">The social hierarchy of Weichuang. Who bullies whom? The Chao family bullies Ah Q. Ah Q bullies the nun and Whiskers Wang. Everyone bullies those below them.</div>
+          <div class="rg-item teal">The revolution chapters (7-8). What actually changes in Weichuang after the revolution? Who benefits? Who gets punished?</div>
+          <div class="rg-item purple">The circle scene (Ch. 9, p. 62). Ah Q trying to draw a perfect circle as his confession. Why does Lu Xun make this the climax?</div>
+          <div class="rg-item coral">The crowd at the execution (p. 67). They're disappointed because it wasn't entertaining enough. What is Lu Xun saying about spectatorship?</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <div class="section-label">Compare with Plates 17-18</div>
+        <div style="background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px; font-size: 12px; color: #555; line-height: 1.6;">
+          <p style="margin-bottom:10px;"><strong style="color:#8b6914;">Japanese nationalism (Plate 17):</strong> Expansionist, confident, Social Darwinist. Japan's problem was external: how to dominate. Tokutomi Soho celebrated power.</p>
+          <p style="margin-bottom:10px;"><strong style="color:#8b6914;">Korean nationalism (Plate 18):</strong> Defensive, moral, victimhood-based. Korea's problem was external: Japanese aggression. The Declaration of Independence appealed to universal justice.</p>
+          <p><strong style="color:#8b6914;">Chinese nationalism (Plate 19):</strong> Self-critical, satirical, directed inward. China's problem was internal: a culture that taught people to deceive themselves rather than face reality. Lu Xun attacked Chinese tradition to save the Chinese nation.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <div class="section-label">Lu Xun's Major Works</div>
+        <div style="background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px; font-size: 11px; color: #555; line-height: 1.6;">
+          <div style="margin-bottom:6px"><strong>"Diary of a Madman"</strong> (1918). First major modern Chinese story. A narrator discovers Chinese history is a record of "eating people."</div>
+          <div style="margin-bottom:6px"><strong><em>Call to Arms</em></strong> (1923). Story collection including "Ah Q," "Kong Yiji," "Medicine." The foundational texts of modern Chinese literature.</div>
+          <div style="margin-bottom:6px"><strong><em>Wandering</em></strong> (1926). Darker stories including "The New Year's Sacrifice," about a widow destroyed by patriarchal norms.</div>
+          <div style="margin-bottom:6px"><strong><em>Wild Grass</em></strong> (1927). Prose poems. Lu Xun at his most personal: anguish, despair, the paradox of hoping without grounds for hope.</div>
+          <div><strong>Essays (zawen)</strong> (1927-1936). Hundreds of short polemical pieces. Sharp, funny, merciless. His main output in the Shanghai years.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="synthesis">
+    <h3>Why Ah Q Still Matters</h3>
+    <p>"The Ah Q spirit" (阿Q精神) entered Chinese as a permanent term for self-deception in the face of defeat. Lu Xun's novella is still taught in Chinese schools, and the phrase is still used in Chinese media and everyday conversation when someone rationalizes a loss. The concept has outlived the specific historical moment that produced it.</p>
+    <p>Lu Xun's critique cuts deeper than politics. The 1911 Revolution failed, in his telling, not because of military weakness or bad leadership, but because the people it was supposed to liberate had no concept of liberation. Ah Q wants revolution so he can become the bully. The village elite want revolution so they can keep their positions under a new name. Nobody wants actual transformation. The revolution changes costumes, not structures.</p>
+    <p>This self-critical nationalism stands in radical contrast to the defensive nationalisms of Korea and Japan. Korean nationalists (Plate 18) said: "We are victims of injustice." Japanese nationalists (Plate 17) said: "We are destined to lead." Lu Xun said: "We are sick, and we did it to ourselves." All three diagnoses were responses to the same crisis of Western imperialism in East Asia. But they pointed to completely different prescriptions, and those prescriptions would shape the twentieth century.</p>
+  </div>
+
+  <div class="sources">
+    <h3>Sources</h3>
+
+    <div class="source-group">
+      <div class="source-group-label">Primary Source (All Page References)</div>
+      <div class="source-item">Lu Xun, <em>The True Story of Ah Q</em>, trans. Yang Hsien-yi and Gladys Yang (Peking: Foreign Languages Press, 1960). Originally serialized in the <em>Beijing Morning Post</em> supplement (晨报副刊), December 4, 1921 to February 12, 1922.</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">Author Biography</div>
+      <div class="source-item">Leo Ou-fan Lee, <em>Voices from the Iron House: A Study of Lu Xun</em> (Bloomington: Indiana University Press, 1987). The standard English-language literary study.</div>
+      <div class="source-item">Jonathan Spence, <em>The Gate of Heavenly Peace: The Chinese and Their Revolution, 1895-1980</em> (New York: Viking, 1981), ch. 1-4 on Lu Xun's life and milieu.</div>
+      <div class="source-item">Gloria Davies, <em>Lu Xun's Revolution: Writing in a Time of Violence</em> (Cambridge: Harvard University Press, 2013).</div>
+    </div>
+
+    <div class="source-group">
+      <div class="source-group-label">Historical Context</div>
+      <div class="source-item">The lantern slide incident: Lu Xun, preface to <em>Call to Arms</em> (呐喊, 1923). The "iron house" metaphor appears in the same preface.</div>
+      <div class="source-item">The 1911 Revolution: Jonathan Spence, <em>The Search for Modern China</em>, 3rd ed. (New York: Norton, 2013), ch. 11.</div>
+      <div class="source-item">May Fourth Movement and New Culture Movement: Chow Tse-tsung, <em>The May Fourth Movement: Intellectual Revolution in Modern China</em> (Cambridge: Harvard University Press, 1960).</div>
+      <div class="source-item">Mao on Lu Xun ("commander of China's cultural revolution"): Mao Zedong, "On New Democracy" (1940). The "prison or silence" remark attributed to a 1957 conversation, reported in multiple secondary sources.</div>
+    </div>
+
+    <div class="source-note">
+      All direct quotes are from the Yang Hsien-yi and Gladys Yang translation with page numbers noted. Biographical claims were verified against multiple scholarly sources. The "spiritual victory" (精神胜利法) terminology is standard in Lu Xun scholarship.
+    </div>
+  </div>
+</body>
+</html>

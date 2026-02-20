@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRC in Latin America: 5 Investments That Tell the Story | Plate 10</title>
+  <style>
+    :root {
+      --ink: #2c3e50;
+      --parchment: #faf8f5;
+      --gold: #d4a373;
+      --accent: #6b4423;
+      --red: #e07a5f;
+      --blue: #457b9d;
+      --green: #588157;
+      --cream: #f4ede4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(180deg, var(--cream) 0%, #e8e0d5 100%);
+      color: #3d3d3d;
+      line-height: 1.7;
+    }
+    nav.breadcrumb {
+      background: var(--ink);
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    nav.breadcrumb a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    nav.breadcrumb a:hover { text-decoration: underline; }
+    nav.breadcrumb .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+    nav.breadcrumb .current { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+    .hero {
+      background: linear-gradient(135deg, #a4161a 0%, #6b4423 50%, #2c3e50 100%);
+      color: white;
+      padding: 3.5rem 2rem;
+    }
+    .hero-inner {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+    .hero h1 { font-size: 2.4rem; margin-bottom: 0.5rem; line-height: 1.2; }
+    .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
+    .hero .big-question {
+      margin-top: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: inline-block;
+      font-size: 1.05rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      line-height: 1.5;
+    }
+
+    main {
+      background: var(--parchment);
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 2.5rem;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: var(--ink);
+      border-bottom: 3px solid var(--gold);
+      padding-bottom: 0.5rem;
+      margin: 2.5rem 0 1.25rem;
+      font-size: 1.6rem;
+    }
+    h2:first-of-type { margin-top: 0; }
+
+    p { margin-bottom: 1rem; }
+
+    .intro-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 1.5rem 0 2rem;
+    }
+    @media (max-width: 600px) {
+      .intro-stats { grid-template-columns: 1fr; }
+    }
+    .intro-stat {
+      background: white;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .intro-stat .number {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .intro-stat .number.red { color: var(--red); }
+    .intro-stat .number.green { color: var(--green); }
+    .intro-stat .number.blue { color: var(--blue); }
+    .intro-stat .label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.25rem;
+    }
+
+    /* Project cards */
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      margin: 2rem 0;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .project-card .card-image {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    .project-card .card-body {
+      padding: 1.75rem;
+    }
+    .project-card .card-number {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      font-weight: bold;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .project-card .card-number.copper { background: #b87333; }
+    .project-card .card-number.energy { background: var(--blue); }
+    .project-card .card-number.solar { background: #e9c46a; color: #3d3d3d; }
+    .project-card .card-number.lithium { background: #2a9d8f; }
+    .project-card h3 {
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    .project-card .location {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+    .project-card .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+    @media (max-width: 500px) {
+      .project-card .detail-grid { grid-template-columns: 1fr; }
+    }
+    .project-card .detail {
+      background: var(--cream);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+    }
+    .project-card .detail .dt {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #999;
+      margin-bottom: 0.2rem;
+    }
+    .project-card .detail .dd {
+      font-weight: bold;
+      color: var(--ink);
+      font-size: 0.95rem;
+    }
+    .project-card .significance {
+      background: linear-gradient(135deg, #3d405b 0%, #2c3e50 100%);
+      color: white;
+      padding: 1.25rem;
+      border-radius: 8px;
+      margin-top: 1.25rem;
+      border-left: 4px solid var(--gold);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .project-card .significance strong { color: var(--gold); }
+    .project-card .source {
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 1rem;
+    }
+    .project-card .source a { color: var(--blue); }
+
+    /* Summary table */
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    .summary-table th {
+      background: var(--ink);
+      color: white;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .summary-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .summary-table tr:hover { background: rgba(0,0,0,0.03); }
+    .type-port { color: var(--red); font-weight: bold; }
+    .type-mine { color: #b87333; font-weight: bold; }
+    .type-energy { color: var(--blue); font-weight: bold; }
+    .type-solar { color: #b8860b; font-weight: bold; }
+    .type-lithium { color: #2a9d8f; font-weight: bold; }
+
+    .historical-echo {
+      background: linear-gradient(135deg, #f5f0ea 0%, #ebe5dc 100%);
+      padding: 1.75rem;
+      border-radius: 12px;
+      margin-top: 2.5rem;
+      border: 1px solid #ddd5c8;
+    }
+    .historical-echo h3 {
+      margin-top: 0;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .sources-section {
+      background: linear-gradient(135deg, #f5f0ea 0%, #ebe5dc 100%);
+      padding: 1.75rem;
+      border-radius: 12px;
+      margin-top: 2.5rem;
+      border: 1px solid #ddd5c8;
+    }
+    .sources-section h3 { margin-top: 0; color: var(--ink); margin-bottom: 1rem; }
+    .sources-section ul { margin: 0; padding-left: 1.5rem; }
+    .sources-section li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .sources-section a { color: var(--blue); }
+
+    .related-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--ink);
+      color: var(--gold);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .related-link:hover { background: #1a252f; }
+  </style>
+</head>
+<body>
+
+  <nav class="breadcrumb">
+    <a href="../index.html">← Plate 10: Qing vs. the West</a>
+    <span class="sep">/</span>
+    <span class="current">PRC Investments in Latin America</span>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>5 Investments That Tell the Story</h1>
+      <p class="subtitle">How China built a strategic position across Latin America</p>
+      <div class="big-question">
+        Ports, mines, power grids, solar farms, lithium. Five projects, three countries, one pattern.
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <h2>The Scale</h2>
+    <p>China-Latin America trade hit a record $518 billion in 2024. But the raw number obscures the strategy. Chinese investment isn't scattered. It targets chokepoints: the minerals that power the energy transition, the ports that move them, and the electricity grids that connect everything.</p>
+
+    <div class="intro-stats">
+      <div class="intro-stat">
+        <div class="number red">$518B</div>
+        <div class="label">China-Latin America Trade (2024)</div>
+      </div>
+      <div class="intro-stat">
+        <div class="number green">$14.7B</div>
+        <div class="label">Chinese FDI in Latin America (2024)</div>
+      </div>
+      <div class="intro-stat">
+        <div class="number blue">$23.8B+</div>
+        <div class="label">Combined value, these 5 projects</div>
+      </div>
+    </div>
+
+    <h2>The Five Projects</h2>
+
+    <!-- 1. Port of Chancay -->
+    <div class="project-card">
+      <img class="card-image" src="images/prc-latin-america/chancay-port.jpg" alt="Aerial view of Port of Chancay, Peru, showing deep-water berths and container cranes along the Pacific coast">
+      <div class="card-body">
+        <span class="card-number">1 — PORT</span>
+        <h3>Port of Chancay</h3>
+        <p class="location">Chancay, Lima Region, Peru</p>
+        <p>The largest deep-water port on South America's Pacific coast. Inaugurated November 2024 with Xi Jinping and Peruvian President Boluarte presiding. Cuts shipping time to China by up to 20 days. Already being called "the Singapore of Latin America."</p>
+
+        <div class="detail-grid">
+          <div class="detail">
+            <div class="dt">Investment</div>
+            <div class="dd">$3.5 billion</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Chinese Company</div>
+            <div class="dd">COSCO Shipping (60%)</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Capacity</div>
+            <div class="dd">1M TEUs (Phase 1), 3.5M at full buildout</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Status</div>
+            <div class="dd">Operational (2024)</div>
+          </div>
+        </div>
+
+        <div class="significance">
+          <strong>Why it matters:</strong> China now controls the Pacific gateway for South American exports. Paired with Las Bambas (below), Beijing owns both the extraction and the export logistics in Peru. The U.S. has formally warned Peru about Chinese operational control with limited oversight.
+        </div>
+        <p class="source">Sources: <a href="https://www.aiddata.org/blog/chancay-port-opens-as-chinas-gateway-to-south-america" target="_blank" rel="noopener noreferrer">AidData</a>, <a href="https://thepeoplesmap.net/project/chancay-multipurpose-port-terminal/" target="_blank" rel="noopener noreferrer">People's Map of Global China</a></p>
+      </div>
+    </div>
+
+    <!-- 2. Las Bambas -->
+    <div class="project-card">
+      <img class="card-image" src="images/prc-latin-america/las-bambas-mine.jpg" alt="Las Bambas open-pit copper mine in the Peruvian Andes, showing terraced excavation and haul roads">
+      <div class="card-body">
+        <span class="card-number copper">2 — COPPER MINE</span>
+        <h3>Las Bambas Copper Mine</h3>
+        <p class="location">Cotabambas, Apurimac Region, Peru (4,000m elevation)</p>
+        <p>One of the world's largest copper mines. Acquired from Glencore Xstrata in 2014 for $5.85 billion, financed by a $7 billion syndicated loan from four Chinese state banks. At the time, the largest overseas mining acquisition by any Chinese entity.</p>
+
+        <div class="detail-grid">
+          <div class="detail">
+            <div class="dt">Acquisition Price</div>
+            <div class="dd">$5.85 billion</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Chinese Company</div>
+            <div class="dd">MMG / China Minmetals (62.5%)</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Output</div>
+            <div class="dd">300,000+ tonnes/yr (2% of global copper)</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Status</div>
+            <div class="dd">Operational (since 2016)</div>
+          </div>
+        </div>
+
+        <div class="significance">
+          <strong>Why it matters:</strong> Copper is essential for EVs, renewable energy, and electronics. A single mine gives China 2% of the world's copper supply and 15% of Peru's entire copper output. This contributes roughly 1% of Peru's GDP, giving Beijing deep economic leverage in Peruvian politics.
+        </div>
+        <p class="source">Sources: <a href="https://thepeoplesmap.net/project/las-bambas-copper-mine/" target="_blank" rel="noopener noreferrer">People's Map of Global China</a>, <a href="https://www.financeasia.com/article/chinese-group-agrees-5-85bn-las-bambas-mine-deal/382781" target="_blank" rel="noopener noreferrer">FinanceAsia</a></p>
+      </div>
+    </div>
+
+    <!-- 3. Belo Monte UHV -->
+    <div class="project-card">
+      <img class="card-image" src="images/prc-latin-america/belo-monte-uhv.jpg" alt="Ultra-high voltage transmission towers crossing the Brazilian landscape, carrying power from the Amazon to São Paulo">
+      <div class="card-body">
+        <span class="card-number energy">3 — POWER GRID</span>
+        <h3>Belo Monte Ultra-High Voltage Transmission</h3>
+        <p class="location">Pará State to Rio de Janeiro/São Paulo, Brazil (2,500+ km)</p>
+        <p>State Grid Corporation of China built and operates Brazil's UHV transmission backbone: two lines spanning over 4,600 km combined, carrying hydroelectric power from the Amazon to the industrial southeast. State Grid has invested over $12.5 billion in Brazil and controls 10% of the national high-voltage grid.</p>
+
+        <div class="detail-grid">
+          <div class="detail">
+            <div class="dt">Investment</div>
+            <div class="dd">$12.5B+ (State Grid total in Brazil)</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Chinese Company</div>
+            <div class="dd">State Grid Corporation of China</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Capacity</div>
+            <div class="dd">4 GW per phase, 160+ TWh delivered</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Status</div>
+            <div class="dd">Operational (2017/2019), expanding</div>
+          </div>
+        </div>
+
+        <div class="significance">
+          <strong>Why it matters:</strong> This is not a single project. It is a structural position inside the electricity backbone of Latin America's largest economy. The UHV technology is exclusively Chinese (no other country deploys ±800 kV DC at this scale), creating long-term technological dependency. Brazil's clean energy transition literally runs on Chinese-built infrastructure.
+        </div>
+        <p class="source">Sources: <a href="https://www.nsenergybusiness.com/projects/belo-monte-rio-de-janeiro-uhvdc-transmission-project/" target="_blank" rel="noopener noreferrer">NS Energy</a>, <a href="http://en.sasac.gov.cn/2024/06/17/c_17340.htm" target="_blank" rel="noopener noreferrer">SASAC</a>, <a href="https://dialogue.earth/en/energy/392147-what-state-grid-new-power-line-means-for-brazil-energy-transition/" target="_blank" rel="noopener noreferrer">Dialogue Earth</a></p>
+      </div>
+    </div>
+
+    <!-- 4. Cauchari Solar -->
+    <div class="project-card">
+      <img class="card-image" src="images/prc-latin-america/cauchari-solar.jpg" alt="Cauchari Solar Park in the Argentine Andes at 4,000 meters, rows of solar panels stretching across the high desert plateau">
+      <div class="card-body">
+        <span class="card-number solar">4 — SOLAR FARM</span>
+        <h3>Cauchari Solar Park</h3>
+        <p class="location">Puna Plateau, Jujuy Province, Argentina (4,020m elevation)</p>
+        <p>Latin America's largest solar park, and the world's highest-altitude large-scale solar installation. Over 1.18 million photovoltaic panels across 600 hectares. Financed primarily by the Export-Import Bank of China ($331.5 million loan), built by PowerChina and Shanghai Electric, with Huawei control systems.</p>
+
+        <div class="detail-grid">
+          <div class="detail">
+            <div class="dt">Investment</div>
+            <div class="dd">~$540 million</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Chinese Companies</div>
+            <div class="dd">PowerChina, Shanghai Electric, Huawei</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Capacity</div>
+            <div class="dd">300 MW (expanding to 500 MW)</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Status</div>
+            <div class="dd">Operational (2020), expanding</div>
+          </div>
+        </div>
+
+        <div class="significance">
+          <strong>Why it matters:</strong> The Exim Bank financing model here is the template for Chinese clean energy investment across the Global South. China positions itself as the builder of Latin America's energy transition, not just its resource extractor. The Jujuy location sits next to Argentina's lithium triangle, connecting China's solar and lithium interests in a single region.
+        </div>
+        <p class="source">Sources: <a href="https://www.nsenergybusiness.com/projects/cauchari-solar-project-jujuy/" target="_blank" rel="noopener noreferrer">NS Energy</a>, <a href="https://en.powerchina.cn/2023-10/26/c_828607.htm" target="_blank" rel="noopener noreferrer">PowerChina</a>, <a href="https://cleantechnica.com/2023/02/08/cauchari-solar-initiative-giving-argentina-a-boost-into-clean-energy-future/" target="_blank" rel="noopener noreferrer">CleanTechnica</a></p>
+      </div>
+    </div>
+
+    <!-- 5. Cauchari-Olaroz Lithium -->
+    <div class="project-card">
+      <img class="card-image" src="images/prc-latin-america/cauchari-lithium.jpg" alt="Lithium brine evaporation ponds in the Argentine high desert, geometric turquoise pools against arid Andean landscape">
+      <div class="card-body">
+        <span class="card-number lithium">5 — LITHIUM MINE</span>
+        <h3>Cauchari-Olaroz Lithium Operation</h3>
+        <p class="location">Jujuy Province, Argentina (the "Lithium Triangle")</p>
+        <p>China's largest lithium producer, Ganfeng Lithium, controls this brine extraction operation producing battery-grade lithium carbonate. 80% of production goes directly to China. In Q4 2025, the mine hit 97% of nameplate capacity. Ganfeng is consolidating additional projects in the region, targeting 150,000 tonnes/year.</p>
+
+        <div class="detail-grid">
+          <div class="detail">
+            <div class="dt">Investment</div>
+            <div class="dd">$1.8B+ across the basin</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Chinese Company</div>
+            <div class="dd">Ganfeng Lithium (controlling partner)</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Output</div>
+            <div class="dd">34,100 tonnes/yr, tripling to 85K by 2029</div>
+          </div>
+          <div class="detail">
+            <div class="dt">Status</div>
+            <div class="dd">Operational, rapidly expanding</div>
+          </div>
+        </div>
+
+        <div class="significance">
+          <strong>Why it matters:</strong> Lithium is the critical mineral for EV batteries and energy storage. China already dominates lithium processing globally; controlling extraction at the source closes the entire supply chain. With 80% of output feeding Chinese battery manufacturers (CATL, BYD), this is not a market operation. It is a dedicated pipeline. Combined with CATL's $1.4 billion deal for the Salar del Hombre Muerto deposit (signed February 2025), China is assembling dominant control over Argentina's lithium reserves.
+        </div>
+        <p class="source">Sources: <a href="https://www.mining.com/web/lithium-argentinas-cauchari-olaroz-aims-to-triple-production-by-2029/" target="_blank" rel="noopener noreferrer">Mining.com</a>, <a href="https://www.isdp.eu/the-lithium-battle-strategies-of-china-and-u-s-in-argentina/" target="_blank" rel="noopener noreferrer">ISDP</a>, <a href="https://ganfenglithium-latam.com/en/proyecto-cauchari/" target="_blank" rel="noopener noreferrer">Ganfeng Lithium</a></p>
+      </div>
+    </div>
+
+    <h2>The Pattern</h2>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Country</th>
+          <th>Investment</th>
+          <th>Type</th>
+          <th>Controls</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Port of Chancay</strong></td>
+          <td>Peru</td>
+          <td>$3.5B</td>
+          <td class="type-port">Megaport</td>
+          <td>Pacific export logistics</td>
+        </tr>
+        <tr>
+          <td><strong>Las Bambas</strong></td>
+          <td>Peru</td>
+          <td>$5.85B</td>
+          <td class="type-mine">Copper mine</td>
+          <td>2% of global copper</td>
+        </tr>
+        <tr>
+          <td><strong>Belo Monte UHV</strong></td>
+          <td>Brazil</td>
+          <td>$12.5B+</td>
+          <td class="type-energy">Power grid</td>
+          <td>10% of Brazil's HV grid</td>
+        </tr>
+        <tr>
+          <td><strong>Cauchari Solar</strong></td>
+          <td>Argentina</td>
+          <td>$540M</td>
+          <td class="type-solar">Solar farm</td>
+          <td>Largest in Latin America</td>
+        </tr>
+        <tr>
+          <td><strong>Cauchari-Olaroz</strong></td>
+          <td>Argentina</td>
+          <td>$1.8B+</td>
+          <td class="type-lithium">Lithium extraction</td>
+          <td>80% of output → China</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="historical-echo">
+      <h3>Historical Echo: Who Extracts, Who Builds, Who Benefits?</h3>
+      <p style="margin-bottom: 1rem;">In the 19th century, British capital built Latin America's railroads, ports, and mines. The infrastructure served extraction: resources out, manufactured goods in. When Latin Americans asked who benefited, the answer was London.</p>
+      <p style="margin-bottom: 1rem;">China's investments follow a structurally similar pattern (ports, mines, energy), but with one difference worth debating: China also builds the renewable infrastructure (solar, UHV grids) that these countries need for their own energy transitions. Whether that makes China a partner or a new metropole depends on who you ask.</p>
+      <p><strong>Student question:</strong> Is China's infrastructure investment in Latin America fundamentally different from 19th-century British investment? What would you need to see to distinguish "development partnership" from "resource extraction with better PR"?</p>
+    </div>
+
+    <a href="china-trade-wars-deep-dive.html" class="related-link">← Back to PRC Global Trade Overview</a>
+
+    <div class="sources-section">
+      <h3>Sources</h3>
+      <ul>
+        <li><a href="https://www.aiddata.org/blog/chancay-port-opens-as-chinas-gateway-to-south-america" target="_blank" rel="noopener noreferrer">AidData: Chancay Port Opens as China's Gateway to South America</a></li>
+        <li><a href="https://thepeoplesmap.net/project/chancay-multipurpose-port-terminal/" target="_blank" rel="noopener noreferrer">People's Map of Global China: Chancay Port</a></li>
+        <li><a href="https://thepeoplesmap.net/project/las-bambas-copper-mine/" target="_blank" rel="noopener noreferrer">People's Map of Global China: Las Bambas Mine</a></li>
+        <li><a href="https://www.financeasia.com/article/chinese-group-agrees-5-85bn-las-bambas-mine-deal/382781" target="_blank" rel="noopener noreferrer">FinanceAsia: Chinese Group Agrees $5.85B Las Bambas Deal</a></li>
+        <li><a href="https://www.nsenergybusiness.com/projects/belo-monte-rio-de-janeiro-uhvdc-transmission-project/" target="_blank" rel="noopener noreferrer">NS Energy: Belo Monte UHV Transmission</a></li>
+        <li><a href="http://en.sasac.gov.cn/2024/06/17/c_17340.htm" target="_blank" rel="noopener noreferrer">SASAC: State Grid's "Electricity Highway" in Brazil</a></li>
+        <li><a href="https://dialogue.earth/en/energy/392147-what-state-grid-new-power-line-means-for-brazil-energy-transition/" target="_blank" rel="noopener noreferrer">Dialogue Earth: State Grid's New Power Line in Brazil</a></li>
+        <li><a href="https://www.nsenergybusiness.com/projects/cauchari-solar-project-jujuy/" target="_blank" rel="noopener noreferrer">NS Energy: Cauchari Solar Project</a></li>
+        <li><a href="https://www.mining.com/web/lithium-argentinas-cauchari-olaroz-aims-to-triple-production-by-2029/" target="_blank" rel="noopener noreferrer">Mining.com: Cauchari-Olaroz Aims to Triple Production</a></li>
+        <li><a href="https://www.isdp.eu/the-lithium-battle-strategies-of-china-and-u-s-in-argentina/" target="_blank" rel="noopener noreferrer">ISDP: The Lithium Battle in Argentina</a></li>
+        <li><a href="https://www.cfr.org/backgrounders/china-influence-latin-america-argentina-brazil-venezuela-security-energy-bri" target="_blank" rel="noopener noreferrer">CFR: China's Growing Influence in Latin America</a></li>
+      </ul>
+    </div>
+
+  </main>
+</body>
+</html>

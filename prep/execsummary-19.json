@@ -1,12 +1,37 @@
 {
   "plate": 19,
   "topic": "Chinese Nationalism",
-  "date": "2026-02-20",
+  "date": "2026-02-21",
   "generatedAt": "2026-02-19T20:00:00.000Z",
   "readings": [
+    "Preface to 'Call to Arms' (Lu Xun)",
     "The True Story of Ah Q (Lu Xun)"
   ],
   "readingAnalyses": [
+    {
+      "title": "Preface to the First Collection of Short Stories, 'Call to Arms'",
+      "author": "Lu Xun",
+      "source": "Selected Stories of Lu Hsun (Foreign Languages Press, 1960)",
+      "pages": "pp. 1-6",
+      "type": "primary",
+      "summary": "Lu Xun's autobiographical preface explains his journey from medicine to literature. After watching a wartime lantern slide showing Chinese spectators passively watching a fellow Chinese about to be executed by Japanese soldiers, Lu Xun realized that 'medical science was not so important' — China's illness was spiritual, not physical. He abandoned medicine to become a writer, hoping literature could awaken his countrymen from their deadly apathy.",
+      "keyQuotes": [
+        {"quote": "The people of a weak and backward country, however strong and healthy they may be, can only serve to be made examples of, or to witness such futile spectacles; and it doesn't really matter how many of them die of illness.", "page": "p. 3"},
+        {"quote": "The most important thing, therefore, was to change their spirit, and since at that time I felt that literature was the best means to this end, I determined to promote a literary movement.", "page": "p. 3"},
+        {"quote": "Imagine an iron house without windows, absolutely indestructible, with many people fast asleep inside who will soon die of suffocation. But you know since they will die in their sleep, they will not feel the pain of death. Now if you cry aloud to wake a few of the lighter sleepers, making those unfortunate few suffer the agony of irrevocable death, do you think you are doing them a good turn?", "page": "p. 5"},
+        {"quote": "But since a few have woken up, you can't say there is no hope of destroying the iron house.", "page": "p. 5"}
+      ],
+      "thematicExamples": [
+        "The lantern slide incident: Chinese crowds watching passively as a Chinese spy is executed — Lu Xun's epiphany about China's spiritual illness",
+        "The failed magazine 'New Life' — reformers met not with opposition but with indifference",
+        "Copying ancient inscriptions alone in the courtyard — symbol of withdrawal from failed reform into personal despair"
+      ],
+      "realLifeConnections": [
+        "Lu Xun's dilemma — is it better to let people sleep or wake them to unavoidable suffering? — resonates with debates about whistleblowing and activism today",
+        "The question of whether art/literature can change society remains contested",
+        "The tension between individual despair and collective action parallels modern activist burnout"
+      ]
+    },
     {
       "title": "The True Story of Ah Q",
       "author": "Lu Xun (鲁迅)",
@@ -82,6 +107,11 @@
   ],
   "keyPassages": [
     {
+      "quote": "Imagine an iron house without windows, absolutely indestructible, with many people fast asleep inside who will soon die of suffocation. But you know since they will die in their sleep, they will not feel the pain of death. Now if you cry aloud to wake a few of the lighter sleepers, making those unfortunate few suffer the agony of irrevocable death, do you think you are doing them a good turn?",
+      "source": "Lu Xun, Preface to Call to Arms",
+      "page": "p. 5"
+    },
+    {
       "quote": "It is as if I were beaten by my son. What is the world coming to nowadays. . . .",
       "source": "Lu Xun, The True Story of Ah Q (Yang Hsien-yi and Gladys Yang translation)",
       "page": "p. 10"
@@ -128,6 +158,10 @@
   },
   "keyQuestions": [
     {
+      "question": "Lu Xun asks: if you wake sleepers in the iron house to 'the agony of irrevocable death,' do you think you are doing them a good turn?",
+      "talkingPoints": "This is the reformer's eternal dilemma. Some will say awareness is always better than ignorance. Others note that awareness without power to act creates only suffering. Lu Xun's answer: cry out anyway, because 'since a few have woken up, you can't say there is no hope.'"
+    },
+    {
       "question": "What is the 'spiritual victory method' and why did Lu Xun find it so dangerous?",
       "talkingPoints": "Track every instance of Ah Q reinterpreting defeat as victory. The method escalates from mild rationalization (p. 10) to self-harm (p. 13). Lu Xun saw this as China's national response to humiliation. Is some psychological coping necessary? Where's the line between resilience and self-deception?"
     },
@@ -169,6 +203,7 @@
     "readings": ["What Women Should Know About Communism (He Zhen)"]
   },
   "teachingNotes": [
+    "Start with the iron house passage from the Preface — have students read it aloud and discuss.",
     "Ah Q is darkly funny. Let students laugh, then discuss why it's disturbing.",
     "The spiritual victory method is the core concept. Track every instance across chapters.",
     "Compare the three nationalisms explicitly: Japan (power), Korea (justice), China (self-transformation).",

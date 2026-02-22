@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Who Wins China? — Faction Simulation</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 8mm; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.4;
+      padding: 8mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+      color: #1a1a1a;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      margin-bottom: 6px;
+    }
+    .plate-num {
+      border: 1.5px solid #000;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .topic {
+      flex: 1;
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .date {
+      border: 1.5px solid #000;
+      border-left: none;
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* Premise */
+    .premise {
+      background: #f5f0e8;
+      border: 1px solid #c0b8a8;
+      padding: 6px 10px;
+      margin-bottom: 6px;
+      font-size: 11px;
+    }
+    .premise strong { font-size: 11.5px; }
+
+    /* Factions row */
+    .factions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 5px;
+      margin-bottom: 6px;
+    }
+    .faction-card {
+      border: 1.5px solid #000;
+      padding: 5px 7px;
+      position: relative;
+    }
+    .faction-card.peasant {
+      grid-column: 1 / -1;
+      background: #f9f6f0;
+      border-style: dashed;
+      text-align: left;
+    }
+    .faction-name {
+      font-weight: 700;
+      font-size: 11.5px;
+      margin-bottom: 2px;
+    }
+    .faction-desc {
+      font-size: 10px;
+      color: #444;
+    }
+
+    /* Rounds */
+    .round {
+      border: 1px solid #999;
+      margin-bottom: 5px;
+      page-break-inside: avoid;
+    }
+    .round-header {
+      background: #222;
+      color: #fff;
+      padding: 3px 8px;
+      font-weight: 700;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .round-crisis {
+      padding: 4px 8px;
+      font-style: italic;
+      font-size: 10.5px;
+      border-bottom: 1px solid #ccc;
+      background: #fefdfb;
+    }
+    .round-choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+    }
+    .choice-col {
+      padding: 4px 6px;
+      border-right: 1px solid #ddd;
+      font-size: 10px;
+    }
+    .choice-col:last-child { border-right: none; }
+    .choice-col .who {
+      font-weight: 700;
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+    .choice-col .opt {
+      margin-bottom: 1px;
+    }
+    .choice-col .opt span {
+      font-weight: 700;
+      display: inline-block;
+      width: 14px;
+    }
+
+    /* Peasant vote bar */
+    .vote-bar {
+      background: #f5f0e8;
+      border-top: 1.5px solid #000;
+      padding: 3px 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+    }
+    .vote-bar strong {
+      font-size: 10.5px;
+      white-space: nowrap;
+    }
+    .vote-boxes {
+      display: flex;
+      gap: 12px;
+    }
+    .vote-box {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .vote-box .square {
+      width: 12px;
+      height: 12px;
+      border: 1.5px solid #000;
+      display: inline-block;
+    }
+
+    /* Result */
+    .result {
+      border: 2px solid #000;
+      padding: 6px 10px;
+      margin-top: 2px;
+    }
+    .result-header {
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+    .tally-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 4px;
+      font-size: 11px;
+    }
+    .tally-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .tally-line {
+      border-bottom: 1.5px solid #000;
+      width: 30px;
+      display: inline-block;
+    }
+    .result-q {
+      font-style: italic;
+      font-size: 10.5px;
+      margin-top: 4px;
+      padding-top: 4px;
+      border-top: 1px solid #ccc;
+    }
+
+    /* Teacher notes - separate page */
+    .teacher-notes {
+      page-break-before: always;
+      padding-top: 4mm;
+    }
+    .teacher-notes h2 {
+      font-size: 14px;
+      border-bottom: 2px solid #000;
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+    }
+    .tn-round {
+      margin-bottom: 10px;
+    }
+    .tn-round h3 {
+      font-size: 11.5px;
+      margin-bottom: 3px;
+      background: #222;
+      color: #fff;
+      padding: 2px 8px;
+      display: inline-block;
+    }
+    .tn-reveal {
+      font-size: 10.5px;
+      padding: 4px 0;
+      line-height: 1.5;
+    }
+    .tn-reveal strong { color: #000; }
+    .tn-point {
+      font-size: 10.5px;
+      padding: 3px 8px;
+      background: #f5f0e8;
+      border-left: 3px solid #8b7355;
+      margin: 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="plate-num">Plate 20</div>
+    <div class="topic">Who Wins China?</div>
+    <div class="date">Feb 23</div>
+  </div>
+
+  <!-- PREMISE -->
+  <div class="premise">
+    <strong>The game:</strong> It's 1925. China is broken. Three factions compete for power, but none can win without the peasants, who are 80% of the population. Four crises will hit. Each faction chooses A or B. After each crisis, the peasants vote: <strong>who do you trust now?</strong> Whoever holds peasant support at the end wins China.
+  </div>
+
+  <!-- FACTIONS -->
+  <div class="factions">
+    <div class="faction-card">
+      <div class="faction-name">Communists (CCP)</div>
+      <div class="faction-desc">Small, disciplined, radical. You promise total revolution: land to the peasants, equality for women, end of the old order.</div>
+    </div>
+    <div class="faction-card">
+      <div class="faction-name">Nationalists (GMD)</div>
+      <div class="faction-desc">You have the army, the cities, and foreign support. You promise a modern, unified China. But reform takes time.</div>
+    </div>
+    <div class="faction-card">
+      <div class="faction-name">Warlords</div>
+      <div class="faction-desc">You have guns and territory. You don't care about ideology. You want to keep what's yours.</div>
+    </div>
+    <div class="faction-card peasant">
+      <div class="faction-name">Peasants (the jury)</div>
+      <div class="faction-desc">You are 80% of China. You can't read. You own almost nothing. You want: land, food, and someone to stop burning your village. After each round, you vote for whoever you trust most. Your vote decides history.</div>
+    </div>
+  </div>
+
+  <!-- ROUND 1 -->
+  <div class="round">
+    <div class="round-header">
+      <span>Round 1: 1925 — Who Leads China?</span>
+    </div>
+    <div class="round-crisis">
+      Sun Yat-sen, the one leader everyone respected, is dead. The country is fragmented. Warlords control the north. The GMD and CCP are in a shaky alliance. What do you do?
+    </div>
+    <div class="round-choices">
+      <div class="choice-col">
+        <div class="who">CCP</div>
+        <div class="opt"><span>A</span> Go to the villages. Organize peasants. Promise land.</div>
+        <div class="opt"><span>B</span> Stay in the cities. Organize factory workers.</div>
+      </div>
+      <div class="choice-col">
+        <div class="who">GMD</div>
+        <div class="opt"><span>A</span> Build a modern army. Unify by force.</div>
+        <div class="opt"><span>B</span> Launch land reform to win peasant support.</div>
+      </div>
+      <div class="choice-col">
+        <div class="who">Warlords</div>
+        <div class="opt"><span>A</span> Cut a deal with the GMD.</div>
+        <div class="opt"><span>B</span> Fight everyone. Hold your turf.</div>
+      </div>
+    </div>
+    <div class="vote-bar">
+      <strong>Peasants vote:</strong>
+      <div class="vote-boxes">
+        <div class="vote-box"><span class="square"></span> CCP</div>
+        <div class="vote-box"><span class="square"></span> GMD</div>
+        <div class="vote-box"><span class="square"></span> Nobody</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROUND 2 -->
+  <div class="round">
+    <div class="round-header">
+      <span>Round 2: 1927 — The Betrayal</span>
+    </div>
+    <div class="round-crisis">
+      The GMD turns on the CCP. Chiang Kai-shek massacres thousands of communists and union organizers in Shanghai. The alliance is over. Bodies in the streets.
+    </div>
+    <div class="round-choices">
+      <div class="choice-col">
+        <div class="who">CCP</div>
+        <div class="opt"><span>A</span> Retreat to the mountains. Rebuild among peasants.</div>
+        <div class="opt"><span>B</span> Fight back in the cities. Urban uprising.</div>
+      </div>
+      <div class="choice-col">
+        <div class="who">GMD</div>
+        <div class="opt"><span>A</span> Crush all remaining communists. Consolidate.</div>
+        <div class="opt"><span>B</span> Govern well. Build infrastructure. Win people over.</div>
+      </div>
+      <div class="choice-col">
+        <div class="who">Warlords</div>
+        <div class="opt"><span>A</span> Side with GMD. They're winning.</div>
+        <div class="opt"><span>B</span> Stay neutral. Profit from the chaos.</div>
+      </div>
+    </div>
+    <div class="vote-bar">
+      <strong>Peasants vote:</strong>
+      <div class="vote-boxes">
+        <div class="vote-box"><span class="square"></span> CCP</div>
+        <div class="vote-box"><span class="square"></span> GMD</div>
+        <div class="vote-box"><span class="square"></span> Nobody</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROUND 3 -->
+  <div class="round">
+    <div class="round-header">
+      <span>Round 3: 1937 — Japan Invades</span>
+    </div>
+    <div class="round-crisis">
+      Japanese troops sweep through China. Cities fall. Nanjing is massacred. Your village is burning. Millions are refugees. Everything stops for the war.
+    </div>
+    <div class="round-choices">
+      <div class="choice-col">
+        <div class="who">CCP</div>
+        <div class="opt"><span>A</span> Guerrilla war behind Japanese lines. Protect villages. Recruit.</div>
+        <div class="opt"><span>B</span> Hide. Survive. Save your strength for later.</div>
+      </div>
+      <div class="choice-col">
+        <div class="who">GMD</div>
+        <div class="opt"><span>A</span> Throw your best troops at Japan in frontal battles.</div>
+        <div class="opt"><span>B</span> Retreat to Chongqing. Wait for America to help.</div>
+      </div>
+      <div class="choice-col">
+        <div class="who">Warlords</div>
+        <div class="opt"><span>A</span> Fight Japan. Defend your territory.</div>
+        <div class="opt"><span>B</span> Collaborate with Japan. Keep your power.</div>
+      </div>
+    </div>
+    <div class="vote-bar">
+      <strong>Peasants vote:</strong>
+      <div class="vote-boxes">
+        <div class="vote-box"><span class="square"></span> CCP</div>
+        <div class="vote-box"><span class="square"></span> GMD</div>
+        <div class="vote-box"><span class="square"></span> Nobody</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROUND 4 -->
+  <div class="round">
+    <div class="round-header">
+      <span>Round 4: 1945 — Japan Is Defeated. Now What?</span>
+    </div>
+    <div class="round-crisis">
+      The war is over. China is in ruins. The CCP gave you land during the war. The GMD has American tanks but their officials are corrupt and their soldiers are starving. One last choice.
+    </div>
+    <div class="round-choices">
+      <div class="choice-col">
+        <div class="who">CCP</div>
+        <div class="opt"><span>A</span> Mobilize the peasants who got land. They'll fight for you now.</div>
+        <div class="opt"><span>B</span> Negotiate. Share power with GMD.</div>
+      </div>
+      <div class="choice-col">
+        <div class="who">GMD</div>
+        <div class="opt"><span>A</span> Use American weapons. Crush the CCP by force.</div>
+        <div class="opt"><span>B</span> Finally do land reform. It's not too late.</div>
+      </div>
+      <div class="choice-col">
+        <div class="who">Warlords</div>
+        <div class="opt"><span>A</span> Switch to whoever's winning.</div>
+        <div class="opt"><span>B</span> There's nothing left to hold. Give up.</div>
+      </div>
+    </div>
+    <div class="vote-bar">
+      <strong>Peasants vote:</strong>
+      <div class="vote-boxes">
+        <div class="vote-box"><span class="square"></span> CCP</div>
+        <div class="vote-box"><span class="square"></span> GMD</div>
+        <div class="vote-box"><span class="square"></span> Nobody</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL TALLY -->
+  <div class="result">
+    <div class="result-header">Final Tally — Who Gets China?</div>
+    <div class="tally-row">
+      <div class="tally-item">CCP: <span class="tally-line"></span> / 4</div>
+      <div class="tally-item">GMD: <span class="tally-line"></span> / 4</div>
+      <div class="tally-item">Nobody: <span class="tally-line"></span> / 4</div>
+    </div>
+    <div class="result-q">
+      The real result: CCP proclaimed the People's Republic on October 1, 1949. The GMD fled to Taiwan.<br>
+      <strong>Discussion:</strong> What did the CCP offer that nobody else did? Why wasn't military power enough for the GMD? What does He Zhen's reading tell us about what "revolution" actually meant?
+    </div>
+  </div>
+
+  <!-- PAGE 2: TEACHER ANSWER KEY -->
+  <div class="teacher-notes">
+    <h2>Teacher Key — What Actually Happened</h2>
+
+    <div class="tn-round">
+      <h3>Round 1: 1925</h3>
+      <div class="tn-reveal">
+        <strong>CCP chose A</strong> — Mao Zedong broke with orthodox Marxism by going to the peasants instead of the urban proletariat. His 1927 <em>Report on the Hunan Peasant Movement</em> called the peasantry "a colossal event" that would sweep away all opposition.<br>
+        <strong>GMD chose A</strong> — Chiang Kai-shek built a modern army with Soviet and later Western help. He unified much of China by force, but never touched the land question.<br>
+        <strong>Warlords chose A/B</strong> — Some cut deals, some fought. They fragmented over time.
+      </div>
+      <div class="tn-point">The CCP's decision to go to the countryside was the single most important strategic choice of the revolution. Everyone else ignored 80% of the population.</div>
+    </div>
+
+    <div class="tn-round">
+      <h3>Round 2: 1927</h3>
+      <div class="tn-reveal">
+        <strong>CCP chose A</strong> — After the Shanghai massacre, Mao retreated to the Jinggang Mountains and built the Jiangxi Soviet. The Long March (1934-35) nearly destroyed them, but the survivors became the core of a peasant army.<br>
+        <strong>GMD chose A</strong> — Chiang obsessed over destroying the CCP ("first pacify the interior, then resist the foreign threat"). He launched five encirclement campaigns. Meanwhile, inflation and corruption ate away at his base.<br>
+        <strong>Warlords mostly chose A</strong> — They aligned with the GMD for survival.
+      </div>
+      <div class="tn-point">The GMD had every advantage: army, money, international recognition. But they were a government of cities in a country of villages.</div>
+    </div>
+
+    <div class="tn-round">
+      <h3>Round 3: 1937</h3>
+      <div class="tn-reveal">
+        <strong>CCP chose A</strong> — Communist guerrillas operated behind Japanese lines, organizing peasant resistance, distributing land, building local governments. By 1945 they controlled vast rural areas with millions of supporters.<br>
+        <strong>GMD chose both A then B</strong> — Chiang threw his best German-trained divisions at Japan in Shanghai (1937), losing 250,000 troops. Then retreated to Chongqing. His remaining army deteriorated.<br>
+        <strong>Some warlords chose B</strong> — Wang Jingwei's collaboration government in Nanjing was the most notorious case.
+      </div>
+      <div class="tn-point">The war was a gift to the CCP. Japan destroyed the GMD's army while the CCP built a peasant revolution behind enemy lines. The GMD fought the war; the CCP won the peace.</div>
+    </div>
+
+    <div class="tn-round">
+      <h3>Round 4: 1945</h3>
+      <div class="tn-reveal">
+        <strong>CCP chose A</strong> — Peasants who received land during the war fought to keep it. The People's Liberation Army swelled with volunteers. Entire GMD divisions defected.<br>
+        <strong>GMD chose A</strong> — Chiang used American weapons but couldn't hold territory. His soldiers were drafted, unfed, and demoralized. Hyperinflation destroyed the urban middle class. By 1949 it was over.
+      </div>
+      <div class="tn-point">The lesson: military hardware without popular legitimacy is an empty shell. The CCP won because they answered the one question that mattered to 80% of China: <em>whose land is this?</em></div>
+    </div>
+
+    <div class="tn-round" style="margin-top: 12px; padding-top: 8px; border-top: 2px solid #000;">
+      <h3 style="background: #8b7355;">He Zhen Connection</h3>
+      <div class="tn-reveal">
+        He Zhen argued in 1907 that revolution meant transforming everything: gender, family, property, the state. The CCP adopted some of her vision (marriage reform, women's rights, land redistribution) while abandoning the rest (anarchism, abolishing the state). Ask students: <strong>Did the CCP deliver on the revolution He Zhen imagined? What got left out?</strong>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Who Wins China?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     @page { size: A4; margin: 6mm; }
@@ -17,6 +17,71 @@
       margin: 0 auto;
       background: #fff;
       color: #1a1a1a;
+    }
+
+    /* ── FLAGS ── */
+    .flag {
+      display: inline-block;
+      width: 20px;
+      height: 13px;
+      vertical-align: middle;
+      margin-right: 5px;
+      border: 1px solid rgba(255,255,255,0.3);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .flag-sm {
+      width: 16px;
+      height: 10px;
+      margin-right: 4px;
+    }
+    /* CCP: red field, yellow star */
+    .flag-ccp { background: #de2910; }
+    .flag-ccp::after {
+      content: "★";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffde00;
+      font-size: 10px;
+      line-height: 1;
+    }
+    .flag-sm.flag-ccp::after { font-size: 8px; }
+    /* GMD: blue field, white sun */
+    .flag-gmd { background: #000095; }
+    .flag-gmd::after {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #fff;
+    }
+    .flag-sm.flag-gmd::after { width: 6px; height: 6px; }
+    /* Warlords: Beiyang five-color flag */
+    .flag-wl {
+      background: linear-gradient(
+        to bottom,
+        #de2910 0% 20%,
+        #ffde00 20% 40%,
+        #0000cd 40% 60%,
+        #fff 60% 80%,
+        #1a1a1a 80% 100%
+      );
+    }
+    /* Peasants: earth, wheat-colored */
+    .flag-peas { background: #c8a96e; }
+    .flag-peas::after {
+      content: "田";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: #5a4520;
+      font-size: 9px;
+      font-weight: 900;
+      line-height: 1;
     }
 
     /* ── TITLE ── */
@@ -36,12 +101,10 @@
       line-height: 1;
     }
     .title-block h1 .cn {
-      font-family: 'Crimson Text', serif;
       font-weight: 400;
-      font-style: italic;
-      font-size: 15px;
-      opacity: 0.5;
-      margin-left: 6px;
+      font-size: 14px;
+      opacity: 0.4;
+      margin-left: 8px;
     }
     .title-meta {
       font-size: 9px;
@@ -80,6 +143,8 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       color: #fff;
+      display: flex;
+      align-items: center;
     }
     .fc-body {
       padding: 4px 7px 5px;
@@ -128,20 +193,20 @@
       font-size: 12px;
     }
     .round-year {
-      font-family: 'Crimson Text', serif;
-      font-style: italic;
       font-size: 11px;
-      opacity: 0.6;
+      font-weight: 600;
+      opacity: 0.4;
+      margin-left: auto;
     }
 
     .crisis {
       padding: 5px 10px;
-      font-family: 'Crimson Text', serif;
-      font-size: 12.5px;
-      font-style: italic;
-      line-height: 1.4;
+      font-size: 10.5px;
+      font-weight: 400;
+      line-height: 1.45;
       background: #faf8f4;
       border-bottom: 1px solid #ddd;
+      color: #333;
     }
 
     .choices {
@@ -162,6 +227,8 @@
       letter-spacing: 1.5px;
       margin-bottom: 3px;
       padding-bottom: 2px;
+      display: flex;
+      align-items: center;
     }
     .ch-who.ccp { color: #c41e1e; border-bottom: 2px solid #c41e1e; }
     .ch-who.gmd { color: #1a4b8c; border-bottom: 2px solid #1a4b8c; }
@@ -240,13 +307,12 @@
       margin: 0 3px;
     }
     .final-reveal {
-      font-family: 'Crimson Text', serif;
-      font-size: 12px;
+      font-size: 10.5px;
       line-height: 1.5;
       padding-top: 5px;
       border-top: 1px solid #ccc;
     }
-    .final-reveal strong { font-family: 'Inter', sans-serif; font-size: 10.5px; }
+    .final-reveal strong { font-weight: 700; }
 
     /* ── TEACHER KEY (page 2) ── */
     .teacher-key {
@@ -322,28 +388,28 @@
   <!-- FACTIONS -->
   <div class="factions">
     <div class="fc ccp">
-      <div class="fc-banner">Communists</div>
+      <div class="fc-banner"><span class="flag flag-ccp"></span>Communists</div>
       <div class="fc-body">
         Small. Disciplined. Radical. You promise land to the peasants, equality for women, the end of everything old.
         <span class="want">You need: believers.</span>
       </div>
     </div>
     <div class="fc gmd">
-      <div class="fc-banner">Nationalists</div>
+      <div class="fc-banner"><span class="flag flag-gmd"></span>Nationalists</div>
       <div class="fc-body">
         You have the army, the cities, the banks, and foreign backing. Your coalition is landlords, merchants, generals.
         <span class="want">You need: order.</span>
       </div>
     </div>
     <div class="fc warlord">
-      <div class="fc-banner">Warlords</div>
+      <div class="fc-banner"><span class="flag flag-wl"></span>Warlords</div>
       <div class="fc-body">
         You have guns and territory. Ideology is irrelevant. You answer to no one and you intend to keep it that way.
         <span class="want">You need: survival.</span>
       </div>
     </div>
     <div class="fc peasant">
-      <div class="fc-banner">Peasants</div>
+      <div class="fc-banner"><span class="flag flag-peas"></span>Peasants</div>
       <div class="fc-body">
         You are 80% of China. You can't read. You own almost nothing. You want land, food, and for someone to stop burning your village. <strong>You are the jury. Your vote decides history.</strong>
       </div>
@@ -362,17 +428,17 @@
     </div>
     <div class="choices">
       <div class="ch">
-        <div class="ch-who ccp">CCP</div>
+        <div class="ch-who ccp"><span class="flag flag-sm flag-ccp"></span>CCP</div>
         <div class="opt"><span class="opt-letter">A</span> Go to the villages. Organize peasants. Promise them land.</div>
         <div class="opt"><span class="opt-letter">B</span> Stay in the cities. Organize factory workers and students.</div>
       </div>
       <div class="ch">
-        <div class="ch-who gmd">GMD</div>
+        <div class="ch-who gmd"><span class="flag flag-sm flag-gmd"></span>GMD</div>
         <div class="opt"><span class="opt-letter">A</span> Build a modern army with foreign help. Unify China by force.</div>
         <div class="opt"><span class="opt-letter">B</span> Focus on the cities. Banks, roads, factories. Modernize from the top.</div>
       </div>
       <div class="ch">
-        <div class="ch-who wl">Warlords</div>
+        <div class="ch-who wl"><span class="flag flag-sm flag-wl"></span>Warlords</div>
         <div class="opt"><span class="opt-letter">A</span> Cut a deal with the GMD. Pick the winning side early.</div>
         <div class="opt"><span class="opt-letter">B</span> Fight everyone. Hold your turf. Trust no one.</div>
       </div>
@@ -399,17 +465,17 @@
     </div>
     <div class="choices">
       <div class="ch">
-        <div class="ch-who ccp">CCP</div>
+        <div class="ch-who ccp"><span class="flag flag-sm flag-ccp"></span>CCP</div>
         <div class="opt"><span class="opt-letter">A</span> Retreat to the mountains. Disappear into the countryside. Rebuild.</div>
         <div class="opt"><span class="opt-letter">B</span> Fight back in the cities. Urban uprising. Go down swinging.</div>
       </div>
       <div class="ch">
-        <div class="ch-who gmd">GMD</div>
+        <div class="ch-who gmd"><span class="flag flag-sm flag-gmd"></span>GMD</div>
         <div class="opt"><span class="opt-letter">A</span> Hunt down every last communist. Five encirclement campaigns.</div>
         <div class="opt"><span class="opt-letter">B</span> Govern the cities you hold. Build roads and banks. Ignore the rest.</div>
       </div>
       <div class="ch">
-        <div class="ch-who wl">Warlords</div>
+        <div class="ch-who wl"><span class="flag flag-sm flag-wl"></span>Warlords</div>
         <div class="opt"><span class="opt-letter">A</span> Side with the GMD. They look like the winners.</div>
         <div class="opt"><span class="opt-letter">B</span> Stay neutral. Sell weapons to both sides.</div>
       </div>
@@ -436,17 +502,17 @@
     </div>
     <div class="choices">
       <div class="ch">
-        <div class="ch-who ccp">CCP</div>
+        <div class="ch-who ccp"><span class="flag flag-sm flag-ccp"></span>CCP</div>
         <div class="opt"><span class="opt-letter">A</span> Guerrilla war behind enemy lines. Protect villages. Win recruits.</div>
         <div class="opt"><span class="opt-letter">B</span> Lie low. Survive. Save your strength for after the war.</div>
       </div>
       <div class="ch">
-        <div class="ch-who gmd">GMD</div>
+        <div class="ch-who gmd"><span class="flag flag-sm flag-gmd"></span>GMD</div>
         <div class="opt"><span class="opt-letter">A</span> Throw your best German-trained divisions at Japan head-on.</div>
         <div class="opt"><span class="opt-letter">B</span> Retreat to Chongqing. Dig in. Wait for America to save you.</div>
       </div>
       <div class="ch">
-        <div class="ch-who wl">Warlords</div>
+        <div class="ch-who wl"><span class="flag flag-sm flag-wl"></span>Warlords</div>
         <div class="opt"><span class="opt-letter">A</span> Fight the Japanese. Go down defending your territory.</div>
         <div class="opt"><span class="opt-letter">B</span> Collaborate with Japan. They let you keep your little kingdom.</div>
       </div>
@@ -473,17 +539,17 @@
     </div>
     <div class="choices">
       <div class="ch">
-        <div class="ch-who ccp">CCP</div>
+        <div class="ch-who ccp"><span class="flag flag-sm flag-ccp"></span>CCP</div>
         <div class="opt"><span class="opt-letter">A</span> Call in the debt. Peasants who got land will fight to keep it.</div>
         <div class="opt"><span class="opt-letter">B</span> Negotiate. Offer to share power with the GMD.</div>
       </div>
       <div class="ch">
-        <div class="ch-who gmd">GMD</div>
+        <div class="ch-who gmd"><span class="flag flag-sm flag-gmd"></span>GMD</div>
         <div class="opt"><span class="opt-letter">A</span> American weapons. Superior firepower. Crush the CCP by force.</div>
         <div class="opt"><span class="opt-letter">B</span> Print money. Pay the troops. Hold the cities. Hope for the best.</div>
       </div>
       <div class="ch">
-        <div class="ch-who wl">Warlords</div>
+        <div class="ch-who wl"><span class="flag flag-sm flag-wl"></span>Warlords</div>
         <div class="opt"><span class="opt-letter">A</span> Switch to whoever is winning. Old habit.</div>
         <div class="opt"><span class="opt-letter">B</span> There is nothing left. Lay down your guns.</div>
       </div>

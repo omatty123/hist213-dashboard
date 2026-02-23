@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Platebook - Plate 20: Civil War and Revolution in China</title>
+  <title>Platebook - Plate 20: The Pacific War</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Sans+KR&family=Noto+Sans+JP&display=swap">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,6 +44,21 @@
       font-weight: 700;
       font-size: 12px;
     }
+
+    /* Readings row */
+    .readings-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+      font-size: 9px;
+    }
+    .reading-item {
+      flex: 1;
+      border: 1px solid #aaa;
+      padding: 3px 6px;
+      background: #f9f9f9;
+    }
+    .reading-item strong { font-size: 9px; }
 
     /* Section labels */
     .label {
@@ -144,33 +159,21 @@
     .map-section {
       margin-bottom: 4px;
     }
-    .map-subtitle {
-      font-size: 9px;
-      font-style: italic;
-      color: #555;
-      margin-left: 8px;
-    }
     .map-box {
       border: 1px solid #aaa;
       background: #f5f5f5;
       margin-top: 3px;
-      padding: 10px;
-      min-height: 100px;
+      padding: 8px;
+      min-height: 90px;
     }
     .map-locations {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 6px;
       font-size: 9px;
     }
+    .map-loc { line-height: 1.3; }
     .map-loc strong { font-weight: 600; }
-    .map-quote {
-      font-style: italic;
-      font-size: 9px;
-      text-align: center;
-      color: #444;
-      margin-top: 4px;
-    }
 
     /* Questions table */
     .questions-section {
@@ -212,10 +215,10 @@
       background: none;
     }
     .question-cell {
-      min-height: 32px;
+      min-height: 28px;
     }
     .answer-cell {
-      min-height: 32px;
+      min-height: 28px;
     }
 
     /* Bottom section */
@@ -244,7 +247,7 @@
       padding: 4px 6px;
       font-size: 9px;
       vertical-align: top;
-      height: 70px;
+      height: 65px;
       background-color: #fefdfb;
       background-image:
         linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
@@ -264,7 +267,7 @@
       font-weight: 600;
     }
 
-        .breadcrumb {
+    .breadcrumb {
       font-size: 11px;
       margin-bottom: 8px;
     }
@@ -276,6 +279,15 @@
       text-decoration: underline;
     }
 
+    .content-warning {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 4px 8px;
+      font-size: 9px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+    }
+
     @media print {
       .breadcrumb { display: none; }
       body { padding: 0; }
@@ -284,11 +296,22 @@
 </head>
 <body>
   <div class="breadcrumb"><a href="../index.html">← Dashboard</a></div>
+
+  <div class="content-warning">
+    <strong>Content Warning:</strong> These readings contain graphic descriptions of wartime atrocities including rape, murder, and sexual slavery.
+  </div>
+
   <!-- Header -->
   <div class="header">
     <div class="plate-num">Plate # 20</div>
-    <div class="topic">Civil War and Revolution in China</div>
-    <div class="date">Feb 23</div>
+    <div class="topic">The Pacific War: Rhetoric, Atrocity, Memory</div>
+    <div class="date">Feb 24</div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings-row">
+    <div class="reading-item"><strong>SMC Ch. 17:</strong> Japan at War — Konoe's address, Saito's justifications, Chiang's response, Nanjing diary, "murder race"</div>
+    <div class="reading-item"><strong>Kim Tŏkchin:</strong> Oral Histories of the Comfort Women — deception, transport, forced sexual slavery</div>
   </div>
 
   <!-- Person / Place / Thing -->
@@ -302,78 +325,53 @@
     </thead>
     <tbody>
       <tr>
-        <td class="filled"><strong>He Zhen</strong>: anarchist-feminist writer</td>
-        <td class="filled"><strong>Yan'an</strong>: Communist base (1936-1947)</td>
-        <td class="filled"><strong>Land Reform</strong>: redistribution to peasants</td>
+        <td class="filled"><strong>Prince Konoe Fumimaro</strong>: PM who justified invasion as "self-defense" and "righteousness"</td>
+        <td class="filled"><strong>Nanjing 南京</strong>: Nationalist capital; site of Dec 1937 massacre after city fell</td>
+        <td class="filled"><strong>Co-Prosperity Sphere</strong>: Euphemism for Japanese domination of East Asia</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Mao Zedong</strong>: Communist leader</td>
-        <td class="filled"><strong>Nanjing</strong>: Nationalist capital</td>
-        <td class="filled"><strong>Long March (1934</strong>: 35) - Communist retreat/myth</td>
+        <td class="filled"><strong>Chiang Kai-shek 蔣介石</strong>: Led Chinese resistance from Chongqing; refused collaboration</td>
+        <td class="filled"><strong>Chongqing 重慶</strong>: Wartime capital in China's interior; survived Japanese bombing</td>
+        <td class="filled"><strong>Comfort Women 慰安婦</strong>: Sexual slaves forced to serve Japanese military</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Chiang Kai</strong>: shek - Nationalist leader</td>
-        <td class="filled"><strong>Shanghai</strong>: urban revolutionary center</td>
-        <td class="filled"><strong>Women's liberation</strong>: revolutionary goal</td>
+        <td class="filled"><strong>Kim Tŏkchin</strong>: Korean survivor; recruited at 17 with "factory" promise; testified in 1990s</td>
+        <td class="filled"><strong>Shanghai 上海</strong>: Major 1937 battle; comfort stations established</td>
+        <td class="filled"><strong>Marco Polo Bridge</strong>: July 7, 1937 incident that triggered full-scale war</td>
       </tr>
-
     </tbody>
   </table>
 
   <!-- Timeline -->
   <div class="timeline-section">
-    <span class="label">Timeline: Civil War and Revolution in China</span>
+    <span class="label">Timeline: From Incident to Surrender</span>
     <div class="timeline-box">
-        <div class="tl-row">
-          <div class="tl-event"><span class="tl-year">1921</span><em>Chinese Communist Party founded in Shanghai</em></div>
-          <div class="tl-event"><span class="tl-year">1927</span><em>GMD-CCP split; Shanghai massacre begins civil war</em></div>
-          <div class="tl-event"><span class="tl-year">1934-35</span><em>Long March—Communists retreat, Mao rises</em></div>
-          <div class="tl-event"><span class="tl-year">1937-1945</span><em>Second Sino-Japanese War; United Front</em></div>
-          <div class="tl-event"><span class="tl-year">1946-1949</span><em>Civil War resumes; Communist victory</em></div>
-          <div class="tl-event"><span class="tl-year">October 1, 1949</span><em>People's Republic of China proclaimed</em></div>
-        </div>
-        <div class="tl-line"></div>
+      <div class="tl-row">
+        <div class="tl-event"><span class="tl-year">Jul 1937</span><em>Marco Polo Bridge</em></div>
+        <div class="tl-event"><span class="tl-year">Sep 1937</span><em>Konoe's address</em></div>
+        <div class="tl-event"><span class="tl-year">Dec 1937</span><em>Nanjing falls</em></div>
+        <div class="tl-event"><span class="tl-year">Dec 1938</span><em>Wang defects</em></div>
+        <div class="tl-event"><span class="tl-year">Dec 1941</span><em>Pearl Harbor</em></div>
+        <div class="tl-event"><span class="tl-year">Aug 1945</span><em>Japan surrenders</em></div>
       </div>
+      <div class="tl-line"></div>
     </div>
   </div>
 
   <!-- Map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-    #civilwar-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
-    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
-    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
-    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
-    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
-    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
-  </style>
   <div class="map-section">
-    <span class="label">Map: Chinese Civil War</span>
-    <div id="civilwar-map"></div>
+    <span class="label">Map: Key Locations</span>
+    <div class="map-box">
+      <div class="map-locations">
+        <div class="map-loc"><strong>Marco Polo Bridge 盧溝橋</strong><br>Near Beijing; July 7, 1937 trigger</div>
+        <div class="map-loc"><strong>Shanghai 上海</strong><br>Aug-Nov 1937 battle; comfort stations</div>
+        <div class="map-loc"><strong>Nanjing 南京</strong><br>Fell Dec 13; massacre through Jan</div>
+        <div class="map-loc"><strong>Chongqing 重慶</strong><br>Wartime capital; Chiang's base</div>
+        <div class="map-loc"><strong>Nagasaki 長崎</strong><br>Kim's first stop; later atomic bomb</div>
+        <div class="map-loc"><strong>Kim's route</strong><br>Korea → Pusan → Nagasaki → Shanghai</div>
+      </div>
+    </div>
   </div>
-  <script>
-    (function() {
-      const map = L.map('civilwar-map', { zoomControl: false, attributionControl: false });
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
-      const titleControl = L.control({ position: 'topleft' });
-      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '國共內戰 Nationalist vs Communist'; return div; };
-      titleControl.addTo(map);
-      const legendControl = L.control({ position: 'bottomright' });
-      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> Communist</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> Nationalist</div>'; return div; };
-      legendControl.addTo(map);
-      const locs = [
-        { name: "Yan'an", cn: "延安", desc: "Communist base 1936-47; Mao HQ", lat: 36.585, lng: 109.490, color: "#e63946", r: 9 },
-        { name: "Jiangxi Soviet", cn: "江西蘇區", desc: "Communist base before Long March", lat: 27.6, lng: 115.9, color: "#e63946", r: 7 },
-        { name: "Beijing", cn: "北京", desc: "Fell to Communists Jan 1949", lat: 39.917, lng: 116.383, color: "#e63946", r: 9 },
-        { name: "Shanghai", cn: "上海", desc: "CCP founded 1921; massacre 1927", lat: 31.224, lng: 121.469, color: "#457b9d", r: 8 },
-        { name: "Nanjing", cn: "南京", desc: "Nationalist capital; fell 1937", lat: 32.05, lng: 118.767, color: "#457b9d", r: 8 }
-      ];
-      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.cn} ${l.name}</b><br>${l.desc}`));
-      L.polyline([[27.6, 115.9], [36.585, 109.490]], { weight: 2, opacity: 0.6, dashArray: '6 4', color: '#e63946' }).addTo(map).bindPopup('Long March<br>1934-1935');
-      map.fitBounds([[25, 107], [42, 123]]);
-    })();
-  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">
@@ -381,37 +379,42 @@
       <thead>
         <tr>
           <th colspan="2"><span class="label">Penetrating Questions</span></th>
-          <th><span class="label">Very short answers</span></th>
+          <th><span class="label">Key Points</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="q-num">1</td>
-          <td class="question-cell filled">How did Chinese revolutionaries connect gender oppression to other forms of oppression?</td>
-          <td class="answer-cell filled">He Zhen saw women's oppression as rooted in family/property/state. Feet binding, arranged marriage, lack of education all connected. Communist women's policies (marriage reform, education) followed this logic.</td>
+          <td class="question-cell filled">Konoe claimed "self-defense" and "righteousness." Nanjing showed murder, rape, killing contests called "fun." How explain the gap?</td>
+          <td class="answer-cell filled">Imperial ideology justifies atrocities. Dehumanization of enemy. Soldiers "given free reign" — command breakdown or deliberate policy? Compare other imperial atrocities.</td>
         </tr>
         <tr>
           <td class="q-num">2</td>
-          <td class="question-cell filled">Why did the Communists win the civil war?</td>
-          <td class="answer-cell filled">Multiple factors: peasant mobilization through land reform, Nationalist corruption and inflation, Japanese war weakened GMD more than CCP, Mao's guerrilla strategy. Not inevitable—GMD had advantages too.</td>
+          <td class="question-cell filled">Kim Tŏkchin recruited by Korean man, managed by Korean couple. Japanese soldiers did Nanjing atrocities. Who bears responsibility — systems or individuals?</td>
+          <td class="answer-cell filled">Colonial hierarchies create complicity. Korean agents in Japanese system — survival or collaboration? Soldiers chose to murder — but system enabled. Post-war tribunals struggled with this.</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">"Comfort women" silent for ~50 years. Why hidden? What changed in 1990s?</td>
+          <td class="answer-cell filled">Shame/stigma in patriarchal societies. Governments suppressed for diplomacy (Cold War). Rise of feminism; Korean democratization enabled civil society to push for recognition.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Bottom: Causes/Effects + Notes -->
+  <!-- Bottom: Connections + Notes -->
   <div class="bottom-section">
     <div class="causes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+          <tr><th><span class="label">Connections</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              <strong>From Plate 19:</strong> Plate 19's Lu Xun critiqued Chinese 'national character.' Revolutionaries sought to transform it through social revolution—including gender revolution.<br>
-<strong>Context:</strong> Revolution is never just political—it involves transforming social relations, including gender. Compare Chinese Communist gender politics to Soviet, or to Meiji Japan's approach.<br>
-<strong>To Plate 21:</strong> Plate 21 examines the Pacific War—which interrupted China's civil war and reshaped all of East Asia.
+              <strong>From Plate 19:</strong> Lu Xun critiqued Chinese "national character." Japan's invasion galvanized exactly the nationalism Lu Xun worried about — but resistance required it.<br>
+              <strong>Broader theme:</strong> Imperial ideology and atrocity; colonial complicity; gendered violence in war; how societies reckon with historical trauma.<br>
+              <strong>To Plate 21:</strong> With Japan defeated, civil war resumes. War transformed both GMD and CCP — setting stage for Communist victory.
             </td>
           </tr>
         </tbody>
@@ -420,16 +423,16 @@
     <div class="notes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Notes</span></th></tr>
+          <tr><th><span class="label">Teaching Notes</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              • He Zhen is less famous than male revolutionaries but represents important strand of thought.<br>
-              • Students may expect 'revolution = Communism.' Show the diversity of revolutionary visions (anarchist, feminist, nationalist).<br>
-              • The civil war is complex—avoid simple 'good guys vs. bad guys' framing.<br>
-              • Gender dimension often overlooked in political history. He Zhen reading corrects this.<br>
-              • Web links to Chen Duxiu, Chiang, and Mao provide additional context.
+              • CONTENT WARNING at start — prepare students<br>
+              • "Murder race" clips most disturbing — let silence sit<br>
+              • Kim's testimony brief but powerful — slow read-aloud<br>
+              • Avoid "Japanese = bad" — Korean agents recruited; embassy officials horrified<br>
+              • Today: comfort women statues; 2015 agreement controversy
             </td>
           </tr>
         </tbody>

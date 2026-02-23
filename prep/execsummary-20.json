@@ -1,197 +1,245 @@
 {
   "plate": 20,
-  "topic": "Civil War and Revolution in China",
-  "date": "2026-02-23",
-  "generatedAt": "2026-01-04T18:00:00.000Z",
+  "topic": "The Pacific War",
+  "date": "2026-02-24",
+  "generatedAt": "2026-02-22T19:00:00.000Z",
   "readings": [
-    "What Women Should Know About Communism (He Zhen)"
+    "Japan at War (Sources of Modern China)",
+    "Oral Histories of the Comfort Women"
   ],
   "readingAnalyses": [
     {
-      "title": "What Women Should Know About Communism",
-      "author": "He Zhen (何震)",
-      "source": "Primary Source Reader Part 5",
-      "pages": "c. 1907",
+      "title": "Japan at War",
+      "author": "Multiple Primary Sources",
+      "source": "Sources of Modern China, Chapter 17, pp. 314-333",
+      "pages": "314-333",
       "type": "primary",
-      "summary": "He Zhen was one of early 20th-century China's most radical voices—an anarchist-feminist who argued that women's liberation required destroying not just capitalism but the entire family system. Writing from Tokyo exile around 1907, she attacked reformers who wanted to 'improve' women's conditions without fundamentally transforming society. Half-measures, she argued, would only create new forms of exploitation.\n\nHer analysis linked gender, class, and national oppression: Chinese women were enslaved by fathers, husbands, and employers; China itself was enslaved by foreign powers; both oppressions stemmed from the same system of hierarchy and exploitation. Liberation required revolution on all fronts simultaneously.\n\nHe Zhen's radicalism went beyond what even the Communist Party would later embrace. She criticized state socialism as another form of domination; true liberation required abolishing all authority. Her vision wasn't realized, but her questions—how do gender, class, and nation intersect?—continued to shape Chinese revolutionary thought.",
+      "summary": "This collection presents the Pacific War through radically different perspectives: Japanese government justifications for invasion, Chinese resistance, foreign eyewitness accounts of atrocities, and Japanese press coverage that celebrated murder as sport. The contrast between Prince Konoe's rhetoric of 'peace in the Orient' and the documented reality of the Rape of Nanjing exposes the vast gulf between imperial propaganda and wartime brutality.",
       "keyQuotes": [
-        {"quote": "Under the present system, women are doubly oppressed—by capitalism and by the family.", "page": "essay"},
-        {"quote": "Those who would 'improve' women's conditions without revolution merely create new forms of slavery.", "page": "essay"},
-        {"quote": "Liberation of women and liberation of workers are the same struggle.", "page": "essay"}
+        {"quote": "We firmly believe that it is in accordance with the right of self-defence as well as with the cause of righteousness and humanity that our country has determined to give a decisive blow to such a country, so that it may reflect upon the errors of its ways.", "page": "316"},
+        {"quote": "Little did we dream that we should see such brutality and savagery as has probably not been equalled in modern times.", "page": "326"},
+        {"quote": "One poor woman was raped thirty-seven times. Another had her five months infant deliberately smothered by the brute to stop its crying while he raped her.", "page": "327"},
+        {"quote": "The contest was 'fun,' he declared, and he thought it a good thing that both men had gone over the 100 mark without knowing that the other had done so.", "page": "330"}
       ],
       "thematicExamples": [
-        "Critique of liberal feminism - He Zhen attacks reforms that don't challenge fundamental structures",
-        "Intersectional analysis avant la lettre - connecting gender, class, and national oppression",
-        "Anarchist vs. Marxist approaches - He Zhen skeptical of state power even revolutionary states",
-        "Family as site of oppression - radical critique of Confucian family structure"
+        "Prince Konoe's address (Sept 1937) frames invasion as 'self-defense' against Chinese 'anti-Japanese policies'",
+        "Ambassador Saito blames China's 'xenophobia' and suggests conditions would be 'more secure under Japanese rule'",
+        "Chiang Kai-shek's response (Dec 1938) exposes 'Greater East Asia Co-Prosperity Sphere' as euphemism for domination",
+        "Nanjing diary entries document systematic rape, murder, and looting by Japanese soldiers",
+        "Japan Advertiser newspaper celebrates 'contest to kill 100 Chinese' between two officers as sporting entertainment"
       ],
       "realLifeConnections": [
-        "Chinese Communist Party's complicated relationship with feminism - revolutionary rhetoric vs. patriarchal practice",
-        "One-child policy and women's bodies as sites of state control",
-        "Contemporary Chinese feminism's struggles against both traditional and socialist patriarchy",
-        "Global debates about whether liberation requires revolution or reform"
+        "Propaganda and euphemism in modern warfare — how governments justify military actions",
+        "War crimes tribunals and questions of accountability — who bears responsibility?",
+        "Japan-China relations today still shaped by contested memories of this period",
+        "Contemporary debates about teaching wartime history in Japanese textbooks"
+      ]
+    },
+    {
+      "title": "Oral Histories of the Comfort Women",
+      "author": "Kim Tŏkchin (testimony)",
+      "source": "True Stories of the Korean Comfort Women, ed. Keith Howard",
+      "pages": "3 pages",
+      "type": "primary",
+      "summary": "Kim Tŏkchin's testimony reveals the systematic sexual enslavement of Korean women during the Pacific War. Recruited at age 17 with promises of factory work, she was transported from Korea to Nagasaki to Shanghai and forced to 'serve' 30-40 soldiers daily. Her account exposes the bureaucratic apparatus of exploitation — Korean recruiters, Japanese military control, the brothel system adjacent to army units — that made such atrocities possible.",
+      "keyQuotes": [
+        {"quote": "All I knew — all I thought I knew — was that I was going to work in a factory to earn money. I never dreamed that this could involve danger.", "page": "2"},
+        {"quote": "On the first night there I was dragged before a high-ranking soldier and raped. He had a pistol.", "page": "2"},
+        {"quote": "Each of us had to serve an average of 30 to 40 men each day, and we often had no time to sleep.", "page": "3"},
+        {"quote": "Quite a few would rush straight to penetration without condoms, saying they couldn't care less if they caught any diseases since they were likely to die on the battlefield at any moment.", "page": "3"}
+      ],
+      "thematicExamples": [
+        "Korean agents recruited women for Japanese military — complicity within colonial hierarchy",
+        "Systematic deception: promises of 'factory work' to lure victims",
+        "Military organization of sexual violence — brothels adjacent to army units",
+        "Hierarchy among comfort women: Japanese vs. Korean women; officers vs. common soldiers",
+        "Silence after the war — why this history remained hidden for decades"
+      ],
+      "realLifeConnections": [
+        "Ongoing diplomatic tensions between Japan and South Korea over comfort women apologies and reparations",
+        "2015 Japan-Korea agreement and subsequent controversy",
+        "Statues of 'comfort women' as sites of memory and protest",
+        "Sexual violence in contemporary conflicts — lessons learned (or not)?",
+        "Human trafficking today uses similar deceptive recruitment tactics"
       ]
     }
   ],
-  "overallSynthesis": "He Zhen's writings reveal the radical vision that animated Chinese revolutionary movements—and the compromises those movements would later make. Her anarchist feminism connected all forms of oppression: gender, class, nation. True liberation required destroying the family, the state, and capitalism simultaneously. Anything less was reformism.\n\nThe Chinese Communist Party would adopt some of her rhetoric while abandoning her anarchism. Land reform, women's rights, and anti-imperialism became revolutionary slogans. But the CCP built a powerful state rather than abolishing state power; reformed the family rather than destroying it; and created new hierarchies while claiming to abolish hierarchy. He Zhen's questions about whether state socialism could deliver genuine liberation remain relevant.\n\nThis reading connects to the course's broader themes. The Taiping Rebellion (Plate 13) showed radical alternatives to Confucian order; He Zhen offered another. Both were suppressed or marginalized, but both revealed that China's revolutionary tradition included visions far more radical than what actually triumphed. Understanding what was imagined—and what was foreclosed—helps us see that history wasn't inevitable.",
-  "executiveSummary": "The Chinese Communist revolution was not just about class struggle—it was also about gender revolution. He Zhen (c. 1884-c. 1920) was a radical anarchist-feminist who argued that women's liberation required destroying both capitalism and the family system. Her writings reveal how Chinese revolutionaries connected economic, political, and gender oppression into a comprehensive critique of traditional society.\n\nThe broader context is China's descent into civil war between Nationalists (Guomindang) and Communists (1927-1949), interrupted by Japanese invasion (1937-1945). Both parties claimed to represent Sun Yat-sen's revolutionary legacy; both promised to cure China's weakness. The Communists ultimately won not just through military victory but by mobilizing peasants—and women—with promises of land reform and social transformation.",
+  "overallSynthesis": "These readings confront students with the Pacific War's darkest dimensions. The Japanese government documents reveal how imperial ideology justified aggression through euphemism: 'peace in the Orient,' 'New Order in East Asia,' 'co-prosperity.' Konoe and Saito present invasion as China's fault — if only China would abandon its 'erroneous anti-Japanese policies,' there would be no need for war. This self-justifying logic was typical of imperial powers.\n\nBut the eyewitness accounts from Nanjing and Kim Tŏkchin's testimony expose what 'New Order' actually meant on the ground: systematic murder, rape, and enslavement. The anonymous diarist's matter-of-fact recording of daily atrocities — firing squads at 5 AM, women raped thirty-seven times, a five-month-old infant smothered — stands in devastating contrast to diplomatic rhetoric. The Japan Advertiser's cheerful reporting of the 'murder race' shows how thoroughly brutality was normalized.\n\nThe readings raise difficult questions about agency and complicity. Kim Tŏkchin was recruited by a Korean man; the 'comfort station' was run by a Korean couple. Japanese soldiers at Nanjing looted, raped, and murdered while their officers proved unable or unwilling to stop them. Who bears responsibility? The system or the individuals within it?\n\nThese sources also illuminate why Japan-Korea and Japan-China relations remain fraught. The wounds are still open. The 'comfort women' broke their silence only in the 1990s; debates over Japanese textbook treatments of the war continue today. History is not past.",
+  "executiveSummary": "The Pacific War (1937-1945) killed millions across Asia and left wounds that still shape regional politics today. These readings juxtapose Japanese government justifications for war with the brutal reality experienced by victims.\n\nJapan framed its invasion as defensive — China's 'anti-Japanese' attitudes forced Japan's hand, Prince Konoe argued. The goal was 'peace in the Orient' through a 'New Order in East Asia' where Japan, Manchukuo, and China would cooperate. Chiang Kai-shek saw through this rhetoric: 'New Order' meant annexation; 'cooperation' meant slavery.\n\nThe Nanjing Massacre (Dec 1937-Jan 1938) showed what Japanese conquest actually looked like: tens of thousands murdered, women raped systematically, the city burned. Foreign observers documented atrocities their own governments could barely acknowledge. Meanwhile, Japanese newspapers celebrated officers competing to kill 100 Chinese with swords.\n\nThe 'comfort women' system institutionalized sexual slavery. Kim Tŏkchin's testimony reveals how Korean women were tricked into factory recruitment, transported across the empire, and forced to serve dozens of soldiers daily. This history remained suppressed for decades — victims were silenced by shame, governments by diplomatic convenience.",
   "keywords": [
     {
-      "term": "He Zhen (何震)",
-      "definition": "Early anarchist-feminist who linked women's liberation to social revolution",
-      "relevance": "Shows gender dimension of Chinese revolutionary thought"
+      "term": "Greater East Asia Co-Prosperity Sphere",
+      "definition": "Japanese wartime ideology claiming to liberate Asia from Western imperialism; in practice, a euphemism for Japanese domination",
+      "relevance": "Understanding how imperial aggression was justified through anti-colonial rhetoric"
     },
     {
-      "term": "Guomindang (國民黨)",
-      "definition": "Nationalist Party founded by Sun Yat-sen; ruled China 1928-1949, then Taiwan",
-      "relevance": "Lost civil war to Communists; represents alternative path"
+      "term": "Rape of Nanjing (南京大屠殺)",
+      "definition": "Mass atrocities committed by Japanese forces after capturing Nanjing (Dec 1937-Jan 1938); estimates of deaths range from tens of thousands to 300,000",
+      "relevance": "Remains contentious in Japan-China relations; symbol of wartime brutality"
     },
     {
-      "term": "Chinese Communist Party (CCP)",
-      "definition": "Founded 1921; won civil war 1949; rules mainland China today",
-      "relevance": "Understanding CCP origins essential for understanding modern China"
+      "term": "Comfort Women (慰安婦)",
+      "definition": "Euphemism for women — primarily Korean, Chinese, Southeast Asian — forced into sexual slavery for Japanese military",
+      "relevance": "Central to Japan-Korea diplomatic tensions; questions of wartime sexual violence"
     },
     {
-      "term": "Land Reform",
-      "definition": "Redistribution of land from landlords to peasants",
-      "relevance": "Key to Communist mobilization of peasant support"
+      "term": "Prince Konoe Fumimaro",
+      "definition": "Japanese Prime Minister (1937-39, 1940-41) who led Japan during early Pacific War expansion",
+      "relevance": "His rhetoric of 'peace' and 'self-defense' exemplifies imperial propaganda"
     },
     {
-      "term": "United Front",
-      "definition": "Temporary GMD-CCP alliance against Japan (1937-1945)",
-      "relevance": "War with Japan interrupted civil war but didn't end it"
+      "term": "Chiang Kai-shek (蔣介石)",
+      "definition": "Nationalist (GMD) leader who led Chinese resistance from wartime capital Chongqing",
+      "relevance": "His defiance contrasts with collaborators like Wang Jingwei"
+    },
+    {
+      "term": "Wang Jingwei",
+      "definition": "Chinese politician who established Japanese puppet government in Nanjing (1940-44)",
+      "relevance": "Example of collaboration; complex questions of agency under occupation"
     }
   ],
   "keyPassages": [
     {
-      "quote": "Women are the slaves of slaves. The liberation of women requires the destruction of the family, private property, and the state.",
-      "source": "He Zhen",
-      "page": "What Women Should Know"
+      "quote": "For one country to adopt as its national policy the antagonizing of and the showing of contempt for some particular country, and to make these the underlying principles of national education by implanting such ideas in minds of the young, is unprecedented in the history of the world.",
+      "source": "Prince Konoe's Address",
+      "page": "316"
     },
     {
-      "quote": "The Chinese revolution must be a revolution of women as well as of men, or it will be no revolution at all.",
-      "source": "Revolutionary rhetoric",
-      "page": "Context"
+      "quote": "What he meant by a China reborn was that independent China was to perish and in its place an enslaved China created, which would abide by Japan's word from generation to generation.",
+      "source": "Chiang Kai-shek's Response",
+      "page": "320-321"
+    },
+    {
+      "quote": "They were the conquerors of China's capital, the seat of the hated Chiang Kai-shek government, and they were given free reign to do as they pleased.",
+      "source": "Bearing Witness (Nanjing diary)",
+      "page": "325"
+    },
+    {
+      "quote": "All I knew — all I thought I knew — was that I was going to work in a factory to earn money. I never dreamed that this could involve danger.",
+      "source": "Kim Tŏkchin",
+      "page": "Comfort Women, p. 2"
     }
   ],
   "peopleplacesthings": {
     "people": [
-      "He Zhen - anarchist-feminist writer",
-      "Mao Zedong - Communist leader",
-      "Chiang Kai-shek - Nationalist leader"
+      "Prince Konoe Fumimaro - PM who justified invasion as 'self-defense'",
+      "Chiang Kai-shek - led Chinese resistance from Chongqing",
+      "Kim Tŏkchin - Korean 'comfort woman' survivor who testified"
     ],
     "places": [
-      "Yan'an - Communist base (1936-1947)",
-      "Nanjing - Nationalist capital",
-      "Shanghai - urban revolutionary center"
+      "Nanjing - site of 1937 massacre; Nationalist capital",
+      "Chongqing - wartime Chinese capital in interior",
+      "Shanghai - site of major 1937 battle; comfort stations"
     ],
     "things": [
-      "Land Reform - redistribution to peasants",
-      "Long March (1934-35) - Communist retreat/myth",
-      "Women's liberation - revolutionary goal"
+      "Co-Prosperity Sphere - euphemism for Japanese empire",
+      "Comfort Stations (慰安所) - military brothels",
+      "Marco Polo Bridge Incident - July 7, 1937 trigger for war"
     ]
   },
   "keyQuestions": [
     {
-      "question": "How did Chinese revolutionaries connect gender oppression to other forms of oppression?",
-      "talkingPoints": "He Zhen saw women's oppression as rooted in family/property/state. Feet binding, arranged marriage, lack of education all connected. Communist women's policies (marriage reform, education) followed this logic."
+      "question": "Prince Konoe claimed Japan acted in 'self-defense' and for 'righteousness and humanity.' The Nanjing diarist witnessed murder, rape, and the 'fun' of killing contests. How do we explain this gap between rhetoric and reality?",
+      "talkingPoints": "Imperial ideology creates moral frameworks that justify atrocities. Dehumanization of enemy. Distance between policymakers and soldiers. Soldiers given 'free reign' — breakdown of command or deliberate policy? Compare to other imperial atrocities."
     },
     {
-      "question": "Why did the Communists win the civil war?",
-      "talkingPoints": "Multiple factors: peasant mobilization through land reform, Nationalist corruption and inflation, Japanese war weakened GMD more than CCP, Mao's guerrilla strategy. Not inevitable—GMD had advantages too."
+      "question": "Kim Tŏkchin was recruited by a Korean man and managed by a Korean couple. Japanese soldiers committed the atrocities at Nanjing. Who bears responsibility — systems or individuals?",
+      "talkingPoints": "Colonial hierarchies create complicity. Korean agents worked within Japanese system — survival strategy or collaboration? Individual soldiers chose to rape and murder — but the system enabled them. Post-war tribunals struggled with these questions."
     },
     {
-      "question": "Did the Communist revolution actually liberate women?",
-      "talkingPoints": "Marriage reform, education, workforce participation all increased. But party remained male-dominated; 'women hold up half the sky' rhetoric didn't match reality. Progress was real but limited."
+      "question": "The 'comfort women' remained silent for nearly 50 years after the war. Why did this history stay hidden, and what changed in the 1990s?",
+      "talkingPoints": "Shame and stigma in patriarchal societies. Governments suppressed history for diplomatic convenience (Cold War alliances). Rise of feminist movements. South Korean democratization allowed civil society to push for recognition. Compare to other delayed reckonings with historical trauma."
     }
   ],
   "timeline": [
     {
-      "date": "1921",
-      "event": "Chinese Communist Party founded in Shanghai"
+      "date": "July 7, 1937",
+      "event": "Marco Polo Bridge Incident — full-scale war begins"
     },
     {
-      "date": "1927",
-      "event": "GMD-CCP split; Shanghai massacre begins civil war"
+      "date": "Sept 1937",
+      "event": "Prince Konoe's address justifying invasion"
     },
     {
-      "date": "1934-35",
-      "event": "Long March—Communists retreat, Mao rises"
+      "date": "Dec 13, 1937",
+      "event": "Japanese capture Nanjing — massacre begins"
     },
     {
-      "date": "1937-1945",
-      "event": "Second Sino-Japanese War; United Front"
+      "date": "Dec 1938",
+      "event": "Chiang refuses collaboration; Wang Jingwei defects"
     },
     {
-      "date": "1946-1949",
-      "event": "Civil War resumes; Communist victory"
+      "date": "Dec 7, 1941",
+      "event": "Pearl Harbor — Pacific War expands"
     },
     {
-      "date": "October 1, 1949",
-      "event": "People's Republic of China proclaimed"
+      "date": "Aug 15, 1945",
+      "event": "Japan surrenders"
     }
   ],
   "connections": {
-    "fromPrevious": "Plate 19's Lu Xun critiqued Chinese 'national character.' Revolutionaries sought to transform it through social revolution—including gender revolution.",
-    "toNext": "Plate 21 examines the Pacific War—which interrupted China's civil war and reshaped all of East Asia.",
-    "broaderThemes": "Revolution is never just political—it involves transforming social relations, including gender. Compare Chinese Communist gender politics to Soviet, or to Meiji Japan's approach."
+    "fromPrevious": "Plate 19 explored Chinese nationalism through Lu Xun's critique of 'national character.' Japan's invasion galvanized exactly the nationalism Lu Xun worried about — but resistance required it.",
+    "toNext": "Plate 21 examines the Chinese Civil War. The war with Japan interrupted but didn't end GMD-CCP conflict; both parties emerged transformed, setting stage for Communist victory.",
+    "broaderThemes": "Imperial ideology and atrocity; colonial complicity; gendered violence in war; memory and reconciliation. How do societies reckon with historical trauma?"
   },
   "nextPreview": {
     "plate": 21,
-    "topic": "The Pacific War",
-    "preview": "Japan's war in Asia (1937/1941-1945) killed millions and transformed the region. How did the war reshape China, Korea, and Japan itself?",
-    "readings": ["Japan at War (SMC)", "Oral Histories of the Comfort Women"]
+    "topic": "Civil War and Revolution in China",
+    "preview": "With Japan defeated, the unfinished civil war resumed. How did the Communists win? What role did women and land reform play in revolutionary mobilization?",
+    "readings": ["Women, Communism, and Revolution (He Zhen, Chen Duxiu, Mao Zedong)"]
   },
   "teachingNotes": [
-    "He Zhen is less famous than male revolutionaries but represents important strand of thought.",
-    "Students may expect 'revolution = Communism.' Show the diversity of revolutionary visions (anarchist, feminist, nationalist).",
-    "The civil war is complex—avoid simple 'good guys vs. bad guys' framing.",
-    "Gender dimension often overlooked in political history. He Zhen reading corrects this.",
-    "Web links to Chen Duxiu, Chiang, and Mao provide additional context."
+    "CONTENT WARNING: These readings contain graphic descriptions of rape, murder, and sexual slavery. Prepare students in advance.",
+    "The 'murder race' newspaper clippings are particularly disturbing — officers competing to behead 100 Chinese. Let silence sit after reading.",
+    "Kim Tŏkchin's testimony is powerful but brief. Consider having students read it aloud, slowly.",
+    "Connect to contemporary issues: Japan-Korea 'comfort women' agreement (2015) and controversy; 'comfort women' statues worldwide.",
+    "Avoid simple 'Japanese = bad' framing. Some documents show Japanese embassy officials horrified by army behavior; Korean agents recruited victims.",
+    "Ask students: What would you have done? (As a soldier? A diplomat? A Korean under colonial rule?)",
+    "The Nanjing death toll remains contested — don't get bogged down in numbers debate. Focus on documented evidence of atrocities."
   ],
   "map": {
-    "center": [32, 112],
-    "zoom": 4,
+    "center": [32, 118],
+    "zoom": 5,
     "locations": [
+      {
+        "name": "Nanjing",
+        "nameChinese": "南京",
+        "lat": 32.0603,
+        "lng": 118.7969,
+        "type": "city",
+        "description": "Site of 1937 massacre; fell to Japan Dec 13"
+      },
       {
         "name": "Shanghai",
         "nameChinese": "上海",
         "lat": 31.2304,
         "lng": 121.4737,
         "type": "city",
-        "description": "CCP founded here (1921); 1927 massacre"
+        "description": "Major battle Aug-Nov 1937; comfort stations"
       },
       {
-        "name": "Yan'an",
-        "nameChinese": "延安",
-        "lat": 36.5853,
-        "lng": 109.4898,
+        "name": "Chongqing",
+        "nameChinese": "重慶",
+        "lat": 29.4316,
+        "lng": 106.9123,
+        "type": "capital",
+        "description": "Wartime Chinese capital; Chiang's base"
+      },
+      {
+        "name": "Marco Polo Bridge",
+        "nameChinese": "盧溝橋",
+        "lat": 39.8511,
+        "lng": 116.2172,
+        "type": "site",
+        "description": "July 7, 1937 incident triggered full-scale war"
+      },
+      {
+        "name": "Nagasaki",
+        "nameChinese": "長崎",
+        "lat": 32.7503,
+        "lng": 129.8779,
         "type": "city",
-        "description": "Communist base 1936-1947; Mao's headquarters"
-      },
-      {
-        "name": "Nanjing",
-        "nameChinese": "南京",
-        "lat": 32.0603,
-        "lng": 118.7969,
-        "type": "capital",
-        "description": "Nationalist capital; fell to Japan 1937"
-      },
-      {
-        "name": "Jiangxi Soviet",
-        "nameChinese": "江西蘇區",
-        "lat": 26.0,
-        "lng": 116.0,
-        "type": "region",
-        "description": "Communist base before Long March"
-      },
-      {
-        "name": "Beijing",
-        "nameChinese": "北京",
-        "lat": 39.9042,
-        "lng": 116.4074,
-        "type": "capital",
-        "description": "Captured by Communists January 1949"
+        "description": "Kim Tŏkchin's first stop; later atomic bombing"
       }
     ]
   }

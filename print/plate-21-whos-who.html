@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who's Who: Japan at War | Plate 21</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --ink: #1a1a1a;
+    --ink-light: #4a4a4a;
+    --ink-faint: #777;
+    --paper: #f7f3eb;
+    --paper-dark: #e8e0d0;
+    --japan-red: #bc002d;
+    --china-blue: #1a4b8c;
+    --ccp-red: #c41e1e;
+    --collab-amber: #b8860b;
+    --witness-green: #2d6a4f;
+    --contest-black: #111;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2416 60%, #3d2817 100%);
+    color: #fff;
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 0.02em;
+}
+header h1 .jp {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 18px;
+    color: #b8860b;
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 400;
+}
+header .subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+}
+.header-badge {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+}
+
+/* INTRO */
+.intro {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 40px 0;
+}
+.intro p {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    border-left: 4px solid var(--japan-red);
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 0 4px 4px 0;
+}
+
+/* GRID */
+.profiles {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 40px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* PERSON CARD */
+.person {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 20px;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+    position: relative;
+}
+.person::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+}
+
+/* Color coding by faction */
+.person.japan::before { background: var(--japan-red); }
+.person.china::before { background: var(--china-blue); }
+.person.ccp::before { background: var(--ccp-red); }
+.person.collab::before { background: var(--collab-amber); }
+.person.witness::before { background: var(--witness-green); }
+.person.contest::before { background: var(--contest-black); }
+
+.person .photo {
+    width: 140px;
+    min-height: 170px;
+    background-size: cover;
+    background-position: center top;
+    background-color: var(--paper-dark);
+}
+
+.person .info {
+    padding: 16px 20px 16px 0;
+}
+
+.person .name-block {
+    margin-bottom: 8px;
+}
+.person .name-block h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.person .name-block .native {
+    font-family: 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-top: 1px;
+}
+.person .role {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.person.japan .role { background: rgba(188,0,45,0.1); color: var(--japan-red); }
+.person.china .role { background: rgba(26,75,140,0.1); color: var(--china-blue); }
+.person.ccp .role { background: rgba(196,30,30,0.1); color: var(--ccp-red); }
+.person.collab .role { background: rgba(184,134,11,0.1); color: var(--collab-amber); }
+.person.witness .role { background: rgba(45,106,79,0.1); color: var(--witness-green); }
+.person.contest .role { background: rgba(17,17,17,0.1); color: var(--contest-black); }
+
+.person .doc-ref {
+    font-size: 10px;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.person .bio {
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--ink-light);
+}
+.person .bio strong {
+    color: var(--ink);
+}
+
+.person .quote {
+    margin-top: 10px;
+    font-size: 11.5px;
+    font-style: italic;
+    color: var(--ink-light);
+    border-left: 3px solid var(--paper-dark);
+    padding-left: 10px;
+    line-height: 1.6;
+}
+.person .quote .cite {
+    display: block;
+    font-style: normal;
+    font-size: 10px;
+    color: var(--ink-faint);
+    margin-top: 3px;
+}
+
+/* SECTION DIVIDERS */
+.section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+.section-divider h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    white-space: nowrap;
+}
+.section-divider .line {
+    flex: 1;
+    height: 1px;
+    background: var(--paper-dark);
+}
+
+/* PAIR CARD (Mukai & Noda) */
+.person.pair .photo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+}
+
+/* DISCUSSION BOX */
+.discussion {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-top: 8px;
+}
+.discussion h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.discussion ol {
+    padding-left: 20px;
+}
+.discussion li {
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--ink-light);
+    margin-bottom: 8px;
+}
+.discussion li strong {
+    color: var(--ink);
+}
+
+/* PRINT */
+@media print {
+    body { background: #fff; }
+    header { padding: 16px 24px; }
+    .profiles { padding: 16px 24px 32px; }
+    .intro { padding: 16px 24px 0; }
+    .person { page-break-inside: avoid; }
+    .discussion { page-break-inside: avoid; }
+}
+
+@media (max-width: 600px) {
+    .person {
+        grid-template-columns: 1fr;
+    }
+    .person .photo {
+        width: 100%;
+        height: 200px;
+    }
+    .person .info {
+        padding: 16px 20px;
+    }
+    header { padding: 20px 20px; }
+    .profiles { padding: 16px 20px 40px; }
+    .intro { padding: 20px 20px 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>
+            <span class="jp">第二次世界大戦の人物</span>
+            Who's Who: Japan at War
+        </h1>
+        <div class="subtitle">Nine voices from the documents. Know who's talking and why.</div>
+    </div>
+    <span class="header-badge">Plate 21 &middot; EAST 213 &middot; Feb 25</span>
+</header>
+
+<div class="intro">
+    <p>These readings are built from <strong>primary sources</strong>: speeches, propaganda, eyewitness diaries, newspaper reports, and radio broadcasts. Each document has an author with an agenda. Understanding who they are and what they wanted is the first step to reading critically.</p>
+</div>
+
+<div class="profiles">
+
+    <!-- SECTION: JAPANESE LEADERSHIP -->
+    <div class="section-divider">
+        <h3>Japanese Leadership</h3>
+        <div class="line"></div>
+    </div>
+
+    <!-- KONOE -->
+    <div class="person japan">
+        <div class="photo" style="background-image: url('images/pacific-war/konoe.jpg');"></div>
+        <div class="info">
+            <div class="name-block">
+                <h2>Prince Konoe Fumimaro</h2>
+                <div class="native">近衛文麿 (1891-1945)</div>
+            </div>
+            <div class="role">Prime Minister of Japan</div>
+            <div class="doc-ref">Document 17.1 &mdash; Address to Imperial Diet, September 5, 1937</div>
+            <div class="bio">
+                Scion of the Fujiwara clan, Japan's most ancient aristocratic family. Served as Prime Minister three times (1937-39, 1940-41). His September 1937 speech to the Imperial Diet framed Japan's full-scale invasion of China as an act of <strong>"self-defence"</strong> forced upon Japan by Chinese "anti-Japanese sentiments." He later announced the <strong>"New Order in East Asia"</strong> (December 1938), the ideological blueprint for Japanese domination of the continent. Committed suicide by cyanide in 1945 rather than face war crimes prosecution.
+            </div>
+            <div class="quote">
+                "For one country to adopt as its national policy the antagonizing of and the showing of contempt for some particular country, and to make these the underlying principles of national education by implanting such ideas in minds of the young, is unprecedented in the history of the world."
+                <span class="cite">SMC, p. 316</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SAITO -->
+    <div class="person japan">
+        <div class="photo" style="background-image: url('images/pacific-war/saito.jpg');"></div>
+        <div class="info">
+            <div class="name-block">
+                <h2>Sait&#333; Hiroshi</h2>
+                <div class="native">斎藤博 (1886-1939)</div>
+            </div>
+            <div class="role">Japanese Ambassador to the United States</div>
+            <div class="doc-ref">Document 17.2 &mdash; "The Japanese Ambassador Explains," 1937</div>
+            <div class="bio">
+                Japan's ambassador to Washington during the critical years of the China war. His 1937 statement was aimed at <strong>Western audiences</strong>, especially Americans, to prevent US intervention on China's behalf. His argument: China's problems are self-inflicted, the conflict is China's fault, and Japanese rule would actually <strong>benefit</strong> everyone, including foreigners doing business there. He blames the fighting on Chinese troops violating the 1932 Shanghai truce. He even claims Chinese students are happily attending Japanese schools while the war rages. Died at his post in Washington in 1939.
+            </div>
+            <div class="quote">
+                "Who is to blame for the condition of China? Is it Great Britain, which sought for decades to help successive Chinese governments? ... Is it Japan, which almost staked her existence in a war with Russia to prevent 'the break-up of China'?"
+                <span class="cite">SMC, p. 317</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MATSUI -->
+    <div class="person japan">
+        <div class="photo" style="background-image: url('images/pacific-war/matsui.jpg');"></div>
+        <div class="info">
+            <div class="name-block">
+                <h2>General Matsui Iwane</h2>
+                <div class="native">松井石根 (1878-1948)</div>
+            </div>
+            <div class="role">Commander, Central China Area Army</div>
+            <div class="doc-ref">Documents 17.4-17.5 &mdash; The Rape of Nanjing, December 1937</div>
+            <div class="bio">
+                Commanded the Japanese forces that captured Nanjing in December 1937. Before the attack, he called on the Chinese garrison to surrender, promising his troops would be <strong>"kind and generous to noncombatants."</strong> In reality, his soldiers carried out one of the worst atrocities of the twentieth century: six weeks of mass murder, rape, and destruction that killed an estimated 200,000-300,000 civilians. After the war, the International Military Tribunal for the Far East found Matsui responsible. <strong>Executed by hanging in 1948.</strong>
+            </div>
+            <div class="quote">
+                "Though harsh and relentless to those who resist, the Japanese troops are kind and generous to noncombatants and to Chinese troops who entertain no enmity to Japan."
+                <span class="cite">SMC, p. 324</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: CHINESE RESISTANCE -->
+    <div class="section-divider">
+        <h3>Chinese Resistance</h3>
+        <div class="line"></div>
+    </div>
+
+    <!-- CHIANG -->
+    <div class="person china">
+        <div class="photo" style="background-image: url('images/pacific-war/chiang.jpg');"></div>
+        <div class="info">
+            <div class="name-block">
+                <h2>Chiang Kai-shek</h2>
+                <div class="native">蔣介石 (1887-1975)</div>
+            </div>
+            <div class="role">Generalissimo, Republic of China</div>
+            <div class="doc-ref">Document 17.3 &mdash; "Chiang Assails Prince Konoye's Statement," December 1938</div>
+            <div class="bio">
+                Leader of Nationalist China and the Guomindang party. By December 1938, his government had been pushed from the coast to the inland wartime capital of <strong>Chongqing</strong>. This speech is a point-by-point demolition of Konoe's "New Order in East Asia." Chiang reads through the euphemisms and names them plainly: <strong>"economic unity" means economic control</strong>; "linked relations" means chains; "New Order" means annexation. He also invokes Sun Yat-sen's principled refusal to break treaties unilaterally, contrasting Chinese integrity with Japanese aggression.
+            </div>
+            <div class="quote">
+                "What is most urgent is that all should realize that Japan is determined to swallow China entirely."
+                <span class="cite">SMC, p. 320</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: BEARING WITNESS -->
+    <div class="section-divider">
+        <h3>Bearing Witness at Nanjing</h3>
+        <div class="line"></div>
+    </div>
+
+    <!-- RABE -->
+    <div class="person witness">
+        <div class="photo" style="background-image: url('images/pacific-war/rabe.jpg');"></div>
+        <div class="info">
+            <div class="name-block">
+                <h2>John Rabe</h2>
+                <div class="native">约翰&middot;拉贝 (1882-1950)</div>
+            </div>
+            <div class="role">German Businessman &middot; Safety Zone Leader</div>
+            <div class="doc-ref">Document 17.4 &mdash; "Bearing Witness," December 1937</div>
+            <div class="bio">
+                A German Siemens engineer who had lived in Nanjing for decades. When the Japanese army approached, most foreigners evacuated. Rabe stayed. As a member of the Nazi Party, he used his status as a citizen of Japan's ally to establish the <strong>Nanjing Safety Zone</strong>, sheltering an estimated 200,000-250,000 Chinese civilians. His detailed diary, hidden for decades, is one of the most important eyewitness accounts of the massacre. Often called the <strong>"Good Man of Nanjing"</strong> or the "Oskar Schindler of China."
+            </div>
+            <div class="quote">
+                "We had confidently expected that they would live up to their promises, at least in some degree, and that order would be established with their arrival. Little did we dream that we should see such brutality and savagery as has probably not been equalled in modern times."
+                <span class="cite">SMC, p. 326</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- VAUTRIN -->
+    <div class="person witness">
+        <div class="photo" style="background-image: url('images/pacific-war/vautrin.jpg');"></div>
+        <div class="info">
+            <div class="name-block">
+                <h2>Minnie Vautrin</h2>
+                <div class="native">"The Living Goddess of Nanjing" (1886-1941)</div>
+            </div>
+            <div class="role">American Missionary &middot; Ginling College</div>
+            <div class="doc-ref">Document 17.4 &mdash; "Bearing Witness," December 1937</div>
+            <div class="bio">
+                Head of the Education Department at Ginling College (now Nanjing Normal University), a women's college. During the massacre, Vautrin turned the campus into a <strong>refuge for nearly 10,000 women and children</strong>. She personally confronted Japanese soldiers at the gates, physically blocking them from entering to take women. In the "Bearing Witness" account, she is described kneeling on the ground with refugee women while soldiers searched them at bayonet point. The trauma of what she witnessed destroyed her. She returned to the US in 1940 and <strong>took her own life in 1941</strong>.
+            </div>
+            <div class="quote">
+                "Miss Vautrin was roughly hustled to the car ... He then demanded that we all leave, including the ladies, and when Miss Vautrin refused she was roughly hustled to the car."
+                <span class="cite">SMC, p. 327</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: THE KILLING CONTEST -->
+    <div class="section-divider">
+        <h3>The Killing Contest</h3>
+        <div class="line"></div>
+    </div>
+
+    <!-- MUKAI & NODA -->
+    <div class="person pair contest">
+        <div class="photo" style="background-image: url('images/pacific-war/mukai-noda.jpg');"></div>
+        <div class="info">
+            <div class="name-block">
+                <h2>Sub-Lt. Mukai Toshiaki &amp; Sub-Lt. Noda Takeshi</h2>
+                <div class="native">向井敏明 &amp; 野田毅</div>
+            </div>
+            <div class="role">Imperial Japanese Army Officers</div>
+            <div class="doc-ref">Document 17.6 &mdash; "The Nanjing Murder Race," reported in the <em>Nichi Nichi Shimbun</em></div>
+            <div class="bio">
+                Two junior officers of the Katagiri unit who competed to see who could <strong>kill 100 Chinese people with a sword first</strong>. The contest was reported as a sporting event by Japan's <em>Tokyo Nichi Nichi Shimbun</em> newspaper, complete with running score updates. When both exceeded 100 kills (Mukai: 106, Noda: 105), they extended the goal to 150. Mukai described it as <strong>"fun."</strong> The newspaper image shown here was used as evidence at their postwar trial. Both were <strong>executed in 1948</strong>. The casual, celebratory tone of the reporting is as revealing as the act itself.
+            </div>
+            <div class="quote">
+                "Mukai's blade was slightly damaged in the competition. He explained that this was the result of cutting a Chinese in half, helmet and all. The contest was 'fun,' he declared."
+                <span class="cite">SMC, p. 330</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: COLLABORATION -->
+    <div class="section-divider">
+        <h3>Collaboration</h3>
+        <div class="line"></div>
+    </div>
+
+    <!-- WANG JINGWEI -->
+    <div class="person collab">
+        <div class="photo" style="background-image: url('images/pacific-war/wang.jpg');"></div>
+        <div class="info">
+            <div class="name-block">
+                <h2>Wang Jingwei</h2>
+                <div class="native">汪精衛 (1883-1944)</div>
+            </div>
+            <div class="role">Head of Collaborationist Government, Nanjing</div>
+            <div class="doc-ref">Document 17.6 &mdash; Radio Address from Tokyo, June 24, 1941</div>
+            <div class="bio">
+                One of the tragic ironies of the war. Wang was originally a <strong>revolutionary hero</strong>: a young radical who tried to assassinate the Qing regent in 1910, a close associate of Sun Yat-sen, and one of Chiang Kai-shek's fiercest critics after the Mukden Incident (1931). Convinced the war was unwinnable, he fled to Hanoi in 1938 and negotiated with the Japanese. In March 1940, he became head of a puppet <strong>"national" government in Nanjing</strong>. His 1941 Tokyo radio address is a study in self-abasement: praising the Emperor, thanking Japan for its "aid," and signing a treaty as humiliating as the Twenty-One Demands of 1915.
+            </div>
+            <div class="quote">
+                "Banzai for the Empire of Japan! Banzai for the Republic of China!"
+                <span class="cite">SMC, p. 333</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: THE COMMUNIST ALTERNATIVE -->
+    <div class="section-divider">
+        <h3>The Communist Alternative</h3>
+        <div class="line"></div>
+    </div>
+
+    <!-- LIU SHAOQI -->
+    <div class="person ccp">
+        <div class="photo" style="background-image: url('images/pacific-war/liu.jpg');"></div>
+        <div class="info">
+            <div class="name-block">
+                <h2>Liu Shaoqi</h2>
+                <div class="native">刘少奇 (1898-1969)</div>
+            </div>
+            <div class="role">Senior CCP Official &middot; Party Theorist</div>
+            <div class="doc-ref">Document 17.7 &mdash; "How to Be a Good Communist," Yan'an, July 1939</div>
+            <div class="bio">
+                Former Shanghai labor organizer and one of the CCP's most important ideologues. While Japan occupied the coast and Chiang's Nationalists held the interior, the Communists were building a parallel state in <strong>Yan'an</strong>, deep in China's northwest. Liu's 1939 lectures at the Institute of Marxism-Leninism aimed to transform millions of wartime refugees and new recruits into <strong>disciplined party cadres</strong>. Many were urban intellectuals from Shanghai, Tianjin, and Beijing, unaccustomed to party discipline. Liu became President of the PRC in 1959 but was purged during the Cultural Revolution and <strong>died in detention in 1969</strong>.
+            </div>
+        </div>
+    </div>
+
+    <!-- DISCUSSION QUESTIONS -->
+    <div class="section-divider">
+        <h3>Reading These Documents</h3>
+        <div class="line"></div>
+    </div>
+
+    <div class="discussion">
+        <h3>Questions to Carry Into Class</h3>
+        <ol>
+            <li><strong>Konoe and Sait&#333; both frame Japan as the victim.</strong> What rhetorical strategies do they use to flip aggressor and victim? Where does the logic break down?</li>
+            <li><strong>Chiang reads through the euphemisms.</strong> Pick one of Konoe's phrases ("New Order," "economic unity," "linked relations") and trace how Chiang dismantles it. Is his reading persuasive?</li>
+            <li><strong>The "Bearing Witness" diary entries are day-by-day.</strong> How does the accumulation of detail work differently than a summary? What do you notice on the second or third day that you didn't on the first?</li>
+            <li><strong>The <em>Nichi Nichi</em> reported the killing contest as sports news.</strong> What does the tone of the reporting tell us about the Japanese home front's relationship to the war?</li>
+            <li><strong>Wang Jingwei's Tokyo speech vs. his earlier career.</strong> He was a revolutionary who tried to assassinate the Qing regent. How do you read his collaboration? Pragmatism? Betrayal? Coercion? Does it matter?</li>
+            <li><strong>Liu Shaoqi is building something while everything burns.</strong> While Japan massacres civilians and Wang collaborates, the CCP is training cadres. What does this tell us about how the war reshapes Chinese politics?</li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>

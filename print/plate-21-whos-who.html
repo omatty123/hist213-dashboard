@@ -275,9 +275,45 @@ header .subtitle {
     color: var(--ink);
 }
 
+/* BREADCRUMB */
+.breadcrumb {
+    padding: 8px 40px;
+    background: #1a1a1a;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.breadcrumb a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+}
+.breadcrumb a:hover {
+    color: rgba(255,255,255,0.8);
+}
+
+/* LEARN MORE LINK */
+.person .learn-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    text-decoration: none;
+    border-bottom: 1px solid var(--paper-dark);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+}
+.person .learn-more:hover {
+    color: var(--ink);
+    border-color: var(--ink-light);
+}
+.person.newspaper .learn-more {
+    margin-top: 10px;
+}
+
 /* PRINT */
 @media print {
     body { background: #fff; }
+    .breadcrumb { display: none; }
     header { padding: 16px 24px; }
     .profiles { padding: 16px 24px 32px; }
     .intro { padding: 16px 24px 0; }
@@ -303,6 +339,10 @@ header .subtitle {
 </style>
 </head>
 <body>
+
+<nav class="breadcrumb">
+    <a href="../index.html">&larr; Back to EAST 213 Dashboard</a>
+</nav>
 
 <header>
     <div>
@@ -344,6 +384,7 @@ header .subtitle {
                 "For one country to adopt as its national policy the antagonizing of and the showing of contempt for some particular country, and to make these the underlying principles of national education by implanting such ideas in minds of the young, is unprecedented in the history of the world."
                 <span class="cite">SMC, p. 316</span>
             </div>
+            <a class="learn-more" href="https://www.britannica.com/biography/Konoe-Fumimaro" target="_blank">Learn more (Britannica) &rarr;</a>
         </div>
     </div>
 
@@ -364,6 +405,7 @@ header .subtitle {
                 "Who is to blame for the condition of China? Is it Great Britain, which sought for decades to help successive Chinese governments? ... Is it Japan, which almost staked her existence in a war with Russia to prevent 'the break-up of China'?"
                 <span class="cite">SMC, p. 317</span>
             </div>
+            <a class="learn-more" href="https://afe.easia.columbia.edu/ps/china/japanese_ambassador.pdf" target="_blank">Read his full statement (Columbia AFE) &rarr;</a>
         </div>
     </div>
 
@@ -384,6 +426,7 @@ header .subtitle {
                 "Though harsh and relentless to those who resist, the Japanese troops are kind and generous to noncombatants and to Chinese troops who entertain no enmity to Japan."
                 <span class="cite">SMC, p. 324</span>
             </div>
+            <a class="learn-more" href="https://www.britannica.com/biography/Matsui-Iwane" target="_blank">Learn more (Britannica) &rarr;</a>
         </div>
     </div>
 
@@ -410,6 +453,7 @@ header .subtitle {
                 "What is most urgent is that all should realize that Japan is determined to swallow China entirely."
                 <span class="cite">SMC, p. 320</span>
             </div>
+            <a class="learn-more" href="https://www.britannica.com/biography/Chiang-Kai-shek" target="_blank">Learn more (Britannica) &rarr;</a>
         </div>
     </div>
 
@@ -436,6 +480,7 @@ header .subtitle {
                 "We had confidently expected that they would live up to their promises, at least in some degree, and that order would be established with their arrival. Little did we dream that we should see such brutality and savagery as has probably not been equalled in modern times."
                 <span class="cite">SMC, p. 326</span>
             </div>
+            <a class="learn-more" href="https://rabediaries.hypotheses.org/389" target="_blank">Learn more (Rabe Diaries Project) &rarr;</a>
         </div>
     </div>
 
@@ -456,6 +501,7 @@ header .subtitle {
                 "Miss Vautrin was roughly hustled to the car ... He then demanded that we all leave, including the ladies, and when Miss Vautrin refused she was roughly hustled to the car."
                 <span class="cite">SMC, p. 327</span>
             </div>
+            <a class="learn-more" href="https://www.womenshistory.org/education-resources/biographies/minnie-vautrin" target="_blank">Learn more (National Women's History Museum) &rarr;</a>
         </div>
     </div>
 
@@ -487,6 +533,7 @@ header .subtitle {
                 "Mukai's blade was slightly damaged in the competition. He explained that this was the result of cutting a Chinese in half, helmet and all. The contest was 'fun,' he declared."
                 <span class="cite">SMC, p. 330</span>
             </div>
+            <a class="learn-more" href="https://www.britannica.com/event/Nanjing-Massacre" target="_blank">Learn more about the Nanjing Massacre (Britannica) &rarr;</a>
         </div>
     </div>
 
@@ -513,28 +560,7 @@ header .subtitle {
                 "Banzai for the Empire of Japan! Banzai for the Republic of China!"
                 <span class="cite">SMC, p. 333</span>
             </div>
-        </div>
-    </div>
-
-    <!-- SECTION: THE COMMUNIST ALTERNATIVE -->
-    <div class="section-divider">
-        <h3>The Communist Alternative</h3>
-        <div class="line"></div>
-    </div>
-
-    <!-- LIU SHAOQI -->
-    <div class="person ccp">
-        <div class="photo" style="background-image: url('images/pacific-war/liu.jpg');"></div>
-        <div class="info">
-            <div class="name-block">
-                <h2>Liu Shaoqi</h2>
-                <div class="native">刘少奇 (1898-1969)</div>
-            </div>
-            <div class="role">Senior CCP Official &middot; Party Theorist</div>
-            <div class="doc-ref">Document 17.7 &mdash; "How to Be a Good Communist," Yan'an, July 1939</div>
-            <div class="bio">
-                Former Shanghai labor organizer and one of the CCP's most important ideologues. While Japan occupied the coast and Chiang's Nationalists held the interior, the Communists were building a parallel state in <strong>Yan'an</strong>, deep in China's northwest. Liu's 1939 lectures at the Institute of Marxism-Leninism aimed to transform millions of wartime refugees and new recruits into <strong>disciplined party cadres</strong>. Many were urban intellectuals from Shanghai, Tianjin, and Beijing, unaccustomed to party discipline. Liu became President of the PRC in 1959 but was purged during the Cultural Revolution and <strong>died in detention in 1969</strong>.
-            </div>
+            <a class="learn-more" href="https://www.britannica.com/biography/Wang-Ching-wei" target="_blank">Learn more (Britannica) &rarr;</a>
         </div>
     </div>
 
@@ -552,7 +578,6 @@ header .subtitle {
             <li><strong>The "Bearing Witness" diary entries are day-by-day.</strong> How does the accumulation of detail work differently than a summary? What do you notice on the second or third day that you didn't on the first?</li>
             <li><strong>The <em>Nichi Nichi</em> reported the killing contest as sports news.</strong> What does the tone of the reporting tell us about the Japanese home front's relationship to the war?</li>
             <li><strong>Wang Jingwei's Tokyo speech vs. his earlier career.</strong> He was a revolutionary who tried to assassinate the Qing regent. How do you read his collaboration? Pragmatism? Betrayal? Coercion? Does it matter?</li>
-            <li><strong>Liu Shaoqi is building something while everything burns.</strong> While Japan massacres civilians and Wang collaborates, the CCP is training cadres. What does this tell us about how the war reshapes Chinese politics?</li>
         </ol>
     </div>
 

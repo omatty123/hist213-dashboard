@@ -219,12 +219,33 @@ header .subtitle {
     background: var(--paper-dark);
 }
 
-/* PAIR CARD (Mukai & Noda) */
-.person.pair .photo {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #fff;
+/* NEWSPAPER CARD (Mukai & Noda) */
+.person.newspaper {
+    grid-template-columns: 1fr;
+}
+.person.newspaper .clipping {
+    width: 100%;
+    padding: 12px;
+    background: #f0ece4;
+    display: flex;
+    justify-content: center;
+}
+.person.newspaper .clipping img {
+    max-width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.12);
+}
+.person.newspaper .clipping-caption {
+    text-align: center;
+    font-size: 10px;
+    color: var(--ink-faint);
+    margin-top: 6px;
+    font-style: italic;
+}
+.person.newspaper .info {
+    padding: 16px 24px 20px;
 }
 
 /* DISCUSSION BOX */
@@ -445,8 +466,13 @@ header .subtitle {
     </div>
 
     <!-- MUKAI & NODA -->
-    <div class="person pair contest">
-        <div class="photo" style="background-image: url('images/pacific-war/mukai-noda.jpg');"></div>
+    <div class="person newspaper contest">
+        <div class="clipping">
+            <div>
+                <img src="images/pacific-war/mukai-noda-newspaper.png" alt="Tokyo Nichi Nichi Shimbun clippings reporting the killing contest between Sub-lieutenants Mukai and Noda, December 1937">
+                <div class="clipping-caption">Tokyo Nichi Nichi Shimbun, December 1937. Top: "百人斬り大接戦" (Great Killing Contest). Bottom: "百人斬り超記録 &mdash; 向井106&ndash;105野田" (Record-Breaking: Mukai 106, Noda 105).</div>
+            </div>
+        </div>
         <div class="info">
             <div class="name-block">
                 <h2>Sub-Lt. Mukai Toshiaki &amp; Sub-Lt. Noda Takeshi</h2>

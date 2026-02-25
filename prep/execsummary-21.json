@@ -177,55 +177,72 @@
     "Consider showing clips from documentary 'The Apology' (2016) about surviving comfort women."
   ],
   "map": {
-    "center": [30, 125],
-    "zoom": 3,
+    "center": [33, 114],
+    "zoom": 5,
     "locations": [
+      {
+        "name": "Marco Polo Bridge (Lugouqiao)",
+        "nameChinese": "盧溝橋",
+        "lat": 39.8353,
+        "lng": 116.2135,
+        "type": "battle",
+        "description": "July 7, 1937: Incident that triggered full-scale war (Doc 17.1)"
+      },
+      {
+        "name": "Shanghai",
+        "nameChinese": "上海",
+        "lat": 31.2304,
+        "lng": 121.4737,
+        "type": "battle",
+        "description": "Major fighting Aug-Nov 1937; Saitō cites 1932 truce violations (Doc 17.2)"
+      },
       {
         "name": "Nanjing",
         "nameChinese": "南京",
         "lat": 32.0603,
         "lng": 118.7969,
         "type": "battle",
-        "description": "Site of 1937 massacre; 200,000+ killed"
+        "description": "Fell Dec 13, 1937. Massacre: 200,000-300,000 killed. Rabe's Safety Zone (Docs 17.4-17.6)"
       },
       {
-        "name": "Manchuria (Manchukuo)",
+        "name": "Chongqing",
+        "nameChinese": "重慶",
+        "lat": 29.4316,
+        "lng": 106.9123,
+        "type": "capital",
+        "description": "Chiang's wartime capital after fall of Nanjing. Site of his Dec 1938 speech (Doc 17.3)"
+      },
+      {
+        "name": "Wuhan",
+        "nameChinese": "武漢",
+        "lat": 30.5928,
+        "lng": 114.3055,
+        "type": "battle",
+        "description": "Fall of Wuhan (Oct 1938) marked 'turning point' before Chiang's retreat inland"
+      },
+      {
+        "name": "Canton (Guangzhou)",
+        "nameChinese": "廣州",
+        "lat": 23.1291,
+        "lng": 113.2644,
+        "type": "battle",
+        "description": "Fell Oct 1938; Japan controlled eastern half of China by late 1938"
+      },
+      {
+        "name": "Tokyo",
+        "nameChinese": "東京",
+        "lat": 35.6762,
+        "lng": 139.6503,
+        "type": "capital",
+        "description": "Konoe's Imperial Diet address (1937); Wang Jingwei's radio broadcast (1941)"
+      },
+      {
+        "name": "Manchukuo (Changchun)",
         "nameChinese": "滿洲國",
         "lat": 43.8171,
         "lng": 125.3235,
         "type": "region",
-        "description": "Japanese puppet state 1932-1945"
-      },
-      {
-        "name": "Seoul (Keijō)",
-        "nameChinese": "京城",
-        "lat": 37.5665,
-        "lng": 126.9780,
-        "type": "capital",
-        "description": "Colonial capital; comfort women recruited here"
-      },
-      {
-        "name": "Manila",
-        "lat": 14.5995,
-        "lng": 120.9842,
-        "type": "city",
-        "description": "Philippines under Japanese occupation"
-      },
-      {
-        "name": "Hiroshima",
-        "nameChinese": "廣島",
-        "lat": 34.3853,
-        "lng": 132.4553,
-        "type": "city",
-        "description": "Atomic bomb, August 6, 1945"
-      },
-      {
-        "name": "Nagasaki",
-        "nameChinese": "長崎",
-        "lat": 32.7503,
-        "lng": 129.8777,
-        "type": "city",
-        "description": "Atomic bomb, August 9, 1945"
+        "description": "Japanese puppet state; part of Konoe's 'New Order' with Japan and China"
       }
     ]
   }

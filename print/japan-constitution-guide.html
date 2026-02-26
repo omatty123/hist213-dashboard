@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Guide: The 1947 Constitution of Japan | EAST 213</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #fff;
+            --paper-warm: #faf8f5;
+            --paper-dark: #f0ede8;
+            --imperial: #8b0000;
+            --occupation: #1a3a5c;
+            --gold: #a67c00;
+            --rights: #2e7d32;
+            --peace: #1565c0;
+            --emperor: #6a1b9a;
+            --reform: #e65100;
+            --border: #ddd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--ink);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav a:hover { text-decoration: underline; }
+        nav .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+        nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+        .hero {
+            position: relative;
+            padding: 5rem 4rem 4rem;
+            background: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+        }
+        .hero-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.6rem;
+            font-weight: 500;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            max-width: 700px;
+        }
+        .hero .deck {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .hero-date {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.4rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--imperial);
+        }
+        .main-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 1.5rem 0 0.75rem;
+        }
+        .main-content p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .look-for {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--imperial);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .look-for-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: var(--imperial);
+            margin-bottom: 0.5rem;
+        }
+        .look-for p {
+            font-size: 0.85rem;
+            color: var(--ink);
+            margin-bottom: 0;
+        }
+
+        .article-card {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .article-card-head {
+            padding: 0.75rem 1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .article-card-head.peace { background: var(--peace); }
+        .article-card-head.emperor { background: var(--emperor); }
+        .article-card-head.rights { background: var(--rights); }
+        .article-card-head.reform { background: var(--reform); }
+        .article-card-head.occupation { background: var(--occupation); }
+        .article-card-head h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .article-card-head .badge {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(255,255,255,0.2);
+            padding: 0.15rem 0.5rem;
+            white-space: nowrap;
+        }
+        .article-card-body {
+            padding: 1rem 1.25rem;
+        }
+        .article-card-body p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.5rem;
+        }
+        .article-card-body blockquote {
+            border-left: 3px solid var(--border);
+            padding-left: 1rem;
+            margin: 0.75rem 0;
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .article-card-body .discuss {
+            font-size: 0.8rem;
+            color: var(--imperial);
+            font-weight: 600;
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+        }
+
+        .sidebar { position: sticky; top: 1rem; align-self: start; }
+        .sidebar-card {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-card-head {
+            background: var(--ink);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        .sidebar-card-body {
+            padding: 1rem;
+        }
+        .sidebar-card-body p {
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .sidebar-card-body p:last-child { margin-bottom: 0; }
+        .sidebar-card-body strong { color: var(--ink); }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            margin: 1rem 0;
+        }
+        .compare-table th {
+            background: var(--ink);
+            color: #fff;
+            padding: 0.6rem 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .compare-table td {
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--ink-light);
+            vertical-align: top;
+        }
+        .compare-table tr:nth-child(even) td {
+            background: var(--paper-warm);
+        }
+        .compare-table .meiji { color: var(--ink-faint); }
+        .compare-table .new { color: var(--ink); font-weight: 500; }
+
+        .timeline-section {
+            background: var(--paper-warm);
+            padding: 4rem 2rem;
+        }
+        .timeline-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--ink);
+        }
+        .tl-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2rem;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .tl-item:last-child { border-bottom: none; }
+        .tl-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--imperial);
+        }
+        .tl-date small {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            font-weight: 400;
+        }
+        .tl-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            color: var(--ink);
+        }
+        .tl-content p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.6;
+        }
+
+        .pull-quote {
+            border-left: 4px solid var(--imperial);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            background: var(--paper-warm);
+        }
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        .pull-quote .attrib {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+            font-style: normal;
+        }
+
+        .sources-section {
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .sources-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .source-item {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            line-height: 1.5;
+        }
+        .source-item a {
+            color: var(--occupation);
+            text-decoration: none;
+        }
+        .source-item a:hover { text-decoration: underline; }
+        .source-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-faint);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.5);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 900px) {
+            .two-col { grid-template-columns: 1fr; }
+            .sidebar { order: -1; position: static; }
+        }
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1.5rem; }
+            .hero h1 { font-size: 1.6rem; }
+            .two-col { padding: 2rem 1rem; gap: 2rem; }
+            .tl-item { grid-template-columns: 90px 1fr; gap: 1rem; }
+            .sources-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html"><span style="font-size:1.2rem">&larr;</span> Back to Dashboard</a>
+    <span class="sep">|</span>
+    <span class="context">Plate 22: Rebuilding Japan</span>
+</nav>
+
+<section class="hero">
+    <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
+    <h1>Reading the 1947 Constitution of Japan</h1>
+    <p class="deck">A guide to what students should look for in one of the most consequential documents of the twentieth century, drafted in six days by American occupiers and reshaping Japan's political identity.</p>
+    <div class="hero-date">Promulgated November 3, 1946 &middot; Enforced May 3, 1947</div>
+</section>
+
+<section class="timeline-section">
+    <div class="timeline-inner">
+        <div class="timeline-header">
+            <h2>How It Happened: Six Days That Rewrote Japan</h2>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">Oct 1945 <small>Occupation begins</small></div>
+            <div class="tl-content">
+                <h4>Matsumoto Committee formed</h4>
+                <p>MacArthur orders the Japanese government to revise its constitution. The Matsumoto Committee, led by conservative Minister Matsumoto Joji, begins work. Their approach: keep the Meiji framework mostly intact.</p>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">Jan 24, 1946 <small>Private meeting</small></div>
+            <div class="tl-content">
+                <h4>Shidehara meets MacArthur</h4>
+                <p>Prime Minister Shidehara Kijuro meets privately with MacArthur. MacArthur later claimed Shidehara proposed the war renunciation idea at this meeting. Shidehara later told friends the idea was his own. The true authorship of Article 9 remains debated.</p>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">Feb 1, 1946 <small>Press leak</small></div>
+            <div class="tl-content">
+                <h4>Matsumoto draft leaked</h4>
+                <p>The Mainichi Shimbun publishes the committee's draft. Even its "progressive" version barely changes the Meiji Constitution. The emperor retains sovereignty. MacArthur concludes the Japanese government cannot be trusted to democratize itself.</p>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">Feb 3, 1946 <small>The order</small></div>
+            <div class="tl-content">
+                <h4>MacArthur's "Three Basic Points"</h4>
+                <p>MacArthur writes three non-negotiable principles and hands them to Brigadier General Courtney Whitney: (1) Emperor as symbol, not sovereign, (2) total renunciation of war, (3) abolition of feudal aristocracy. Whitney assembles ~25 Americans to draft a new constitution.</p>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">Feb 4-12 <small>Six days</small></div>
+            <div class="tl-content">
+                <h4>The Government Section drafts the constitution</h4>
+                <p>Nine subcommittees work around the clock. Colonel Charles Kades leads the Steering Committee. Beate Sirota Gordon, age 22 and the only woman, drafts the women's rights articles. She scours bomb-damaged Tokyo libraries for foreign constitutions as models. The final draft has 103 articles across 11 chapters.</p>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">Feb 13, 1946 <small>"Atomic sunshine"</small></div>
+            <div class="tl-content">
+                <h4>GHQ draft presented to Japanese officials</h4>
+                <p>Whitney tells Foreign Minister Yoshida and Matsumoto their draft is "wholly unacceptable" and hands over the American version. As they wait in the garden, a B-29 flies overhead. Whitney remarks: "We have been enjoying your atomic sunshine." Eight months after Hiroshima, the threat is unmistakable.</p>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">Nov 3, 1946 <small>Meiji Day</small></div>
+            <div class="tl-content">
+                <h4>Constitution promulgated</h4>
+                <p>Emperor Hirohito formally announces the new constitution. The date is chosen deliberately: it is the birthday of Emperor Meiji, linking the new order to historical continuity. Six months of preparation begin.</p>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">May 3, 1947 <small>New Japan</small></div>
+            <div class="tl-content">
+                <h4>Constitution takes effect</h4>
+                <p>Japan's new government system begins. In the April elections under the new rules, 38 women won parliamentary seats and women's voter turnout exceeded 67%. May 3 is now a national holiday: Constitution Memorial Day.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="two-col">
+    <div class="main-content">
+
+        <h2>What to Look For in the Text</h2>
+
+        <p>This isn't a document to memorize. It's a document to read <em>against</em> what came before. Every article is a deliberate correction of something in the Meiji Constitution that the Americans (and many Japanese reformers) blamed for enabling militarism. Here are the key passages and what makes them significant.</p>
+
+        <div class="article-card">
+            <div class="article-card-head peace">
+                <span class="badge">Chapter II</span>
+                <h4>Article 9: Renunciation of War</h4>
+            </div>
+            <div class="article-card-body">
+                <blockquote>"Aspiring sincerely to an international peace based on justice and order, the Japanese people forever renounce war as a sovereign right of the nation and the threat or use of force as means of settling international disputes. In order to accomplish the aim of the preceding paragraph, land, sea, and air forces, as well as other war potential, will never be maintained."</blockquote>
+                <p>This is the most famous article in the constitution and the most debated. No other constitution in the world contains such an absolute renunciation of military force. MacArthur's original note went even further: Japan would renounce war "even for preserving its own security."</p>
+                <p>The paradox: Japan today has the Self-Defense Forces (SDF), one of the world's most capable militaries. Successive governments have reinterpreted Article 9 to permit defensive capability. The tension between the text and reality has been central to Japanese politics for 75+ years.</p>
+                <p class="discuss">Ask yourself: Who does this article serve? MacArthur's strategic interests? Japanese pacifist ideals? Both?</p>
+            </div>
+        </div>
+
+        <div class="article-card">
+            <div class="article-card-head emperor">
+                <span class="badge">Chapter I</span>
+                <h4>Articles 1-8: The Emperor</h4>
+            </div>
+            <div class="article-card-body">
+                <blockquote>"The Emperor shall be the symbol of the State and of the unity of the people, deriving his position from the will of the people with whom resides sovereign power."</blockquote>
+                <p>Under the Meiji Constitution, the emperor held supreme political power by divine right ("sacred and inviolable," "lineal succession unbroken for ages eternal"). He commanded the military directly, independent of the Diet. He could declare war, conclude treaties, and dissolve parliament.</p>
+                <p>The 1947 constitution strips all political power. The emperor becomes a "symbol." His ceremonial duties require cabinet approval. This was MacArthur's compromise: keep the emperor to ensure stability (and avoid prosecution as a war criminal), but remove every scrap of governing authority.</p>
+                <p class="discuss">Notice the language: "deriving his position from the will of the people." Where did his position derive from before?</p>
+            </div>
+        </div>
+
+        <div class="article-card">
+            <div class="article-card-head rights">
+                <span class="badge">Chapter III</span>
+                <h4>Articles 10-40: Rights and Duties of the People</h4>
+            </div>
+            <div class="article-card-body">
+                <p>This is the longest chapter, and it reads like a catalog of everything the Meiji Constitution did not guarantee. Under Meiji, rights were granted by the emperor and could be limited by law. Here, rights are described as "eternal and inviolate" (Art. 11) and "the supreme consideration in legislation" (Art. 13).</p>
+                <p>Key articles to read closely:</p>
+                <p><strong>Article 14</strong> (equality): Prohibits discrimination by "race, creed, sex, social status or family origin." Abolishes peerage. Drafted by 22-year-old Beate Sirota Gordon.</p>
+                <p><strong>Article 19</strong> (thought): "Freedom of thought and conscience shall not be violated." One sentence. Absolute.</p>
+                <p><strong>Article 24</strong> (marriage): Requires "mutual consent of both sexes" and "equal rights of husband and wife." Revolutionary in 1946 Japan. Also drafted by Sirota Gordon.</p>
+                <p><strong>Articles 31-40</strong> (criminal protections): Right to counsel, ban on torture, ban on forced confessions, double jeopardy protection. Read these against Japan's wartime security apparatus.</p>
+                <p class="discuss">How many of these articles echo the U.S. Bill of Rights? What does that tell you about who wrote this document?</p>
+            </div>
+        </div>
+
+        <div class="article-card">
+            <div class="article-card-head occupation">
+                <span class="badge">Preamble</span>
+                <h4>The Preamble: Whose Voice?</h4>
+            </div>
+            <div class="article-card-body">
+                <blockquote>"We, the Japanese people, acting through our duly elected representatives in the National Diet, determined that we shall secure for ourselves and our posterity the fruits of peaceful cooperation with all nations..."</blockquote>
+                <p>The preamble begins "We, the Japanese people." But the Japanese people did not write it. Twenty-five Americans in a military headquarters did, in six days, in English. The Japanese government was then presented with it under implicit threat.</p>
+                <p>This tension has never fully resolved. Conservative critics call it an "imposed constitution" (oshitsuke kenpo). Supporters argue it reflects genuine Japanese aspirations that the wartime government had suppressed. The fact that Japan has never amended it, despite decades of debate, suggests something more complex than pure imposition.</p>
+                <p class="discuss">Read the preamble out loud. Does it sound like it was written by Japanese people? What phrases feel American?</p>
+            </div>
+        </div>
+
+        <div class="article-card">
+            <div class="article-card-head reform">
+                <span class="badge">Chapters IV-VI</span>
+                <h4>The Government Structure</h4>
+            </div>
+            <div class="article-card-body">
+                <p>The structural changes are less dramatic to read but equally important:</p>
+                <p><strong>The Diet</strong> (Art. 41): "The highest organ of state power." Not the emperor, not the military. The parliament. And cabinet ministers "must be civilians" (Art. 66), a direct response to the military officers who dominated prewar cabinets.</p>
+                <p><strong>Judiciary</strong> (Art. 76-82): An independent Supreme Court with the power of judicial review (Art. 81). Under Meiji, courts had no power to strike down laws. This is another American import.</p>
+                <p><strong>Local government</strong> (Chapter VIII): A new concept. Meiji Japan was rigidly centralized. The 1947 constitution creates local autonomy (Art. 92-95), a deliberate effort to prevent the concentration of power that enabled militarism.</p>
+                <p class="discuss">Why would the American drafters care so much about decentralization? What are they trying to prevent?</p>
+            </div>
+        </div>
+
+        <h2 style="margin-top:3rem">Meiji vs. 1947: What Changed</h2>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th style="width:25%">Feature</th>
+                    <th style="width:37%">Meiji (1889)</th>
+                    <th style="width:38%">1947 Constitution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Sovereignty</strong></td>
+                    <td class="meiji">Emperor, by divine ancestry</td>
+                    <td class="new">The people</td>
+                </tr>
+                <tr>
+                    <td><strong>Emperor</strong></td>
+                    <td class="meiji">Supreme political power; commands military</td>
+                    <td class="new">"Symbol"; ceremonial only</td>
+                </tr>
+                <tr>
+                    <td><strong>Military</strong></td>
+                    <td class="meiji">Emperor's direct command, independent of Diet</td>
+                    <td class="new">War renounced (Art. 9); cabinet must be civilian</td>
+                </tr>
+                <tr>
+                    <td><strong>Rights</strong></td>
+                    <td class="meiji">Granted by emperor; limited by law</td>
+                    <td class="new">"Eternal and inviolate"; cannot be overridden</td>
+                </tr>
+                <tr>
+                    <td><strong>Women</strong></td>
+                    <td class="meiji">No suffrage; minimal legal standing</td>
+                    <td class="new">Full equality (Art. 14, 24); voted in 1946</td>
+                </tr>
+                <tr>
+                    <td><strong>Cabinet</strong></td>
+                    <td class="meiji">Responsible to emperor, not Diet</td>
+                    <td class="new">Responsible to Diet; PM from parliament</td>
+                </tr>
+                <tr>
+                    <td><strong>Peerage</strong></td>
+                    <td class="meiji">House of Peers; hereditary aristocracy</td>
+                    <td class="new">Abolished (Art. 14)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pull-quote" style="margin-top:2.5rem">
+            <p>"The fundamental human rights by this Constitution guaranteed to the people of Japan are fruits of the age-old struggle of man to be free; they have survived the many exacting tests for durability and are conferred upon this and future generations in trust, to be held for all time inviolate."</p>
+            <div class="attrib">Article 97, "Supreme Law"</div>
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-head">The Beate Sirota Gordon Story</div>
+            <div class="sidebar-card-body">
+                <p><strong>Age 22. The only woman among the drafters.</strong></p>
+                <p>Born in Vienna to a Ukrainian pianist father. Grew up in Tokyo from age 5 while her father taught at the Imperial Academy of Music. Fluent in Japanese.</p>
+                <p>Assigned to the Civil Rights subcommittee, she drafted Articles 14 (equality) and 24 (marriage equality). She personally scoured bomb-damaged Tokyo libraries for foreign constitutions as models.</p>
+                <p>Her original proposals included even more protections for women. Some were cut by her superiors. She kept her role secret for nearly 50 years, going public only in 1995.</p>
+                <p><strong>Her articles remain unamended.</strong></p>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-head">The Article 9 Debate</div>
+            <div class="sidebar-card-body">
+                <p>Who actually proposed the war renunciation clause? Three theories:</p>
+                <p><strong>MacArthur's initiative:</strong> His Feb 3 notes contain the language. Strategic motive: protect the emperor from war crimes prosecution by making Japan permanently peaceful.</p>
+                <p><strong>Shidehara's idea:</strong> MacArthur claimed PM Shidehara proposed it on Jan 24. Shidehara later told friends it was his own idea. His career as a dovish diplomat lends credibility.</p>
+                <p><strong>Kades shaped the final text:</strong> The Government Section's actual drafting, and later Diet negotiations, determined the exact language.</p>
+                <p>Recent scholarship gives increasing weight to Shidehara's role in the concept, with the Americans formalizing it into law.</p>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-head">Key Question</div>
+            <div class="sidebar-card-body">
+                <p>The 1947 constitution was technically enacted as an "amendment" to the Meiji Constitution (using its own Article 73 amendment procedure). But it replaced every fundamental principle.</p>
+                <p><strong>Is this a revolution disguised as a revision?</strong></p>
+                <p>And if so, what does it mean that the revolution was written by foreign occupiers in a language the Japanese public couldn't read?</p>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-head">Still Unamended</div>
+            <div class="sidebar-card-body">
+                <p>The 1947 constitution has <strong>never been amended</strong>. Not once. In nearly 80 years.</p>
+                <p>The U.S. Constitution has been amended 27 times. Germany's Basic Law, over 60 times.</p>
+                <p>Conservative parties have sought to revise Article 9 for decades. The Liberal Democratic Party published a formal revision draft in 2012. Public opinion remains divided.</p>
+                <p>The constitution's durability is itself a historical puzzle: imposed by foreigners, written in English, and yet Japanese citizens have chosen to keep every word.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<section class="sources-section">
+    <h2>Sources and Further Reading</h2>
+    <div class="sources-grid">
+        <div class="source-item">
+            <div class="source-label">Primary Source Archive</div>
+            <a href="https://www.ndl.go.jp/constitution/e/outline/03outline.html" target="_blank" rel="noopener noreferrer">National Diet Library: Formulation of the GHQ Draft</a>
+            <p>Full documentary record of the constitution's creation, including original manuscripts.</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">MacArthur's Notes</div>
+            <a href="https://www.ndl.go.jp/constitution/e/shiryo/03/072shoshi.html" target="_blank" rel="noopener noreferrer">NDL: MacArthur Notes, February 3, 1946</a>
+            <p>The three "basic points" in MacArthur's handwriting.</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">The Feb 13 Meeting</div>
+            <a href="https://www.ndl.go.jp/constitution/e/shiryo/03/077shoshi.html" target="_blank" rel="noopener noreferrer">NDL: Records of the February 13 Meeting</a>
+            <p>When Whitney presented the draft to Japanese officials.</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">Article 9 Debate</div>
+            <a href="https://www.nippon.com/en/column/g00269/" target="_blank" rel="noopener noreferrer">Nippon.com: Who Is the Author of Article 9?</a>
+            <p>Scholarly overview of the MacArthur vs. Shidehara authorship debate.</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">Beate Sirota Gordon</div>
+            <a href="https://www.janm.org/press/release/japanese-womens-rights-pioneer-beate-sirota-gordon-relate-her-story-may-16" target="_blank" rel="noopener noreferrer">Japanese American National Museum</a>
+            <p>Gordon's own account of drafting the women's rights articles.</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">PBS Documentary</div>
+            <a href="https://www.pbs.org/wgbh/americanexperience/features/macarthur-occupation-japan-and-constitution/" target="_blank" rel="noopener noreferrer">PBS American Experience: MacArthur</a>
+            <p>Overview of the Occupation and constitutional reform.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <a href="../index.html">&larr; Back to EAST 213 Dashboard</a>
+    <br><br>
+    HIST/EAST 213: East Asia in the Modern World &middot; Winter 2026
+</footer>
+
+</body>
+</html>

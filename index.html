@@ -318,7 +318,7 @@ var plates = [
   {plate:19,date:"2026-02-20",day:"Friday",week:7,topic:"Chinese Nationalism",theme:"Rising empires and nationalism",ebrey:"Ch. 24",readings:[{title:"The True Story of Ah Q",author:"Lu Xun",type:"primary",url:"https://drive.google.com/file/d/1Oz8ZRT_X-FxsSo7olV-H0baSzgxuWEQj/view"}],webLinks:[{title:"Preface to A Call to Arms",url:"https://www.marxists.org/archive/lu-xun/1922/12/03.htm"}]},
   {plate:20,date:"2026-02-23",day:"Monday",week:8,topic:"Civil War and Revolution in China",theme:"War and Revolution",ebrey:"Ch. 25",readings:[{title:"What Women Should Know About Communism",author:"Zhen He",type:"primary",url:"https://drive.google.com/file/d/1ciGgzadhvPK8NV4k3IZHr3n6ESC0_rhb/view"}],webLinks:[{title:"Chen Duxiu",url:"http://afe.easia.columbia.edu/ps/china/chen_duxiu_final_awakening.pdf"},{title:"Chiang Kai-shek",url:"http://afe.easia.columbia.edu/ps/cup/chiang_kaishek_new_life.pdf"},{title:"Mao",url:"http://afe.easia.columbia.edu/special/china_1750_mayfourth.htm#mao"}]},
   {plate:21,date:"2026-02-25",day:"Wednesday",week:8,topic:"The Pacific War",theme:"War and Revolution",ebrey:"Connections 430-438, Ch. 26",readings:[{title:"Japan at War",source:"SMC",pages:"316-333",type:"primary",url:"https://drive.google.com/file/d/1FUV7k2gyZOG2xicHEX96DbmYLB3nS82E/view"},{title:"Oral Histories of the Comfort Women",type:"primary",url:"https://drive.google.com/file/d/1UDrmwTgBEBpVP9tjuBxFnp-qC2XddhEK/view"}],webLinks:[{title:"Who's Who: Japan at War",url:"print/plate-21-whos-who.html"}]},
-  {plate:22,date:"2026-02-27",day:"Friday",week:8,topic:"Rebuilding Japan",theme:"War and Revolution",ebrey:"Ch. 26: 461-470",readings:[{title:"Constitution of Japan (1947)",type:"primary",url:"https://drive.google.com/file/d/1R38azeBeaKG_ronaND9fwxpVSkex0uPT/view"},{title:"The American School",type:"primary",url:"https://drive.google.com/file/d/19_wD1Yex9OlA_IR7geifIvVZJi9aXeqL/view"}],webLinks:[{title:"Tokyo Olympiad",url:"https://www.youtube.com/watch?v=WHt0eAdCCns"}]},
+  {plate:22,date:"2026-02-27",day:"Friday",week:8,topic:"Rebuilding Japan",theme:"War and Revolution",ebrey:"Ch. 26: 461-470",readings:[{title:"Constitution of Japan (1947)",type:"primary",url:"https://drive.google.com/file/d/1R38azeBeaKG_ronaND9fwxpVSkex0uPT/view"},{title:"The American School",type:"primary",url:"https://drive.google.com/file/d/19_wD1Yex9OlA_IR7geifIvVZJi9aXeqL/view"}],webLinks:[{title:"Tokyo Olympiad",url:"https://www.youtube.com/watch?v=WHt0eAdCCns"},{title:"Reading Guide: The 1947 Constitution",url:"print/japan-constitution-guide.html"},{title:"Deep Dive: The American School",url:"print/american-school-deep-dive.html"}]},
   {plate:23,date:"2026-03-02",day:"Monday",week:9,topic:"Mao and Beyond Mao",theme:"Contemporary East Asia",ebrey:"Ch. 27, 30",readings:[{title:"Let Flowers Bloom / 100 Flowers",type:"primary",url:"https://drive.google.com/file/d/1Jsls0Ii5QR-UfPam-sNpzT3FEmM9RC-3/view"}],webLinks:[{title:"CPC Membership, Organization, and Influence (Deep Dive)",url:"print/cpc-party-membership-deep-dive.html"},{title:"Deep Dive: Final Project Topics",url:"print/post-class-notes-9.html"}]},
   {plate:24,date:"2026-03-04",day:"Wednesday",week:9,topic:"Liberation, Division, Rebuilding Korea",theme:"Contemporary East Asia",ebrey:"Ch. 28",readings:[{title:"Cranes",source:"Short Fiction",type:"primary",url:"https://drive.google.com/file/d/1CxK408_GdhApyipkHI83ajbZTK2geTfe/view"},{title:"Five Bandits",source:"Short Fiction",type:"primary",url:"https://drive.google.com/file/d/1n-L259kl8tJQOg22FgCLjvvF3VdX219O/view"}],webLinks:[{title:"Korean Families Reunite",url:"https://www.youtube.com/watch?v=KYjdUeYT49c"},{title:"Gangnam Style",url:"https://www.youtube.com/watch?v=9bZkp7q19f0"}]},
   {plate:25,date:"2026-03-06",day:"Friday",week:9,topic:"Japan rises again",theme:"Contemporary East Asia",ebrey:"Ch. 29",readings:[{title:"Environmental Activism, Feminism",type:"primary",url:"https://drive.google.com/file/d/1apup-PPgM9q7AcDPIyCDAXcnJixQ8URL/view"}],assignment:{name:"Project #3",due:"2026-03-08",dueDay:"Sunday"}},
@@ -683,6 +683,40 @@ function renderSidebar(p, i) {
     h += '<div class="section-title" style="margin-top:16px">Key Figure</div>';
     h += '<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;font-size:11px;line-height:1.6">';
     h += '<div style="margin-bottom:8px"><strong style="color:#e63946">Lu Xun 鲁迅</strong> (1881-1936)<br>Born Zhou Shuren in Shaoxing. Studied medicine in Japan, abandoned it after seeing Chinese spectators watch a compatriot\'s execution with apathy (the lantern slide incident, 1906). Published "Diary of a Madman" (1918), China\'s first modern short story. "Ah Q" (1921) diagnosed the national habit of self-deception. Called "Soul of the Nation" at his death.</div>';
+    h += '</div>';
+  }
+
+  if (p.plate === 22) {
+    // Deep dive links
+    h += '<div class="section-title">Deep Dives & Reading Guides</div>';
+    h += '<a href="print/japan-constitution-guide.html" target="_blank" rel="noopener noreferrer" class="reading-card primary" style="margin-bottom:12px">';
+    h += '<div class="type-badge">Reading Guide</div>';
+    h += '<div class="title">The 1947 Constitution of Japan</div>';
+    h += '<div class="author">Context, key articles, what to look for</div>';
+    h += '<div class="source">Drafting timeline, Article 9 debate, Meiji comparison</div>';
+    h += '</a>';
+    h += '<a href="print/american-school-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card secondary" style="margin-bottom:12px">';
+    h += '<div class="type-badge">Deep Dive</div>';
+    h += '<div class="title">"The American School" by Kojima Nobuo</div>';
+    h += '<div class="author">Author bio, characters, key analytical moments</div>';
+    h += '<div class="source">Akutagawa Prize 1954 &middot; Set in Occupied Japan, 1948</div>';
+    h += '</a>';
+
+    // Documents at a glance
+    h += '<div class="section-title" style="margin-top:16px">Readings at a Glance</div>';
+    h += '<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;font-size:12px;line-height:1.7">';
+    h += '<div style="margin-bottom:6px"><span style="color:#1565c0;font-weight:600">1.</span> Constitution of Japan (1947) <span style="color:var(--text-muted)">(8 pp.)</span></div>';
+    h += '<div style="font-size:11px;color:var(--text-muted);margin-bottom:10px;padding-left:16px">Full text: Preamble + 103 articles across 11 chapters. Focus on Article 9 (war renunciation), Articles 1-8 (emperor), Articles 10-40 (rights).</div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#c62828;font-weight:600">2.</span> "The American School" by Kojima Nobuo <span style="color:var(--text-muted)">(pp. 120-144)</span></div>';
+    h += '<div style="font-size:11px;color:var(--text-muted);padding-left:16px">Short story. Japanese English teachers walk 4 miles to visit an American school during the Occupation. Satire of humiliation, language, and defeat. Four key characters: Isa, Yamada, Shibamoto, Michiko.</div>';
+    h += '</div>';
+
+    // Key figures
+    h += '<div class="section-title" style="margin-top:16px">Key Figures</div>';
+    h += '<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;font-size:11px;line-height:1.6">';
+    h += '<div style="margin-bottom:8px"><strong style="color:#1565c0">Douglas MacArthur</strong> (1880-1964)<br>Supreme Commander for the Allied Powers. Ordered the constitution drafted in 6 days. His "Three Basic Points" shaped the document.</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#6a1b9a">Beate Sirota Gordon</strong> (1923-2012)<br>Age 22, the only woman among the drafters. Grew up in Tokyo. Drafted Articles 14 (equality) and 24 (marriage equality). Kept her role secret for nearly 50 years.</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#c62828">Kojima Nobuo</strong> (1915-2006)<br>Author of "The American School." English teacher turned novelist. Third Generation (Daisan no Shinjin) writer. Won the Akutagawa Prize (1954) and Tanizaki Prize (1965).</div>';
     h += '</div>';
   }
 

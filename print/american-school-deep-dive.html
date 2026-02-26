@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Dive: "The American School" by Kojima Nobuo | EAST 213</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #fff;
+            --paper-warm: #faf8f5;
+            --paper-dark: #f0ede8;
+            --gold: #a67c00;
+            --isa: #1565c0;
+            --yamada: #c62828;
+            --shibamoto: #2e7d32;
+            --michiko: #6a1b9a;
+            --occupation: #37474f;
+            --border: #ddd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--ink);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav a:hover { text-decoration: underline; }
+        nav .sep { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
+        nav .context { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+        .hero {
+            position: relative;
+            padding: 5rem 4rem 4rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+            color: #fff;
+        }
+        .hero-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.6rem;
+            font-weight: 500;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+            max-width: 700px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+        }
+        .hero .author-line {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 1.25rem;
+        }
+        .hero .deck {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-badge {
+            padding: 0.35rem 0.9rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.03em;
+            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.7);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--isa);
+        }
+        .main-content p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .sidebar { position: sticky; top: 1rem; align-self: start; }
+        .sidebar-card {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-card-head {
+            background: var(--ink);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        .sidebar-card-body {
+            padding: 1rem;
+        }
+        .sidebar-card-body p {
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .sidebar-card-body p:last-child { margin-bottom: 0; }
+        .sidebar-card-body strong { color: var(--ink); }
+
+        /* Character cards */
+        .characters-section {
+            background: var(--ink);
+            padding: 4rem 2rem;
+        }
+        .characters-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .characters-header {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        .characters-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .characters-header p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .char-card {
+            background: #fff;
+            overflow: hidden;
+        }
+        .char-card-head {
+            color: #fff;
+            padding: 1rem 1.25rem;
+        }
+        .char-card-head.isa { background: var(--isa); }
+        .char-card-head.yamada { background: var(--yamada); }
+        .char-card-head.shibamoto { background: var(--shibamoto); }
+        .char-card-head.michiko { background: var(--michiko); }
+        .char-card-head h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.15rem;
+        }
+        .char-card-head .role {
+            font-size: 0.75rem;
+            opacity: 0.85;
+        }
+        .char-card-body {
+            padding: 1.25rem;
+        }
+        .char-card-body p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .char-card-body p:last-child { margin-bottom: 0; }
+        .char-trait {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            background: var(--paper-dark);
+            color: var(--ink-light);
+            margin-right: 0.3rem;
+            margin-bottom: 0.3rem;
+        }
+        .char-card-body .key-moment {
+            background: var(--paper-warm);
+            border-left: 3px solid;
+            padding: 0.75rem;
+            margin-top: 0.75rem;
+            font-size: 0.82rem;
+        }
+        .char-card-body .key-moment.isa { border-color: var(--isa); }
+        .char-card-body .key-moment.yamada { border-color: var(--yamada); }
+        .char-card-body .key-moment.shibamoto { border-color: var(--shibamoto); }
+        .char-card-body .key-moment.michiko { border-color: var(--michiko); }
+        .char-card-body .key-moment strong {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Analytical moments */
+        .moments-section {
+            padding: 4rem 2rem;
+            background: var(--paper-warm);
+        }
+        .moments-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .moments-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .moments-header p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 2rem;
+        }
+        .moment-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .moment-card-head {
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .moment-card-head.shoes { background: var(--isa); color: #fff; }
+        .moment-card-head.language { background: var(--yamada); color: #fff; }
+        .moment-card-head.march { background: var(--occupation); color: #fff; }
+        .moment-card-head.chocolate { background: var(--michiko); color: #fff; }
+        .moment-card-head.fish { background: var(--shibamoto); color: #fff; }
+        .moment-card-head.barefoot { background: #795548; color: #fff; }
+        .moment-card-head.ending { background: var(--ink); color: #fff; }
+        .moment-card-head .page-ref {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(255,255,255,0.2);
+            padding: 0.15rem 0.5rem;
+            white-space: nowrap;
+        }
+        .moment-card-head h4 { font-size: 0.85rem; font-weight: 600; }
+        .moment-card-body {
+            padding: 1.25rem;
+        }
+        .moment-card-body blockquote {
+            border-left: 3px solid var(--border);
+            padding-left: 1rem;
+            margin: 0 0 0.75rem;
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .moment-card-body p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+            line-height: 1.65;
+        }
+        .moment-card-body p:last-child { margin-bottom: 0; }
+        .moment-card-body .analysis {
+            font-size: 0.82rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .pull-quote {
+            border-left: 4px solid var(--isa);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            background: var(--paper-warm);
+        }
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        .pull-quote .attrib {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+            font-style: normal;
+        }
+
+        .sources-section {
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .sources-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .source-item {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            line-height: 1.5;
+        }
+        .source-item a {
+            color: var(--isa);
+            text-decoration: none;
+        }
+        .source-item a:hover { text-decoration: underline; }
+        .source-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-faint);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.5);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 900px) {
+            .two-col { grid-template-columns: 1fr; }
+            .sidebar { order: -1; position: static; }
+            .char-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1.5rem; }
+            .hero h1 { font-size: 1.6rem; }
+            .two-col { padding: 2rem 1rem; gap: 2rem; }
+            .sources-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html"><span style="font-size:1.2rem">&larr;</span> Back to Dashboard</a>
+    <span class="sep">|</span>
+    <span class="context">Plate 22: Rebuilding Japan</span>
+</nav>
+
+<section class="hero">
+    <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
+    <h1><em>The American School</em></h1>
+    <div class="author-line">Kojima Nobuo, 1954 &middot; Translated by William F. Sibley</div>
+    <p class="deck">A group of Japanese teachers walks four miles to visit an American school during the Occupation. What unfolds is a devastating satire of humiliation, language, and the psychology of defeat.</p>
+    <div class="hero-badges">
+        <span class="hero-badge">Akutagawa Prize, 1954</span>
+        <span class="hero-badge">Set in 1948, Occupied Japan</span>
+        <span class="hero-badge">pp. 120-144</span>
+    </div>
+</section>
+
+<div class="two-col">
+    <div class="main-content">
+
+        <h2>About the Author</h2>
+
+        <p><strong>Kojima Nobuo</strong> (1915-2006) was born in Gifu Prefecture and studied English literature at Tokyo Imperial University. Drafted in 1941, he was sent to China. His wartime experience had an absurd quality that would define his fiction: first ordered to forget English, he was later reassigned to translating intercepted American military radio transmissions.</p>
+
+        <p>After the war, he taught English at a Tokyo high school, then became a professor of English literature at Meiji University. He belonged to the <strong>Third Generation</strong> (Daisan no Shinjin) of postwar writers, alongside Yasuoka Shotaro, Endo Shusaku, and Shono Junzo. These writers produced what critics called the "literature of humiliation," returning to the personal short story form to explore disempowerment, defeat, and the absurdities of life under occupation.</p>
+
+        <p>Kojima also translated American writers into Japanese, including Salinger, Malamud, and Saroyan. He received a Rockefeller fellowship in 1957 to attend the Iowa Writers' Workshop. Despite his stature in Japan (where he won nearly every major literary prize), he remained largely unknown in the West, overshadowed by Kawabata, Mishima, and Oe.</p>
+
+        <h2 style="margin-top:2.5rem">Publication and Reception</h2>
+
+        <p>"The American School" (Amerikan sukuru) won the <strong>32nd Akutagawa Prize</strong> in the second half of 1954, shared with Shono Junzo. The Akutagawa Prize is Japan's most prestigious award for emerging fiction writers. Kojima was 39.</p>
+
+        <p>The English translation in your reading is by <strong>William F. Sibley</strong> (1941-2009), a University of Chicago scholar of modern Japanese literature. It appears in <em>Contemporary Japanese Literature</em>, an anthology edited by Howard Hibbett and published by Knopf in 1977.</p>
+
+        <p>Critics have described the story as "the perfect satire" of Occupation-era Japan. One assessment: "There was probably no writer of short fiction in mid-20th century Japan who more skillfully bridged the thematic and tonal gap between the mindless cruelties of war and the subtle ironies of life under the American Occupation."</p>
+
+        <div class="pull-quote">
+            <p>"It is foolish for Japanese to speak this language like foreigners. If they do, it makes them foreigners, too. And that is a real disgrace."</p>
+            <div class="attrib">Isa's inner voice, p. 132</div>
+        </div>
+
+        <h2 style="margin-top:2.5rem">The Story's Architecture</h2>
+
+        <p>The plot is deceptively simple: Japanese English teachers walk to an American school, tour it, and walk back. But Kojima uses this structure as a pressure cooker. The four-mile walk is the journey; the school is the destination that forces every character's contradictions into the open.</p>
+
+        <p>The story operates on three levels simultaneously:</p>
+        <p><strong>Physical:</strong> The walk itself. Isa's borrowed shoes that destroy his feet. Hunger. Exhaustion. The body as site of national humiliation.</p>
+        <p><strong>Linguistic:</strong> English as both weapon and wound. Yamada's aggressive English as performance. Isa's refusal to speak as resistance (or paralysis). Michiko's fluency as both power and vulnerability.</p>
+        <p><strong>Political:</strong> Every interaction with Americans recapitulates the power dynamics of occupation. The jeeps. The chocolate bars. The school itself, built with Japanese funds but designed to American specifications.</p>
+
+    </div>
+
+    <div class="sidebar">
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-head">Historical Context</div>
+            <div class="sidebar-card-body">
+                <p>Set in <strong>1948</strong>, the middle of the Allied Occupation (1945-1952). American military schools operated on Japanese soil for dependents of Occupation personnel.</p>
+                <p>These schools had resources Japanese schools could only dream of. American starting teachers earned roughly <strong>ten times</strong> what their Japanese counterparts made.</p>
+                <p>The teachers' forced march mirrors a broader reality: Japanese professionals were regularly summoned to perform deference before the Occupation authorities, inspected, evaluated, and ranked by standards they had no say in establishing.</p>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-head">Reading the Story</div>
+            <div class="sidebar-card-body">
+                <p>Pay attention to <strong>shoes</strong>. They are mentioned constantly. Isa's borrowed leather shoes. Michiko's high heels. The sneakers. Barefoot on asphalt. Kojima uses footwear as a running metaphor for identity, status, and the pain of performing a role that doesn't fit.</p>
+                <p>Pay attention to <strong>who speaks English and when</strong>. Language choice is never neutral. It's always a power move or a surrender.</p>
+                <p>Pay attention to <strong>food</strong>. The teachers haven't eaten. The Americans hand out chocolate. The economic gap is always physical.</p>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-head">The Third Generation</div>
+            <div class="sidebar-card-body">
+                <p>Kojima's literary cohort, the <strong>Daisan no Shinjin</strong>, emerged 1953-55. Named by critic Yamamoto Kenkichi.</p>
+                <p><strong>Key members:</strong> Kojima Nobuo, Yasuoka Shotaro, Endo Shusaku, Shono Junzo, Sono Ayako</p>
+                <p>Their shared themes: the emasculated male, life under foreign occupation, the collapse of wartime certainties, dark humor as survival strategy. Sometimes called the "literature of humiliation."</p>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-head">Kojima's Major Works</div>
+            <div class="sidebar-card-body">
+                <p><strong>"The Rifle"</strong> (1952) &mdash; Breakthrough story; narrator fused with his weapon</p>
+                <p><strong>"The American School"</strong> (1954) &mdash; Akutagawa Prize</p>
+                <p><strong><em>Embracing Family</em></strong> (1965) &mdash; Novel; Tanizaki Prize. His only novel translated into English (trans. Yukiko Tanaka, Dalkey Archive, 2005)</p>
+                <p><strong><em>Reason for Parting</em></strong> (1982) &mdash; Noma Literary Prize</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<section class="characters-section">
+    <div class="characters-inner">
+        <div class="characters-header">
+            <h2>The Four Characters</h2>
+            <p>Each embodies a different Japanese response to occupation and defeat.</p>
+        </div>
+        <div class="char-grid">
+
+            <div class="char-card">
+                <div class="char-card-head isa">
+                    <h3>Isa</h3>
+                    <div class="role">English teacher &middot; The story's center</div>
+                </div>
+                <div class="char-card-body">
+                    <div style="margin-bottom:0.75rem">
+                        <span class="char-trait">Passive</span>
+                        <span class="char-trait">Ashamed</span>
+                        <span class="char-trait">Self-aware</span>
+                        <span class="char-trait">Resistant</span>
+                    </div>
+                    <p>An English teacher who dreads speaking English. He faked illness to avoid an earlier encounter with Americans. About 30, he has had exactly one English conversation. His refusal to speak is simultaneously cowardice and principled resistance: he refuses to perform subjugation in the occupier's language.</p>
+                    <p>His borrowed leather shoes destroy his feet. He walks barefoot. He is captured by soldiers, forced to repeat "I am truly very sorry to have kept you waiting." He is turned into a clown.</p>
+                    <div class="key-moment isa">
+                        <strong>Defining moment:</strong> At the school, Isa hides. He watches Japanese schoolgirls and feels overwhelming emotion. He sees his son. Then Miss Emily orders him to take off his shoes, and he obeys. The occupation is made intimate: a foreign woman commanding a Japanese man's body.
+                    </div>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <div class="char-card-head yamada">
+                    <h3>Yamada</h3>
+                    <div class="role">English teacher &middot; Self-appointed leader</div>
+                </div>
+                <div class="char-card-body">
+                    <div style="margin-bottom:0.75rem">
+                        <span class="char-trait">Aggressive</span>
+                        <span class="char-trait">Ambitious</span>
+                        <span class="char-trait">Obsequious</span>
+                        <span class="char-trait">Dangerous</span>
+                    </div>
+                    <p>The best-dressed, healthiest-looking teacher. A former company commander who boasts of wartime sword practice. Now he curries favor with the Americans with identical zeal. His English is performance: loud, confident, used as a weapon against his own colleagues.</p>
+                    <p>He mocks Isa's shoes, berates him for going barefoot, and insists on giving a "demonstration class" at the American school. He attaches himself to the American principal and interprets Shibamoto's judo credentials as "the old kamikaze spirit."</p>
+                    <div class="key-moment yamada">
+                        <strong>Defining moment:</strong> When a soldier mentions POWs and Oriental philosophy, Yamada realizes the conversation has turned dangerous and falls silent, removing his own overcoat and concealing it. The former warrior knows when to retreat. His adaptability is his survival skill, and his moral bankruptcy.
+                    </div>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <div class="char-card-head shibamoto">
+                    <h3>Shibamoto</h3>
+                    <div class="role">Education official &middot; Judo fifth-degree black belt</div>
+                </div>
+                <div class="char-card-body">
+                    <div style="margin-bottom:0.75rem">
+                        <span class="char-trait">Authoritarian</span>
+                        <span class="char-trait">Pragmatic</span>
+                        <span class="char-trait">Physical</span>
+                        <span class="char-trait">Adaptable</span>
+                    </div>
+                    <p>The group's official chairman. Before the war, a judo devotee and prominent Education Office figure. After the war, he teaches judo not just to locals but to the Occupation personnel themselves. He got his job through his American supervisor. His physical dominance substitutes for the political authority he once held.</p>
+                    <p>He orders the teachers to dress well, march in formation, and maintain "solemn silence." He treats the visit like a military operation, which is the only organizational model he knows.</p>
+                    <div class="key-moment shibamoto">
+                        <strong>Defining moment:</strong> When the American principal, Mr. Williams, bans Japanese teachers from giving demonstrations and forbids high heels, Shibamoto stands humiliated. The man who gave orders now receives them. His judo credentials are reframed by Yamada as "kamikaze spirit," and the irony is lost on him entirely.
+                    </div>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <div class="char-card-head michiko">
+                    <h3>Michiko</h3>
+                    <div class="role">Teacher &middot; War widow</div>
+                </div>
+                <div class="char-card-body">
+                    <div style="margin-bottom:0.75rem">
+                        <span class="char-trait">Pragmatic</span>
+                        <span class="char-trait">Grieving</span>
+                        <span class="char-trait">Fluent</span>
+                        <span class="char-trait">Complex</span>
+                    </div>
+                    <p>The only woman. Her husband was killed in the war. She wore a fine outfit but forgot to change her shoes, a mistake that reverberates through the story. She speaks fluent, natural English, which both attracts and threatens the men around her. American soldiers flirt with her. She navigates the gendered dynamics of defeat with the tools she has.</p>
+                    <p>She tries to help Isa, offering to wash his feet, but her kindness is tangled with calculation. She trades practical knowledge (the cheese cans, the sneakers) while Isa trades only shame.</p>
+                    <div class="key-moment michiko">
+                        <strong>Defining moment:</strong> When she drops her high heels and the black chopsticks spill out, the private becomes public. She has been carrying a homely artifact of Japanese domesticity inside her performance of Western competence. Her fall on the corridor floor merges physical collapse with the impossibility of holding two identities together.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="moments-section">
+    <div class="moments-inner">
+        <div class="moments-header">
+            <h2>Key Analytical Moments</h2>
+            <p>Scenes where Kojima's themes crystallize. Use these as entry points for discussion.</p>
+        </div>
+
+        <div class="moment-card">
+            <div class="moment-card-head march">
+                <span class="page-ref">pp. 124</span>
+                <h4>The Four-Mile March</h4>
+            </div>
+            <div class="moment-card-body">
+                <blockquote>"Strung out like a chain gang, the teachers set out with Shibamoto and Yamada in the lead. Isa, at the other end, made no effort to move up."</blockquote>
+                <p>The walk to the American school becomes a forced march that recapitulates wartime mobilization. Shibamoto organizes it like a military formation. The teachers are hungry ("even teachers had learned to feel proper hunger pangs in the three years since the War"). Jeeps fly past. The power dynamic is encoded in movement: Americans drive, Japanese walk.</p>
+                <p class="analysis">The physical suffering isn't metaphorical decoration. It IS the occupation. Defeat is felt in the body first.</p>
+            </div>
+        </div>
+
+        <div class="moment-card">
+            <div class="moment-card-head shoes">
+                <span class="page-ref">pp. 121-129</span>
+                <h4>Isa's Shoes</h4>
+            </div>
+            <div class="moment-card-body">
+                <blockquote>"He began to regret having worn these ill-fitting genuine leather shoes; and when he reflected that he had put them on to please Yamada, to speak the foreign tongue in the right style, his regrets gave way to anger."</blockquote>
+                <p>Isa borrowed a colleague's leather shoes to look respectable for the Americans. They pinch. They blister. They destroy his feet. He eventually goes barefoot on the asphalt, completing his humiliation. The shoes are everything at once: the borrowed identity that doesn't fit, the performance of Western respectability that causes pain, the colleague who may have lent them as sabotage.</p>
+                <p class="analysis">Shoes = the costume of accommodation. Isa cannot wear them. He cannot remove them without becoming "the barefoot Japanese." There is no comfortable position.</p>
+            </div>
+        </div>
+
+        <div class="moment-card">
+            <div class="moment-card-head language">
+                <span class="page-ref">pp. 121-122</span>
+                <h4>"I Am Truly Very Sorry to Have Kept You Waiting"</h4>
+            </div>
+            <div class="moment-card-body">
+                <blockquote>"He had turned to the fellow and said, in English: 'I am truly very sorry to have kept you waiting.' This was met with silence, and when he repeated the words three times over, the soldier only stared at him coldly and uncomprehendingly."</blockquote>
+                <p>This phrase appears twice: first when Isa apologizes to a Black American soldier (who ignores him), and finally when soldiers capture him and force him to repeat it at gunpoint. The same words, spoken voluntarily as courtesy and then compelled as entertainment. The phrase becomes a miniature history of the Occupation: Japan's apology, first offered and then demanded.</p>
+                <p class="analysis">The repetition is the key. Voluntary submission and forced submission arrive at the same sentence. Kojima asks: is there a difference?</p>
+            </div>
+        </div>
+
+        <div class="moment-card">
+            <div class="moment-card-head chocolate">
+                <span class="page-ref">pp. 125</span>
+                <h4>The Chocolate Bars</h4>
+            </div>
+            <div class="moment-card-body">
+                <blockquote>"Two soldiers, one white, one black, leaned out to look the group over... They tore the wrapper from two bars of chocolate and, with a parting nod full of regret, tossed them down to Michiko."</blockquote>
+                <p>American soldiers stop their jeep to inspect Michiko. They approve of her appearance, give her chocolate, and drive away. The exchange reduces the entire Occupation dynamic to a single transaction: American men with surplus goods evaluating a Japanese woman. Michiko breaks the chocolate into pieces and shares it. Isa feels "the weight of the can that Michiko had stuffed into his pocket."</p>
+                <p class="analysis">Benevolence and condescension are inseparable. The chocolate is real generosity and real domination at the same time.</p>
+            </div>
+        </div>
+
+        <div class="moment-card">
+            <div class="moment-card-head fish">
+                <span class="page-ref">pp. 140</span>
+                <h4>The Fish Drawings</h4>
+            </div>
+            <div class="moment-card-body">
+                <blockquote>"They found themselves submerged in a waterless sea teeming with fish of various colors, shapes, and sizes... On closer inspection of other drawings, it was discovered that Yamada had been turned into a flying fish, Isa into a shark, and Michiko a goldfish."</blockquote>
+                <p>The Japanese schoolchildren have drawn the visiting teachers as fish. Yamada becomes a flying fish (darting, showy). Isa becomes a shark (hidden threat from his emaciated frame). Michiko becomes a goldfish (ornamental). Even children process the occupation through transformation: these adults are not people, they are creatures in an alien aquarium.</p>
+                <p class="analysis">The children see what the adults cannot say. The drawings are the most honest assessment in the entire story.</p>
+            </div>
+        </div>
+
+        <div class="moment-card">
+            <div class="moment-card-head barefoot">
+                <span class="page-ref">pp. 132-134</span>
+                <h4>Isa at the School</h4>
+            </div>
+            <div class="moment-card-body">
+                <blockquote>"He closed his eyes for fear of fainting and felt the tears well up behind his eyelids. At first he could not tell what had brought on his tears, but he knew it was a joy so intense as to be close to sorrow."</blockquote>
+                <p>Hiding barefoot near the playground, Isa watches Japanese schoolchildren playing. He hears "mellifluous English voices" and his inner voice whispers it is "foolish for Japanese to speak this language like foreigners." But he also feels overwhelming emotion at the sight of the children. Then Miss Emily finds him, takes him inside, examines his feet, and orders "Take off your shoes!" (he has no shoes). She strips off his socks with her own hands.</p>
+                <p class="analysis">The most intimate scene in the story. A foreign woman commands a Japanese man's body. His feet, symbol of his degradation, are laid bare. And yet Miss Emily's concern is genuine. Kojima refuses the easy reading: this is neither pure humiliation nor pure kindness. It is both.</p>
+            </div>
+        </div>
+
+        <div class="moment-card">
+            <div class="moment-card-head ending">
+                <span class="page-ref">pp. 144</span>
+                <h4>The Ending: "Alone Once Again"</h4>
+            </div>
+            <div class="moment-card-body">
+                <blockquote>"Then, with Shibamoto in the lead, the rest of the group hurried after, as though suddenly reminded of some vital errand. Only Isa was left behind, alone once again."</blockquote>
+                <p>The group scatters. Mr. Williams bans Japanese demonstrations. Yamada flees. Shibamoto leads the retreat. Isa is left behind, "alone once again." The visit has changed nothing. The power structure is intact. The teachers will go home and continue teaching English they are afraid to speak, in a country they no longer recognize, wearing shoes that don't belong to them.</p>
+                <p class="analysis">Kojima's final sentence is not a resolution. It is a diagnosis. Isa's isolation is not temporary. It is the permanent condition of defeat.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="sources-section">
+    <h2>Sources and Further Reading</h2>
+    <div class="sources-grid">
+        <div class="source-item">
+            <div class="source-label">Translation Source</div>
+            <a href="https://archive.org/details/contemporaryjapa00hibb" target="_blank" rel="noopener noreferrer">Contemporary Japanese Literature (Hibbett, ed.)</a>
+            <p>Knopf, 1977. Contains Sibley's translation of "The American School."</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">Author Profile</div>
+            <a href="https://www.jlpp.go.jp/en/works/author01_11.html" target="_blank" rel="noopener noreferrer">JLPP: Kojima Nobuo</a>
+            <p>Japanese Literature Publishing Project author page with bibliography.</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">Translator</div>
+            <a href="https://news.uchicago.edu/story/william-f-sibley-japanese-scholar-1941-2009" target="_blank" rel="noopener noreferrer">UChicago: William F. Sibley Obituary</a>
+            <p>Biography of the translator, a pioneering scholar of modern Japanese literature.</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">Occupation Context</div>
+            <a href="https://afe.easia.columbia.edu/special/japan_1900_occupation.htm" target="_blank" rel="noopener noreferrer">Columbia AFE: Occupation of Japan</a>
+            <p>Overview of the Allied Occupation, 1945-1952.</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">Literary Analysis</div>
+            <a href="https://tonysreadinglist.wordpress.com/2016/10/18/long-belts-and-thin-men-the-postwar-stories-of-kojima-nobuo-by-nobuo-kojima-review/" target="_blank" rel="noopener noreferrer">Tony's Reading List: Kojima Review</a>
+            <p>Detailed review of Kojima's collected stories in translation.</p>
+        </div>
+        <div class="source-item">
+            <div class="source-label">Also Available</div>
+            <a href="https://www.catranslation.org/person/nobuo-kojima/" target="_blank" rel="noopener noreferrer">Center for the Art of Translation</a>
+            <p>Kojima Nobuo profile with publication history.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <a href="../index.html">&larr; Back to EAST 213 Dashboard</a>
+    <br><br>
+    HIST/EAST 213: East Asia in the Modern World &middot; Winter 2026
+</footer>
+
+</body>
+</html>

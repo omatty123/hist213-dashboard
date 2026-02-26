@@ -52,9 +52,36 @@
 
         .hero {
             position: relative;
-            padding: 5rem 4rem 4rem;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+            min-height: 520px;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            background: #1a1a2e;
             color: #fff;
+            overflow: hidden;
+        }
+        .hero-img {
+            position: relative;
+            background: url('images/plate22/american-school-cover.jpg') center / cover no-repeat;
+        }
+        .hero-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to left, #1a1a2e 0%, transparent 25%);
+        }
+        .hero-caption {
+            position: absolute;
+            bottom: 0.75rem;
+            left: 0.75rem;
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.4);
+            z-index: 1;
+        }
+        .hero-text {
+            padding: 4rem 3rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .hero-label {
             font-size: 0.7rem;
@@ -65,11 +92,10 @@
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             font-weight: 500;
             line-height: 1.15;
             margin-bottom: 0.5rem;
-            max-width: 700px;
         }
         .hero h1 em {
             font-style: italic;
@@ -77,14 +103,14 @@
         }
         .hero .author-line {
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.6);
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.55);
             margin-bottom: 1.25rem;
         }
         .hero .deck {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.7);
-            max-width: 600px;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.65);
+            max-width: 500px;
             line-height: 1.7;
         }
         .hero-badges {
@@ -384,9 +410,13 @@
             .two-col { grid-template-columns: 1fr; }
             .sidebar { order: -1; position: static; }
             .char-grid { grid-template-columns: 1fr; }
+            .americans-grid { grid-template-columns: 1fr !important; }
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-img { min-height: 350px; order: -1; }
+            .hero-img::after { background: linear-gradient(to top, #1a1a2e 0%, transparent 30%); }
         }
         @media (max-width: 768px) {
-            .hero { padding: 3rem 1.5rem; }
+            .hero-text { padding: 2rem 1.5rem; }
             .hero h1 { font-size: 1.6rem; }
             .two-col { padding: 2rem 1rem; gap: 2rem; }
             .sources-grid { grid-template-columns: 1fr; }
@@ -402,14 +432,19 @@
 </nav>
 
 <section class="hero">
-    <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
-    <h1><em>The American School</em></h1>
-    <div class="author-line">Kojima Nobuo, 1954 &middot; Translated by William F. Sibley</div>
-    <p class="deck">A group of Japanese teachers walks four miles to visit an American school during the Occupation. What unfolds is a devastating satire of humiliation, language, and the psychology of defeat.</p>
-    <div class="hero-badges">
-        <span class="hero-badge">Akutagawa Prize, 1954</span>
-        <span class="hero-badge">Set in 1948, Occupied Japan</span>
-        <span class="hero-badge">pp. 120-144</span>
+    <div class="hero-img">
+        <div class="hero-caption">Shinchōsha bunko edition cover</div>
+    </div>
+    <div class="hero-text">
+        <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
+        <h1><em>The American School</em></h1>
+        <div class="author-line">Kojima Nobuo, 1954 &middot; Translated by William F. Sibley</div>
+        <p class="deck">A group of Japanese teachers walks four miles to visit an American school during the Occupation. What unfolds is a devastating satire of humiliation, language, and the psychology of defeat.</p>
+        <div class="hero-badges">
+            <span class="hero-badge">Akutagawa Prize, 1954</span>
+            <span class="hero-badge">Set in 1948, Occupied Japan</span>
+            <span class="hero-badge">pp. 120-144</span>
+        </div>
     </div>
 </section>
 
@@ -578,6 +613,64 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</section>
+
+<section style="padding:4rem 2rem;background:var(--paper)">
+    <div style="max-width:1100px;margin:0 auto">
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;margin-bottom:0.5rem;color:var(--ink)">The Americans</h2>
+        <p style="font-size:0.9rem;color:var(--ink-light);margin-bottom:2rem;max-width:700px">Kojima never lets the Americans become cardboard villains. Each American encounter is layered: genuine goodwill and structural domination exist in the same gesture.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem">
+
+            <div style="background:var(--paper-warm);border:1px solid var(--border);overflow:hidden">
+                <div style="background:var(--occupation);color:#fff;padding:1rem 1.25rem">
+                    <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:0.15rem">The Black Soldiers</h3>
+                    <div style="font-size:0.75rem;opacity:0.8">Jeep encounters on the road</div>
+                </div>
+                <div style="padding:1.25rem">
+                    <p style="font-size:0.85rem;color:var(--ink-light);line-height:1.65;margin-bottom:0.75rem">The soldiers who interact with the teachers on the march are Black. This is not incidental. Kojima places two marginalized groups in contact: Black American soldiers, occupying a country on behalf of a nation that denies them full citizenship, and Japanese teachers, humiliated by their own defeat.</p>
+                    <p style="font-size:0.85rem;color:var(--ink-light);line-height:1.65;margin-bottom:0.75rem">The first soldier Isa meets says "I am truly very sorry to have kept you waiting" with cold incomprehension. Later, soldiers drag Isa into a jeep and force him to repeat the phrase for their amusement. But even this cruelty is framed by loneliness: the soldier in the woods calls out in Japanese, "You'll have to speak our language."</p>
+                    <div style="background:var(--paper-dark);border-left:3px solid var(--occupation);padding:0.75rem;margin-top:0.75rem;font-size:0.82rem">
+                        <strong style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em">Key detail:</strong> The soldiers give Michiko chocolate bars and canned cheese. They inspect her appearance approvingly. Occupation as gift-giving: the power to distribute surplus to people who are hungry.
+                    </div>
+                </div>
+            </div>
+
+            <div style="background:var(--paper-warm);border:1px solid var(--border);overflow:hidden">
+                <div style="background:#5d4037;color:#fff;padding:1rem 1.25rem">
+                    <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:0.15rem">Mr. Williams</h3>
+                    <div style="font-size:0.75rem;opacity:0.8">The American school principal</div>
+                </div>
+                <div style="padding:1.25rem">
+                    <p style="font-size:0.85rem;color:var(--ink-light);line-height:1.65;margin-bottom:0.75rem">The principal who greets the teachers at the end is a "thirtyish, bespectacled man" with "a welcoming smile." He introduces himself and begins the tour. But his courtesy has edges.</p>
+                    <p style="font-size:0.85rem;color:var(--ink-light);line-height:1.65;margin-bottom:0.75rem">His speech about the school's construction reveals the economic reality: the school was "built with Japanese funds" but designed to American specifications. The budget was "barely twenty percent of what would be considered normal back in the States." He complains about class sizes: "We have twenty students in a class here, which is three too many. The ideal is seventeen."  In Japan, classes regularly held 50+ students.</p>
+                    <div style="background:var(--paper-dark);border-left:3px solid #5d4037;padding:0.75rem;margin-top:0.75rem;font-size:0.82rem">
+                        <strong style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em">Key detail:</strong> Williams ends the visit by banning Japanese teachers from giving demonstrations and forbidding high heels on the premises. The host's final act is to issue rules. Hospitality collapses into authority.
+                    </div>
+                </div>
+            </div>
+
+            <div style="background:var(--paper-warm);border:1px solid var(--border);overflow:hidden">
+                <div style="background:#37474f;color:#fff;padding:1rem 1.25rem">
+                    <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:0.15rem">Miss Emily</h3>
+                    <div style="font-size:0.75rem;opacity:0.8">The schoolmistress / nurse</div>
+                </div>
+                <div style="padding:1.25rem">
+                    <p style="font-size:0.85rem;color:var(--ink-light);line-height:1.65;margin-bottom:0.75rem">The "beautiful tall lady of a type one often sees in American movies." She finds Isa hiding near the school, barefoot, and brings him to her office. She locks the door, examines his feet, orders him to remove his socks, and puts out her cigarette when she sees the raw wounds. She offers coffee.</p>
+                    <p style="font-size:0.85rem;color:var(--ink-light);line-height:1.65;margin-bottom:0.75rem">Her compassion is real. She is genuinely horrified by his feet. But the scene's structure is that of a medical examination: she controls the space, she gives the orders ("Sit down," "Take off your shoes!"), she locks the door. Isa is a patient, not a guest. Her care for him is inseparable from her authority over him.</p>
+                    <div style="background:var(--paper-dark);border-left:3px solid #37474f;padding:0.75rem;margin-top:0.75rem;font-size:0.82rem">
+                        <strong style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em">Key detail:</strong> She says "We lock the door so we can smoke. Even the men do. It sets a bad example for the students, you see." Even the American woman is constrained by rules. But she controls the private space within those rules.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="border-left:4px solid var(--occupation);padding:1.25rem 1.5rem;margin:2.5rem 0 0;background:var(--paper-warm)">
+            <p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--ink);line-height:1.5;margin-bottom:0.5rem">"He's only trying to do you a favor. What's the matter with you!"</p>
+            <div style="font-size:0.75rem;color:var(--ink-faint)">Yamada to Isa, about the soldier offering cigarettes, p. 122</div>
         </div>
     </div>
 </section>

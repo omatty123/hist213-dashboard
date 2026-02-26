@@ -53,9 +53,38 @@
 
         .hero {
             position: relative;
-            padding: 5rem 4rem 4rem;
-            background: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 520px;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            background: var(--ink);
             color: #fff;
+            overflow: hidden;
+        }
+        .hero-text {
+            padding: 4rem 3rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero-img {
+            background: url('images/plate22/macarthur-hirohito.jpg') center top / cover no-repeat;
+            position: relative;
+        }
+        .hero-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--ink) 0%, transparent 30%);
+        }
+        .hero-caption {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.4);
+            z-index: 1;
+            text-align: right;
+            max-width: 200px;
         }
         .hero-label {
             font-size: 0.7rem;
@@ -66,16 +95,15 @@
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             font-weight: 500;
             line-height: 1.15;
             margin-bottom: 1rem;
-            max-width: 700px;
         }
         .hero .deck {
-            font-size: 1.05rem;
-            color: rgba(255,255,255,0.75);
-            max-width: 600px;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 500px;
             line-height: 1.7;
         }
         .hero-date {
@@ -87,6 +115,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.05em;
             color: rgba(255,255,255,0.7);
+            align-self: flex-start;
         }
 
         .two-col {
@@ -369,9 +398,12 @@
         @media (max-width: 900px) {
             .two-col { grid-template-columns: 1fr; }
             .sidebar { order: -1; position: static; }
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-img { min-height: 300px; }
+            .hero-img::after { background: linear-gradient(to top, var(--ink) 0%, transparent 40%); }
         }
         @media (max-width: 768px) {
-            .hero { padding: 3rem 1.5rem; }
+            .hero-text { padding: 2rem 1.5rem; }
             .hero h1 { font-size: 1.6rem; }
             .two-col { padding: 2rem 1rem; gap: 2rem; }
             .tl-item { grid-template-columns: 90px 1fr; gap: 1rem; }
@@ -388,10 +420,15 @@
 </nav>
 
 <section class="hero">
-    <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
-    <h1>Reading the 1947 Constitution of Japan</h1>
-    <p class="deck">A guide to what students should look for in one of the most consequential documents of the twentieth century, drafted in six days by American occupiers and reshaping Japan's political identity.</p>
-    <div class="hero-date">Promulgated November 3, 1946 &middot; Enforced May 3, 1947</div>
+    <div class="hero-text">
+        <div class="hero-label">HIST/EAST 213: Modern East Asia</div>
+        <h1>Reading the 1947 Constitution of Japan</h1>
+        <p class="deck">Drafted in six days by American occupiers. Never amended once. A guide to what students should look for in one of the most consequential documents of the twentieth century.</p>
+        <div class="hero-date">Promulgated November 3, 1946 &middot; Enforced May 3, 1947</div>
+    </div>
+    <div class="hero-img">
+        <div class="hero-caption">Emperor Hirohito and General MacArthur, September 27, 1945. U.S. Army photo by Gaetano Faillace. Public domain.</div>
+    </div>
 </section>
 
 <section class="timeline-section">

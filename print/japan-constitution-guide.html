@@ -443,6 +443,7 @@
             min-height: 2px;
             border-radius: 1px 1px 0 0;
         }
+        .gb-bar.recovery { background: #c75b39; }
         .gb-bar.miracle { background: var(--gold); }
         .gb-bar.adjust { background: #78a085; }
         .gb-bar.growth { background: var(--occupation); }
@@ -474,7 +475,8 @@
             padding: 4px 0;
             border-top: 3px solid;
         }
-        .gdp-era.e-miracle { flex: 9; border-color: var(--gold); color: var(--gold); }
+        .gdp-era.e-recovery { flex: 4; border-color: #c75b39; color: #c75b39; }
+        .gdp-era.e-miracle { flex: 16; border-color: var(--gold); color: var(--gold); }
         .gdp-era.e-adjust { flex: 5; border-color: #78a085; color: #78a085; }
         .gdp-era.e-growth { flex: 16; border-color: var(--occupation); color: var(--occupation); }
         .gdp-era.e-lost { flex: 10; border-color: #aaa; color: #666; }
@@ -718,61 +720,73 @@
         </div>
 
         <h2 style="margin-top:3rem">The Economic Miracle in Numbers</h2>
-        <p>The constitution created the framework. The economic miracle created legitimacy. Japan's GDP growth from 1961 to 1969 averaged over 10% per year, the fastest sustained expansion any major economy had ever seen. The golden bars below tell that story, and what came after: the 1974 oil shock, moderate growth through the bubble era, and the "Lost Decade" of the 1990s.</p>
+        <p>Japan's GDP growth rate from 1950 to 2000 tells the entire postwar story at a glance. The Korean War boom (coral) jumpstarted recovery. Then two full decades of miracle-level growth (gold) averaging 9-10% per year, the fastest sustained expansion any major economy had ever seen. The 1974 oil shock ended it. What followed, moderate growth, the bubble, and the Lost Decade, is just as important to understand.</p>
 
         <div class="gdp-chart-wrap">
-            <div class="gdp-note">Annual real GDP growth (%) &middot; Source: World Bank</div>
+            <div class="gdp-note">Annual real GDP growth (%) &middot; Sources: Maddison Project (1950-60), World Bank (1961-2000)</div>
             <div class="gdp-bars">
-                <div class="gdp-grid" style="bottom:166px"><span>12%</span></div>
-                <div class="gdp-grid" style="bottom:111px"><span>8%</span></div>
-                <div class="gdp-grid" style="bottom:55px"><span>4%</span></div>
-                <div class="gb"><div class="gb-bar miracle" style="height:167px"></div></div>
-                <div class="gb"><div class="gb-bar miracle" style="height:123px"></div></div>
+                <div class="gdp-grid" style="bottom:154px"><span>12%</span></div>
+                <div class="gdp-grid" style="bottom:103px"><span>8%</span></div>
+                <div class="gdp-grid" style="bottom:51px"><span>4%</span></div>
+                <div class="gb"><div class="gb-bar recovery" style="height:117px"></div></div>
+                <div class="gb"><div class="gb-bar recovery" style="height:160px"></div></div>
+                <div class="gb"><div class="gb-bar recovery" style="height:149px"></div></div>
+                <div class="gb"><div class="gb-bar recovery" style="height:95px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:73px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:110px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:97px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:94px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:75px"></div></div>
                 <div class="gb"><div class="gb-bar miracle" style="height:117px"></div></div>
-                <div class="gb"><div class="gb-bar miracle" style="height:162px"></div></div>
-                <div class="gb"><div class="gb-bar miracle" style="height:81px"></div></div>
-                <div class="gb"><div class="gb-bar miracle" style="height:147px"></div></div>
-                <div class="gb"><div class="gb-bar miracle" style="height:153px"></div></div>
-                <div class="gb"><div class="gb-bar miracle" style="height:178px"></div></div>
-                <div class="gb"><div class="gb-bar miracle" style="height:173px"></div></div>
-                <div class="gb"><div class="gb-bar adjust" style="height:6px"></div></div>
-                <div class="gb"><div class="gb-bar adjust" style="height:65px"></div></div>
-                <div class="gb"><div class="gb-bar adjust" style="height:116px"></div></div>
-                <div class="gb"><div class="gb-bar adjust" style="height:111px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:169px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:155px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:115px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:109px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:150px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:75px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:137px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:142px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:166px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:160px"></div></div>
+                <div class="gb"><div class="gb-bar adjust" style="height:5px"></div></div>
+                <div class="gb"><div class="gb-bar adjust" style="height:60px"></div></div>
+                <div class="gb"><div class="gb-bar adjust" style="height:108px"></div></div>
+                <div class="gb"><div class="gb-bar adjust" style="height:103px"></div></div>
                 <div class="gb"><div class="gb-bar neg" style="height:2px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:43px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:55px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:61px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:73px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:76px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:39px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:59px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:45px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:50px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:61px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:71px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:46px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:64px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:92px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:40px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:51px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:56px"></div></div>
                 <div class="gb"><div class="gb-bar growth" style="height:68px"></div></div>
-                <div class="gb"><div class="gb-bar growth" style="height:67px"></div></div>
-                <div class="gb"><div class="gb-bar lost" style="height:49px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:70px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:36px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:55px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:42px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:47px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:57px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:66px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:42px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:60px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:86px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:63px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:62px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:45px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:12px"></div></div>
+                <div class="gb"><div class="gb-bar neg" style="height:2px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:14px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:34px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:40px"></div></div>
                 <div class="gb"><div class="gb-bar lost" style="height:13px"></div></div>
                 <div class="gb"><div class="gb-bar neg" style="height:2px"></div></div>
-                <div class="gb"><div class="gb-bar lost" style="height:15px"></div></div>
-                <div class="gb"><div class="gb-bar lost" style="height:36px"></div></div>
-                <div class="gb"><div class="gb-bar lost" style="height:43px"></div></div>
-                <div class="gb"><div class="gb-bar lost" style="height:14px"></div></div>
                 <div class="gb"><div class="gb-bar neg" style="height:2px"></div></div>
-                <div class="gb"><div class="gb-bar neg" style="height:2px"></div></div>
-                <div class="gb"><div class="gb-bar lost" style="height:38px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:35px"></div></div>
             </div>
             <div class="gdp-years">
-                <span>'61</span><span></span><span></span><span></span><span>'65</span><span></span><span></span><span></span><span></span><span>'70</span><span></span><span></span><span></span><span>'74</span><span></span><span></span><span></span><span></span><span></span><span>'80</span><span></span><span></span><span></span><span></span><span>'85</span><span></span><span></span><span></span><span></span><span>'90</span><span></span><span></span><span></span><span></span><span>'95</span><span></span><span></span><span>'98</span><span></span><span>'00</span>
+                <span>'50</span><span></span><span></span><span></span><span></span><span>'55</span><span></span><span></span><span></span><span></span><span>'60</span><span></span><span></span><span></span><span></span><span>'65</span><span></span><span></span><span></span><span></span><span>'70</span><span></span><span></span><span></span><span>'74</span><span></span><span></span><span></span><span></span><span></span><span>'80</span><span></span><span></span><span></span><span></span><span>'85</span><span></span><span></span><span></span><span></span><span>'90</span><span></span><span></span><span></span><span></span><span>'95</span><span></span><span></span><span></span><span></span><span>'00</span>
             </div>
             <div class="gdp-eras">
-                <div class="gdp-era e-miracle">Miracle Years</div>
-                <div class="gdp-era e-adjust">Adjustment</div>
+                <div class="gdp-era e-recovery">Korean War</div>
+                <div class="gdp-era e-miracle">Economic Miracle</div>
+                <div class="gdp-era e-adjust">Oil Shock</div>
                 <div class="gdp-era e-growth">Growth &amp; Bubble</div>
                 <div class="gdp-era e-lost">Lost Decade</div>
             </div>
@@ -780,7 +794,7 @@
 
         <div class="look-for">
             <div class="look-for-label">What the chart means for class</div>
-            <p>The constitution provided the framework. The miracle provided the legitimacy. Growth averaging 10% per year from 1961 to 1969 made democratic capitalism look like it worked. Japan went from rubble to the world's second-largest economy in a single generation. But the same system that produced the miracle also produced the bubble (the tall blue bar in 1988) and the Lost Decade's negative growth. The constitution has never been amended. The economy has never been the same.</p>
+            <p>The constitution provided the framework. The Korean War provided the kickstart (US military procurement orders saved Japan's heavy industry from bankruptcy). Then the miracle provided the legitimacy: twenty years of 8-13% annual growth made democratic capitalism look like it worked. Japan went from rubble to the world's second-largest economy in a single generation. But the same system that produced the miracle also produced the bubble (the tall blue bar in 1988) and the Lost Decade's negative growth. The constitution has never been amended. The economy has never been the same.</p>
         </div>
 
     </div>

@@ -1,167 +1,242 @@
 {
   "plate": 21,
-  "topic": "The Pacific War",
-  "date": "2026-02-25",
-  "generatedAt": "2026-01-04T18:00:00.000Z",
+  "topic": "Civil War and Revolution in China",
+  "date": "2026-02-26",
+  "generatedAt": "2026-02-24T22:00:00.000Z",
   "readings": [
-    "Japan at War (Sources of Modern China, pp. 316-333)",
-    "Oral Histories of the Comfort Women"
+    "Women, Communism, and Revolution (He Zhen, Chen Duxiu, Chiang Kai-shek, Mao Zedong)"
   ],
   "readingAnalyses": [
     {
-      "title": "Japan at War",
-      "author": "Various primary sources",
-      "source": "Sources of Modern China / Japanese Tradition",
-      "pages": "pp. 316-333",
+      "title": "What Women Should Know About Communism",
+      "author": "He Zhen",
+      "source": "Sources of Chinese Tradition, pp. 389-392",
+      "pages": "pp. 1-4 of combined PDF",
       "type": "primary",
-      "summary": "These documents reveal the ideology and experience of Japan's fifteen-year war in Asia (1931-1945). Official rhetoric proclaimed Japan's mission to 'liberate' Asia from Western colonialism under the banner of the Greater East Asia Co-Prosperity Sphere. Soldiers' accounts reveal both the indoctrination that made aggression seem righteous and the brutal reality of warfare against civilian populations.\n\nThe gap between rhetoric and reality is striking. Japan claimed to free Asia while exploiting it; promised prosperity while extracting resources; spoke of liberation while committing atrocities. Understanding how intelligent people came to believe these contradictions—and how some came to see through them—is essential for understanding not just Japanese history but how war propaganda works.",
+      "summary": "He Zhen, an anarchist-feminist writing from exile in Japan (early 1900s), argues that women's oppression stems not from men but from economic dependence. She categorizes suffering women: servants, factory workers, prostitutes, concubines, widows. Her radical solution is communism - the abolition of money and private property - not individual advancement through education or employment, which she sees as merely shifting dependence from husbands to employers.",
       "keyQuotes": [
-        {"quote": "We were told we were liberating Asia. We believed it.", "page": "soldier testimony"},
-        {"quote": "The Greater East Asia Co-Prosperity Sphere would free Asian peoples from Western imperialism.", "page": "official rhetoric"},
-        {"quote": "What we did in China... I cannot speak of it even now.", "page": "veteran reflection"}
+        {"quote": "My fellow women: do not hate men! Hate that you do not have food to eat.", "page": "p. 1"},
+        {"quote": "As long as you depend on others, you cannot be free.", "page": "p. 3"},
+        {"quote": "If every single woman understands that nothing is more evil than money, and they all unite together to cooperate with men to utterly overthrow the rich and powerful and then abolish money, then absolutely nothing will be allowed for individuals to own privately.", "page": "p. 4"}
       ],
       "thematicExamples": [
-        "Official propaganda vs. soldier experience - gap between what was claimed and what was done",
-        "Dehumanization of enemies - how ordinary soldiers committed atrocities",
-        "Postwar reckoning - Japanese veterans struggling to understand their actions",
-        "Co-Prosperity Sphere as cover for exploitation - liberation rhetoric hiding economic extraction"
+        "The 'rice bowl' as symbol of dependence - women endure abuse to eat",
+        "Critique of liberal feminism: education and factory work just shift dependence from husband to employer/owner",
+        "Vision of communism as taking 'water from the ocean' - abundance without private ownership",
+        "Categories of women's suffering: servants, workers, prostitutes, concubines, widows"
       ],
       "realLifeConnections": [
-        "How propaganda works - lessons applicable to understanding any wartime rhetoric",
-        "Veteran trauma and silence - patterns seen in many postwar societies",
-        "Japanese history textbook controversies - ongoing debates about how to teach the war",
-        "War crimes and accountability - Nuremberg/Tokyo trials and their limits"
+        "Gig economy and precarious labor - dependence on employers vs. husbands",
+        "Debates about 'lean in' feminism vs. systemic change",
+        "Universal Basic Income discussions - addressing economic dependence",
+        "Intersectionality: class and gender oppression intertwined"
       ]
     },
     {
-      "title": "Oral Histories of the Comfort Women",
-      "author": "Survivor testimonies",
-      "source": "Primary Source Reader Part 5",
-      "pages": "various",
+      "title": "Our Final Awakening",
+      "author": "Chen Duxiu",
+      "source": "Changing China: Readings in the History of China, p. 168",
+      "pages": "pp. 5-6 of combined PDF",
       "type": "primary",
-      "summary": "The 'comfort women' testimonies document one of the war's worst atrocities: the systematic sexual enslavement of women by the Japanese military. Estimates suggest 50,000-200,000 women, mostly Korean but also Chinese, Filipino, Dutch, and others, were forced into military brothels. Survivors remained silent for decades; only in the 1990s did they begin speaking publicly.\n\nThese testimonies are difficult to read but essential. They document kidnapping, confinement, repeated rape, and physical abuse. They also document survival, resistance, and the courage required to speak decades later. The ongoing disputes over comfort women memorials and Japanese government apologies show how unresolved historical trauma continues to poison regional relations.\n\nCONTENT WARNING: These readings contain descriptions of sexual violence. Students should be prepared for disturbing content.",
+      "summary": "Chen Duxiu (1879-1942), later co-founder of the Chinese Communist Party, writes this New Youth article in 1916 calling for China's 'final awakening.' He argues that constitutional government cannot be granted from above by 'dignitaries and influential elders' - it must derive from the 'conscious realization and voluntary action of the majority.' A republic without changed consciousness is 'bogus constitutionalism' and 'political window-dressing.'",
       "keyQuotes": [
-        {"quote": "I was not a 'comfort woman.' I was a sex slave.", "page": "survivor testimony"},
-        {"quote": "For fifty years I could not speak. The shame was unbearable.", "page": "survivor testimony"},
-        {"quote": "I want the Japanese government to acknowledge what they did to us.", "page": "survivor testimony"}
+        {"quote": "Our task today can be said to be the intense combat between the old and the modern currents of thought.", "page": "p. 5"},
+        {"quote": "A constitutional republic which does not derive from the conscious realization and voluntary action of the majority of the people is a bogus republic and bogus constitutionalism.", "page": "p. 5-6"},
+        {"quote": "It is political window-dressing, in no way like the republican constitutionalism of the countries of Europe and America.", "page": "p. 6"}
       ],
       "thematicExamples": [
-        "Military sexual violence as systematic policy - not individual crimes but organized system",
-        "Decades of silence - shame, trauma, and social stigma prevented survivors from speaking",
-        "Demands for recognition - survivors seeking acknowledgment, not just compensation",
-        "Contested memory - Japan and Korea dispute facts, responsibility, and appropriate response"
+        "Critique of elite-led reform - constitutional government cannot be 'carried on the backs of a few'",
+        "May Fourth emphasis on consciousness change before political change",
+        "Rejection of traditional 'sage rulers' model",
+        "Comparison between old hopes for benevolent emperors and new hopes for enlightened elites"
       ],
       "realLifeConnections": [
-        "Ongoing Japan-Korea disputes over comfort women memorials and government statements",
-        "Wartime sexual violence as weapon - patterns seen in conflicts worldwide",
-        "Survivor-centered approaches to historical justice - listening to those who experienced atrocities",
-        "Statute of limitations on historical crimes - when does accountability expire?"
+        "Debates about top-down vs. bottom-up political reform globally",
+        "Democracy promotion and its limits - can democracy be 'exported'?",
+        "Mass consciousness and social movements - BLM, climate activism",
+        "China's current government: does legitimacy require democratic participation?"
+      ]
+    },
+    {
+      "title": "Essentials of the New Life Movement",
+      "author": "Chiang Kai-shek (Jiang Jieshi)",
+      "source": "Sources of Chinese Tradition, pp. 341-344",
+      "pages": "pp. 7-11 of combined PDF",
+      "type": "primary",
+      "summary": "Chiang Kai-shek's 1934 speech launches the New Life Movement, calling for moral reform based on four Confucian virtues: li (ritual/decorum), yi (rightness), lian (integrity), and chi (shame). He diagnoses Chinese society as 'spiritless' - lacking discrimination between good and evil, public and private, primary and secondary. His remedy is personal discipline, military-mindedness, and readiness to 'die for the country at any moment.' This represents the Nationalist alternative to Communist revolution.",
+      "keyQuotes": [
+        {"quote": "The general psychology of our people today can be described as spiritless.", "page": "p. 8"},
+        {"quote": "The four virtues are the essential principles for the promotion of morality. They form the major rules for dealing with men and human affairs.", "page": "p. 9"},
+        {"quote": "We must preserve order, emphasize organization, responsibility and discipline, and be ready to die for the country at any moment.", "page": "p. 8"}
+      ],
+      "thematicExamples": [
+        "Confucian vocabulary repurposed for nationalist goals",
+        "Individual moral reform as solution to national weakness - blame the people, not the system",
+        "Military discipline as civilian virtue",
+        "Context: Japan has seized Manchuria, Communists active in countryside, warlords control much of country"
+      ],
+      "realLifeConnections": [
+        "Authoritarian responses to social crisis - order over freedom",
+        "Personal responsibility rhetoric vs. structural change",
+        "Compare to Singapore's 'Asian values' or China's current 'civilization' campaigns",
+        "Nationalism and discipline: similar patterns in fascist movements"
+      ]
+    },
+    {
+      "title": "Reform Our Study",
+      "author": "Mao Zedong",
+      "source": "Selected Works of Mao Tse-tung, Vol. 3",
+      "pages": "pp. 12-14 of combined PDF",
+      "type": "primary",
+      "summary": "Mao's 1941 speech at Yan'an launches the Rectification Movement, criticizing 'subjectivism' - studying Marxism-Leninism in the abstract without connecting it to Chinese conditions. He attacks returned students who 'can only parrot things foreign' and 'become gramophones.' True Marxism requires integrating universal theory with 'concrete practice of the Chinese revolution.' This speech establishes Mao's authority to define correct ideology and begins the pattern of ideological campaigns.",
+      "keyQuotes": [
+        {"quote": "To behave like 'a blindfolded man catching sparrows', or 'a blind man groping for fish', to be crude and careless, to indulge in verbiage, to rest content with a smattering of knowledge - such is the extremely bad style of work.", "page": "p. 13"},
+        {"quote": "There are many Marxist-Leninist scholars who cannot open their mouths without citing ancient Greece; but as for their own ancestors - sorry, they have been forgotten.", "page": "p. 13"},
+        {"quote": "Coming home from Europe, America or Japan, they can only parrot things foreign. They become gramophones and forget their duty to understand and create new things.", "page": "p. 14"}
+      ],
+      "thematicExamples": [
+        "Sinification of Marxism - adapting foreign theory to Chinese conditions",
+        "Anti-intellectualism: returned students as 'gramophones' parroting foreign ideas",
+        "Unity of theory and practice vs. 'subjectivism'",
+        "Yan'an as laboratory for CCP ideology and governance"
+      ],
+      "realLifeConnections": [
+        "Debates about applying Western theories to non-Western contexts",
+        "Academic jargon vs. practical knowledge",
+        "Populist critiques of 'out of touch' intellectuals",
+        "China today: Xi Jinping thought and ideological campaigns"
       ]
     }
   ],
-  "overallSynthesis": "These readings bring us face-to-face with the human cost of the nationalism and imperialism we've studied abstractly. Tokutomi Sohō's Social Darwinism (Plate 17) and Fukuzawa's 'Leaving Asia' (Plate 12) provided intellectual justification for empire; these documents show what empire actually meant for its victims.\n\nThe comfort women testimonies are particularly important because they challenge both Japanese denial and the abstraction of 'historical atrocities.' These were individual women with names and lives, violated systematically by a state that claimed to be liberating Asia. Their survival and eventual testimony represent a form of resistance that outlasted the empire itself.\n\nThe ongoing disputes over comfort women—memorials erected and removed, apologies made and retracted, historical facts denied and reaffirmed—show that this history isn't 'past.' Korean anger and Japanese defensiveness continue to shape regional relations. Understanding why this issue remains so contentious requires understanding what happened, why it remained suppressed so long, and what genuine reconciliation might require.\n\nCONTENT NOTE: These are emotionally difficult readings. Students should be prepared for disturbing content and supported in processing it.",
-  "executiveSummary": "Japan's fifteen-year war in Asia (1931-1945) caused immense suffering: millions dead in China, Korea colonized and exploited, Southeast Asia occupied. The 'comfort women' system—military sexual slavery—represents one of the war's most horrific aspects. These readings bring us face-to-face with both the ideology that drove Japanese aggression and the human cost of that aggression.\n\nThe comfort women testimonies are difficult to read but essential. These women, mostly Korean but also Chinese, Filipino, Dutch, and others, were forced into sexual slavery by the Japanese military. Their stories remained suppressed for decades; only in the 1990s did survivors begin speaking out. The ongoing disputes over comfort women memorials show how unresolved historical trauma continues to poison Japan-Korea relations.",
+  "overallSynthesis": "These four documents represent competing visions for China's transformation in the first half of the 20th century. He Zhen's anarchist-feminist vision calls for abolishing money and property. Chen Duxiu demands consciousness change before political reform. Chiang Kai-shek offers moral regeneration through Confucian virtues and military discipline. Mao Zedong insists on adapting Marxism to Chinese conditions through practical investigation.\n\nWhat unites them is the diagnosis: China is in crisis, the old order is failing, something must fundamentally change. What divides them is the prescription. He Zhen sees capitalism and patriarchy as the enemy. Chen sees traditional consciousness as the obstacle. Chiang sees moral decay requiring discipline. Mao sees incorrect ideology requiring rectification.\n\nBy 1949, Mao's vision had won. But understanding why requires seeing the alternatives: Why didn't anarchism take hold? Why couldn't Chen's May Fourth liberalism translate into political power? Why did Chiang's moral campaigns fail to save the Nationalist government? The answer lies in who could mobilize the peasantry, who could build effective organizations, and who could offer a compelling vision of China's future.\n\nNote the irony: Chen Duxiu co-founded the CCP but was expelled in 1929. Chiang's Nationalists would retreat to Taiwan in 1949. He Zhen disappeared from history. Only Mao's interpretation of Marxism became state orthodoxy - and even that would be radically revised after his death.",
   "keywords": [
     {
-      "term": "Comfort Women (慰安婦)",
-      "definition": "Euphemism for women forced into sexual slavery by Japanese military",
-      "relevance": "Symbol of wartime atrocities; ongoing source of Japan-Korea tension"
+      "term": "May Fourth Movement (1919)",
+      "definition": "Student-led protests and intellectual movement attacking traditional culture, demanding science and democracy",
+      "relevance": "Chen Duxiu was a leader; movement shaped both Nationalist and Communist ideologies"
     },
     {
-      "term": "Greater East Asia Co-Prosperity Sphere",
-      "definition": "Japanese imperial ideology claiming to 'liberate' Asia from Western colonialism",
-      "relevance": "Shows how empire was justified; reality was exploitation"
+      "term": "New Life Movement (1934)",
+      "definition": "Chiang Kai-shek's campaign for moral regeneration based on Confucian virtues",
+      "relevance": "Nationalist alternative to Communist revolution; failed to address structural problems"
     },
     {
-      "term": "Nanjing Massacre (1937)",
-      "definition": "Mass killing and rape of Chinese civilians after Japanese capture of Nanjing",
-      "relevance": "One of war's worst atrocities; still disputed in Japan"
+      "term": "Yan'an Rectification (1941-1944)",
+      "definition": "CCP ideological campaign establishing Mao's authority and 'correct' interpretation of Marxism",
+      "relevance": "Created template for later campaigns; established Mao Zedong Thought"
     },
     {
-      "term": "Fifteen-Year War",
-      "definition": "Term for Japan's wars 1931-1945 (Manchuria through Pacific War)",
-      "relevance": "Emphasizes continuity of Japanese aggression"
+      "term": "Subjectivism",
+      "definition": "Mao's term for applying theory without investigating concrete conditions",
+      "relevance": "Key accusation in rectification; opposite of 'seeking truth from facts'"
     },
     {
-      "term": "Historical Memory",
-      "definition": "How societies remember and interpret their past",
-      "relevance": "Japan, China, Korea remember this war very differently"
+      "term": "Li, Yi, Lian, Chi",
+      "definition": "Confucian virtues (ritual, rightness, integrity, shame) promoted by Chiang",
+      "relevance": "Shows Nationalists claiming traditional culture while Communists rejected it"
     }
   ],
   "keyPassages": [
     {
-      "quote": "I was taken from my village at age sixteen. I didn't know what awaited me. We were told we would work in a factory.",
-      "source": "Comfort woman testimony",
-      "page": "Oral Histories"
+      "quote": "My fellow women: do not hate men! Hate that you do not have food to eat.",
+      "source": "He Zhen, 'What Women Should Know About Communism'",
+      "page": "p. 1"
     },
     {
-      "quote": "We are liberating Asia from white imperialism. The suffering now will lead to prosperity later.",
-      "source": "Japanese wartime propaganda",
-      "page": "Japan at War"
+      "quote": "A constitutional republic which does not derive from the conscious realization and voluntary action of the majority of the people is a bogus republic.",
+      "source": "Chen Duxiu, 'Our Final Awakening'",
+      "page": "p. 5"
     },
     {
-      "quote": "I have waited fifty years to tell this story. No one wanted to hear it.",
-      "source": "Comfort woman testimony",
-      "page": "Oral Histories"
+      "quote": "We must preserve order, emphasize organization, responsibility and discipline, and be ready to die for the country at any moment.",
+      "source": "Chiang Kai-shek, 'New Life Movement'",
+      "page": "p. 8"
+    },
+    {
+      "quote": "Coming home from Europe, America or Japan, they can only parrot things foreign. They become gramophones.",
+      "source": "Mao Zedong, 'Reform Our Study'",
+      "page": "p. 14"
     }
   ],
   "peopleplacesthings": {
     "people": [
-      "Comfort women survivors - witnesses to atrocity",
-      "Kim Hak-sun - first comfort woman to publicly testify (1991)",
-      "Hirohito - Emperor during the war"
+      "He Zhen - anarchist-feminist, wrote in exile in Japan",
+      "Chen Duxiu - May Fourth leader, CCP co-founder (1921), expelled 1929",
+      "Chiang Kai-shek - Nationalist leader, New Life Movement",
+      "Mao Zedong - CCP leader, Yan'an Rectification"
     ],
     "places": [
-      "Nanjing - site of 1937 massacre",
-      "Manchuria - Japan's puppet state (Manchukuo)",
-      "Comfort stations - throughout occupied Asia"
+      "Shanghai - industrial center, He Zhen describes factory workers",
+      "Nanjing - Nationalist capital (1927-1937, 1946-1949)",
+      "Yan'an - CCP base (1935-1947), site of Rectification",
+      "Tokyo - exile location for Chinese anarchists including He Zhen"
     ],
     "things": [
-      "Comfort women system - military sexual slavery",
-      "Co-Prosperity Sphere - imperial ideology",
-      "Unit 731 - biological warfare experiments"
+      "New Youth magazine - Chen Duxiu's journal, center of May Fourth debate",
+      "Rectification Campaign - ideological purification, thought reform",
+      "Rice bowl metaphor - economic dependence, survival"
     ]
   },
   "keyQuestions": [
     {
-      "question": "How did Japan justify its empire, and how did that justification compare to Western imperialism?",
-      "talkingPoints": "Japan claimed to liberate Asia from the West. But Japan's rule was equally (or more) brutal. The ideology was self-serving—Pan-Asianism served Japanese interests. Compare to Western 'civilizing mission' rhetoric."
+      "question": "He Zhen argues women should 'not hate men' but hate that they have no food. How does her analysis compare to contemporary feminism?",
+      "talkingPoints": "She rejects individual solutions (education, employment) as shifting dependence. Compare to liberal feminism ('lean in') vs. socialist feminism. Economic dependence as root of gendered oppression."
     },
     {
-      "question": "Why did the comfort women remain silent for so long, and what changed in the 1990s?",
-      "talkingPoints": "Shame, stigma, disbelief. Cold War politics muted criticism of Japan (US ally). Korean democratization and women's movements enabled testimony. Kim Hak-sun's 1991 testimony broke the silence."
+      "question": "Chen says a republic without changed consciousness is 'bogus.' What does this imply about the 1911 Revolution and later reforms?",
+      "talkingPoints": "1911 Revolution changed institutions but not mentalities. New Culture Movement tried to change consciousness first. Chen would co-found CCP in 1921 - did he give up on this approach?"
     },
     {
-      "question": "How should we think about responsibility and reconciliation for wartime atrocities?",
-      "talkingPoints": "Japan has apologized (sort of)—but politicians keep undercutting apologies. Victims want official acknowledgment and compensation. Compare to Germany's approach to Holocaust memory."
+      "question": "How do Chiang's four virtues (li, yi, lian, chi) compare to Confucian originals? Is this genuine tradition or appropriation?",
+      "talkingPoints": "Chiang redefines terms: li becomes 'regulated attitude,' chi becomes 'self-consciousness.' Context: Nationalists competing with Communists who rejected tradition. New Life Movement failed; why?"
+    },
+    {
+      "question": "Mao attacks intellectuals who 'cannot open their mouths without citing ancient Greece.' What are the dangers of his anti-intellectualism?",
+      "talkingPoints": "Legitimate critique of theory divorced from practice. But also: establishes Mao as arbiter of correct thought. Pattern repeats in Anti-Rightist Campaign (1957), Cultural Revolution (1966). Knowledge as threat to power."
     }
   ],
   "timeline": [
     {
-      "date": "1931",
-      "event": "Manchurian Incident; Japan creates puppet state"
+      "date": "1907",
+      "event": "He Zhen and Liu Shipei publish Natural Justice in Japan"
     },
     {
-      "date": "1937",
-      "event": "Full-scale war with China begins; Nanjing Massacre"
+      "date": "1915",
+      "event": "Chen Duxiu founds New Youth magazine"
+    },
+    {
+      "date": "1919",
+      "event": "May Fourth Movement begins"
+    },
+    {
+      "date": "1921",
+      "event": "Chinese Communist Party founded (Chen Duxiu chair)"
+    },
+    {
+      "date": "1927",
+      "event": "Chiang Kai-shek's Northern Expedition; Shanghai Massacre of Communists"
+    },
+    {
+      "date": "1934",
+      "event": "Chiang launches New Life Movement; CCP begins Long March"
+    },
+    {
+      "date": "1935",
+      "event": "CCP establishes Yan'an base; Mao consolidates leadership"
     },
     {
       "date": "1941",
-      "event": "Pearl Harbor; Pacific War begins"
+      "event": "Mao delivers 'Reform Our Study'; Rectification Campaign begins"
     },
     {
-      "date": "1945",
-      "event": "Atomic bombs; Japan surrenders"
-    },
-    {
-      "date": "1991",
-      "event": "Kim Hak-sun first comfort woman to testify publicly"
+      "date": "1949",
+      "event": "CCP victory; People's Republic founded"
     }
   ],
   "connections": {
-    "fromPrevious": "Plates 17-19 traced nationalism in Japan, Korea, China. Those nationalisms collided violently in this war.",
-    "toNext": "Plate 22 examines Japan's postwar reconstruction under American occupation. How did Japan transform from militarist empire to pacifist democracy?",
-    "broaderThemes": "Wartime atrocities remain unresolved in East Asian international relations. Understanding this history is essential for understanding contemporary Japan-Korea-China tensions."
+    "fromPrevious": "Plate 20 covered the Pacific War and Japan's aggression. Now we see what was happening INSIDE China: civil war between Nationalists and Communists, competing visions for China's future.",
+    "toNext": "Plate 22 covers rebuilding Japan under American occupation. Compare: Japan rebuilt with US help; China rebuilt under Communist revolution. Different paths to post-war modernity.",
+    "broaderThemes": "What is modernity? Is it moral reform (Chiang), consciousness change (Chen), economic transformation (He Zhen), or adapting foreign theory to local conditions (Mao)? These debates continue today."
   },
   "nextPreview": {
     "plate": 22,
@@ -170,80 +245,11 @@
     "readings": ["Constitution of Japan (1947)", "The American School"]
   },
   "teachingNotes": [
-    "The comfort women testimonies are disturbing. Warn students and provide context.",
-    "This is sensitive material for Korean, Chinese, and Japanese students. Be prepared for strong reactions.",
-    "Avoid false balance: The historical facts of comfort women system are established. Denialism exists but is not legitimate scholarship.",
-    "Connect to contemporary disputes: comfort women statues, textbook controversies, Yasukuni Shrine visits.",
-    "Consider showing clips from documentary 'The Apology' (2016) about surviving comfort women."
-  ],
-  "map": {
-    "center": [33, 114],
-    "zoom": 5,
-    "locations": [
-      {
-        "name": "Marco Polo Bridge (Lugouqiao)",
-        "nameChinese": "盧溝橋",
-        "lat": 39.8353,
-        "lng": 116.2135,
-        "type": "battle",
-        "description": "July 7, 1937: Incident that triggered full-scale war (Doc 17.1)"
-      },
-      {
-        "name": "Shanghai",
-        "nameChinese": "上海",
-        "lat": 31.2304,
-        "lng": 121.4737,
-        "type": "battle",
-        "description": "Major fighting Aug-Nov 1937; Saitō cites 1932 truce violations (Doc 17.2)"
-      },
-      {
-        "name": "Nanjing",
-        "nameChinese": "南京",
-        "lat": 32.0603,
-        "lng": 118.7969,
-        "type": "battle",
-        "description": "Fell Dec 13, 1937. Massacre: 200,000-300,000 killed. Rabe's Safety Zone (Docs 17.4-17.6)"
-      },
-      {
-        "name": "Chongqing",
-        "nameChinese": "重慶",
-        "lat": 29.4316,
-        "lng": 106.9123,
-        "type": "capital",
-        "description": "Chiang's wartime capital after fall of Nanjing. Site of his Dec 1938 speech (Doc 17.3)"
-      },
-      {
-        "name": "Wuhan",
-        "nameChinese": "武漢",
-        "lat": 30.5928,
-        "lng": 114.3055,
-        "type": "battle",
-        "description": "Fall of Wuhan (Oct 1938) marked 'turning point' before Chiang's retreat inland"
-      },
-      {
-        "name": "Canton (Guangzhou)",
-        "nameChinese": "廣州",
-        "lat": 23.1291,
-        "lng": 113.2644,
-        "type": "battle",
-        "description": "Fell Oct 1938; Japan controlled eastern half of China by late 1938"
-      },
-      {
-        "name": "Tokyo",
-        "nameChinese": "東京",
-        "lat": 35.6762,
-        "lng": 139.6503,
-        "type": "capital",
-        "description": "Konoe's Imperial Diet address (1937); Wang Jingwei's radio broadcast (1941)"
-      },
-      {
-        "name": "Manchukuo (Changchun)",
-        "nameChinese": "滿洲國",
-        "lat": 43.8171,
-        "lng": 125.3235,
-        "type": "region",
-        "description": "Japanese puppet state; part of Konoe's 'New Order' with Japan and China"
-      }
-    ]
-  }
+    "Four documents, four competing visions - use as comparison exercise",
+    "He Zhen's 'rice bowl' metaphor is vivid and memorable",
+    "Mao's 'gramophones' insult resonates with students who've encountered jargon-heavy academics",
+    "Chiang's New Life Movement failed spectacularly - ask why moral campaigns don't address structural problems",
+    "Chen co-founded CCP but was expelled - revolution devours its founders",
+    "Connect to contemporary China: Xi Jinping thought, ideological campaigns, 'core socialist values'"
+  ]
 }

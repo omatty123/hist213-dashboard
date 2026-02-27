@@ -45,6 +45,21 @@
       font-size: 12px;
     }
 
+    /* Readings row */
+    .readings-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+      font-size: 9px;
+    }
+    .reading-item {
+      flex: 1;
+      border: 1px solid #aaa;
+      padding: 3px 6px;
+      background: #f9f9f9;
+    }
+    .reading-item strong { font-size: 9px; }
+
     /* Section labels */
     .label {
       border: 1px solid #000;
@@ -212,10 +227,10 @@
       background: none;
     }
     .question-cell {
-      min-height: 32px;
+      min-height: 28px;
     }
     .answer-cell {
-      min-height: 32px;
+      min-height: 28px;
     }
 
     /* Bottom section */
@@ -244,7 +259,7 @@
       padding: 4px 6px;
       font-size: 9px;
       vertical-align: top;
-      height: 70px;
+      height: 65px;
       background-color: #fefdfb;
       background-image:
         linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
@@ -283,12 +298,18 @@
   </style>
 </head>
 <body>
-  <div class="breadcrumb"><a href="../index.html">← Dashboard</a></div>
+  <div class="breadcrumb"><a href="../index.html">&larr; Dashboard</a></div>
   <!-- Header -->
   <div class="header">
     <div class="plate-num">Plate # 22</div>
-    <div class="topic">Rebuilding Japan</div>
-    <div class="date">Feb 27</div>
+    <div class="topic">Rebuilding Japan: Constitution & Occupation Psychology</div>
+    <div class="date">Feb 28</div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings-row">
+    <div class="reading-item"><strong>Constitution of Japan (1947):</strong> Full text. Focus on Preamble, Articles 1, 9, 14, 24-25.</div>
+    <div class="reading-item"><strong>The American School (Kojima, 1954):</strong> Short story - Japanese English teachers visit American dependents' school during occupation.</div>
   </div>
 
   <!-- Person / Place / Thing -->
@@ -302,35 +323,34 @@
     </thead>
     <tbody>
       <tr>
-        <td class="filled"><strong>Douglas MacArthur</strong>: Supreme Commander</td>
-        <td class="filled"><strong>Tokyo</strong>: occupied capital</td>
-        <td class="filled"><strong>1947 Constitution</strong>: new democratic framework</td>
+        <td class="filled"><strong>Douglas MacArthur</strong>: Supreme Commander; oversaw occupation and constitution drafting</td>
+        <td class="filled"><strong>GHQ (Tokyo)</strong>: General Headquarters - center of occupation power; MacArthur's base</td>
+        <td class="filled"><strong>Article 9</strong>: War renunciation clause - "forever renounce war"; no military forces</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Emperor Hirohito</strong>: retained as symbol</td>
-        <td class="filled"><strong>GHQ (General Headquarters)</strong>: MacArthur's base</td>
-        <td class="filled"><strong>Article 9</strong>: war renunciation clause</td>
+        <td class="filled"><strong>Emperor Hirohito</strong>: Retained but reduced to "symbol of State" - no political power</td>
+        <td class="filled"><strong>American Dependents' Schools</strong>: In Kojima's story - symbol of occupation's separate world</td>
+        <td class="filled"><strong>Popular Sovereignty</strong>: Power from people, not emperor - revolutionary shift from Meiji</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Yoshida Shigeru</strong>: postwar prime minister</td>
-        <td class="filled"><strong>Okinawa</strong>: remained under US control until 1972</td>
-        <td class="filled"><strong>Land reform</strong>: broke up large estates</td>
+        <td class="filled"><strong>Beate Sirota Gordon</strong>: 22-year-old American who drafted women's rights articles (Art. 24)</td>
+        <td class="filled"><strong>Okinawa</strong>: Under US control until 1972; major bases remain today</td>
+        <td class="filled"><strong>Reverse Course</strong>: 1948-49 shift toward anti-communism; partial rearmament allowed</td>
       </tr>
-
     </tbody>
   </table>
 
   <!-- Timeline -->
   <div class="timeline-section">
-    <span class="label">Timeline: Rebuilding Japan</span>
+    <span class="label">Timeline: Occupation & Transformation</span>
     <div class="timeline-box">
         <div class="tl-row">
-          <div class="tl-event"><span class="tl-year">August 15, 1945</span><em>Japan surrenders</em></div>
-          <div class="tl-event"><span class="tl-year">1945-1947</span><em>Radical reforms: constitution, land reform, zaibatsu dissolution</em></div>
-          <div class="tl-event"><span class="tl-year">1947</span><em>New constitution takes effect</em></div>
-          <div class="tl-event"><span class="tl-year">1950</span><em>Korean War begins; 'Reverse Course' accelerates</em></div>
-          <div class="tl-event"><span class="tl-year">1952</span><em>Occupation ends; Japan regains sovereignty</em></div>
-          <div class="tl-event"><span class="tl-year">1964</span><em>Tokyo Olympics—Japan's return to world stage</em></div>
+          <div class="tl-event"><span class="tl-year">Aug 1945</span><em>Japan surrenders</em></div>
+          <div class="tl-event"><span class="tl-year">Feb 1946</span><em>Constitution drafted (1 week)</em></div>
+          <div class="tl-event"><span class="tl-year">May 1947</span><em>Constitution takes effect</em></div>
+          <div class="tl-event"><span class="tl-year">1948-49</span><em>"Reverse Course"</em></div>
+          <div class="tl-event"><span class="tl-year">Apr 1952</span><em>Occupation ends</em></div>
+          <div class="tl-event"><span class="tl-year">1954</span><em>SDF created; Kojima story</em></div>
         </div>
         <div class="tl-line"></div>
       </div>
@@ -341,7 +361,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
-    #postwar-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    #postwar-map { height: 130px; border-radius: 6px; border: 1px solid #333; }
     .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
     .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
     .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
@@ -379,37 +399,42 @@
       <thead>
         <tr>
           <th colspan="2"><span class="label">Penetrating Questions</span></th>
-          <th><span class="label">Very short answers</span></th>
+          <th><span class="label">Key Points</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="q-num">1</td>
-          <td class="question-cell filled">Was the occupation democratization or colonization?</td>
-          <td class="answer-cell filled">Americans imposed reforms, but those reforms were genuinely democratic. Japanese had no choice—but many welcomed changes. The constitution was American-drafted but Japanese-ratified. Both/and rather than either/or.</td>
+          <td class="question-cell filled">Isa believes: "It is foolish for Japanese to speak this language like foreigners. If they do, it makes them foreigners, too." Why does he refuse to speak English?</td>
+          <td class="answer-cell filled">His refusal is principled resistance, not incompetence. Speaking English = loss of identity. Yet his resistance is self-defeating (English teacher who won't teach). Contrast Yamada's grotesque mimicry.</td>
         </tr>
         <tr>
           <td class="q-num">2</td>
-          <td class="question-cell filled">Why was Article 9 included, and what does it mean today?</td>
-          <td class="answer-cell filled">Americans wanted to prevent Japanese rearmament. Many Japanese embraced pacifism after war's horrors. But Cold War led to Self-Defense Forces. Debates continue: revise Article 9? How interpret it?</td>
+          <td class="question-cell filled">Was the occupation democratization or colonization - or both? The constitution granted rights; "The American School" shows teachers who felt "we lost."</td>
+          <td class="answer-cell filled">Both/and, not either/or. Americans imposed genuinely democratic reforms. Constitution American-drafted but Japanese-ratified. Yet psychological humiliation was real: walking 4 miles on roads built for American cars.</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">Yamada boasts of beheading "about twenty" POWs while seeking American approval. What does his character reveal?</td>
+          <td class="answer-cell filled">Accommodation without transformation. War criminal rebranded as English teacher. He wears leather shoes while colleagues wear army boots. Represents Japan's incomplete reckoning with the past.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Bottom: Causes/Effects + Notes -->
+  <!-- Bottom: Connections + Notes -->
   <div class="bottom-section">
     <div class="causes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+          <tr><th><span class="label">Connections</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              <strong>From Plate 21:</strong> Plate 21 examined wartime devastation. How does a nation rebuild after such catastrophe—materially and psychologically?<br>
-<strong>Context:</strong> Defeated nations face choices about how to reckon with the past. Japan's approach (limited reckoning, focus on economic development) contrasts with Germany's. Consequences persist.<br>
-<strong>To Plate 23:</strong> Plate 23 examines China under Mao—a very different path from occupied Japan. Two responses to mid-century crisis.
+              <strong>From Plate 21:</strong> While China underwent Maoist revolution, Japan underwent American-supervised transformation. Two paths from mid-century crisis.<br>
+              <strong>Broader theme:</strong> Can democracy be imposed? Is transformation without humiliation possible? How do defeated nations reconstruct identity?<br>
+              <strong>To Plate 23:</strong> Mao's China - revolutionary path vs. Japan's imposed democratization. Different costs, different outcomes.
             </td>
           </tr>
         </tbody>
@@ -418,16 +443,16 @@
     <div class="notes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Notes</span></th></tr>
+          <tr><th><span class="label">Teaching Notes</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              • The constitution is short and readable—have students identify key provisions.<br>
-              • 'The American School' is a gem—captures complex emotions better than analytical texts.<br>
-              • Article 9 debates continue today. Consider having students discuss whether Japan should revise it.<br>
-              • MacArthur is a fascinating figure—savior complex, theatrical, genuinely effective at democratization.<br>
-              • Tokyo Olympiad clip (linked) shows Japan's 1964 self-presentation to the world.
+              &bull; Constitution is short - have students identify surprising provisions<br>
+              &bull; "The American School" is literary gold - read Isa's interior monologue aloud<br>
+              &bull; Ask: "Have you felt you had to perform a different identity in another language?"<br>
+              &bull; Yamada's casual POW beheading - connects to unresolved war responsibility<br>
+              &bull; 4-mile march: Japanese pedestrians on roads built for American cars
             </td>
           </tr>
         </tbody>

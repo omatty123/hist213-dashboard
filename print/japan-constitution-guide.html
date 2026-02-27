@@ -395,6 +395,90 @@
         footer a { color: var(--gold); text-decoration: none; }
         footer a:hover { text-decoration: underline; }
 
+        .gdp-chart-wrap {
+            background: var(--paper-warm);
+            border: 1px solid var(--border);
+            padding: 1.25rem 1.25rem 0.75rem;
+            margin: 1.5rem 0;
+        }
+        .gdp-note {
+            font-size: 0.68rem;
+            color: var(--ink-faint);
+            margin-bottom: 0.75rem;
+            text-align: right;
+        }
+        .gdp-bars {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 1px;
+            height: 180px;
+            border-bottom: 2px solid var(--ink);
+            padding-left: 30px;
+        }
+        .gdp-grid {
+            position: absolute;
+            left: 30px;
+            right: 0;
+            border-top: 1px dashed #ddd;
+            pointer-events: none;
+        }
+        .gdp-grid span {
+            position: absolute;
+            left: -30px;
+            top: -6px;
+            font-size: 7px;
+            color: var(--ink-faint);
+            width: 26px;
+            text-align: right;
+        }
+        .gb {
+            flex: 1;
+            min-width: 0;
+        }
+        .gb-bar {
+            width: 100%;
+            max-width: 13px;
+            margin: 0 auto;
+            min-height: 2px;
+            border-radius: 1px 1px 0 0;
+        }
+        .gb-bar.miracle { background: var(--gold); }
+        .gb-bar.adjust { background: #78a085; }
+        .gb-bar.growth { background: var(--occupation); }
+        .gb-bar.lost { background: #aaa; }
+        .gb-bar.neg { background: var(--imperial); }
+        .gdp-years {
+            display: flex;
+            gap: 1px;
+            padding-left: 30px;
+        }
+        .gdp-years span {
+            flex: 1;
+            min-width: 0;
+            text-align: center;
+            font-size: 6.5px;
+            color: var(--ink-faint);
+            padding-top: 3px;
+        }
+        .gdp-eras {
+            display: flex;
+            gap: 2px;
+            margin-top: 10px;
+            padding-left: 30px;
+        }
+        .gdp-era {
+            text-align: center;
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 4px 0;
+            border-top: 3px solid;
+        }
+        .gdp-era.e-miracle { flex: 9; border-color: var(--gold); color: var(--gold); }
+        .gdp-era.e-adjust { flex: 5; border-color: #78a085; color: #78a085; }
+        .gdp-era.e-growth { flex: 16; border-color: var(--occupation); color: var(--occupation); }
+        .gdp-era.e-lost { flex: 10; border-color: #aaa; color: #666; }
+
         @media (max-width: 900px) {
             .two-col { grid-template-columns: 1fr; }
             .sidebar { order: -1; position: static; }
@@ -631,6 +715,72 @@
         <div class="pull-quote" style="margin-top:2.5rem">
             <p>"The fundamental human rights by this Constitution guaranteed to the people of Japan are fruits of the age-old struggle of man to be free; they have survived the many exacting tests for durability and are conferred upon this and future generations in trust, to be held for all time inviolate."</p>
             <div class="attrib">Article 97, "Supreme Law"</div>
+        </div>
+
+        <h2 style="margin-top:3rem">The Economic Miracle in Numbers</h2>
+        <p>The constitution created the framework. The economic miracle created legitimacy. Japan's GDP growth from 1961 to 1969 averaged over 10% per year, the fastest sustained expansion any major economy had ever seen. The golden bars below tell that story, and what came after: the 1974 oil shock, moderate growth through the bubble era, and the "Lost Decade" of the 1990s.</p>
+
+        <div class="gdp-chart-wrap">
+            <div class="gdp-note">Annual real GDP growth (%) &middot; Source: World Bank</div>
+            <div class="gdp-bars">
+                <div class="gdp-grid" style="bottom:166px"><span>12%</span></div>
+                <div class="gdp-grid" style="bottom:111px"><span>8%</span></div>
+                <div class="gdp-grid" style="bottom:55px"><span>4%</span></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:167px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:123px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:117px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:162px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:81px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:147px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:153px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:178px"></div></div>
+                <div class="gb"><div class="gb-bar miracle" style="height:173px"></div></div>
+                <div class="gb"><div class="gb-bar adjust" style="height:6px"></div></div>
+                <div class="gb"><div class="gb-bar adjust" style="height:65px"></div></div>
+                <div class="gb"><div class="gb-bar adjust" style="height:116px"></div></div>
+                <div class="gb"><div class="gb-bar adjust" style="height:111px"></div></div>
+                <div class="gb"><div class="gb-bar neg" style="height:2px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:43px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:55px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:61px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:73px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:76px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:39px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:59px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:45px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:50px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:61px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:71px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:46px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:64px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:92px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:68px"></div></div>
+                <div class="gb"><div class="gb-bar growth" style="height:67px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:49px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:13px"></div></div>
+                <div class="gb"><div class="gb-bar neg" style="height:2px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:15px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:36px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:43px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:14px"></div></div>
+                <div class="gb"><div class="gb-bar neg" style="height:2px"></div></div>
+                <div class="gb"><div class="gb-bar neg" style="height:2px"></div></div>
+                <div class="gb"><div class="gb-bar lost" style="height:38px"></div></div>
+            </div>
+            <div class="gdp-years">
+                <span>'61</span><span></span><span></span><span></span><span>'65</span><span></span><span></span><span></span><span></span><span>'70</span><span></span><span></span><span></span><span>'74</span><span></span><span></span><span></span><span></span><span></span><span>'80</span><span></span><span></span><span></span><span></span><span>'85</span><span></span><span></span><span></span><span></span><span>'90</span><span></span><span></span><span></span><span></span><span>'95</span><span></span><span></span><span>'98</span><span></span><span>'00</span>
+            </div>
+            <div class="gdp-eras">
+                <div class="gdp-era e-miracle">Miracle Years</div>
+                <div class="gdp-era e-adjust">Adjustment</div>
+                <div class="gdp-era e-growth">Growth &amp; Bubble</div>
+                <div class="gdp-era e-lost">Lost Decade</div>
+            </div>
+        </div>
+
+        <div class="look-for">
+            <div class="look-for-label">What the chart means for class</div>
+            <p>The constitution provided the framework. The miracle provided the legitimacy. Growth averaging 10% per year from 1961 to 1969 made democratic capitalism look like it worked. Japan went from rubble to the world's second-largest economy in a single generation. But the same system that produced the miracle also produced the bubble (the tall blue bar in 1988) and the Lost Decade's negative growth. The constitution has never been amended. The economy has never been the same.</p>
         </div>
 
     </div>

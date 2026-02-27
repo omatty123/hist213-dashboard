@@ -209,11 +209,19 @@
       },
       {
         "name": "Hiroshima",
-        "nameChinese": "廣島",
+        "nameChinese": "広島",
         "lat": 34.3853,
         "lng": 132.4553,
         "type": "city",
-        "description": "Symbol of atomic devastation and peace"
+        "description": "Atomic bomb, August 6, 1945; symbol of peace movement"
+      },
+      {
+        "name": "Nagasaki",
+        "nameChinese": "長崎",
+        "lat": 32.7503,
+        "lng": 129.8779,
+        "type": "city",
+        "description": "Atomic bomb, August 9, 1945; second and final nuclear attack"
       },
       {
         "name": "Okinawa",

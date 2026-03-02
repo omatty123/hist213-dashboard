@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRC GDP Growth, 1952–2025</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -474,6 +473,66 @@
         cov: "COVID & After"
     };
 
+    // Inline plugin: draw zero line + vertical event markers
+    var markers = [
+        {year:1976, color:"#e53e3e", label:"Mao dies"},
+        {year:1978, color:"#d69e2e", label:"1978 Reform"},
+        {year:2001, color:"#38a169", label:"WTO"}
+    ];
+    var markerPlugin = {
+        id: "customMarkers",
+        afterDraw: function(chart) {
+            var ctx = chart.ctx;
+            var yScale = chart.scales.y;
+            var xScale = chart.scales.x;
+            var chartArea = chart.chartArea;
+
+            // Zero line
+            var zeroY = yScale.getPixelForValue(0);
+            ctx.save();
+            ctx.setLineDash([4, 3]);
+            ctx.strokeStyle = "#1a1a1a";
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(chartArea.left, zeroY);
+            ctx.lineTo(chartArea.right, zeroY);
+            ctx.stroke();
+            ctx.restore();
+
+            // Vertical markers
+            var labels = chart.data.labels;
+            markers.forEach(function(m) {
+                var idx = -1;
+                for (var i = 0; i < labels.length; i++) {
+                    if (labels[i] === m.year) { idx = i; break; }
+                }
+                if (idx < 0) return;
+                var x = xScale.getPixelForValue(idx);
+                ctx.save();
+                ctx.setLineDash([5, 3]);
+                ctx.strokeStyle = m.color;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(x, chartArea.top);
+                ctx.lineTo(x, chartArea.bottom);
+                ctx.stroke();
+                // Label
+                ctx.setLineDash([]);
+                ctx.fillStyle = m.color;
+                ctx.font = "bold 10px -apple-system, sans-serif";
+                ctx.textAlign = "center";
+                var pad = 3;
+                var tw = ctx.measureText(m.label).width + pad * 2;
+                ctx.beginPath();
+                ctx.roundRect(x - tw / 2, chartArea.top + 2, tw, 16, 3);
+                ctx.fill();
+                ctx.fillStyle = "#fff";
+                ctx.fillText(m.label, x, chartArea.top + 14);
+                ctx.restore();
+            });
+        }
+    };
+
     // Chart
     var ctx = document.getElementById("gdpChart").getContext("2d");
     new Chart(ctx, {
@@ -493,6 +552,7 @@
                 categoryPercentage: 0.92
             }]
         },
+        plugins: [markerPlugin],
         options: {
             responsive: true,
             maintainAspectRatio: false,
@@ -502,7 +562,7 @@
                     callbacks: {
                         title: function(items) {
                             var d = data[items[0].dataIndex];
-                            return d.y + " — " + eraNames[d.era];
+                            return d.y + " \u2014 " + eraNames[d.era];
                         },
                         label: function(item) {
                             return "GDP growth: " + item.raw.toFixed(1) + "%";
@@ -510,62 +570,6 @@
                         afterLabel: function(item) {
                             var d = data[item.dataIndex];
                             return d.ev ? d.ev : "";
-                        }
-                    }
-                },
-                annotation: {
-                    annotations: {
-                        zeroLine: {
-                            type: "line",
-                            yMin: 0, yMax: 0,
-                            borderColor: "#1a1a1a",
-                            borderWidth: 1.5,
-                            borderDash: [4, 3]
-                        },
-                        reformLine: {
-                            type: "line",
-                            xMin: "1978", xMax: "1978",
-                            borderColor: "#d69e2e",
-                            borderWidth: 2,
-                            borderDash: [6, 3],
-                            label: {
-                                display: true,
-                                content: "1978 Reform",
-                                position: "start",
-                                backgroundColor: "#d69e2e",
-                                color: "#fff",
-                                font: { size: 10 }
-                            }
-                        },
-                        maoDeathLine: {
-                            type: "line",
-                            xMin: "1976", xMax: "1976",
-                            borderColor: "#e53e3e",
-                            borderWidth: 1.5,
-                            borderDash: [4, 3],
-                            label: {
-                                display: true,
-                                content: "Mao dies",
-                                position: "start",
-                                backgroundColor: "#e53e3e",
-                                color: "#fff",
-                                font: { size: 10 }
-                            }
-                        },
-                        wtoLine: {
-                            type: "line",
-                            xMin: "2001", xMax: "2001",
-                            borderColor: "#38a169",
-                            borderWidth: 1.5,
-                            borderDash: [4, 3],
-                            label: {
-                                display: true,
-                                content: "WTO",
-                                position: "start",
-                                backgroundColor: "#38a169",
-                                color: "#fff",
-                                font: { size: 10 }
-                            }
                         }
                     }
                 }

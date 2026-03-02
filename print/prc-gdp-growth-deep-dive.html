@@ -644,6 +644,8 @@
                 y: {
                     position: "left",
                     grid: { color: "#f0ede8" },
+                    min: -30,
+                    max: 25,
                     title: {
                         display: true,
                         text: "Growth Rate (%)",
@@ -653,13 +655,16 @@
                     ticks: {
                         font: { size: 10 },
                         callback: function(v) { return v + "%"; }
-                    },
-                    suggestedMin: -30,
-                    suggestedMax: 25
+                    }
                 },
                 y2: {
                     position: "right",
                     grid: { drawOnChartArea: false },
+                    // Align 0x with 0% by matching the negative/positive ratio
+                    // Left axis: -30 to 25, so 0 is at 30/55 from bottom
+                    // Right axis: need min so that 0 is also at 30/55 from bottom
+                    min: -(Math.ceil(cumul[cumul.length - 1] / 10) * 10) * (30 / 25),
+                    max: Math.ceil(cumul[cumul.length - 1] / 10) * 10,
                     title: {
                         display: true,
                         text: "Economy Size (1952 = 1x)",
@@ -669,9 +674,8 @@
                     ticks: {
                         font: { size: 10 },
                         color: "#c53030",
-                        callback: function(v) { return v.toFixed(0) + "x"; }
-                    },
-                    beginAtZero: true
+                        callback: function(v) { return v >= 0 ? v.toFixed(0) + "x" : ""; }
+                    }
                 }
             }
         }

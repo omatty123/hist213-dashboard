@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRC GDP Growth, 1952–2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f7f4; color: #1a1a1a; line-height: 1.5;
+        }
+        a.back-link {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.8rem;
+            color: #999;
+            text-decoration: none;
+        }
+        a.back-link:hover { color: #fff; }
+        header {
+            background: #1a1a1a; color: #f8f7f4;
+            padding: 0 2rem 1.3rem;
+        }
+        header h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; }
+        header .sub { font-size: 0.8rem; color: #999; margin-top: 0.15rem; }
+
+        main {
+            max-width: 1080px; margin: 0 auto;
+            padding: 1.5rem 1.5rem 3rem;
+        }
+
+        .chart-card {
+            background: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .chart-card h2 {
+            font-size: 1rem; font-weight: 700;
+            margin-bottom: 0.1rem;
+        }
+        .chart-card .subtitle {
+            font-size: 0.75rem; color: #888;
+            margin-bottom: 1rem;
+        }
+        .chart-wrap {
+            position: relative;
+            height: 380px;
+        }
+
+        /* Era legend */
+        .era-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+            margin-bottom: 1.2rem;
+            padding: 0.8rem 1rem;
+            background: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 8px;
+        }
+        .era-legend .era-item {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            color: #555;
+        }
+        .era-legend .era-swatch {
+            width: 14px; height: 14px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Grid layout for era cards */
+        .eras {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .era-card {
+            background: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 6px;
+            padding: 0.9rem 1rem;
+            border-top: 3px solid #ccc;
+        }
+        .era-card h3 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 0.15rem;
+        }
+        .era-card .years {
+            font-size: 0.7rem;
+            color: #888;
+            margin-bottom: 0.4rem;
+        }
+        .era-card .avg {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+        .era-card .avg small {
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: #888;
+        }
+        .era-card p {
+            font-size: 0.78rem;
+            color: #555;
+            line-height: 1.45;
+        }
+
+        /* Data table */
+        .data-section {
+            margin-top: 1.5rem;
+        }
+        .data-section h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        .data-table-wrap {
+            background: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+        }
+        thead th {
+            background: #1a1a1a;
+            color: #f8f7f4;
+            padding: 0.5rem 0.6rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.72rem;
+            position: sticky;
+            top: 0;
+        }
+        tbody td {
+            padding: 0.35rem 0.6rem;
+            border-bottom: 1px solid #f0ede8;
+        }
+        tbody tr:hover { background: #faf9f6; }
+        .neg { color: #c53030; font-weight: 600; }
+        .high { color: #276749; font-weight: 600; }
+        .era-tag {
+            display: inline-block;
+            font-size: 0.62rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            color: #fff;
+            font-weight: 600;
+        }
+        .decade-break td {
+            border-top: 2px solid #ccc;
+        }
+
+        /* Summary stats */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .stat-box {
+            background: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: left;
+        }
+        .stat-box .label {
+            font-size: 0.68rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.2rem;
+        }
+        .stat-box .value {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+        .stat-box .detail {
+            font-size: 0.72rem;
+            color: #888;
+            margin-top: 0.1rem;
+        }
+
+        .source {
+            margin-top: 1.5rem;
+            font-size: 0.72rem;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 0.6rem;
+            line-height: 1.6;
+        }
+        .source a { color: #777; }
+
+        .caveat {
+            background: #fffbeb;
+            border: 1px solid #f0e4b8;
+            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            font-size: 0.78rem;
+            color: #92400e;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .caveat strong { color: #78350f; }
+
+        @media (max-width: 768px) {
+            .eras { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+            .chart-wrap { height: 280px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">&larr; Back to EAST 213 Dashboard</a>
+        <h1>PRC GDP Growth Rate, 1952–2025</h1>
+        <div class="sub">Annual real GDP growth (%) &middot; National Bureau of Statistics &amp; World Bank</div>
+    </header>
+
+    <main>
+        <!-- Headline stats -->
+        <div class="stats-row">
+            <div class="stat-box">
+                <div class="label">Worst Year</div>
+                <div class="value neg">-27.3%</div>
+                <div class="detail">1961 (Great Leap famine)</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Best Year</div>
+                <div class="value high">21.3%</div>
+                <div class="detail">1958 (Great Leap start)</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Reform-Era Avg</div>
+                <div class="value" style="color:#b7791f">9.0%</div>
+                <div class="detail">1978–2024 (46 years)</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Mao-Era Avg</div>
+                <div class="value" style="color:#555">4.8%</div>
+                <div class="detail">1952–1976 (24 years)</div>
+            </div>
+        </div>
+
+        <div class="caveat">
+            <strong>A note on Mao-era data.</strong> Official Chinese statistics for 1958–1960 are unreliable. During the Great Leap Forward, local cadres massively over-reported grain yields and industrial output to meet impossible quotas. The NBS figure of 21.3% for 1958 almost certainly overstates real growth. The famine's true economic impact (1959–1961) was also likely deeper than official figures suggest. World Bank data begins in 1961. NBS data from 1952 was retroactively reconstructed in 1997.
+        </div>
+
+        <!-- Era legend -->
+        <div class="era-legend">
+            <div class="era-item"><div class="era-swatch" style="background:#6b46c1"></div> Recovery &amp; 1st FYP (1952–57)</div>
+            <div class="era-item"><div class="era-swatch" style="background:#c53030"></div> Great Leap Forward (1958–62)</div>
+            <div class="era-item"><div class="era-swatch" style="background:#2b6cb0"></div> Recovery (1963–65)</div>
+            <div class="era-item"><div class="era-swatch" style="background:#e53e3e"></div> Cultural Revolution (1966–76)</div>
+            <div class="era-item"><div class="era-swatch" style="background:#d69e2e"></div> Reform &amp; Opening (1978–91)</div>
+            <div class="era-item"><div class="era-swatch" style="background:#38a169"></div> Boom (1992–2007)</div>
+            <div class="era-item"><div class="era-swatch" style="background:#3182ce"></div> New Normal (2008–19)</div>
+            <div class="era-item"><div class="era-swatch" style="background:#718096"></div> COVID &amp; After (2020–25)</div>
+        </div>
+
+        <!-- Main chart -->
+        <div class="chart-card">
+            <h2>Annual Real GDP Growth Rate</h2>
+            <div class="subtitle">Percent change year-over-year, 1953–2025</div>
+            <div class="chart-wrap">
+                <canvas id="gdpChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Era cards -->
+        <div class="eras">
+            <div class="era-card" style="border-top-color:#6b46c1">
+                <h3>Recovery &amp; First Five-Year Plan</h3>
+                <div class="years">1953–1957</div>
+                <div class="avg" style="color:#6b46c1">9.4% <small>avg</small></div>
+                <p>Soviet-aided industrialization. Heavy industry prioritized. Land reform completed. Modest but real growth built on post-civil-war recovery.</p>
+            </div>
+            <div class="era-card" style="border-top-color:#c53030">
+                <h3>Great Leap Forward</h3>
+                <div class="years">1958–1962</div>
+                <div class="avg" style="color:#c53030">-0.4% <small>avg*</small></div>
+                <p>Backyard steel, collectivized farming, falsified statistics. The Great Chinese Famine killed 15–55 million. Official 1958 numbers are inflated. The 1961 crash of -27.3% is the single worst year in PRC history.</p>
+            </div>
+            <div class="era-card" style="border-top-color:#2b6cb0">
+                <h3>Post-Leap Recovery</h3>
+                <div class="years">1963–1965</div>
+                <div class="avg" style="color:#2b6cb0">15.1% <small>avg</small></div>
+                <p>Liu Shaoqi and Deng Xiaoping managed the recovery. Pragmatic policies restored agriculture. High growth rates partly reflect rebound from an extremely low base.</p>
+            </div>
+            <div class="era-card" style="border-top-color:#e53e3e">
+                <h3>Cultural Revolution</h3>
+                <div class="years">1966–1976</div>
+                <div class="avg" style="color:#e53e3e">5.3% <small>avg</small></div>
+                <p>Political chaos, but industry kept running. Worst years: 1967 (-5.7%) and 1968 (-4.1%) when Red Guard violence peaked. Mao's death in 1976 coincided with -1.6% contraction.</p>
+            </div>
+            <div class="era-card" style="border-top-color:#d69e2e">
+                <h3>Reform &amp; Opening</h3>
+                <div class="years">1978–1991</div>
+                <div class="avg" style="color:#d69e2e">9.3% <small>avg</small></div>
+                <p>Deng's SEZs, household responsibility system, TVEs. Growth surged to 15.2% in 1984. Tiananmen (1989) and austerity brought it down to 3.9% in 1990, the lowest of the reform era.</p>
+            </div>
+            <div class="era-card" style="border-top-color:#38a169">
+                <h3>Boom Years</h3>
+                <div class="years">1992–2007</div>
+                <div class="avg" style="color:#38a169">10.5% <small>avg</small></div>
+                <p>Deng's Southern Tour (1992) re-ignited reform. WTO accession (2001) integrated China into global supply chains. GDP growth hit 14.2% in 2007. China became the world's factory.</p>
+            </div>
+            <div class="era-card" style="border-top-color:#3182ce">
+                <h3>New Normal</h3>
+                <div class="years">2008–2019</div>
+                <div class="avg" style="color:#3182ce">7.7% <small>avg</small></div>
+                <p>Global financial crisis, massive stimulus (4 trillion yuan). Xi Jinping's "new normal" accepted slower growth. Shift from investment to consumption. Trade war with US (2018–).</p>
+            </div>
+            <div class="era-card" style="border-top-color:#718096">
+                <h3>COVID &amp; After</h3>
+                <div class="years">2020–2025</div>
+                <div class="avg" style="color:#718096">4.9% <small>avg</small></div>
+                <p>Zero-COVID cratered 2020 (2.3%) and 2022 (3.1%). Property crisis (Evergrande). Youth unemployment. 2024–25 target of "around 5%" met both years, but each figure invites scrutiny.</p>
+            </div>
+            <div class="era-card" style="border-top-color:#1a1a1a">
+                <h3>The Teaching Question</h3>
+                <div class="years">For class discussion</div>
+                <div class="avg" style="color:#1a1a1a">?</div>
+                <p>Is the CPC's legitimacy built on growth? What happens if 5% becomes the ceiling? The Party survived Mao-era chaos (avg 4.8%) but today's citizens have different expectations.</p>
+            </div>
+        </div>
+
+        <!-- Data table -->
+        <div class="data-section">
+            <h2>Year-by-Year Data</h2>
+            <div class="data-table-wrap" style="max-height: 600px; overflow-y: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>GDP Growth (%)</th>
+                            <th>Era</th>
+                            <th>Key Events</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="source">
+            <strong>Sources:</strong><br>
+            1952–1960: National Bureau of Statistics of China, <em>The Gross Domestic Product of China, 1952–1995</em> (1997 reconstruction), via
+            <a href="https://en.wikipedia.org/wiki/Historical_GDP_of_China" target="_blank">Wikipedia: Historical GDP of China</a><br>
+            1961–2024: <a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=CN" target="_blank">World Bank Open Data, GDP growth (annual %) — China</a><br>
+            NBS portal: <a href="https://data.stats.gov.cn/english/easyquery.htm?cn=B01" target="_blank">data.stats.gov.cn</a><br>
+            <br>
+            *Great Leap Forward average uses official NBS figures, which scholars consider inflated for 1958–1959.<br>
+            Famine death estimates: Dikötter (2010) estimates 45 million; Yang Jisheng (2008) estimates 36 million; official Chinese figure is ~15 million.
+        </div>
+    </main>
+
+    <script>
+    // GDP growth data
+    // 1953-1960: NBS reconstructed data (1997)
+    // 1961-2024: World Bank API (NY.GDP.MKTP.KD.ZG)
+    var data = [
+        {y:1953,g:15.6,era:"fyp",ev:"1st Five-Year Plan begins; Soviet aid"},
+        {y:1954,g:4.3,era:"fyp",ev:""},
+        {y:1955,g:6.9,era:"fyp",ev:""},
+        {y:1956,g:15.0,era:"fyp",ev:"Hundred Flowers begins"},
+        {y:1957,g:5.1,era:"fyp",ev:"Anti-Rightist Campaign"},
+        {y:1958,g:21.3,era:"glf",ev:"Great Leap Forward launched (figure likely inflated)"},
+        {y:1959,g:9.0,era:"glf",ev:"Lushan Conference; famine begins"},
+        {y:1960,g:0.0,era:"glf",ev:"Famine peaks; Soviet advisors withdrawn (NBS index=100)"},
+        {y:1961,g:-27.3,era:"glf",ev:"Worst famine year; 15-55 million dead total"},
+        {y:1962,g:-5.6,era:"glf",ev:"Seven Thousand Cadres Conference; Mao steps back"},
+        {y:1963,g:10.3,era:"rec",ev:"Liu Shaoqi and Deng lead recovery"},
+        {y:1964,g:18.2,era:"rec",ev:"First Chinese nuclear test"},
+        {y:1965,g:17.0,era:"rec",ev:"Economy recovered to pre-Leap levels"},
+        {y:1966,g:10.7,era:"cr",ev:"Cultural Revolution launched"},
+        {y:1967,g:-5.7,era:"cr",ev:"Red Guard violence peaks; factional warfare"},
+        {y:1968,g:-4.1,era:"cr",ev:"Army restores order; 'sent-down youth'"},
+        {y:1969,g:16.9,era:"cr",ev:"Sino-Soviet border clashes"},
+        {y:1970,g:19.3,era:"cr",ev:"Third Front industrialization"},
+        {y:1971,g:7.1,era:"cr",ev:"Lin Biao incident"},
+        {y:1972,g:3.8,era:"cr",ev:"Nixon visits China"},
+        {y:1973,g:7.8,era:"cr",ev:"Deng Xiaoping rehabilitated"},
+        {y:1974,g:2.3,era:"cr",ev:"'Criticize Lin, Criticize Confucius'"},
+        {y:1975,g:8.7,era:"cr",ev:"Deng leads modernization push"},
+        {y:1976,g:-1.6,era:"cr",ev:"Zhou Enlai and Mao die; Gang of Four arrested"},
+        {y:1977,g:7.6,era:"tr",ev:"Hua Guofeng; 'Two Whatevers'"},
+        {y:1978,g:11.7,era:"ref",ev:"3rd Plenum: Reform & Opening begins"},
+        {y:1979,g:7.6,era:"ref",ev:"SEZs established; one-child policy"},
+        {y:1980,g:7.8,era:"ref",ev:"Shenzhen SEZ opens"},
+        {y:1981,g:5.1,era:"ref",ev:"Household responsibility system spreads"},
+        {y:1982,g:9.0,era:"ref",ev:""},
+        {y:1983,g:10.7,era:"ref",ev:"TVEs boom"},
+        {y:1984,g:15.2,era:"ref",ev:"Urban reform begins; 14 coastal cities opened"},
+        {y:1985,g:13.4,era:"ref",ev:""},
+        {y:1986,g:8.9,era:"ref",ev:""},
+        {y:1987,g:11.6,era:"ref",ev:"Zhao Ziyang becomes General Secretary"},
+        {y:1988,g:11.2,era:"ref",ev:"Inflation crisis; price reform panic buying"},
+        {y:1989,g:4.2,era:"ref",ev:"Tiananmen Square; Western sanctions"},
+        {y:1990,g:3.9,era:"ref",ev:"Austerity; lowest reform-era growth"},
+        {y:1991,g:9.4,era:"ref",ev:""},
+        {y:1992,g:14.3,era:"boom",ev:"Deng's Southern Tour reignites reform"},
+        {y:1993,g:13.9,era:"boom",ev:"'Socialist market economy' adopted"},
+        {y:1994,g:13.1,era:"boom",ev:"Tax-sharing reform; yuan devalued"},
+        {y:1995,g:11.0,era:"boom",ev:"Taiwan Strait crisis"},
+        {y:1996,g:10.0,era:"boom",ev:""},
+        {y:1997,g:9.3,era:"boom",ev:"Deng Xiaoping dies; Hong Kong returned"},
+        {y:1998,g:7.9,era:"boom",ev:"Asian Financial Crisis; Yangtze floods"},
+        {y:1999,g:7.7,era:"boom",ev:""},
+        {y:2000,g:8.6,era:"boom",ev:""},
+        {y:2001,g:8.3,era:"boom",ev:"WTO accession"},
+        {y:2002,g:9.2,era:"boom",ev:"Hu Jintao era begins"},
+        {y:2003,g:10.1,era:"boom",ev:"SARS outbreak"},
+        {y:2004,g:10.1,era:"boom",ev:""},
+        {y:2005,g:11.5,era:"boom",ev:""},
+        {y:2006,g:12.7,era:"boom",ev:"Three Gorges Dam completed"},
+        {y:2007,g:14.2,era:"boom",ev:"Peak boom; Shanghai stock bubble"},
+        {y:2008,g:9.7,era:"new",ev:"Global financial crisis; 4 trillion yuan stimulus"},
+        {y:2009,g:9.4,era:"new",ev:"Stimulus sustains growth"},
+        {y:2010,g:10.6,era:"new",ev:"China passes Japan as #2 economy"},
+        {y:2011,g:9.5,era:"new",ev:""},
+        {y:2012,g:7.9,era:"new",ev:"Xi Jinping becomes General Secretary"},
+        {y:2013,g:7.8,era:"new",ev:"Belt and Road Initiative announced"},
+        {y:2014,g:7.5,era:"new",ev:"'New Normal' language adopted"},
+        {y:2015,g:7.0,era:"new",ev:"Stock market crash; yuan devalued"},
+        {y:2016,g:6.8,era:"new",ev:""},
+        {y:2017,g:6.9,era:"new",ev:"19th Party Congress; Xi Jinping Thought enshrined"},
+        {y:2018,g:6.8,era:"new",ev:"US-China trade war begins"},
+        {y:2019,g:6.1,era:"new",ev:"Trade war escalates; Hong Kong protests"},
+        {y:2020,g:2.3,era:"cov",ev:"COVID-19 pandemic; zero-COVID policy"},
+        {y:2021,g:8.6,era:"cov",ev:"Rebound; but Evergrande crisis begins"},
+        {y:2022,g:3.1,era:"cov",ev:"Zero-COVID lockdowns; property crisis deepens"},
+        {y:2023,g:5.4,era:"cov",ev:"Zero-COVID abandoned; slow recovery"},
+        {y:2024,g:5.0,era:"cov",ev:"5% target met; deflation concerns"},
+        {y:2025,g:5.0,era:"cov",ev:"Preliminary NBS figure; meets 'around 5%' target"}
+    ];
+
+    var eraColors = {
+        fyp: "#6b46c1",
+        glf: "#c53030",
+        rec: "#2b6cb0",
+        cr:  "#e53e3e",
+        tr:  "#805ad5",
+        ref: "#d69e2e",
+        boom:"#38a169",
+        "new":"#3182ce",
+        cov: "#718096"
+    };
+
+    var eraNames = {
+        fyp: "1st Five-Year Plan",
+        glf: "Great Leap Forward",
+        rec: "Recovery",
+        cr:  "Cultural Revolution",
+        tr:  "Transition",
+        ref: "Reform & Opening",
+        boom:"Boom",
+        "new":"New Normal",
+        cov: "COVID & After"
+    };
+
+    // Chart
+    var ctx = document.getElementById("gdpChart").getContext("2d");
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: data.map(function(d){ return d.y; }),
+            datasets: [{
+                data: data.map(function(d){ return d.g; }),
+                backgroundColor: data.map(function(d){
+                    return d.g < 0 ? "#c53030" : (eraColors[d.era] || "#888");
+                }),
+                borderColor: data.map(function(d){
+                    return d.g < 0 ? "#9b2c2c" : "transparent";
+                }),
+                borderWidth: 1,
+                barPercentage: 1.0,
+                categoryPercentage: 0.92
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        title: function(items) {
+                            var d = data[items[0].dataIndex];
+                            return d.y + " — " + eraNames[d.era];
+                        },
+                        label: function(item) {
+                            return "GDP growth: " + item.raw.toFixed(1) + "%";
+                        },
+                        afterLabel: function(item) {
+                            var d = data[item.dataIndex];
+                            return d.ev ? d.ev : "";
+                        }
+                    }
+                },
+                annotation: {
+                    annotations: {
+                        zeroLine: {
+                            type: "line",
+                            yMin: 0, yMax: 0,
+                            borderColor: "#1a1a1a",
+                            borderWidth: 1.5,
+                            borderDash: [4, 3]
+                        },
+                        reformLine: {
+                            type: "line",
+                            xMin: "1978", xMax: "1978",
+                            borderColor: "#d69e2e",
+                            borderWidth: 2,
+                            borderDash: [6, 3],
+                            label: {
+                                display: true,
+                                content: "1978 Reform",
+                                position: "start",
+                                backgroundColor: "#d69e2e",
+                                color: "#fff",
+                                font: { size: 10 }
+                            }
+                        },
+                        maoDeathLine: {
+                            type: "line",
+                            xMin: "1976", xMax: "1976",
+                            borderColor: "#e53e3e",
+                            borderWidth: 1.5,
+                            borderDash: [4, 3],
+                            label: {
+                                display: true,
+                                content: "Mao dies",
+                                position: "start",
+                                backgroundColor: "#e53e3e",
+                                color: "#fff",
+                                font: { size: 10 }
+                            }
+                        },
+                        wtoLine: {
+                            type: "line",
+                            xMin: "2001", xMax: "2001",
+                            borderColor: "#38a169",
+                            borderWidth: 1.5,
+                            borderDash: [4, 3],
+                            label: {
+                                display: true,
+                                content: "WTO",
+                                position: "start",
+                                backgroundColor: "#38a169",
+                                color: "#fff",
+                                font: { size: 10 }
+                            }
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: {
+                        font: { size: 9 },
+                        maxRotation: 90,
+                        callback: function(val, idx) {
+                            var year = data[idx].y;
+                            return year % 5 === 0 ? year : "";
+                        }
+                    }
+                },
+                y: {
+                    grid: { color: "#f0ede8" },
+                    ticks: {
+                        font: { size: 10 },
+                        callback: function(v) { return v + "%"; }
+                    },
+                    suggestedMin: -30,
+                    suggestedMax: 25
+                }
+            }
+        }
+    });
+
+    // Data table
+    var tbody = document.getElementById("dataBody");
+    // Reverse to show most recent first
+    var reversed = data.slice().reverse();
+    reversed.forEach(function(d, i) {
+        var cls = d.g < 0 ? "neg" : (d.g >= 10 ? "high" : "");
+        var decadeBreak = (i > 0 && Math.floor(reversed[i-1].y / 10) !== Math.floor(d.y / 10)) ? " decade-break" : "";
+        var row = '<tr class="' + decadeBreak + '">';
+        row += '<td><strong>' + d.y + '</strong></td>';
+        row += '<td class="' + cls + '">' + d.g.toFixed(1) + '%</td>';
+        row += '<td><span class="era-tag" style="background:' + eraColors[d.era] + '">' + eraNames[d.era] + '</span></td>';
+        row += '<td style="font-size:0.72rem;color:#666">' + d.ev + '</td>';
+        row += '</tr>';
+        tbody.innerHTML += row;
+    });
+    </script>
+</body>
+</html>

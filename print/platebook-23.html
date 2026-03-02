@@ -45,6 +45,21 @@
       font-size: 12px;
     }
 
+    /* Readings row */
+    .readings-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+      font-size: 9px;
+    }
+    .reading-item {
+      flex: 1;
+      border: 1px solid #aaa;
+      padding: 3px 6px;
+      background: #f9f9f9;
+    }
+    .reading-item strong { font-size: 9px; }
+
     /* Section labels */
     .label {
       border: 1px solid #000;
@@ -283,12 +298,17 @@
   </style>
 </head>
 <body>
-  <div class="breadcrumb"><a href="../index.html">← Dashboard</a></div>
+  <div class="breadcrumb"><a href="../index.html">&larr; Dashboard</a></div>
   <!-- Header -->
   <div class="header">
     <div class="plate-num">Plate # 23</div>
-    <div class="topic">Mao and Beyond Mao</div>
-    <div class="date">Mar 2</div>
+    <div class="topic">Mao and Beyond Mao: The Hundred Flowers Trap</div>
+    <div class="date">Mar 3</div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings-row">
+    <div class="reading-item"><strong>Lu Ting-yi (1956):</strong> "Let Flowers of Many Kinds Blossom, Diverse Schools of Thought Contend!" &mdash; CCP Propaganda Dept. speech announcing Hundred Flowers policy</div>
   </div>
 
   <!-- Person / Place / Thing -->
@@ -302,35 +322,34 @@
     </thead>
     <tbody>
       <tr>
-        <td class="filled"><strong>Mao Zedong</strong>: paramount leader 1949-1976</td>
-        <td class="filled"><strong>Beijing</strong>: capital of PRC</td>
-        <td class="filled"><strong>100 Flowers</strong>: brief thaw then repression</td>
+        <td class="filled"><strong>Lu Ting-yi</strong>: Propaganda Dept. Director; delivered speech; later purged in Cultural Revolution</td>
+        <td class="filled"><strong>Beijing (北京)</strong>: Capital where intellectuals gathered; center of later persecution</td>
+        <td class="filled"><strong>Hundred Flowers (百花運動)</strong>: 1956-57 invitation to criticize; then brutal reversal</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Deng Xiaoping</strong>: reform leader 1978-1997</td>
-        <td class="filled"><strong>Tiananmen Square</strong>: symbolic center</td>
-        <td class="filled"><strong>Great Leap Forward</strong>: famine disaster</td>
+        <td class="filled"><strong>Mao Zedong</strong>: Announced policy at Supreme State Conference; reversed course June 1957</td>
+        <td class="filled"><strong>Soviet Union</strong>: Model to learn from; Lu warns against "mechanically copying"</td>
+        <td class="filled"><strong>Anti-Rightist Campaign (反右)</strong>: 550,000+ labeled; careers destroyed; labor camps</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Zhou Enlai</strong>: premier, moderate influence</td>
-        <td class="filled"><strong>Shenzhen</strong>: Special Economic Zone (Deng era)</td>
-        <td class="filled"><strong>Cultural Revolution</strong>: decade of chaos</td>
+        <td class="filled"><strong>Kuo Mo-jo</strong>: President of Chinese Academy of Sciences; introduced Lu's speech</td>
+        <td class="filled"><strong>United States</strong>: Contrasted negatively: "jingos," Rosenberg executions cited</td>
+        <td class="filled"><strong>"People vs. Counter-revolutionaries"</strong>: Key distinction enabling arbitrary repression</td>
       </tr>
-
     </tbody>
   </table>
 
   <!-- Timeline -->
   <div class="timeline-section">
-    <span class="label">Timeline: Mao and Beyond Mao</span>
+    <span class="label">Timeline: Hundred Flowers to Anti-Rightist</span>
     <div class="timeline-box">
         <div class="tl-row">
-          <div class="tl-event"><span class="tl-year">1949</span><em>People's Republic founded</em></div>
-          <div class="tl-event"><span class="tl-year">1956-57</span><em>Hundred Flowers / Anti-Rightist Campaign</em></div>
-          <div class="tl-event"><span class="tl-year">1958-62</span><em>Great Leap Forward; famine kills 30-45 million</em></div>
-          <div class="tl-event"><span class="tl-year">1966-76</span><em>Cultural Revolution</em></div>
-          <div class="tl-event"><span class="tl-year">1976</span><em>Mao dies</em></div>
-          <div class="tl-event"><span class="tl-year">1978</span><em>Deng launches 'Reform and Opening'</em></div>
+          <div class="tl-event"><span class="tl-year">Feb 1956</span><em>Khrushchev denounces Stalin</em></div>
+          <div class="tl-event"><span class="tl-year">May 1956</span><em>Lu's "Hundred Flowers" speech</em></div>
+          <div class="tl-event"><span class="tl-year">1956-57</span><em>Intellectuals criticize Party</em></div>
+          <div class="tl-event"><span class="tl-year">June 1957</span><em>Mao reverses; crackdown begins</em></div>
+          <div class="tl-event"><span class="tl-year">1957-58</span><em>550,000+ labeled "rightists"</em></div>
+          <div class="tl-event"><span class="tl-year">1966</span><em>Lu himself purged</em></div>
         </div>
         <div class="tl-line"></div>
       </div>
@@ -341,7 +360,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
-    #mao-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
+    #mao-map { height: 140px; border-radius: 6px; border: 1px solid #333; }
     .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
     .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
     .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
@@ -379,19 +398,24 @@
       <thead>
         <tr>
           <th colspan="2"><span class="label">Penetrating Questions</span></th>
-          <th><span class="label">Very short answers</span></th>
+          <th><span class="label">Key Points</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="q-num">1</td>
-          <td class="question-cell filled">Was the Hundred Flowers a genuine attempt at liberalization or a trap?</td>
-          <td class="answer-cell filled">Scholars debate. Mao may have initially wanted criticism. But when criticism went further than expected, he reacted brutally. The result was traumatic: intellectuals learned never to speak honestly.</td>
+          <td class="question-cell filled">Lu says "democratic liberties among the people" but "dictatorship" for "counter-revolutionaries." Who decides which category you belong to?</td>
+          <td class="answer-cell filled">The Party decides &mdash; and can reclassify you overnight. Critics who spoke in 1956 as "people" became "rightists" in 1957. The distinction enables arbitrary repression.</td>
         </tr>
         <tr>
           <td class="q-num">2</td>
-          <td class="question-cell filled">How do we evaluate Mao's legacy?</td>
-          <td class="answer-cell filled">Positive: unified China, land reform, women's rights, healthcare. Negative: tens of millions dead, Cultural Revolution destruction, authoritarian system. Chinese official line: '70% good, 30% bad.' Is this adequate?</td>
+          <td class="question-cell filled">Why would intellectuals trust this invitation? Why did Mao issue it?</td>
+          <td class="answer-cell filled">Debate: genuine liberalization gone wrong, or calculated trap? The speech is ambiguous. Result traumatic either way &mdash; 550,000+ lives destroyed.</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">Lu criticizes "sectarianism" among swelled-headed Party members. What does this reveal about tensions within the CCP?</td>
+          <td class="answer-cell filled">Some Communists monopolized positions after victory. Lu wants broader mobilization &mdash; but on Party terms. Party always remains final arbiter.</td>
         </tr>
       </tbody>
     </table>
@@ -402,14 +426,14 @@
     <div class="causes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+          <tr><th><span class="label">Connections</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              <strong>From Plate 22:</strong> Plate 22 showed Japan rebuilding under American occupation. China took a radically different path under Mao.<br>
-<strong>Context:</strong> Revolutionary regimes face tensions between ideological purity and practical governance. China's evolution shows one way this can play out.<br>
-<strong>To Plate 24:</strong> Plate 24 examines Korea—divided between Communist North and Capitalist South. Korea's division mirrors the China-Japan divergence.
+              <strong>From Plate 22:</strong> Japan rebuilt under American occupation with democratic constitution. China took revolutionary path &mdash; Party dictatorship with "democracy" redefined.<br>
+              <strong>Broader theme:</strong> Revolutionary regimes need intellectuals but fear independent thought. Mobilization-then-repression defines Mao era.<br>
+              <strong>To Plate 24:</strong> Korea divides; North follows Mao's model. Comparison illuminates what "people's democracy" meant in practice.
             </td>
           </tr>
         </tbody>
@@ -418,16 +442,15 @@
     <div class="notes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Notes</span></th></tr>
+          <tr><th><span class="label">Teaching Notes</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              • The Great Leap famine death toll is staggering. Spend time making this real—it's the worst famine in human history.<br>
-              • 100 Flowers is a classic case of authoritarian manipulation. Students find it chilling.<br>
-              • Mao's portrait still hangs on Tiananmen. The party hasn't fully repudiated him.<br>
-              • Contemporary relevance: Xi Jinping has revived some Maoist elements (personality cult, ideological campaigns).<br>
-              • Compare Chinese approach to history with Germany (confronting Nazi past) and Japan (limited reckoning).
+              &bull; READ CLOSELY: Lu's language reveals the trap. "Freedom for people, dictatorship for enemies" &mdash; but who decides?<br>
+              &bull; Rosenberg reference: Lu contrasts American "bourgeois freedom" with Chinese "people's freedom." Cold War matters.<br>
+              &bull; Lu himself later purged &mdash; the revolution devours its own.<br>
+              &bull; Ask: "If you were an intellectual in 1956, would you trust this? What signals would you look for?"
             </td>
           </tr>
         </tbody>

@@ -45,6 +45,21 @@
       font-size: 12px;
     }
 
+    /* Readings row */
+    .readings-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+      font-size: 9px;
+    }
+    .reading-item {
+      flex: 1;
+      border: 1px solid #aaa;
+      padding: 3px 6px;
+      background: #f9f9f9;
+    }
+    .reading-item strong { font-size: 9px; }
+
     /* Section labels */
     .label {
       border: 1px solid #000;
@@ -144,32 +159,23 @@
     .map-section {
       margin-bottom: 4px;
     }
-    .map-subtitle {
-      font-size: 9px;
-      font-style: italic;
-      color: #555;
-      margin-left: 8px;
+    .map-container {
+      display: flex;
+      gap: 8px;
+      margin-top: 3px;
     }
     .map-box {
+      position: relative;
       border: 1px solid #aaa;
       background: #f5f5f5;
-      margin-top: 3px;
-      padding: 10px;
-      min-height: 100px;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
     }
-    .map-locations {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      font-size: 9px;
-    }
-    .map-loc strong { font-weight: 600; }
-    .map-quote {
-      font-style: italic;
-      font-size: 9px;
-      text-align: center;
-      color: #444;
-      margin-top: 4px;
+    .map-box iframe {
+      width: 100%;
+      height: 120px;
+      border: none;
     }
 
     /* Questions table */
@@ -212,10 +218,10 @@
       background: none;
     }
     .question-cell {
-      min-height: 32px;
+      min-height: 28px;
     }
     .answer-cell {
-      min-height: 32px;
+      min-height: 28px;
     }
 
     /* Bottom section */
@@ -244,7 +250,7 @@
       padding: 4px 6px;
       font-size: 9px;
       vertical-align: top;
-      height: 70px;
+      height: 65px;
       background-color: #fefdfb;
       background-image:
         linear-gradient(rgba(176, 161, 142, 0.08) 1px, transparent 1px),
@@ -264,7 +270,7 @@
       font-weight: 600;
     }
 
-        .breadcrumb {
+    .breadcrumb {
       font-size: 11px;
       margin-bottom: 8px;
     }
@@ -283,12 +289,18 @@
   </style>
 </head>
 <body>
-  <div class="breadcrumb"><a href="../index.html">← Dashboard</a></div>
+  <div class="breadcrumb"><a href="../index.html">&larr; Dashboard</a></div>
   <!-- Header -->
   <div class="header">
     <div class="plate-num">Plate # 24</div>
     <div class="topic">Liberation, Division, Rebuilding Korea</div>
-    <div class="date">Mar 4</div>
+    <div class="date">Mar 5</div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings-row">
+    <div class="reading-item"><strong>Cranes:</strong> Hwang Sun-won (1953) — Division literature masterwork; childhood friends on opposite sides of the 38th parallel</div>
+    <div class="reading-item"><strong>Five Bandits:</strong> Kim Chi-ha (1970) — Satirical poem attacking chaebol, politicians, officials, generals, ministers; author tortured, sentenced to death</div>
   </div>
 
   <!-- Person / Place / Thing -->
@@ -302,35 +314,34 @@
     </thead>
     <tbody>
       <tr>
-        <td class="filled"><strong>Kim Il</strong>: sung - North Korean founder</td>
-        <td class="filled"><strong>38th Parallel</strong>: dividing line</td>
-        <td class="filled"><strong>Division</strong>: ongoing national tragedy</td>
+        <td class="filled"><strong>Hwang Sun-won</strong> (1915-2000): Korea's master short story writer; "Cranes" defined division literature</td>
+        <td class="filled"><strong>38th Parallel</strong>: Arbitrary line drawn by US colonels in 1945; became world's most fortified border</td>
+        <td class="filled"><strong>Bundan Munhak</strong> (分斷文學): "Division literature" — genre dealing with Korea's partition and its human costs</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Syngman Rhee</strong>: South Korean first president</td>
-        <td class="filled"><strong>DMZ</strong>: demilitarized zone</td>
-        <td class="filled"><strong>Korean War</strong>: devastating conflict</td>
+        <td class="filled"><strong>Kim Chi-ha</strong> (1941-2022): Dissident poet; tortured, sentenced to death for "Five Bandits"; freed by international pressure</td>
+        <td class="filled"><strong>DMZ</strong>: 2.5-mile-wide Demilitarized Zone; most fortified border on Earth; ironically, a nature sanctuary for cranes</td>
+        <td class="filled"><strong>P'ansori</strong> (판소리): Traditional Korean oral performance; Kim adapted its satirical style for radical critique</td>
       </tr>
       <tr>
-        <td class="filled"><strong>Park Chung</strong>: hee - authoritarian modernizer (S. Korea)</td>
-        <td class="filled"><strong>Seoul</strong>: South Korean capital</td>
-        <td class="filled"><strong>Economic miracle</strong>: South Korean development</td>
+        <td class="filled"><strong>Park Chung-hee</strong> (1961-1979): Military dictator who industrialized S. Korea; target of Kim's satire; assassinated by own intelligence chief</td>
+        <td class="filled"><strong>Seoul</strong>: South Korean capital; only 35 miles from DMZ; vulnerable throughout Cold War</td>
+        <td class="filled"><strong>Chaebol</strong> (재벌): Family conglomerates (Samsung, Hyundai); Kim's "business tycoon" dressed in banknotes</td>
       </tr>
-
     </tbody>
   </table>
 
   <!-- Timeline -->
   <div class="timeline-section">
-    <span class="label">Timeline: Liberation, Division, Rebuilding Korea</span>
+    <span class="label">Timeline: Division to Democracy</span>
     <div class="timeline-box">
         <div class="tl-row">
-          <div class="tl-event"><span class="tl-year">August 1945</span><em>Japan surrenders; Korea divided at 38th parallel</em></div>
-          <div class="tl-event"><span class="tl-year">1948</span><em>Two separate states established</em></div>
-          <div class="tl-event"><span class="tl-year">June 1950</span><em>Korean War begins (North invades)</em></div>
-          <div class="tl-event"><span class="tl-year">July 1953</span><em>Armistice (no peace treaty)</em></div>
-          <div class="tl-event"><span class="tl-year">1961-1979</span><em>Park Chung-hee era; economic takeoff</em></div>
-          <div class="tl-event"><span class="tl-year">1987</span><em>South Korean democratization</em></div>
+          <div class="tl-event"><span class="tl-year">Aug 1945</span><em>Liberation; 38th parallel division</em></div>
+          <div class="tl-event"><span class="tl-year">1950-53</span><em>Korean War; armistice (no peace)</em></div>
+          <div class="tl-event"><span class="tl-year">1953</span><em>"Cranes" published</em></div>
+          <div class="tl-event"><span class="tl-year">1961</span><em>Park coup</em></div>
+          <div class="tl-event"><span class="tl-year">1970</span><em>"Five Bandits"; Kim arrested</em></div>
+          <div class="tl-event"><span class="tl-year">1987</span><em>S. Korea democratizes</em></div>
         </div>
         <div class="tl-line"></div>
       </div>
@@ -338,43 +349,18 @@
   </div>
 
   <!-- Map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-    #korea-div-map { height: 160px; border-radius: 6px; border: 1px solid #333; }
-    .map-legend { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 8px 10px; border-radius: 6px; font-size: 9px; }
-    .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
-    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); }
-    .map-title { font-family: system-ui, sans-serif; color: #f2f5f7; background: rgba(10,12,16,0.9); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
-    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(14,16,20,0.95); color: #f2f5f7; font-family: system-ui, sans-serif; font-size: 10px; }
-  </style>
   <div class="map-section">
-    <span class="label">Map: Divided Korea</span>
-    <div id="korea-div-map"></div>
+    <span class="label">Map: The Divided Peninsula</span>
+    <div class="map-container">
+      <div class="map-box" style="flex:1; max-width:100%; display: flex; align-items: center; justify-content: center; background: #eef; height: 100px;">
+        <div style="text-align: center; font-size: 10px; color: #555;">
+          <strong>Korean Peninsula</strong><br>
+          Seoul (35 mi from DMZ) | Panmunjom | Pyongyang<br>
+          <em>"The cranes were still living here, as before, though all the people were gone."</em>
+        </div>
+      </div>
+    </div>
   </div>
-  <script>
-    (function() {
-      const map = L.map('korea-div-map', { zoomControl: false, attributionControl: false });
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 10 }).addTo(map);
-      const titleControl = L.control({ position: 'topleft' });
-      titleControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-title'); div.innerHTML = '分斷된 韓半島 Divided Korea'; return div; };
-      titleControl.addTo(map);
-      const legendControl = L.control({ position: 'bottomright' });
-      legendControl.onAdd = function() { const div = L.DomUtil.create('div', 'map-legend'); div.innerHTML = '<div class="map-legend-item"><span class="map-legend-dot" style="background:#e63946;"></span> North</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#457b9d;"></span> South</div><div class="map-legend-item"><span class="map-legend-dot" style="background:#f4a261;"></span> DMZ</div>'; return div; };
-      legendControl.addTo(map);
-      const locs = [
-        { name: "Pyongyang", kr: "平壤", desc: "North Korean capital", lat: 39.019, lng: 125.738, color: "#e63946", r: 9 },
-        { name: "Seoul", kr: "首爾", desc: "South Korean capital; 35mi from DMZ", lat: 37.533, lng: 127.025, color: "#457b9d", r: 9 },
-        { name: "DMZ/Panmunjom", kr: "板門店", desc: "Truce village; armistice 1953", lat: 37.956, lng: 126.677, color: "#f4a261", r: 8 },
-        { name: "Busan", kr: "釜山", desc: "UN forces' last stand", lat: 35.167, lng: 129.067, color: "#457b9d", r: 7 },
-        { name: "Incheon", kr: "仁川", desc: "MacArthur landing 1950", lat: 37.456, lng: 126.705, color: "#457b9d", r: 7 }
-      ];
-      locs.forEach(l => L.circleMarker([l.lat, l.lng], { radius: l.r, fillColor: l.color, color: '#fff', weight: 1.5, fillOpacity: 0.9 }).addTo(map).bindPopup(`<b>${l.kr} ${l.name}</b><br>${l.desc}`));
-      // DMZ line
-      L.polyline([[37.95, 124.5], [37.95, 129.5]], { weight: 3, opacity: 0.8, color: '#f4a261' }).addTo(map).bindPopup('38th Parallel / DMZ');
-      map.fitBounds([[34, 124], [40, 130]]);
-    })();
-  </script>
 
   <!-- Penetrating Questions -->
   <div class="questions-section">
@@ -382,19 +368,24 @@
       <thead>
         <tr>
           <th colspan="2"><span class="label">Penetrating Questions</span></th>
-          <th><span class="label">Very short answers</span></th>
+          <th><span class="label">Key Points</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="q-num">1</td>
-          <td class="question-cell filled">How does literature capture what historical analysis cannot?</td>
-          <td class="answer-cell filled">'Cranes' makes division personal—two friends, one childhood, opposite armies. Statistics tell us millions died; stories tell us what that meant. Literature as historical source.</td>
+          <td class="question-cell filled">Tokchae: "They made me vice-chairman because I was a hardworking farmer, and one of the poorest." What does this say about how ordinary people experience political upheaval?</td>
+          <td class="answer-cell filled">Neither man chose his ideology. Tokchae stayed for his dying father; Songsam's family fled. The 38th parallel was drawn by colonels who'd never been to Korea. Most people aren't ideologues—they're caught in historical currents.</td>
         </tr>
         <tr>
           <td class="q-num">2</td>
-          <td class="question-cell filled">Why did Korea remain divided when Germany reunified?</td>
-          <td class="answer-cell filled">Korean War was hotter than Cold War; both regimes dug in. China's involvement. Lack of superpower agreement. Economic gap between North and South grew. Inertia of institutions.</td>
+          <td class="question-cell filled">Why does "Cranes" end with birds soaring into the sky rather than a clear resolution? What does ambiguity achieve?</td>
+          <td class="answer-cell filled">Cranes can cross borders humans cannot. The ending mirrors Korea's division: no resolution, only suspension. Did Songsam release his friend or set up a shooting? Literature makes us feel impossibility.</td>
+        </tr>
+        <tr>
+          <td class="q-num">3</td>
+          <td class="question-cell filled">Kim Chi-ha was sentenced to death for "Five Bandits." Why was satire so dangerous to the Park regime?</td>
+          <td class="answer-cell filled">Dictatorships survive criticism but not mockery. Kim's grotesque imagery—tycoons in banknote suits, generals filling rice sacks with sand—stripped away legitimacy. Using p'ansori claimed Korean tradition for opposition.</td>
         </tr>
       </tbody>
     </table>
@@ -405,14 +396,14 @@
     <div class="causes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Causes / Effects / Connections</span></th></tr>
+          <tr><th><span class="label">Connections</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              <strong>From Plate 23:</strong> Plates 22-23 showed Japan and China's postwar paths. Korea's path was shaped by their rivalry and Cold War division.<br>
-<strong>Context:</strong> Division creates parallel experiments: same people, opposite systems. Korea is the clearest case. Compare East/West Germany, China/Taiwan.<br>
-<strong>To Plate 25:</strong> Plate 25 examines Japan's postwar rise. Compare Korean and Japanese development models.
+              <strong>From Plates 22-23:</strong> Japan rebuilt under US occupation; China under Mao. Korea's path shaped by both—occupied by Japan until 1945, divided by Cold War, devastated by war involving Chinese troops.<br>
+              <strong>Broader theme:</strong> Division creates parallel experiments. Neither Korean system served the people: North built totalitarianism, South built authoritarian developmental state. Democracy came to S. Korea only in 1987.<br>
+              <strong>To Plate 25:</strong> Japan's postwar miracle. Compare development models: Korea under military dictatorship (Kim's target), Japan under one-party democracy. Both suppressed labor.
             </td>
           </tr>
         </tbody>
@@ -421,16 +412,16 @@
     <div class="notes-box">
       <table class="bottom-table">
         <thead>
-          <tr><th><span class="label">Notes</span></th></tr>
+          <tr><th><span class="label">Teaching Notes</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="filled">
-              • The short stories are powerful—let them work emotionally before analyzing.<br>
-              • Show the linked video of Korean family reunions. Very moving.<br>
-              • 'Gangnam Style' link is a light way to end discussion—South Korea's soft power today.<br>
-              • Students often know little about Korea. Use this as opportunity to counter Japan/China centrism in East Asian studies.<br>
-              • The DMZ is one of the most fortified borders on Earth. Help students visualize it.
+              • Let literature work emotionally before analyzing. Read the ending of "Cranes" aloud—devastating.<br>
+              • Crane symbolism: mate for life, migrate freely across borders. DMZ is now nature sanctuary.<br>
+              • Show map: Seoul only 35 miles from DMZ. Students don't realize proximity.<br>
+              • "Five Bandits" is vulgar by design—bodies, sex, excrement degrade the powerful.<br>
+              • Connect to today: Park Geun-hye (Park's daughter) impeached 2017 for Samsung corruption.
             </td>
           </tr>
         </tbody>

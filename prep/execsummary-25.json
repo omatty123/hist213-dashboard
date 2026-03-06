@@ -1,225 +1,350 @@
 {
   "plate": 25,
   "topic": "Japan rises again",
-  "date": "2026-03-06",
-  "generatedAt": "2026-01-04T18:00:00.000Z",
+  "date": "2026-03-07",
+  "generatedAt": "2026-03-05T22:00:00.000Z",
   "readings": [
-    "Environmental Activism, Feminism"
+    "Modern Japan Combined: Consumer Revolution, Income-Doubling Plan, Minamata, Middle Class Decline, Japanese Feminism"
   ],
   "readingAnalyses": [
     {
-      "title": "Environmental Activism: The Minamata Case",
-      "author": "Victim testimonies and activist documents",
-      "source": "Primary Source Reader Part 5",
-      "pages": "1950s-1970s",
+      "title": "The Consumer Revolution in Postwar Japan (1960)",
+      "author": "Economic Planning Agency",
+      "source": "White Paper on the People's Livelihood, 1960",
+      "pages": "pp. 1100-1102",
       "type": "primary",
-      "summary": "The Minamata readings document Japan's most notorious environmental disaster: the mercury poisoning of thousands of people by Chisso Corporation's chemical plant in Minamata, Kumamoto Prefecture. Beginning in the 1950s, the company discharged methylmercury into Minamata Bay, where it bioaccumulated in fish consumed by local fishing communities. Victims suffered horrific neurological damage: tremors, loss of motor control, sensory disturbances, and in severe cases, death. Children were born with congenital Minamata disease.\n\nThe readings trace the long struggle for recognition and justice. For years, Chisso denied responsibility while victims faced social ostracism - their disease was rumored to be contagious. Local and national governments sided with the company, prioritizing economic growth over public health. Only through grassroots organizing, investigative journalism, and ultimately litigation did victims force acknowledgment of the truth. The landmark 1973 Kumamoto District Court ruling held Chisso liable and established principles of corporate environmental responsibility.\n\nMinamata became a symbol of the environmental costs of Japan's economic miracle. The disaster revealed how rapid industrialization, corporate irresponsibility, and government complicity could sacrifice entire communities. It also demonstrated the power of citizen activism to challenge the development-at-all-costs ideology that dominated postwar Japan.",
+      "summary": "The 1960 White Paper captures official optimism about Japan's 'lifestyle revolution' - the rapid transformation of consumption patterns through Westernization of food, clothing, and housing. The document identifies five factors driving change: rising incomes, technological revolution (TV, washing machines, refrigerators), new mass consumers from compressed income inequality, value shifts from frugality to enjoyment, and aggressive marketing. Big-company salaryman households emerge as the emblem of this new middle class.",
       "keyQuotes": [
-        {"quote": "Our children were born deformed, and the company told us it wasn't their fault. We knew it was the fish. We knew because the cats died first, dancing in circles before they fell.", "page": "Victim testimony"},
-        {"quote": "They called us hysterical. They said we were hurting Minamata's economy. But we were dying, and no one would listen.", "page": "Activist account"},
-        {"quote": "When we finally won in court, they told us it was too late for compensation - the statute of limitations had passed. We had been waiting for justice, and the law punished us for waiting.", "page": "Legal aftermath"},
-        {"quote": "The economic miracle was built on our bodies. We are the hidden cost of Japan's success.", "page": "Victim reflection"}
+        {"quote": "Looking at the transformed consumption patterns among the people of the past few years, one sees numerous radical changes. No one at the recovery stage of the postwar years, not to mention the prewar era, could have imagined this.", "page": "1100"},
+        {"quote": "From the Tokugawa era to World War II, our people's basic attitude toward life focused on diligent saving and restrained consumption. Frugality was among the great virtues of everyday life. After the war... values of frugality gave way to the idea of enjoying life.", "page": "1101"},
+        {"quote": "Some even argue that all demand for goods beyond the basic necessities of clothing, food, and housing is in a sense created by the producers through advertising.", "page": "1101"}
       ],
       "thematicExamples": [
-        "Corporate denial and delay tactics: Chisso knew about contamination for years but continued discharging waste while denying causation",
-        "Government complicity: officials sided with industry, suppressed research, and pressured victims to accept inadequate settlements",
-        "Grassroots organizing: victims and allies built a movement despite social stigma and powerful opposition"
+        "The 'Three Sacred Treasures' of postwar consumerism: TV sets, washing machines, and refrigerators - owned at rate of one per two households in large cities by 1960",
+        "Shift from extended to nuclear families enabling new patterns of consumption and two-income couples",
+        "Government concern about consumer protection as new goods 'appear one after another' - already worried about advertising manipulation"
       ],
       "realLifeConnections": [
-        "Contemporary environmental justice movements from Flint water crisis to Cancer Alley - who bears the cost of industrial development?",
-        "The 2011 Fukushima nuclear disaster raised similar questions about corporate responsibility and government oversight",
-        "Climate change as a distributional justice issue - the poor and marginalized bear disproportionate costs of environmental harm"
+        "Parallels to contemporary debates about consumerism, advertising's power, and whether 'demand is created by producers'",
+        "Japan's postwar value shift from frugality to consumption mirrors debates in other developing economies today",
+        "Questions about whether rising incomes and consumption actually equal wellbeing remain relevant"
       ]
     },
     {
-      "title": "Japanese Feminism",
-      "author": "Feminist activists and scholars",
-      "source": "Primary Source Reader Part 5",
-      "pages": "1970s-1990s",
+      "title": "The Income-Doubling Plan (1961-1970)",
+      "author": "Economic Planning Agency",
+      "source": "New Long-Range Economic Plan of Japan",
+      "pages": "pp. 1102-1105",
       "type": "primary",
-      "summary": "The Japanese feminism readings trace women's movements from the postwar period through the 1990s, focusing on how activists challenged the gender system that underwrote Japan's economic miracle. Postwar Japan institutionalized a rigid gender division: men as corporate 'salarymen' devoted to their companies, women as 'professional housewives' managing homes and children. The readings trace how feminists challenged this system, from the 1970s 'uman ribu' (women's liberation) movement through struggles for the Equal Employment Opportunity Law (1985) and beyond.\n\nActivists confronted not only legal discrimination but also deeply embedded cultural norms about femininity, motherhood, and women's 'proper place' in society. The economic miracle, feminists argued, was underwritten by women's unpaid domestic labor - the salaryman could devote himself to Toyota because his wife managed everything else. When women challenged this arrangement, they faced not only legal barriers but cultural expectations that rendered their aspirations illegitimate.\n\nThe readings document both achievements and limits. The 1985 Equal Employment Opportunity Law was a milestone, but it lacked enforcement mechanisms and companies created 'two-track' systems to maintain gender hierarchy. Japan continues to rank near the bottom of developed nations on gender equality indices, showing the persistence of structures these activists challenged.",
+      "summary": "Prime Minister Ikeda Hayato's ambitious 1961 plan aimed to double GNP within ten years while reducing inequality between urban/rural, large/small enterprises, and high/low income groups. The plan exemplifies Japan's state-guided capitalism: government set growth targets, specified priority industries (heavy and chemical, especially machinery), recommended mergers, called for interfirm cooperation, and committed to 'supplement and guide private enterprises.' This developmental state model became influential worldwide.",
       "keyQuotes": [
-        {"quote": "We are told Japan is the most successful country in Asia. But success for whom? Not for women who work twice as hard for half the recognition.", "page": "Feminist manifesto"},
-        {"quote": "The economic miracle was built on the unpaid labor of women - cooking, cleaning, raising children, caring for the elderly. This labor has no value in GDP statistics.", "page": "Feminist critique"},
-        {"quote": "They tell us we should be grateful for the Equal Employment Opportunity Law. But it has no penalties. Companies ignore it. We are still 'office flowers' expected to serve tea and quit when we marry.", "page": "Working woman's testimony"},
-        {"quote": "My mother gave up everything for my father's career. She managed the household, raised the children, and never complained. I refuse to disappear like she did.", "page": "Young feminist activist"}
+        {"quote": "The Doubling National Income Plan should have an objective of achieving full employment and radically raising people's living standard by rapidly doubling the gross national product.", "page": "1103"},
+        {"quote": "The machinery industry is most counted upon not only as an export industry but also for its ability to absorb surplus labor. In other words, the industry will occupy an important 'strategic' position for a rapid growth of economy.", "page": "1103"},
+        {"quote": "The government must take adequate measures to supplement and guide private enterprises.", "page": "1104"}
       ],
       "thematicExamples": [
-        "The 'M-curve' pattern - Japanese women's workforce participation drops sharply during childbearing years, reflecting pressure to choose between career and family",
-        "The 'two-track' employment system - companies dividing workers into career track (mostly men) and general track (mostly women with limited advancement)",
-        "Tanaka Mitsu and the 1970s 'uman ribu' movement - radical feminism challenging the entire structure of patriarchal capitalism"
+        "Specific investment targets: ¥16 trillion total over 10 years, with ¥5.5 trillion for machinery, ¥3 trillion for iron/steel, ¥2.5 trillion for chemicals",
+        "Government role: modernize equipment, establish mass production, standardize products, promote mergers, train scientists and technicians",
+        "The shift from constitutional revision and suppressing the left to promoting economic development - growth as political strategy"
       ],
       "realLifeConnections": [
-        "Japan still ranks near the bottom of developed nations on the World Economic Forum's Gender Gap Index (120th of 156 countries in 2021)",
-        "The global #MeToo movement arrived late in Japan, revealing continued reluctance to challenge male power structures",
-        "Japan's demographic crisis (low birthrate, aging population) is partly attributed to women's rational choice not to bear children in an unequal system"
+        "The 'developmental state' model influenced Korea, Taiwan, Singapore, and continues to shape debates about industrial policy",
+        "Contemporary debates about government's role in guiding economic development (e.g., US CHIPS Act, green industrial policy)",
+        "Questions about whether state-guided capitalism produces faster growth than free market approaches"
+      ]
+    },
+    {
+      "title": "Environmental Activism: Minamata Disease",
+      "author": "Sit-in Strike Declaration (Waga Shimin)",
+      "source": "We Citizens/We Dead People",
+      "pages": "pp. 1105-1106",
+      "type": "primary",
+      "summary": "The Minamata readings document Japan's most devastating environmental disaster: mercury poisoning from Chisso Corporation's chemical plant in Kyushu. Beginning in the 1950s, methylmercury discharged into Minamata Bay bioaccumulated in fish, causing horrific neurological damage to fishing communities. For years, Chisso denied responsibility while the government prioritized economic growth. The title 'Waga Shimin' is a grim pun - shimin normally means 'citizens' but here is written with characters meaning 'dead people.' The document captures victims' sense of betrayal by both corporation and state.",
+      "keyQuotes": [
+        {"quote": "As we who suffer from Minamata disease and our families continue our sit-in strike in front of the company president's office at Chisso headquarters [in Tokyo], how can we possibly thank the many people throughout the nation who have provided us with their warm support?", "page": "1105"},
+        {"quote": "Although we began our negotiations with Chisso this past December 6, we have met nothing but a scheme to avoid us, in the form of a note mentioning the company president's (feigned?) sickness.", "page": "1105-1106"}
+      ],
+      "thematicExamples": [
+        "The title's bitter wordplay: 'We Citizens' becomes 'We Dead People' - victims already considered dead by the system that poisoned them",
+        "Corporate denial tactics: feigned presidential illness to avoid meeting victims who traveled from Kyushu to Tokyo",
+        "Grassroots organizing from the late 1960s succeeded where earlier efforts failed, as economic growth made compensation easier to afford"
+      ],
+      "realLifeConnections": [
+        "Minamata parallels contemporary environmental justice movements from Flint to Cancer Alley - who bears the costs of industrial development?",
+        "The 2011 Fukushima nuclear disaster raised similar questions about corporate responsibility, government oversight, and prioritizing growth over safety",
+        "Global debates about climate change as distributional justice - the poor and marginalized bear disproportionate costs"
+      ]
+    },
+    {
+      "title": "The Japanese Middle Class at Century's End",
+      "author": "Yada Giichi",
+      "source": "Farewell, Mainstream Consciousness!, 1997",
+      "pages": "pp. 1111-1112",
+      "type": "secondary",
+      "summary": "After a decade of economic stagnation following the 1990 bubble collapse, social commentary turned gloomy. Yada's newspaper feature captures the new pessimism: the stability of middle-class 'mainstream consciousness' (churyu ishiki) was crumbling. Jobs of male breadwinners seemed insecure; regular full-time employment was giving way to temp and contract work; real estate and stock values were plunging. The article documents the erosion of Japan's postwar social contract - lifetime employment, steady advancement, home ownership - that had defined middle-class success.",
+      "keyQuotes": [
+        {"quote": "For all of us who have been firmly confident about our mainstream life, the ground beneath our feet is shaking.", "page": "1111"},
+        {"quote": "The stability of the work environment is crumbling. Real-estate prices, counted on as a source of collateral and capital, are plunging... It is impossible for a regular full-time employee to continue at a job with any sense of security. There are no grounds for optimism.", "page": "1111"},
+        {"quote": "In a survey conducted for this report, 64 percent of businesses replied that the category of employees engaged in 'activities requiring long-term accumulated skills' had shrunk.", "page": "1112"}
+      ],
+      "thematicExamples": [
+        "The shift from 80% to 70% lifetime employees predicted - meaning more temp, contract, and precarious work",
+        "Temp work expanding from 'women's work' to include men at construction sites and warehouses",
+        "The 'Lost Decades' challenging triumphalist narratives of Japanese exceptionalism"
+      ],
+      "realLifeConnections": [
+        "The 'gig economy' and precarious employment are now global phenomena, not uniquely Japanese",
+        "Japan's demographic crisis (aging population, low birthrate) partly attributed to economic insecurity making family formation difficult",
+        "Questions about whether the postwar 'social contract' of stable employment was historically anomalous"
+      ]
+    },
+    {
+      "title": "Japanese Feminism: Hiratsuka Raicho and the 'New Woman'",
+      "author": "Hiratsuka Raicho",
+      "source": "Bluestocking (Seito) and Chuo koron, 1911-1913",
+      "pages": "pp. 1204",
+      "type": "primary",
+      "summary": "Hiratsuka Raicho founded Seito (Bluestocking), Japan's first feminist journal, in 1911. Her famous declaration 'In the beginning, woman was the sun' proclaimed women's original power and autonomy. By 1913, her definition of the 'New Woman' included explicit critique of male privilege: women were 'made ignorant, made a slave, made a piece of meat by male selfishness.' The new woman seeks to destroy old morality and laws created for male advantage and create a new kingdom based on women's spiritual values.",
+      "keyQuotes": [
+        {"quote": "The new woman; I am a new woman. I seek, I strive each day to be that truly new woman I want to be. In truth, that eternally new being is the sun. I am the sun.", "page": "1204"},
+        {"quote": "The new woman is not satisfied with the life of the kind of woman who is made ignorant, made a slave, made a piece of meat by male selfishness.", "page": "1204"},
+        {"quote": "The new woman seeks to destroy the old morality and laws created for male advantage... day by day attempts to create a new kingdom, where a new religion, a new morality, and new laws are carried out.", "page": "1204"},
+        {"quote": "The new woman today seeks neither beauty nor virtue. She is simply crying out for strength, the strength to fulfill her own hallowed mission.", "page": "1204"}
+      ],
+      "thematicExamples": [
+        "The sun metaphor: reclaiming Amaterasu (sun goddess) as symbol of women's original power before patriarchal suppression",
+        "Bluestocking as Japan's first journal 'created for the first time with the brains and hands of today's Japanese women'",
+        "The demand for 'strength' rather than 'beauty' or 'virtue' - rejecting traditional feminine ideals"
+      ],
+      "realLifeConnections": [
+        "Hiratsuka's rhetoric anticipates later waves of feminism worldwide - the personal is political, destroy the master's house",
+        "The tension between 'individualist' and 'maternalist' feminism continues in contemporary debates about work-family balance",
+        "Her 1913 manifesto resonates with #MeToo's critique of male entitlement to women's bodies"
+      ]
+    },
+    {
+      "title": "Ueno Chizuko: Feminism, Orientalism, and National Identity",
+      "author": "Ueno Chizuko",
+      "source": "Are the Japanese Feminine? Some Problems of Japanese Feminism in Its Cultural Context",
+      "pages": "pp. 1213-1219",
+      "type": "secondary",
+      "summary": "Sociologist Ueno Chizuko examines how Japanese feminism is trapped between Orientalism and 'reverse Orientalism.' When Japan is characterized as 'feminine' relative to the 'masculine' West, feminists face a dilemma: demand equal rights and be called anti-Japanese, or stress feminine virtues and have men reply 'we're already feminine enough.' She traces this through the case of Takamure Itsue, a major prewar feminist who embraced 'maternalist feminism' as distinctly Japanese - but whose anti-Western countermodernism eventually led her to support fascism and war.",
+      "keyQuotes": [
+        {"quote": "In the concept of Orientalism proposed by Edward Said, the East is to the West as woman is to man. Taking an Orientalist approach to national identity, Japanese intellectuals have described Japan as an oppressed woman.", "page": "1214"},
+        {"quote": "If feminists ask for equal rights, they are accused of being anti-Japanese; on the other hand, if they stress feminine virtues, men think it over and say, 'Look, in contrast to Western men, we are already feminine enough. Why do we have to become more feminine?'", "page": "1216"},
+        {"quote": "Takamure wrote: 'The maternal self sees humankind as one family. As our sacred war is a challenge to what interferes with this familyhood, the war is ours, for women.'", "page": "1215"},
+        {"quote": "We find ourselves trapped in a vicious circle that oscillates between Orientalism and a reverse Orientalism. Feminism as a cultural product cannot escape from this closed framework.", "page": "1218"}
+      ],
+      "thematicExamples": [
+        "Takamure's trajectory: from feminist historian seeking matriarchy in ancient Japan to wartime collaborator embracing fascism as 'liberating for women'",
+        "The Heian period as origin of 'Japanese' (vs. Chinese) culture - and how women's kana writing created the vernacular tradition",
+        "The emperor as 'mother of the nation' and 'empty center' - the feminization of Japanese national identity"
+      ],
+      "realLifeConnections": [
+        "The accusation that feminism is 'Western import' appears across Asia and the Global South - how do feminists respond?",
+        "Debates about 'difference feminism' vs. 'equality feminism' continue globally",
+        "The risk that cultural particularism leads to nationalism - relevant wherever identity politics meets national identity"
+      ]
+    },
+    {
+      "title": "Saito Chiyo: What is Japanese Feminism?",
+      "author": "Saito Chiyo",
+      "source": "Agora (feminist journal)",
+      "pages": "pp. 1219",
+      "type": "secondary",
+      "summary": "Saito Chiyo, founder of the feminist journal Agora, offers her own definition of feminism for the late twentieth century: 'An international cultural and human rights movement to cleanse experience and knowledge, a movement that adopts a female perspective rather than the traditional male value system. Opposition to the privileging of production and efficiency models. The privileging of human life and sexuality. The elimination of all discrimination.' She emphasizes this definition may change and invites disagreement.",
+      "keyQuotes": [
+        {"quote": "An international cultural and human rights movement to 'cleanse' experience and knowledge, a movement that adopts a female perspective rather than the traditional male value system.", "page": "1219"},
+        {"quote": "Opposition to the privileging of production and efficiency models. The privileging of human life and sexuality. The elimination of all discrimination based on gender, economic status, race, culture, education, etc.", "page": "1219"},
+        {"quote": "This would be my definition for the present, but it might well change in the future. It is a definition that is informed by all my own priorities, and so I would invite others to disagree.", "page": "1219"}
+      ],
+      "thematicExamples": [
+        "The explicit rejection of 'production and efficiency models' as male values - connects to environmental and anti-capitalist critiques",
+        "Feminism as 'international' movement - pushing back against accusations of Western import",
+        "The humility of 'this might change' and 'I invite others to disagree' - feminism as process not dogma"
+      ],
+      "realLifeConnections": [
+        "Contemporary intersectional feminism similarly emphasizes eliminating 'all discrimination' across categories",
+        "Debates about whether feminism is inherently anti-capitalist or can work within market systems",
+        "The question of how to define feminism remains contested and evolving"
       ]
     }
   ],
-  "overallSynthesis": "These two readings together reveal that Japan's postwar 'economic miracle' was not simply a triumph of development but a contested achievement with profound costs distributed unequally across society. The Minamata case shows how rapid industrialization poisoned communities while corporations and government officials prioritized growth over human welfare. The fishermen and their families who suffered were dismissed as obstacles to progress, their bodies bearing the toxic burden of Japan's ascent to economic superpower status.\n\nThe feminist readings reveal a parallel story: the economic miracle was underwritten by women's unpaid domestic labor and by a gender system that confined women to supporting roles. The salaryman who devoted his life to Sony or Toyota could only do so because his wife managed everything else. When women challenged this arrangement, they faced not only legal discrimination but cultural expectations deeply embedded in Japanese notions of femininity and national success.\n\nBoth movements - environmental and feminist - challenged the dominant narrative of 'Japan as Number One.' They asked uncomfortable questions: Success for whom? At what cost? Who decides what counts as 'development'? These questions connect to the course's broader themes about modernity's contradictions and the voices that get silenced in triumphalist national narratives. As the final content plate, this session invites students to reconsider everything they've learned: national 'success' always has winners and losers, development models embed particular values and power structures, and the people who bear the costs often must organize and fight to have their stories heard.",
-  "executiveSummary": "Japan's postwar economic miracle transformed a devastated nation into the world's second-largest economy by the 1980s. But growth came with costs: environmental destruction (Minamata disease, air pollution), grueling work culture, and persistent gender inequality. The readings focus on social movements that challenged the miracle's dark side: environmental activists who fought corporate polluters and feminists who demanded equality in a patriarchal society.\n\nThis final plate asks students to consider the full picture: What did Japan's 'success' actually mean? The economic miracle was real, but so were its costs. Women made gains but remained second-class citizens in many ways. Environmental disasters were covered up before activists forced accountability. As we conclude the course, we return to questions raised at the beginning: What is 'modernity'? Whose voices get heard? What are the costs of 'development'?",
+  "overallSynthesis": "These readings together reveal that Japan's postwar 'economic miracle' was not simply a triumph of development but a contested achievement with profound costs distributed unequally across society. The optimistic 1960 White Paper and Income-Doubling Plan capture official ideology at its peak: Japan would double its GNP, create mass consumers, and guide industry toward international competitiveness. The state-guided developmental model worked spectacularly - for a time.\n\nBut the costs were real. The Minamata case shows how rapid industrialization poisoned communities while corporations and government officials prioritized growth over human welfare. The fishermen and their families who suffered were dismissed as obstacles to progress, their bodies bearing the toxic burden of Japan's ascent. The bitter wordplay of the document's title - 'We Citizens' becoming 'We Dead People' - captures victims' understanding that they had been sacrificed.\n\nThe feminist readings reveal parallel critiques. Hiratsuka Raicho's 1911-1913 manifestos declared war on a system that made women 'ignorant, slaves, pieces of meat.' Ueno Chizuko's sophisticated analysis shows how feminism gets trapped between Orientalism and reverse Orientalism - if Japan is characterized as 'feminine,' then feminists demanding equality are 'anti-Japanese' while those stressing feminine virtues reinforce the dominant paradigm. The cautionary tale of Takamure Itsue - a genuine feminist whose maternalism and cultural particularism led her to embrace fascism - demonstrates how easily progressive movements can be captured by nationalism.\n\nBy the 1990s, the miracle had ended. Yada Giichi's 'Farewell, Mainstream Consciousness!' captures the collapse of the postwar social contract. The stability of lifetime employment, rising incomes, and home ownership that defined middle-class success was giving way to precarious temp work and 'lost decades' of stagnation. Japan's model, once celebrated as superior to Western capitalism, seemed to have reached its limits.\n\nAs the final content plate, this session invites students to reconsider everything they've learned: national 'success' always has winners and losers, development models embed particular values and power structures, and the people who bear the costs - whether pollution victims, women, or precarious workers - must organize and fight to have their stories heard.",
+  "executiveSummary": "Japan's postwar economic miracle transformed a devastated nation into the world's second-largest economy. The 1960 White Paper and Income-Doubling Plan capture official optimism: state-guided capitalism would double GNP, create mass consumers, and make Japan internationally competitive. But growth came with costs: environmental destruction (Minamata), persistent gender inequality, and eventually economic stagnation (the 'Lost Decades').\n\nThe readings present multiple critical perspectives. Minamata victims' 'Sit-in Strike Declaration' exposes corporate denial and government complicity - growth prioritized over human lives. The feminist readings trace struggles from Hiratsuka Raicho's 1911 'I am the sun' declaration through Ueno Chizuko's analysis of how feminism gets trapped between Orientalism and nationalism. Takamure Itsue's trajectory - from feminist historian to wartime collaborator - warns how easily progressive movements can be captured by cultural particularism.\n\nThis final plate asks students to consider the full picture: What did Japan's 'success' actually mean? For whom? At what cost?",
   "keywords": [
     {
+      "term": "Income-Doubling Plan",
+      "definition": "1961 government plan to double GNP in 10 years through state-guided industrial policy",
+      "relevance": "Exemplifies developmental state model; Japan actually exceeded the target"
+    },
+    {
       "term": "Minamata Disease",
-      "definition": "Mercury poisoning from industrial waste that killed and disabled thousands",
-      "relevance": "Symbol of environmental costs of rapid industrialization"
+      "definition": "Mercury poisoning from Chisso Corporation's industrial waste; thousands of victims",
+      "relevance": "Symbol of environmental costs of rapid industrialization; landmark citizen activism"
     },
     {
-      "term": "Salaryman (サラリーマン)",
-      "definition": "White-collar male employee devoted to company; icon of postwar Japan",
-      "relevance": "Represents both economic success and human costs (overwork, conformity)"
+      "term": "Salaryman (saririman)",
+      "definition": "White-collar male employee devoted to company; icon of postwar middle class",
+      "relevance": "Represents both economic success and human costs (overwork, conformity, gendered division of labor)"
     },
     {
-      "term": "Japanese Feminism",
-      "definition": "Movements for women's equality in employment, family law, and politics",
-      "relevance": "Challenged male-dominated society that economic miracle reinforced"
-    },
-    {
-      "term": "Bubble Economy",
-      "definition": "1980s asset bubble that burst in 1990, beginning 'Lost Decades'",
-      "relevance": "Miracle had limits; Japan has struggled since"
+      "term": "Churyu ishiki",
+      "definition": "'Mainstream consciousness' - identification as middle class shared by 90% of Japanese",
+      "relevance": "Its erosion in the 1990s signaled end of postwar social contract"
     },
     {
       "term": "Lost Decades",
-      "definition": "Period of economic stagnation from 1990 to present",
-      "relevance": "Shows limits of Japanese model; informs contemporary debates"
+      "definition": "Period of economic stagnation from 1990 bubble burst to present",
+      "relevance": "Challenged triumphalist narratives; Japan's model had limits"
+    },
+    {
+      "term": "Seito (Bluestocking)",
+      "definition": "Japan's first feminist journal, founded by Hiratsuka Raicho in 1911",
+      "relevance": "Launched modern Japanese feminism; 'In the beginning, woman was the sun'"
+    },
+    {
+      "term": "Reverse Orientalism",
+      "definition": "Revaluing 'Oriental' traits positively but within same binary framework",
+      "relevance": "Ueno's analysis of how cultural particularism can become nationalism"
+    },
+    {
+      "term": "Maternalist feminism",
+      "definition": "Feminism emphasizing motherhood and feminine virtues vs. individual rights",
+      "relevance": "Takamure Itsue's version led to supporting fascism as 'liberating for women'"
     }
   ],
   "keyPassages": [
     {
-      "quote": "Our children were born deformed, and the company told us it wasn't their fault. We knew it was the fish.",
-      "source": "Minamata victim testimony",
-      "page": "Environmental readings"
+      "quote": "From the Tokugawa era to World War II, our people's basic attitude toward life focused on diligent saving and restrained consumption. Frugality was among the great virtues of everyday life. After the war... values of frugality gave way to the idea of enjoying life.",
+      "source": "White Paper on the People's Livelihood, 1960",
+      "page": "1101"
     },
     {
-      "quote": "We are told Japan is the most successful country in Asia. But success for whom?",
-      "source": "Japanese feminist",
-      "page": "Feminism readings"
+      "quote": "For all of us who have been firmly confident about our mainstream life, the ground beneath our feet is shaking... It is impossible for a regular full-time employee to continue at a job with any sense of security. There are no grounds for optimism.",
+      "source": "Yada Giichi, 1997",
+      "page": "1111"
     },
     {
-      "quote": "The economic miracle was built on the unpaid labor of women and the poisoned bodies of the poor.",
-      "source": "Critical analysis",
-      "page": "Readings"
+      "quote": "The new woman is not satisfied with the life of the kind of woman who is made ignorant, made a slave, made a piece of meat by male selfishness.",
+      "source": "Hiratsuka Raicho, 1913",
+      "page": "1204"
+    },
+    {
+      "quote": "If feminists ask for equal rights, they are accused of being anti-Japanese; on the other hand, if they stress feminine virtues, men think it over and say, 'Look, in contrast to Western men, we are already feminine enough.'",
+      "source": "Ueno Chizuko",
+      "page": "1216"
+    },
+    {
+      "quote": "The maternal self sees humankind as one family. As our sacred war is a challenge to what interferes with this familyhood, the war is ours, for women.",
+      "source": "Takamure Itsue, late 1930s",
+      "page": "1215"
     }
   ],
   "peopleplacesthings": {
     "people": [
-      "Minamata victims - fought for recognition",
-      "Feminist activists - challenged patriarchy",
-      "Environmental activists - sued corporations"
+      "Ikeda Hayato - PM who shifted LDP strategy from constitutional revision to economic growth; Income-Doubling Plan",
+      "Hiratsuka Raicho - Founded Seito (Bluestocking) 1911; 'I am the sun' declaration; maternalist feminist",
+      "Ueno Chizuko - Sociologist; first female professor at Tokyo University; analyzed feminism and Orientalism"
     ],
     "places": [
-      "Minamata - site of mercury poisoning",
-      "Tokyo - economic center",
-      "Yokkaichi - air pollution disaster"
+      "Minamata - Kyushu fishing town; site of mercury poisoning disaster; symbol of environmental costs",
+      "Tokyo - Economic center; Chisso headquarters where victims staged sit-in strike",
+      "Heian-period Japan - Origin of 'Japanese' (vs. Chinese) culture; women developed kana writing"
     ],
     "things": [
-      "Minamata disease - mercury poisoning",
-      "Bubble economy - 1980s excess",
-      "Lost Decades - post-bubble stagnation"
+      "Three Sacred Treasures - TV, washing machine, refrigerator; symbols of consumer revolution",
+      "Developmental state model - State-guided capitalism; government sets targets, guides industry",
+      "Reverse Orientalism - Revaluing 'Eastern' traits positively but within same binary framework"
     ]
   },
   "keyQuestions": [
     {
-      "question": "What were the human and environmental costs of Japan's economic miracle?",
-      "talkingPoints": "Minamata, air pollution, overwork, gender inequality. These weren't accidents but structural features of the development model. Who paid the price for Japan's success?"
+      "question": "The 1960 White Paper celebrates 'values of frugality gave way to the idea of enjoying life.' Is this progress? What gets lost when traditional values change?",
+      "talkingPoints": "Connect to debates about consumerism, sustainability, meaning. Does consumption equal wellbeing? What about the claim that demand is 'created by producers through advertising'? Students may have personal experience with family generational differences in attitudes toward consumption."
     },
     {
-      "question": "How do social movements challenge dominant narratives of 'success'?",
-      "talkingPoints": "Environmental and feminist activists told different stories than the 'Japan as Number One' narrative. Whose stories get told? Whose get suppressed? This connects to course themes about Eurocentrism."
+      "question": "Takamure Itsue was a genuine feminist who ended up supporting fascism by arguing 'the war is ours, for women.' How did this happen? Could it happen again?",
+      "talkingPoints": "Trace the logic: maternalist feminism → cultural particularism → anti-Westernism → nationalism → fascism. The lesson is how easily progressive movements can be captured when they define themselves against 'the West' rather than for specific principles. Relevant to contemporary debates about identity politics and nationalism."
     },
     {
-      "question": "As we conclude the course, what have we learned about 'modernity' in East Asia?",
-      "talkingPoints": "Return to Plate 3's questions. Modernity has meant different things in different places. It brought both liberation and new forms of oppression. There is no single path. The story isn't over."
+      "question": "As we conclude the course, what have we learned about 'modernity' in East Asia? Return to Plate 3's questions about what modernity means.",
+      "talkingPoints": "Modernity meant different things in different places. It brought both liberation (consumer choice, women's movements) and new forms of oppression (Minamata, gender inequality). There is no single path. The 'economic miracle' had costs. 'Success' depends on who's counting and what counts. The story isn't over - Japan's 'lost decades' continue, feminism continues, environmental movements continue."
     }
   ],
   "timeline": [
     {
-      "date": "1950s-1980s",
-      "event": "Economic miracle; high growth"
+      "date": "1911",
+      "event": "Hiratsuka Raicho founds Seito (Bluestocking); 'I am the sun' declaration"
     },
     {
       "date": "1956",
-      "event": "Minamata disease first recognized"
+      "event": "Minamata disease first recognized; Chisso denies responsibility"
     },
     {
-      "date": "1970s",
-      "event": "Environmental movement gains strength"
+      "date": "1960",
+      "event": "White Paper celebrates 'consumer revolution'; TV/washing machine ownership soars"
     },
     {
-      "date": "1985",
-      "event": "Equal Employment Opportunity Law (limited)"
+      "date": "1961",
+      "event": "Income-Doubling Plan launched; aim to double GNP by 1970"
     },
     {
-      "date": "1989-1990",
-      "event": "Bubble peaks and bursts"
+      "date": "1973",
+      "event": "Kumamoto court holds Chisso liable; landmark environmental ruling"
     },
     {
-      "date": "1990s-2020s",
-      "event": "'Lost Decades' of stagnation"
+      "date": "1989-90",
+      "event": "Bubble peaks and bursts; beginning of 'Lost Decades'"
     }
   ],
   "connections": {
-    "fromPrevious": "Plate 24 examined Korean development. Japan's model was similar in some ways (state-led, export-oriented) but with different outcomes.",
-    "toNext": "This is the final content plate. Next week: student presentations! Prepare to share what you've learned.",
-    "broaderThemes": "The course has traced East Asia from traditional foundations through Western encounter, nationalism, war, and reconstruction. We end by asking: What have these societies gained and lost?"
+    "fromPrevious": "Plate 24 examined Korean development under division. Japan's postwar model influenced Korea (state-guided, export-oriented) but with different outcomes - Japan's earlier success led to complacency, while Korea continued to catch up.",
+    "toNext": "This is the final content plate. Next session: student presentations! Prepare to synthesize what you've learned across the course.",
+    "broaderThemes": "The course has traced East Asia from traditional foundations through Western encounter, nationalism, war, and reconstruction. We end by asking: What have these societies gained and lost? The 'economic miracle' narrative obscures as much as it reveals. Environmental victims, women, precarious workers - their stories complicate triumphalist accounts."
   },
   "nextPreview": {
     "plate": null,
     "topic": "Final Presentations",
-    "preview": "Next week students present their research projects. Synthesize what you've learned; connect past to present; make an argument about significance.",
+    "preview": "Students present their research projects. Synthesize what you've learned; connect past to present; make an argument about significance.",
     "readings": []
   },
   "teachingNotes": [
-    "This is the last content class. Take time for synthesis and reflection.",
-    "Minamata story is powerful—consider showing documentary clips.",
-    "Gender inequality in Japan persists. Japan ranks poorly on global gender gap indices.",
-    "The 'Lost Decades' challenge triumphalist narratives. Japan's model had limits.",
-    "Return to opening questions: What is modernity? What is East Asia? How do these categories hold up after a quarter's study?"
+    "SEVEN distinct primary/secondary sources in this reading - budget time for each. The consumer revolution and Income-Doubling Plan are fastest; feminism is most complex.",
+    "The 'Waga Shimin' wordplay (citizens/dead people) is powerful - explain it! The victims understood they'd been sacrificed for growth.",
+    "Hiratsuka's 'I am the sun' is the most quotable passage. 'Made ignorant, made a slave, made a piece of meat' still resonates.",
+    "Ueno Chizuko's analysis is sophisticated - the dilemma of feminism when Japan is already characterized as 'feminine' is genuinely difficult. Don't oversimplify.",
+    "Takamure's trajectory is the cautionary tale: cultural particularism → nationalism → fascism. 'As our sacred war is a challenge to what interferes with familyhood, the war is ours, for women.' How did a feminist end up here?",
+    "The 1997 'Farewell, Mainstream Consciousness' predicts much of what happened since - precarious employment, eroding middle class, lost decades. Japan as preview of Western futures?",
+    "Return to Plate 3's questions about modernity. Full circle: what is modernity? Whose modernity? At what cost?"
   ],
   "map": {
-    "center": [34, 135],
+    "center": [36, 138],
     "zoom": 5,
     "locations": [
       {
         "name": "Minamata",
-        "nameChinese": "水俣",
+        "nameChinese": "water-mata",
         "lat": 32.2128,
         "lng": 130.4067,
         "type": "city",
-        "description": "Site of mercury poisoning disaster"
-      },
-      {
-        "name": "Yokkaichi",
-        "nameChinese": "四日市",
-        "lat": 34.9649,
-        "lng": 136.6249,
-        "type": "city",
-        "description": "Air pollution disaster; 'Yokkaichi asthma'"
+        "description": "Site of mercury poisoning disaster; Chisso Corporation's chemical plant"
       },
       {
         "name": "Tokyo",
-        "nameChinese": "東京",
+        "nameChinese": "eastern capital",
         "lat": 35.6762,
         "lng": 139.6503,
         "type": "capital",
-        "description": "Economic center; corporate headquarters"
+        "description": "Economic center; Chisso headquarters; site of victims' sit-in strike"
       },
       {
-        "name": "Osaka",
-        "nameChinese": "大阪",
-        "lat": 34.6937,
-        "lng": 135.5023,
-        "type": "city",
-        "description": "Industrial center"
-      },
-      {
-        "name": "Fukushima",
-        "nameChinese": "福島",
-        "lat": 37.7500,
-        "lng": 140.4678,
-        "type": "city",
-        "description": "2011 nuclear disaster (contemporary parallel)"
+        "name": "Kyushu",
+        "nameChinese": "nine provinces",
+        "lat": 33.0,
+        "lng": 131.0,
+        "type": "region",
+        "description": "Southern island; location of Minamata fishing communities"
       }
     ]
   }

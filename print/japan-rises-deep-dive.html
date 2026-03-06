@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Japan Rises Again: Eight Documents, 1960–1997</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f5f5f7; color: #1d1d1f; }
+
+    .back-link { display: inline-block; padding: 12px 40px; font-size: 12px; color: #86868b; text-decoration: none; }
+    .back-link:hover { color: #1d1d1f; }
+
+    .header {
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2d 50%, #0d1b2a 100%);
+      padding: 32px 40px 36px;
+      border-bottom: 3px solid #c9a962;
+      position: relative; overflow: hidden;
+    }
+    .header::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 300px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><text x="100" y="120" text-anchor="middle" font-size="120" fill="rgba(201,169,98,0.04)" font-family="serif">日</text></svg>') no-repeat center;
+      background-size: contain;
+    }
+    .header .week { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #c9a962; margin-bottom: 8px; }
+    .header h1 { font-size: 28px; font-weight: 300; color: #fff; margin-bottom: 6px; position: relative; }
+    .header .subtitle { font-size: 14px; color: #c9a962; font-weight: 600; letter-spacing: 1px; position: relative; }
+    .header .context { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 14px; max-width: 750px; line-height: 1.6; position: relative; }
+
+    .main { display: grid; grid-template-columns: 1fr 380px; min-height: calc(100vh - 200px); }
+    @media (max-width: 900px) { .main { grid-template-columns: 1fr; } }
+
+    .content { padding: 32px 40px; overflow-y: auto; }
+    .sidebar { background: #fafafa; padding: 24px; overflow-y: auto; border-left: 1px solid #e5e5e5; }
+
+    .section-label { font-size: 11px; color: #8b6914; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; font-weight: 600; }
+    .phase-divider {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #86868b;
+      padding: 14px 0 8px; margin: 24px 0 16px; border-bottom: 1px solid #e5e5e5; font-weight: 600;
+    }
+
+    .doc-card {
+      background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px;
+      border: 1px solid #e5e5e5; border-left-width: 4px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .doc-card:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .doc-card.consumer { border-left-color: #38a169; }
+    .doc-card.policy { border-left-color: #2a9d8f; }
+    .doc-card.crisis { border-left-color: #e63946; }
+    .doc-card.labor { border-left-color: #457b9d; }
+    .doc-card.decline { border-left-color: #718096; }
+    .doc-card.feminist { border-left-color: #a855f7; }
+
+    .doc-card .doc-num { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600; }
+    .doc-card.consumer .doc-num { color: #38a169; }
+    .doc-card.policy .doc-num { color: #2a9d8f; }
+    .doc-card.crisis .doc-num { color: #e63946; }
+    .doc-card.labor .doc-num { color: #457b9d; }
+    .doc-card.decline .doc-num { color: #718096; }
+    .doc-card.feminist .doc-num { color: #a855f7; }
+
+    .doc-card .title { font-size: 16px; font-weight: 600; color: #1d1d1f; margin-bottom: 4px; }
+    .doc-card .meta { font-size: 12px; color: #86868b; margin-bottom: 10px; }
+    .doc-card .desc { font-size: 13px; color: #444; line-height: 1.6; margin-bottom: 12px; }
+    .doc-card .quote-block {
+      background: #f8f6f0; border-left: 2px solid #c9a962; padding: 10px 14px;
+      font-style: italic; font-size: 13px; color: #555; line-height: 1.5;
+      font-family: 'Noto Serif', Georgia, serif; margin-bottom: 8px; border-radius: 0 4px 4px 0;
+    }
+    .doc-card .quote-src { font-size: 10px; color: #86868b; text-align: right; }
+    .doc-card .discussion {
+      background: #fffbeb; border: 1px solid #f0e4b8; border-radius: 6px;
+      padding: 10px 12px; font-size: 12px; color: #92400e; line-height: 1.5; margin-top: 10px;
+    }
+
+    .bio-card {
+      background: #fff; border-radius: 8px; padding: 14px; margin-bottom: 12px;
+      border: 1px solid #e5e5e5; border-left: 3px solid #c9a962;
+      transition: background 0.15s;
+    }
+    .bio-card:hover { background: #f8f8f8; }
+    .bio-card .name { font-size: 14px; font-weight: 600; color: #1d1d1f; margin-bottom: 2px; }
+    .bio-card .name-jp { font-size: 12px; color: #8b6914; font-family: 'Noto Sans JP', sans-serif; margin-bottom: 6px; }
+    .bio-card .dates { font-size: 11px; color: #86868b; margin-bottom: 8px; }
+    .bio-card .role { display: inline-block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 10px; margin-bottom: 8px; font-weight: 600; }
+    .bio-card .role.political { background: rgba(42,157,143,0.2); color: #2a9d8f; }
+    .bio-card .role.intellectual { background: rgba(244,162,97,0.2); color: #d4851d; }
+    .bio-card .role.activist { background: rgba(230,57,70,0.2); color: #e63946; }
+    .bio-card .role.feminist { background: rgba(168,85,247,0.2); color: #a855f7; }
+    .bio-card .bio { font-size: 12px; color: #555; line-height: 1.5; }
+    .bio-card .notable { font-size: 11px; color: #666; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e5e5e5; }
+    .bio-card .notable strong { color: #8b6914; }
+
+    .synthesis {
+      background: #1a1a2d; color: #e5e5e5; padding: 32px 40px;
+      border-top: 3px solid #c9a962;
+    }
+    .synthesis h2 { font-size: 18px; color: #c9a962; margin-bottom: 14px; font-weight: 600; }
+    .synthesis p { font-size: 14px; line-height: 1.7; max-width: 800px; margin-bottom: 12px; }
+    .synthesis .kicker { font-size: 13px; color: #c9a962; font-style: italic; margin-top: 16px; }
+
+    .timeline-strip {
+      background: #fff; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;
+      padding: 20px 40px 16px;
+    }
+    .timeline-strip h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #8b6914; margin-bottom: 12px; }
+    .tl-row { display: flex; width: 100%; position: relative; margin-bottom: 6px; }
+    .tl-line { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #333; }
+    .tl-event { flex: 1; text-align: center; font-size: 8.5px; line-height: 1.3; padding: 0 2px 10px; position: relative; }
+    .tl-event::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 2px; height: 8px; background: #333; transform: translateX(-50%); }
+    .tl-year { font-weight: 700; font-size: 9.5px; display: block; }
+    .tl-event em { font-style: italic; color: #555; }
+  </style>
+</head>
+<body>
+
+<a href="../index.html" class="back-link">&larr; Back to EAST 213 Dashboard</a>
+
+<div class="header">
+  <div class="week">Week 9 &middot; Plate 25 &middot; Friday March 6</div>
+  <h1>Japan Rises Again</h1>
+  <div class="subtitle">Eight Documents on Growth, Crisis, and Gender &middot; 1960&ndash;1997</div>
+  <div class="context">
+    From consumer revolution to environmental catastrophe, from the income-doubling miracle to middle-class collapse,
+    and from Hiratsuka's "I am the sun" to Ueno Chizuko's diagnosis of a feminism trapped between Orientalism and
+    reverse Orientalism. These documents chart Japan's postwar arc: prosperity was never shared equally, and the
+    questions about who benefits from "rising" were always gendered.
+  </div>
+</div>
+
+<div class="timeline-strip">
+  <h3>Document Timeline</h3>
+  <div style="position:relative;">
+    <div class="tl-row">
+      <div class="tl-event"><span class="tl-year">1911</span><em>Bluestocking founded</em></div>
+      <div class="tl-event"><span class="tl-year">1913</span><em>"New Woman" manifesto</em></div>
+      <div class="tl-event"><span class="tl-year">1960</span><em>Consumer revolution White Paper</em></div>
+      <div class="tl-event"><span class="tl-year">1961</span><em>Income-Doubling Plan</em></div>
+      <div class="tl-event"><span class="tl-year">1971</span><em>Minamata sit-in</em></div>
+      <div class="tl-event"><span class="tl-year">~1975</span><em>Labor management</em></div>
+      <div class="tl-event"><span class="tl-year">~1995</span><em>Ueno on feminism</em></div>
+      <div class="tl-event"><span class="tl-year">1997</span><em>"Farewell, middle class"</em></div>
+    </div>
+    <div class="tl-line"></div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="content">
+    <div class="section-label">Part I: Democracy &amp; High Growth</div>
+
+    <div class="doc-card consumer">
+      <div class="doc-num">Document 1 &middot; Government Report</div>
+      <div class="title">White Paper on the People's Livelihood</div>
+      <div class="meta">Economic Planning Agency, <em>Kokumin seikatsu hakusho</em>, 1960 &middot; pp. 1100&ndash;1102</div>
+      <div class="desc">
+        The government's own breathless account of Japan's "lifestyle revolution." Tracks five forces behind the consumer boom:
+        rising incomes (35% above prewar by 1960), the technological revolution (TVs, washing machines, refrigerators),
+        a new mass of consumers from shrinking income inequality, a value shift from Tokugawa-era frugality to "enjoying life,"
+        and aggressive corporate marketing.
+      </div>
+      <div class="quote-block">
+        "Lifestyles have changed with special speed. In a word, this can be called Westernization.
+        One can see this in eating habits . . . clothing habits . . . and housing habits."
+        <div class="quote-src">Kokumin seikatsu hakusho, pp. 11&ndash;22</div>
+      </div>
+      <div class="discussion">
+        <strong>Ask:</strong> The White Paper names the salaryman household as the "emblem" of the lifestyle revolution.
+        Who is missing from this picture? What does the government want to manage about this change?
+      </div>
+    </div>
+
+    <div class="doc-card policy">
+      <div class="doc-num">Document 2 &middot; Economic Policy</div>
+      <div class="title">The Income-Doubling Plan, 1961&ndash;1970</div>
+      <div class="meta">Economic Planning Agency, <em>New Long-Range Economic Plan of Japan</em>, 1961 &middot; pp. 1102&ndash;1105</div>
+      <div class="desc">
+        PM Ikeda Hayato's signature policy. After the bruising 1960 Anpo crisis over the US-Japan security treaty,
+        the LDP pivoted from revising the constitution to promoting economic growth. The plan targeted doubling GNP
+        from &yen;13.6 trillion to &yen;26 trillion in ten years. It prescribed mergers, heavy/chemical industry investment
+        (&yen;16 trillion for mining and manufacturing), and active state guidance of the private sector.
+      </div>
+      <div class="quote-block">
+        "Special effort must be made to rectify the existing disparity of living standards and income
+        between farming and nonfarming population, between major enterprises and smaller business,
+        between urban and rural residents."
+        <div class="quote-src">New Long-Range Economic Plan, pp. 8&ndash;10</div>
+      </div>
+      <div class="discussion">
+        <strong>Ask:</strong> The plan promises equality alongside growth. Is this a welfare state or a developmental state?
+        Compare to PRC five-year plans from Plate 23.
+      </div>
+    </div>
+
+    <div class="doc-card crisis">
+      <div class="doc-num">Document 3 &middot; Protest Declaration</div>
+      <div class="title">We Citizens: Sit-in Strike Declaration (Waga Shimin)</div>
+      <div class="meta">Minamata disease victims, c. 1971 &middot; pp. 1105&ndash;1106</div>
+      <div class="desc">
+        Mercury discharged by the Chisso Corporation devastated fishing families in Minamata City, Kyushu, beginning in the 1950s.
+        The company denied responsibility and covered up evidence. This declaration from victims staging a sit-in at Chisso's Tokyo
+        headquarters captures the emotional core of Japan's environmental movement. The title is a grim pun: <em>shimin</em>
+        normally means "citizens" but is written with characters meaning "dead people."
+      </div>
+      <div class="quote-block">
+        "As we who suffer from Minamata disease and our families continue our sit-in strike in front of the company
+        president's office at Chisso headquarters [in Tokyo], how can we possibly thank the many people throughout
+        the nation who have provided us with their warm support?"
+        <div class="quote-src">Waga Shimin declaration</div>
+      </div>
+      <div class="discussion">
+        <strong>Ask:</strong> The Minamata movement succeeded partly because economic growth made compensation affordable.
+        Is there an irony in growth solving problems that growth created?
+      </div>
+    </div>
+
+    <div class="doc-card labor">
+      <div class="doc-num">Document 4 &middot; Management Memoir</div>
+      <div class="title">Twenty Years of Labor Management</div>
+      <div class="meta">Orii, <em>R&#333;mu kanri 20 nen</em> &middot; pp. 1111</div>
+      <div class="desc">
+        An industrial manager reflects on how "scientific labor management" (modeled on Taylor) transformed Japanese
+        workplaces. The "job surveys" aimed to collect objective data on working conditions. This is the management side
+        of the postwar labor bargain: lifetime employment and company loyalty in exchange for rationalized productivity.
+      </div>
+    </div>
+
+    <div class="doc-card decline">
+      <div class="doc-num">Document 5 &middot; Journalism</div>
+      <div class="title">"Farewell, Mainstream Consciousness!"</div>
+      <div class="meta">Yada Giichi, "Sayonara ch&#363;ry&#363; ishiki," 1997 &middot; pp. 1111&ndash;1112</div>
+      <div class="desc">
+        After a decade of stagnation following the bubble's collapse, Yada diagnoses the death of Japan's celebrated
+        "mass middle-class" (<em>ch&#363;ry&#363;</em>) identity. Real estate plunging, stock values falling, interest rates
+        near zero, temp work replacing lifetime employment. Nikkeiren reports that "flexible hires" are expanding while
+        accumulated-skills positions shrink. Lifetime employees projected to fall from 80% to 70% of the workforce.
+      </div>
+      <div class="quote-block">
+        "How does one live in an era when the once buoyant consciousness of the middle-class mainstream
+        is surrounded by fog?"
+        <div class="quote-src">Yada, "Sayonara ch&#363;ry&#363; ishiki," p. 13</div>
+      </div>
+      <div class="discussion">
+        <strong>Ask:</strong> The consumer revolution of Document 1 created the middle class that Document 5 is eulogizing.
+        37 years apart. What broke?
+      </div>
+    </div>
+
+    <div class="phase-divider">Part II: Gender Politics &amp; Feminism</div>
+
+    <div class="doc-card feminist">
+      <div class="doc-num">Document 6 &middot; Manifesto</div>
+      <div class="title">Bluestocking &amp; "New Woman" (Atarashii Onna)</div>
+      <div class="meta">Hiratsuka Raich&#333;, 1911 &amp; 1913 &middot; pp. 1204</div>
+      <div class="desc">
+        In 1911, Hiratsuka founded <em>Seit&#333;</em> (Bluestocking), Japan's first feminist journal,
+        "created for the first time with the brains and hands of today's Japanese women." Two years later,
+        she defined the "New Woman" as someone who refuses the old morality built on male selfishness and
+        seeks to create "a new kingdom, where a new religion, a new morality, and new laws are carried out,
+        based on the spiritual values and surpassing brilliance of the sun."
+      </div>
+      <div class="quote-block">
+        "The new woman; I am a new woman.<br>
+        I seek, I strive each day to be that truly new woman I want to be.<br>
+        In truth, that eternally new being is the sun.<br>
+        I am the sun."
+        <div class="quote-src">Sievers, <em>Flowers in Salt</em>, p. 176</div>
+      </div>
+    </div>
+
+    <div class="doc-card feminist">
+      <div class="doc-num">Document 7 &middot; Scholarly Essay</div>
+      <div class="title">"Are the Japanese Feminine?"</div>
+      <div class="meta">Ueno Chizuko, mid-1990s &middot; pp. 1213&ndash;1219</div>
+      <div class="desc">
+        Ueno, a sociologist at Tokyo University, dismantles the claim that feminism is a "foreign import" to Japan.
+        Her central framework: Japanese intellectuals adopted Edward Said's Orientalism to describe Japan as
+        "an oppressed woman" raped by the West. This "East-as-woman" metaphor traps feminists in a double bind.
+        If they demand equal rights, they're accused of being anti-Japanese. If they celebrate feminine virtues,
+        men respond: "We are already feminine enough." Ueno traces this cycle through Motoori Norinaga's Tokugawa-era
+        celebration of <em>kana</em> as feminine/Japanese vs. Chinese/masculine, and forward through Takamure Itsue's
+        maternalist feminism that slid into wartime nationalism.
+      </div>
+      <div class="quote-block">
+        "We find ourselves trapped in a vicious circle that oscillates between Orientalism and a reverse Orientalism.
+        Feminism as a cultural product cannot escape from this closed framework."
+        <div class="quote-src">Buckley, ed., <em>Broken Silence</em>, pp. 293&ndash;301</div>
+      </div>
+      <div class="discussion">
+        <strong>Ask:</strong> Ueno says the "dominant paradigm" stays intact whether you celebrate or reject the feminine.
+        Is there a way out, or is this genuinely a trap?
+      </div>
+    </div>
+
+    <div class="doc-card feminist">
+      <div class="doc-num">Document 8 &middot; Scholarly Essay</div>
+      <div class="title">"What is Japanese Feminism?"</div>
+      <div class="meta">Sait&#333; Chiyo, late 1990s &middot; pp. 1219</div>
+      <div class="desc">
+        Sait&#333;, founder of the feminist journal <em>Agora</em>, offers her own definition: "An international cultural
+        and human rights movement to 'cleanse' experience and knowledge, a movement that adopts a female perspective
+        rather than the traditional male value system." She traces the word "feminism" to Alexandre Dumas's
+        <em>L'Homme-femme</em> (1872) and argues the movement developed "philosophically out of a humanist tradition."
+        Her definition pointedly refuses the nationalist framing that Ueno warned about.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sidebar">
+    <div class="section-label">Key Figures</div>
+
+    <div class="bio-card">
+      <div class="name">Ikeda Hayato</div>
+      <div class="name-jp">池田勇人</div>
+      <div class="dates">1899&ndash;1965</div>
+      <div class="role political">Prime Minister</div>
+      <div class="bio">
+        PM 1960&ndash;1964. After the Anpo crisis nearly toppled the government, Ikeda deliberately shifted LDP strategy
+        from constitutional revision to economic growth. His Income-Doubling Plan became the blueprint for the high-growth era.
+        Former Ministry of Finance bureaucrat who understood the levers of industrial policy.
+      </div>
+      <div class="notable"><strong>In the reading:</strong> Income-Doubling Plan (Doc 2)</div>
+    </div>
+
+    <div class="bio-card">
+      <div class="name">Hiratsuka Raich&#333;</div>
+      <div class="name-jp">平塚らいてう</div>
+      <div class="dates">1886&ndash;1971</div>
+      <div class="role feminist">Feminist Pioneer</div>
+      <div class="bio">
+        Founded <em>Seit&#333;</em> (Bluestocking) in 1911, Japan's first feminist literary journal. Her "I am the sun"
+        declaration became an iconic text of Japanese feminism. Later debated Yosano Akiko on state support for mothers
+        (the "motherhood protection debate" of 1918&ndash;19). Became a pacifist activist after WWII.
+      </div>
+      <div class="notable"><strong>In the reading:</strong> Bluestocking founding + "New Woman" (Doc 6)</div>
+    </div>
+
+    <div class="bio-card">
+      <div class="name">Ueno Chizuko</div>
+      <div class="name-jp">上野千鶴子</div>
+      <div class="dates">b. 1948</div>
+      <div class="role feminist">Sociologist</div>
+      <div class="bio">
+        Appointed professor at Tokyo University in the mid-1990s, one of Japan's most prominent feminist scholars.
+        Known for work on gender, nationalism, and the "comfort women" issue. Her essay here uses Said's Orientalism
+        framework to analyze how gender metaphors structure Japanese national identity.
+      </div>
+      <div class="notable"><strong>In the reading:</strong> "Are the Japanese Feminine?" (Doc 7)</div>
+    </div>
+
+    <div class="bio-card">
+      <div class="name">Takamure Itsue</div>
+      <div class="name-jp">高群逸枝</div>
+      <div class="dates">1894&ndash;1964</div>
+      <div class="role intellectual">Historian / Feminist</div>
+      <div class="bio">
+        Self-taught historian who traced matrilineality in ancient Japan, proposing the "maternal self" as a Japanese
+        cultural ideal rooted in the goddess Amaterasu. Her countermodernist feminism rejected Western individualism
+        but slid into wartime nationalism. Ueno treats her as the cautionary example of how reverse Orientalism
+        leads to fascism.
+      </div>
+      <div class="notable"><strong>In the reading:</strong> Central figure in Ueno's analysis (Doc 7)</div>
+    </div>
+
+    <div class="bio-card">
+      <div class="name">Sait&#333; Chiyo</div>
+      <div class="name-jp">斎藤千代</div>
+      <div class="dates">20th c.</div>
+      <div class="role feminist">Journal Editor</div>
+      <div class="bio">
+        Founded the feminist journal <em>Agora</em>. Attempted to redefine "Japanese feminism" as a humanist
+        movement free from the nationalist trap Ueno diagnosed. Positions herself in dialogue with Aoki Yayoi and Ueno Chizuko.
+      </div>
+      <div class="notable"><strong>In the reading:</strong> "What is Japanese Feminism?" (Doc 8)</div>
+    </div>
+
+    <div class="bio-card">
+      <div class="name">Yada Giichi</div>
+      <div class="name-jp">矢田義一</div>
+      <div class="dates">20th c.</div>
+      <div class="role intellectual">Journalist</div>
+      <div class="bio">
+        Wrote for one of Japan's two largest national newspapers. His 1997 article diagnosing the collapse of
+        <em>ch&#363;ry&#363; ishiki</em> (mainstream/middle-class consciousness) became a touchstone for the "Lost Decade" era.
+      </div>
+      <div class="notable"><strong>In the reading:</strong> "Farewell, Mainstream Consciousness" (Doc 5)</div>
+    </div>
+
+    <div class="section-label" style="margin-top:24px;">Key Concepts</div>
+
+    <div class="bio-card">
+      <div class="name">Ch&#363;ry&#363; Ishiki</div>
+      <div class="name-jp">中流意識</div>
+      <div class="bio">
+        "Mainstream consciousness." By the 1970s, roughly 90% of Japanese identified as middle class.
+        This shared identity was central to postwar social cohesion. Its collapse in the 1990s marked
+        the end of the high-growth social contract.
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="name">Reverse Orientalism</div>
+      <div class="bio">
+        Ueno's term for the cycle where Japanese intellectuals adopt the Western Orientalist framework
+        (East = feminine, passive) but try to revalue it positively. The dominant paradigm stays intact;
+        only the value judgment flips. Takamure's maternalism is the feminist version.
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="name">Kokumin Seikatsu Hakusho</div>
+      <div class="name-jp">国民生活白書</div>
+      <div class="bio">
+        "White Paper on the People's Livelihood." Annual government report by the Economic Planning Agency
+        tracking consumption, lifestyle, and social trends. The 1960 edition celebrated the consumer revolution
+        while worrying about the need to regulate it.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="synthesis">
+  <h2>Synthesis: Who Benefits When Japan "Rises"?</h2>
+  <p>
+    The reading pairs two stories that are usually taught separately. The economic miracle narrative
+    (Docs 1&ndash;5) tracks a clean arc: consumer boom, state planning, environmental costs,
+    labor rationalization, eventual stagnation. The gender narrative (Docs 6&ndash;8) runs on a different clock entirely,
+    with Hiratsuka's 1911 manifesto predating the economic story by half a century.
+  </p>
+  <p>
+    But the pairing is deliberate. The salaryman household that the 1960 White Paper celebrates as the "emblem"
+    of prosperity depends on a gendered division of labor that goes unnamed in that document. The Income-Doubling Plan
+    promises to close gaps between urban and rural, large firms and small, but says nothing about men and women.
+    When Yada mourns the death of middle-class identity in 1997, the "secure" employment he means is male employment.
+    Temp work, which he treats as a sign of decline, had always been "women's work."
+  </p>
+  <p>
+    Ueno's essay provides the theoretical key. The Orientalism/reverse Orientalism trap she identifies isn't just about
+    feminism. It's about any attempt to define Japanese modernity against a Western standard. The Income-Doubling Plan
+    measures success in GNP, a Western metric. The consumer revolution is described as "Westernization."
+    The question "Are the Japanese feminine?" is really: "Can Japan be modern on its own terms?"
+  </p>
+  <div class="kicker">
+    From the Bluestocking manifesto to the Lost Decade, the question was never just "Is Japan rising?"
+    It was always "Rising for whom?"
+  </div>
+</div>
+
+</body>
+</html>

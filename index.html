@@ -321,7 +321,7 @@ var plates = [
   {plate:22,date:"2026-02-27",day:"Friday",week:8,topic:"Rebuilding Japan",theme:"War and Revolution",ebrey:"Ch. 26: 461-470",readings:[{title:"Constitution of Japan (1947)",type:"primary",url:"https://drive.google.com/file/d/1R38azeBeaKG_ronaND9fwxpVSkex0uPT/view"},{title:"The American School",type:"primary",url:"https://drive.google.com/file/d/19_wD1Yex9OlA_IR7geifIvVZJi9aXeqL/view"}],webLinks:[{title:"Tokyo Olympiad",url:"https://www.youtube.com/watch?v=WHt0eAdCCns"},{title:"Reading Guide: The 1947 Constitution",url:"print/japan-constitution-guide.html"},{title:"Deep Dive: The American School",url:"print/american-school-deep-dive.html"}]},
   {plate:23,date:"2026-03-02",day:"Monday",week:9,topic:"Mao and Beyond Mao",theme:"Contemporary East Asia",ebrey:"Ch. 27, 30",readings:[{title:"Let Flowers Bloom / 100 Flowers",type:"primary",url:"https://drive.google.com/file/d/1Jsls0Ii5QR-UfPam-sNpzT3FEmM9RC-3/view"}],webLinks:[{title:"Deep Dive: Final Project Topics",url:"print/post-class-notes-9.html"}]},
   {plate:24,date:"2026-03-04",day:"Wednesday",week:9,topic:"Liberation, Division, Rebuilding Korea",theme:"Contemporary East Asia",ebrey:"Ch. 28",readings:[{title:"Cranes",source:"Short Fiction",type:"primary",url:"https://drive.google.com/file/d/1CxK408_GdhApyipkHI83ajbZTK2geTfe/view"},{title:"Five Bandits",source:"Short Fiction",type:"primary",url:"https://drive.google.com/file/d/1n-L259kl8tJQOg22FgCLjvvF3VdX219O/view"}],webLinks:[{title:"Korean Families Reunite",url:"https://www.youtube.com/watch?v=KYjdUeYT49c"},{title:"Gangnam Style",url:"https://www.youtube.com/watch?v=9bZkp7q19f0"}]},
-  {plate:25,date:"2026-03-06",day:"Friday",week:9,topic:"Japan rises again",theme:"Contemporary East Asia",ebrey:"Ch. 29",readings:[{title:"Environmental Activism, Feminism",type:"primary",url:"https://drive.google.com/file/d/1apup-PPgM9q7AcDPIyCDAXcnJixQ8URL/view"}],assignment:{name:"Project #3",due:"2026-03-08",dueDay:"Sunday"}},
+  {plate:25,date:"2026-03-06",day:"Friday",week:9,topic:"Japan rises again",theme:"Contemporary East Asia",ebrey:"Ch. 29",readings:[{title:"Environmental Activism, Feminism",type:"primary",url:"https://drive.google.com/file/d/1apup-PPgM9q7AcDPIyCDAXcnJixQ8URL/view"}],webLinks:[{title:"Japan Rises Again: Deep Dive",url:"print/japan-rises-deep-dive.html"}],assignment:{name:"Project #3",due:"2026-03-08",dueDay:"Sunday"}},
   {plate:null,date:"2026-03-09",day:"Monday",week:10,topic:"Final presentations",theme:"Student presentations",ebrey:null,readings:[],presentations:true},
   {plate:null,date:"2026-03-11",day:"Wednesday",week:10,topic:"Final presentations",theme:"Student presentations",ebrey:null,readings:[],presentations:true},
   {plate:null,date:"2026-03-13",day:"Friday",week:10,topic:"Final presentations",theme:"Student presentations",ebrey:null,readings:[],presentations:true}
@@ -750,6 +750,45 @@ function renderSidebar(p, i) {
     h += '<div class="section-title" style="margin-top:16px">Discussion</div>';
     h += '<div style="background:#fffbeb;border:1px solid #f0e4b8;border-radius:8px;padding:14px;font-size:12px;line-height:1.6;color:#92400e">';
     h += '<strong>Is growth the CPC\u2019s legitimacy?</strong><br>The Party survived Mao-era avg of 4.8%. Today\u2019s citizens have smartphones, mortgages, and expectations their parents never had. What happens if 5% becomes the ceiling?';
+    h += '</div>';
+  }
+
+  if (p.plate === 25) {
+    h += '<div class="section-title">Deep Dive &amp; Author Bios</div>';
+    h += '<a href="print/japan-rises-deep-dive.html" target="_blank" rel="noopener noreferrer" class="reading-card primary" style="margin-bottom:12px">';
+    h += '<div class="type-badge">Deep Dive</div>';
+    h += '<div class="title">Japan Rises Again: Eight Documents, 1960\u20131997</div>';
+    h += '<div class="author">EPA \u00b7 Minamata victims \u00b7 Hiratsuka Raich\u014d \u00b7 Ueno Chizuko</div>';
+    h += '<div class="source">Consumer revolution, income-doubling, environmental crisis, feminism &amp; Orientalism</div>';
+    h += '</a>';
+
+    // Documents at a glance
+    h += '<div class="section-title" style="margin-top:16px">Documents at a Glance</div>';
+    h += '<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;font-size:12px;line-height:1.7">';
+    h += '<div style="margin-bottom:6px"><span style="color:#38a169;font-weight:600">1.</span> White Paper on People\u2019s Livelihood <span style="color:var(--text-muted)">(pp. 1100\u20131102)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#2a9d8f;font-weight:600">2.</span> Income-Doubling Plan <span style="color:var(--text-muted)">(pp. 1102\u20131105)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#e63946;font-weight:600">3.</span> Minamata Sit-in Declaration <span style="color:var(--text-muted)">(pp. 1105\u20131106)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#457b9d;font-weight:600">4.</span> Twenty Years of Labor Management <span style="color:var(--text-muted)">(p. 1111)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#718096;font-weight:600">5.</span> \u201cFarewell, Mainstream Consciousness\u201d <span style="color:var(--text-muted)">(pp. 1111\u20131112)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#a855f7;font-weight:600">6.</span> Bluestocking + \u201cNew Woman\u201d <span style="color:var(--text-muted)">(p. 1204)</span></div>';
+    h += '<div style="margin-bottom:6px"><span style="color:#a855f7;font-weight:600">7.</span> \u201cAre the Japanese Feminine?\u201d <span style="color:var(--text-muted)">(pp. 1213\u20131219)</span></div>';
+    h += '<div><span style="color:#a855f7;font-weight:600">8.</span> \u201cWhat is Japanese Feminism?\u201d <span style="color:var(--text-muted)">(p. 1219)</span></div>';
+    h += '</div>';
+
+    // Key figures
+    h += '<div class="section-title" style="margin-top:16px">Key Figures</div>';
+    h += '<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;font-size:11px;line-height:1.6">';
+    h += '<div style="margin-bottom:8px"><strong style="color:#2a9d8f">Ikeda Hayato</strong> (1899\u20131965)<br>PM who pivoted from constitutional revision to growth after Anpo crisis</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#a855f7">Hiratsuka Raich\u014d</strong> (1886\u20131971)<br>Founded <em>Seit\u014d</em> (Bluestocking), \u201cI am the sun\u201d declaration</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#a855f7">Ueno Chizuko</strong> (b. 1948)<br>Sociologist, Orientalism/feminism framework, Tokyo University</div>';
+    h += '<div style="margin-bottom:8px"><strong style="color:#a855f7">Takamure Itsue</strong> (1894\u20131964)<br>Maternalist feminist whose countermodernism slid into wartime nationalism</div>';
+    h += '<div><strong style="color:#718096">Yada Giichi</strong><br>Journalist who eulogized Japan\u2019s \u201cmass middle class\u201d identity in 1997</div>';
+    h += '</div>';
+
+    // Discussion
+    h += '<div class="section-title" style="margin-top:16px">Discussion</div>';
+    h += '<div style="background:#fffbeb;border:1px solid #f0e4b8;border-radius:8px;padding:14px;font-size:12px;line-height:1.6;color:#92400e">';
+    h += '<strong>Who benefits when Japan \u201crises\u201d?</strong><br>The 1960 White Paper celebrates salaryman households as the emblem of prosperity. Yada mourns male lifetime employment in 1997. Temp work\u2014always \u201cwomen\u2019s work\u201d\u2014is treated as a sign of decline only when men start doing it. How does gender shape the \u201cmiracle\u201d narrative?';
     h += '</div>';
   }
 

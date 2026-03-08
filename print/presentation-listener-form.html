@@ -21,6 +21,13 @@
       background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
     }
 
+    .page {
+      page-break-after: always;
+    }
+    .page:last-child {
+      page-break-after: avoid;
+    }
+
     .page-header {
       display: flex;
       justify-content: space-between;
@@ -64,9 +71,6 @@
       background: rgba(255,255,255,0.5);
       page-break-inside: avoid;
     }
-    .presenter-block:last-of-type {
-      margin-bottom: 0;
-    }
 
     .presenter-header {
       display: flex;
@@ -83,17 +87,10 @@
       letter-spacing: 1.5px;
       color: #888;
     }
-    .presenter-name-line {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-    }
-    .presenter-name-line label { font-weight: 600; }
-    .presenter-name-line .line {
-      border-bottom: 1px solid #999;
-      width: 160px;
-      height: 16px;
+    .presenter-name {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
     .topic-line {
       display: flex;
@@ -104,7 +101,7 @@
     .topic-line label { font-weight: 600; }
     .topic-line .line {
       border-bottom: 1px solid #999;
-      width: 200px;
+      width: 220px;
       height: 16px;
     }
 
@@ -140,9 +137,6 @@
     }
     .write-lines {
       min-height: 48px;
-    }
-    .write-lines-tall {
-      min-height: 60px;
     }
 
     .rating-row {
@@ -182,159 +176,391 @@
 </head>
 <body>
 
-  <div class="page-header">
-    <h1>Listen, Learn, Ask</h1>
-    <span class="course">EAST 213 / Week 10</span>
-  </div>
-
-  <div class="your-name">
-    <label>Your name:</label>
-    <div class="line"></div>
-  </div>
-
-  <!-- Presenter 1 -->
-  <div class="presenter-block">
-    <div class="presenter-header">
-      <span class="presenter-num">Presenter 1</span>
-      <div style="display:flex;gap:20px;">
-        <div class="presenter-name-line">
-          <label>Name:</label>
-          <div class="line"></div>
-        </div>
-        <div class="topic-line">
-          <label>Topic:</label>
-          <div class="line"></div>
-        </div>
-      </div>
+  <!-- ==================== PAGE 1: Monday (Susanna / Em / Izzy) ==================== -->
+  <div class="page">
+    <div class="page-header">
+      <h1>Listen, Learn, Ask</h1>
+      <span class="course">EAST 213 / Monday, March 9</span>
     </div>
 
-    <div class="prompt-grid">
-      <div class="prompt-box">
-        <div class="prompt-label">Main argument</div>
-        <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
-        <div class="write-lines"></div>
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Connection to our course</div>
-        <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
-        <div class="write-lines"></div>
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Something that surprised you</div>
-        <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
-        <div class="write-lines"></div>
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">A question you'd ask</div>
-        <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
-        <div class="write-lines"></div>
-      </div>
+    <div class="your-name">
+      <label>Your name:</label>
+      <div class="line"></div>
     </div>
 
-    <div class="rating-row">
-      <div class="rating-item"><span class="circle"></span> Clear</div>
-      <div class="rating-item"><span class="circle"></span> Engaging</div>
-      <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-      <div class="rating-item"><span class="circle"></span> More than a summary</div>
-    </div>
-  </div>
-
-  <!-- Presenter 2 -->
-  <div class="presenter-block">
-    <div class="presenter-header">
-      <span class="presenter-num">Presenter 2</span>
-      <div style="display:flex;gap:20px;">
-        <div class="presenter-name-line">
-          <label>Name:</label>
-          <div class="line"></div>
-        </div>
-        <div class="topic-line">
-          <label>Topic:</label>
-          <div class="line"></div>
+    <!-- Susanna -->
+    <div class="presenter-block">
+      <div class="presenter-header">
+        <span class="presenter-num">Presenter 1</span>
+        <div style="display:flex;gap:20px;align-items:baseline;">
+          <span class="presenter-name">Susanna</span>
+          <div class="topic-line">
+            <label>Topic:</label>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="prompt-grid">
-      <div class="prompt-box">
-        <div class="prompt-label">Main argument</div>
-        <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
-        <div class="write-lines"></div>
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Connection to our course</div>
-        <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
-        <div class="write-lines"></div>
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Something that surprised you</div>
-        <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
-        <div class="write-lines"></div>
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">A question you'd ask</div>
-        <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
-        <div class="write-lines"></div>
-      </div>
-    </div>
-
-    <div class="rating-row">
-      <div class="rating-item"><span class="circle"></span> Clear</div>
-      <div class="rating-item"><span class="circle"></span> Engaging</div>
-      <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-      <div class="rating-item"><span class="circle"></span> More than a summary</div>
-    </div>
-  </div>
-
-  <!-- Presenter 3 -->
-  <div class="presenter-block">
-    <div class="presenter-header">
-      <span class="presenter-num">Presenter 3</span>
-      <div style="display:flex;gap:20px;">
-        <div class="presenter-name-line">
-          <label>Name:</label>
-          <div class="line"></div>
+      <div class="prompt-grid">
+        <div class="prompt-box">
+          <div class="prompt-label">Main argument</div>
+          <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
+          <div class="write-lines"></div>
         </div>
-        <div class="topic-line">
-          <label>Topic:</label>
-          <div class="line"></div>
+        <div class="prompt-box">
+          <div class="prompt-label">Connection to our course</div>
+          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Something that surprised you</div>
+          <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">A question you'd ask</div>
+          <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
+          <div class="write-lines"></div>
         </div>
       </div>
-    </div>
-
-    <div class="prompt-grid">
-      <div class="prompt-box">
-        <div class="prompt-label">Main argument</div>
-        <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
-        <div class="write-lines"></div>
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Connection to our course</div>
-        <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
-        <div class="write-lines"></div>
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Something that surprised you</div>
-        <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
-        <div class="write-lines"></div>
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">A question you'd ask</div>
-        <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
-        <div class="write-lines"></div>
+      <div class="rating-row">
+        <div class="rating-item"><span class="circle"></span> Clear</div>
+        <div class="rating-item"><span class="circle"></span> Engaging</div>
+        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
+        <div class="rating-item"><span class="circle"></span> More than a summary</div>
       </div>
     </div>
 
-    <div class="rating-row">
-      <div class="rating-item"><span class="circle"></span> Clear</div>
-      <div class="rating-item"><span class="circle"></span> Engaging</div>
-      <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-      <div class="rating-item"><span class="circle"></span> More than a summary</div>
+    <!-- Em -->
+    <div class="presenter-block">
+      <div class="presenter-header">
+        <span class="presenter-num">Presenter 2</span>
+        <div style="display:flex;gap:20px;align-items:baseline;">
+          <span class="presenter-name">Em</span>
+          <div class="topic-line">
+            <label>Topic:</label>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt-box">
+          <div class="prompt-label">Main argument</div>
+          <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Connection to our course</div>
+          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Something that surprised you</div>
+          <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">A question you'd ask</div>
+          <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
+          <div class="write-lines"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <div class="rating-item"><span class="circle"></span> Clear</div>
+        <div class="rating-item"><span class="circle"></span> Engaging</div>
+        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
+        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+      </div>
+    </div>
+
+    <!-- Izzy -->
+    <div class="presenter-block">
+      <div class="presenter-header">
+        <span class="presenter-num">Presenter 3</span>
+        <div style="display:flex;gap:20px;align-items:baseline;">
+          <span class="presenter-name">Izzy</span>
+          <div class="topic-line">
+            <label>Topic:</label>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt-box">
+          <div class="prompt-label">Main argument</div>
+          <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Connection to our course</div>
+          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Something that surprised you</div>
+          <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">A question you'd ask</div>
+          <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
+          <div class="write-lines"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <div class="rating-item"><span class="circle"></span> Clear</div>
+        <div class="rating-item"><span class="circle"></span> Engaging</div>
+        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
+        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Listen first. Write after. Your questions during Q&A matter. This form is collected at the end of class.
     </div>
   </div>
 
-  <div class="footer-note">
-    Listen first. Write after. Your questions during Q&A matter. This form is collected at the end of class.
+  <!-- ==================== PAGE 2: Wednesday (Eliel / Juchan / Nik) ==================== -->
+  <div class="page">
+    <div class="page-header">
+      <h1>Listen, Learn, Ask</h1>
+      <span class="course">EAST 213 / Wednesday, March 11</span>
+    </div>
+
+    <div class="your-name">
+      <label>Your name:</label>
+      <div class="line"></div>
+    </div>
+
+    <!-- Eliel -->
+    <div class="presenter-block">
+      <div class="presenter-header">
+        <span class="presenter-num">Presenter 1</span>
+        <div style="display:flex;gap:20px;align-items:baseline;">
+          <span class="presenter-name">Eliel</span>
+          <div class="topic-line">
+            <label>Topic:</label>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt-box">
+          <div class="prompt-label">Main argument</div>
+          <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Connection to our course</div>
+          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Something that surprised you</div>
+          <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">A question you'd ask</div>
+          <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
+          <div class="write-lines"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <div class="rating-item"><span class="circle"></span> Clear</div>
+        <div class="rating-item"><span class="circle"></span> Engaging</div>
+        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
+        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+      </div>
+    </div>
+
+    <!-- Juchan -->
+    <div class="presenter-block">
+      <div class="presenter-header">
+        <span class="presenter-num">Presenter 2</span>
+        <div style="display:flex;gap:20px;align-items:baseline;">
+          <span class="presenter-name">Juchan</span>
+          <div class="topic-line">
+            <label>Topic:</label>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt-box">
+          <div class="prompt-label">Main argument</div>
+          <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Connection to our course</div>
+          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Something that surprised you</div>
+          <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">A question you'd ask</div>
+          <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
+          <div class="write-lines"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <div class="rating-item"><span class="circle"></span> Clear</div>
+        <div class="rating-item"><span class="circle"></span> Engaging</div>
+        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
+        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+      </div>
+    </div>
+
+    <!-- Nik -->
+    <div class="presenter-block">
+      <div class="presenter-header">
+        <span class="presenter-num">Presenter 3</span>
+        <div style="display:flex;gap:20px;align-items:baseline;">
+          <span class="presenter-name">Nik</span>
+          <div class="topic-line">
+            <label>Topic:</label>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt-box">
+          <div class="prompt-label">Main argument</div>
+          <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Connection to our course</div>
+          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Something that surprised you</div>
+          <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">A question you'd ask</div>
+          <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
+          <div class="write-lines"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <div class="rating-item"><span class="circle"></span> Clear</div>
+        <div class="rating-item"><span class="circle"></span> Engaging</div>
+        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
+        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Listen first. Write after. Your questions during Q&A matter. This form is collected at the end of class.
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 3: Friday (Sam / Jessy) ==================== -->
+  <div class="page">
+    <div class="page-header">
+      <h1>Listen, Learn, Ask</h1>
+      <span class="course">EAST 213 / Friday, March 13</span>
+    </div>
+
+    <div class="your-name">
+      <label>Your name:</label>
+      <div class="line"></div>
+    </div>
+
+    <!-- Sam -->
+    <div class="presenter-block">
+      <div class="presenter-header">
+        <span class="presenter-num">Presenter 1</span>
+        <div style="display:flex;gap:20px;align-items:baseline;">
+          <span class="presenter-name">Sam</span>
+          <div class="topic-line">
+            <label>Topic:</label>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt-box">
+          <div class="prompt-label">Main argument</div>
+          <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Connection to our course</div>
+          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Something that surprised you</div>
+          <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">A question you'd ask</div>
+          <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
+          <div class="write-lines"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <div class="rating-item"><span class="circle"></span> Clear</div>
+        <div class="rating-item"><span class="circle"></span> Engaging</div>
+        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
+        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+      </div>
+    </div>
+
+    <!-- Jessy -->
+    <div class="presenter-block">
+      <div class="presenter-header">
+        <span class="presenter-num">Presenter 2</span>
+        <div style="display:flex;gap:20px;align-items:baseline;">
+          <span class="presenter-name">Jessy</span>
+          <div class="topic-line">
+            <label>Topic:</label>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt-box">
+          <div class="prompt-label">Main argument</div>
+          <div class="prompt-hint">What claim are they making? (not just the topic, the argument)</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Connection to our course</div>
+          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">Something that surprised you</div>
+          <div class="prompt-hint">A fact, framing, or perspective you hadn't considered</div>
+          <div class="write-lines"></div>
+        </div>
+        <div class="prompt-box">
+          <div class="prompt-label">A question you'd ask</div>
+          <div class="prompt-hint">Push their thinking. "What about..." / "How does this apply to..."</div>
+          <div class="write-lines"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <div class="rating-item"><span class="circle"></span> Clear</div>
+        <div class="rating-item"><span class="circle"></span> Engaging</div>
+        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
+        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Listen first. Write after. Your questions during Q&A matter. This form is collected at the end of class.
+    </div>
   </div>
 
 </body>

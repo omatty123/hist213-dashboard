@@ -135,23 +135,35 @@
     }
 
     .rating-row {
-      display: flex;
-      gap: 16px;
-      margin-top: 8px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 20px;
+      margin-top: 10px;
     }
     .rating-item {
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 11px;
+      gap: 8px;
     }
-    .rating-item .circle {
-      width: 14px;
-      height: 14px;
-      border: 1.5px solid #999;
+    .rating-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #777;
+      width: 110px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .rating-dots {
+      display: flex;
+      gap: 5px;
+    }
+    .rating-dots .dot {
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      display: inline-block;
+      border: 1.5px solid #bbb;
     }
 
     .footer-note {
@@ -200,7 +212,7 @@
         </div>
         <div class="prompt-box">
           <div class="prompt-label">Connection to our course</div>
-          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="prompt-hint">What from our class does this connect to?</div>
           <div class="write-lines"></div>
         </div>
         <div class="prompt-box">
@@ -215,10 +227,22 @@
         </div>
       </div>
       <div class="rating-row">
-        <div class="rating-item"><span class="circle"></span> Clear</div>
-        <div class="rating-item"><span class="circle"></span> Engaging</div>
-        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+        <div class="rating-item">
+          <span class="rating-label">Clear</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Engaging</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Respected audience</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">More than a summary</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
       </div>
     </div>
 
@@ -239,7 +263,7 @@
         </div>
         <div class="prompt-box">
           <div class="prompt-label">Connection to our course</div>
-          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="prompt-hint">What from our class does this connect to?</div>
           <div class="write-lines"></div>
         </div>
         <div class="prompt-box">
@@ -254,10 +278,22 @@
         </div>
       </div>
       <div class="rating-row">
-        <div class="rating-item"><span class="circle"></span> Clear</div>
-        <div class="rating-item"><span class="circle"></span> Engaging</div>
-        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+        <div class="rating-item">
+          <span class="rating-label">Clear</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Engaging</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Respected audience</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">More than a summary</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
       </div>
     </div>
 
@@ -278,7 +314,7 @@
         </div>
         <div class="prompt-box">
           <div class="prompt-label">Connection to our course</div>
-          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="prompt-hint">What from our class does this connect to?</div>
           <div class="write-lines"></div>
         </div>
         <div class="prompt-box">
@@ -293,10 +329,22 @@
         </div>
       </div>
       <div class="rating-row">
-        <div class="rating-item"><span class="circle"></span> Clear</div>
-        <div class="rating-item"><span class="circle"></span> Engaging</div>
-        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+        <div class="rating-item">
+          <span class="rating-label">Clear</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Engaging</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Respected audience</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">More than a summary</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
       </div>
     </div>
 
@@ -334,7 +382,7 @@
         </div>
         <div class="prompt-box">
           <div class="prompt-label">Connection to our course</div>
-          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="prompt-hint">What from our class does this connect to?</div>
           <div class="write-lines"></div>
         </div>
         <div class="prompt-box">
@@ -349,10 +397,22 @@
         </div>
       </div>
       <div class="rating-row">
-        <div class="rating-item"><span class="circle"></span> Clear</div>
-        <div class="rating-item"><span class="circle"></span> Engaging</div>
-        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+        <div class="rating-item">
+          <span class="rating-label">Clear</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Engaging</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Respected audience</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">More than a summary</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
       </div>
     </div>
 
@@ -373,7 +433,7 @@
         </div>
         <div class="prompt-box">
           <div class="prompt-label">Connection to our course</div>
-          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="prompt-hint">What from our class does this connect to?</div>
           <div class="write-lines"></div>
         </div>
         <div class="prompt-box">
@@ -388,10 +448,22 @@
         </div>
       </div>
       <div class="rating-row">
-        <div class="rating-item"><span class="circle"></span> Clear</div>
-        <div class="rating-item"><span class="circle"></span> Engaging</div>
-        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+        <div class="rating-item">
+          <span class="rating-label">Clear</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Engaging</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Respected audience</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">More than a summary</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
       </div>
     </div>
 
@@ -412,7 +484,7 @@
         </div>
         <div class="prompt-box">
           <div class="prompt-label">Connection to our course</div>
-          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="prompt-hint">What from our class does this connect to?</div>
           <div class="write-lines"></div>
         </div>
         <div class="prompt-box">
@@ -427,10 +499,22 @@
         </div>
       </div>
       <div class="rating-row">
-        <div class="rating-item"><span class="circle"></span> Clear</div>
-        <div class="rating-item"><span class="circle"></span> Engaging</div>
-        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+        <div class="rating-item">
+          <span class="rating-label">Clear</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Engaging</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Respected audience</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">More than a summary</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
       </div>
     </div>
 
@@ -468,7 +552,7 @@
         </div>
         <div class="prompt-box">
           <div class="prompt-label">Connection to our course</div>
-          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="prompt-hint">What from our class does this connect to?</div>
           <div class="write-lines"></div>
         </div>
         <div class="prompt-box">
@@ -483,10 +567,22 @@
         </div>
       </div>
       <div class="rating-row">
-        <div class="rating-item"><span class="circle"></span> Clear</div>
-        <div class="rating-item"><span class="circle"></span> Engaging</div>
-        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+        <div class="rating-item">
+          <span class="rating-label">Clear</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Engaging</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Respected audience</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">More than a summary</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
       </div>
     </div>
 
@@ -507,7 +603,7 @@
         </div>
         <div class="prompt-box">
           <div class="prompt-label">Connection to our course</div>
-          <div class="prompt-hint">What plate, reading, or theme does this connect to?</div>
+          <div class="prompt-hint">What from our class does this connect to?</div>
           <div class="write-lines"></div>
         </div>
         <div class="prompt-box">
@@ -522,10 +618,22 @@
         </div>
       </div>
       <div class="rating-row">
-        <div class="rating-item"><span class="circle"></span> Clear</div>
-        <div class="rating-item"><span class="circle"></span> Engaging</div>
-        <div class="rating-item"><span class="circle"></span> Respected the audience</div>
-        <div class="rating-item"><span class="circle"></span> More than a summary</div>
+        <div class="rating-item">
+          <span class="rating-label">Clear</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Engaging</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Respected audience</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">More than a summary</span>
+          <div class="rating-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
       </div>
     </div>
 

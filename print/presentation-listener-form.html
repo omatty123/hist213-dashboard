@@ -67,41 +67,36 @@
       border: 1px solid #bbb;
       border-radius: 4px;
       padding: 14px 16px 12px;
-      margin-bottom: 14px;
+      margin-bottom: 28px;
       background: rgba(255,255,255,0.5);
       page-break-inside: avoid;
     }
 
     .presenter-header {
       display: flex;
-      justify-content: space-between;
       align-items: baseline;
+      gap: 10px;
       margin-bottom: 10px;
       border-bottom: 1px solid #ddd;
       padding-bottom: 6px;
     }
-    .presenter-num {
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #888;
-    }
     .presenter-name {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: 0.3px;
+      flex-shrink: 0;
     }
     .topic-line {
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 13px;
+      flex: 1;
     }
-    .topic-line label { font-weight: 600; }
+    .topic-line label { font-weight: 600; flex-shrink: 0; }
     .topic-line .line {
       border-bottom: 1px solid #999;
-      width: 220px;
+      flex: 1;
       height: 16px;
     }
 
@@ -191,13 +186,10 @@
     <!-- Susanna -->
     <div class="presenter-block">
       <div class="presenter-header">
-        <span class="presenter-num">Presenter 1</span>
-        <div style="display:flex;gap:20px;align-items:baseline;">
-          <span class="presenter-name">Susanna</span>
-          <div class="topic-line">
-            <label>Topic:</label>
-            <div class="line"></div>
-          </div>
+        <span class="presenter-name">Susanna</span>
+        <div class="topic-line">
+          <label>Topic:</label>
+          <div class="line"></div>
         </div>
       </div>
       <div class="prompt-grid">
@@ -233,13 +225,10 @@
     <!-- Em -->
     <div class="presenter-block">
       <div class="presenter-header">
-        <span class="presenter-num">Presenter 2</span>
-        <div style="display:flex;gap:20px;align-items:baseline;">
-          <span class="presenter-name">Em</span>
-          <div class="topic-line">
-            <label>Topic:</label>
-            <div class="line"></div>
-          </div>
+        <span class="presenter-name">Em</span>
+        <div class="topic-line">
+          <label>Topic:</label>
+          <div class="line"></div>
         </div>
       </div>
       <div class="prompt-grid">
@@ -275,13 +264,10 @@
     <!-- Izzy -->
     <div class="presenter-block">
       <div class="presenter-header">
-        <span class="presenter-num">Presenter 3</span>
-        <div style="display:flex;gap:20px;align-items:baseline;">
-          <span class="presenter-name">Izzy</span>
-          <div class="topic-line">
-            <label>Topic:</label>
-            <div class="line"></div>
-          </div>
+        <span class="presenter-name">Izzy</span>
+        <div class="topic-line">
+          <label>Topic:</label>
+          <div class="line"></div>
         </div>
       </div>
       <div class="prompt-grid">
@@ -315,7 +301,7 @@
     </div>
 
     <div class="footer-note">
-      Listen first. Write after. Your questions during Q&A matter. This form is collected at the end of class.
+      Your questions during Q&A matter. This form is collected at the end of class.
     </div>
   </div>
 
@@ -334,13 +320,10 @@
     <!-- Eliel -->
     <div class="presenter-block">
       <div class="presenter-header">
-        <span class="presenter-num">Presenter 1</span>
-        <div style="display:flex;gap:20px;align-items:baseline;">
-          <span class="presenter-name">Eliel</span>
-          <div class="topic-line">
-            <label>Topic:</label>
-            <div class="line"></div>
-          </div>
+        <span class="presenter-name">Eliel</span>
+        <div class="topic-line">
+          <label>Topic:</label>
+          <div class="line"></div>
         </div>
       </div>
       <div class="prompt-grid">
@@ -376,13 +359,10 @@
     <!-- Juchan -->
     <div class="presenter-block">
       <div class="presenter-header">
-        <span class="presenter-num">Presenter 2</span>
-        <div style="display:flex;gap:20px;align-items:baseline;">
-          <span class="presenter-name">Juchan</span>
-          <div class="topic-line">
-            <label>Topic:</label>
-            <div class="line"></div>
-          </div>
+        <span class="presenter-name">Juchan</span>
+        <div class="topic-line">
+          <label>Topic:</label>
+          <div class="line"></div>
         </div>
       </div>
       <div class="prompt-grid">
@@ -418,13 +398,10 @@
     <!-- Nik -->
     <div class="presenter-block">
       <div class="presenter-header">
-        <span class="presenter-num">Presenter 3</span>
-        <div style="display:flex;gap:20px;align-items:baseline;">
-          <span class="presenter-name">Nik</span>
-          <div class="topic-line">
-            <label>Topic:</label>
-            <div class="line"></div>
-          </div>
+        <span class="presenter-name">Nik</span>
+        <div class="topic-line">
+          <label>Topic:</label>
+          <div class="line"></div>
         </div>
       </div>
       <div class="prompt-grid">
@@ -458,7 +435,7 @@
     </div>
 
     <div class="footer-note">
-      Listen first. Write after. Your questions during Q&A matter. This form is collected at the end of class.
+      Your questions during Q&A matter. This form is collected at the end of class.
     </div>
   </div>
 
@@ -477,13 +454,10 @@
     <!-- Sam -->
     <div class="presenter-block">
       <div class="presenter-header">
-        <span class="presenter-num">Presenter 1</span>
-        <div style="display:flex;gap:20px;align-items:baseline;">
-          <span class="presenter-name">Sam</span>
-          <div class="topic-line">
-            <label>Topic:</label>
-            <div class="line"></div>
-          </div>
+        <span class="presenter-name">Sam</span>
+        <div class="topic-line">
+          <label>Topic:</label>
+          <div class="line"></div>
         </div>
       </div>
       <div class="prompt-grid">
@@ -519,13 +493,10 @@
     <!-- Jessy -->
     <div class="presenter-block">
       <div class="presenter-header">
-        <span class="presenter-num">Presenter 2</span>
-        <div style="display:flex;gap:20px;align-items:baseline;">
-          <span class="presenter-name">Jessy</span>
-          <div class="topic-line">
-            <label>Topic:</label>
-            <div class="line"></div>
-          </div>
+        <span class="presenter-name">Jessy</span>
+        <div class="topic-line">
+          <label>Topic:</label>
+          <div class="line"></div>
         </div>
       </div>
       <div class="prompt-grid">
@@ -559,7 +530,7 @@
     </div>
 
     <div class="footer-note">
-      Listen first. Write after. Your questions during Q&A matter. This form is collected at the end of class.
+      Your questions during Q&A matter. This form is collected at the end of class.
     </div>
   </div>
 

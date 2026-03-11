@@ -141,17 +141,44 @@
 
         .key-q {
             font-weight: 500;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
         }
 
-        .key-yours {
+        .key-answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 0.5rem;
+            align-items: start;
+        }
+
+        .key-col {
+            font-size: 0.85rem;
+        }
+
+        .key-col.first { color: var(--ink-light); }
+        .key-col.now { color: var(--ink); }
+        .key-col.correct { color: var(--correct); font-weight: 500; }
+
+        .key-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             color: var(--ink-light);
+            display: block;
             margin-bottom: 0.15rem;
         }
 
-        .key-answer {
-            color: var(--correct);
-            font-weight: 500;
+        @media (max-width: 600px) {
+            .key-answers {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.3rem;
+            }
+            .key-col.correct {
+                grid-column: 1 / -1;
+            }
+            .key-answers .key-check {
+                grid-column: 1 / -1;
+            }
         }
 
         .divider {
@@ -178,39 +205,53 @@
             margin-bottom: 0.75rem;
         }
 
-        /* Self-grade */
-        .grade-box {
-            padding: 1.25rem;
-            background: var(--warm-bg);
-            border-left: 3px solid var(--warm);
-            margin: 1.5rem 0;
-        }
-
-        .grade-box label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .grade-input {
-            width: 80px !important;
-            font-size: 1.5rem !important;
-            font-weight: 700;
-            text-align: center;
-            padding: 0.4rem !important;
-        }
-
-        .grade-suffix {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-left: 0.35rem;
-            color: var(--ink-light);
-        }
-
-        .grade-row {
+        /* Self-grade checkboxes */
+        .key-check {
             display: flex;
             align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .key-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--correct);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .key-check label {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            cursor: pointer;
+        }
+
+        /* Score tally */
+        .score-tally {
+            position: sticky;
+            top: 0;
+            background: var(--warm-bg);
+            border-bottom: 2px solid var(--warm);
+            padding: 0.75rem 1rem;
+            margin: -0.5rem -1.5rem 1rem;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .score-tally .score-num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--warm);
+        }
+
+        .score-tally .score-label {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Intake photo */
@@ -231,40 +272,57 @@
             text-align: center;
         }
 
-        /* Feedback */
-        .feedback-q {
-            margin-bottom: 1.25rem;
-        }
 
-        .feedback-q label {
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-
-        .recommend-options {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .recommend-options label {
-            padding: 0.4rem 0.75rem;
-            border: 1px solid var(--border);
+        /* Growth comparison */
+        .growth-box {
+            padding: 1.25rem;
+            margin: 1.5rem 0;
             border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            background: #fff;
-            font-weight: 400;
         }
 
-        .recommend-options label:has(input:checked) {
-            border-color: var(--ink);
-            background: #f5f5f4;
+        .growth-box.improved {
+            background: var(--correct-bg);
+            border-left: 3px solid var(--correct);
         }
 
-        .recommend-options input { display: none; }
+        .growth-box.same {
+            background: var(--warm-bg);
+            border-left: 3px solid var(--warm);
+        }
+
+        .growth-scores {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .growth-score {
+            text-align: center;
+        }
+
+        .growth-score .num {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .growth-score .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ink-light);
+        }
+
+        .growth-arrow {
+            font-size: 1.5rem;
+            color: var(--ink-light);
+        }
+
+        .growth-msg {
+            font-size: 0.9rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
 
         /* Thanks */
         .thanks h2 {
@@ -402,17 +460,14 @@
             <h1>Answer Key</h1>
         </header>
 
-        <p class="intro">Compare your answers to the key. Be honest with yourself.</p>
+        <div class="score-tally">
+            <span class="score-num" id="score-display">0</span>
+            <span class="score-label">/ 10 correct</span>
+        </div>
+
+        <p class="intro">Compare your answers to the key. Check the box if you got it right.</p>
 
         <div id="key-list"></div>
-
-        <div class="grade-box">
-            <label>How many did you get right?</label>
-            <div class="grade-row">
-                <input type="number" id="self-score" class="grade-input" min="0" max="10" required>
-                <span class="grade-suffix">/ 10</span>
-            </div>
-        </div>
 
         <hr class="divider">
 
@@ -423,42 +478,7 @@
             <div id="no-intake" class="no-photo">Your instructor will share your intake quiz with you in class.</div>
         </div>
 
-        <hr class="divider">
-
-        <div class="section-label">Course Feedback</div>
-        <p class="section-desc">Help make this course better for future students.</p>
-
-        <div class="feedback-q">
-            <label>What was the most valuable thing you learned this term?</label>
-            <textarea id="fb-valuable"></textarea>
-        </div>
-
-        <div class="feedback-q">
-            <label>Which topic or class session was most interesting to you?</label>
-            <textarea id="fb-topic"></textarea>
-        </div>
-
-        <div class="feedback-q">
-            <label>What would you change about the course?</label>
-            <textarea id="fb-change"></textarea>
-        </div>
-
-        <div class="feedback-q">
-            <label>Would you recommend this course to a friend?</label>
-            <div class="recommend-options">
-                <label><input type="radio" name="recommend" value="Absolutely"> <span>Absolutely</span></label>
-                <label><input type="radio" name="recommend" value="Probably"> <span>Probably</span></label>
-                <label><input type="radio" name="recommend" value="Maybe"> <span>Maybe</span></label>
-                <label><input type="radio" name="recommend" value="No"> <span>No</span></label>
-            </div>
-        </div>
-
-        <div class="feedback-q">
-            <label>Anything else for the instructor?</label>
-            <textarea id="fb-other"></textarea>
-        </div>
-
-        <button class="btn" id="submit-btn">Submit Everything</button>
+        <button class="btn" id="submit-btn">Submit</button>
         <div class="status" id="submit-status"></div>
     </div>
 
@@ -469,9 +489,9 @@
             <h1>All Done</h1>
         </header>
         <div class="thanks">
+            <div id="growth-container"></div>
             <h2>Thank you, <span class="thanks-name"></span>.</h2>
-            <p>It's been a great term exploring East Asia together. You came in knowing some of this, and now you know so much more.</p>
-            <p>Keep asking good questions.</p>
+            <p id="thanks-msg"></p>
             <p class="korean">감사합니다. 수고하셨습니다.</p>
         </div>
     </div>
@@ -480,17 +500,27 @@
         // ========================================
         // CONFIG — paste your Apps Script URL here
         // ========================================
-        const SCRIPT_URL = '';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyX1jTuqp5RFi95HbpCbLVLkAwTKOfFcHZnskffFEPm3nY4-_V84FhkQHjMkGIP84p3/exec';
 
         const STUDENTS = {
-            susanna:  { name: 'Susanna',  full: 'Susanna Good',     email: 'susanna.d.good@lawrence.edu' },
-            jessy:    { name: 'Jessy',    full: 'Jessy Jeong',      email: 'yunji.jeong@lawrence.edu' },
-            nik:      { name: 'Nik',      full: 'Nik Kypriotis',    email: 'nikolaos.a.kypriotis@lawrence.edu' },
-            isabelle: { name: 'Isabelle', full: 'Isabelle Pick',     email: 'isabelle.d.pick@lawrence.edu' },
-            em:       { name: 'Em',       full: 'Em Sweeney',       email: 'em.sweeney@lawrence.edu' },
-            eliel:    { name: 'Eliel',    full: 'Eliel Valdez',     email: 'eliel.a.valdez@lawrence.edu' },
-            sam:      { name: 'Sam',      full: 'Sam Williams',     email: 'samuel.g.williams@lawrence.edu' },
-            juchan:   { name: 'Juchan',   full: 'Juchan Yang',      email: 'juchan.yang@lawrence.edu' }
+            susanna:  { name: 'Susanna',  full: 'Susanna Good',     email: 'susanna.d.good@lawrence.edu', intake: 4,
+                intakeAnswers: ['?', 'Chinese', 'America', 'British Empire', '?', 'Samurai outlawed', 'Taiping rebellion?', '?', '?', 'Japan'] },
+            jessy:    { name: 'Jessy',    full: 'Jessy Jeong',      email: 'yunji.jeong@lawrence.edu', intake: 5,
+                intakeAnswers: ['Imjin War', 'England?', 'England/France?', 'England', 'Joseon dynasty', '?', '?', 'Meiji', 'Zhu Xi', 'Japan?'] },
+            nik:      { name: 'Nik',      full: 'Nik Kypriotis',    email: 'nikolaos.a.kypriotis@lawrence.edu', intake: 0,
+                intakeAnswers: ["Don't know", "Don't know", "Don't know", "Don't know", "Don't know", "Don't know", "Don't know", "Don't know", "Don't know", "Don't know"] },
+            isabelle: { name: 'Isabelle', full: 'Isabelle Pick',     email: 'isabelle.d.pick@lawrence.edu', intake: 4,
+                intakeAnswers: ['?', 'Japan', 'Russian Empire', 'Great Britain', 'Joseon', '?', 'Chinese Communist Rev.', 'Communists vs Kuomintang', 'Zhu Xi?', 'China'] },
+            em:       { name: 'Em',       full: 'Em Sweeney',       email: 'em.sweeney@lawrence.edu', intake: 1,
+                intakeAnswers: ['?', '?', 'China?', 'England', '?', '?', '?', '?', '?', '?'] },
+            eliel:    { name: 'Eliel',    full: 'Eliel Valdez',     email: 'eliel.a.valdez@lawrence.edu', intake: 1,
+                intakeAnswers: ['?', 'Mongolian Empire', 'Portugal', 'UK/British Empire', '?', '?', '?', '?', '?', 'Korea (South)'] },
+            sam:      { name: 'Sam',      full: 'Sam Williams',     email: 'samuel.g.williams@lawrence.edu', intake: 1,
+                intakeAnswers: ['Volcano eruption', 'China', 'Britain', 'East India Trading', '?', '?', 'Korean emancipation from Japan', '?', 'Confucius', 'Korea'] },
+            juchan:   { name: 'Juchan',   full: 'Juchan Yang',      email: 'juchan.yang@lawrence.edu', intake: 5,
+                intakeAnswers: ['Imjin war (1592)', 'UK', 'US', 'France', 'Joseon', 'Meiji Restoration', '?', 'Ming and Qing', '?', 'Japan'] },
+            wegehaum: { name: '마선생님', full: 'Ma Sŏnsaengnim',   email: 'wegehaum@lawrence.edu', intake: 10,
+                intakeAnswers: ['Imjin war', 'Qing', 'US', 'UK', 'Joseon', 'Meiji Revolution', 'Tonghak', 'CPC vs KMT', 'Zhu Xi', 'Japan'] }
         };
 
         const QUESTIONS = [
@@ -562,11 +592,19 @@
                 var val = document.getElementById('q' + i).value.trim();
                 answers.push(val);
 
+                var firstAnswer = student.intakeAnswers ? student.intakeAnswers[i - 1] : '?';
                 keyHTML.push(
                     '<div class="key-item">' +
                         '<div class="key-q"><span class="q-num">' + i + '.</span> ' + QUESTIONS[i - 1] + '</div>' +
-                        '<div class="key-yours">You wrote: ' + (val || '(blank)') + '</div>' +
-                        '<div class="key-answer">Answer: ' + ANSWER_KEY[i - 1] + '</div>' +
+                        '<div class="key-answers">' +
+                            '<div class="key-col first"><span class="key-label">Week 1</span>' + firstAnswer + '</div>' +
+                            '<div class="key-col now"><span class="key-label">Now</span>' + (val || '(blank)') + '</div>' +
+                            '<div class="key-col correct"><span class="key-label">Answer</span>' + ANSWER_KEY[i - 1] + '</div>' +
+                            '<div class="key-check">' +
+                                '<input type="checkbox" id="check' + i + '" onchange="updateTally()">' +
+                                '<label for="check' + i + '">Right</label>' +
+                            '</div>' +
+                        '</div>' +
                     '</div>'
                 );
             }
@@ -582,18 +620,24 @@
             window.scrollTo(0, 0);
         });
 
+        // === TALLY ===
+        function updateTally() {
+            var count = 0;
+            for (var i = 1; i <= 10; i++) {
+                if (document.getElementById('check' + i).checked) count++;
+            }
+            document.getElementById('score-display').textContent = count;
+        }
+
         // === FINAL SUBMIT ===
         document.getElementById('submit-btn').addEventListener('click', async function() {
-            var scoreEl = document.getElementById('self-score');
-            var score = scoreEl.value;
-
-            if (score === '' || score < 0 || score > 10) {
-                scoreEl.focus();
-                scoreEl.style.borderColor = '#dc2626';
-                return;
+            var correct = [];
+            var score = 0;
+            for (var i = 1; i <= 10; i++) {
+                var c = document.getElementById('check' + i).checked;
+                correct.push(c);
+                if (c) score++;
             }
-
-            var recommend = document.querySelector('input[name="recommend"]:checked');
 
             var payload = {
                 timestamp: new Date().toISOString(),
@@ -601,12 +645,8 @@
                 name: student.full,
                 email: student.email,
                 quizAnswers: window._quizAnswers,
-                selfScore: parseInt(score),
-                fbValuable: document.getElementById('fb-valuable').value,
-                fbTopic: document.getElementById('fb-topic').value,
-                fbChange: document.getElementById('fb-change').value,
-                fbRecommend: recommend ? recommend.value : '',
-                fbOther: document.getElementById('fb-other').value
+                quizCorrect: correct,
+                selfScore: score
             };
 
             var btn = document.getElementById('submit-btn');
@@ -620,7 +660,6 @@
                     await fetch(SCRIPT_URL, {
                         method: 'POST',
                         mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
                 }
@@ -639,6 +678,34 @@
                 status.className = 'status success';
                 status.textContent = 'Submitted! Thank you.';
 
+                // Build growth comparison
+                var intakeScore = student.intake;
+                var outtakeScore = score;
+                var diff = outtakeScore - intakeScore;
+                var growthClass = diff > 0 ? 'improved' : 'same';
+                var msg = '';
+                if (diff > 0) {
+                    msg = 'You improved by ' + diff + ' point' + (diff > 1 ? 's' : '') + '. That growth is real.';
+                } else if (diff === 0 && outtakeScore === 10) {
+                    msg = 'Perfect both times. You came in strong and stayed strong.';
+                } else if (diff === 0) {
+                    msg = 'Same score, but you know so much more than a number shows.';
+                } else {
+                    msg = 'The score went down, but what you learned this term goes far beyond a quiz.';
+                }
+
+                document.getElementById('growth-container').innerHTML =
+                    '<div class="growth-box ' + growthClass + '">' +
+                        '<div class="growth-scores">' +
+                            '<div class="growth-score"><div class="num">' + intakeScore + '</div><div class="label">Week 1</div></div>' +
+                            '<div class="growth-arrow">&rarr;</div>' +
+                            '<div class="growth-score"><div class="num">' + outtakeScore + '</div><div class="label">Week 10</div></div>' +
+                        '</div>' +
+                        '<div class="growth-msg">' + msg + '</div>' +
+                    '</div>';
+
+                document.getElementById('thanks-msg').textContent = 'It\'s been a great term exploring East Asia together. Keep asking good questions.';
+
                 setTimeout(function() {
                     document.getElementById('phase-results').classList.remove('active');
                     document.getElementById('phase-thanks').classList.add('active');
@@ -656,20 +723,13 @@
         function formatSummary(data) {
             var s = 'EAST 213 OUTTAKE QUIZ\n';
             s += 'Student: ' + data.name + '\n';
-            s += 'Self-assessed score: ' + data.selfScore + '/10\n\n';
+            s += 'Score: ' + data.selfScore + '/10\n\n';
 
             for (var i = 0; i < 10; i++) {
-                s += (i + 1) + '. ' + QUESTIONS[i] + '\n';
-                s += '   Wrote: ' + (data.quizAnswers[i] || '(blank)') + '\n';
-                s += '   Key:   ' + ANSWER_KEY[i] + '\n\n';
+                var mark = data.quizCorrect[i] ? '✓' : '✗';
+                s += mark + ' ' + (i + 1) + '. ' + QUESTIONS[i] + '\n';
+                s += '   ' + (data.quizAnswers[i] || '(blank)') + '\n\n';
             }
-
-            s += '---\nFEEDBACK\n';
-            s += 'Most valuable: ' + (data.fbValuable || '(none)') + '\n';
-            s += 'Most interesting topic: ' + (data.fbTopic || '(none)') + '\n';
-            s += 'Would change: ' + (data.fbChange || '(none)') + '\n';
-            s += 'Recommend: ' + (data.fbRecommend || '(none)') + '\n';
-            s += 'Other: ' + (data.fbOther || '(none)') + '\n';
             return s;
         }
     </script>

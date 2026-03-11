@@ -15,35 +15,33 @@
  * - Run sendQuizLinks() from the script editor to email every student their personal link
  */
 
-const SHEET_NAME = 'Outtake Responses';
+const SPREADSHEET_ID = '1ZT1WTjEu-SHEnI-vd6LiLV6jDY5gAWkzmbP4ri1lRWY';
+const SHEET_NAME = 'Outtake Results';
 const INSTRUCTOR_EMAIL = 'omatty@gmail.com';
 
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    const sheet = getOrCreateSheet();
 
-    sheet.appendRow([
-      data.timestamp,
-      data.name,
-      data.email,
-      data.selfScore,
-      data.quizAnswers[0] || '',
-      data.quizAnswers[1] || '',
-      data.quizAnswers[2] || '',
-      data.quizAnswers[3] || '',
-      data.quizAnswers[4] || '',
-      data.quizAnswers[5] || '',
-      data.quizAnswers[6] || '',
-      data.quizAnswers[7] || '',
-      data.quizAnswers[8] || '',
-      data.quizAnswers[9] || '',
-      data.fbValuable,
-      data.fbTopic,
-      data.fbChange,
-      data.fbRecommend,
-      data.fbOther
-    ]);
+    // Generic sheet write: { action: "writeSheet", sheetName: "...", rows: [[...], ...], clear: true/false }
+    if (data.action === 'writeSheet') {
+      return writeToSheet(data);
+    }
+
+    // Default: outtake quiz submission
+    const sheet = getOrCreateSheet();
+    const correct = data.quizCorrect || [];
+    const answers = data.quizAnswers || [];
+
+    // Match intake format: Name, Q1 answer, Q1 grade, Q2 answer, Q2 grade, ..., TOTAL
+    const row = [data.name];
+    for (let i = 0; i < 10; i++) {
+      row.push(answers[i] || '');
+      row.push(correct[i] ? '✓' : '✗');
+    }
+    row.push(data.selfScore);
+
+    sheet.appendRow(row);
 
     sendInstructorEmail(data);
 
@@ -58,8 +56,30 @@ function doPost(e) {
   }
 }
 
+/**
+ * Generic sheet writer. POST this JSON to write anything:
+ * { "action": "writeSheet", "sheetName": "My Sheet", "rows": [["A1","B1"],["A2","B2"]], "clear": true }
+ */
+function writeToSheet(data) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = ss.getSheetByName(data.sheetName);
+  if (!sheet) {
+    sheet = ss.insertSheet(data.sheetName);
+  }
+  if (data.clear) sheet.clear();
+  if (data.rows && data.rows.length > 0) {
+    sheet.getRange(1, 1, data.rows.length, data.rows[0].length).setValues(data.rows);
+    // Bold header row
+    sheet.getRange(1, 1, 1, data.rows[0].length).setFontWeight('bold').setBackground('#f3f4f6');
+    sheet.setFrozenRows(1);
+  }
+  return ContentService
+    .createTextOutput(JSON.stringify({ success: true, sheet: data.sheetName, rows: data.rows.length }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
 function getOrCreateSheet() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   let sheet = ss.getSheetByName(SHEET_NAME);
 
   if (!sheet) {
@@ -67,9 +87,9 @@ function getOrCreateSheet() {
     sheet.appendRow([
       'Timestamp', 'Name', 'Email', 'Self Score',
       'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10',
-      'Most Valuable', 'Most Interesting', 'Would Change', 'Recommend', 'Other'
+      'Correct/Incorrect'
     ]);
-    sheet.getRange(1, 1, 1, 19).setFontWeight('bold').setBackground('#f3f4f6');
+    sheet.getRange(1, 1, 1, 15).setFontWeight('bold').setBackground('#f3f4f6');
     sheet.setFrozenRows(1);
   }
 
@@ -114,13 +134,9 @@ function sendInstructorEmail(data) {
     body += `   Key:   ${answerKey[i]}\n`;
   }
 
+  const correct = data.quizCorrect || [];
   body += '\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
-  body += 'FEEDBACK\n\n';
-  body += `Most valuable: ${data.fbValuable || '(none)'}\n`;
-  body += `Most interesting: ${data.fbTopic || '(none)'}\n`;
-  body += `Would change: ${data.fbChange || '(none)'}\n`;
-  body += `Recommend: ${data.fbRecommend || '(none)'}\n`;
-  body += `Other: ${data.fbOther || '(none)'}\n`;
+  body += `Self-checked: ${correct.filter(c => c).length} marked correct\n`;
 
   MailApp.sendEmail({
     to: INSTRUCTOR_EMAIL,

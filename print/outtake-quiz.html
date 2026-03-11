@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAST 213 – Outtake Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1c1917;
+            --ink-light: #57534e;
+            --paper: #fafaf9;
+            --border: #e5e5e5;
+            --correct: #166534;
+            --correct-bg: #f0fdf4;
+            --warm: #92400e;
+            --warm-bg: #fffbeb;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .breadcrumb {
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            margin-bottom: 1rem;
+        }
+        .breadcrumb a { color: var(--ink-light); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--ink); }
+
+        header {
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--ink-light);
+        }
+
+        header h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .welcome {
+            font-size: 1rem;
+            color: var(--ink-light);
+            margin-top: 0.5rem;
+        }
+
+        .intro {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .phase { display: none; }
+        .phase.active { display: block; }
+
+        /* Quiz questions */
+        .question {
+            margin-bottom: 1.25rem;
+        }
+
+        .q-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            display: block;
+            line-height: 1.4;
+        }
+
+        .q-num {
+            font-weight: 700;
+            margin-right: 0.25rem;
+        }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--ink);
+        }
+
+        textarea {
+            width: 100%;
+            resize: vertical;
+            min-height: 80px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: var(--ink);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 1.5rem auto 0;
+        }
+
+        .btn:hover { background: #374151; }
+        .btn:disabled { background: #9ca3af; cursor: not-allowed; }
+
+        /* Answer key reveal */
+        .key-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+        }
+
+        .key-item:last-child { border-bottom: none; }
+
+        .key-q {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .key-yours {
+            color: var(--ink-light);
+            margin-bottom: 0.15rem;
+        }
+
+        .key-answer {
+            color: var(--correct);
+            font-weight: 500;
+        }
+
+        .divider {
+            margin: 2rem 0;
+            border: none;
+            border-top: 2px solid var(--ink);
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--ink);
+            color: #fff;
+            padding: 0.4rem 0.75rem;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-desc {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Self-grade */
+        .grade-box {
+            padding: 1.25rem;
+            background: var(--warm-bg);
+            border-left: 3px solid var(--warm);
+            margin: 1.5rem 0;
+        }
+
+        .grade-box label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .grade-input {
+            width: 80px !important;
+            font-size: 1.5rem !important;
+            font-weight: 700;
+            text-align: center;
+            padding: 0.4rem !important;
+        }
+
+        .grade-suffix {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-left: 0.35rem;
+            color: var(--ink-light);
+        }
+
+        .grade-row {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Intake photo */
+        .intake-photo {
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .no-photo {
+            padding: 2rem;
+            background: #f5f5f4;
+            color: var(--ink-light);
+            font-size: 0.85rem;
+            border: 1px dashed var(--border);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Feedback */
+        .feedback-q {
+            margin-bottom: 1.25rem;
+        }
+
+        .feedback-q label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .recommend-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .recommend-options label {
+            padding: 0.4rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            background: #fff;
+            font-weight: 400;
+        }
+
+        .recommend-options label:has(input:checked) {
+            border-color: var(--ink);
+            background: #f5f5f4;
+        }
+
+        .recommend-options input { display: none; }
+
+        /* Thanks */
+        .thanks h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .thanks p {
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .thanks .korean {
+            font-size: 1.2rem;
+            color: var(--ink);
+            margin-top: 1.5rem;
+        }
+
+        .status {
+            margin-top: 0.75rem;
+            padding: 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+        }
+
+        .status.success {
+            background: var(--correct-bg);
+            border: 1px solid #86efac;
+            color: var(--correct);
+            display: block;
+        }
+
+        .status.error {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+            display: block;
+        }
+
+        .error-page {
+            padding: 3rem 1rem;
+        }
+
+        .error-page h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .error-page p {
+            color: var(--ink-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1.25rem 1rem; }
+            header h1 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="breadcrumb">
+        <a href="../index.html">&larr; Back to EAST 213 Dashboard</a>
+    </div>
+
+    <!-- ERROR: no student param -->
+    <div id="error-page" class="error-page" style="display:none;">
+        <h2>This link doesn't look right.</h2>
+        <p>Use the personal link that was sent to your Lawrence email.</p>
+    </div>
+
+    <!-- PHASE 1: QUIZ -->
+    <div id="phase-quiz" class="phase">
+        <header>
+            <span class="course-tag">EAST 213 &middot; Week 10</span>
+            <h1>Outtake Quiz</h1>
+            <p class="welcome">Welcome back, <span id="student-name"></span>.</p>
+        </header>
+
+        <p class="intro">Same 10 questions from the first day of class. Answer all of them, then you'll see the answer key and grade yourself.</p>
+
+        <form id="quiz-form">
+            <div class="question">
+                <label class="q-label"><span class="q-num">1.</span> What cataclysmic event ended the 16th century in East Asia?</label>
+                <input type="text" id="q1" required>
+            </div>
+            <div class="question">
+                <label class="q-label"><span class="q-num">2.</span> Which empire was the world's largest economy in the 18th century?</label>
+                <input type="text" id="q2" required>
+            </div>
+            <div class="question">
+                <label class="q-label"><span class="q-num">3.</span> What Western nation forced Japan to open its ports in the 1850s?</label>
+                <input type="text" id="q3" required>
+            </div>
+            <div class="question">
+                <label class="q-label"><span class="q-num">4.</span> What European power fought the Opium Wars with China in the mid-nineteenth century?</label>
+                <input type="text" id="q4" required>
+            </div>
+            <div class="question">
+                <label class="q-label"><span class="q-num">5.</span> What was the name of the Korean dynasty that ruled the peninsula from 1392 until Japanese annexation in 1910?</label>
+                <input type="text" id="q5" required>
+            </div>
+            <div class="question">
+                <label class="q-label"><span class="q-num">6.</span> What event in 1868 marked the end of the Tokugawa shogunate and the beginning of rapid modernization in Japan?</label>
+                <input type="text" id="q6" required>
+            </div>
+            <div class="question">
+                <label class="q-label"><span class="q-num">7.</span> Name one major rebellion or revolution in nineteenth-century East Asia.</label>
+                <input type="text" id="q7" required>
+            </div>
+            <div class="question">
+                <label class="q-label"><span class="q-num">8.</span> Who were the two main parties fighting in the Chinese Civil War?</label>
+                <input type="text" id="q8" required>
+            </div>
+            <div class="question">
+                <label class="q-label"><span class="q-num">9.</span> What philosopher's re-interpretation of Confucianism created a cultural movement across East Asia that persists to this day?</label>
+                <input type="text" id="q9" required>
+            </div>
+            <div class="question">
+                <label class="q-label"><span class="q-num">10.</span> Which East Asian country had a movement calling for their country to "Escape Asia"?</label>
+                <input type="text" id="q10" required>
+            </div>
+
+            <button type="submit" class="btn" id="quiz-btn">See Answer Key</button>
+        </form>
+    </div>
+
+    <!-- PHASE 2: ANSWER KEY + SELF-GRADE + INTAKE + FEEDBACK -->
+    <div id="phase-results" class="phase">
+        <header>
+            <span class="course-tag">EAST 213 &middot; Week 10</span>
+            <h1>Answer Key</h1>
+        </header>
+
+        <p class="intro">Compare your answers to the key. Be honest with yourself.</p>
+
+        <div id="key-list"></div>
+
+        <div class="grade-box">
+            <label>How many did you get right?</label>
+            <div class="grade-row">
+                <input type="number" id="self-score" class="grade-input" min="0" max="10" required>
+                <span class="grade-suffix">/ 10</span>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section-label">Your Intake Quiz (Week 1)</div>
+        <p class="section-desc">Here's what you wrote on the first day of class.</p>
+        <div id="intake-container">
+            <img id="intake-img" class="intake-photo" style="display:none;" alt="Your intake quiz from Week 1">
+            <div id="no-intake" class="no-photo">Your instructor will share your intake quiz with you in class.</div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section-label">Course Feedback</div>
+        <p class="section-desc">Help make this course better for future students.</p>
+
+        <div class="feedback-q">
+            <label>What was the most valuable thing you learned this term?</label>
+            <textarea id="fb-valuable"></textarea>
+        </div>
+
+        <div class="feedback-q">
+            <label>Which topic or class session was most interesting to you?</label>
+            <textarea id="fb-topic"></textarea>
+        </div>
+
+        <div class="feedback-q">
+            <label>What would you change about the course?</label>
+            <textarea id="fb-change"></textarea>
+        </div>
+
+        <div class="feedback-q">
+            <label>Would you recommend this course to a friend?</label>
+            <div class="recommend-options">
+                <label><input type="radio" name="recommend" value="Absolutely"> <span>Absolutely</span></label>
+                <label><input type="radio" name="recommend" value="Probably"> <span>Probably</span></label>
+                <label><input type="radio" name="recommend" value="Maybe"> <span>Maybe</span></label>
+                <label><input type="radio" name="recommend" value="No"> <span>No</span></label>
+            </div>
+        </div>
+
+        <div class="feedback-q">
+            <label>Anything else for the instructor?</label>
+            <textarea id="fb-other"></textarea>
+        </div>
+
+        <button class="btn" id="submit-btn">Submit Everything</button>
+        <div class="status" id="submit-status"></div>
+    </div>
+
+    <!-- PHASE 3: THANK YOU -->
+    <div id="phase-thanks" class="phase">
+        <header>
+            <span class="course-tag">EAST 213 &middot; Week 10</span>
+            <h1>All Done</h1>
+        </header>
+        <div class="thanks">
+            <h2>Thank you, <span class="thanks-name"></span>.</h2>
+            <p>It's been a great term exploring East Asia together. You came in knowing some of this, and now you know so much more.</p>
+            <p>Keep asking good questions.</p>
+            <p class="korean">감사합니다. 수고하셨습니다.</p>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // CONFIG — paste your Apps Script URL here
+        // ========================================
+        const SCRIPT_URL = '';
+
+        const STUDENTS = {
+            susanna:  { name: 'Susanna',  full: 'Susanna Good',     email: 'susanna.d.good@lawrence.edu' },
+            jessy:    { name: 'Jessy',    full: 'Jessy Jeong',      email: 'yunji.jeong@lawrence.edu' },
+            nik:      { name: 'Nik',      full: 'Nik Kypriotis',    email: 'nikolaos.a.kypriotis@lawrence.edu' },
+            isabelle: { name: 'Isabelle', full: 'Isabelle Pick',     email: 'isabelle.d.pick@lawrence.edu' },
+            em:       { name: 'Em',       full: 'Em Sweeney',       email: 'em.sweeney@lawrence.edu' },
+            eliel:    { name: 'Eliel',    full: 'Eliel Valdez',     email: 'eliel.a.valdez@lawrence.edu' },
+            sam:      { name: 'Sam',      full: 'Sam Williams',     email: 'samuel.g.williams@lawrence.edu' },
+            juchan:   { name: 'Juchan',   full: 'Juchan Yang',      email: 'juchan.yang@lawrence.edu' }
+        };
+
+        const QUESTIONS = [
+            'What cataclysmic event ended the 16th century in East Asia?',
+            'Which empire was the world\'s largest economy in the 18th century?',
+            'What Western nation forced Japan to open its ports in the 1850s?',
+            'What European power fought the Opium Wars with China in the mid-nineteenth century?',
+            'What was the name of the Korean dynasty that ruled the peninsula from 1392 until Japanese annexation in 1910?',
+            'What event in 1868 marked the end of the Tokugawa shogunate and the beginning of rapid modernization in Japan?',
+            'Name one major rebellion or revolution in nineteenth-century East Asia.',
+            'Who were the two main parties fighting in the Chinese Civil War?',
+            'What philosopher\'s re-interpretation of Confucianism created a cultural movement across East Asia that persists to this day?',
+            'Which East Asian country had a movement calling for their country to "Escape Asia"?'
+        ];
+
+        const ANSWER_KEY = [
+            'Imjin War (Japanese invasion of Joseon)',
+            'Qing Empire',
+            'United States (Commodore Perry)',
+            'Great Britain',
+            'Joseon Dynasty',
+            'Meiji Restoration',
+            'Taiping Rebellion, Boxer Rebellion, Tonghak, etc.',
+            'Chinese Communist Party (CPC) and Kuomintang (KMT)',
+            'Zhu Xi (Neo-Confucianism)',
+            'Japan (Datsu-A / "Escape Asia")'
+        ];
+
+        // === INIT ===
+        const params = new URLSearchParams(window.location.search);
+        const sKey = params.get('s');
+        const student = sKey ? STUDENTS[sKey] : null;
+
+        if (!student) {
+            document.getElementById('error-page').style.display = 'block';
+        } else {
+            document.getElementById('phase-quiz').classList.add('active');
+            document.getElementById('student-name').textContent = student.name;
+            document.querySelector('.thanks-name').textContent = student.name;
+
+            // Try loading intake photo (jpg then png)
+            const intakeImg = document.getElementById('intake-img');
+            intakeImg.src = 'images/intake/' + sKey + '.jpg';
+            intakeImg.onload = function() {
+                intakeImg.style.display = 'block';
+                document.getElementById('no-intake').style.display = 'none';
+            };
+            intakeImg.onerror = function() {
+                intakeImg.src = 'images/intake/' + sKey + '.png';
+                intakeImg.onerror = function() {
+                    // Also try HEIC converted
+                    intakeImg.src = 'images/intake/' + sKey + '.jpeg';
+                    intakeImg.onerror = function() {
+                        intakeImg.style.display = 'none';
+                        document.getElementById('no-intake').style.display = 'block';
+                    };
+                };
+            };
+        }
+
+        // === QUIZ SUBMIT → SHOW ANSWER KEY ===
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var answers = [];
+            var keyHTML = [];
+
+            for (var i = 1; i <= 10; i++) {
+                var val = document.getElementById('q' + i).value.trim();
+                answers.push(val);
+
+                keyHTML.push(
+                    '<div class="key-item">' +
+                        '<div class="key-q"><span class="q-num">' + i + '.</span> ' + QUESTIONS[i - 1] + '</div>' +
+                        '<div class="key-yours">You wrote: ' + (val || '(blank)') + '</div>' +
+                        '<div class="key-answer">Answer: ' + ANSWER_KEY[i - 1] + '</div>' +
+                    '</div>'
+                );
+            }
+
+            document.getElementById('key-list').innerHTML = keyHTML.join('');
+
+            // Save answers for final submission
+            window._quizAnswers = answers;
+
+            // Switch phase
+            document.getElementById('phase-quiz').classList.remove('active');
+            document.getElementById('phase-results').classList.add('active');
+            window.scrollTo(0, 0);
+        });
+
+        // === FINAL SUBMIT ===
+        document.getElementById('submit-btn').addEventListener('click', async function() {
+            var scoreEl = document.getElementById('self-score');
+            var score = scoreEl.value;
+
+            if (score === '' || score < 0 || score > 10) {
+                scoreEl.focus();
+                scoreEl.style.borderColor = '#dc2626';
+                return;
+            }
+
+            var recommend = document.querySelector('input[name="recommend"]:checked');
+
+            var payload = {
+                timestamp: new Date().toISOString(),
+                studentKey: sKey,
+                name: student.full,
+                email: student.email,
+                quizAnswers: window._quizAnswers,
+                selfScore: parseInt(score),
+                fbValuable: document.getElementById('fb-valuable').value,
+                fbTopic: document.getElementById('fb-topic').value,
+                fbChange: document.getElementById('fb-change').value,
+                fbRecommend: recommend ? recommend.value : '',
+                fbOther: document.getElementById('fb-other').value
+            };
+
+            var btn = document.getElementById('submit-btn');
+            var status = document.getElementById('submit-status');
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+
+            try {
+                // Send to Apps Script if URL configured
+                if (SCRIPT_URL) {
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                }
+
+                // Backup: copy summary to clipboard
+                var summary = formatSummary(payload);
+                try { await navigator.clipboard.writeText(summary); } catch(e) {}
+
+                // If no script URL, fall back to email
+                if (!SCRIPT_URL) {
+                    var subject = encodeURIComponent('EAST 213 Outtake - ' + student.full);
+                    var body = encodeURIComponent(formatSummary(payload));
+                    window.open('mailto:omatty@gmail.com?subject=' + subject + '&body=' + body);
+                }
+
+                status.className = 'status success';
+                status.textContent = 'Submitted! Thank you.';
+
+                setTimeout(function() {
+                    document.getElementById('phase-results').classList.remove('active');
+                    document.getElementById('phase-thanks').classList.add('active');
+                    window.scrollTo(0, 0);
+                }, 1500);
+
+            } catch (err) {
+                status.className = 'status error';
+                status.textContent = 'Something went wrong. Let your instructor know.';
+                btn.disabled = false;
+                btn.textContent = 'Try Again';
+            }
+        });
+
+        function formatSummary(data) {
+            var s = 'EAST 213 OUTTAKE QUIZ\n';
+            s += 'Student: ' + data.name + '\n';
+            s += 'Self-assessed score: ' + data.selfScore + '/10\n\n';
+
+            for (var i = 0; i < 10; i++) {
+                s += (i + 1) + '. ' + QUESTIONS[i] + '\n';
+                s += '   Wrote: ' + (data.quizAnswers[i] || '(blank)') + '\n';
+                s += '   Key:   ' + ANSWER_KEY[i] + '\n\n';
+            }
+
+            s += '---\nFEEDBACK\n';
+            s += 'Most valuable: ' + (data.fbValuable || '(none)') + '\n';
+            s += 'Most interesting topic: ' + (data.fbTopic || '(none)') + '\n';
+            s += 'Would change: ' + (data.fbChange || '(none)') + '\n';
+            s += 'Recommend: ' + (data.fbRecommend || '(none)') + '\n';
+            s += 'Other: ' + (data.fbOther || '(none)') + '\n';
+            return s;
+        }
+    </script>
+</body>
+</html>

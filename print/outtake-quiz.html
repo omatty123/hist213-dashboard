@@ -553,6 +553,7 @@
         const params = new URLSearchParams(window.location.search);
         const sKey = params.get('s');
         const student = sKey ? STUDENTS[sKey] : null;
+        const previewMode = params.get('preview') === 'true';
 
         if (!student) {
             document.getElementById('error-page').style.display = 'block';
@@ -579,6 +580,18 @@
                     };
                 };
             };
+        }
+
+        // === PREVIEW MODE: skip to answer key + photo ===
+        if (previewMode && student) {
+            // Fill dummy answers and trigger phase 2
+            for (var i = 1; i <= 10; i++) {
+                document.getElementById('q' + i).value = '(preview)';
+            }
+            // Simulate form submit after a tick so DOM is ready
+            setTimeout(function() {
+                document.getElementById('quiz-form').dispatchEvent(new Event('submit'));
+            }, 100);
         }
 
         // === QUIZ SUBMIT → SHOW ANSWER KEY ===

@@ -457,7 +457,7 @@
     <div id="phase-results" class="phase">
         <header>
             <span class="course-tag">EAST 213 &middot; Week 10</span>
-            <h1>Answer Key</h1>
+            <h1>Answer Key — <span class="results-name"></span></h1>
         </header>
 
         <div class="score-tally">
@@ -560,6 +560,7 @@
         } else {
             document.getElementById('phase-quiz').classList.add('active');
             document.getElementById('student-name').textContent = student.name;
+            document.querySelector('.results-name').textContent = student.name;
             document.querySelector('.thanks-name').textContent = student.name;
 
             // Try loading intake photo (jpg then png)
